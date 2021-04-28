@@ -1,0 +1,168 @@
+<!--
+title: Les bases du langage
+description: 
+published: true
+date: 2021-04-28T18:46:47.848Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T18:46:47.848Z
+-->
+
+<h1>Les bases du langage</h1>
+<h2>Algébrie</h2>
+<figure class="table">
+  <table style="background-color:rgb(33, 33, 33);">
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Opérateur</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Usage</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>+</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Additionne deux nombres</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>-</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Soustrait deux nombres</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>*</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Multiplie deux nombres</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>/</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Divise deux nombres</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>//</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Retourne le nombre entier d'une division</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><strong>%</strong></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Retourne le reste d'une division</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><i>Exemple :</i></p>
+<pre><code class="language-python">&gt;&gt;&gt; 2+3
+# Le résultat sera 5
+&gt;&gt;&gt; 3*3
+# Le résultat sera 9</code></pre>
+<h2>Les variables</h2>
+<h3>Les bases</h3>
+<ul>
+  <li>Déclaration d'une variable :</li>
+</ul>
+<pre><code class="language-python">nom_variable = valeur</code></pre>
+<blockquote>
+  <p>A noter :</p>
+  <ol>
+    <li>Le nom de la variable ne peut être composé que de lettres, majuscules ou minuscules, de chiffres et du symbole souligné « _ » (appelé underscore en anglais).</li>
+    <li>Le nom de la variable ne peut pas commencer par un chiffre.<br>3.Le langage Python est sensible à la casse, ce qui signifie que des lettres majuscules et minuscules ne constituent pas la même variable (la variable AGE est différente de aGe, elle-même différente de age).</li>
+  </ol>
+</blockquote>
+<p>Il existe 2 conventions principales pour nommer une variable :</p>
+<ol>
+  <li>On remplace les espaces par un <strong>_</strong> : <code>mon_age</code></li>
+  <li>On écrit le début de chaque mot, sauf le premier, avec une majuscule : <code>monAge</code><br>Pour affecter une valeur à cette variable :</li>
+</ol>
+<pre><code class="language-python">monAge = 19</code></pre>
+<p>On peut interagir avec cette variable en modifiant son contenu comme bon nous semble :</p>
+<pre><code class="language-python">monAge = 19
+# monAge vaut 19
+monAge = monAge + 4
+# monAge vaut 23
+monAge = monAge * 2
+# monAge vaut 46</code></pre>
+<h3>Différents types de données</h3>
+<figure class="table">
+  <table style="background-color:rgb(33, 33, 33);">
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Type de donnée</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Nombres entiers (int)</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Nombre sans virgule : <code>3</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Nombres flottants (float)</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Nombre avec virgule : <code>3.2442</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Chaine de caractères</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Contient des lettres, des phrases : <code>Bonjour !</code></td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Pour les chaines de caractères, il faut faire attention aux types de guillements utilisés :</p>
+<pre><code class="language-python">maPhrase = 'J'aime le python'
+# Syntaxe incorrecte !
+# Pour corriger cela, il faut échapper le ' :
+maPhrase = 'J\'aime le python'
+# Affiche bien la phrase
+
+maPhrase = "j'aime le python"
+# J'aime le python
+
+maPhrase = """j'aime
+              le
+              python"""
+# Les trois guillemets permettent de ne pas avoir à échapper les caractères, et permettent de faire un retour à la ligne sans utiliser \n</code></pre>
+<h3>trucs et astuces</h3>
+<h4>Incrémenter des variables</h4>
+<p>Lorsqu'il s'agit d'incrémenter des variables, on peut faire de plusieurs façons :</p>
+<pre><code class="language-python"># Méthode 1 : Rajouter la valeur à la variable
+maVariable = 1
+maVariable = maVariable + 1
+# Méthode 2 : Incrémenter directement la variable
+maVariable = 1
+maVariable += 1</code></pre>
+<h4>Permutation de variable</h4>
+<pre><code class="language-python">&gt;&gt;&gt; a = 5
+&gt;&gt;&gt; b = 32
+&gt;&gt;&gt; a,b = b,a # permutation
+&gt;&gt;&gt; a
+32
+&gt;&gt;&gt; b
+5
+&gt;&gt;&gt;</code></pre>
+<h4>Affecter la même valeur à plusieurs variables</h4>
+<pre><code class="language-python">&gt;&gt;&gt; x = y = 3
+&gt;&gt;&gt; x
+3
+&gt;&gt;&gt; y
+3
+&gt;&gt;&gt;</code></pre>
+<h2>Les fonctions</h2>
+<p>Syntaxe d'une fonction :</p>
+<pre><code class="language-python">nom_de_la_fonction(parametre_1,parametre_2,…,parametre_n)</code></pre>
+<h3>Fonctions de base</h3>
+<ul>
+  <li>La fonction <strong>type</strong><br>Cette fonction permet de retourner le type d'une variable.</li>
+</ul>
+<pre><code class="language-python">a=3
+type(a)
+# retourne &lt;class 'int'&gt;</code></pre>
+<ul>
+  <li>La fonction <strong>print</strong><br>Cette fonction ne sert uniquement qu'à afficher du texte ou une variable. Contrairement à la console qui est capable d'afficher une variable sans avoir à appeler cette fonction, sur un <strong>IDE</strong> vous serez obligé de vous en servir.</li>
+</ul>
+<pre><code class="language-python">&gt;&gt;&gt; a = 3
+&gt;&gt;&gt; print(a)
+&gt;&gt;&gt; a = a + 3
+&gt;&gt;&gt; b = a - 2
+&gt;&gt;&gt; print("a =", a, "et b =", b)</code></pre>
+<ul>
+  <li>La fonction <strong>input</strong><br>Cette fonction permet de récupérer la saisie d'un utilisateur.</li>
+</ul>
+<pre><code class="language-python">choix = input("Faite votre choix : ")</code></pre>
+<p>Par défaut, la valeur sera une chaine de caractères. Pour la convertir en entier, on peut utiliser ceci :</p>
+<pre><code class="language-python">annee = input("Saisir une annee : ")
+annee = int(annee)</code></pre>
