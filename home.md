@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-28T16:00:42.271Z
+date: 2021-04-28T18:44:41.580Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -47,7 +47,9 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Python
-- [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Commandes)
+- [📖 Les bases du langage *L'algébre, les variables et les fonctions*](/Python/Base)
+- [➕ Les structures conditionnelles *If, Else, Elif, comparaison, etc...*](/Python/Conditions)
+- [♾️ Les boucles *While, incrémentation, etc...*](/Python/Boucles)
 {.links-list}
 
 ## Windows
