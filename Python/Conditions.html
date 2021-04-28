@@ -1,0 +1,97 @@
+<!--
+title: Structures conditionnelles
+description: 
+published: true
+date: 2021-04-28T18:50:43.277Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T18:50:43.277Z
+-->
+
+<h1>Structures conditionnelles</h1>
+<h2>IF</h2>
+<p>La structure conditionnelle <strong>IF</strong> permet de faire un <strong>choix</strong>. Cela permet de rendre le code <i>intelligent</i>.<br>Dans un langage courant, cela donnerait ceci :</p>
+<pre><code class="language-plaintext">Si &lt;réfrigérateur_vide = 1&gt;
+  Alors Afficher "Faire des courses"
+Fin si</code></pre>
+<p>En python, cela donnerait :</p>
+<pre><code class="language-python">refrigerateur_vide = 1
+if refrigerateur_vide=1:
+  print "Faire des courses"</code></pre>
+<blockquote>
+  <p>Attention : Dans d'autres langages de programmation tel que le <strong>C#</strong>, la fonction est délimitée par <strong>{}</strong>. En python, la fonction commence par <strong>:</strong> et c'est l'indentation qui délimite.</p>
+</blockquote>
+<p><i>Démonstration :</i></p>
+<pre><code class="language-python">refrigerateur_vide = 1
+if refrigerateur_vide=1: #Je débute le IF
+  print "Aller faire des courses" # Je suis dans le IF
+  print "Je suis encore de le IF"
+  print "Ici aussi"
+print "Ici non, mon IF est terminé"</code></pre>
+<h2>IF ELSE</h2>
+<p>Je peux également grâce au <strong>ELSE</strong> définir une action si ma condition est fausse.</p>
+<pre><code class="language-python">refrigerateur_vide = 1
+if refrigerateur_vide=1: # Si le frigo est vide, alors ...
+  print "Faire des courses"
+else: # Sinon ...
+  print "Ne pas faire de courses"</code></pre>
+<h2>ELIF</h2>
+<p>Cette condition permet d'avoir <strong>plusieurs conditions</strong> dans une clause IF.</p>
+<pre><code class="language-python">refrigerateur_vide = 1
+if refrigerateur_vide=1: # Si le frigo est vide, alors ...
+  print "Faire des courses"
+elif refrigerateur_vide=0.5: # Si le frigo est presque vide, alors ...
+  print "Faire de petites courses"
+else: # Sinon ...
+  print "Ne pas faire de courses"</code></pre>
+<h2>Opérateurs de comparaison</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Opérateur</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Signification</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">&lt;</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Strictement inférieur à</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">&gt;</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Strictement supérieur à</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">&lt;=</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Inférieur ou égal à</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">&gt;=</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supérieur ou égal à</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">==</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Égal à</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;">!=</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Différent de</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<blockquote>
+  <p>Attention : Pour tester l'égalité de deux valeurs, on utilise <strong>==</strong> et non <strong>=</strong> qui lui sert à l'affectation de valeurs</p>
+</blockquote>
+<blockquote>
+  <p>Info : Une condition renvoie uniquement deux valeurs : <strong>True</strong> ou <strong>False</strong> (vrai ou faux). Si le test est correcte, il renverra <strong>True</strong>, sinon <strong>False</strong>.</p>
+</blockquote>
+<h2>Plusieurs conditions pour une clause IF</h2>
+<p>Si un test à besoin de plusieurs conditions pour être vrai, on peut combiner plusieurs conditions pour une seule clause IF.</p>
+<pre><code class="language-python">permis=False
+majeur=True
+if permis==True and majeur == True: # Pour que je puisse conduire, il faut que j'ai mon permis et que je sois majeur
+  print "Je peux conduire"
+else:
+  print "Je ne peux pas conduire"</code></pre>
