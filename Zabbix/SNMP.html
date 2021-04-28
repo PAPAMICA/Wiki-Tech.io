@@ -1,0 +1,52 @@
+<!--
+title: SNMP
+description: 
+published: true
+date: 2021-04-28T19:48:21.418Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T19:48:21.418Z
+-->
+
+<h2><strong>Activation du SNMP sur le NAS :</strong></h2>
+<p>Avant de commencer, il est nécessaire d’activer le SNMP sur le périphérique que vous souhaitez superviser, dans notre cas un NAS Synology.</p>
+<p>L’activation et la configuration du SNMP sur un NAS Synology est très simple :</p>
+<p>Connectez-vous sur votre NAS Synology.</p>
+<p>Dans le panneau de configuration en mode avancé, cliquez sur "<strong>Terminal &amp; SNMP"</strong>&nbsp;.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1-1024x586.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1-1024x586.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1-708x405.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1-768x439.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1-1536x879.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas1.png 1989w" sizes="100vw" width="1024"></figure>
+<p>Dans l’onglet <strong>SNMP</strong>, activez le protocole et rentrez votre<strong> communauté</strong>. (A vous de choisir, il faudra cependant vous en souvenir)</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2-1024x716.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2-1024x716.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2-708x495.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2-768x537.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2-1536x1075.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas2.png 2011w" sizes="100vw" width="1024"></figure>
+<p>Vous pouvez aussi remplir les champs de renseignements.</p>
+<p>Pour finir, n’oubliez pas d’<strong>appliquer les paramètres</strong> !</p>
+<h2><strong>Ajout du modèle dans Zabbix :</strong></h2>
+<p>Afin de pouvoir comprendre les informations récoltées par Zabbix en SNMP, nous devons utiliser un <strong>modèle</strong> qui comprend les <strong>MIB </strong>(MIB signifie Management Information Base. Les fichiers MIB vous permettent d’utiliser la représentation textuelle de l’OID (identificateur d’objet).</p>
+<p>Vu que je suis un gars sympa (oui oui !), je vous partage quelques-uns de mes templates directement sur mon <strong>Github</strong>, d’autres viendront avec le temps.</p>
+<p>Lien vers mon Github Tempate : <a href="https://github.com/PAPAMICA/Templates">https://github.com/PAPAMICA/Templates</a></p>
+<p>Connectez-vous sur votre serveur <strong>Zabbix</strong>.</p>
+<p>Téléchargez le <strong>modèle SNMP</strong> pour NAS Synology sur mon Github.</p>
+<p>Rendez-vous dans la configuration des modèles.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas-4-1024x113.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas-4-1024x113.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas-4-708x78.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas-4-768x85.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas-4.png 1225w" sizes="100vw" width="1024"></figure>
+<p>Cliquez sur «&nbsp;<strong>Importer</strong>«&nbsp;.</p>
+<p>Importez le modèle précédemment téléchargé dans Zabbix.</p>
+<p>Votre modèle est maintenant disponible dans Zabbix, passons à la configuration de la supervision du NAS !</p>
+<h2><strong>Configuration de l’hôte sur Zabbix :</strong></h2>
+<p>Maintenant que votre NAS Synology dispose d’un accès en SNMP et que nous disposons de notre modèle, attaquons-nous à la configuration de l’hôte pour votre NAS :</p>
+<p>Connectez-vous sur votre serveur <strong>Zabbix</strong>.</p>
+<p>Rendez-vous dans la configuration des hôtes.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas3-1024x113.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas3-1024x113.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas3-708x78.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas3-768x85.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas3.png 1211w" sizes="100vw" width="1024"></figure>
+<p>Cliquez sur «&nbsp;<strong>Créer un hôte</strong>«&nbsp;.</p>
+<p>Configurer votre hôte de la manière suivante :</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5-1024x734.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5-1024x734.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5-708x508.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5-768x551.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5-1536x1101.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas5.png 1813w" sizes="100vw" width="1024"></figure>
+<p>Sélectionnez le <strong>modèle</strong> précédemment importé.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas6-1024x252.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas6-1024x252.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas6-708x174.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas6-768x189.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas6.png 1460w" sizes="100vw" width="1024"></figure>
+<p>Configurez une <strong>macro</strong> avec votre <strong>communauté</strong> configurée un peu plus tôt.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-708x129.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-708x129.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-1024x187.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-768x140.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-1536x280.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2020/01/nas7-2048x373.png 2048w" sizes="100vw" width="708"></figure>
+<p>Cliquez sur «&nbsp;<strong>Ajouter</strong>«&nbsp;.</p>
+<p>Votre NAS est désormais supervisé avec votre serveur Zabbix ! Vous pourrez retrouver toutes les informations dans la catégorie «&nbsp;<strong>Dernières données</strong>«&nbsp;. (Prévoyez 1 à 2 heures pour que toutes les informations remontent dans Zabbix)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
