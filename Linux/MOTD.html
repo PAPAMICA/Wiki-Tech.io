@@ -1,0 +1,53 @@
+<!--
+title: MOTD
+description: 
+published: true
+date: 2021-04-28T18:31:38.863Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T18:31:38.863Z
+-->
+
+<h1>Changer le MOTD</h1>
+<h2>Message statique</h2>
+<p>Sur Linux, à chaque connexion SSH, vous retrouvez un petit message d’accueil vous donnant quelques informations utiles.</p>
+<p>Dans notre cas, nous voulons le changer afin de pouvoir identifier rapidement sur quels serveurs nous nous trouvons mais aussi afficher d’autres informations utiles.</p>
+<p>Le texte qui s’affiche à chaque connexion SSH se trouve dans le fichier motd que vous pouvez retrouver ici : <code>/etc/motd</code></p>
+<pre><code class="language-plaintext">nano /etc/motd</code></pre>
+<h3>Voici quelques exemple de MOTD statiques :</h3>
+<pre><code class="language-plaintext">  ██╗    ██╗███████╗██╗      ██████╗ ██████╗ ███╗   ███╗███████╗
+  ██║    ██║██╔════╝██║     ██╔════╝██╔═══██╗████╗ ████║██╔════╝
+  ██║ █╗ ██║█████╗  ██║     ██║     ██║   ██║██╔████╔██║█████╗
+  ██║███╗██║██╔══╝  ██║     ██║     ██║   ██║██║╚██╔╝██║██╔══╝
+  ╚███╔███╔╝███████╗███████╗╚██████╗╚██████╔╝██║ ╚═╝ ██║███████╗
+   ╚══╝╚══╝ ╚══════╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝
+
+               Server   : NURION
+
+               IP       : XXX.XXX.XXX.XXX
+
+               Provider : Infomaniak</code></pre>
+<pre><code class="language-plaintext"> █████╗ ███╗   ██╗███████╗██╗██████╗ ██╗     ███████╗
+██╔══██╗████╗  ██║██╔════╝██║██╔══██╗██║     ██╔════╝
+███████║██╔██╗ ██║███████╗██║██████╔╝██║     █████╗  
+██╔══██║██║╚██╗██║╚════██║██║██╔══██╗██║     ██╔══╝  
+██║  ██║██║ ╚████║███████║██║██████╔╝███████╗███████╗
+╚═╝  ╚═╝╚═╝  ╚═══╝╚══════╝╚═╝╚═════╝ ╚══════╝╚══════╝
+ |-------------------------------------------------|
+ |                    Bienvenue                    |
+ |-------------------------------------------------|
+ |-------------------    VPS    -------------------|
+ |-------------------------------------------------|
+ |                                                 |
+ |          Server      Ansible                    |
+ |                                                 |
+ |          IP          XXX.XXX.XXX.XXX            |
+ |                                                 |
+ |          Provider    FirstHeberg                |
+ |          Machine     vps-48235                  |
+ |          Purpose     Prod Ansible               |
+ |                                                 |
+ |-------------------------------------------------|</code></pre>
+<h2>Message dynamique</h2>
+<p>Sinon il existe un petit soft qui permet d'avoir un MOTD dynamique :</p>
+<pre><code class="language-plaintext">apt-get install figlet</code></pre>
