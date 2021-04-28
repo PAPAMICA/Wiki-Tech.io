@@ -1,0 +1,179 @@
+<!--
+title: Linux
+description: 
+published: true
+date: 2021-04-28T14:03:08.259Z
+tags: linux
+editor: ckeditor
+dateCreated: 2021-04-28T07:20:52.777Z
+-->
+
+<h1>Commandes utiles</h1>
+<h2>Tipee</h2>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><code>tipee</code></td>
+        <td>Connaitre le temps restant de la journée</td>
+      </tr>
+      <tr>
+        <td><code>tipee punch</code></td>
+        <td>Badger les heures</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Lien : <a href="https://gitlab.infomaniak.ch/mickaelasseline/python-tipee">Gitlab</a></p>
+<h2>Git</h2>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><code>git clone</code></td>
+        <td>Clone un projet sur sa machine</td>
+      </tr>
+      <tr>
+        <td><code>git commit -a -m “message”</code></td>
+        <td>Met à jour le git avec un message</td>
+      </tr>
+      <tr>
+        <td><code>git push</code></td>
+        <td>Envoi la mise à jour au git</td>
+      </tr>
+      <tr>
+        <td><code>git pull</code></td>
+        <td>Récupère les dernières mises à jours</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>Système</h2>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td><code>reboot</code></td>
+        <td>Redémarre</td>
+      </tr>
+      <tr>
+        <td><code>shutdown -now</code></td>
+        <td>Éteint sans délais</td>
+      </tr>
+      <tr>
+        <td><code>systemctl (start/stop/restart) &lt;service&gt;</code></td>
+        <td>Démarre/Arrête/Redémarre un service</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<hr>
+<h1>Paquets utiles</h1>
+<h2>Oh My Zsh</h2>
+<figure class="image image_resized image-style-align-right" style="width:8.17%;"><img src="https://camo.githubusercontent.com/b0b308a8322cb296deb5d281eb8d142251d8272a524a258f9e51cca06e7ce27f/687474703a2f2f7261772e6769746875622e636f6d2f6361696f676f6e64696d2f62756c6c65742d747261696e2d6f682d6d792d7a73682d7468656d652f6d61737465722f696d672f69636f6e2e706e67" alt="GitHub - bpassos/bullet-train-oh-my-zsh-theme: A oh-my-zsh shell theme  based on the Powerline Vim plugin"></figure>
+<p>Zsh est mon shell préféré car il intègre une autocomplétion très poussée et permet une grande personnalisation de son shell.</p>
+<p>Oh-My-Zsh apporte tout le côté personnalisation à ZSH, il permet d'utiliser des thèmes assez complet.</p>
+<p>J'utilise le thème <a href="https://github.com/agnoster/agnoster-zsh-theme">agnoster</a> au quotidien.</p>
+<p>Site officiel : <a href="https://ohmyz.sh">ohmyz.sh</a></p>
+<p>Installation :&nbsp;</p>
+<pre><code class="language-plaintext">sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre>
+<h2>Extraterm</h2>
+<figure class="image image_resized image-style-align-right" style="width:10.38%;"><img src="https://extraterm.org/extraterm_main_logo_tight.svg" alt="Extraterm by sedwards2009"></figure>
+<p>Il existe plusieurs terminaux pour exécuter les commandes sur votre machine. J'ai une préférence pour Extraterm qui, en plus d'avoir une jolie interface, intègre une grande personnalisation et des fonctionnalités innovantes.</p>
+<p>Pour profiter de l'ensemble des fonctionnalités, il est essentiels de passer par l'installation des dépendances : <a href="https://extraterm.org/guide.html#shell-integration">Shell integration</a></p>
+<p>Il est disponible pour Linux, Windows et MacOS.</p>
+<p>Site officiel : <a href="https://extraterm.org/index.html">extraterm.org</a></p>
+<h2>Termius</h2>
+<figure class="image image_resized image-style-align-right" style="width:9.3%;"><img src="https://miro.medium.com/max/1200/0*VnQufQloXjs5H3zC.png" alt="Meet Termius. Serverauditor has gone through a… | by Termius | Termius Blog"></figure>
+<p>Pour me connecter en SSH à mes différents serveurs, je préfère utiliser un client dédié. Mon principal besoin étant la synchro cloud de ma configuration entre mes différents devices (iPhone compris). Après pas mal de recherches j'ai découvert Termius qui intègre toutes les fonctionnalités dont j'ai besoin en plus d'avoir une jolie interface et une application mobile.</p>
+<p>Site officiel : <a href="https://termius.com">termius.com</a> (payant)</p>
+<h2>VS-Code</h2>
+<figure class="image image_resized image-style-align-right" style="width:8.25%;"><img src="https://cdn.freebiesupply.com/logos/large/2x/visual-studio-code-logo-png-transparent.png" alt="Visual Studio Code Logo PNG Transparent &amp; SVG Vector - Freebie Supply"></figure>
+<p>Pour l'édition de fichier de configuration ou pour du scripting, un éditeur de texte est quasiment essentiel. Et pour une fois que Microsoft propose un produit OpenSource de qualité.. VSCode intègre le support de plusieurs centaines de plugins parfois très utiles.</p>
+<p>Site officiel : <a href="https://code.visualstudio.com">code.visualstudio.com</a></p>
+<h2>Flameshot</h2>
+<figure class="image image_resized image-style-align-right" style="width:8.49%;"><img src="https://github.com/flameshot-org/flameshot/raw/master/data/img/app/org.flameshot.Flameshot.svg" alt="Flameshot"></figure>
+<p>Il m'arrive fréquemment de devoir montrer quelque chose que je vois sur mon écran, le plus simple pour cela est de prendre une capture d'écran. Flamshot intègre des options complètes pour la capture, l'édition et la mise à disposition de la capture d'écran.</p>
+<p>Site officiel : <a href="https://github.com/flameshot-org/flameshot">github.com/flameshot-org/flameshot</a></p>
+<h2>PSSH</h2>
+<h2>Getip</h2>
+<hr>
+<h1>Fichier .zshrc</h1>
+<p>Ce fichier qui permet la configuration du shell ZSH et de Oh-My-ZSH se trouve à la racine de votre dossier utilisateur.</p>
+<p>Voici la commande pour l'éditer :</p>
+<pre><code class="language-plaintext">nano ~/.zshrc</code></pre>
+<h2>Les alias</h2>
+<p>Les alias vous permettent de faire un raccourcie pour une commande, pratique quand vous utilisez une commande au quotidien.</p>
+<p>Par exemple :</p>
+<pre><code class="language-plaintext">alias openstack-delete-all="openstack server list | awk '$2 &amp;&amp; $2 != \"ID\" {print $2}' | xargs -n1 openstack server delete"</code></pre>
+<h3>Alias utiles :</h3>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td>alias nano="nano -clm"</td>
+        <td>Ajoute le numéro des lignes, la gestion de la souris et la position du curseur dans nano</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>Les variables d'environnement</h2>
+<p>Les variables d'environnement constituent un moyen d'influencer le comportement des logiciels sur votre système. Par exemple, la variable d'environnement « LANG » détermine la langue que les logiciels utilisent pour communiquer avec l'utilisateur.</p>
+<p>Les variables sont constituées de <strong>noms</strong> auxquels on assigne des <strong>valeurs</strong>. Ainsi, le système d'un utilisateur français devrait avoir la valeur « fr_FR.UTF-8 » assignée à la variable « LANG ».</p>
+<p>La signification d'une variable d'environnement et le type de valeur qui peut lui être assignée sont déterminés par l'application qui utilise celle-ci. Il existe un petit nombre de variables d'environnement bien connues, dont le sens et le type de valeur sont bien déterminés, et qui sont utilisées par de nombreuses applications.</p>
+<p>Pour que celles-ci soit persistante, vous pouvez les mettre dans votre fichier .zshrc.</p>
+<p>Par exemple :</p>
+<pre><code class="language-plaintext">export DEFAULT_USER=papamica</code></pre>
+<h1>Changer le MOTD (Message d'accueil)</h1>
+<p>Sur Linux, à chaque connexion SSH, vous retrouvez un petit message d’accueil vous donnant quelques informations utiles.</p>
+<p>Dans notre cas, nous voulons le changer afin de pouvoir identifier rapidement sur quels serveurs nous nous trouvons mais aussi afficher d’autres informations utiles.</p>
+<p>Le texte qui s’affiche à chaque connexion SSH se trouve dans le fichier motd que vous pouvez retrouver ici : <code>/etc/motd</code></p>
+<pre><code class="language-plaintext">nano /etc/motd</code></pre>
+<p>Sinon il existe un petit soft qui permet d'avoir un MOTD dynamique :</p>
+<pre><code class="language-plaintext">apt-get install figlet</code></pre>
+<h1>Mesurer le débit entre deux machines</h1>
+<p>Dans de nombreux cas, les problèmes peuvent subvenir à cause d’un problème réseau et/ou d’un mauvais débit.</p>
+<p>Afin de vérifier ce point, nous pouvons tester le débit entre deux machines linux avec ssh (qui est installé dans 90% des cas par défaut et est même disponible pour Windows).</p>
+<p>Remplacez user par votre utilisateur et server par l’ip de votre machine distante :</p>
+<pre><code class="language-plaintext">dd if=/dev/zero of=test bs=500M count=1; scp test user@server:/dev/null;</code></pre>
+<p>Rentrez le mot de passe de l’utilisateur sur la machine distante :</p>
+<pre><code class="language-plaintext">papamica@93.113.206.54’s password:</code></pre>
+<p>Le test s’effectue et affiche le débit :</p>
+<p><code>test&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 100%&nbsp; &nbsp;&nbsp;500MB&nbsp; &nbsp;37.5MB/s&nbsp; &nbsp;00:13</code></p>
+<h1>Sauvegarder un VPS</h1>
+<p>Depuis plusieurs années j’utilise des VPS chez différents hébergeurs, certains ont des systèmes de backups intéressants, d’autres non. C’est pour cela que je me suis mis en quête d’un système de sauvegarde qui fonctionnerais à chaque fois.</p>
+<h2>Prérequis :</h2>
+<ul>
+  <li>Un VPS avec un mode Rescue sous Debian</li>
+  <li>Un serveur FTP</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Lancer la sauvegarde :</h2>
+<p>Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)</p>
+<p>Connectez vous en root.</p>
+<p>Identifier la partition (ou le disque) que vous aller sauvegarder avec :fdisk -l</p>
+<p>Installer ftp et dcfldd :</p>
+<pre><code class="language-plaintext">apt install ftp dcfldd</code></pre>
+<p>Connectez vous à votre serveur FTP :</p>
+<pre><code class="language-plaintext">ftp &lt;IP_DU_SERVEUR&gt;</code></pre>
+<p>Entrez votre identifiant et votre mot de passe.</p>
+<p>Rendez vous dans le dossier où vous souhaitez faire votre sauvegarde.</p>
+<p>Lancer la sauvegarde avec la commande suivante :put "|dcfldd if=/dev/MA_PARTITION bs=32k sizeprobe=if statusinterval=5 | gzip" MON_IMAGE.gz</p>
+<p>La sauvegarde est en cours, soyez patient !</p>
+<p>&nbsp;</p>
+<h2>Restaurer la sauvegarde :</h2>
+<p>Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)</p>
+<p>Connectez vous en root.</p>
+<p>Identifier la partition (ou le disque) que vous aller restaurer avec :</p>
+<pre><code class="language-plaintext">fdisk -l</code></pre>
+<p>Installer ftp et dcfldd :</p>
+<pre><code class="language-plaintext">apt install ftp dcfldd</code></pre>
+<p>Connectez vous à votre serveur FTP :</p>
+<pre><code class="language-plaintext">ftp IP_DU_SERVEUR</code></pre>
+<p>Entrez votre identifiant et votre mot de passe.</p>
+<p>Rendez vous dans le dossier où vous avez stocké votre sauvegarde.</p>
+<p>Lancer la restauration avec la commande suivante :</p>
+<pre><code class="language-plaintext">get MON_IMAGE.gz "| gunzip | dcfldd of=/dev/MA_PARTITION sizeprobe=of statusinterval=5"</code></pre>
+<p>La restauration est en cours, soyez patient !</p>
+<p>Redémarrer votre VPS sur le disque principal.</p>

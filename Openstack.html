@@ -1,0 +1,39 @@
+<!--
+title: OpenStack
+description: 
+published: true
+date: 2021-04-28T11:30:56.822Z
+tags: openstack
+editor: ckeditor
+dateCreated: 2021-04-28T07:22:16.999Z
+-->
+
+<h1>Installer le client</h1>
+<p>La méthode la plus simple est de passer par PIP.</p>
+<h2>Debian &amp; Ubuntu</h2>
+<pre><code class="language-plaintext">apt install python-dev python-pip -y
+pip install python-openstackclient</code></pre>
+<h2>Arch &amp; Manjaro</h2>
+<pre><code class="language-plaintext">pacman -S python-pip
+pip install python-openstackclient</code></pre>
+<h2>CentOS, Red Hat &amp; Fedora</h2>
+<pre><code class="language-plaintext">yum install python-devel python-pip
+pip install python-openstackclient</code></pre>
+<h2>Vérification de l'installation</h2>
+<p>La commande <code>openstack --version</code> doit renvoyé : <code>openstack &lt;version&gt;</code></p>
+<h2>Se connecter au serveur Openstack</h2>
+<p>La connexion aux serveurs Openstack avec le client fonctionne avec des variables d'environnements. Vous pouvez les récupérer directement depuis Horizon.</p>
+<p>Voici à quoi ressemble un fichier openrc :</p>
+<pre><code class="language-plaintext">export OS_PROJECT_DOMAIN_NAME=Default
+export OS_USER_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=admin
+export OS_USERNAME=admin
+export OS_PASSWORD=ADMIN_PASS
+export OS_AUTH_URL=http://controller:35357/v3
+export OS_IDENTITY_API_VERSION=3
+export OS_IMAGE_API_VERSION=2</code></pre>
+<p>Pour charger le fichier, il suffit de fait la commande suivante :</p>
+<pre><code class="language-plaintext">sh . &lt;nom_du_fichier&gt;</code></pre>
+<h1>Manipuler les serveurs</h1>
+<p>Lister l'ensemble des serveurs :</p>
+<pre><code class="language-plaintext">openstack server list</code></pre>
