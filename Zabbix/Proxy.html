@@ -1,0 +1,47 @@
+<!--
+title: Proxy Zabbix
+description: 
+published: true
+date: 2021-04-28T19:44:27.593Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T19:44:27.593Z
+-->
+
+<h2><strong>Installation :</strong></h2>
+<p>Pour l’installation, là aussi, vous avez deux solutions : l’utilisation d’une VM chez votre client ou l’utilisation d’un mini pc (<a href="https://amzn.to/36QW7EM">un Raspberry Pi est parfait</a>). Je vous recommande l’utilisation d’un Raspberry Pi, en plus de ne pas être trop cher, vous ne serez pas dépendant d’un serveur hyperviseur.</p>
+<p>Pour l’installation, prévoyez un Debian 9 ou 10 en 64Bits ou Raspbian.</p>
+<p>Installation de Git</p>
+<pre><code class="language-plaintext">apt install -y git</code></pre>
+<p>Récupération des scripts</p>
+<pre><code class="language-plaintext">git clone https://github.com/PAPAMICA/scripts</code></pre>
+<p>Exécuter le script</p>
+<pre><code class="language-plaintext">cd scripts/debian/zabbix-proxy
+chmod +x debian_install_zabbix_proxy.sh
+./debian_install_zabbix_proxy.sh</code></pre>
+<p>Il faut alors rentrer le nom de ce Proxy (<strong>attention, cela devra être le même que dans votre serveur Zabbix</strong>) ainsi que l’ip ou le ddns de votre serveur Zabbix.</p>
+<h2><strong>Quelques commandes utiles :</strong></h2>
+<p>Vu le nombre de personnes qui m’ont contacté suite aux précédents articles pour des commandes simples, voici celles que l’on m’a le plus demandées :</p>
+<ul>
+  <li>Afficher les containers Docker en cours :<code> <i>docker container ls</i></code></li>
+  <li>Arrêter les containers créés avec le scripts : (dans le dossier du script) <code><i>docker-compose stop</i></code></li>
+  <li>Lancer les containers créés avec le scripts : (dans le dossier du script) <code><i>docker-compose up -d</i></code></li>
+  <li>Afficher les logs du container : <code><i>docker logs &lt;id_container&gt;</i></code></li>
+  <li>Entrer dans le container : <i>d</i><code><i>ocker exec -it &lt;id_container&gt; bash</i></code></li>
+</ul>
+<p>Pour le reste des commandes, je vous invite à vous référer à mon article sur Labo-Tech : <a href="https://labo-tech.fr/base-de-connaissance/quelles-sont-les-commandes-de-base-de-docker/">Quelles sont les commandes de base de Docker ?</a></p>
+<h2><strong>Configuration dans Zabbix :</strong></h2>
+<p>Maintenant que notre Proxy est installé sur le réseau que nous souhaitons superviser, nous devons dire à Zabbix d’accepter les informations venant de ce Proxy.</p>
+<p>Pour cela, connectez-vous sur votre Zabbix et rendez-vous dans la catégorie <strong>Administration</strong> puis <strong>Proxys</strong> :</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro1-1024x117.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro1-1024x117.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro1-708x81.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro1-768x88.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro1.png 1229w" sizes="100vw" width="1024"></figure>
+<p>Cliquez sur «&nbsp;Créer un proxy&nbsp;» pour lancer la configuration de ce dernier.</p>
+<p>Remplissez les champs suivants avec vos informations :</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro2-1024x512.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro2-1024x512.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro2-708x354.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro2-768x384.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro2.png 1290w" sizes="100vw" width="1024"></figure>
+<p>Si vous le souhaitez, vous pouvez ajouter du chiffrement entre le Proxy et le serveur Zabbix, pour cela je vous invite à consulter la documentation Zabbix.</p>
+<p>Votre Proxy est maintenant configuré, abordons maintenant la configuration d’une supervision à travers ce Proxy.</p>
+<h2><strong>Supervision d’un équipement à travers le Proxy :</strong></h2>
+<p>Pour cela, je vous invite à reprendre l’article précédent : <a href="https://www.tech2tech.fr/monitoring-3-surveillance-de-notre-premier-serveur/"><i><strong>Monitoring #3 : Surveillance de notre premier serveur</strong></i></a></p>
+<p>À l’étape 4, sélectionnez le proxy que vous utilisez pour cet équipement :</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/O26WNRFVvF-1024x590.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/O26WNRFVvF-1024x590.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/O26WNRFVvF-708x408.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/O26WNRFVvF-768x443.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/O26WNRFVvF.png 1204w" sizes="100vw" width="1024"></figure>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3-1024x775.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3-1024x775.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3-708x536.png 708w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3-768x582.png 768w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3-1536x1163.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2020/01/pro3.png 1561w" sizes="100vw" width="1024"></figure>
+<p>Votre équipement est maintenant supervisé via votre nouveau Proxy.</p>
