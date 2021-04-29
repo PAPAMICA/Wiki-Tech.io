@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-29T06:39:02.302Z
+date: 2021-04-29T08:43:04.367Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -15,6 +15,13 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
 - [💙 Traefik *Un reverse-proxy pour tous les services*](/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Docker/Portainer)
+{.links-list}
+
+## SelfHosted
+- [:cyclone: Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
+- [💠 Bitwarden *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/Docker/Docker-Compose)
+- [:fire: Jirafeau *Envoi de fichiers. Alternative à WeTransfert.*](/Docker/Commandes)
+- [💙 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/Docker/Traefik)
 {.links-list}
 
 ## Linux
