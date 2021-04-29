@@ -1,0 +1,31 @@
+<!--
+title: Keypair
+description: 
+published: true
+date: 2021-04-29T13:56:55.258Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-29T13:56:55.258Z
+-->
+
+<h1>Créer une keypair</h1>
+<p>Une paire de clés (ou keypair) est essentiellement une clé ssh vous permettant de vous connecter à votre machine virtuelle Linux.</p>
+<h2>Utilisation de votre clé SSH existante</h2>
+<p>En supposant que votre clé publique ssh existante se trouve dans <code>~/.ssh/ssh_my_rsa_key.pub</code></p>
+<pre><code class="language-plaintext">openstack keypair create --public-key ~/.ssh/ssh_my_rsa_key.pub mykeypair
++-------------+-------------------------------------------------+
+| Field       | Value                                           |
++-------------+-------------------------------------------------+
+| fingerprint | 53:c0:03:5f:27:6f:c2:66:b4:e4:f3:26:e0:f8:82:4a |
+| name        | mykeypair                                       |
+| user_id     | b1580497f51e4d10b9110c60c154562c                |
++-------------+-------------------------------------------------+</code></pre>
+<pre><code class="language-plaintext">ssh -i ~/.ssh/ ~/.ssh/ssh_my_rsa_key *adminuser*@my-vm-name</code></pre>
+<p>&nbsp;</p>
+<h2>Création d'une keypair</h2>
+<p>Une nouvelle paire de clés peut également être créée pour être utilisée, par exemple avec un compte de service ou un deamon dédié.</p>
+<pre><code class="language-plaintext">openstack keypair create robotkey &gt; ~/.ssh/robotkey
+chmod 600 ~/.ssh/robotkey</code></pre>
+<p>La clé privée est enregistrée dans <code>~ /.ssh /robotkey </code>et peut ensuite être utilisée pour la création de VM (en utilisant l'argument <code>--key-pair</code> sur la ligne de commande) et pour ssh en utilisant :</p>
+<pre><code class="language-plaintext">ssh -i ~/.ssh/robotkey *adminuser*@my-vm-name</code></pre>
+<p>&nbsp;</p>
