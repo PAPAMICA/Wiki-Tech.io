@@ -2,14 +2,14 @@
 title: Flavors
 description: 
 published: true
-date: 2021-04-29T14:02:49.705Z
+date: 2021-04-29T14:04:39.841Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-29T14:02:49.705Z
 -->
 
 <h1>Les flavors</h1>
-<p>Les flavors vous permettent de choisir la taille de votre machine virtuelle. La sélection disponible peut être affichée en utilisant :</p>
+<p>Les flavors vous permettent de choisir la taille de votre machine virtuelle. La sélection disponible peut être affichée en utilisant : <code>openstack flavor list</code></p>
 <pre><code class="language-plaintext">openstack flavor list
 +--------------------------------------+---------------------------+------+------+-----------+-------+-----------+
 | ID                                   | Name                      |  RAM | Disk | Ephemeral | VCPUs | Is Public |
@@ -44,4 +44,15 @@ dateCreated: 2021-04-29T14:02:49.705Z
     </tbody>
   </table>
 </figure>
+<p>Vous pouvez voir toutes les propriétés des flavors en utilisant la commande : <code>openstack flavor list --long</code></p>
+<pre><code class="language-plaintext">openstack flavor list --long
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+------+-------------+--------------------------------------------------------------------+
+| ID                                   | Name                      |  RAM | Disk | Ephemeral | VCPUs | Is Public | Swap | RXTX Factor | Properties                                                         |
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+------+-------------+--------------------------------------------------------------------+
+[...]
+| e5874e74-181c-4534-94db-ba035ded5dce | cpu2-ram6-disk20_standard | 6144 |   20 |         0 |     2 | True      |      |         1.0 | disk_total_iops_sec='1000', quota:disk_write_bytes_sec='209715200' |
+| 450314a4-3575-45d5-88c2-41ca78201ebe | cpu2-ram6-disk20_iops     | 6144 |   20 |         0 |     2 | True      |      |         1.0 | disk_total_iops_sec='8000', quota:disk_write_bytes_sec='209715200' |
+| f2c62dc0-4b83-4208-868a-fbc4dbc2ff3a | cpu2-ram6-disk20_perf     | 6144 |   20 |         0 |     2 | True      |      |         1.0 | disk_total_iops_sec='8000', quota:disk_write_bytes_sec='524288000' |
+[...]
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+------+-------------+--------------------------------------------------------------------+</code></pre>
 <p>&nbsp;</p>
