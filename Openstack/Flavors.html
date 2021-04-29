@@ -2,13 +2,14 @@
 title: Flavors
 description: 
 published: true
-date: 2021-04-29T14:04:39.841Z
+date: 2021-04-29T14:12:13.853Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-29T14:02:49.705Z
 -->
 
 <h1>Les flavors</h1>
+<h2>Voir les flavors disponibles</h2>
 <p>Les flavors vous permettent de choisir la taille de votre machine virtuelle. La sélection disponible peut être affichée en utilisant : <code>openstack flavor list</code></p>
 <pre><code class="language-plaintext">openstack flavor list
 +--------------------------------------+---------------------------+------+------+-----------+-------+-----------+
@@ -55,4 +56,15 @@ dateCreated: 2021-04-29T14:02:49.705Z
 | f2c62dc0-4b83-4208-868a-fbc4dbc2ff3a | cpu2-ram6-disk20_perf     | 6144 |   20 |         0 |     2 | True      |      |         1.0 | disk_total_iops_sec='8000', quota:disk_write_bytes_sec='524288000' |
 [...]
 +--------------------------------------+---------------------------+------+------+-----------+-------+-----------+------+-------------+--------------------------------------------------------------------+</code></pre>
+<p>&nbsp;</p>
+<h2>Créer un flavor</h2>
+<p>Pour créer un flavor il faut utiliser la commande <code>openstack flavor create</code> avec les arguments suivants :</p>
+<pre><code class="language-plaintext">openstack flavor create FLAVOR_NAME --id FLAVOR_ID --ram RAM_IN_MB --disk ROOT_DISK_IN_GB --vcpus NUMBER_OF_VCPUS</code></pre>
+<p>Par exemple pour créer un flavor pour une petite machine virtuelle :</p>
+<pre><code class="language-plaintext">openstack flavor create cpu1-ram2-disk10 --id auto --ram 2048 --disk 10 --vcpus 1</code></pre>
+<p>&nbsp;</p>
+<h2>Supprimer un flavor</h2>
+<p>Pour cela il suffit d'utiliser la commande <code>openstack flavor delete &lt;FLAVOR_ID&gt;</code></p>
+<pre><code class="language-plaintext">openstack flavor delete 23c60b2b-6a1a-4870-ba41-ab1d6ce0c516</code></pre>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
