@@ -1,0 +1,47 @@
+<!--
+title: Flavors
+description: 
+published: true
+date: 2021-04-29T14:02:49.705Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-29T14:02:49.705Z
+-->
+
+<h1>Les flavors</h1>
+<p>Les flavors vous permettent de choisir la taille de votre machine virtuelle. La sélection disponible peut être affichée en utilisant :</p>
+<pre><code class="language-plaintext">openstack flavor list
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+
+| ID                                   | Name                      |  RAM | Disk | Ephemeral | VCPUs | Is Public |
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+
+| 23c60b2b-6a1a-4870-ba41-ab1d6ce0c516 | cpu1-ram2-disk10          | 2048 |   10 |         0 |     1 | True      |
+| 2655c1e3-a43a-4dea-a957-650517e8fa72 | cpu2-ram6-disk20_iops     | 6144 |   20 |         0 |     2 | True      |
+| 450314a4-3575-45d5-88c2-41ca78201ebe | cpu2-ram6-disk60          | 6144 |   60 |         0 |     2 | True      |
+| e5874e74-181c-4534-94db-ba035ded5dce | cpu2-ram6-disk20          | 6144 |   20 |         0 |     2 | True      |
+| ef91c4c8-c28f-44b0-b7a0-3115652b52d1 | cpu2-ram6-disk40          | 6144 |   40 |         0 |     2 | True      |
+| f2c62dc0-4b83-4208-868a-fbc4dbc2ff3a | cpu1-ram2-disk20          | 2048 |   20 |         0 |     1 | True      |
++--------------------------------------+---------------------------+------+------+-----------+-------+-----------+</code></pre>
+<p>Ils se déclinent en plusieurs versions offrant différents niveaux de performances. Le suffixe <code>_iops</code> derrière une saveur signifie une limite d'iops plus élevée.</p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td style="background-color:hsl(0, 0%, 90%);"><strong>Flavor</strong></td>
+        <td style="background-color:hsl(0, 0%, 90%);"><strong>Performances maximales</strong></td>
+      </tr>
+      <tr>
+        <td>cpu2-ram6-disk20&nbsp;</td>
+        <td>iops: 1k en lecture et écriture - net: 200MB/s</td>
+      </tr>
+      <tr>
+        <td>cpu2-ram6-disk20_iops&nbsp;</td>
+        <td>iops: 8k en lecture et écriture - net: 200MB/s</td>
+      </tr>
+      <tr>
+        <td>cpu2-ram6-disk20_perf&nbsp;</td>
+        <td>iops: 8k en lecture et écriture - net: 500MB/s</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
