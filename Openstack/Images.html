@@ -2,7 +2,7 @@
 title: Images
 description: 
 published: true
-date: 2021-04-29T14:31:08.303Z
+date: 2021-04-29T14:59:23.467Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-29T14:31:08.303Z
@@ -60,15 +60,13 @@ dateCreated: 2021-04-29T14:31:08.303Z
 | daf43e02-f59e-45bb-8d63-436094d3f360 | debian-buster-202102191137-amd64.raw          | active |</code></pre>
 <p>&nbsp;</p>
 <h2>Créer une image</h2>
-<p>Pour créer une image il faut au préalable télécharger l'image du système d'exploitation au format qcow ou raw</p>
+<p>Pour créer une image il faut au préalable télécharger l'image du système d'exploitation au format <code>qcow</code> ou <code>raw</code>. Une fois l'image dans le dossier de votre serveur, vous pouvez la créer dans OpenStack avec <code>openstack image create</code> et les arguments suivants :</p>
+<pre><code class="language-plaintext">openstack image create --disk-format=&lt;DISK_FORMAT&gt; --container-format=&lt;CONTAINER_FORMAT&gt; --file=&lt;IMAGE_FILE&gt; --public "&lt;IMAGE_NAME&gt;"</code></pre>
+<p>Par exemple pour créer une image Debian 10.8 :</p>
+<pre><code class="language-plaintext">openstack image create --disk-format=raw --container-format=bare --file=debian-10.8-openstack-amd64.raw  --public "Debian 10.8"</code></pre>
 <p>&nbsp;</p>
-<p>&nbsp;il faut utiliser la commande <code>openstack flavor create</code> avec les arguments suivants :</p>
-<pre><code class="language-plaintext">openstack flavor create FLAVOR_NAME --id FLAVOR_ID --ram RAM_IN_MB --disk ROOT_DISK_IN_GB --vcpus NUMBER_OF_VCPUS</code></pre>
-<p>Par exemple pour créer un flavor pour une petite machine virtuelle :</p>
-<pre><code class="language-plaintext">openstack flavor create cpu1-ram2-disk10 --id auto --ram 2048 --disk 10 --vcpus 1</code></pre>
-<p>&nbsp;</p>
-<h2>Supprimer un flavor</h2>
-<p>Pour cela il suffit d'utiliser la commande <code>openstack flavor delete &lt;FLAVOR_ID&gt;</code></p>
-<pre><code class="language-plaintext">openstack flavor delete 23c60b2b-6a1a-4870-ba41-ab1d6ce0c516</code></pre>
+<h2>Supprimer une image</h2>
+<p>Pour cela il suffit d'utiliser la commande <code>openstack image delete &lt;IMAGE_ID&gt;</code></p>
+<pre><code class="language-plaintext">openstack image delete 0c857837-f852-44dc-b986-bcc488bf7b70</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
