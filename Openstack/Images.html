@@ -1,0 +1,74 @@
+<!--
+title: Images
+description: 
+published: true
+date: 2021-04-29T14:31:08.303Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-29T14:31:08.303Z
+-->
+
+<h1>Les images</h1>
+<p>Les images sont les systèmes d'exploitations que vous utilisez lors de la création de la machine virtuelle.&nbsp;</p>
+<blockquote>
+  <p><strong>Attention :</strong> Elles sont comparables aux ISO mais dois forcément être au format <code>qcow</code> et <code>raw</code>.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Lister les images</h2>
+<p>La sélection disponible peut être affichée en utilisant : <code>openstack image list</code></p>
+<pre><code class="language-plaintext">openstack image list
++--------------------------------------+-----------------------------------------------+--------+
+| ID                                   | Name                                          | Status |
++--------------------------------------+-----------------------------------------------+--------+
+| 69112d12-0acb-4321-bbc6-f2d493ab6be3 | CentOS 8 GenericCloud                         | active |
+| 77ce9a1a-4c03-43d7-9f87-b447a39103bb | debian-10-genericcloud-amd64-20210208-542.raw | active |
+| 735a5c16-56f0-4c15-80e7-49056dbc4f71 | debian-10.7.4-20210108-openstack-amd64.raw    | active |
+| 0c857837-f852-44dc-b986-bcc488bf7b70 | debian-10.8-openstack-amd64.raw               | active |
+| 49f425ed-bf79-46ab-8cf3-44935d9d831e | debian-10.8.0-openstack-amd64.raw             | active |
+| daf43e02-f59e-45bb-8d63-436094d3f360 | debian-buster-202102191137-amd64.raw          | active |
++--------------------------------------+-----------------------------------------------+--------+</code></pre>
+<p>Pour afficher les informations à propose d'une image, vous pouvez utiliser la commande <code>openstack image show &lt;IMAGE_NAME&gt;</code>&nbsp;</p>
+<pre><code class="language-plaintext">openstack image show debian-10.8-openstack-amd64.raw
++------------------+------------------------------------------------------+
+| Field            | Value                                                |
++------------------+------------------------------------------------------+
+| checksum         | ee1eca47dc88f4879d8a229cc70a07c6                     |
+| container_format | ami                                                  |
+| created_at       | 2016-08-11T15:07:26Z                                 |
+| disk_format      | ami                                                  |
+| file             | /v2/images/d07831df-edc3-4817-9881-89141f9134c3/file |
+| id               | d07831df-edc3-4817-9881-89141f9134c3                 |
+| min_disk         | 0                                                    |
+| min_ram          | 0                                                    |
+| name             | debian-10.8-openstack-amd64.raw                      |
+| owner            | d88310717a8e4ebcae84ed075f82c51e                     |
+| protected        | False                                                |
+| schema           | /v2/schemas/image                                    |
+| size             | 13287936                                             |
+| status           | active                                               |
+| tags             |                                                      |
+| updated_at       | 2021-04-11T15:20:02Z                                 |
+| virtual_size     | None                                                 |
+| visibility       | private                                              |
++------------------+------------------------------------------------------+</code></pre>
+<p>Il est aussi possible de filtrer la liste des images avec <code>grep</code> :</p>
+<pre><code class="language-plaintext">openstack image list | grep 'debian'
+| 77ce9a1a-4c03-43d7-9f87-b447a39103bb | debian-10-genericcloud-amd64-20210208-542.raw | active |
+| 735a5c16-56f0-4c15-80e7-49056dbc4f71 | debian-10.7.4-20210108-openstack-amd64.raw    | active |
+| 0c857837-f852-44dc-b986-bcc488bf7b70 | debian-10.8-openstack-amd64.raw               | active |
+| 49f425ed-bf79-46ab-8cf3-44935d9d831e | debian-10.8.0-openstack-amd64.raw             | active |
+| daf43e02-f59e-45bb-8d63-436094d3f360 | debian-buster-202102191137-amd64.raw          | active |</code></pre>
+<p>&nbsp;</p>
+<h2>Créer une image</h2>
+<p>Pour créer une image il faut au préalable télécharger l'image du système d'exploitation au format qcow ou raw</p>
+<p>&nbsp;</p>
+<p>&nbsp;il faut utiliser la commande <code>openstack flavor create</code> avec les arguments suivants :</p>
+<pre><code class="language-plaintext">openstack flavor create FLAVOR_NAME --id FLAVOR_ID --ram RAM_IN_MB --disk ROOT_DISK_IN_GB --vcpus NUMBER_OF_VCPUS</code></pre>
+<p>Par exemple pour créer un flavor pour une petite machine virtuelle :</p>
+<pre><code class="language-plaintext">openstack flavor create cpu1-ram2-disk10 --id auto --ram 2048 --disk 10 --vcpus 1</code></pre>
+<p>&nbsp;</p>
+<h2>Supprimer un flavor</h2>
+<p>Pour cela il suffit d'utiliser la commande <code>openstack flavor delete &lt;FLAVOR_ID&gt;</code></p>
+<pre><code class="language-plaintext">openstack flavor delete 23c60b2b-6a1a-4870-ba41-ab1d6ce0c516</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
