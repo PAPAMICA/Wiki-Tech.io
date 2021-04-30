@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-04-30T14:31:36.970Z
+date: 2021-04-30T14:44:46.433Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T14:10:48.775Z
@@ -76,6 +76,51 @@ systemctl restart docker</code></pre>
 <p>Et voilà, tous les <strong>prochains</strong> container créés enverrons leurs logs à Loki !</p>
 <p>&nbsp;</p>
 <h2>Depuis Debian</h2>
+<p>Depuis Debian ou tout autres distributions Linux c'est un peu plus compliqué : il faut installer et configurer l'agent Promtail pour l'envoi des logs.</p>
+<p>&nbsp;1. Téléchargez le binaire de Promtail depuis le <a href="https://github.com/grafana/loki/releases/">Github</a> :</p>
+<pre><code class="language-plaintext">curl -s https://api.github.com/repos/grafana/loki/releases/latest | grep browser_download_url |  cut -d '"' -f 4 | grep promtail-linux-amd64.zip | wget -i -</code></pre>
+<p>&nbsp;Une fois le téléchargement terminé, dézippez le dans <code>/usr/local/bin</code> :</p>
+<pre><code class="language-plaintext">unzip promtail-linux-amd64.zip
+sudo mv promtail-linux-amd64 /usr/local/bin/promtail</code></pre>
+<p>&nbsp;2. Créez un fichier de configuration YAML pour Promtail dans le dossier <code>/usr/local/bin</code> :</p>
+<pre><code class="language-plaintext">sudo nano /etc/promtail-local-config.yaml</code></pre>
+<p>&nbsp;3. Ajoutez le contenu suivant au fichier :</p>
+<pre><code class="language-plaintext">server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+
+positions:
+  filename: /data/loki/positions.yaml
+
+clients:
+  - url: &lt;URL_LOKI&gt;
+
+scrape_configs:
+- job_name: system
+  static_configs:
+  - targets:
+      - localhost
+    labels:
+      job: varlogs
+      __path__: /var/log/*log</code></pre>
+<p>&nbsp;4. Créez le service pour Promtail :</p>
+<pre><code class="language-plaintext">sudo tee /etc/systemd/system/promtail.service&lt;&lt;EOF
+[Unit]
+Description=Promtail service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/promtail -config.file /etc/promtail-local-config.yaml
+
+[Install]
+WantedBy=multi-user.target
+EOF</code></pre>
+<p>&nbsp;5. Lancez le service Promtail :</p>
+<pre><code class="language-plaintext">sudo systemctl daemon-reload
+sudo systemctl start promtail.service</code></pre>
+<p>Vous pouvez vérifier le statut du service avec <code>systemctl status promtail.service</code>. L'agent Promtail est maintenant installé et configuré pour envoyer vos logs systemd vers Loki.</p>
 <h1>Grafana</h1>
 <h2>Configuration de Loki</h2>
 <h2>Lire les logs</h2>
