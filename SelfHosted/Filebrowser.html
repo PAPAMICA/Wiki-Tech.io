@@ -2,7 +2,7 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-04-30T08:17:12.982Z
+date: 2021-04-30T08:48:45.048Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T08:10:24.443Z
@@ -21,4 +21,54 @@ dateCreated: 2021-04-30T08:10:24.443Z
 <pre><code class="language-plaintext">FROM filebrowser/filebrowser as fb
 FROM alpine:latest
 COPY --from=fb /filebrowser /opt/app/filebrowser</code></pre>
+<p>Nous ne voulons pas que le processus s'exécute en tant que root, nous créons donc un nouvel utilisateur et mettons à jour les certificats SSL :</p>
+<pre><code class="language-plaintext">RUN apk --update add ca-certificates bash \
+    &amp;&amp; adduser -h /opt/app -D app</code></pre>
+<p>Maintenant, pour le script entrypoint : nous avons besoin de lancer FileBrowser avec la configuration souhaitée mais aussi de créer un utilisateur pour l'option <code>--auth.method='noauth'</code> (voir l'<a href="https://github.com/filebrowser/filebrowser/issues/700">issue #700</a>)</p>
+<pre><code class="language-plaintext">#!/bin/bash
+./filebrowser config init --port 4000 --address "" --baseurl "" --log "stdout" --root="/srv" --auth.method='noauth' --commands "" --lockPassword --perm.admin=false --perm.create=false --perm.delete=false --perm.execute=false --perm.modify=false --perm.rename=false --signup=false
+./filebrowser users add anonymous "anonymous"
+exec ./filebrowser</code></pre>
+<p>Nous pouvons désormais finir notre <a href="https://hastebin.papamica.com/ukukomelut">Dockerfile</a> :</p>
+<pre><code class="language-plaintext">COPY entrypoint /opt/app/entrypoint
+RUN chmod a+x /opt/app/entrypoint
+
+VOLUME /srv
+EXPOSE 4000
+USER app
+WORKDIR /opt/app
+
+
+ENTRYPOINT [ "/opt/app/entrypoint" ]</code></pre>
+<p>Vous retrouverez le Dockerfile complet ici : <a href="https://hastebin.papamica.com/ukukomelut">Dockerfile</a></p>
+<p>&nbsp;</p>
+<h2>Création du Docker-Compose</h2>
+<p>Maintenant que nous avons notre Dockerfile, nous pourrions démarrer notre container avec ces commandes Docker :</p>
+<pre><code class="language-plaintext">docker build --tag hostfiles .
+docker run --detach -p 80:4000 --restart=always --volume /apps/files:/srv:ro hostfiles</code></pre>
+<p>Mais je préfère toujours avoir un Docker-Compose, voici donc ce fameux sésame :</p>
+<pre><code class="language-plaintext">version: '2'
+
+services:
+  filebrowser:
+    image: hostfiles:latest # Nom de l'image précédemment créée avec la commande "docker build"
+    container_name: filebrowser-partage
+    restart: unless-stopped
+    volumes:
+      - /DATA:/srv:ro # Localisation des données à partager</code></pre>
+<p>Pour lancer le container :</p>
+<pre><code class="language-plaintext">docker-compose up -d</code></pre>
+<p>&nbsp;</p>
+<h2>Résumé</h2>
+<p>Vous devez avoir cette arborescence de fichiers :</p>
+<pre><code class="language-plaintext">.
+├── docker-compose.yml
+├── dockerfile
+└── entrypoint</code></pre>
+<p>Avec :</p>
+<ul>
+  <li>&nbsp;<a href="https://hastebin.papamica.com/esikuwunoz"><code>docker-compose.yml</code></a> ou <a href="https://hastebin.papamica.com/nobuduzimu"><code>docker-compose.yml</code></a> (avec Traefik et Loki)</li>
+  <li><a href="https://hastebin.papamica.com/ukukomelut"><code>dockerfile</code></a></li>
+  <li><a href="https://hastebin.papamica.com/deruxizeqe"><code>entrypoint</code></a></li>
+</ul>
 <p>&nbsp;</p>
