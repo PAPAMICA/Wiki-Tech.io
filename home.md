@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-30T07:47:05.415Z
+date: 2021-04-30T08:00:28.367Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -25,6 +25,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [📋 Hastebin *Partage de texte. Alternative à Pastebin*](/SelfHosted/Hastebin)
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔗 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
+- [📤 Filebrowser *Partager des fichiers en lecture seule*](/SelfHosted/Filebrowser)
 - [💚 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
 - [🔐 Serveur OpenVPN *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
 - [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
