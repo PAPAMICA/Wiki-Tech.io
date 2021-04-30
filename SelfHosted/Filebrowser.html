@@ -2,7 +2,7 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-04-30T09:10:28.709Z
+date: 2021-04-30T10:01:52.120Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T08:10:24.443Z
@@ -55,9 +55,12 @@ services:
     container_name: filebrowser-partage
     restart: unless-stopped
     volumes:
-      - /DATA:/srv:ro # Localisation des données à partager</code></pre>
+      - /DATA:/srv:ro # Localisation des données à partager
+    ports:
+      - 80:4000 # Vous pouvez changer le port ici</code></pre>
 <p>Pour lancer le container :</p>
 <pre><code class="language-plaintext">docker-compose up -d</code></pre>
+<p>Vous pouvez maintenant y accéder à l'adresse : <code>http://&lt;IP_SERVER&gt;:80</code></p>
 <p>&nbsp;</p>
 <h2>Résumé</h2>
 <p>Vous devez avoir cette arborescence de fichiers :</p>
