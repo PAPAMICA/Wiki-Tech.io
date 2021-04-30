@@ -1,0 +1,81 @@
+<!--
+title: Jirafeau
+description: Alternative opensource et self hosted de Wetransfert.
+published: true
+date: 2021-04-30T18:36:27.649Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-30T18:36:27.649Z
+-->
+
+<figure class="image image_resized" style="width:12.84%;"><img src="https://api.cloudron.io/api/v1/apps/net.jirafeau.cloudronapp/versions/1.2.0/icon" alt="Cloudron - Install Jirafeau - Select your file, upload, share a link"></figure>
+<h1>Présentation</h1>
+<p>Jirafeau vous permet de partager en 2 clics des fichiers avec d'autres utilisateurs comme WeTransfert. Il apporte quelques fonctionnalités intéressantes:</p>
+<ul>
+  <li>&nbsp;Les téléchargements uniques</li>
+  <li>Un lecteur d'images et de vidéos</li>
+  <li>La possibilité de mettre un mot de passe</li>
+  <li>Le stockage limité dans le temps</li>
+  <li>Une API</li>
+  <li>Le chiffrement des données stockées</li>
+  <li>Et plein de petites configurations utiles !</li>
+</ul>
+<p>Vous pouvez retrouver le Gitlab du projet <a href="https://gitlab.com/mojo42/Jirafeau">ici</a> ainsi que le démo officielle <a href="https://jirafeau.net">ici</a>.</p>
+<p>Je me à disposition ce service aussi de mon coté, accessible à cette adresse : <a href="https://send.papamica.fr">send.papamica.fr</a></p>
+<h1>Installation</h1>
+<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://gitlab.com/mojo42/Jirafeau">Gitlab</a>, le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :</p>
+<pre><code class="language-plaintext">version: '2'
+
+services:
+  jirafeau:
+    image: jgeusebroek/jirafeau
+    container_name: jirafeau
+    restart: unless-stopped
+    volumes:
+      - /apps/jirafeau/cfg:/cfg
+      - /apps/jirafeau/data:/data
+      - /apps/jirafeau/media:/jirafeau/media
+    
+    # Inutile avec Traefik    
+    #ports:
+    #  - 80:80
+    
+    # Facultatif : support de Loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    
+    # Facultatif : support de Traefik        
+    networks:
+      - proxy
+    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jirafeau.entrypoints=http"
+      - "traefik.http.routers.jirafeau.rule=Host(`&lt;URL&gt;`)"
+      - "traefik.http.middlewares.jirafeau-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.jirafeau.middlewares=jirafeau-https-redirect"
+      - "traefik.http.routers.jirafeau-secure.entrypoints=https"
+      - "traefik.http.routers.jirafeau-secure.rule=Host(`&lt;URL&gt;`)"
+      - "traefik.http.routers.jirafeau-secure.tls=true"
+      - "traefik.http.routers.jirafeau-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+      
+networks:
+  proxy:
+    external:
+      name: proxy
+</code></pre>
+<p>Votre Jirafeau sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou de puis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
+<p>L'interface administrateur est disponible ici : <code>&lt;URL&gt;/admin.php</code></p>
+<p>L'API est disponible ici : <code>&lt;URL&gt;/script.php</code></p>
+<h1>Personnalisation</h1>
+<p>Il est possible de personnaliser le thème de Jirafeau assez simplement.</p>
+<p>Voici deux thèmes assez modernes et jolies :</p>
+<ul>
+  <li><a href="https://github.com/wizhou/jirafeau-theme-minuit">Minuit</a></li>
+  <li><a href="https://github.com/JordyValentine/jirafeau-elegantish">Elegantish</a></li>
+</ul>
+<p>Je vous laisse consulter la documentation de ces thèmes pour l'installation.</p>
