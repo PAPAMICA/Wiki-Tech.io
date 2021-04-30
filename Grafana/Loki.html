@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-04-30T14:15:57.120Z
+date: 2021-04-30T14:31:36.970Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T14:10:48.775Z
@@ -29,8 +29,52 @@ dateCreated: 2021-04-30T14:10:48.775Z
 <h1>Installation</h1>
 <p>Evidemment, si vous ne l'aviez pas encore deviné, nous allons déployer Loki dans un conteneur Docker avec Docker-Compose !</p>
 <p>&nbsp;</p>
+<p>Et voici l'URL pour envoyer vos logs : http://etttrsdfdgs.com&nbsp;</p>
+<p>&nbsp;</p>
 <h1>Envoyer les logs</h1>
 <h2>Depuis Docker</h2>
+<p>Il est très simple d'envoyer les logs Docker directement à Loki : un plugin est disponible pour cela.</p>
+<h3>Installer le plugin</h3>
+<pre><code class="language-plaintext">docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions</code></pre>
+<p>Pour vérifier l'installation du plugin, vous pouvez utiliser la commande <code>docker plugin ls</code> :</p>
+<pre><code class="language-plaintext">docker plugin ls
+ID                  NAME         DESCRIPTION           ENABLED
+ac720b8fcfdb        loki         Loki Logging Driver   true</code></pre>
+<h3>Mettre à jour le plugin</h3>
+<pre><code class="language-plaintext">docker plugin disable loki --force
+docker plugin upgrade loki grafana/loki-docker-driver:latest --grant-all-permissions
+docker plugin enable loki
+systemctl restart docker</code></pre>
+<h3>Configurer le plugin</h3>
+<p>Plusieurs options existent :&nbsp;</p>
+<ol>
+  <li>A chaque lancement de container avec <code>docker run</code> :</li>
+</ol>
+<pre><code class="language-plaintext">docker run --log-driver=loki \
+    --log-opt loki-url="&lt;URL_LOKI&gt;" \
+    --log-opt loki-retries=5 \
+    --log-opt loki-batch-size=400 \
+    grafana/grafana</code></pre>
+<p>&nbsp;2. En ajoutant dans vos docker-compose :</p>
+<pre><code class="language-plaintext">    logging:
+      driver: loki
+      options:
+        loki-url: "&lt;URL_LOKI&gt;"
+        loki-external-labels: service={{.Name}}</code></pre>
+<p>&nbsp;3. En configurant le driver comme driver par défaut dans Docker :</p>
+<p>Pour cela vous devez changer le fichier <code>daemon.json</code> de Docker (dans <code>/etc/docker</code> sur Linux) en ajoutant ceci :&nbsp;</p>
+<pre><code class="language-plaintext">{
+    "debug" : true,
+    "log-driver": "loki",
+    "log-opts": {
+        "loki-url": "&lt;URL_LOKI&gt;",
+        "loki-batch-size": "400"
+    }
+}</code></pre>
+<p>Après avoir configurer édité le fichier daemon.json, veuillez relancer le service docker avec :</p>
+<pre><code class="language-plaintext">sudo systemctl restart docker </code></pre>
+<p>Et voilà, tous les <strong>prochains</strong> container créés enverrons leurs logs à Loki !</p>
+<p>&nbsp;</p>
 <h2>Depuis Debian</h2>
 <h1>Grafana</h1>
 <h2>Configuration de Loki</h2>
