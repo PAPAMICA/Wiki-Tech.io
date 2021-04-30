@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-30T07:43:26.126Z
+date: 2021-04-30T07:47:05.415Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -26,8 +26,8 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔗 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
 - [💚 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
-- [🔐 Serveur OpenVPN *Serveur VPN compatible sur tous les devices.*](/SelfHosted/OpenVPN)
-- [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération.*](/SelfHosted/OpenVPN)
+- [🔐 Serveur OpenVPN *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
+- [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
 - [🌐 Wordpress *CMS pour la création de site*](/SelfHosted/Wordpress)
 - [🌐 Site web *Un hébergement pour vos sites HTML/CSS/JS/PHP*](/SelfHosted/Site-web)
 - [📜 GitLab *Hébergez, travaillez et partagez vos projets. Alternative à Github*](/SelfHosted/GitLab)
