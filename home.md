@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-04-30T13:46:43.235Z
+date: 2021-04-30T16:07:16.536Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -70,6 +70,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Zabbix/SNMP)
 - [🔴 Zabbix Proxy *Installation et configuration d'un proxy Zabbix*](/Zabbix/Proxy)
+- [📜 Script Altaro *Remonter les informations des backups Altaro dans Zabbix*](/Zabbix/Altaro)
 
 {.links-list}
 
