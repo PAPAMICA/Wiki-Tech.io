@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-04-30T11:48:05.947Z
+date: 2021-04-30T13:46:43.235Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -51,7 +51,6 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Openstack
-
 - [:cyclone: Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
 - [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
 - [🏁 Guide rapide *Créer son premier serveur*](/Openstack/Premier-Pas)
@@ -63,6 +62,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [📦 Le stockage *Comprendre et utiliser le stockage*](/Openstack/Stockage)
 - [⚡ Les snapshots et backups *Comprendre et utiliser les sauvegardes*](/Openstack/Backups)
 - [🖥️ Gestion des machines virtuelles *Créer, modifier et supprimer les machines virtuelles*](/Openstack/Machine-virtuelle)
+- [📃 Logs *Localiser et lire les logs*](/Openstack/Logs)
 {.links-list}
 
 ## Zabbix
