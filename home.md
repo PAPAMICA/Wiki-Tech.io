@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-30T07:42:35.584Z
+date: 2021-04-30T07:43:26.126Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -30,7 +30,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération.*](/SelfHosted/OpenVPN)
 - [🌐 Wordpress *CMS pour la création de site*](/SelfHosted/Wordpress)
 - [🌐 Site web *Un hébergement pour vos sites HTML/CSS/JS/PHP*](/SelfHosted/Site-web)
-- [💙 GitLab *Hébergez, travaillez et partagez vos projets. Alternative à Github*](/SelfHosted/GitLab)
+- [📜 GitLab *Hébergez, travaillez et partagez vos projets. Alternative à Github*](/SelfHosted/GitLab)
 - [👔 Taiga *Gestion de projets. Alternative à Trello*](/SelfHosted/Taiga)
 - [📖 WikiJS *Une documentation en ligne*](/SelfHosted/WikiJS)
 - [🔑 Keycloak *Centralisation de l'authentification*](/SelfHosted/Keycloak)
