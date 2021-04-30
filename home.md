@@ -1,8 +1,8 @@
 ---
 title: Accueil
-description: 
+description: Une documentation pour différents projets !
 published: true
-date: 2021-04-30T08:00:28.367Z
+date: 2021-04-30T09:33:22.121Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
