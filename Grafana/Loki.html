@@ -1,0 +1,31 @@
+<!--
+title: Loki
+description: 
+published: true
+date: 2021-04-30T14:10:48.775Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-30T14:10:48.775Z
+-->
+
+<h1>Qu'est-ce que Loki</h1>
+<p>Non, nous n'allons pas parler d'un personnage de l'univers Marvel ici mais d'un outil très pratique pour les admin sys !</p>
+<p><a href="https://grafana.com/oss/loki/">Loki</a> est un agrégateur de logs créé et maintenu par l'équipe derrière <a href="https://grafana.com/grafana/">Grafana</a>. C'est une alternative plus simple à la <a href="https://www.elastic.co/fr/what-is/elk-stack">stack ELK</a> pour la centralisation et la gestion des logs.</p>
+<h1>Fonctionnement de Loki</h1>
+<p>Loki se compose de trois composants <strong>Promtail</strong>, <strong>Loki</strong> et <strong>Grafana</strong> que nous verrons brièvement avant de procéder au déploiement.</p>
+<h2>Promtail</h2>
+<p>Promtail est un agent qui expédie le contenu des journaux locaux vers une instance Loki privée ou Grafana Cloud. Il est généralement déployé sur chaque machine sur laquelle des applications doivent être surveillées.</p>
+<p>Il agit principalement:</p>
+<ul>
+  <li>Découvre des cibles</li>
+  <li>Attache des étiquettes aux flux de journaux</li>
+  <li>Les pousse vers l'instance Loki.</li>
+</ul>
+<p>Actuellement, Promtail peut suivre les journaux de deux sources: les fichiers journaux locaux et le journal systemd (sur les machines AMD64 uniquement). <a href="https://grafana.com/docs/loki/latest/clients/promtail/">source</a></p>
+<h2>Loki</h2>
+<p>Tel que cité par les créateurs de Loki, Loki est un système d'agrégation de journaux scalable horizontalement, hautement disponible et inspiré de Prometheus. Loki utilise le même mécanisme de découverte de service que celui de Prometheus et ajoute des étiquettes au flux de journal au lieu de l'indexation. Pour cette raison, les journaux reçus de Promtail se composent du même ensemble d'étiquettes que celui des métriques d'application. Ainsi, il offre non seulement une meilleure commutation de contexte entre les journaux et les métriques, mais évite également la journalisation complète des index.</p>
+<h2>Grafana</h2>
+<p>Grafana est une plate-forme open-source spécialisé dans l'analyse et la surveillance. Il fonctionne spécifiquement sur des données chronologiques provenant de sources telles que Prometheus et Loki. De plus, il vous permet d'interroger, de visualiser, d'alerter sur les métriques quel que soit son emplacement stocké. Il aide à créer, explorer et partager des tableaux de bord et encourage la culture axée sur les données.</p>
+<h1>Installation</h1>
+<p>Evidemment, si vous ne l'aviez pas encore deviné, nous allons déployer Loki dans un conteneur Docker !</p>
+<p>&nbsp;</p>
