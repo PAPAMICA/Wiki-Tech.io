@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-04-30T14:48:34.086Z
+date: 2021-04-30T14:53:08.087Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T14:10:48.775Z
@@ -32,9 +32,9 @@ dateCreated: 2021-04-30T14:10:48.775Z
 <pre><code class="language-diff">version: "2"
 
 networks:
-  app-network:
+  proxy:
     external:
-      name: app-network
+      name: proxy
 
 services:
   loki:
@@ -45,7 +45,7 @@ services:
       - "3100:3100"
     command: -config.file=/etc/loki/local-config.yaml
     networks:
-      - app-network
+      - proxy
 
   promtail:
     image: grafana/promtail:1.5.0
@@ -55,11 +55,8 @@ services:
       - /var/log:/var/log
     command: -config.file=/etc/promtail/docker-config.yaml
     networks:
-      - app-network
-</code></pre>
-<p>&nbsp;</p>
-<p>Et voici l'URL pour envoyer vos logs : http://etttrsdfdgs.com&nbsp;</p>
-<p>&nbsp;</p>
+      - proxy</code></pre>
+<p>Loki et son compagnon Promtail sont maintenant en fonctionnement !&nbsp;<br>Le lien pour envoyer vos logs est le suivant : <strong>http://server:3100/loki/api/v1/push</strong></p>
 <h1>Envoyer les logs</h1>
 <h2>Depuis Docker</h2>
 <p>Il est très simple d'envoyer les logs Docker directement à Loki : un plugin est disponible pour cela.</p>
