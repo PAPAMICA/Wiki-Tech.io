@@ -2,7 +2,7 @@
 title: Accueil
 description: 
 published: true
-date: 2021-04-29T13:04:50.107Z
+date: 2021-04-30T07:08:35.010Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -21,6 +21,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [:cyclone: Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
 - [💠 Bitwarden *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
 - [:fire: Jirafeau *Envoi de fichiers. Alternative à WeTransfert.*](/SelfHosted/Jirafeau)
+- [📰 FreshRSS *Aggrégateur RSS d'articles, de Poedcasts et de Vidéos*](/SelfHosted/FreshRSS)
 - [💙 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
 {.links-list}
 
