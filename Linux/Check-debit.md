@@ -2,7 +2,7 @@
 title: Vérifier son débit
 description: Vérifier son débit ou la vitesse de transfert entre deux serveurs
 published: true
-date: 2021-04-30T21:14:11.350Z
+date: 2021-04-30T21:14:37.080Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T21:13:55.147Z
@@ -25,3 +25,15 @@ Le plus simple et le plus rapide reste le test depuis un site internet, il en ex
 Speedtest d'Ookla met à disposition un petit outil à disposition très pratique pour tester son débit directement dans son terminal ou dans un script : [speedtest-cli](https://www.speedtest.net/fr/apps/cli)
 
 ### Installation :
+# Tabs {.tabset}
+## First Tab
+
+Any content here will go into the first tab...
+
+## Second Tab
+
+Any content here will go into the second tab...
+
+## Third Tab
+
+Any content here will go into the third tab...
