@@ -25,7 +25,7 @@ dateCreated: 2021-04-29T13:23:07.364Z
 <p>Avec Zsh :</p>
 <pre><code class="language-plaintext">sh . openrc.sh</code></pre>
 <p>&nbsp;</p>
-<blockquote>
+<blockquote class="is-info">
   <p><strong>Remarque :</strong> Si vous souhaitez télécharger un fichier openrc pour un autre projet, vous devez basculer le projet de la liste déroulante juste à droite vers le logo "openstack" afin de "l'activer" dans l'interface Web et ainsi télécharger le bon fichier pour le projet souhaité.</p>
 </blockquote>
 <p>Pour “décharger” ces variables d'environnements, vous pouvez soit fermer votre invite de commande, soit les “décharger” avec cette commande :</p>
@@ -106,7 +106,7 @@ dateCreated: 2021-04-29T13:23:07.364Z
 +----------------------------------+----------+</code></pre>
 <h3>Créer un utilisateur</h3>
 <p>Pour créer un utilisateur, vous devez spécifier un nom avec la commande <code>openstack user create</code>. Vous pouvez éventuellement spécifier un ID de projet, un mot de passe et une adresse e-mail.&nbsp;</p>
-<blockquote>
+<blockquote class="is-warning">
   <p><strong>Attention : </strong>Il est recommandé d'inclure l'ID de projet et le mot de passe car l'utilisateur ne peut pas se connecter au tableau de bord sans ces informations.</p>
 </blockquote>
 <pre><code class="language-plaintext">openstack user create --project new-project --password PASSWORD papamica
@@ -127,7 +127,7 @@ dateCreated: 2021-04-29T13:23:07.364Z
 </ul>
 <pre><code class="language-plaintext">openstack user set USER_NAME --disable</code></pre>
 <p>&nbsp;</p>
-<blockquote>
+<blockquote class="is-info">
   <p><strong>Remarque : </strong>Si vous désactivez un compte utilisateur, l'utilisateur ne peut pas se connecter au tableau de bord. Cependant, les données du compte utilisateur sont conservées, vous pouvez donc réactiver l'utilisateur à tout moment.</p>
 </blockquote>
 <ul>
@@ -158,7 +158,7 @@ User has been updated.</code></pre>
 | deb4fffd123c4d02a907c2c74559dccf | anotherrole   |
 +----------------------------------+---------------+</code></pre>
 <h3>Créer un rôle</h3>
-<blockquote>
+<blockquote class="is-info">
   <p><strong>Remarque : </strong>Les utilisateurs peuvent être membres de plusieurs projets. Pour affecter des utilisateurs à plusieurs projets, définissez un rôle et attribuez ce rôle à des projets.</p>
 </blockquote>
 <p>Pour créer un nouveau rôle “test” avec <code>openstack role create</code> :</p>
@@ -171,7 +171,7 @@ User has been updated.</code></pre>
 | name      | test                             |
 +-----------+----------------------------------+</code></pre>
 <h3>Assigner un rôle</h3>
-<blockquote>
+<blockquote class="is-info">
   <p><strong>Remarque : </strong>Pour affecter un utilisateur à un projet, vous devez attribuer le rôle à une paire utilisateur-projet. Pour ce faire, vous avez besoin des ID d'utilisateur, de rôle et de projet.</p>
 </blockquote>
 <p>Il va donc falloir récupérer les info suivante :</p>
