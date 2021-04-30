@@ -2,13 +2,13 @@
 title: Vérifier son débit
 description: Vérifier son débit ou la vitesse de transfert entre deux serveurs
 published: true
-date: 2021-04-30T21:14:37.080Z
+date: 2021-04-30T21:16:44.144Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T21:13:55.147Z
 ---
 
-![Mesurez votre débit Internet en ligne de commande – Korben](https://i2.wp.com/korben.info/app/uploads/2019/05/Speedtest-horizontal-black.png?fit=800%2C268&ssl=1)
+![Mesurez votre débit Internet en ligne de commande – Korben](https://i2.wp.com/korben.info/app/uploads/2019/05/Speedtest-horizontal-black.png?fit=800%2C268&ssl=1){.image}
 
 # Tester son débit
 
