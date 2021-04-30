@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-04-30T07:46:44.342Z
+date: 2021-04-30T08:00:54.399Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T07:46:02.143Z
@@ -16,6 +16,7 @@ dateCreated: 2021-04-30T07:46:02.143Z
 - [📋 Hastebin *Partage de texte. Alternative à Pastebin*](/SelfHosted/Hastebin)
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔗 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
+- [📤 Filebrowser *Partager des fichiers en lecture seule*](/SelfHosted/Filebrowser)
 - [💚 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
 - [🔐 Serveur OpenVPN *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
 - [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
