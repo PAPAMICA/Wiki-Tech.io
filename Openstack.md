@@ -2,7 +2,7 @@
 title: Openstack
 description: 
 published: true
-date: 2021-04-30T11:42:53.786Z
+date: 2021-04-30T13:46:13.624Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T19:57:01.457Z
@@ -20,4 +20,5 @@ dateCreated: 2021-04-28T19:57:01.457Z
 - [📦 Le stockage *Comprendre et utiliser le stockage*](/Openstack/Stockage)
 - [⚡ Les snapshots et backups *Comprendre et utiliser les sauvegardes*](/Openstack/Backups)
 - [🖥️ Gestion des machines virtuelles *Créer, modifier et supprimer les machines virtuelles*](/Openstack/Machine-virtuelle)
+- [📃 Logs *Localiser et lire les logs*](/Openstack/Logs)
 {.links-list}
