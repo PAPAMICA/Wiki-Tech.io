@@ -2,7 +2,7 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-04-30T08:48:45.048Z
+date: 2021-04-30T08:50:30.608Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T08:10:24.443Z
@@ -15,7 +15,7 @@ dateCreated: 2021-04-30T08:10:24.443Z
 <p><a href="https://github.com/filebrowser/filebrowser">Filebrowser</a> est une interface Web pour accéder à des fichiers, elle vous permet de faire la plupart des choses avec les fichiers: télécharger, partager, modifier, etc.&nbsp;</p>
 <p>Nous allons voir les étapes consistant à n'autoriser aucune de ces options et à autoriser uniquement l'accès anonyme en lecture seule à un répertoire à l'aide de l'interface Web de FileBrowser.</p>
 <p>&nbsp;</p>
-<h2>Créer votre Dockerfile</h2>
+<h2>Création du Dockerfile</h2>
 <p>Le projet FileBrowser met à disposition une <a href="https://hub.docker.com/r/filebrowser/filebrowser">image Docker</a> avec leur<a href="https://github.com/filebrowser/filebrowser/blob/master/Dockerfile"> binaire intégré</a> directement. Nous devons faire presque la même chose, mais le faire fonctionner sans authentification et fonctionner en tant qu'utilisateur normal au lieu de root (mauvaise pratique).</p>
 <p>Dans un fichier <a href="https://hastebin.papamica.com/ukukomelut">Dockerfile</a>, nous commençons par utiliser l'image alpine complète et en copiant le binaire de FileBrowser à partir de l'image docker <code>filebrowser/filebrowser</code> :</p>
 <pre><code class="language-plaintext">FROM filebrowser/filebrowser as fb
@@ -67,7 +67,7 @@ services:
 └── entrypoint</code></pre>
 <p>Avec :</p>
 <ul>
-  <li>&nbsp;<a href="https://hastebin.papamica.com/esikuwunoz"><code>docker-compose.yml</code></a> ou <a href="https://hastebin.papamica.com/nobuduzimu"><code>docker-compose.yml</code></a> (avec Traefik et Loki)</li>
+  <li><a href="https://hastebin.papamica.com/esikuwunoz"><code>docker-compose.yml</code></a> ou <a href="https://hastebin.papamica.com/nobuduzimu"><code>docker-compose.yml</code></a> (avec Traefik et Loki)</li>
   <li><a href="https://hastebin.papamica.com/ukukomelut"><code>dockerfile</code></a></li>
   <li><a href="https://hastebin.papamica.com/deruxizeqe"><code>entrypoint</code></a></li>
 </ul>
