@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-04-30T14:55:18.337Z
+date: 2021-04-30T18:10:42.425Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T14:10:48.775Z
@@ -150,5 +150,24 @@ sudo systemctl start promtail.service</code></pre>
 <p>Vous pouvez vérifier le statut du service avec <code>systemctl status promtail.service</code>. L'agent Promtail est maintenant installé et configuré pour envoyer vos logs systemd vers Loki.</p>
 <h1>Grafana</h1>
 <h2>Configuration de Loki</h2>
-<h2>Lire les logs</h2>
+<p>&nbsp;</p>
+<p>Pour voir les logs et leurs statistiques, il faut connecter Loki dans Grafana.&nbsp;</p>
+<p>Dans Grafana, ajouter la source de donnée Loki :</p>
+<figure class="image image_resized" style="width:72.81%;"><img src="/image_2021-04-30_185059.png"></figure>
+<figure class="image image_resized" style="width:54.97%;"><img src="/loki2.png"></figure>
+<p>Et configurer la source de donnée de cette façon :</p>
+<p>Dans URL, mettez l'URL de votre Loki <code>http://serveur:3000</code> ou <code>nom-du-container:3000</code> si vous utilisez Loki sous docker sur le même réseau que Grafana.</p>
+<figure class="image image_resized" style="width:52.88%;"><img src="/loki3.png"></figure>
+<p>Vos logs sont maintenant accessible dans Grafana. Allons voir comment les consulter !</p>
+<h2>Explorer les logs</h2>
+<p>Vous pouvez consulter vos logs brut directement depuis l'onglet Explorer de Grafana :</p>
+<figure class="image image_resized" style="width:79.96%;"><img src="/image_2021-04-30_193550.png"></figure>
+<p>A vous de jouer avec les requêtes pour remonter les logs que vous souhaitez.</p>
 <h2>En cadeau, des jolies tableaux</h2>
+<p>Vu que je suis particulièrement gentil, je vous partage mes deux petits bébés : mes dashboards Grafana pour mes logs.</p>
+<h3>La vue serveurs :</h3>
+<figure class="image image_resized" style="width:96.15%;"><img src="/image_2021-04-30_195917.png"></figure>
+<p>Dashboard disponible ici : <a href="https://github.com/PAPAMICA/Templates/blob/master/Grafana/Loki-Logs-Serveurs.json">Github</a></p>
+<h3>La vue services :</h3>
+<figure class="image image_resized" style="width:96.57%;"><img src="/image_2021-04-30_194541.png"></figure>
+<p>Dashboard disponible ici : <a href="https://github.com/PAPAMICA/Templates/blob/master/Grafana/Loki-Logs-Services.json">Github</a></p>
