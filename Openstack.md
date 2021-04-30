@@ -2,7 +2,7 @@
 title: Openstack
 description: 
 published: true
-date: 2021-04-30T11:37:32.627Z
+date: 2021-04-30T11:42:52.020Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T19:57:01.457Z
@@ -10,7 +10,7 @@ dateCreated: 2021-04-28T19:57:01.457Z
 
 # Openstack
 - [:cyclone: Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
-- [⚜️ Configurer son environnement *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
+- [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
 - [🏁 Guide rapide *Créer son premier serveur*](/Openstack/Premier-Pas)
 - [🔑 Créer une keypair *Préparer l'accès en SSH*](/Openstack/Keypair)
 - [💠 Les flavors *Comprendre et utiliser les modèles*](/Openstack/Flavors)
