@@ -2,16 +2,23 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-04-30T08:10:24.443Z
+date: 2021-04-30T08:17:12.982Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T08:10:24.443Z
 -->
 
-<figure class="image"><img src="https://raw.githubusercontent.com/filebrowser/logo/master/banner.png"></figure>
+<figure class="image image_resized" style="width:100%;"><img src="https://raw.githubusercontent.com/filebrowser/logo/master/banner.png"></figure>
 <p>&nbsp;</p>
 <h1>Héberger des fichiers en lecture seule avec l'interface Web FileBrowser</h1>
 <p>Si vous souhaitez partager des fichiers de manière permanente, une interface Web est probablement le plus simple à utiliser pour vos utilisateurs.&nbsp;</p>
 <p><a href="https://github.com/filebrowser/filebrowser">Filebrowser</a> est une interface Web pour accéder à des fichiers, elle vous permet de faire la plupart des choses avec les fichiers: télécharger, partager, modifier, etc.&nbsp;</p>
 <p>Nous allons voir les étapes consistant à n'autoriser aucune de ces options et à autoriser uniquement l'accès anonyme en lecture seule à un répertoire à l'aide de l'interface Web de FileBrowser.</p>
+<p>&nbsp;</p>
+<h2>Créer votre Dockerfile</h2>
+<p>Le projet FileBrowser met à disposition une <a href="https://hub.docker.com/r/filebrowser/filebrowser">image Docker</a> avec leur<a href="https://github.com/filebrowser/filebrowser/blob/master/Dockerfile"> binaire intégré</a> directement. Nous devons faire presque la même chose, mais le faire fonctionner sans authentification et fonctionner en tant qu'utilisateur normal au lieu de root (mauvaise pratique).</p>
+<p>Dans un fichier <a href="https://hastebin.papamica.com/ukukomelut">Dockerfile</a>, nous commençons par utiliser l'image alpine complète et en copiant le binaire de FileBrowser à partir de l'image docker <code>filebrowser/filebrowser</code> :</p>
+<pre><code class="language-plaintext">FROM filebrowser/filebrowser as fb
+FROM alpine:latest
+COPY --from=fb /filebrowser /opt/app/filebrowser</code></pre>
 <p>&nbsp;</p>
