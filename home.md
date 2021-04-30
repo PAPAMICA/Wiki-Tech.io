@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-04-30T09:33:22.121Z
+date: 2021-04-30T09:39:30.587Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -26,7 +26,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔗 YourLS *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
 - [📤 Filebrowser *Partager des fichiers en lecture seule*](/SelfHosted/Filebrowser)
-- [💚 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
+- [🥗 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
 - [🔐 Serveur OpenVPN *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
 - [🔏 Serveur WireGuard *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
 - [🌐 Wordpress *CMS pour la création de site*](/SelfHosted/Wordpress)
@@ -77,6 +77,15 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [:cyclone: Installation *Mise en place sous Docker*](/Grafana/Installation)
 - [🔴 Dashboard Zabbix *Création des dashboards pour Zabbix*](/Grafana/Zabbix)
 - [🟠 Loki *Installation et configuration d'un agrégateur de logs*](/Grafana/Loki)
+{.links-list}
+
+## Réseaux
+- [✨ Les bases *Avant de commencer...*](/Réseaux/Bases)
+{.links-list}
+
+## Domotique
+- [🦕 Jeedom *Mon serveur de domotique préféré*](/Domotique/Jeedom)
+- [🍎 Homebridge *Ajouter la compatibilité avec HomeKit*](/Domotique/Jeedom)
 {.links-list}
 
 ## Python
