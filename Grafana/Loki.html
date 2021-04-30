@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-04-30T14:44:46.433Z
+date: 2021-04-30T14:46:36.422Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T14:10:48.775Z
@@ -28,6 +28,35 @@ dateCreated: 2021-04-30T14:10:48.775Z
 <p>Grafana est une plate-forme open-source spécialisé dans l'analyse et la surveillance. Il fonctionne spécifiquement sur des données chronologiques provenant de sources telles que Prometheus et Loki. De plus, il vous permet d'interroger, de visualiser, d'alerter sur les métriques quel que soit son emplacement stocké. Il aide à créer, explorer et partager des tableaux de bord et encourage la culture axée sur les données.</p>
 <h1>Installation</h1>
 <p>Evidemment, si vous ne l'aviez pas encore deviné, nous allons déployer Loki dans un conteneur Docker avec Docker-Compose !</p>
+<p>Voici le docker-compose.yml en question :&nbsp;</p>
+<pre><code class="language-xml">version: "2"
+
+networks:
+  app-network:
+    external:
+      name: app-network
+
+services:
+  loki:
+    image: grafana/loki:1.5.0
+    container_name: loki
+    restart: always
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - app-network
+
+  promtail:
+    image: grafana/promtail:1.5.0
+    container_name: $loki-promtail
+    restart: always
+    volumes:
+      - /var/log:/var/log
+    command: -config.file=/etc/promtail/docker-config.yaml
+    networks:
+      - app-network
+</code></pre>
 <p>&nbsp;</p>
 <p>Et voici l'URL pour envoyer vos logs : http://etttrsdfdgs.com&nbsp;</p>
 <p>&nbsp;</p>
