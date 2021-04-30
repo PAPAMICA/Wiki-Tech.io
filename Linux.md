@@ -2,7 +2,7 @@
 title: Linux
 description: 
 published: true
-date: 2021-04-28T17:50:34.318Z
+date: 2021-04-28T18:31:40.986Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T17:50:34.318Z

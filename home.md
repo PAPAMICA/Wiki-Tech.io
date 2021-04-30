@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-04-30T11:37:12.558Z
+date: 2021-04-30T11:48:05.947Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -53,7 +53,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 ## Openstack
 
 - [:cyclone: Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
-- [⚜️ Configurer son environnement *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
+- [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
 - [🏁 Guide rapide *Créer son premier serveur*](/Openstack/Premier-Pas)
 - [🔑 Créer une keypair *Préparer l'accès en SSH*](/Openstack/Keypair)
 - [💠 Les flavors *Comprendre et utiliser les modèles*](/Openstack/Flavors)

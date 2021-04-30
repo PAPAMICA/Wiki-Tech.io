@@ -2,7 +2,7 @@
 title: Grafana
 description: 
 published: true
-date: 2021-04-29T06:38:07.196Z
+date: 2021-04-29T06:38:08.684Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:07.196Z
