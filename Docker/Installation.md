@@ -1,8 +1,8 @@
 ---
 title: Installation
-description: 
+description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T15:37:52.791Z
+date: 2021-05-01T15:43:20.564Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:17:42.761Z
