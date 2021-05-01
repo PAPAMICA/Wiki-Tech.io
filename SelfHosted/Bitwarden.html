@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-05-01T13:45:44.105Z
+date: 2021-05-01T15:12:13.509Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T11:54:12.241Z
@@ -29,9 +29,7 @@ dateCreated: 2021-05-01T11:54:12.241Z
 <h1>Installation</h1>
 <h2>Le serveur</h2>
 <p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://github.com/dani-garcia/vaultwarden">Github</a>, le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :</p>
-<pre><code class="language-plaintext">version: '2'
-
-version: "2"
+<pre><code class="language-plaintext">version: "2"
 services:
   vaultwarden:
     image: vaultwarden/server:latest
@@ -80,7 +78,7 @@ networks:
 <p>Votre Vaultwarden sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <p>L'interface administrateur est disponible ici : <code>&lt;URL&gt;/admin</code></p>
 <p>L'API est disponible ici : <code>&lt;URL&gt;/api</code></p>
-<blockquote class="is-warning">
+<blockquote>
   <p>Attention : Pensez à régler l'heure du serveur hôte pour le 2FA&nbsp;</p>
 </blockquote>
 <h2>Configurer les mails</h2>
