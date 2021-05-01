@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-05-01T13:05:24.354Z
+date: 2021-05-01T13:44:18.833Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T11:54:12.241Z
@@ -85,8 +85,19 @@ networks:
 </blockquote>
 <h2>Configurer les mails</h2>
 <p>Pour le bon fonctionnement de Vaultwarden, il est important de configurer le serveur SMTP.</p>
-<p>Rendez-vous sur la panel admin à partir de cette URL : <code>&lt;URL&gt;/admin </code>et entrez le token que vous avez mis dans votre docker-compose.</p>
+<ol>
+  <li>Rendez-vous sur la panel admin à partir de cette URL : <code>&lt;URL&gt;/admin&nbsp;</code></li>
+  <li>Entrez le token que vous avez mis dans votre docker-compose</li>
+  <li>Cliquez sur l'onglet “<i>SMTP Email Settings</i>” dans l'onglet “<i>Settings</i>”</li>
+  <li>Rentrez les informations de votre serveur SMTP</li>
+  <li>Testez avec l'envoi d'un mail</li>
+</ol>
 <p>&nbsp;</p>
 <h2>Configurer les applications</h2>
-<h2>Importer ses mots de passe</h2>
-<h1>&nbsp;</h1>
+<p>Les différentes applications sont disponibles au téléchargement <a href="https://bitwarden.com/download/">ici</a>.</p>
+<p>Une fois installé, vous devez configurer votre serveur avant de vous connecter :</p>
+<p>&nbsp;1. Cliquez sur l'engrenage en haut à gauche</p>
+<figure class="image image_resized" style="width:27.2%;"><img src="/image_2021-05-01_153210.png"></figure>
+<p>&nbsp;2. Entrez l'URL de votre serveur et cliquez sur “Enregistrer”</p>
+<figure class="image image_resized" style="width:26.4%;"><img src="/image_2021-05-01_153407.png"></figure>
+<p>&nbsp;3. Vous pouvez maintenant vous connecter avec vos identifiants dans l'application !</p>
