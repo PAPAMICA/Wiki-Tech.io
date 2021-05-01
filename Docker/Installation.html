@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T17:43:09.995Z
+date: 2021-05-01T18:01:58.010Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -41,6 +41,8 @@ sudo systemctl enable docker</code></pre>
 <h2>CentOS &amp; Fedora</h2>
 <p>1 - Utilisez DNF pour ajouter et activer le référentiel officiel Docker CE. :</p>
 <pre><code class="language-plaintext">sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo</code></pre>
+<p>Ou pour Fedora :</p>
+<pre><code class="language-plaintext">sudo dnf config-manager --add-repo=https://download.docker.com/linux/fedora/docker-ce.repo</code></pre>
 <p>&nbsp;2 - Installez Docker :</p>
 <pre><code class="language-plaintext">sudo dnf install docker-ce</code></pre>
 <p>&nbsp;3 - Activez et démarrer le service Docker :</p>
