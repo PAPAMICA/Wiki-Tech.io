@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-05-01T12:52:10.103Z
+date: 2021-05-01T13:05:24.354Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T11:54:12.241Z
@@ -79,18 +79,14 @@ networks:
 </code></pre>
 <p>Votre Vaultwarden sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <p>L'interface administrateur est disponible ici : <code>&lt;URL&gt;/admin</code></p>
-<p>L'API est disponible ici : <code>&lt;URL&gt;/script.php</code></p>
+<p>L'API est disponible ici : <code>&lt;URL&gt;/api</code></p>
 <blockquote>
   <p>Attention à régler l'heure du serveur hôte pour le 2FA&nbsp;</p>
 </blockquote>
 <h2>Configurer les mails</h2>
+<p>Pour le bon fonctionnement de Vaultwarden, il est important de configurer le serveur SMTP.</p>
+<p>Rendez-vous sur la panel admin à partir de cette URL : <code>&lt;URL&gt;/admin </code>et entrez le token que vous avez mis dans votre docker-compose.</p>
+<p>&nbsp;</p>
 <h2>Configurer les applications</h2>
 <h2>Importer ses mots de passe</h2>
 <h1>&nbsp;</h1>
-<h1>Il est possible de personnaliser le thème de Jirafeau assez simplement.</h1>
-<p>Voici deux thèmes assez modernes et jolies :</p>
-<ul>
-  <li><a href="https://github.com/wizhou/jirafeau-theme-minuit">Minuit</a></li>
-  <li><a href="https://github.com/JordyValentine/jirafeau-elegantish">Elegantish</a></li>
-</ul>
-<p>Je vous laisse consulter la documentation de ces thèmes pour l'installation.</p>
