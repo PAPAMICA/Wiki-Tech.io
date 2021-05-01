@@ -1,0 +1,62 @@
+<!--
+title: Hastebin
+description: Alternative opensource et self hosted de Pastebin.
+published: true
+date: 2021-05-01T11:15:40.303Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-01T11:15:40.303Z
+-->
+
+<figure class="image image_resized" style="width:40.89%;"><img src="https://toolbox.opennms.eu/logos/hastebin.png" alt="OpenNMS Toolbox"></figure>
+<h1>Présentation</h1>
+<p>Hastebin vous permet de partager avec une interface et un fonctionnement des plus simple en 2 clics du texte avec d'autres utilisateurs comme Pastebin.</p>
+<p>Vous pouvez retrouver le <a href="https://github.com/seejohnrun/haste-server">Github </a>du projet <a href="https://github.com/seejohnrun/haste-server">ici</a> ainsi que le démo officielle <a href="https://hastebin.com">hastebin.com</a>.</p>
+<p>Je me à disposition ce service aussi de mon coté, accessible à cette adresse : <a href="https://hastebin.papamica.com">hastebin.papamica.fr</a></p>
+<h1>Installation</h1>
+<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://github.com/seejohnrun/haste-server">Github</a>, le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :</p>
+<pre><code class="language-plaintext">version: "2"
+services:
+	
+  hastebin:
+    image: rlister/hastebin
+    container_name: hastebin
+    restart: always
+    environment:
+      STORAGE_TYPE: file
+    volumes:
+      - /apps/hastebin/data:/data
+      
+     # Facultatif avec Traefik 
+#    ports:
+#      - 8080:80
+    
+    # Facultatif : support de Loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    
+    # Facultatif : support de Traefik        
+    networks:
+      - proxy
+    
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.hastebin.entrypoints=http"
+      - "traefik.http.routers.hastebin.rule=Host(`&lt;URL&gt;`)"
+      - "traefik.http.middlewares.hastebin-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.hastebin.middlewares=hastebin-https-redirect"
+      - "traefik.http.routers.hastebin-secure.entrypoints=https"
+      - "traefik.http.routers.hastebin-secure.rule=Host(`&lt;URL&gt;`)"
+      - "traefik.http.routers.hastebin-secure.tls=true"
+      - "traefik.http.routers.hastebin-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+      
+networks:
+  proxy:
+    external:
+      name: proxy
+</code></pre>
+<p>Votre Hastebin sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
