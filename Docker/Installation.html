@@ -1,0 +1,47 @@
+<!--
+title: Installation
+description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
+published: true
+date: 2021-05-01T16:03:36.044Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-04-28T15:17:42.761Z
+-->
+
+<h1 class="toc-header" id="installation"> Installation</h1><div>
+</div><p>Le package d’installation Docker disponible dans le référentiel officiel Debian n’est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel.<br>
+Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.</p><div>
+</div><h2 class="toc-header" id="debian-ubuntu"> Debian &amp; Ubuntu</h2><div>
+</div><p>1 - Mettez à jour votre liste de packages existante :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo apt update
+</code></pre><div>
+</div><p>2 - Installez quelques packages prérequis qui permettent à <code>apt</code> d’utiliser des packages via HTTPS :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+</code></pre><div>
+</div><p>3 - Ajoutez la clé GPG du référentiel Docker officiel à votre système :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+</code></pre><div>
+</div><p>4 - Ajoutez le référentiel Docker aux sources APT :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+</code></pre><div>
+</div><p>5 - Mettez à jour la base de données des packages avec les packages Docker du repo nouvellement ajouté :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo apt update
+</code></pre><div>
+</div><p>6 - Installez Docker :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo apt install docker-ce
+</code></pre><div>
+</div><p>7 - Activez et lancer le daemon Docker :</p><div>
+</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-">sudo systemctl enable docker
+sudo systemctl start docker
+</code></pre><div>
+</div><h2 class="toc-header" id="arch-manjaro"> Arch &amp; Manjaro</h2><div>
+</div><h2 class="toc-header" id="centos-fedora"> CentOS &amp; Fedora</h2><div>
+</div><h2 class="toc-header" id="macos"> MacOS</h2><div>
+</div><h2 class="toc-header" id="windows"> Windows</h2><div>
+</div><p>Je vais me permettre de te tutoyer juste quelques lignes.<br>
+Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘<br>
+Plus serieusement, le client Docker pour Windows n’est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.<br>
+Passe directement par un Debian sous WSL et fait l’installation de Docker dedans.<br>
+Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖</p><div>
+</div><h1 class="toc-header" id="utiliser-les-commandes-docker-sans-sudo"> Utiliser les commandes Docker sans Sudo</h1><div>
+</div>
