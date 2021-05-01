@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-04-30T08:10:27.173Z
+date: 2021-05-01T11:56:09.366Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T07:46:02.143Z
@@ -10,7 +10,7 @@ dateCreated: 2021-04-30T07:46:02.143Z
 
 # SelfHosted
 - [:cyclone: Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
-- [💠 Bitwarden *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
+- [💠 Bitwarden (Vaultwarden) *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
 - [:fire: Jirafeau *Envoi de fichiers. Alternative à WeTransfert*](/SelfHosted/Jirafeau)
 - [📰 FreshRSS *Aggrégateur RSS d'articles, de Podcasts et de Vidéos*](/SelfHosted/FreshRSS)
 - [📋 Hastebin *Partage de texte. Alternative à Pastebin*](/SelfHosted/Hastebin)
