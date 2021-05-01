@@ -2,18 +2,17 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T15:43:20.564Z
+date: 2021-05-01T16:00:53.245Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:17:42.761Z
 ---
 
-# Présentation
 # Installation
 Le package d'installation Docker disponible dans le référentiel officiel Debian n'est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel. 
 Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.
-### Tabs {.tabset}
-#### Debian & Ubuntu
+
+## Debian & Ubuntu
   1 - Mettez à jour votre liste de packages existante :
  ```
  sudo apt update
@@ -44,17 +43,17 @@ Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la cl
  sudo systemctl start docker
  ```  
  
-#### Arch & Manjaro
+## Arch & Manjaro
 
-#### CentOS & Fedora
+## CentOS & Fedora
 
-#### Windows
+## MacOS
+
+## Windows
 Je vais me permettre de te tutoyer juste quelques lignes.
 Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘
 Plus serieusement, le client Docker pour Windows n'est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.
 Passe directement par un Debian sous WSL et fait l'installation de Docker dedans.
 Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖
-
-#### MacOS
 
 # Utiliser les commandes Docker sans Sudo
