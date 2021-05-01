@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T16:53:30.817Z
+date: 2021-05-01T17:10:41.853Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -28,6 +28,14 @@ dateCreated: 2021-04-28T15:17:42.761Z
 <pre><code class="language-plaintext">sudo systemctl enable docker
 sudo systemctl start docker</code></pre>
 <h2>Arch &amp; Manjaro</h2>
+<p>1 - Mettez à jour votre liste de packages existante et votre système :</p>
+<pre><code class="language-plaintext">sudo pacman -Syu</code></pre>
+<p>&nbsp;2 - Installez Docker :</p>
+<pre><code class="language-plaintext">sudo pacman -S docker</code></pre>
+<p>&nbsp;3 - Activez et lancer le daemon Docker :</p>
+<pre><code class="language-plaintext">sudo systemctl start docker
+sudo systemctl enable docker</code></pre>
+<p>&nbsp;</p>
 <h2>CentOS &amp; Fedora</h2>
 <h2>MacOS</h2>
 <p>Docker Desktop pour Mac est une application de bureau facile à installer pour créer, déboguer et tester des applications conteneurisées sur un Mac. Docker Desktop pour Mac est un environnement de développement complet profondément intégré à la structure, au réseau et au système de fichiers de l'hyperviseur Mac OS. Docker Desktop - Mac est le moyen le plus rapide et le plus fiable d'exécuter Docker sur un Mac.</p>
@@ -43,6 +51,10 @@ sudo systemctl start docker</code></pre>
 <figure class="image"><img src="https://d1q6f0aelx0por.cloudfront.net/icons/whale-in-menu-bar.png" alt="Whale in menu bar"></figure>
 <h2>Windows</h2>
 <p>Je vais me permettre de te tutoyer juste quelques lignes.<br>Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘<br>Plus serieusement, le client Docker pour Windows n’est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.<br>Passe directement par un Debian sous WSL et fait l’installation de Docker dedans.<br>Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖</p>
+<h2>Vérification de l'installation</h2>
+<p>Il suffit pour cela de vérifier avec la commande suivante :&nbsp;</p>
+<pre><code class="language-plaintext">sudo docker version</code></pre>
+<p>C'est censé vous renvoyer : <code>docker &lt;version&gt;</code></p>
 <h1>Utiliser les commandes Docker sans Sudo</h1>
 <p>&nbsp;</p>
 <h1>Utilisation de base de Docker</h1>
