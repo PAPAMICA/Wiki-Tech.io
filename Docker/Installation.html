@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T17:10:41.853Z
+date: 2021-05-01T17:11:39.816Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -11,6 +11,7 @@ dateCreated: 2021-04-28T15:17:42.761Z
 <figure class="image image_resized" style="width:53.41%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2019/11/docker.png?resize=920%2C316&amp;ssl=1"></figure>
 <h1>Installation</h1>
 <p>Le package d’installation Docker disponible dans le référentiel officiel Debian n’est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel.<br>Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.</p>
+<p>&nbsp;</p>
 <h2>Debian &amp; Ubuntu</h2>
 <p>1 - Mettez à jour votre liste de packages existante :</p>
 <pre><code class="language-plaintext">sudo apt update</code></pre>
@@ -27,6 +28,7 @@ dateCreated: 2021-04-28T15:17:42.761Z
 <p>7 - Activez et lancer le daemon Docker :</p>
 <pre><code class="language-plaintext">sudo systemctl enable docker
 sudo systemctl start docker</code></pre>
+<p>&nbsp;</p>
 <h2>Arch &amp; Manjaro</h2>
 <p>1 - Mettez à jour votre liste de packages existante et votre système :</p>
 <pre><code class="language-plaintext">sudo pacman -Syu</code></pre>
@@ -37,6 +39,8 @@ sudo systemctl start docker</code></pre>
 sudo systemctl enable docker</code></pre>
 <p>&nbsp;</p>
 <h2>CentOS &amp; Fedora</h2>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <h2>MacOS</h2>
 <p>Docker Desktop pour Mac est une application de bureau facile à installer pour créer, déboguer et tester des applications conteneurisées sur un Mac. Docker Desktop pour Mac est un environnement de développement complet profondément intégré à la structure, au réseau et au système de fichiers de l'hyperviseur Mac OS. Docker Desktop - Mac est le moyen le plus rapide et le plus fiable d'exécuter Docker sur un Mac.</p>
 <p>Pour une liste des prérequis, veuillez consulter <a href="https://docs.docker.com/docker-for-mac/install/#system-requirements">la documentation</a>.</p>
@@ -51,10 +55,12 @@ sudo systemctl enable docker</code></pre>
 <figure class="image"><img src="https://d1q6f0aelx0por.cloudfront.net/icons/whale-in-menu-bar.png" alt="Whale in menu bar"></figure>
 <h2>Windows</h2>
 <p>Je vais me permettre de te tutoyer juste quelques lignes.<br>Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘<br>Plus serieusement, le client Docker pour Windows n’est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.<br>Passe directement par un Debian sous WSL et fait l’installation de Docker dedans.<br>Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖</p>
+<p>&nbsp;</p>
 <h2>Vérification de l'installation</h2>
 <p>Il suffit pour cela de vérifier avec la commande suivante :&nbsp;</p>
 <pre><code class="language-plaintext">sudo docker version</code></pre>
 <p>C'est censé vous renvoyer : <code>docker &lt;version&gt;</code></p>
+<p>&nbsp;</p>
 <h1>Utiliser les commandes Docker sans Sudo</h1>
 <p>&nbsp;</p>
 <h1>Utilisation de base de Docker</h1>
