@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T16:16:50.075Z
+date: 2021-05-01T16:27:15.084Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -33,3 +33,15 @@ sudo systemctl start docker</code></pre>
 <h2>Windows</h2>
 <p>Je vais me permettre de te tutoyer juste quelques lignes.<br>Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘<br>Plus serieusement, le client Docker pour Windows n’est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.<br>Passe directement par un Debian sous WSL et fait l’installation de Docker dedans.<br>Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖</p>
 <h1>Utiliser les commandes Docker sans Sudo</h1>
+<p>&nbsp;</p>
+<h1>Utilisation de base de Docker</h1>
+<p>Si tout se passe bien, à ce stade vous devriez être en mesure de créer vos propres conteneurs sur votre machine.</p>
+<p>Nous allons voir dans cette section une des nombreuses possibilités d’utilisation de Docker. Par exemple je souhaite avoir un environnement ubuntu vierge. Via la commande ci-dessous je vais tout simplement récupérer la dernière image d’un conteneur debian et lancer un conteneur local associé.</p>
+<pre><code class="language-plaintext">docker run ubuntu</code></pre>
+<p>Vous pouvez bien évidemment changer “ubuntu” par un autre système linux , ou par un conteneur plus précis ( comme une image debian avec nginx installé). Je vous invite à vous rendre sur le <a href="https://hub.docker.com/explore">Hub Docker</a> pour voir toutes les images disponibles.</p>
+<p>Vous pouvez également, simplement récupérer l’image via un :</p>
+<pre><code class="language-plaintext">docker pull ubuntu</code></pre>
+<p>Une fois que votre conteneur est créé et lancé, il vous faut accéder à celui-ci. Avec cette commande vous allez accéder au bash de votre conteneur et ainsi modifier ou ajouter des fonctionnalités manuellement.</p>
+<pre><code class="language-plaintext">docker run -it ubuntu bash</code></pre>
+<p>Voilà un rapide et simple exemple pour vous montrer le fonctionnement le plus basique de Docker. Bien évidemment cette solution va bien au-delà de ça. Vous pouvez aussi créer vos propres images personnalisées via des scripts pour des besoins précis.</p>
+<p>Si vous voulez en savoir plus, rendez-vous sur le site de Docker.</p>
