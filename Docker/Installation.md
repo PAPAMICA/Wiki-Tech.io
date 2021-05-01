@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-01T16:00:53.245Z
+date: 2021-05-01T16:01:28.967Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -55,5 +55,7 @@ Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘
 Plus serieusement, le client Docker pour Windows n'est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.
 Passe directement par un Debian sous WSL et fait l'installation de Docker dedans.
 Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖
+
+
 
 # Utiliser les commandes Docker sans Sudo
