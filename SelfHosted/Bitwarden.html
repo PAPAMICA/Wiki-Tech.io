@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-05-01T15:12:13.509Z
+date: 2021-05-01T15:52:33.487Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T11:54:12.241Z
@@ -75,14 +75,27 @@ networks:
     external:
       name: proxy
 </code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <strong>$TOKEN</strong>, <i><strong>$URL_LOK</strong></i><strong>I</strong>, <strong>$URL</strong> en fonction de votre installation.</p>
+</blockquote>
 <p>Votre Vaultwarden sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <p>L'interface administrateur est disponible ici : <code>&lt;URL&gt;/admin</code></p>
 <p>L'API est disponible ici : <code>&lt;URL&gt;/api</code></p>
 <blockquote>
-  <p>Attention : Pensez à régler l'heure du serveur hôte pour le 2FA&nbsp;</p>
+  <p><strong>Attention : </strong>Pensez à régler l'heure du serveur hôte pour le 2FA&nbsp;</p>
 </blockquote>
-<h2>Configurer les mails</h2>
-<p>Pour le bon fonctionnement de Vaultwarden, il est important de configurer le serveur SMTP.</p>
+<h2>Configuration</h2>
+<h3>L'URL du site</h3>
+<p>Pour le bon fonctionnement de Vaultwarden, il est indispensable de configurer l'URL du site dans sa configuration :</p>
+<ol>
+  <li>&nbsp;Rendez-vous sur la panel admin à partir de cette URL : <code>&lt;URL&gt;/admin&nbsp;</code></li>
+  <li>Entrez le token que vous avez mis dans votre docker-compose</li>
+  <li>Cliquez sur l'onglet “Général” dans l'onglet “<i>Settings</i>”</li>
+  <li>Rentrez l'URL de votre site dans le champs “<i>Domain URL</i>”</li>
+</ol>
+<p>&nbsp;</p>
+<h3>Le serveur SMTP</h3>
+<p>Si vous souhaitez utiliser toutes les fonctionnalité de Vaulwarden, vous devez configurer le serveur SMTP :</p>
 <ol>
   <li>Rendez-vous sur la panel admin à partir de cette URL : <code>&lt;URL&gt;/admin&nbsp;</code></li>
   <li>Entrez le token que vous avez mis dans votre docker-compose</li>
