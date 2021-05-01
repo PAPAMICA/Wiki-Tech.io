@@ -2,7 +2,7 @@
 title: Créer une image Docker
 description: Créer et upload sur Docker-Hub sa propre image Docker.
 published: true
-date: 2021-05-01T18:09:32.156Z
+date: 2021-05-01T18:20:31.664Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:09:32.156Z
@@ -22,19 +22,19 @@ dateCreated: 2021-05-01T18:09:32.156Z
 <h1><strong>Les différentes instructions du Dockerfile</strong></h1>
 <p style="text-align:justify;">Avant de créer notre propre image, je vais d'abord vous décrire les <strong>instructions Dockerfile</strong> les plus communément utilisées.</p>
 <ul>
-  <li><strong>FROM</strong> : Définit l'image de base qui sera utilisée par les instructions suivantes.</li>
-  <li><strong>LABEL</strong> : Ajoute des métadonnées à l'image avec un système de clés-valeurs, permet par exemple d'indiquer à l'utilisateur l'auteur du Dockerfile.</li>
-  <li><strong>ARG</strong> : Variables temporaires qu'on peut utiliser dans un Dockerfile.</li>
-  <li><strong>ENV</strong> : Variables d'environnements utilisables dans votre Dockerfile et conteneur.</li>
-  <li><strong>RUN</strong> : Exécute des commandes Linux ou Windows lors de la création de l'image. Chaque instruction <strong>RUN</strong> va créer une couche en cache qui sera réutilisée dans le cas de modification ultérieure du Dockerfile.</li>
-  <li><strong>COPY</strong> : Permet de copier des fichiers depuis notre machine locale vers le conteneur Docker.</li>
-  <li><strong>ADD</strong> : Même chose que COPY mais prend en charge des liens ou des archives (si le format est reconnu, alors il sera décompressé à la volée).</li>
-  <li><strong>ENTRYPOINT</strong> : comme son nom l'indique, c'est le point d'entrée de votre conteneur, en d'autres termes, c'est la commande qui sera toujours exécutée au démarrage du conteneur. Il prend la forme de tableau JSON (ex : CMD ["cmd1","cmd1"]) ou de texte.</li>
-  <li><strong>CMD</strong> : Spécifie les arguments qui seront envoyés au <strong>ENTRYPOINT</strong>, (on peut aussi l'utiliser pour lancer des commandes par défaut lors du démarrage d'un conteneur). Si il est utilisé pour fournir des arguments par défaut pour l'instruction <strong>ENTRYPOINT</strong>, alors les instructions <strong>CMD</strong> et <strong>ENTRYPOINT</strong> doivent être spécifiées au format de tableau JSON.</li>
-  <li><strong>WORKDIR</strong> : Définit le répertoire de travail qui sera utilisé pour le lancement des commandes <strong>CMD</strong> et/ou <strong>ENTRYPOINT</strong> et ça sera aussi le dossier courant lors du démarrage du conteneur.</li>
-  <li><strong>EXPOSE</strong> : Expose un port.</li>
-  <li><strong>VOLUMES</strong> : Crée un point de montage qui permettra de persister les données.</li>
-  <li><strong>USER</strong> : Désigne quel est l'utilisateur qui lancera les prochaines instructions <strong>RUN</strong>, <strong>CMD</strong> ou <strong>ENTRYPOINT</strong> (par défaut c'est l'utilisateur root).</li>
+  <li><code><strong>FROM</strong></code> : Définit l'image de base qui sera utilisée par les instructions suivantes.</li>
+  <li><code><strong>LABEL</strong> </code>: Ajoute des métadonnées à l'image avec un système de clés-valeurs, permet par exemple d'indiquer à l'utilisateur l'auteur du Dockerfile.</li>
+  <li><code><strong>ARG</strong> </code>: Variables temporaires qu'on peut utiliser dans un Dockerfile.</li>
+  <li><code><strong>ENV</strong></code> : Variables d'environnements utilisables dans votre Dockerfile et conteneur.</li>
+  <li><code><strong>RUN</strong> </code>: Exécute des commandes Linux ou Windows lors de la création de l'image. Chaque instruction <strong>RUN</strong> va créer une couche en cache qui sera réutilisée dans le cas de modification ultérieure du Dockerfile.</li>
+  <li><code><strong>COPY</strong> </code>: Permet de copier des fichiers depuis notre machine locale vers le conteneur Docker.</li>
+  <li><code><strong>ADD</strong></code> : Même chose que COPY mais prend en charge des liens ou des archives (si le format est reconnu, alors il sera décompressé à la volée).</li>
+  <li><code><strong>ENTRYPOINT</strong></code> : comme son nom l'indique, c'est le point d'entrée de votre conteneur, en d'autres termes, c'est la commande qui sera toujours exécutée au démarrage du conteneur. Il prend la forme de tableau JSON (ex : CMD ["cmd1","cmd1"]) ou de texte.</li>
+  <li><code><strong>CMD </strong></code>: Spécifie les arguments qui seront envoyés au <strong>ENTRYPOINT</strong>, (on peut aussi l'utiliser pour lancer des commandes par défaut lors du démarrage d'un conteneur). Si il est utilisé pour fournir des arguments par défaut pour l'instruction <strong>ENTRYPOINT</strong>, alors les instructions <strong>CMD</strong> et <strong>ENTRYPOINT</strong> doivent être spécifiées au format de tableau JSON.</li>
+  <li><code><strong>WORKDIR</strong> </code>: Définit le répertoire de travail qui sera utilisé pour le lancement des commandes <strong>CMD</strong> et/ou <strong>ENTRYPOINT</strong> et ça sera aussi le dossier courant lors du démarrage du conteneur.</li>
+  <li><code><strong>EXPOSE</strong></code> : Expose un port.</li>
+  <li><code><strong>VOLUMES</strong> </code>: Crée un point de montage qui permettra de persister les données.</li>
+  <li><code><strong>USER</strong> </code>: Désigne quel est l'utilisateur qui lancera les prochaines instructions <strong>RUN</strong>, <strong>CMD</strong> ou <strong>ENTRYPOINT</strong> (par défaut c'est l'utilisateur root).</li>
 </ul>
 <p style="text-align:justify;">Je pense, que vous avez sûrement quelques interrogations pour savoir quand est-ce qu'il faut utiliser telle ou telle instruction. Ne vous inquiétez car à la fin de ce chapitre, je vais rédiger une FAQ, pour répondre à quelques une de vos interrogations.</p>
 <p style="text-align:justify;">&nbsp;</p>
@@ -115,11 +115,11 @@ ENTRYPOINT service mysql start &amp;&amp; mysql &lt; /articles.sql &amp;&amp; ap
 <p style="text-align:justify;">Pour créer ma couche OS, je me suis basée sur l'image <a href="https://hub.docker.com/_/debian/">debian-slim</a>. Vous pouvez, choisir une autre image si vous le souhaitez (il existe par exemple une image avec une couche OS nommée <a href="https://hub.docker.com/_/alpine">alpine</a>, qui ne pèse que 5 MB !), sachez juste qu'il faut adapter les autres instructions si jamais vous choisissez une autre image de base.</p>
 <hr>
 <pre><code class="language-plaintext">LABEL version="1.0" maintainer="AJDAINI Hatim &lt;ajdaini.hatim@gmail.com&gt;"</code></pre>
-<p style="text-align:justify;">Ensuite, j'ai rajouté les métadonnées de mon image. Comme ça, si un jour je décide de partager mon image avec d'autres personnes, alors ils pourront facilement récolter des métadonnées sur l'image (ex: l'auteur de l'image) depuis la commande docker inspect &lt;IMAGE_NAME&gt;.</p>
+<p style="text-align:justify;">Ensuite, j'ai rajouté les métadonnées de mon image. Comme ça, si un jour je décide de partager mon image avec d'autres personnes, alors ils pourront facilement récolter des métadonnées sur l'image (ex: l'auteur de l'image) depuis la commande<code> docker inspect &lt;IMAGE_NAME&gt;</code>.</p>
 <hr>
 <pre><code class="language-plaintext">ARG APT_FLAGS="-q -y"
 ARG DOCUMENTROOT="/var/www/html"</code></pre>
-<p style="text-align:justify;">Ici, j'ai créé deux variables temporaires qui ne me serviront qu'au sein de mon Dockerfile, d'où l'utilisation de l'instruction<strong>ARG</strong>. La première variable me sert comme arguments pour la commande apt, et la seconde est le répertoire de travail de mon apache.</p>
+<p style="text-align:justify;">Ici, j'ai créé deux variables temporaires qui ne me serviront qu'au sein de mon Dockerfile, d'où l'utilisation de l'instruction <strong>ARG</strong>. La première variable me sert comme arguments pour la commande apt, et la seconde est le répertoire de travail de mon apache.</p>
 <hr>
 <pre><code class="language-plaintext">RUN apt-get update -y &amp;&amp; \
 apt-get install ${APT_FLAGS} apache2</code></pre>
@@ -145,8 +145,9 @@ COPY app ${DOCUMENTROOT}</code></pre>
 <p style="text-align:justify;">Comme je suis un bon flemmard d'informaticien 😄, j'ai mis le dossier <i>/var/www/html</i> en tant que répertoire de travail, comme ça, quand je démarrerai mon conteneur, alors je serai directement sur ce dossier.</p>
 <hr>
 <pre><code class="language-plaintext">ENTRYPOINT service mysql start &amp;&amp; mysql &lt; /articles.sql &amp;&amp; apache2ctl -D FOREGROUND</code></pre>
-<p style="text-align:justify;">Ici, lors du lancement de mon conteneur, le service mysql démarrera et construira l'architecture de la base de données grâce à mon fichier <i>articles.sql</i> . Maintenant, il faut savoir qu'un <strong>conteneur se ferme automatiquement à la fin de son processus principal</strong>. Il faut donc un processus qui tourne en premier plan pour que le conteneur soit toujours à l'état running, d'où le lancement du service Apache en premier plan à l'aide de la commande apache2 -D FOREGROUND.</p>
-<h3><u>Construction et Execution de notre image</u></h3>
+<p style="text-align:justify;">Ici, lors du lancement de mon conteneur, le service mysql démarrera et construira l'architecture de la base de données grâce à mon fichier <i>articles.sql</i> . Maintenant, il faut savoir qu'un <strong>conteneur se ferme automatiquement à la fin de son processus principal</strong>. Il faut donc un processus qui tourne en premier plan pour que le conteneur soit toujours à l'état running, d'où le lancement du service Apache en premier plan à l'aide de la commande <code>apache2 -D FOREGROUND</code>.</p>
+<p style="text-align:justify;">&nbsp;</p>
+<h2><u>Construction et Execution de notre image</u></h2>
 <p style="text-align:justify;">Voici la commande pour qui nous permet de construire une image docker depuis un Dockerfile :</p>
 <pre><code class="language-plaintext">docker build -t &lt;IMAGE_NAME&gt; .</code></pre>
 <p style="text-align:justify;">Ce qui nous donnera :</p>
@@ -156,13 +157,17 @@ COPY app ${DOCUMENTROOT}</code></pre>
 <p style="text-align:justify;">Visitez ensuite la page suivante <a href="http://localhost:8080/">http://localhost:8080/</a>, et vous obtiendrez le résultat suivant :</p>
 <figure class="image"><img src="https://devopssec.fr/images/articles/docker/dockerfile/docker_container_lamp.jpg" alt="application docker dans une image custom LAMP"></figure>
 <p style="text-align:justify;">Bravo ! vous venez de créer votre propre image Docker 👏!</p>
-<h2><strong>FAQ Dockerfile</strong></h2>
+<p style="text-align:justify;">&nbsp;</p>
+<h1><strong>FAQ Dockerfile</strong></h1>
 <p style="text-align:justify;">Promesse faite, promesse tenue. Je vais tenter de répondre à quelques questions concernant certaines instructions du Dockerfile.</p>
-<p style="text-align:justify;"><strong>Quelle est la différence entre ENV et ARG dans un Dockerfile ?</strong></p>
+<p style="text-align:justify;">&nbsp;</p>
+<h2 style="text-align:justify;"><strong>Quelle est la différence entre ENV et ARG dans un Dockerfile ?</strong></h2>
 <p style="text-align:justify;">Ils permettent tous les deux de stocker une valeur. La seule différence, est que vous pouvez utiliser l'instruction <strong>ARG</strong> en tant que variable temporaire, utilisable qu'au niveau de votre Dockerfile, à l'inverse de l'instruction <strong>ENV</strong>, qui est une variable d'environnements accessible depuis le Dockerfile et votre conteneur. Donc privilégiez <strong>ARG</strong>, si vous avez besoin d'une variable temporaire et <strong>ENV</strong> pour les variables persistantes.</p>
-<p style="text-align:justify;"><strong>Quelle est la différence entre COPY et ADD dans un Dockerfile ?</strong></p>
+<p style="text-align:justify;">&nbsp;</p>
+<h2 style="text-align:justify;"><strong>Quelle est la différence entre COPY et ADD dans un Dockerfile ?</strong></h2>
 <p style="text-align:justify;">Ils permettent tous les deux de copier un fichier/dossier local vers un conteneur. La différence, c'est que <strong>ADD</strong> autorise les sources sous forme d'url et si jamais la source est une archive dans un format de compression reconnu (ex : zip, tar.gz, etc ...), alors elle sera décompressée automatiquement vers votre cible. Notez que dans les <a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy">best-practices de docker</a>, ils recommandent d’utiliser l'instruction <strong>COPY</strong> quand les fonctionnalités du <strong>ADD</strong> ne sont pas requises.</p>
-<p style="text-align:justify;"><strong>Quelle est la différence entre RUN, ENTRYPOINT et CMD dans un Dockerfile ?</strong></p>
+<p style="text-align:justify;">&nbsp;</p>
+<h2 style="text-align:justify;"><strong>Quelle est la différence entre RUN, ENTRYPOINT et CMD dans un Dockerfile ?</strong></h2>
 <ul>
   <li>L'instruction <strong>RUN</strong> est <strong>exécutée pendant la construction de votre image</strong>, elle est souvent utilisée pour installer des packages logiciels qui formeront les différentes couches de votre image.</li>
   <li>L'instruction <strong>ENTRYPOINT</strong> est <strong>exécutée pendant le lancement de votre conteneur</strong> et permet de configurer un conteneur qui s'exécutera en tant qu'exécutable. Par exemple pour notre stack LAMP, nous l'avions utilisée, pour démarrer le service Apache avec son contenu par défaut et en écoutant sur le port 80.</li>
@@ -176,6 +181,7 @@ COPY app ${DOCUMENTROOT}</code></pre>
 ENTRYPOINT ls -l /</code></pre>
 <p style="text-align:justify;">Ensuite on construit et on exécute notre image :</p>
 <pre><code class="language-plaintext">docker build -t test .</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">docker run test</code></pre>
 <p style="text-align:justify;"><strong>Résultat :</strong></p>
 <pre><code class="language-plaintext">drwxr-xr-x    2 root     root          4096 Jun 19 17:14 bin
@@ -190,6 +196,7 @@ ENTRYPOINT ["ls", "-l"]
 CMD  ["/"]</code></pre>
 <p style="text-align:justify;">On va reconstruire maintenant notre image et relancer notre image avec le paramètre personnalisé.</p>
 <pre><code class="language-plaintext">docker build -t test .</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">docker run test /etc</code></pre>
 <p style="text-align:justify;"><strong>Résultat :</strong></p>
 <pre><code class="language-plaintext">-rw-r--r--    1 root     root             7 Jun 19 17:14 alpine-release
@@ -197,7 +204,8 @@ CMD  ["/"]</code></pre>
 -rw-r--r--    1 root     root          4169 Jun 12 17:52 udhcpd.conf</code></pre>
 <p style="text-align:justify;">Voilà l'objectif est atteint 😋.</p>
 <p style="text-align:justify;">J'espère, que vous avez bien compris la différence entre les différentes instructions, si ce n'est pas le cas alors n'hésitez pas à me poser des questions dans l'espace commentaire, il est prévu pour ça 😉.</p>
-<h2><strong>Publier son image dans le Hub Docker</strong></h2>
+<p style="text-align:justify;">&nbsp;</p>
+<h1><strong>Publier son image dans le Hub Docker</strong></h1>
 <p style="text-align:justify;">Si vous souhaitez partager votre image avec d'autres utilisateurs, une des possibilités est d'utiliser le <a href="https://hub.docker.com/">Hub Docker</a>.</p>
 <p style="text-align:justify;">Pour cela, commencez par vous inscrire sur la plateforme et créez ensuite un repository public.</p>
 <figure class="image"><img src="https://devopssec.fr/images/articles/docker/dockerfile/docker-hub-create-repository.jpg" alt="création d'un projet publique dans le hub docker"></figure>
