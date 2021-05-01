@@ -2,21 +2,23 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-01T16:10:15.983Z
+date: 2021-05-01T17:55:12.509Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
 ---
 
 # Les différentes catégories
-## Docker 
+## Docker
 - [✨ Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
 - [:cyclone: Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
 - [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
+- [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Portainer)
 - [💙 Traefik *Un reverse-proxy pour tous les services*](/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Docker/Portainer)
 {.links-list}
+
 
 ## SelfHosted
 - [:cyclone: Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
