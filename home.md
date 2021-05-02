@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-01T18:29:11.836Z
+date: 2021-05-02T08:19:09.967Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -10,7 +10,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 
 # Les différentes catégories
 ## Docker
-- [✨ Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
+- [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
 - [:cyclone: Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Image)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
