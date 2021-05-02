@@ -1,0 +1,85 @@
+<!--
+title: Guacamole
+description: Une passerelle pour vous connectez à vos serveurs en RDP et SSH !
+published: true
+date: 2021-05-02T08:55:12.394Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-02T08:55:12.394Z
+-->
+
+<h1>Présentation</h1>
+<figure class="table" style="height:103px;width:720px;">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:0px hidden;border-left:0px hidden;border-right:0px hidden;border-top:0px hidden;">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgba(0, 0, 0, 0.1);border-left:1px solid rgba(0, 0, 0, 0.1);border-right:1px solid rgba(0, 0, 0, 0.1);border-top:1px solid rgba(0, 0, 0, 0.1);height:103px;padding:0.4em;width:135px;">
+          <figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/guac-tricolor-300x300-200x200.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/guac-tricolor-300x300-200x200.png 200w, https://www.tech2tech.fr/wp-content/uploads/2019/12/guac-tricolor-300x300.png 300w" sizes="100vw" width="85"></figure>
+        </td>
+        <td style="border-bottom:1px solid rgba(0, 0, 0, 0.1);border-left:1px solid rgba(0, 0, 0, 0.1);border-right:1px solid rgba(0, 0, 0, 0.1);border-top:1px solid rgba(0, 0, 0, 0.1);height:103px;padding:0.4em;width:585px;">Apache Guacamole est une passerelle pour la prise en main à distance sans client. Il prend en charge les protocoles standard tels que VNC, RDP et SSH. C’est un outil clientless car aucun plug-in ou logiciel client n’est requis sur le serveur ou le PC.</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Grâce à HTML5, une fois que Guacamole est installé sur un serveur, tout ce dont vous avez besoin pour accéder à vos ordinateurs de bureau est un navigateur Web.</p>
+<h1><strong>Installation</strong></h1>
+<p>Pour installer Guacamole, nous allons utiliser docker, vous aurez donc besoin d’une VM (ou d’un VPS) avec un système d’exploitation pouvant faire tourner Docker (Debian, CentOS, Windows, MacOS, etc…).</p>
+<p>Je vous ai préparé un petit script permettant de déployer rapidement et simplement Guacamole. Pour cela, suivez les consignes suivantes :</p>
+<p>Mettez à jour votre Debian :</p>
+<pre><code class="language-plaintext">apt update &amp;&amp; apt upgrade</code></pre>
+<p>Installez Git :</p>
+<pre><code class="language-plaintext">apt install -y git</code></pre>
+<p>Récupérez mon Git de scripts :</p>
+<pre><code class="language-plaintext">git clone https://github.com/PAPAMICA/scripts</code></pre>
+<p>Exécutez le script :</p>
+<pre><code class="language-plaintext">cd scripts/debian/guacamolechmod +x debian_install_guacamole.sh./debian_install_guacamole.sh</code></pre>
+<p><br>Votre Guacamole est désormais installé et accessible depuis <code>http://IP_DU_SERVEUR:8080</code>.</p>
+<figure class="image"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/guacamole1.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/guacamole1.png 952w, https://www.tech2tech.fr/wp-content/uploads/2019/12/guacamole1-708x235.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/guacamole1-768x255.png 768w" sizes="100vw" width="952"></figure>
+<h1>Configuration</h1>
+<h2><strong>Créer le super-admin</strong></h2>
+<p>Connectez-vous sur votre Guacamole avec l’identifiant «&nbsp;guacadmin&nbsp;» et le mot de passe «&nbsp;guacadmin&nbsp;»</p>
+<p>Rendez-vous directement dans la catégorie «&nbsp;Utilisateurs&nbsp;» pour vous créer un compte super-administrateur :</p>
+<figure class="image image_resized" style="width:71.5%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua2-1024x584.png" alt=""></figure>
+<figure class="image image_resized" style="width:71.27%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-1024x584.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-1024x584.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-708x404.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-768x438.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-1536x876.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua3-2048x1168.png 2048w" sizes="100vw" width="1024"></figure>
+<p>Une fois votre compte créé, reconnectez vous avec et supprimez le compte guacadmin.</p>
+<h2><strong>Créer une connexion RDP</strong></h2>
+<p>Dans un premier temps, activez l’option bureau à distance sur votre Windows cible. Si vous êtes en réseau local, le port par défaut est le 3389, si vous vous connectez à distance à cette machine, pensez à changer le port par défaut et à faire la règle de redirection du port sur votre routeur.</p>
+<h3><strong>Configuration de la connexion dans Guacamole</strong></h3>
+<p>Pour configurer une connexion RDP, rendez-vous dans la catégorie «&nbsp;Connexions&nbsp;» :</p>
+<p>Rentrez les informations suivantes en les adaptant à votre configuration : (voir screenshot)</p>
+<ol>
+  <li>Nommez la connexion.</li>
+  <li>Choisissez «&nbsp;RDP&nbsp;».</li>
+  <li>Rentrez l’ip et le port de la machine cible.</li>
+  <li>Sélectionnez le clavier FR et activez la console administrateur.</li>
+  <li>Configurez les redirections de périphériques.</li>
+  <li>Activez ou désactivez les options de performance en fonction de votre connexion.</li>
+  <li>Enregistrez cette nouvelle connexion.</li>
+</ol>
+<figure class="image image_resized" style="width:73.63%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134.png 985w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134-404x960.png 404w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134-431x1024.png 431w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134-768x1826.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134-646x1536.png 646w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua5-scaled-e1575380391134-861x2048.png 861w" sizes="100vw" width="985"></figure>
+<h3><strong>Utilisation de cette connexion RDP</strong></h3>
+<p>Pour vous connecter à votre machine via Guacamole, c’est très simple :</p>
+<figure class="image image_resized" style="width:73.68%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-1024x569.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-1024x569.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-708x393.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-768x427.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-1536x853.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua6-scaled-e1575382009275-2048x1138.png 2048w" sizes="100vw" width="1024"></figure>
+<p>Vous voilà connecté à votre machine à travers votre navigateur !</p>
+<figure class="image image_resized" style="width:73.03%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-1024x584.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-1024x584.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-708x404.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-768x438.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-1536x876.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua7-2048x1168.png 2048w" sizes="100vw" width="1024"></figure>
+<p>En utilisant le raccourci Ctrl+Alt+Maj, vous faites apparaître le menu de Guacamole vous permettant de gérer le presse papier ainsi que le transfert de fichiers :</p>
+<figure class="image image_resized" style="width:46.76%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8-631x1024.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8-631x1024.png 631w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8-591x960.png 591w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8-768x1247.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8-946x1536.png 946w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua8.png 960w" sizes="100vw" width="631"></figure>
+<figure class="image image_resized" style="width:74.29%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-1024x584.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-1024x584.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-708x404.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-768x438.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-1536x876.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua9-2048x1168.png 2048w" sizes="100vw" width="1024"></figure>
+<figure class="image image_resized" style="width:74.13%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-1024x584.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-1024x584.png 1024w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-708x404.png 708w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-768x438.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-1536x876.png 1536w, https://www.tech2tech.fr/wp-content/uploads/2019/12/gua91-2048x1168.png 2048w" sizes="100vw" width="1024"></figure>
+<h2><strong>Configurer une connexion SSH</strong></h2>
+<p>Avec Apache Guacamole, vous pouvez aussi prendre la main sur un serveur avec un accès SSH, de la même façon, rendez-vous dans la catégorie «&nbsp;Connexions&nbsp;» :</p>
+<p>Rentrez les informations suivantes en les adaptant à votre configuration : (voir screenshot)</p>
+<ol>
+  <li>Nommez la connexion.</li>
+  <li>Choisissez «&nbsp;SSH&nbsp;».</li>
+  <li>Rentrez l’ip et le port de la machine cible.</li>
+  <li>Rentrez vos informations de connexions.</li>
+  <li>Configurez le keepalive.</li>
+  <li>Activez le SFTP.</li>
+  <li>Enregistrez cette nouvelle connexion.</li>
+</ol>
+<p>Pour utiliser cette connexion, il vous suffit de la lancer et vous vous retrouverez avec le terminal de votre serveur dans votre navigateur !</p>
+<p>&nbsp;</p>
+<p>Et voilà pour ce «&nbsp;rapide&nbsp;» tour de ce bel outil, n’hésitez pas à nous dire ce que vous en pensez en commentaires 🙂</p>
+<figure class="image image_resized" style="width:47.78%;"><img src="https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-632x1024.png" alt="" srcset="https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-632x1024.png 632w, https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-593x960.png 593w, https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-768x1244.png 768w, https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-948x1536.png 948w, https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy-1264x2048.png 1264w, https://www.tech2tech.fr/wp-content/uploads/2019/12/eEq8VVrlHy.png 1276w" sizes="100vw" width="632"></figure>
+<p>&nbsp;</p>
