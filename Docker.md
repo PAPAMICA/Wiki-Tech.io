@@ -2,14 +2,14 @@
 title: Docker
 description: 
 published: true
-date: 2021-05-01T18:28:52.609Z
+date: 2021-05-02T08:19:23.999Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T17:19:06.316Z
 ---
 
 # Docker
-- [✨ Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
+- [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
 - [:cyclone: Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Image)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
