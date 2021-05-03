@@ -40,10 +40,10 @@ dateCreated: 2021-05-03T10:19:12.595Z
 <p>Par exemple :</p>
 <pre><code class="language-plaintext">powershell.exe -NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "CLIENT - HOST1&gt;" Onsite 192.168.5.4</code></pre>
 <p>&nbsp;</p>
-<blockquote>
+<blockquote class="is-warning">
   <p><strong>Attention : </strong>Si vous utilisez un proxy Zabbix, il faut mettre l'IP de ce proxy !</p>
 </blockquote>
-<blockquote>
+<blockquote class="is-warning">
   <p><strong>Attention :</strong> Pensez à modifier l'URL du dossier de l'Agent Zabbix dans le script s'il n'est pas dans “<i>C:\Program Files\Zabbix Agent</i>” (Ligne 36 : $ZabbixFolder = “&lt;chemin&gt;”)</p>
 </blockquote>
 <p>&nbsp;</p>
@@ -55,6 +55,6 @@ dateCreated: 2021-05-03T10:19:12.595Z
 </ol>
 <figure class="image image_resized" style="width:54.58%;"><img src="/image_2021-05-03_121832.png"></figure>
 <p>&nbsp;</p>
-<blockquote>
+<blockquote class="is-info">
   <p>Vous pouvez créer 2 GPO si vous souhaitez supervisez les sauvegardes Offsite et Onsite.&nbsp;</p>
 </blockquote>
