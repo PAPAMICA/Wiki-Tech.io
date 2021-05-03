@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-03T19:38:56.615Z
+date: 2021-05-03T19:39:15.328Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -65,6 +65,7 @@ services:
 networks:
   proxy:
     external: true</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <i><strong>$URL_LOK</strong></i><strong>I </strong>et <strong>$URL</strong> en fonction de votre installation.</p>
 </blockquote>
@@ -72,7 +73,6 @@ networks:
 <h1>Configuration</h1>
 <h2>Connexion &nbsp;au serveur hôte</h2>
 <p>Une fois installer, il faut créer le compte administrateur et connecter Portainer à la socket Docker : vu que nous donnons au container un accès direct à la socket (via le volume bind), Portainer à d'office accès et peux contrôler Docker de notre serveur hôte. Choisissez donc “<i><strong>Socket</strong></i>” et cliquez sur “<i><strong>Valider</strong></i>”.</p>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>Connexion à un serveur externe avec l'agent</h2>
 <p>Il est possible de contrôler un autre serveur sur lequel Docker est installé grâce à un agent Portainer qui se déploie lui aussi dans un container en une simple commande :</p>
