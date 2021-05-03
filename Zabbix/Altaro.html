@@ -2,7 +2,7 @@
 title: Script Altaro-Zabbix
 description: Remonter les informations Altaro dans Zabbix
 published: true
-date: 2021-05-03T10:19:12.595Z
+date: 2021-05-03T10:27:50.335Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-03T10:19:12.595Z
@@ -18,7 +18,7 @@ dateCreated: 2021-05-03T10:19:12.595Z
 <h1>Installation</h1>
 <h2>Modèle Zabbix</h2>
 <p>Afin d'interpréter les données que nous allons envoyer à notre serveur Zabbix, nous devons importer un petit modèle qui va comprendre la donnée, l'afficher et générer automatiquement une alerte en cas d’échec de la sauvegarde ou si on ne récupère plus l'information depuis plus de 48h.</p>
-<p>&nbsp;1 - Téléchargez le modèle disponible sur mon Github</p>
+<p>&nbsp;1 - Téléchargez le modèle disponible sur mon <a href="https://github.com/PAPAMICA/Templates/tree/master/Zabbix-Altaro">Github</a></p>
 <p>&nbsp;2 - Connectez vous à votre serveur Zabbix</p>
 <p>&nbsp;3 - Rendez vous dans l'onglet “<i>Configuration</i>” et dans la catégorie “<i>Modèles</i>”</p>
 <p>&nbsp;4 - Cliquez sur le bouton “<i>Importer</i>” en haut à droite et choisissez le fichier “<i>Template App Altaro VM Backup.xml</i>”</p>
@@ -27,7 +27,7 @@ dateCreated: 2021-05-03T10:19:12.595Z
 <p>&nbsp;</p>
 <h2>Script Powershell</h2>
 <p>Le script Powershell doit être téléchargé et exécuté sur le même serveur que la console Altaro (en général le serveur hôte Hyper-V) :</p>
-<p>&nbsp;1 - Téléchargez le script disponible sur mon Github</p>
+<p>&nbsp;1 - Téléchargez le script disponible sur mon <a href="https://github.com/PAPAMICA/Templates/tree/master/Zabbix-Altaro">Github</a></p>
 <p>&nbsp;2 - Copiez le dans le dossier de votre Agent Zabbix (en général : “<i>C:\Program Files\Zabbix Agent</i>”)</p>
 <p>&nbsp;3 - Testez le fonctionnement du script avec la commande :</p>
 <pre><code class="language-plaintext">powershell.exe -NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "&lt;CLIENT - HOST&gt;" [Onsite/Offsite] &lt;ZABBIX_IP&gt;</code></pre>
@@ -39,10 +39,11 @@ dateCreated: 2021-05-03T10:19:12.595Z
 </ul>
 <p>Par exemple :</p>
 <pre><code class="language-plaintext">powershell.exe -NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "CLIENT - HOST1&gt;" Onsite 192.168.5.4</code></pre>
-<blockquote class="is-warning">
+<p>&nbsp;</p>
+<blockquote>
   <p><strong>Attention : </strong>Si vous utilisez un proxy Zabbix, il faut mettre l'IP de ce proxy !</p>
 </blockquote>
-<blockquote class="is-warning">
+<blockquote>
   <p><strong>Attention :</strong> Pensez à modifier l'URL du dossier de l'Agent Zabbix dans le script s'il n'est pas dans “<i>C:\Program Files\Zabbix Agent</i>” (Ligne 36 : $ZabbixFolder = “&lt;chemin&gt;”)</p>
 </blockquote>
 <p>&nbsp;</p>
@@ -54,6 +55,6 @@ dateCreated: 2021-05-03T10:19:12.595Z
 </ol>
 <figure class="image image_resized" style="width:54.58%;"><img src="/image_2021-05-03_121832.png"></figure>
 <p>&nbsp;</p>
-<blockquote class="is-info">
+<blockquote>
   <p>Vous pouvez créer 2 GPO si vous souhaitez supervisez les sauvegardes Offsite et Onsite.&nbsp;</p>
 </blockquote>
