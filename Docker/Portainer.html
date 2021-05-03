@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-03T19:36:44.232Z
+date: 2021-05-03T19:38:56.615Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -71,7 +71,7 @@ networks:
 <p>Votre Portainer sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <h1>Configuration</h1>
 <h2>Connexion &nbsp;au serveur hôte</h2>
-<p>Une fois installer, il faut créer le compte administrateur et connecter Portainer à la socket Docker :&nbsp;</p>
+<p>Une fois installer, il faut créer le compte administrateur et connecter Portainer à la socket Docker : vu que nous donnons au container un accès direct à la socket (via le volume bind), Portainer à d'office accès et peux contrôler Docker de notre serveur hôte. Choisissez donc “<i><strong>Socket</strong></i>” et cliquez sur “<i><strong>Valider</strong></i>”.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>Connexion à un serveur externe avec l'agent</h2>
