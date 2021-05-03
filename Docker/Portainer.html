@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-02T08:22:20.074Z
+date: 2021-05-03T18:44:25.330Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -10,10 +10,18 @@ dateCreated: 2021-05-01T18:33:26.866Z
 
 <figure class="image image_resized" style="width:45.21%;"><img src="https://linuq.org/_media/projets/portainer_io.png" alt="Les couches logicielles utilisées [LinuQ: Logiciels libres à Québec]"></figure>
 <h1>Présentation</h1>
-<p>&nbsp;</p>
+<p>Docker est un outil utilisable en ligne de commande, pour le coup c’est pas hyper agréable à utiliser au quotidien malgré que cela soit tout à fait possible. Mais pour une intervention rapide, l'utilisation d'une interface web qui permette de gérer les opérations courantes sur ses conteneurs est très utile. Et ça tombe bien, il existe Portainer pour ça et manager facilement vos Dockers ! Portainer s’installe comme un conteneur docker pour simplifier sont déploiement. Portainer permet de gérer une bonne partie des éléments de docker : conteneurs, images, volumes, réseaux, utilisateurs, etc. Il peux aussi contrôler un autre serveur Docker à distance grâce à un agent et permet de déployer des applications dans des conteneurs en juste quelques clics.</p>
 <h1>Installation</h1>
+<h2>Docker</h2>
+<p>Une simple commande permet de lancer un container avec Portainer :&nbsp;</p>
+<pre><code class="language-plaintext">docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v /apps/portainer:/data portainer/portainer</code></pre>
+<p>&nbsp;</p>
+<h2>Docker-compose</h2>
+<p>Dans mon cas je préfère toujours avoir un docker-compose, je trouve cela bien plus pratique !</p>
 <p>&nbsp;</p>
 <h1>Configuration</h1>
-<h2>Ajouter des templates d'applications</h2>
+<h2>Connexion &nbsp;au serveur hôte</h2>
+<h2>Connexion à un serveur externe avec l'agent</h2>
+<h2>Ajouter des modèles d'applications</h2>
 <h2>Connexion avec Keycloak</h2>
 <p>&nbsp;</p>
