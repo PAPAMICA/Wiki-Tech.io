@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-03T18:44:25.330Z
+date: 2021-05-03T18:49:18.679Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -18,7 +18,53 @@ dateCreated: 2021-05-01T18:33:26.866Z
 <p>&nbsp;</p>
 <h2>Docker-compose</h2>
 <p>Dans mon cas je préfère toujours avoir un docker-compose, je trouve cela bien plus pratique !</p>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">version: '2'
+  
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    environment: # Ajout de mes templates
+      TEMPLATES: https://github.com/PAPAMICA/docker-compose-collection/blob/master/templates-portainer.json
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /apps/portainer/data:/data
+      
+    # Facultatif avec Traefik  
+    #ports:
+    # - 9000:9000
+    
+    # Facultatif : Support de Loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    
+    # Facultatif : Support de Traefik
+    networks:
+      - proxy  
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.entrypoints=http
+      - traefik.http.routers.portainer.rule=Host(\"portainer.$ndd\")
+      - traefik.http.middlewares.portainer-https-redirect.redirectscheme.scheme=https
+      - traefik.http.routers.portainer.middlewares=portainer-https-redirect
+      - traefik.http.routers.portainer-secure.entrypoints=https
+      - traefik.http.routers.portainer-secure.rule=Host(\"portainer.$ndd\")
+      - traefik.http.routers.portainer-secure.tls=true
+      - traefik.http.routers.portainer-secure.tls.certresolver=http
+      - traefik.http.routers.portainer-secure.service=portainer
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
+      - traefik.docker.network=proxy
+    
+networks:
+  proxy:
+    external: true</code></pre>
 <h1>Configuration</h1>
 <h2>Connexion &nbsp;au serveur hôte</h2>
 <h2>Connexion à un serveur externe avec l'agent</h2>
