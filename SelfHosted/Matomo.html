@@ -2,7 +2,7 @@
 title: Matomo
 description: Enfin une alternative viable à Google Analytics !
 published: true
-date: 2021-05-03T13:26:34.007Z
+date: 2021-05-03T13:40:33.593Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-03T11:22:10.212Z
@@ -11,9 +11,84 @@ dateCreated: 2021-05-03T11:22:10.212Z
 <figure class="image image_resized" style="width:64.09%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Matomo_Logo.svg/1280px-Matomo_Logo.svg.png" alt="Fichier:Matomo Logo.svg — Wikipédia"></figure>
 <h1>Présentation</h1>
 <h1>Installation</h1>
-<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://fr.matomo.org/docs/installation/">leur site</a>, le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :</p>
-<p>&nbsp;</p>
-<p><br>&nbsp;</p>
+<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://fr.matomo.org/docs/installation/">leur site</a>, le déployer directement depuis mon template d'application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :</p>
+<pre><code class="language-plaintext">version: "2"
+services:
+  # Base de données    
+  matomo-db:
+    image: linuxserver/mariadb
+    container_name: matomo-db
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MYSQL_ROOT_PASSWORD=pihvzlbkcgvlknfze!ef6e4
+      - TZ=Europe/Paris
+      - MYSQL_DATABASE=matomo
+      - MYSQL_USER=matomo
+      - MYSQL_PASSWORD=Matomo65468431
+      # Flag necessary for the database max allowed packet check
+      # https://matomo.org/faq/troubleshooting/faq_183/
+      - MARIADB_EXTRA_FLAGS=--max_allowed_packet=64MB
+    volumes:
+      - /apps/matomo/db:/config
+
+    # Facultatif
+    networks:
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+        
+  # Matomo : https://fr.matomo.org
+  matomo:
+    image: matomo
+    container_name: matomo
+    restart: unless-stopped
+    environment:
+      - MATOMO_DATABASE_HOST=matomo-db
+      - MATOMO_DATABASE_DBNAME=matomo
+      - MATOMO_DATABASE_USERNAME=matomo
+      - MATOMO_DATABASE_PASSWORD=Matomo65468431
+    volumes:
+      - /apps/matomo/data:/var/www/html matomo
+    depends_on:
+      - matomo-db
+    # Facultatif avec Traefik  
+    #Ports:
+    #  - 80:80
+
+    # Facultatif  
+    networks:
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.matomo.entrypoints=http"
+      - "traefik.http.routers.matomo.rule=Host(`$URL`)"
+      - "traefik.http.middlewares.matomo-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.matomo.middlewares=matomo-https-redirect"
+      - "traefik.http.routers.matomo-secure.entrypoints=https"
+      - "traefik.http.routers.matomo-secure.rule=Host(`$URL`)"
+      - "traefik.http.routers.matomo-secure.tls=true"
+      - "traefik.http.routers.matomo-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+
+      
+networks:
+  proxy:
+    external:
+      name: proxy</code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <i><strong>$URL_LOK</strong></i><strong>I </strong>et <strong>$URL</strong> en fonction de votre installation.</p>
+</blockquote>
+<p>Votre Matomo sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.<br>&nbsp;</p>
 <h1>Configuration</h1>
 <h2>Site Wordpress</h2>
 <p>&nbsp;1 - Ajoutez un site dans Matomo</p>
