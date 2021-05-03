@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-03T18:49:18.679Z
+date: 2021-05-03T18:55:53.230Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -51,11 +51,11 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.portainer.entrypoints=http
-      - traefik.http.routers.portainer.rule=Host(\"portainer.$ndd\")
+      - traefik.http.routers.portainer.rule=Host("$URL")
       - traefik.http.middlewares.portainer-https-redirect.redirectscheme.scheme=https
       - traefik.http.routers.portainer.middlewares=portainer-https-redirect
       - traefik.http.routers.portainer-secure.entrypoints=https
-      - traefik.http.routers.portainer-secure.rule=Host(\"portainer.$ndd\")
+      - traefik.http.routers.portainer-secure.rule=Host("$URL")
       - traefik.http.routers.portainer-secure.tls=true
       - traefik.http.routers.portainer-secure.tls.certresolver=http
       - traefik.http.routers.portainer-secure.service=portainer
@@ -65,9 +65,16 @@ services:
 networks:
   proxy:
     external: true</code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <i><strong>$URL_LOK</strong></i><strong>I </strong>et <strong>$URL</strong> en fonction de votre installation.</p>
+</blockquote>
+<p>Votre Portainer sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <h1>Configuration</h1>
 <h2>Connexion &nbsp;au serveur hôte</h2>
+<p>Une fois installer, il faut créer le compte administrateur et connecter Portainer à la socket Docker :&nbsp;</p>
 <h2>Connexion à un serveur externe avec l'agent</h2>
+<p>Il est possible de contrôler un autre serveur sur lequel Docker est installé grâce à un agent Portainer qui se déploie lui aussi dans un container en une simple commande :</p>
 <h2>Ajouter des modèles d'applications</h2>
+<p>Etant un gars super top génial (merci de ne pas me contredire.), j'ai fait un modèle de toutes les applications que j'utilise au quotidien… Et tout ça intégré directement dans Portainer pour déployer les applications en juste quelques clics</p>
 <h2>Connexion avec Keycloak</h2>
 <p>&nbsp;</p>
