@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-03T18:55:53.230Z
+date: 2021-05-03T19:36:44.232Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:33:26.866Z
@@ -72,9 +72,26 @@ networks:
 <h1>Configuration</h1>
 <h2>Connexion &nbsp;au serveur hôte</h2>
 <p>Une fois installer, il faut créer le compte administrateur et connecter Portainer à la socket Docker :&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <h2>Connexion à un serveur externe avec l'agent</h2>
 <p>Il est possible de contrôler un autre serveur sur lequel Docker est installé grâce à un agent Portainer qui se déploie lui aussi dans un container en une simple commande :</p>
+<pre><code class="language-plaintext">docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/v
+olumes:/var/lib/docker/volumes portainer/agent</code></pre>
+<p>Pour ajouter le serveur à notre Portainer, rendez vous dans “<i><strong>Settings &gt; Endpoints &gt; + Add endpoint</strong></i>” :</p>
+<figure class="image image_resized" style="width:94.7%;"><img src="/image_2021-05-03_213224.png"></figure>
+<p>Et configurez votre serveur de la sorte :&nbsp;</p>
+<figure class="image image_resized" style="width:93.84%;"><img src="/image_2021-05-03_213454.png"></figure>
+<p>Et voilà ! Votre serveur sera maintenant disponible dans Portainer !</p>
 <h2>Ajouter des modèles d'applications</h2>
-<p>Etant un gars super top génial (merci de ne pas me contredire.), j'ai fait un modèle de toutes les applications que j'utilise au quotidien… Et tout ça intégré directement dans Portainer pour déployer les applications en juste quelques clics</p>
-<h2>Connexion avec Keycloak</h2>
+<p>Etant un gars super top génial (merci de ne pas me contredire.), j'ai fait un modèle de toutes les applications que j'utilise au quotidien… Et tout ça intégré directement dans Portainer pour déployer les applications en juste quelques clics. Vous ai-je dis que ces applications supportent Traefik et Loki ? Genial non ? Allez, allons y !</p>
+<p>Il suffit simplement de mettre l'url de mon repo dans la configuration : <code>https://github.com/PAPAMICA/docker-compose-collection/blob/master/templates-portainer.json</code></p>
+<figure class="image image_resized" style="width:95.97%;"><img src="https://camo.githubusercontent.com/576de2c1f125016f37a6ddfb36546e78cfb49cd8a61ce8c156e329c723c424f0/68747470733a2f2f692e696d6775722e636f6d2f4d34397373434e2e706e67"></figure>
+<p>Et maintenant rendez-vous directement dans l'onglet “App Templates” pour découvrir la liste des applications disponibles :</p>
+<figure class="image image_resized" style="width:95.5%;"><img src="/image_2021-05-03_211850.png"></figure>
 <p>&nbsp;</p>
+<h2>Connexion avec Keycloak</h2>
+<p>Vous retrouverez ici l'installation de Keycloak :</p>
+<p>Installation de Keycloak</p>
+<p>La configuration de l'authentification avec Keycloak se fait directement dans les paramètres comme ceci :</p>
+<figure class="image image_resized" style="width:95.43%;"><img src="/image_2021-05-03_212514.png"></figure>
