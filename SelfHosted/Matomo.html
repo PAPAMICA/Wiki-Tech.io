@@ -2,7 +2,7 @@
 title: Matomo
 description: Enfin une alternative viable à Google Analytics !
 published: true
-date: 2021-05-03T13:48:54.918Z
+date: 2021-05-03T13:58:50.967Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-03T11:22:10.212Z
@@ -91,6 +91,7 @@ networks:
 <p>Votre Matomo sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.<br>&nbsp;</p>
 <h1>Configuration</h1>
 <h2>Site Wordpress</h2>
+<p>Le plus simple reste de passer par une extension :</p>
 <p>&nbsp;1 - Ajoutez un site dans Matomo</p>
 <p>&nbsp;2 - Connectez vous en administrateur sur votre Wordpress</p>
 <p>&nbsp;3 - Ajoutez et activez l'extension “<a href="https://wordpress.org/plugins/piwik-tracking-by-mente-binaria/"><code><strong>Tracking code for Matomo, by Sergio Santos</strong></code></a><strong>”&nbsp;</strong></p>
@@ -106,5 +107,22 @@ networks:
 <p>&nbsp;2 - Dans la catégorie “<i>Analytiques</i>”, sélectionnez “<i>Matomo</i>”</p>
 <p>&nbsp;3 - Entrez l'ID de votre site (dispo sur votre serveur Matomo) ainsi que l'URL de votre serveur Matomo</p>
 <p>&nbsp;4 - Cliquez sur “<i>Appliquer</i>” &amp; Enjoy !&nbsp;</p>
+<p>&nbsp;</p>
 <h2>Site web classique</h2>
+<p>Après avoir configurer le site dans Matomo, il vous fournis un code que vous pouvez rajouter à votre site directement entre le head et le body. Voici un exemple du code fournit :</p>
+<pre><code class="language-html">&lt;!-- Matomo --&gt;
+&lt;script type="text/javascript"&gt;
+  var _paq = window._paq = window._paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//&lt;SERVEUR_MATOMO/";
+    _paq.push(['setTrackerUrl', u+'matomo.php']);
+    _paq.push(['setSiteId', '6']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+  })();
+&lt;/script&gt;
+&lt;!-- End Matomo Code --&gt;</code></pre>
 <p>&nbsp;</p>
