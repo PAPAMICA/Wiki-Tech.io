@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-03T11:19:24.502Z
+date: 2021-05-04T07:09:00.412Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -93,10 +93,13 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🍎 Homebridge *Ajouter la compatibilité avec HomeKit*](/Domotique/Jeedom)
 {.links-list}
 
-## Python
-- [📖 Les bases du langage *L'algébre, les variables et les fonctions*](/Python/Base)
-- [➕ Les structures conditionnelles *If, Else, Elif, comparaison, etc...*](/Python/Conditions)
-- [♾️ Les boucles *While, incrémentation, etc...*](/Python/Boucles)
+## Scripting
+- [✨ Les bases *Quel que soit le langage utilisé, il y a quelques notions à connaitre*](/Scripting/Base)
+- [🐧 Bash *Le commencement d'une automatisation*](/Scripting/Bash)
+- [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting/Python)
+- [🪟 Powershell *Un langage puissant dédié à Windows*](/Scripting/Powershell)
+
+
 {.links-list}
 
 ## Windows
