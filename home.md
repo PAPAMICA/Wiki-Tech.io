@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-04T08:31:54.399Z
+date: 2021-05-04T08:35:02.374Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -44,6 +44,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🎥 Jitsi *Serveur de visioconférence. Alternative à Teams, Google Meet, etc...*](/SelfHosted/Jitsi)
 - [🌍 Matomo *Analyse du traffic web. Alternative à Google Analytics*](/SelfHosted/Matomo)
 - [🔒 Vault *Gestion de vos secrets centralisés avec API*](/SelfHosted/Vault)
+- [🦕 Jeedom *Mon serveur de domotique préféré*](/Domotique/Jeedom)
 {.links-list}
 
 ## Linux
