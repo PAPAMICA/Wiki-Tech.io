@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-04T07:09:00.412Z
+date: 2021-05-04T08:12:18.636Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -43,6 +43,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [💬 Mattermost *Serveur de discution orienté entreprise. Alternative à Slack*](/SelfHosted/Mattermost)
 - [🎥 Jitsi *Serveur de visioconférence. Alternative à Teams, Google Meet, etc...*](/SelfHosted/Jitsi)
 - [🌍 Matomo *Analyse du traffic web. Alternative à Google Analytics*](/SelfHosted/Matomo)
+- [🔒 Vault *Gestion de vos secrets centralisés avec API*](/SelfHosted/Vault)
 {.links-list}
 
 ## Linux
