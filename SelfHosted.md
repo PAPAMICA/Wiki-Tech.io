@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-05-03T11:19:37.318Z
+date: 2021-05-04T08:12:38.350Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T07:46:02.143Z
@@ -31,4 +31,5 @@ dateCreated: 2021-04-30T07:46:02.143Z
 - [💬 Mattermost *Serveur de discution orienté entreprise. Alternative à Slack*](/SelfHosted/Mattermost)
 - [🎥 Jitsi *Serveur de visioconférence. Alternative à Teams, Google Meet, etc...*](/SelfHosted/Jitsi)
 - [🌍 Matomo *Analyse du traffic web. Alternative à Google Analytics*](/SelfHosted/Matomo)
+- [🔒 Vault *Gestion de vos secrets centralisés avec API*](/SelfHosted/Vault)
 {.links-list}
