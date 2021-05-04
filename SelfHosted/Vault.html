@@ -2,7 +2,7 @@
 title: Vault
 description: Un gestionnaire de secrets avec API !
 published: true
-date: 2021-05-04T11:16:56.227Z
+date: 2021-05-04T12:45:06.683Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-04T09:08:13.708Z
@@ -23,14 +23,29 @@ dateCreated: 2021-05-04T09:08:13.708Z
   <li>VAULT_SECRET_NAME : Correspond au nom du secret</li>
 </ul>
 <p>Récupération du VAULT_TOKEN pour accéder aux secrets :</p>
-<pre><code class="language-plaintext">VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"&lt;ROLE_ID&gt;\",\"secret_id\":\"&lt;SECRET_ID&gt;\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')</code></pre>
+<pre><code class="language-plaintext">VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"&lt;ROLE_ID&gt;\",\"secret_id\":\"$VAULT_SECRET_ID\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')</code></pre>
 <p>Récupération des secrets dans le dossier en Json ;</p>
 <pre><code class="language-plaintext">curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/$VAULT_ENGINE/data/approle/$VAULT_ROLE"</code></pre>
 <p>Récupération du secret recherché avec jq :</p>
 <pre><code class="language-plaintext"> | jq -r '.["data"]["data"]["$VAULT_SECRET_NAME"]'</code></pre>
 <p>&nbsp;</p>
 <h3>Fonction Bash</h3>
-<p>&nbsp;</p>
+<pre><code class="language-c">#!/bin/bash
+
+# Variables
+VAULT_URL='https://vault.domaine.com'
+VAULT_ENGINE='wallet-VPN'
+VAULT_ROLE='testmickael'
+VAULT_SECRET_ID='a154d15s-f48e-aea8-b99e-ab96f021s74e'
+VAULT_SECRET_NAME='password'
+
+function Get-Vault {
+    VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"$VAULT_ROLE\",\"secret_id\":\"$VAULT_SECRET_ID\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')
+    SECRET=$(curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/$VAULT_ENGINE/data/approle/$VAULT_ROLE" | jq -r '.["data"]["data"]["password"]')
+    echo "$SECRET"
+}
+
+PASSWORD=$(Get-Vault)</code></pre>
 <p>&nbsp;</p>
 <h3>Fonction Python</h3>
 <p>&nbsp;</p>
