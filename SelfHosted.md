@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-05-04T08:12:38.350Z
+date: 2021-05-04T08:35:14.535Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T07:46:02.143Z
@@ -32,4 +32,5 @@ dateCreated: 2021-04-30T07:46:02.143Z
 - [🎥 Jitsi *Serveur de visioconférence. Alternative à Teams, Google Meet, etc...*](/SelfHosted/Jitsi)
 - [🌍 Matomo *Analyse du traffic web. Alternative à Google Analytics*](/SelfHosted/Matomo)
 - [🔒 Vault *Gestion de vos secrets centralisés avec API*](/SelfHosted/Vault)
+- [🦕 Jeedom *Mon serveur de domotique préféré*](/Domotique/Jeedom)
 {.links-list}
