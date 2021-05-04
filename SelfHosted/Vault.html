@@ -2,7 +2,7 @@
 title: Vault
 description: Un gestionnaire de secrets avec API !
 published: true
-date: 2021-05-04T09:08:13.708Z
+date: 2021-05-04T11:06:30.456Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-04T09:08:13.708Z
@@ -13,4 +13,17 @@ dateCreated: 2021-05-04T09:08:13.708Z
 <h1>Installation</h1>
 <h1>Utilisation</h1>
 <h2>Récupérer un mot de passe avec l'API</h2>
+<p>Il va nous falloir plusieurs données pour récupérer un mot de passe :</p>
 <p>&nbsp;</p>
+<ul>
+  <li>VAULT_URL : L'URL de votre serveur VAULT (exemple : "<i>https://vault.papamica.com</i>")</li>
+  <li>VAULT_ENGINE : Correspond à l'engine racine de votre dossier contenant vos secrets</li>
+  <li>VAULT_ROLE : Correspond au nom du dossier qui contient les secrets</li>
+  <li>VAULT_SECRET_ID : Correspond à l'ID récupéré au préalable avec la commande <code>vault write -force auth/approle/role/&lt;VAULT_ROLE&gt;/secret-id</code></li>
+  <li>VAULT_SECRET_NAME : Correspond au nom du secret</li>
+</ul>
+<pre><code class="language-plaintext">VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"&lt;ROLE_ID&gt;\",\"secret_id\":\"&lt;SECRET_ID&gt;\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')</code></pre>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/kvblue/data/approle/testmickael"</code></pre>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext"> | jq -r '.["data"]["data"]["password"]'</code></pre>
