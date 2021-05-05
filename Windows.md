@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-05T12:32:48.596Z
+date: 2021-05-05T12:37:04.443Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -17,5 +17,7 @@ dateCreated: 2021-04-29T06:38:46.149Z
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
 - [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Windows/Robocopy)
 - [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
-- [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
+- [🏢 Rentrer un poste dans un domaine *Connecter un ordinateur au réseau d'entreprise*](/Windows/Domaine)
+- [🖧 IP Fixe *Configurer une IP fixe sous Windows*](/Windows/IP-Fixe)
+- [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Windows/IP-Fixe)
 {.links-list}
