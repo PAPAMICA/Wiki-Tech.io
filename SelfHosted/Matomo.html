@@ -2,7 +2,7 @@
 title: Matomo
 description: Enfin une alternative viable à Google Analytics !
 published: true
-date: 2021-05-03T13:58:50.967Z
+date: 2021-05-05T13:43:14.485Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-03T11:22:10.212Z
@@ -10,6 +10,13 @@ dateCreated: 2021-05-03T11:22:10.212Z
 
 <figure class="image image_resized" style="width:64.09%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Matomo_Logo.svg/1280px-Matomo_Logo.svg.png" alt="Fichier:Matomo Logo.svg — Wikipédia"></figure>
 <h1>Présentation</h1>
+<p>Il s’agit d’une plateforme libre d’analyse du trafic sur le web. L’outil est utilisé par des particuliers, des entreprises et même les gouvernements de différents pays. Matomo vous permet de récupérer des informations à propos de vos utilisateurs. Vous aurez ainsi droit à quelques indicateurs clés de performance concernant les visites, le taux de conversion, les téléchargements, les mots-clés utilisés pour trouver votre site…</p>
+<p>Il est également possible d’intégrer à votre site e-commerce pour analyser vos revenus, vos commandes, etc. Vous pouvez même intégrer vos logs serveur dans Matomo pour les afficher et les analyser.</p>
+<p>Cet outil est gratuit si vous l’hébergez vous-même sur votre serveur. Sinon vous pouvez souscrire à une offre hébergée par la société qui gère Matomo. Les formules varient de 7.5€ à 41€ par mois. Si vous êtes intéressé par la version payante, <a href="https://www.innocraft.cloud/#pricing">voici le lien.</a> Sinon vous pouvez passer par la version selfhosted via docker ! (Spoiler, c'est juste en dessous)&nbsp;</p>
+<p>Avec Matomo, vous êtes propriétaire de vos données, et l’outil est en conformité avec les exigences de confidentialité de vos visiteurs. Vous conservez la possibilité de voir le comportement de vos visiteurs sur votre site. La plateforme est personnalisable et extensible grâce à son API. Matomo dispose aussi d’une application mobile. Elle vous permet de suivre en temps réel sur votre smartphone le nombre de visiteurs présents sur votre site. Dernier point important : votre seule limite de données est celle de votre serveur.</p>
+<h1><strong>En pratique</strong></h1>
+<p>Si vous n’êtes pas encore entièrement convaincu, vous pouvez suivre ce lien pour voir en détails <a href="https://matomo.org/what-is-matomo/">les fonctionnalités</a> de Matomo. Vous avez même la possibilité de le tester, pour avoir une idée du résultat et de la manière dont vous pourrez vous en servir.</p>
+<p>Voici le lien vers<a href="https://demo.matomo.org/index.php?module=CoreHome&amp;action=index&amp;idSite=3&amp;period=day&amp;date=yesterday#?idSite=3&amp;period=day&amp;date=yesterday&amp;category=Dashboard_Dashboard&amp;subcategory=1"> la démo</a> de Matomo. Il ne vous reste plus qu’à débrancher Google Analytics de vos sites, et de nous rejoindre sur Matomo</p>
 <h1>Installation</h1>
 <p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://fr.matomo.org/docs/installation/">leur site</a>, le déployer directement depuis mon template d'application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :</p>
 <pre><code class="language-plaintext">version: "2"
@@ -85,6 +92,7 @@ networks:
   proxy:
     external:
       name: proxy</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <i><strong>$URL_LOK</strong></i><strong>I </strong>et <strong>$URL</strong> en fonction de votre installation.</p>
 </blockquote>
