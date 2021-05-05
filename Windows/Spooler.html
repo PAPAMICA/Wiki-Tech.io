@@ -1,0 +1,32 @@
+<!--
+title: Spooler bloqué 
+description: Résoudre les problème de spooler d’impression
+published: true
+date: 2021-05-05T14:23:24.260Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T14:23:24.260Z
+-->
+
+<h1>Le problème du Spooler d’impression</h1>
+<h2>Contexte</h2>
+<p>Un PC sous Windows 7 Pro dans un domaine AD d’un Windows Server&nbsp;2012 R2 a, quelques fois, des problèmes pour imprimer. Les copieurs sont déployés via GPO pour l’ensemble des postes, il n’y a pas de droits particuliers sur les imprimantes, pas d’impression sécurisés de mise en place, les utilisateurs sont administrateurs de leurs PC… Mais aucun accès aux impressions, elles sont toutes «&nbsp;grisées&nbsp;» dans le panneau de configuration Windows.</p>
+<p>Un redémarrage du PC ne permet pas à tout les coups de faire fonctionner de nouveau ces imprimantes…</p>
+<p>&nbsp;</p>
+<h2>Découverte &amp; Résolution du problème</h2>
+<p>Quelques avertissements dans l’observateur d’événements Windows étaient affichés, mais pour prévenir uniquement le spooler devait être déchargé avant de pouvoir être exploité.<br>En faisant quelques recherches sur le net, j’ai vu qu’une manipulation consistait à vider le dossier de tout ses fichiers : «&nbsp;C:\Windows\System32\spool\PRINTERS&nbsp;». Il y avait quelques fichiers à l’intérieur de quelques octets, rien de bien grave à priori. J’ai suivi les indications et ai supprimé les fichiers présents – toujours le même pb, pas d’imprimantes accessibles donc pas d’impression.</p>
+<p>Machinalement, j’ai redémarré le spooler d’impression de Windows, dans le gestionnaire de services Windows – miracle ! Les imprimantes se sont débloquées dans le panneau de configuration et l’impression a pu être de nouveau effective !</p>
+<p>&nbsp;</p>
+<h2>Script de résolution du problème</h2>
+<p>Pour aller plus loin, j’ai décidé de créer un tout petit script .bat facile d’accès pour tous les utilisateurs, si le problème revenait.<br>Voici le contenu du «&nbsp;.bat&nbsp;» :</p>
+<pre><code class="language-plaintext">del /F /S /Q C:\Windows\System32\spool\PRINTERS\*.*
+NET STOP SPOOLER &amp;&amp; NET START SPOOLER
+exit
+</code></pre>
+<p><strong>Explications</strong>&nbsp;:</p>
+<ul>
+  <li>Suppression sans sommation de tous les fichiers contenus dans le dossier&nbsp;«&nbsp;C:\Windows\System32\spool\PRINTERS&nbsp;»</li>
+  <li>Arrêt du service «&nbsp;spooler&nbsp;» et redémarrage par la suite</li>
+  <li>exit – la commande parle d’elle-même !</li>
+</ul>
+<p>Exécutez le script et vos imprimantes vont se remettre à fonctionner, qu’elles soient via le réseau ou en USB !</p>
