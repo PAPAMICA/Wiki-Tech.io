@@ -2,7 +2,7 @@
 title: Vault
 description: Un gestionnaire de secrets avec API !
 published: true
-date: 2021-05-04T12:45:32.554Z
+date: 2021-05-05T09:03:19.187Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-04T09:08:13.708Z
@@ -29,23 +29,56 @@ dateCreated: 2021-05-04T09:08:13.708Z
 <p>Récupération du secret recherché avec jq :</p>
 <pre><code class="language-plaintext"> | jq -r '.["data"]["data"]["$VAULT_SECRET_NAME"]'</code></pre>
 <p>&nbsp;</p>
-<h3>Fonction Bash</h3>
+<h3>Récupération des secrets dans un script :</h3>
+<h4>Variable d'environnement à configurer</h4>
+<p>Afin de ne pas dévoiler les informations ou les tokens utilisés, on les met en variable d'environnement :</p>
+<pre><code class="language-python">export VAULT_URL='' # Vault URL with "https://"
+export VAULT_ENGINE='' # Wallet name (ex : VPS)
+export VAULT_ROLE='' # Role name (folder)
+export VAULT_SECRET_ID='' # To be retrieved in Vault CLI with 'vault write -force auth/approle/role/&lt;VAULT_ROLE&gt;/secret-id'
+export VAULT_SECRET_NAME='' # Secret name</code></pre>
+<p>&nbsp;</p>
+<h4>Fonction Bash</h4>
 <pre><code class="language-python">#!/bin/bash
 
-# Variables
-VAULT_URL='https://vault.domaine.com'
-VAULT_ENGINE='wallet-VPN'
-VAULT_ROLE='testmickael'
-VAULT_SECRET_ID='a154d15s-f48e-aea8-b99e-ab96f021s74e'
-VAULT_SECRET_NAME='password'
-
-function Get-Vault {
+function Get-Secret {
     VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"$VAULT_ROLE\",\"secret_id\":\"$VAULT_SECRET_ID\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')
-    SECRET=$(curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/$VAULT_ENGINE/data/approle/$VAULT_ROLE" | jq -r '.["data"]["data"]["password"]')
+    SECRET=$(curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/$VAULT_ENGINE/data/approle/$VAULT_ROLE" | jq -r --arg VAULT_SECRET_NAME "$VAULT_SECRET_NAME" '.["data"]["data"][$VAULT_SECRET_NAME]')
     echo "$SECRET"
 }
 
-PASSWORD=$(Get-Vault)</code></pre>
+VAULT_SECRET_NAME='kaypair'
+PASSWORD=$(Get-Secret)
+echo $PASSWORD</code></pre>
 <p>&nbsp;</p>
-<h3>Fonction Python</h3>
-<p>&nbsp;</p>
+<h4>Fonction Python</h4>
+<pre><code class="language-python">#!/usr/bin/env python
+import requests
+import os
+import json
+
+# Variables declaration
+VAULT_URL = os.getenv('VAULT_URL')
+VAULT_ENGINE = os.getenv('VAULT_ENGINE')
+VAULT_ROLE = os.getenv('VAULT_ROLE')
+VAULT_SECRET_ID = os.getenv('VAULT_SECRET_ID')
+
+def GetSecret():
+    # Get token access
+    data = {"role_id":VAULT_ROLE,"secret_id":VAULT_SECRET_ID}
+    response = requests.post(VAULT_URL + '/v1/auth/approle/login', data=data)
+    JSON = json.loads(response.text)
+    TOKEN = JSON["auth"]["client_token"]
+    # Get secret
+    headers = {
+        'Accept': '*/*',
+        'X-Vault-Token': TOKEN
+    }
+    response = requests.get(VAULT_URL + '/v1/' + VAULT_ENGINE + '/data/approle/' + VAULT_ROLE, headers=headers)
+    JSON = json.loads(response.text)
+    SECRET = JSON["data"]["data"][VAULT_SECRET_NAME]
+    return SECRET
+
+VAULT_SECRET_NAME='kaypair'
+SECRET = GetSecret()
+print (SECRET)</code></pre>
