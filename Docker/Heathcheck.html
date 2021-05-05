@@ -1,0 +1,102 @@
+<!--
+title: Healthcheck
+description: S’assurer du bon fonctionnement de ses containers !
+published: true
+date: 2021-05-05T11:48:38.363Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T11:48:38.363Z
+-->
+
+<figure class="image image_resized" style="width:61.98%;"><img src="https://static1.squarespace.com/static/5e8f3a0561b8203ce00e89de/t/5ef36831fdac3120d5c11a7f/1605732226441/" alt="HealthCheck"></figure>
+<h1>Présentation</h1>
+<p>Le mécanisme de healthcheck n'est pas une nouveauté dans Docker... Présent depuis la version 1.12 ce mécanisme reste pourtant peu utilisé...</p>
+<p>Tout d'abord l'instruction <code>HEALTHCHECK</code> , c'est quoi ?</p>
+<p>Elle indique à Docker comment tester votre container pour vérifier qu'il fonctionne toujours correctement ( Oui oui, j'ai réussi à vous traduire la documentation officielle ) :</p>
+<blockquote>
+  <p>The <code>HEALTHCHECK</code> instruction tells Docker how to test a container to check that it is still working. This can detect cases such as a web server that is stuck in an infinite loop and unable to handle new connections, even though the server process is still running.</p>
+</blockquote>
+<p>Nous avions déjà pu voir comment relancer automatiquement un container dont le processus principal ( vous savez le programme qui prend le <code>PID 1</code> dans votre container ) ne fonctionne plus, et ceci à l'aide de l'instruction <code>restart.</code></p>
+<p>Mais voilà, dans votre malheur le <code>PID 1</code> de votre instance est toujours actif mais pourtant il ne remplit plus son rôle :</p>
+<blockquote>
+  <p>Par exemple <code>nginx</code> est toujours <i>UP</i> mais il ne dessert plus vos pages correctement et/ou vous remonte une erreur <i><strong>404/503 </strong></i>!</p>
+</blockquote>
+<p><br>Dans ce moment là, plusieurs solutions :</p>
+<ul>
+  <li>La supervision finit par vous remonter l'information et vous intervenez ( de façon automatique ou non ),</li>
+  <li>On intègre un healthcheck à notre service pour vérifier sa bonne santé et ainsi avoir l'information en temps réel.</li>
+</ul>
+<h1><strong>Healthcheck</strong></h1>
+<p>Il est possible de déclarer un <code>HEALTHCHECK</code> de deux façons :</p>
+<ul>
+  <li>Dans votre fichier <code>Dockerfile</code> avant de build votre image,</li>
+  <li>Lors de la déclaration du service dans le fichier docker-compose.</li>
+</ul>
+<p>Plutôt que de long discours, voyons par l'exemple la différence entre ces deux types de déclarations.</p>
+<p>Voici un exemple de fichier <code>Dockerfile</code> qui va construire une image custom du CMS <code>Ghost</code>:</p>
+<pre><code class="language-plaintext">FROM ghost:3
+
+RUN apt update &amp;&amp; apt install curl -y \
+        &amp;&amp; rm -rf /var/lib/apt/lists/*
+        
+HEALTHCHECK --interval=1m --timeout=30s --retries=3 CMD curl --fail http://localhost:2368 || exit 1</code></pre>
+<p>🚩 Alors oui il est nécessaire d'installer <code>curl</code> qui n'est pas présent dans l'image. Pour les personnes qui souhaitent pousser la réflexion plus loin, voici un <a href="https://blog.sixeyed.com/docker-healthchecks-why-not-to-use-curl-or-iwr/">article très intéressant</a>. 🚩</p>
+<p>Voici la liste des options qu'il est possible d'ajouter avant <code><i>CMD</i></code> :</p>
+<pre><code class="language-plaintext">--interval=DUREE (default: 30s)
+--timeout=DUREE (default: 30s)
+--start-period=DUREE (default: 0s)
+--retries=N (default: 3)</code></pre>
+<p><code>Ghost</code> étant une application web, l'utilisation de <code>curl</code> ou <code>wget</code> comme commande de vérification vient immédiatement à l'esprit.</p>
+<p>Ici on vérifie qu'une page web est présente et renvoie un code de retour <code>200</code> à l'adresse <a href="http://localhost:2368/"><code>http://localhost:2368</code></a>.</p>
+<p>On va pouvoir construire notre image :</p>
+<pre><code class="language-plaintext">$ docker build -t ghost:healthcheck .</code></pre>
+<p>Et lancer notre container :</p>
+<pre><code class="language-plaintext">$ docker run -d --name some-ghost -p 2368:2368 ghost:healthcheck</code></pre>
+<p>On peut vérifier l'état de notre avec la commande <code>docker ps</code> :</p>
+<pre><code class="language-plaintext">$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                           PORTS                    NAMES
+a3435a4d95fd        ghost:healthcheck   "docker-entrypoint.s…"   3 seconds ago       Up 1 second (health: starting)   0.0.0.0:2368-&gt;2368/tcp   some-ghost</code></pre>
+<p>L'instruction <code>HEALTHCHECK</code> peut renvoyer 3 codes de retour :</p>
+<pre><code class="language-plaintext">0: success - the container is healthy and ready for use
+1: unhealthy - the container is not working correctly
+2: reserved - do not use this exit code</code></pre>
+<p>Vous allez constaster visuellement de votre côté, 3 états possibles :</p>
+<ul>
+  <li><strong>Starting</strong>: Votre container est en cours de démarrage.</li>
+  <li><strong>Healthy</strong>: La commande de check renvoie un <i>success.</i> Votre container est fonctionnel.</li>
+  <li><strong>Unhealthy</strong>: Votre container ne fonctionne pas correctement !</li>
+</ul>
+<p>On peut constater lors de mon <code>docker ps</code> que notre container est toujours en cours de démarrage : nous avons eu un retour <code>starting</code>.</p>
+<p>Vérifions de nouveau quelques secondes plus tard :</p>
+<pre><code class="language-plaintext">$ docker ps
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                        PORTS                    NAMES
+a3435a4d95fd        ghost:healthcheck   "docker-entrypoint.s…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:2368-&gt;2368/tcp   some-ghost</code></pre>
+<p>Il est donc relativement simple d'ajouter ce mécanisme à votre image !</p>
+<p>Toutefois le principal problème lié à cette méthode, est que la vérification est alors générique. Il peut être nécessaire de rendre vos checks plus "personnels", par container.</p>
+<p>Il existe d'ailleurs un second inconvénient : votre image n'est peut-être tout simplement pas prévu "<i>seulement"</i> pour Docker. Kubernetes intègre par exemple ses propres mécanismes, et vous souhaiterez probablement les utiliser...</p>
+<p>Dans ce cas, vous pouvez réaliser la même vérification dans le fichier <code>docker-compose</code>.</p>
+<p>🚩 Pour cet exemple, je vais tout de même construire une image. Sans <code>HEALTHCHECK</code>, mais avec l'installation de <code>curl</code> 🚩 :</p>
+<pre><code class="language-plaintext">FROM ghost:3
+
+RUN apt update &amp;&amp; apt install curl -y \
+        &amp;&amp; rm -rf /var/lib/apt/lists/*</code></pre>
+<p>et donc construire cette image :</p>
+<pre><code class="language-plaintext">$ docker build -t ghost:curl .</code></pre>
+<p>Les instructions sont similaires à la méthode vu précédemment :</p>
+<pre><code class="language-plaintext">version: '3.8'
+services:
+    ghost:
+        image: ghost:curl
+        ports:
+            - 2368:2368
+        healthcheck:
+            test: ["CMD", "curl -f http://localhost:2368 || exit 1"]
+            timeout: 30s
+            interval: 1m
+            retries: 3</code></pre>
+<p>Le fonctionnement est identique à celui que nous venons de voir lors d'une utilisation de l'instruction au sein d'un fichier <code>Dockerfile</code>. ( ouf 😂 )</p>
+<p>Enfin sachez qu'il est tout simplement possible de désactiver dans votre <code>docker-compose</code> un healthcheck créé dans une image à l'aide de l'instruction suivante :</p>
+<pre><code class="language-plaintext">healthcheck:
+  disable: true</code></pre>
+<p>&nbsp;</p>
+<p style="text-align:right;">Source : <a href="https://www.grottedubarbu.fr/docker-healthcheck/">grottedubarbu.fr</a><br>&nbsp;</p>
