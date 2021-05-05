@@ -1,0 +1,34 @@
+<!--
+title: Robocopy
+description: Copier et déplacer vos données en gardant les droits
+published: true
+date: 2021-05-05T14:26:37.108Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T14:26:37.108Z
+-->
+
+<figure class="image image_resized" style="width:47.6%;"><img src="https://static.wixstatic.com/media/d4cf43_bdee572279754c04b5949640d1a70644~mv2.png/v1/fill/w_380,h_126,al_c,q_85,usm_0.66_1.00_0.01/Robocopy_450x150.webp" alt="Robocopy"></figure>
+<h1>Présentation</h1>
+<p>Dans le cadre d’une migration de données, migrer les données sans erreur, c’est bien, ne pas avoir à refaire les droits, c’est mieux !</p>
+<p>Pourquoi prévoir une longue interruption de la production pour migrer plusieurs centaines de gigaoctets voir de téraoctets? Il est possible de lancer la copie des fichiers du serveur source vers le serveur cible plusieurs jours en avance puis de réaliser une mise à jour incrémentielle de temps en temps afin de n’avoir que très peu de modification à synchroniser.</p>
+<p>Ainsi le jour&nbsp;<strong>J</strong>&nbsp;il ne reste plus qu’à couper l’accès aux utilisateurs à l’ancien serveur, lancer une dernière synchronisation des fichiers récemment modifiés, puis d’établir l’accès sur le nouveau serveur.</p>
+<p>Vous pouvez même donner l’ancien nom de serveur au nouveau serveur, ce qui vous évitera de mettre en place des scripts de migration des lecteurs réseaux de vos utilisateurs. Bien entendu s’il suffit de modifier le logon script de vos utilisateurs pour les faire pointer vers le nouveau serveur, un changement de nom ne posera pas de problème. Pensez toutefois à bien communiquer auprès des utilisateurs en leur demandant de ré-ouvrir leur session au moment voulu pour que le nouveau mappage soit pris en compte!</p>
+<h1><strong>Construire son script</strong></h1>
+<p><strong>Robocopy&nbsp;</strong>propose de nombreuses options parfois complexes et qui seront bien souvent inutiles. Concrètement lorsque l’on veut déplacer des données d’un serveur vers un autre, l’idéal est de conserver exactement la même arborescence et de récupérer&nbsp;<strong>les droits NTFS</strong>&nbsp;associés.</p>
+<p>Pour lancer la copie d’un partage source vers un partage cible il faut lancer la commande suivante:</p>
+<pre><code class="language-plaintext">robocopy “\\serveursource\share” “\\serveurcible\share”</code></pre>
+<p>Mais il sera possible d’agrémenter cette commande grâce à de nombreuses fonctionnalités !</p>
+<p><code><strong>/MIR&nbsp;</strong></code>: Cette option permet de reporter les changements de la source vers la cible. Si un fichier est créé sur la source il va être copié vers la cible. Si un fichier est supprimé sur la source, il le sera également sur la cible.<br><code><strong>/SEC&nbsp;</strong></code>: Cette autre option géniale permet de migrer également les droits NTFS !<br><code><strong>/B</strong>&nbsp;</code>: Cette option est très utile si en tant qu’administrateur vous n’avez&nbsp;pas tous les droits NTFS sur certains dossiers. Je vous la conseille donc fortement&nbsp;si vous ne voulez pas être dans l’obligation de vous réapproprier&nbsp;les dossiers en question manuellement pour pouvoir les migrer.<br><code><strong>/LOG</strong></code>&nbsp;: Autant garder un historique de la copie. Cette option désactive le «&nbsp;verbose&nbsp;» à l’écran. Voir l’option qui suit !<br><code><strong>/TEE&nbsp;</strong></code>: Lorsque l’on utilise /LOG l’intéractivité à l’écran peut être conservé grâce à cette option<br><code><strong>/MON:x</strong></code>&nbsp;: Permet de lancer la commande en mode monitor, c’est à dire que la commande va rester active et attendre un certain nombre x de changements apportés sur la source pour les copier sur la cible. Ainsi la première fois tout va être copié et la commande va attendre les changements.<br><code><strong>/RH:hhmm-hhmm</strong></code>&nbsp;: Cette option permet de lancer le script qu’à une certaine plage horaire, très pratique si vous préférez lancer la copie la nuit.<br><code><strong>/MOT:x</strong>&nbsp;</code>: Idem que /MON mais cette fois x correspond à un nombre de minutes d’attente avant de relancer la synchro.</p>
+<p>Je lance mes commandes depuis une&nbsp;<strong>invite de commande</strong>&nbsp;ou depuis un&nbsp;<strong>fichier batch</strong>&nbsp;si j’ai plusieurs partages localisés un peu n’importe où …</p>
+<p>Quelques jours avant le changement de serveur je lance&nbsp;<strong>ma première copie</strong>&nbsp;grâce à la commande suivante :</p>
+<pre><code class="language-plaintext">robocopy “\\serveursource\share” “\\serveurcible\share” /MIR /SEC /B /RH:2000-0700 /TEE /LOG+:c:\journal.log</code></pre>
+<p>De cette manière ma copie se déroule de 20h à 7h du matin. Si mon volume de données à copier est tel que cela n’a pas suffit ! Je peux le relancer une seconde fois, une troisième fois …</p>
+<p>Lorsque tout est copié, j’utilise plutôt la commande suivante:</p>
+<pre><code class="language-plaintext">robocopy “\\serveursource\share” “\\serveurcible\share” /MIR /SEC /B /MOT:10 /TEE /LOG+:c:\journal.log</code></pre>
+<p>Le script va rester en stand-by et toutes les 10 mn, les changements vont être synchronisés&nbsp;! Je laisse le script actif jusqu’au jour de la migration, sans stress.</p>
+<p>Et pour finir&nbsp;<strong>le jour de la bascule</strong>, je coupe l’accès aux utilisateurs et je lance :</p>
+<pre><code class="language-plaintext">robocopy “\\serveursource\share” “\\serveurcible\share” /MIR /SEC /B /TEE /LOG+:c:\journal.log</code></pre>
+<p>Ensuite je change le nom des serveurs afin de nommer mon nouveau serveur comme l’ancien et ma migration est terminée ! Je prend soin de supprimer mon script afin de ne pas le relancer par accident. Ceci étant l’ancien serveur étant arrêté et renommé, il n’y a pas de risque.</p>
+<p><strong>Autre exemple de script :</strong></p>
+<pre><code class="language-plaintext">robocopy “\\serveur\d$\DATA” “D:\DATA” /MIR /SEC /B /TEE /LOG+:c:\journal.log</code></pre>
