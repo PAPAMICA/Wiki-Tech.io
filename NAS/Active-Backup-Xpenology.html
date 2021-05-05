@@ -1,0 +1,24 @@
+<!--
+title: Active Backup sur Xpenology
+description: Profiter d'Active Backup sur XPEnology
+published: true
+date: 2021-05-05T12:14:57.478Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T12:14:57.478Z
+-->
+
+<figure class="image image_resized" style="width:45.71%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?resize=617%2C338&amp;ssl=1" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?w=617&amp;ssl=1 617w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?resize=300%2C164&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?resize=50%2C27&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?resize=600%2C329&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2019/11/synology_activebackup.png?resize=320%2C175&amp;ssl=1 320w" sizes="100vw" width="617"></figure>
+<h1>Activer Active Backup sur Xpenology</h1>
+<p>Lorsque vous souhaitez utilisez Active Backup sur Xpenology, vous vous retrouverez bloqué par une activation avec un compte Synology. Heureusement, il existe une astuce pour contourner cette activation</p>
+<p>&nbsp;</p>
+<h2>NAS avec certificat SSL :</h2>
+<p>Sur votre ordinateur connecté au même réseau que votre NAS, entrez ces deux URL dans votre navigateur en intégrant votre IP, votre login, votre mot de passe et votre serial :</p>
+<pre><code class="language-plaintext">https://IP_DE_MON_SYNO:5001/webapi/auth.cgi?api=SYNO.API.Auth&amp;method=Login&amp;version=1&amp;account=MON_LOGIN&amp;passwd=MON_MOT_DE_PASSE
+https://IP_DE_MON_SYNO:5001/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=set&amp;version=1&amp;activated=true&amp;serial_number=MON_SERIAL</code></pre>
+<p>&nbsp;</p>
+<h2>NAS sans certificat SSL :</h2>
+<p>Sur votre ordinateur connecté au même réseau que votre NAS, entrez ces deux URL dans votre navigateur en intégrant votre IP, votre login, votre mot de passe et votre serial :</p>
+<pre><code class="language-plaintext">http://IP_DE_MON_SYNO:5000/webapi/auth.cgi?api=SYNO.API.Auth&amp;method=Login&amp;version=1&amp;account=MON_LOGIN&amp;passwd=MON_MOT_DE_PASSE
+http://IP_DE_MON_SYNO:5000/webapi/entry.cgi?api=SYNO.ActiveBackup.Activation&amp;method=set&amp;version=1&amp;activated=true&amp;serial_number=MON_SERIAL</code></pre>
+<p>Profitez pleinement de la solution Active Backup de Synology !</p>
