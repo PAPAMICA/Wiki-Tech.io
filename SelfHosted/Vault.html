@@ -2,7 +2,7 @@
 title: Vault
 description: Un gestionnaire de secrets avec API !
 published: true
-date: 2021-05-05T09:03:19.187Z
+date: 2021-05-05T09:25:35.969Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-04T09:08:13.708Z
@@ -10,7 +10,90 @@ dateCreated: 2021-05-04T09:08:13.708Z
 
 <figure class="image image_resized" style="width:18.97%;"><img src="https://www.drupal.org/files/project-images/Vault_VerticalLogo_FullColor_2_0.png" alt="HashiCorp Vault - AppRole Authentication | Drupal.org"></figure>
 <h1>Présentation</h1>
+<p>Vault est - comme son nom l'indique - un coffre-fort pour vos données. Il va vous permettre d'accéder en toute sécurité à vos secrets... Pour rappel, les <i>secrets, </i>sont des informations sensibles : comme par exemple un nom d'utilisateur et son mot de passe ou même encore des fichiers, par exemple des clés SSH.</p>
+<p>Globalement un <i>secret</i> est une information dont vous souhaitez contrôler l'accès.</p>
+<p>Vault est donc un outil qui fournit une interface unifiée pour toutes vos informations sensibles et donc centralise l'information :</p>
+<p>Plus besoin de chercher votre mot de passe <code>root</code> de base de données pendant des heures ! 🤬</p>
+<p>Et d'en arriver à prier pour qu'il se trouve dans le fichier <code>configuration.php</code> ... ( de toute façon vous ne mettez jamais l'accès <code>root</code> pour vos applications?non?! )</p>
+<p>De plus avec Vault, on va garantir un contrôle d'accès strict aux données sensibles avec en autre une gestion des droits et accès utilisateurs, mais aussi la tenue d'un d'un journal d'audit détaillé.</p>
+<p>Il s'agit vraiment d'un outil très complet, qui permet encore plus de choses ( extrait traduit de la documentation officielle ) :</p>
+<blockquote>
+  <ul>
+    <li>Stockage secret sécurisé: Vault crypte les secrets avant de les écrire dans le stockage persistant, donc accéder au stockage brut ne suffit pas pour accéder à vos secrets.</li>
+    <li>Secrets dynamiques: Vault peut générer des secrets à la demande pour certains systèmes, tels que les bases de données AWS ou SQL. Après avoir créé ces secrets dynamiques, Vault les révoquera également automatiquement une fois le bail terminé.</li>
+    <li>Chiffrement des données: Vault peut chiffrer et déchiffrer les données sans les stocker. Cela permet aux équipes de sécurité de définir des paramètres de chiffrement et aux développeurs de stocker des données chiffrées dans un emplacement tel que SQL sans avoir à concevoir leurs propres méthodes de chiffrement.</li>
+    <li>Location et renouvellement: tous les secrets de Vault sont associés à un bail. À la fin du bail, Vault révoquera automatiquement ce secret. Les clients peuvent renouveler les baux via des API de renouvellement intégrées.</li>
+    <li>Révocation: Vault prend en charge la révocation des secrets. L'outil peut révoquer non seulement des secrets uniques, mais aussi un arbre entier de secrets. Par exemple tous les secrets lus par un utilisateur spécifique, ou tous les secrets d'un type particulier.</li>
+  </ul>
+</blockquote>
+<p>À noter que Vault propose plusieurs solutions de stockage des secrets: sur le disque, en mémoire ou bien dans une base <i>key value (KV)</i> comme <code>Consul</code>.</p>
+<p>Comme tous les outils complets, la première prise en main et sa découverte peut s'avérer parfois complexe.</p>
 <h1>Installation</h1>
+<p>Il faut commencer par créer le fichier de configuration <code>vault.json</code> dans <code>/apps/vault/config/</code> :</p>
+<pre><code class="language-xml">{
+  "backend": {
+    "file": {
+      "path": "/vault/file"
+    }
+  },
+  "listener": {
+    "tcp":{
+      "address": "0.0.0.0:8200",
+      "tls_disable": 1
+    }
+  },
+  "ui": true
+}</code></pre>
+<p>Puis créer le <code>docker-compose.yml</code> et lancer Vault avec la commande <code>docker-compose up -d</code> :</p>
+<pre><code class="language-plaintext">version: '2'
+services:
+  vault:
+    image: vault
+    container_name: vault
+    restart: always
+    volumes:
+      - /apps/vault/logs:/vault/logs
+      - /apps/vault/file:/vault/file
+      - /apps/vault/config:/vault/config
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config=/vault/config/vault.json
+    
+    #Facultatif avec Traefik
+    #ports:
+    #  - "8200:8200"
+
+    # Facultatif : support de Loki
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    
+    # Facultatif : support de Traefik
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vault.entrypoints=http"
+      - "traefik.http.routers.vault.rule=Host(`$URL`)"
+      - "traefik.http.middlewares.vault-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.vault.middlewares=$SERVICE-https-redirect"
+      - "traefik.http.routers.vault-secure.entrypoints=https"
+      - "traefik.http.routers.vault-secure.rule=Host(`$URL`)"
+      - "traefik.http.routers.vault-secure.tls=true"
+      - "traefik.http.routers.vault-secure.tls.certresolver=http"
+      - "traefik.http.services.vault-secure.loadbalancer.server.port=8200"
+      - "traefik.docker.network=proxy"
+
+networks:
+  proxy:
+    external:
+      name: proxy</code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Pensez à changer dans le docker-compose ou à définir les variables suivantes : <i><strong>URL_LOK</strong></i><strong>I </strong>et <strong>$URL</strong> en fonction de votre installation.</p>
+</blockquote>
+<p>Votre Vault sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
 <h1>Utilisation</h1>
 <h2>Récupérer un mot de passe avec l'API</h2>
 <h3>Les commandes</h3>
