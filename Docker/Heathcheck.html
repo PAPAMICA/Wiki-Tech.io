@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2021-05-05T11:48:38.363Z
+date: 2021-05-05T11:49:58.667Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-05T11:48:38.363Z
@@ -33,6 +33,8 @@ dateCreated: 2021-05-05T11:48:38.363Z
   <li>Lors de la déclaration du service dans le fichier docker-compose.</li>
 </ul>
 <p>Plutôt que de long discours, voyons par l'exemple la différence entre ces deux types de déclarations.</p>
+<p>&nbsp;</p>
+<h2>Dans un dockerfile</h2>
 <p>Voici un exemple de fichier <code>Dockerfile</code> qui va construire une image custom du CMS <code>Ghost</code>:</p>
 <pre><code class="language-plaintext">FROM ghost:3
 
@@ -74,6 +76,8 @@ a3435a4d95fd        ghost:healthcheck   "docker-entrypoint.s…"   About a minut
 <p>Il est donc relativement simple d'ajouter ce mécanisme à votre image !</p>
 <p>Toutefois le principal problème lié à cette méthode, est que la vérification est alors générique. Il peut être nécessaire de rendre vos checks plus "personnels", par container.</p>
 <p>Il existe d'ailleurs un second inconvénient : votre image n'est peut-être tout simplement pas prévu "<i>seulement"</i> pour Docker. Kubernetes intègre par exemple ses propres mécanismes, et vous souhaiterez probablement les utiliser...</p>
+<p>&nbsp;</p>
+<h2>Dans un docker-compose</h2>
 <p>Dans ce cas, vous pouvez réaliser la même vérification dans le fichier <code>docker-compose</code>.</p>
 <p>🚩 Pour cet exemple, je vais tout de même construire une image. Sans <code>HEALTHCHECK</code>, mais avec l'installation de <code>curl</code> 🚩 :</p>
 <pre><code class="language-plaintext">FROM ghost:3
