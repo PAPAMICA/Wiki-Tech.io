@@ -1,0 +1,77 @@
+<!--
+title: RDP
+description: Activer et se connecter en bureau à distance
+published: true
+date: 2021-05-05T14:31:47.004Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T14:31:47.004Z
+-->
+
+<figure class="image image_resized" style="width:20.36%;"><img src="https://docs.jelastic.com/win-rdp-access/01-windows-rdp-access.png" alt="Windows RD Access | Jelastic Dev Docs"></figure>
+<h1>RDP (Remote Desktop Protocol)</h1>
+<h2>Configuration sur le poste</h2>
+<ol>
+  <li>Rendez vous dans le <strong>Panneau de configuration</strong></li>
+  <li>Recherchez “<strong>Bureau</strong>“</li>
+  <li>Sélectionnez “<strong>Autoriser l’accès à distance à votre ordinateur</strong>“</li>
+  <li>Dans l’onglet<strong>&nbsp;Utilisation à distance</strong>, cochez&nbsp;<strong>Autoriser les connexions</strong></li>
+  <li>Il faut ensuite configurer les accès en cliquant sur “<strong>Sélectionnez les utilisateurs…</strong>“</li>
+  <li>Ensuite : “<strong>Ajouter…</strong>“, “<strong>Avancé…</strong>“, “<strong>Rechercher</strong>“, sélectionnez le ou les utilisateurs voulus et pour finir <strong>appliquez</strong> tous ces paramètres</li>
+</ol>
+<blockquote>
+  <p><i>Si vous cochez&nbsp;“N’autoriser que les connexions […] authentification NLA”&nbsp;La méthode de cryptage sera meilleur”, mais alors seulement les pc sous Windows pourront se connecter.</i></p>
+</blockquote>
+<figure class="image image_resized" style="width:68.64%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1-920x500.png?resize=920%2C500" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=920%2C500&amp;ssl=1 920w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=300%2C163&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=768%2C417&amp;ssl=1 768w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=1024%2C557&amp;ssl=1 1024w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=50%2C27&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=600%2C326&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?resize=320%2C174&amp;ssl=1 320w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?w=1917&amp;ssl=1 1917w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_1.png?w=1840&amp;ssl=1 1840w" sizes="100vw" width="920"></figure>
+<p>&nbsp;</p>
+<h2>Changer le port RDP :</h2>
+<blockquote>
+  <p><i>Parce que les ports par défaut, c’est le mal. 😉</i></p>
+</blockquote>
+<p>Le port d’écoute par défaut du RDP est le 3389. Il peut-être dangereux de garder ce port, car il est connu et souvent scanné sur le web par des mains malveillantes voulant s’introduire dans votre système</p>
+<ol>
+  <li>Le port d’écoute se modifie dans la base de registre. Cliquez sur&nbsp;Démarrer&nbsp;et taper&nbsp;<strong>regedit</strong>&nbsp;dans le champ dédier à la recherche de programmes. Lancez&nbsp;<strong>regedit.exe</strong></li>
+  <li>Recherchez la clé de registre suivante : <strong>HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TerminalServer\WinStations\R​DP-Tcp\PortNumber</strong></li>
+  <li>Double-cliquer sur la clé et sélectionner&nbsp;<strong>Décimale</strong></li>
+  <li>Changez le port d’écoute en entrant un numéro au choix qui, de préférence, ne soit pas dans la liste en lien&nbsp;<a href="http://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers">ici</a></li>
+</ol>
+<p>&nbsp;</p>
+<h2>Configurer le pare-feu</h2>
+<p>Quelque soit votre par-feu installé sous Windows, il faut lui préciser d’accepter toutes les requêtes qui arrive sur le port que vous avez choisi à l’étape précédente. Ici est présentée la démarche concernant le pare-feu par défaut de Windows 10</p>
+<ol>
+  <li>Rendez-vous dans le<strong> Panneau de configurations</strong> et recherchez “<strong>Pare-feu</strong>“</li>
+  <li>Cliquez sur&nbsp;Pare-feu Windows&nbsp;(colonne de gauche), puis “<strong>Paramètres avancés”</strong></li>
+  <li>Sélectionnez<strong>&nbsp;“règle de trafique entrant”</strong> à gauche, puis cliquez sur “<strong>Nouvelle règle…”&nbsp;</strong>à droite</li>
+  <li>Choisissez une règle de type “<strong>Port</strong>” puis, sur l’écran suivant, sélectionnez “<strong>TCP</strong>” et indiquez dans le champ “<strong>Port locaux spécifiques</strong>” le numéro de port que vous avez précédemment choisi</li>
+  <li>Sur les pages suivantes, laisser les réglages par défaut, et donnez un nom à cette règle (“RDP perso” par exemple)</li>
+  <li>Puis, une fois terminé, assurer que la règle créée est bien activée dans la liste</li>
+</ol>
+<figure class="image image_resized" style="width:68.33%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2-920x498.png?resize=920%2C498" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=920%2C498&amp;ssl=1 920w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=300%2C162&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=768%2C416&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=1024%2C554&amp;ssl=1 1024w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=50%2C27&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=600%2C325&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?resize=320%2C173&amp;ssl=1 320w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?w=1918&amp;ssl=1 1918w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_2.png?w=1840&amp;ssl=1 1840w" sizes="100vw" width="920"></figure>
+<p>&nbsp;</p>
+<h2>Configurer le routeur</h2>
+<p>Dans notre cas nous allons utiliser un routeur pfSense mais c’est sensiblement la même chose pour tous les routeurs.</p>
+<blockquote>
+  <p><i>il faut que votre ordinateur / machine virtuelle ai une IP fixe.</i></p>
+</blockquote>
+<ol>
+  <li>Sur l’interface de votre routeur, trouvez l’interface “<strong>Transfert de port</strong>” ou “<strong>Port forwarding</strong>“. Pour pfSense cela se trouve sous : <strong>Pare-feu / NAT / Transfert de port</strong></li>
+  <li>Cliquez sur “<strong>Ajouter</strong>“</li>
+  <li>Rentrez les paramètres suivants :En bleu : les paramètres en fonction de votre IP et de votre port choisi.</li>
+</ol>
+<figure class="image image_resized" style="width:69.19%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_3-920x775.png?resize=920%2C775"></figure>
+<p style="text-align:center;">En bleu : les paramètres en fonction de votre IP et de votre port choisi.</p>
+<p>&nbsp;4. Cliquez sur “<strong>Enregistrer</strong>” et sur “<strong>Appliquer les modifications</strong>“</p>
+<p>Si tous a bien été fait, vous devez voir ceci dans les règles :</p>
+<figure class="image"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4-920x29.png?resize=920%2C29" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=920%2C29&amp;ssl=1 920w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=300%2C9&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=768%2C24&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=1024%2C32&amp;ssl=1 1024w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=50%2C2&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=600%2C19&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?resize=320%2C10&amp;ssl=1 320w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_4.png?w=1137&amp;ssl=1 1137w" sizes="100vw" width="920"></figure>
+<blockquote>
+  <p><i>Après tout ces réglages, il sera peut-être nécessaire de redémarrer votre routeur.</i></p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Connexion à distance</h2>
+<p>Vous pouvez maintenant accéder à votre ordinateur / machine virtuelle avec n’importe quel client RDP. il faudra indiquer l’adresse de votre machine virtuelle qui est :</p>
+<p><code><strong>IPWAN:PORT</strong></code></p>
+<p>Où <code><strong>IPWAN</strong></code> est l’adresse de votre réseau sur le web (ou l’alias associé) que vous pouvez obtenir en allant&nbsp;<a href="http://www.monip.org/">sur cette page web</a>&nbsp;et <code><strong>PORT</strong></code> est bien entendu le numéro que vous avez choisi plus haut. Ça donne par exemple :</p>
+<figure class="image image_resized" style="width:29.95%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_5.png?resize=408%2C253" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_5.png?w=408&amp;ssl=1 408w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_5.png?resize=300%2C186&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_5.png?resize=50%2C31&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/02/Screenshot_5.png?resize=320%2C198&amp;ssl=1 320w" sizes="100vw" width="408"></figure>
+<p>Voici une liste non-exhaustive des logiciels vous permettant de vous connecter en RDP :</p>
+<p>– A partir d’une machine Windows :&nbsp;<strong>Remote Desktop Connection</strong>&nbsp;(pré-installé, recherchez <strong>mstsc</strong>)<br>– A partir d’une machine Linux :&nbsp;<strong>Remmina</strong><br>– A partir d’un appareil Android ou iOS :&nbsp;<strong>RD Client</strong> (Microsoft)</p>
+<p>&nbsp;</p>
