@@ -1,0 +1,55 @@
+<!--
+title: Commandes utiles
+description: Les principales commandes utilisées chaque jour
+published: true
+date: 2021-05-05T14:09:51.179Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-05T14:09:51.179Z
+-->
+
+<figure class="image image_resized" style="width:48.33%;"><img src="https://www.mediacritik.com/wp-content/uploads/2018/11/microsoft-80658_960_720.png" alt="Comment Microsoft a commencé ? - Mediacritik"></figure>
+<h1>Empêcher le redémarrage automatique</h1>
+<p>Lorsque vous vous connectez en administrateur sur vos serveur sous Windows Server 2012, 2016 et 2019, si il y a des mises à jours en attente, sans vous demander votre autorisation, le serveur va redémarrer.</p>
+<p>Bonne solution pour forcer les mises à jours, cependant, si cela tombe en pleine journée alors que vos serveurs sont en production, cela est problématique.</p>
+<p>&nbsp;</p>
+<h2>La solution :</h2>
+<p>Pour résoudre ce problème, il faut modifier une clé de registre.</p>
+<ol>
+  <li>Ouvrez Regedit.exe</li>
+  <li>Déplacez vous dans la clé (créez la si besoin) : <strong>HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate</strong></li>
+  <li>Modifier ou ajouter la valeur DWORD (32bit) avec le nom suivant : <strong>NoAutoRebootWithLoggedOnUsers</strong></li>
+  <li>Donnez lui la valeur : <strong>1</strong></li>
+  <li>Redémarrez le serveur</li>
+</ol>
+<p>&nbsp;</p>
+<hr>
+<h1>Mettre une IP fixe</h1>
+<p>Pour mettre une IP fixe à un PC ou un serveur Windows, il existe deux moyens : soit via le serveur DHCP et un réservation pour l’adresse MAC, soit directement dans les paramètres de la carte réseau.</p>
+<p>&nbsp;</p>
+<h2>Connaitre son adresse IP locale :</h2>
+<p>Pour connaitre son adresse IP locale, rien de bien compliquer :</p>
+<ol>
+  <li>Ouvrez un invite de commande (Windows+R, tapez cmd et entrer).</li>
+  <li>Rentrez la commande “<strong>ipconfig</strong>” et appuyez sur entrer.</li>
+  <li>Vous obtiendrais une liste d’information, pour l’adresse IP locale, il faut regarder la ligne suivante :</li>
+</ol>
+<p>Vous avez donc obtenu votre adresse IP locale. Avec la commande “<strong>ipconfig</strong>“, vous obtenez aussi d’autres informations intéressantes comme la passerelle par défaut, le masque de sous réseau etc… Mais avec la commande “<strong>ipconfig /all</strong>“, vous obtiendrai encore plus d’informations, comme l’ip du serveur DHCP, les dns, etc…</p>
+<p>&nbsp;</p>
+<h2>Configurer une IP fixe :</h2>
+<p>Afin de configurer une ip fixe, il faut vous rendre dans le&nbsp;<strong>Centre Réseau et Partages</strong> pour cela, ouvrez le panneau de configuration et sélectionnez “<strong>Réseau et Internet</strong>” et enfin “<strong>Centre Réseau et Partages</strong>“.</p>
+<p>Vous arrivez sur une page avec la liste de vos cartes réseau actives, sélectionnez la carte que vous souhaitez configurer en ip fixe :</p>
+<figure class="image image_resized" style="width:66.82%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=880%2C546" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?w=880&amp;ssl=1 880w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=300%2C186&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=768%2C477&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=50%2C31&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=600%2C372&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip2.png?resize=320%2C199&amp;ssl=1 320w" sizes="100vw" width="880"></figure>
+<p>Ensuite, selectionnez “<strong>Propriétés</strong>“, puis “<strong>Protocole Internet version 4 (TCP/IPv4)</strong>“, et ensuite il ne reste plus qu’à rentrer l’adresse IP que vous souhaitez.</p>
+<figure class="image image_resized" style="width:69.12%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3-920x350.png?resize=920%2C350" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=920%2C350&amp;ssl=1 920w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=300%2C114&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=768%2C292&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=1024%2C390&amp;ssl=1 1024w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=50%2C19&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=600%2C228&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?resize=320%2C122&amp;ssl=1 320w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip3.png?w=1240&amp;ssl=1 1240w" sizes="100vw" width="920"></figure>
+<figure class="image image_resized" style="width:69.54%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1-920x481.png?resize=920%2C481" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=920%2C481&amp;ssl=1 920w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=300%2C157&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=768%2C402&amp;ssl=1 768w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=50%2C26&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=600%2C314&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?resize=320%2C167&amp;ssl=1 320w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ip1.png?w=979&amp;ssl=1 979w" sizes="100vw" width="920"></figure>
+<p>&nbsp;</p>
+<hr>
+<h1>Renommer un PC ou un serveur Windows</h1>
+<p>&nbsp;</p>
+<p>Le plus rapide selon moi, c’est d’ouvrir l’explorateur de fichier, puis de faire un clique droit sur “<strong>Ce PC</strong>” et de sélectionner “<strong>Propriétés</strong>“.</p>
+<p>Ensuite cliquez sur “<strong>Modifier les paramètres</strong>” comme sur l’image suivante :</p>
+<figure class="image image_resized" style="width:66.82%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=878%2C545" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?w=878&amp;ssl=1 878w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=300%2C186&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=768%2C477&amp;ssl=1 768w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=50%2C31&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=600%2C372&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv1_.png?resize=320%2C199&amp;ssl=1 320w" sizes="100vw" width="878"></figure>
+<p>Une nouvelle fenêtre s’ouvre, cliquez sur “<strong>Modifier</strong>” et rentrez le nouveau nom du serveur dans l’encadré suivant.</p>
+<figure class="image image_resized" style="width:58.8%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=775%2C502" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?w=775&amp;ssl=1 775w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=300%2C194&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=768%2C497&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=50%2C32&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=600%2C389&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/ren.serv2_.png?resize=320%2C207&amp;ssl=1 320w" sizes="100vw" width="775"></figure>
+<p>Pour finir, redémarrer votre serveur ou votre PC. Au redémarrage ce dernier aura le nouveau nom !</p>
