@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-04T08:35:02.374Z
+date: 2021-05-05T11:31:05.122Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -13,6 +13,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
 - [:cyclone: Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Image)
+- [✅ L'instruction Healthcheck *S'assurer du bon fonctionnement de ses containers*](/Docker/Heathcheck)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
 - [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
 - [💙 Traefik *Un reverse-proxy pour tous les services*](/Docker/Traefik)
