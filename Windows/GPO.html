@@ -1,0 +1,91 @@
+<!--
+title: GPO
+description: Comprendre et créer des GPO
+published: true
+date: 2021-05-06T13:52:02.451Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-06T13:52:02.451Z
+-->
+
+<h1>Qu’est-ce qu’une GPO ?</h1>
+<p>Les GPO (Group Policy Object ou Stratégies de groupe) sont des&nbsp;<strong>règles que l’on peut appliquer à des utilisateurs, groupes ou OU (Unité d’Organisation) présent dans un annuaire Active Directory</strong>. Cela suppose donc qu’il y ait un domaine de configuré sur notre serveur.</p>
+<p>&nbsp;</p>
+<h2>Ouvrir le gestionnaire de stratégie de groupe</h2>
+<p>Sur le serveur, lancez le&nbsp;<strong>Gestionnaire de serveur.&nbsp;</strong>Allez ensuite dans Outils &gt;&nbsp;<strong>Gestion des stratégies de groupe</strong>.</p>
+<figure class="image image_resized" style="width:70%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1-920x455.png?resize=920%2C455" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=920%2C455&amp;ssl=1 920w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=300%2C148&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=768%2C380&amp;ssl=1 768w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=1024%2C506&amp;ssl=1 1024w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=50%2C25&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=600%2C297&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?resize=320%2C158&amp;ssl=1 320w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.1.png?w=1293&amp;ssl=1 1293w" sizes="100vw" width="920"></figure>
+<p>&nbsp;</p>
+<h2>Appliquer les GPO</h2>
+<p>Afin d’appliquer toutes vos GPO, vous devez redémarrer le poste en question ou directement utiliser la commande suivante : “<strong>gpupdate /force</strong>” dans l’invite de commande.</p>
+<figure class="image image_resized" style="width:35.19%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.9.png?resize=446%2C217" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.9.png?w=446&amp;ssl=1 446w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.9.png?resize=300%2C146&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.9.png?resize=50%2C24&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.9.png?resize=320%2C156&amp;ssl=1 320w" sizes="100vw" width="446"></figure>
+<p>&nbsp;</p>
+<hr>
+<h1>Mapper un lecteur réseau</h1>
+<h2>Pré-requis</h2>
+<ul>
+  <li><a href="https://labo-tech.fr/base-de-connaissance/comment-partager-un-dossier-sur-le-reseau/">Un dossier partagé sur le réseau&nbsp;</a></li>
+</ul>
+<h2>Création de la GPO</h2>
+<p>Dans le&nbsp;<strong>Gestionnaire de stratégie de groupe</strong>, dépliez les onglets jusqu’à avoir l’affichage suivant, faites un clique droit sur votre domaine et&nbsp;choisissez “<strong>Créer un objet GPO dans ce domaine, et le lier ici...</strong>“.&nbsp;</p>
+<figure class="image image_resized" style="width:57.89%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?resize=754%2C531" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?w=754&amp;ssl=1 754w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?resize=300%2C211&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?resize=50%2C35&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?resize=600%2C423&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.2.png?resize=320%2C225&amp;ssl=1 320w" sizes="100vw" width="754"></figure>
+<p>Donnez un nom à votre GPO puis faîtes “OK”.</p>
+<figure class="image image_resized" style="width:30.5%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.3.png?resize=386%2C182" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.3.png?w=386&amp;ssl=1 386w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.3.png?resize=300%2C141&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.3.png?resize=50%2C24&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.3.png?resize=320%2C151&amp;ssl=1 320w" sizes="100vw" width="386"></figure>
+<p>Une nouvelle GPO doit alors apparaître en dessous de “Default Domain Policy” avec le nom que vous lui avez donné.</p>
+<p>Remarque: Si vous avez beaucoup de GPO, vous pouvez aussi les ranger dans des dossiers (OU) : Clic droit, “Nouvelle unité d’organisation”, puis vous créer votre GPO dedans.</p>
+<p>Une fois celle-ci créée, faîtes Clic droit dessus puis “Modifier”.</p>
+<figure class="image image_resized" style="width:57.28%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?resize=753%2C529" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?w=753&amp;ssl=1 753w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?resize=300%2C211&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?resize=50%2C35&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?resize=600%2C422&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.4.png?resize=320%2C225&amp;ssl=1 320w" sizes="100vw" width="753"></figure>
+<p>Allez dans&nbsp;<strong>Configuration utilisateur &gt; Préférences &gt; Paramètres Windows &gt; Mappages de lecteurs.</strong></p>
+<p>La partie de droite de la fenêtre affiche alors en gros “Mappages de lecteurs”. Faîtes Clic droit dans cette partie puis choisissez “Nouveau” et enfin “Lecteur Mappé”.</p>
+<figure class="image image_resized" style="width:69.85%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5-920x557.png?resize=920%2C557" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=920%2C557&amp;ssl=1 920w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=300%2C182&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=768%2C465&amp;ssl=1 768w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=50%2C30&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=600%2C363&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?resize=320%2C194&amp;ssl=1 320w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.5.png?w=931&amp;ssl=1 931w" sizes="100vw" width="920"></figure>
+<p>Une nouvelle fenêtre s’ouvre et c’est ici que tout se joue…</p>
+<p>Parmi, les actions, il y en a 4. Je vous conseille de choisir “<strong>Mettre à jour</strong>“. Pour&nbsp;<strong>l’emplacement, il faut indiquer le chemin réseau</strong>&nbsp;de voter dossier.</p>
+<p><strong>Cocher la case “Reconnecter”</strong>&nbsp;et donner le&nbsp;<strong>nom que vous souhaitez pour le libéllé</strong>.</p>
+<p>Vous avez ensuite la&nbsp;<strong>possibilité de choisir lettre qu’aura le lecteur</strong>&nbsp;(les options parlent d’elle mêmes).</p>
+<p>Enfin&nbsp;<strong>cochez “Afficher ce lecteur” et “Afficher tous les lecteurs”</strong>.</p>
+<figure class="image image_resized" style="width:30.04%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.6.png?resize=399%2C458" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.6.png?w=399&amp;ssl=1 399w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.6.png?resize=261%2C300&amp;ssl=1 261w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.6.png?resize=44%2C50&amp;ssl=1 44w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.6.png?resize=320%2C367&amp;ssl=1 320w" sizes="100vw" width="399"></figure>
+<p>Appliquez les paramètres puis faîtes “OK”. Vous verrez alors qu’une nouvelle ligne s’est ajoutée, dans la partie “Mappages de lecteurs”.</p>
+<p>Vous pouvez fermer cette fenêtre et revenir à celle listant vos GPO.</p>
+<p>Dans la partie de droite, en bas,&nbsp;<strong>vous pouvez choisir sur qui cette GPO va s’appliquer (utilisateurs, groupes, OU)</strong>. Vous n’avez qu’à cliquer sur ajouter puis entrer les noms souhaités et faire “OK”.</p>
+<h2>Résultat</h2>
+<figure class="image image_resized" style="width:60.16%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=786%2C592" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?w=786&amp;ssl=1 786w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=300%2C226&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=768%2C578&amp;ssl=1 768w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=50%2C38&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=600%2C452&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp1.10.png?resize=320%2C241&amp;ssl=1 320w" sizes="100vw" width="786"></figure>
+<p>&nbsp;</p>
+<hr>
+<h1>Déployer une imprimante</h1>
+<h2>Pré-requis</h2>
+<ul>
+  <li><a href="https://labo-tech.fr/base-de-connaissance/comment-installer-un-serveur-dimpression/">Un serveur d’impression</a></li>
+  <li>Une imprimante configurée sur le serveur</li>
+</ul>
+<h2>Création de la GPO</h2>
+<p>Ouvrez le <strong>Gestionnaire d’impression</strong> depuis le&nbsp;<strong>Gestionnaire de serveur</strong>.</p>
+<figure class="image image_resized" style="width:69.85%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1-920x475.png?resize=920%2C475" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=920%2C475&amp;ssl=1 920w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=300%2C155&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=768%2C397&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=1024%2C529&amp;ssl=1 1024w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=50%2C26&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=600%2C310&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?resize=320%2C165&amp;ssl=1 320w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.1.png?w=1233&amp;ssl=1 1233w" sizes="100vw" width="920"></figure>
+<p>Déroulez le menu jusqu’à trouver les imprimants, choisissez votre imprimante et cliquer sur “<strong>Déployer avec la stratégie de groupe</strong>“.</p>
+<figure class="image image_resized" style="width:69.54%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2-920x701.png?resize=920%2C701" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=920%2C701&amp;ssl=1 920w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=300%2C229&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=768%2C585&amp;ssl=1 768w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=50%2C38&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=600%2C457&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?resize=320%2C244&amp;ssl=1 320w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.2.png?w=945&amp;ssl=1 945w" sizes="100vw" width="920"></figure>
+<p>Cliquez sur <strong>Parcourir</strong> afin de sélectionner une GPO.</p>
+<figure class="image image_resized" style="width:52.9%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?resize=698%2C426" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?w=698&amp;ssl=1 698w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?resize=300%2C183&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?resize=50%2C31&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?resize=600%2C366&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.3.png?resize=320%2C195&amp;ssl=1 320w" sizes="100vw" width="698"></figure>
+<p>Sélectionnez une GPO ou cliquez sur l’icon afin d’en créer une nouvelle.</p>
+<figure class="image image_resized" style="width:36.1%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.4.png?resize=478%2C356" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.4.png?w=478&amp;ssl=1 478w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.4.png?resize=300%2C223&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.4.png?resize=50%2C37&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.4.png?resize=320%2C238&amp;ssl=1 320w" sizes="100vw" width="478"></figure>
+<p>Nommez et sélectionnez la GPO puis cliquez sur OK.</p>
+<figure class="image image_resized" style="width:35.99%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.5.png?resize=481%2C358" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.5.png?w=481&amp;ssl=1 481w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.5.png?resize=300%2C223&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.5.png?resize=50%2C37&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.5.png?resize=320%2C238&amp;ssl=1 320w" sizes="100vw" width="481"></figure>
+<p>Choisissez comment vous voulez déployer votre imprimante : par ordinateur, par utilisateur ou les deux et cliquez sur Ajouter.</p>
+<figure class="image image_resized" style="width:52.54%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?resize=698%2C423" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?w=698&amp;ssl=1 698w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?resize=300%2C182&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?resize=50%2C30&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?resize=600%2C364&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.6.png?resize=320%2C194&amp;ssl=1 320w" sizes="100vw" width="698"></figure>
+<p>Vous retrouvez un récapitulatif de vos actions, si tout est bon, cliquez sur OK</p>
+<figure class="image image_resized" style="width:53.2%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?resize=697%2C424" alt="" srcset="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?w=697&amp;ssl=1 697w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?resize=300%2C182&amp;ssl=1 300w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?resize=50%2C30&amp;ssl=1 50w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?resize=600%2C365&amp;ssl=1 600w, https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.7.png?resize=320%2C195&amp;ssl=1 320w" sizes="100vw" width="697"></figure>
+<p>Vous pouvez voir les imprimantes que vous avez déployé directement dans le menu <strong>Imprimantes déployées</strong>.</p>
+<figure class="image image_resized" style="width:69.05%;"><img src="https://i2.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8-920x700.png?resize=920%2C700" alt="" srcset="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=920%2C700&amp;ssl=1 920w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=300%2C228&amp;ssl=1 300w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=768%2C585&amp;ssl=1 768w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=50%2C38&amp;ssl=1 50w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=600%2C457&amp;ssl=1 600w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?resize=320%2C244&amp;ssl=1 320w, https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.8.png?w=946&amp;ssl=1 946w" sizes="100vw" width="920"></figure>
+<p>&nbsp;</p>
+<h2>Résultat</h2>
+<figure class="image image_resized" style="width:59.25%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=784%2C591" alt="" srcset="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?w=784&amp;ssl=1 784w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=300%2C226&amp;ssl=1 300w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=768%2C579&amp;ssl=1 768w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=50%2C38&amp;ssl=1 50w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=600%2C452&amp;ssl=1 600w, https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/11/gp2.10.png?resize=320%2C241&amp;ssl=1 320w" sizes="100vw" width="784"></figure>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+<h1>Déployer un logiciel</h1>
+<h2>Pré-requis</h2>
+<ul>
+  <li>Le .msi d’un logiciel</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Création de la GPO</h2>
+<blockquote>
+  <p>Pas encore fini</p>
+</blockquote>
