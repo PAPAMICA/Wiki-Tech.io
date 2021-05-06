@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-06T10:38:10.444Z
+date: 2021-05-06T10:43:04.897Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -12,20 +12,20 @@ dateCreated: 2021-04-28T15:15:54.158Z
 # Les différentes catégories
 ## Docker
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
-- [:cyclone: Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
+- [🌀 Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Image)
 - [✅ L'instruction Healthcheck *S'assurer du bon fonctionnement de ses containers*](/Docker/Heathcheck)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
-- [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
+- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
 - [💙 Traefik *Un reverse-proxy pour tous les services*](/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Docker/Portainer)
 {.links-list}
 
 
 ## SelfHosted
-- [:cyclone: Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
+- [🌀 Nextcloud *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
 - [💠 Bitwarden (Vaultwarden) *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
-- [:fire: Jirafeau *Envoi de fichiers. Alternative à WeTransfert*](/SelfHosted/Jirafeau)
+- [🔥 Jirafeau *Envoi de fichiers. Alternative à WeTransfert*](/SelfHosted/Jirafeau)
 - [📰 FreshRSS *Aggrégateur RSS d'articles, de Podcasts et de Vidéos*](/SelfHosted/FreshRSS)
 - [📋 Hastebin *Partage de texte. Alternative à Pastebin*](/SelfHosted/Hastebin)
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
@@ -50,8 +50,8 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Linux
-- [:fire: Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Commandes)
-- [:package: Paquets utiles *La liste de mes paquets indispensables*](/Linux/Paquets)
+- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Commandes)
+- [📦 Paquets utiles *La liste de mes paquets indispensables*](/Linux/Paquets)
 - [🔳 Terminal *La configuration de mon terminal*](/Linux/Terminal)
 - [📆 MOTD *Comprendre et changer le message de bienvenue*](/Linux/MOTD)
 - [📈 Check débit *Mesurer sa connexion et le débit entre deux serveurs*](/Linux/Check-debit)
@@ -59,7 +59,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Openstack
-- [:cyclone: Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
+- [🌀 Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
 - [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
 - [🏁 Guide rapide *Créer son premier serveur*](/Openstack/Premier-Pas)
 - [🔑 Créer une keypair *Préparer l'accès en SSH*](/Openstack/Keypair)
@@ -74,7 +74,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Zabbix
-- [:cyclone: Installation *Mise en place sous Docker*](/Zabbix/Installation)
+- [🌀 Installation *Mise en place sous Docker*](/Zabbix/Installation)
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Zabbix/SNMP)
 - [🔴 Zabbix Proxy *Installation et configuration d'un proxy Zabbix*](/Zabbix/Proxy)
@@ -83,7 +83,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Grafana
-- [:cyclone: Installation *Mise en place sous Docker*](/Grafana/Installation)
+- [🌀 Installation *Mise en place sous Docker*](/Grafana/Installation)
 - [🔴 Dashboard Zabbix *Création des dashboards pour Zabbix*](/Grafana/Zabbix)
 - [🟠 Loki *Installation et configuration d'un agrégateur de logs*](/Grafana/Loki)
 {.links-list}
@@ -107,14 +107,14 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## NAS
-- [:fire: Xpenology *Installer DSM sur du hardware dédié*](/NAS/Xpenology)
-- [:fire: Xpenology Virtualisé *Installer DSM dans une VM ESXi*](/NAS/Xpenology-VM)
+- [🔥 Xpenology *Installer DSM sur du hardware dédié*](/NAS/Xpenology)
+- [🔥 Xpenology Virtualisé *Installer DSM dans une VM ESXi*](/NAS/Xpenology-VM)
 - [📦 Active Backup sur Xpenology *Activer et installer Active Backup sur un Xpenology*](/NAS/Active-Backup-Xpenology)
 - [📼 Licence Surveillance Station *Cumuler les licences Surveillance Station*](/NAS/Active-Backup-Xpenology)
 {.links-list}
 
 ## Windows
-- [:fire: Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Windows/Commandes)
+- [🔥 Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Windows/Commandes)
 - [💽 Partition Windows *Créer et gérer les partitions sous Windows*](/Windows/Partitions)
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
 - [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Windows/Robocopy)
