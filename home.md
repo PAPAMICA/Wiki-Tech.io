@@ -2,13 +2,13 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-06T10:28:42.631Z
+date: 2021-05-06T10:33:43.138Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
 ---
 
-![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif)
+![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =80%x)
 # Les différentes catégories
 ## Docker
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
