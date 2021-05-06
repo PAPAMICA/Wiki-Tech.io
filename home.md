@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-06T10:43:04.897Z
+date: 2021-05-06T13:46:24.140Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -119,5 +119,6 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
 - [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Windows/Robocopy)
 - [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
-- [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Windows/IP-Fixe)
+- [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Windows/RDP)
+- [✨ GPO *Comprendre et créer des GPO*](/Windows/GPO)
 {.links-list}
