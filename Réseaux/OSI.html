@@ -1,0 +1,65 @@
+<!--
+title: Modèle OSI
+description: Comprendre le modèle OSI
+published: true
+date: 2021-05-07T07:57:42.539Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T07:57:42.539Z
+-->
+
+<figure class="image image_resized" style="width:40.03%;"><img src="https://bmskaren.ir/wp-content/uploads/2020/11/bmskaren-85-1.png" alt="smart building Protocol | smart home Karen Make Smart Engineers Co."></figure>
+<h1>Le modèle OSI (Open System Interconnection)</h1>
+<p>C’est un&nbsp;modèle&nbsp;de communications entre&nbsp;ordinateurs proposé par l’ISO&nbsp;(Organisation Internationale de Normalisation) qui décrit les fonctionnalités nécessaires à la communication et l’organisation de ces fonctions.</p>
+<p>Le principe du modèle OSI est de cadrer le protocole TCP/IP. Il est basé sur 7 couches de communication&nbsp;:</p>
+<figure class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" alt="Image associée"></figure>
+<blockquote>
+  <p><i>Les couches ne peuvent communiquer qu’entre elles (réseau / réseau, liaison / liaison mais pas liaison / transport).</i></p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Implémentation des 7 couches sur les équipements</h2>
+<p>Chaque équipement réseau (PC, switch, routeur,…) a ses propres caractéristiques et donc a besoin de toutes les couches du modèles OSI ou seulement d’une partie.</p>
+<p>&nbsp;</p>
+<figure class="image"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png?resize=604%2C363" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png 604w, https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11-300x180.png 300w" sizes="100vw" width="604"></figure>
+<p>Dans ce schéma, on remarque que PC1 et PC2 ont besoin de&nbsp;<strong>toutes les couches</strong>&nbsp;du modèle OSI. En effet, il faut qu’on puisse envoyer des paquets avec notre carte réseau (couches basses)et qu’on utilise une application (firefox, outlook,…) pour communiquer avec nos voisins (couches hautes).</p>
+<p>En revanche, le switch n’a besoin&nbsp;<strong>que des couches 1 et 2</strong>&nbsp;du modèles OSI, car cet équipement a besoin de connaitre uniquement&nbsp;<strong>votre adresse MAC</strong>&nbsp;(qui se trouve au niveau 2) pour pouvoir commuter votre trame vers le bon port.</p>
+<p>Le routeur a lui besoin&nbsp;<strong>des couches 1, 2 et 3</strong>. La couche 3 (réseau) lui permet de faire communiquer des réseaux entre eux. Par exemple, quand je surf sur Internet, c’est le routeur qui fait le lien entre mon réseau LAN et le réseau Internet, et ce lien est établit au niveau 3.</p>
+<p>&nbsp;</p>
+<h2>Détail de chaque couche</h2>
+<h3>couche 1 – physique</h3>
+<p>Cette couche se charge de la transmission et la réception des données informatique au format binaire (0 et 1).</p>
+<ul>
+  <li>sur une paire de cuivre, c’est un signal électrique qui définit le 0 et un autre signal électrique qui définit le 1.</li>
+  <li>sur une fibre optique, c’est la lumière envoyée dans la silice qui s’en occupe</li>
+  <li>sur du sans-fil, c’est la modulation</li>
+  <li>…</li>
+</ul>
+<h3>couche&nbsp;2 – liaison de données</h3>
+<p>Cette couche définit comment la transmission des données est effectuée entre 2 machines adjacentes. Par exemple, un PC connecté à un switch, une imprimante connecté à un switch, deux routeurs connectés entre eux…</p>
+<p>La notion d’adressage physique est présente. Quand votre carte réseau recoit des 0 et des 1, il faut qu’elle vérifie si c’est bien pour vous. Par exemple pour la technologie Ethernet, on parle d’adresse MAC – Medium Access Control. Votre carte réseau a une adresse MAC qui l’identifie dans le réseau.</p>
+<p>Cette couche gère aussi la détection d’erreur de transmission. Par exemple, quand l’émetteur envoi la séquence 11001 et le destinataire recoit 11011, la couche va le détecter.</p>
+<p>Pour ethernet, la séquence de données envoyée par l’émetteur est appelé une trame (ou frame en anglais)</p>
+<h3>couche&nbsp;3 – réseau</h3>
+<p>On a vu que la couche 2 gère la communication entre machines adjacente uniquement, il faut bien qu’une couche se charge de la communication entre machines qui sont physiquement pas connectés entre elles; c’est la couche 3 qui s’en charge. Avec cet adressage logique, on peut délivrer les données à l’autre bout de la planète.</p>
+<p>Pour faire une analogie, pensez que l’adressage logique correspond à l’adresse postale que vous mettez sur une enveloppe.</p>
+<p>La couche 3 va aussi se charger de trouver le meilleur chemin pour acheminer les données jusqu’à la destination.</p>
+<p>Aujoud’hui, l’adressage logique utilisée est le protocole IP et la sélection du meilleur chemin s’effectue par les routeurs avec l’aide des protocoles de routage (RIP, OSPF, BGP…)</p>
+<h3>couche&nbsp;4 – transport</h3>
+<p>Cette couche se charge de plusieurs fonctionnalités essentielles:</p>
+<ul>
+  <li>gère les problème de transport entre les machines (c’est toujours plus sympa si je reçoi un mail en entier)</li>
+  <li>et donc fiabilise les communications (si on perd des données, on demande une retransmission des données manquantes)</li>
+  <li>gère le contrôle de flux (vous téléchargez plus vite quand vous êtes sur du 100Mb/s que sur 2Mb/s… merci à cette couche)</li>
+  <li>fait le lien entre les communications réseaux et les applicatifs (je peux avoir mon browser ouvert en même temps que ma messagerie et mon téléchargement de fichier)</li>
+</ul>
+<h3>couche 5 – session</h3>
+<p>Cette couche gère l’ouverture et la fermeture des sessions entre inter-applicatif et intra-applicatif (avec mon browser, je peux ouvrir plusieurs onglets).</p>
+<h3>couche&nbsp;6 – présentation</h3>
+<p>Cette couche formate les données pour qu’elles deviennent compréhensibles par l’application qui les a demandées.</p>
+<h3>couche&nbsp;7 – application</h3>
+<p>Cette couche fait l’interface entre l’homme et la machine. Votre browser (firefox, safari,chrome…), votre logiciel de messsagerie (outlook, thunderbird…) sont des applications.</p>
+<p>&nbsp;</p>
+<h2>Résumé en vidéo</h2>
+<figure class="media">
+  <oembed url="https://youtu.be/w1QcbAJ9RcY"></oembed>
+</figure>
