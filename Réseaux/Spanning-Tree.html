@@ -1,0 +1,89 @@
+<!--
+title: Spanning-Tree
+description: Qu’est-ce que c’est et à quoi ça sert ?
+published: true
+date: 2021-05-07T09:26:35.471Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T09:26:35.471Z
+-->
+
+<figure class="image image_resized" style="width:6.85%;"><img src="https://www.spanningtreeconsulting.com/images/spanning-tree-logo.png" alt="Spanning Tree Consulting"></figure>
+<h1>Qu’est-ce que c’est ?</h1>
+<p>Le&nbsp;<strong>Spanning Tree Protocol</strong>&nbsp;(algorithme de l’arbre recouvrant, aussi appelé&nbsp;<strong>STP</strong>) est un&nbsp;protocole réseau&nbsp;de<strong>&nbsp;niveau 2</strong>&nbsp;permettant de déterminer une&nbsp;topologie&nbsp;réseau&nbsp;sans boucle&nbsp;(appelée&nbsp;arbre) dans les&nbsp;LAN&nbsp;avec&nbsp;ponts. Il est défini dans la norme&nbsp;IEEE&nbsp;802.1D&nbsp;et est basé sur un algorithme décrit par&nbsp;Radia Perlman&nbsp;en 1985.</p>
+<h1>A quoi sert-il ?</h1>
+<p>L’objectif des réseaux est de faire en sorte que les paquets arrivent à destination. Une solution est de dupliquer les équipements physique pour qu’en cas de panne sur l’un d’eux, l’autre équipement prenne le relai;&nbsp;<strong>on appelle ça la redondance ou la résilience</strong>.</p>
+<h2>Architecture non redondée</h2>
+<figure class="image image_resized" style="width:15.57%;"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP.png?resize=460%2C86" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP.png 767w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP-300x56.png 300w" sizes="100vw" width="460"></figure>
+<p>Sur le schéma ci-dessus, on voit bien que si le switch tombe (panne électrique, bug…), plus aucune communication entre les ordinateurs A et B n’est possible.</p>
+<h2>Architecture redondée</h2>
+<p>Maintenant que l’on souhaite que les paquets entre les ordinateurs A et B transitent même en cas de panne matériel, créons cette nouvelle architecture:</p>
+<figure class="image image_resized" style="width:15.77%;"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP2.png?resize=460%2C171" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP2.png 767w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP2-300x111.png 300w" sizes="100vw" width="460"></figure>
+<p>Avec cette architecture, on voit bien que si le switch du haut ne fonctionne plus, le switch du bas peut tout même transmettre les paquets de A vers B et de B vers A.</p>
+<h2>Les 3 problèmes récurrents d’une connexion redondante</h2>
+<h3><u>1er problème: Tempète de broadcast</u></h3>
+<p>Sur l’architecture redondée précédente, imaginons que la station A envoi un message de broadcast (trame niveau 2 avec comme adresse MAC de destination FFFF.FFFF.FFFF).&nbsp;<i>Que se passe-t-il?</i></p>
+<figure class="image image_resized" style="width:15.77%;"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP_broadcast_storm.png?resize=460%2C171" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_broadcast_storm.png 767w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_broadcast_storm-300x111.png 300w" sizes="100vw" width="460"></figure>
+<ul>
+  <li>Le switch du haut reçoit la trame sur son port,&nbsp;<strong>extrait l’adresse MAC</strong>&nbsp;de destination (FFFF.FFFF.FFFF) et&nbsp;<strong>la duplique sur tous ses ports</strong>&nbsp;car c’est une adresse de broadcast. La trame sort donc du switch du haut et se dirige vers le switch du bas</li>
+  <li>idem pour le switch du bas; il reçoit la trame sur son port,&nbsp;<strong>extrait l’adresse MAC</strong>&nbsp;de destination (FFFF.FFFF.FFFF) et&nbsp;<strong>la duplique sur tous ses ports</strong>&nbsp;car c’est une adresse de broadcast. La trame sort donc du switch du bas et se dirige vers le switch du haut</li>
+  <li>et ces trames&nbsp;<strong>tournent sans arrêt</strong>&nbsp;entre les 2 switchs, faisant monter leur CPU à 100% et les font plus ou moins planter (souvent un reboot est nécessaire)</li>
+</ul>
+<p>Ce phénomène s’appelle la&nbsp;<strong>tempête de broadcast</strong>, ou&nbsp;<strong>broadcast storm</strong>&nbsp;en anglais.</p>
+<h3><u>2ème problème: Duplication de trame</u></h3>
+<p>Maintenant, imaginons que la station A envoi une trame vers la station B, donc la trame sera forgée avec les informations suivantes:</p>
+<ul>
+  <li>adresse MAC source: A</li>
+  <li>adresse MAC destination: B</li>
+</ul>
+<figure class="image image_resized" style="width:15.91%;"><img src="https://i1.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP_duplication_trame.png?resize=460%2C171" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_duplication_trame.png 767w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_duplication_trame-300x111.png 300w" sizes="100vw" width="460"></figure>
+<p><i>Que se passe-t-il?</i></p>
+<ul>
+  <li>Le switch du haut reçoit la trame sur son port (flèche rouge),&nbsp;<strong>extrait l’adresse MAC</strong>&nbsp;de destination (B) et la commute sur le port de droite. La station B reçoit bien la trame de la station A</li>
+  <li>Mais le switch du bas reçoit aussi la trame sur son port&nbsp;(flèche orange),&nbsp;<strong>extrait l’adresse MAC</strong>&nbsp;de destination (B) et la commute sur le port de droite. La station B reçoit donc pour une deuxième fois la trame de la station A</li>
+</ul>
+<p>Ce phénomène s’appelle la&nbsp;<strong>duplication de trame</strong>&nbsp;&nbsp;(pas top comme optimisation réseau&nbsp;🙂)</p>
+<h3><u>3ème problème: Instabilité de la table CAM</u></h3>
+<p>Maintenant, regardons un peu ce qu’il se passe côté table CAM – Content Addressable Memory – du switch.</p>
+<p>Pour ceux qui ont oublié cette notion, je vous renvoi vers cet article.</p>
+<figure class="image image_resized" style="width:16.79%;"><img src="https://i2.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP_instabilite_CAM.png?resize=481%2C200" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_instabilite_CAM.png 802w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_instabilite_CAM-300x124.png 300w" sizes="100vw" width="481"></figure>
+<p>Reprenons &nbsp;la trame précédente (message de A vers B):</p>
+<ul>
+  <li>la trame arrive sur le port 1 du switch du haut. Le switch&nbsp;<strong>extrait l’adresse MAC source</strong>&nbsp;et&nbsp;<strong>l’insère dans sa table CAM</strong>&nbsp;[port 1 = adresse MAC A]</li>
+  <li>la trame arrive aussi sur le port 3 du switch du bas. Le switch&nbsp;<strong>extrait l’adresse MAC source</strong>&nbsp;et<strong>&nbsp;l’insère dans sa table CAM</strong>&nbsp;[port 3 = adresse MAC A]</li>
+</ul>
+<p>Maintenant que chaque switch a extrait l’adresse MAC source pour l’insérer dans sa table, chacun&nbsp;<strong>extrait l’adresse MAC de destination</strong>&nbsp;(B) et&nbsp;<strong>la compare à sa table</strong>. Comme aucune entrée n’est trouvée, chaque switch va dupliquer la trame sur tous ses ports:</p>
+<ul>
+  <li>le switch du haut envoi la trame sur son port 2</li>
+  <li>le switch du bas envoi la trame sur son port 4</li>
+</ul>
+<p>Et c’est là où ça devient cocasse car chaque switch recoit la trame de l’autre switch…</p>
+<ul>
+  <li>le switch du haut&nbsp;reçoit&nbsp;sur son port 2 la trame du switch du bas<ul>
+      <li>le switch&nbsp;<strong>extrait l’adresse MAC source</strong>&nbsp;et&nbsp;<strong>l’insère dans sa table CAM</strong>&nbsp;[port 2 = adresse MAC A]. Pour cela,<strong>&nbsp;il supprime l’entrée précédente</strong>&nbsp;qui était&nbsp;[port 1 = adresse MAC A]</li>
+    </ul>
+  </li>
+  <li>le switch du bas reçoit&nbsp;sur son port 4 la trame du switch du haut<ul>
+      <li>le switch&nbsp;<strong>extrait l’adresse MAC source</strong>&nbsp;et&nbsp;<strong>l’insère dans sa table CAM</strong>&nbsp;[port 4 = adresse MAC A]. Pour cela,&nbsp;<strong>il supprime l’entrée précédente</strong>&nbsp;qui était&nbsp;[port 3 = adresse MAC A]</li>
+    </ul>
+  </li>
+</ul>
+<p>On voit ici que les switchs mettent à jour leur table CAM à chaque fois qu’ils&nbsp;reçoivent&nbsp;une trame.</p>
+<p>Ce phénomène s’appelle l’<strong>instabilité de la table CAM</strong>.</p>
+<h2>Résolution des 3 problèmes</h2>
+<p>Pour éviter ces 3 problèmes (<strong>tempête&nbsp;de broadcast</strong>,<strong>&nbsp;duplication de trame</strong>&nbsp;et<strong>instabilité de la table CAM</strong>), le protocole spanning-tree a été créé. Comme ces problèmes proviennent du fait que le réseau commuté est face à une boucle physique, le spanning-tree&nbsp;permet d’identifier cette boucle et de la bloquer “logiciellement”.</p>
+<figure class="image image_resized" style="width:15.82%;"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/06/STP_block1.png?resize=460%2C171" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_block1.png 767w, https://reussirsonccna.fr/wp-content/uploads/2012/06/STP_block1-300x111.png 300w" sizes="100vw" width="460"></figure>
+<p>Dans notre exemple, tout le trafic passera par le switch du haut pour joindre la station B, le chemin du bas étant bloqué au niveau du port du switch du bas.</p>
+<p>Si le switch du haut tombe en panne, le protocole spanning-tree va le détecter et va débloquer le port du bas. A ce moment, tout le trafic passera pour le switch du bas.</p>
+<p>Voilà à quoi sert le spanning-tree !</p>
+<h1>A retenir</h1>
+<p>&nbsp;</p>
+<ul>
+  <li>En mettant en place une architecture redondée, on est face à 3 problèmes majeurs:<ol>
+      <li>tempête de broadcast</li>
+      <li>duplication de trame</li>
+      <li>instabilité de la table CAM</li>
+    </ol>
+  </li>
+  <li>Pour résoudre ces problèmes, le spanning-tree a été créé et permet d’éviter les boucles physiques en désactivant un port logiciellement, et le réa-active au besoin pour assurer la résilience du réseau</li>
+</ul>
