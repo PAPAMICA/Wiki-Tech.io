@@ -2,12 +2,13 @@
 title: pfSense-OpenVPN
 description: Configurer un serveur OpenVPN sur pfSense.
 published: true
-date: 2021-05-07T07:51:01.058Z
+date: 2021-05-07T07:53:22.672Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-07T07:51:01.058Z
 -->
 
+<figure class="image image_resized" style="width:68.18%;"><img src="https://openvpn.net/wp-content/uploads/2018/06/about_text_logo.png" alt="About OpenVPN | OpenVPN"></figure>
 <h1>OpenVPN sur un pfSense</h1>
 <p>Configurer un serveur VPN sur le routeur pfSense vous permettra d’accéder à l’ensemble de votre réseau à distance de façon sécurisée.</p>
 <p>Pour la sécurité nous allons utiliser des certificats autosignés.</p>
@@ -23,24 +24,24 @@ dateCreated: 2021-05-07T07:51:01.058Z
 <ul>
   <li>Rendez vous dans la partie : <strong>Système &gt; Gestionnaire de certificats</strong>.</li>
   <li>Restez dans l’onglet “<strong>ACs</strong>” et cliquez sur&nbsp;<strong>Ajouter</strong>.</li>
-  <li>Remplissez les informations suivantes (en remplaçant par la localité de votre serveur et votre adresse mail) :&nbsp;</li>
+  <li>Remplissez les informations suivantes (en remplaçant par la localité de votre serveur et votre adresse mail) :</li>
 </ul>
 <figure class="image image_resized" style="width:69.54%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/03/certificat-OpenVPN-920x727.png?resize=920%2C727"></figure>
 <ul>
-  <li>Une fois enregistré, vous devriez avoir ceci :&nbsp;</li>
+  <li>Une fois enregistré, vous devriez avoir ceci :</li>
 </ul>
 <figure class="image image_resized" style="width:70.28%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/03/resultat-ca-openvpn-920x186.png?resize=920%2C186"></figure>
 <h4>Continuons avec le certificat pour le serveur :</h4>
 <ul>
   <li>Restez dans le&nbsp;<strong>Gestionnaire de certificats</strong> mais rendez vous dans l’onglet&nbsp;<strong>Certificats.</strong></li>
-  <li>Remplissez les informations suivantes (en remplaçant l’ip par celle de votre routeur pfSense) :&nbsp;</li>
+  <li>Remplissez les informations suivantes (en remplaçant l’ip par celle de votre routeur pfSense) :</li>
 </ul>
 <figure class="image image_resized" style="width:69.58%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/03/certificat-pfSense-920x1027.png?resize=920%2C1027"></figure>
 <h4>Et finissons par le certificat pour les utilisateurs :</h4>
 <ul>
   <li>Rendez vous dans la partie :&nbsp;<strong>Système &gt; Gestionnaire d’usagers.</strong></li>
   <li>Nous allons ajouter une utilisateur pour le VPN, cliquez donc sur&nbsp;<strong>Ajouter</strong>.</li>
-  <li>Remplissez les informations suivantes (en remplaçant votre utilisateur et son mot de passe) :&nbsp;</li>
+  <li>Remplissez les informations suivantes (en remplaçant votre utilisateur et son mot de passe) :</li>
 </ul>
 <figure class="image image_resized" style="width:69.47%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/03/certificat-utilisateur-920x1052.png?resize=920%2C1052"></figure>
 <p>&nbsp;</p>
@@ -49,7 +50,7 @@ dateCreated: 2021-05-07T07:51:01.058Z
 <h4>Pour cela nous allons avoir besoin d’un paquet qui n’est pas installé par défaut :</h4>
 <ul>
   <li>Rendez vous dans la partie :&nbsp;<strong>Système &gt; Gestionnaire de paquets</strong> puis dans l’onglet&nbsp;<strong>Paquets disponibles.</strong></li>
-  <li>Il nous faut le paquet :&nbsp;<strong>openvpn-client-export</strong>, descendez jusqu’à le trouver et cliquez sur&nbsp;<strong>+Install&nbsp;</strong>:&nbsp;</li>
+  <li>Il nous faut le paquet :&nbsp;<strong>openvpn-client-export</strong>, descendez jusqu’à le trouver et cliquez sur&nbsp;<strong>+Install&nbsp;</strong>:</li>
 </ul>
 <figure class="image image_resized" style="width:69.85%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/03/paquet-openvpnclientexport-920x76.png?resize=920%2C76"></figure>
 <ul>
@@ -61,7 +62,7 @@ dateCreated: 2021-05-07T07:51:01.058Z
   <li>Étape 1 : sélectionnez “<strong>Local User Access</strong>“.</li>
   <li>Étape 5 : sélectionnez le <strong>certificat VPN</strong> précédemment créé.</li>
   <li>Etape 7 : selectionnez le <strong>certificat Utilisateur</strong> précédemment créé.</li>
-  <li>Etape 9 : rentrez les informations suivantes :&nbsp;</li>
+  <li>Etape 9 : rentrez les informations suivantes :</li>
 </ul>
 <figure class="image image_resized" style="width:69.66%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/03/serveur-openvpn_conf1-920x3140.png?resize=920%2C3140"></figure>
 <ul>
@@ -75,7 +76,7 @@ dateCreated: 2021-05-07T07:51:01.058Z
 <ul>
   <li>Rendez vous dans la partie :&nbsp;<strong>VPN &gt; OpenVPN&nbsp;</strong>puis dans l’onglet “<strong>Client Export</strong>“.</li>
   <li>Laissez la configuration de base et dirigez vous vers le bas de la page.</li>
-  <li>Il ne vous reste plus qu’à choisir votre plateforme :&nbsp;</li>
+  <li>Il ne vous reste plus qu’à choisir votre plateforme :</li>
 </ul>
 <figure class="image image_resized" style="width:67.16%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2018/03/export-conf-920x361.png?resize=920%2C361"></figure>
 <p>Pour Windows, je vous conseille directement le Windows Installer qui, même si vous avez déjà le client, placera les fichiers de configuration au bon endroit.</p>
@@ -87,7 +88,7 @@ dateCreated: 2021-05-07T07:51:01.058Z
 </ol>
 <p>&nbsp;</p>
 <ol>
-  <li>Vous devriez voir ceci :&nbsp;</li>
+  <li>Vous devriez voir ceci :</li>
 </ol>
 <figure class="image image_resized" style="width:28.11%;"><img src="https://i0.wp.com/labo-tech.fr/wp-content/uploads/2018/03/connecte-.png?resize=370%2C125"></figure>
 <p>Vous voilà connecté au VPN !</p>
