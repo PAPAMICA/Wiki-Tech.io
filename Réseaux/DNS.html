@@ -1,0 +1,82 @@
+<!--
+title: Serveur DNS
+description: Qu’est ce qu’un serveur DNS et à quoi sert-il ?
+published: true
+date: 2021-05-07T11:16:05.870Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T11:16:05.870Z
+-->
+
+<figure class="image image_resized" style="width:13.04%;"><img src="https://aidanfinn.com/wp-content/uploads/2017/12/Azure-DNS-1024x1024.png" alt="Why Use Azure DNS? | Aidan Finn, IT Pro"></figure>
+<h1>Le serveur DNS</h1>
+<p>Comme vous avez pu le lire dans l’article «&nbsp;C’est quoi une adresse IP ?«&nbsp;, les ordinateurs échangent entre eux&nbsp;grâce&nbsp;à leurs adresses IP. Et pour retrouver les adresses IP, ils demandent au DNS.</p>
+<h2>Définition et rôle du DNS</h2>
+<p>Tout d’abord : DNS veut dire «&nbsp;Domain Name System&nbsp;» ou système de nom de domaine. Nous allons d’abord voir le fonctionnement, puis nous aborderons la notion de&nbsp;nom de domaine (ou de sous-domaine).</p>
+<p>Pour vous expliquer, le rôle et le fonctionnement d’un serveur DNS, je vais reprendre l’exemple du téléphone.</p>
+<ul>
+  <li>Vous souhaitez appeler quelqu’un dont vous ne connaissez pas le n° de téléphone ?</li>
+  <li>Que faites-vous ? ….</li>
+  <li>…. vous utilisez un annuaire !</li>
+</ul>
+<p>Et bien voila, un serveur DNS est un annuaire pour ordinateur. Lorsque vous voulez accéder à un ordinateur dans le réseau, votre ordinateur va&nbsp;interroger&nbsp;le serveur DNS pour récupérer l’adresse de l’ordinateur que vous voulez joindre. Une fois, que votre ordinateur aura récupéré l’adresse du destinataire, il pourra le joindre directement avec son adresse IP.</p>
+<p>Le serveur DNS va permettre de faire la relation entre nom d’ordinateur et adresse IP.&nbsp;<i>(ramené au téléphone, on obtient : nom de l’abonné et n°).</i></p>
+<p>Vous allez me dire :</p>
+<ul>
+  <li><i>&nbsp;“mais je ne cherche jamais à joindre un ordinateur dans le réseau ! “</i></li>
+</ul>
+<p>A quoi, je vais vous répondre :</p>
+<ul>
+  <li><i>&nbsp;” bien sur que si ! “</i></li>
+  <li><i>&nbsp;” Actuellement vous lisez ces lignes qui ne sont stockés pas sur votre ordinateur, donc votre ordinateur s’est connecté à un serveur pour récupérer les pages qui sont affichées sur votre écran. “</i></li>
+</ul>
+<p>&nbsp;</p>
+<h2>Exemple</h2>
+<p>Allons-y par l’exemple et un petit schéma, pour voir comment ça se passe lorsque vous surfez sur Internet et à quel moment intervient le serveur DNS.</p>
+<figure class="image image_resized" style="width:43.36%;"><img src="https://i0.wp.com/www.culture-informatique.net/WordPress3/wp-content/uploads/2012/10/Requ%C3%AAte-Dns.png?resize=574%2C501&amp;ssl=1" alt="dns" srcset="https://www.culture-informatique.net/WordPress3/wp-content/uploads/2012/10/Requête-Dns.png 574w, https://www.culture-informatique.net/WordPress3/wp-content/uploads/2012/10/Requête-Dns-300x261.png 300w" sizes="100vw" width="574"></figure>
+<p>&nbsp;</p>
+<p>Dans l’exemple ci-dessus, on voit que la requête «&nbsp;quelle est l’adresse de www.google.fr&nbsp;» a répondu 74.125.230.248. Cette requête s’appelle une résolution de nom de domaine.</p>
+<p>Si l’on poursuit, on peut constater que le serveur DNS n’est utilisé que sur la partie 1-Question et 2-Réponse. Une fois que l’ordinateur a récupéré l’adresse du serveur à joindre, il n’a plus besoin du serveur DNS.</p>
+<p>Cette adresse IP n’est pas une adresse au hasard. Elle correspond bien à un des serveurs de Google. (il y en a évidemment un grand nombre).<br>Donc, si dans votre dans la barre d’adresse de votre navigateur, vous tapez : <a href="http://74.125.206.94/">http://74.125.206.94</a>, la page de recherche de Google doit s’afficher.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Et les DNS chez moi ?</h2>
+<p>La plupart des personnes ignorent cette notion est c’est bien compréhensible. Alors comment cela peut-il fonctionner chez moi puisque je n’ai jamais renseigné ces serveurs ?</p>
+<p>Les serveurs DNS fonctionnent en cascade. Pour expliquer cela on pourrait dire que lorsque qu’un serveur DNS ne connait pas la réponse, il va demander à son «&nbsp;parent&nbsp;».</p>
+<p>Chez vous, le serveur DNS est votre box (sauf si vous avez renseigné autre chose), et si votre box ne sait pas répondre, elle va interroger son parent : le(s) serveur(s) DNS de votre fournisseur d’accès. Cela peut remonter comme ça jusqu’aux serveurs DNS racines. (on va dire pour simplifier que les serveurs DNS racines sont les serveurs de base du système : on ne peut pas remonter plus haut.)</p>
+<p>La configuration DNS de votre ordinateur (ou tablette, et tout autre équipement connecté chez vous) est fournie par le serveur&nbsp;<a href="https://labo-tech.fr/base-de-connaissance/quest-ce-quun-serveur-dhcp-et-a-quoi-sert-il/">DHCP</a>.</p>
+<p>&nbsp;</p>
+<h2>Un fichier</h2>
+<p>Il existe un fichier sur votre ordinateur qui peut remplacer les requêtes DNS.</p>
+<p>Ce fichier est le fichier «&nbsp;host&nbsp;» (hôte en français). Il va contenir la correspondance entre les adresses demandées et les adresses IP. Sur chaque ligne de ce fichier on va retrouver au début l’adresse IP suivi d’un espace ou d’une tabulation et ensuite du ou des nom(s) correspondant à cette adresse.<br><i>Exemple : &nbsp;74.125.206.94 www.google.fr</i></p>
+<p>&nbsp;</p>
+<h2>La sécurité</h2>
+<p>Parlons juste un peu de sécurité.</p>
+<p>Pour bien comprendre de quoi je veux parler, je vais reprendre l’exemple du téléphone :</p>
+<ul>
+  <li>Imaginez que vous ayez&nbsp;entre les mains un faux annuaire (piraté) ou les numéros de téléphone ne soient pas les bons, et vous renvoie vers des pirates.</li>
+  <li>Vous ayez besoin d’appeler votre banque : Vous appelez le&nbsp;numéro de téléphone et vous allez forcément tomber sur des pirates (mais vous ne le savez pas).</li>
+  <li>Au bout du fil, on peut vous demander des informations confidentielles, et vous les donnerez en tout confiance !!!</li>
+</ul>
+<p>Il faut bien comprendre que cela peut être pareil avec des serveurs DNS et qu’il existe des virus qui modifie vos paramètres réseaux ou votre fichier «&nbsp;hosts&nbsp;» pour faire pointer les requêtes DNS vers des serveurs pirates.</p>
+<p>Vous verrez que les navigateurs peuvent afficher des messages lorsque cela se produit.</p>
+<p>Cela est tout à fait possible aussi sur les réseau Wi-Fi non sécurisé !! L’utilisation d’un VPN dans ces cas là est fortement recommandé !</p>
+<p>&nbsp;</p>
+<h1>Changer de DNS</h1>
+<p>Sachez qu’il est tout à fait possible de changer de DNS. Lorsque vous utilisez votre connexion Internet, les adresses des serveurs DNS sont généralement ceux de votre FAI, mais sachez qu’il est possible d’en changer. Vous trouverez ci-dessous des sites proposant des listes de serveurs :</p>
+<ul>
+  <li><a href="http://public-dns.info/nameserver/fr.html">http://public-dns.info/nameserver/fr.html</a></li>
+</ul>
+<p>et je peux également vous en donner quelques un très connus :</p>
+<ul>
+  <li>OpenDNS :&nbsp;208.67.220.222 &nbsp;et 208.67.222.220</li>
+  <li>CloudFlare : 1.1.1.1</li>
+  <li>Quad9 : 9.9.9.9</li>
+  <li>Google : 8.8.8.8 et 8.8.4.4</li>
+</ul>
+<h2>Pourquoi changer de DNS ?</h2>
+<p>Je vois 2 raisons principales pour changer de DNS :</p>
+<ul>
+  <li>Si vous avez peur d’être «&nbsp;espionné&nbsp;», (car un serveur DNS) sait exactement quels sites vous consultez, mais il peut également vous renvoyer vers les sites qu’il a choisi.</li>
+  <li>Si vous trouvez votre accès un peu lent, (car rappelez-vous un serveur DNS est appelé à chaque page consultée) et plus il mettra du temps à répondre, plus la page mettra du temps à s’afficher.</li>
+</ul>
