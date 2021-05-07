@@ -2,7 +2,7 @@
 title: Modèle OSI
 description: Comprendre le modèle OSI
 published: true
-date: 2021-05-07T07:58:54.270Z
+date: 2021-05-07T08:02:15.382Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-07T07:57:42.539Z
@@ -12,7 +12,7 @@ dateCreated: 2021-05-07T07:57:42.539Z
 <h1>Le modèle OSI (Open System Interconnection)</h1>
 <p>C’est un&nbsp;modèle&nbsp;de communications entre&nbsp;ordinateurs proposé par l’ISO&nbsp;(Organisation Internationale de Normalisation) qui décrit les fonctionnalités nécessaires à la communication et l’organisation de ces fonctions.</p>
 <p>Le principe du modèle OSI est de cadrer le protocole TCP/IP. Il est basé sur 7 couches de communication&nbsp;:</p>
-<figure class="image"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" alt="Image associée"></figure>
+<figure class="image image_resized" style="width:36.1%;"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg" alt="Image associée"></figure>
 <blockquote>
   <p><i>Les couches ne peuvent communiquer qu’entre elles (réseau / réseau, liaison / liaison mais pas liaison / transport).</i></p>
 </blockquote>
@@ -20,7 +20,7 @@ dateCreated: 2021-05-07T07:57:42.539Z
 <h2>Implémentation des 7 couches sur les équipements</h2>
 <p>Chaque équipement réseau (PC, switch, routeur,…) a ses propres caractéristiques et donc a besoin de toutes les couches du modèles OSI ou seulement d’une partie.</p>
 <p>&nbsp;</p>
-<figure class="image"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png?resize=604%2C363" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png 604w, https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11-300x180.png 300w" sizes="100vw" width="604"></figure>
+<figure class="image image_resized" style="width:45.03%;"><img src="https://i0.wp.com/reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png?resize=604%2C363" alt="" srcset="https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11.png 604w, https://reussirsonccna.fr/wp-content/uploads/2012/02/7couches_archi11-300x180.png 300w" sizes="100vw" width="604"></figure>
 <p>Dans ce schéma, on remarque que PC1 et PC2 ont besoin de&nbsp;<strong>toutes les couches</strong>&nbsp;du modèle OSI. En effet, il faut qu’on puisse envoyer des paquets avec notre carte réseau (couches basses)et qu’on utilise une application (firefox, outlook,…) pour communiquer avec nos voisins (couches hautes).</p>
 <p>En revanche, le switch n’a besoin&nbsp;<strong>que des couches 1 et 2</strong>&nbsp;du modèles OSI, car cet équipement a besoin de connaitre uniquement&nbsp;<strong>votre adresse MAC</strong>&nbsp;(qui se trouve au niveau 2) pour pouvoir commuter votre trame vers le bon port.</p>
 <p>Le routeur a lui besoin&nbsp;<strong>des couches 1, 2 et 3</strong>. La couche 3 (réseau) lui permet de faire communiquer des réseaux entre eux. Par exemple, quand je surf sur Internet, c’est le routeur qui fait le lien entre mon réseau LAN et le réseau Internet, et ce lien est établit au niveau 3.</p>
