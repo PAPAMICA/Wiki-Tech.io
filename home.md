@@ -2,13 +2,19 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-06T14:30:49.532Z
+date: 2021-05-07T13:16:02.747Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
 ---
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
+> Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
+> Dernière mise à jours : 07/05/2021
+{.is-warning}
+
+> Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
+{.is-info}
 # Les différentes catégories
 ## Docker
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
