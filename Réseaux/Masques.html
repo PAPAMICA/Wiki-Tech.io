@@ -1,0 +1,127 @@
+<!--
+title: Calculer les masques IP
+description: Comment calculer ces sal*peries sans internet ?
+published: true
+date: 2021-05-07T11:22:55.134Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T11:22:55.134Z
+-->
+
+<h1>Calcule de masques</h1>
+<p>Pour savoir ce qu’est un masque et un adresse ip, voir <a href="https://wiki-tech.io/Réseaux/Bases">cet article</a>.</p>
+<h2>Qu’est-ce que la méthode magique ?</h2>
+<p>La méthode magique est une méthode qui va vous permettre de calculer très facilement des plages d’adresses réseau, et bien plus encore !</p>
+<h3>Le nombre magique</h3>
+<p>Pour utiliser la méthode magique, nous allons devoir utiliser&nbsp;<strong>le nombre magique&nbsp;</strong>pour faire des calculs magiques avec nos cerveaux magiques…</p>
+<p><strong>Qu’est-ce que le nombre magique ?</strong></p>
+<p>Le nombre magique est simplement un calcul fait à partir de l’octet significatif du masque.</p>
+<p>Il est égal à&nbsp;<strong>256 – octet significatif.</strong></p>
+<p>Par exemple dans notre exemple précédent, le masque était 255.224.0.0<br>On voit vite que l’octet significatif (celui où la séparation a lieu) est 224.</p>
+<p>Notre nombre magique vaut donc 256 – 224 = 32</p>
+<h3>Que faire avec le nombre magique ?</h3>
+<p>Il va nous permettre de calculer instantanément la première et la dernière adresse de notre plage.</p>
+<p>Pour cela, il va falloir écrire tous les multiples du nombre magique (jusqu’à 256 bien sûr)<br>Allons-y pour les multiples de 32 !<br>0, 32, 64, 96, 128, 160, 192, 224, 256.</p>
+<p>Et maintenant, nous allons simplement appliquer les règles suivantes:</p>
+<p>La première adresse du réseau sera le multiple du nombre magique, inférieur ou égal à l'octet correspondant dans l'adresse.La dernière adresse du réseau sera le multiple suivant, moins 1.</p>
+<p>Notre exemple sera plus parlant:<br>Dans notre masque, l’octet significatif est le deuxième (255.224.0.0)<br>Nous allons donc prendre le deuxième octet de notre adresse (192.168.0.1), soit 168.</p>
+<p>La première adresse du réseau sera donc le multiple du nombre magique, strictement inférieur à 168.<br>En regardant la liste des multiples, on trouve très vite 160 !<br>0, 32, 64, 96, 128, 160, 192, 224, 256.</p>
+<p>La dernière adresse du réseau sera le multiple suivant, moins 1.<br>Le multiple suivant est 192. Auquel on enlève 1 pour trouver 191.</p>
+<p>La première adresse de la plage est donc 192.160.0.0 et la dernière 192.191.255.255.<br>(On a ajouté les 0 pour la première et les 255 pour la dernière car tous les bits qui suivent sont à 0 ou à 1 selon qu’on veut la première ou la dernière)</p>
+<p>La méthode magique nous a permis de calculer une plage d’adresses&nbsp;<strong>sans avoir à faire de calculs binaires</strong>&nbsp;!</p>
+<p>C’est quand même beau… non ?&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Amélioration de la méthode magique.</h3>
+<p>Et bien oui, nous pouvons encore frapper plus fort !</p>
+<p>L’idée n’est pas non plus révolutionnaire…<br>Il s’agit simplement de ne pas calculer tous les multiples du nombre magique, mais seulement ceux qui sont intéressants.</p>
+<p>Prenons un nouvel exemple:<br>10.45.185.24/255.255.248.0</p>
+<p>Le nombre magique vaut: 256 – 248 = 8<br>L’octet significatif du masque est le troisième, ce qui correspond à 185 dans l’adresse.</p>
+<p>Nous devons donc trouver le multiple de 8 strictement inférieur à 185…<br>Pas la peine de commencer à 0 !<br>8 * 10 = 80, on est en dessous de 185<br>8 * 20 = 160, on est en dessous, mais on se rapproche<br>Commençons donc à 160:<br>160, 168, 176, 184, 192… STOP ! On est au dessus de 185.</p>
+<p>Le multiple strictement inférieur est 184, celui du dessus moins un vaut 191.</p>
+<p>Ce qui nous donne pour la première adresse 10.45.184.0, et pour la dernière 10.45.191.255.</p>
+<p>Facile non ?</p>
+<p>Mais nous pouvons encore frapper plus fort !<br>Car trouver la première et la dernière adresse d’une plage est utile, mais découper un plage d’adresses en sous-réseaux l’est souvent encore plus.<br>Et la méthode magique va s’avérer redoutable !</p>
+<hr>
+<h1>Découpage d’une plage d’adresses</h1>
+<p>En tant qu’administrateur systèmes et réseaux, vous devrez souvent découper une plage d’adresses pour coller au besoin de votre entreprise.</p>
+<p>Vous avez à votre disposition une grande plage que vous désirez découper en plusieurs plages plus petites pour séparer les machines et les personnes au sein de l’entreprise.</p>
+<h2>Un exemple concret de découpage</h2>
+<p>Vous avez en charge le réseau d’une petite entité d’une entreprise. L’administrateur général vous laisse à disposition le réseau:<br>192.168.160.0/255.255.224.0</p>
+<p>Vous avez dans votre entité trois catégories de personnel:</p>
+<p>550 techniciens</p>
+<p>130 commerciaux</p>
+<p>10 directeurs</p>
+<p>Il vous faut donc découper la plage d’origine en&nbsp;<strong>trois sous-réseaux</strong>&nbsp;pour chacune de ces populations.</p>
+<h4>Etape 1: Calcul de la plage d’origine</h4>
+<p>Ceci n’est pas obligatoire, mais nous permettra de connaître l’ensemble de la plage et de savoir si jamais nous dépassons de cette plage par erreur.</p>
+<p>Allons-y !<br>1- Le nombre magique vaut: 256 – 224 = 32<br>2- L’octet significatif de l’adresse vaut 160, qui est un multiple de 32 ! Ce sera donc la première adresse, la dernière étant 160 + 32 – 1 = 191<br>3- La première adresse est 192.168.160.0 et la dernière est 192.168.191.255</p>
+<p>Maintenant, nous allons devoir calculer les plages pour chacune des populations.</p>
+<h4>Etape 2: Calcul des masques</h4>
+<p>Mais par quoi commencer ?</p>
+<p>La seule information que nous avons est le nombre de personnes de chaque population. Et cela tombe bien, car nous savons que la taille d’une plage dépend de son masque. Donc si on connait le nombre d’adresses nécessaire, nous pouvons en déduire le masque.<br>La formule est:&nbsp;<strong>nb adresses = 2nb de 0 dans le masque</strong></p>
+<p>Pour les techniciens, qui sont 550, le réseau devra contenir 1024 adresses (la puissance de 2 supérieure) soit 210<br>Le masque contiendra donc 10 zéros, soit:<br>11111111.11111111.11111100.00000000<br>Soit en décimal:<br>255.255.252.0</p>
+<p>Nous pouvons faire pareil pour les commerciaux:<br>130 &lt; 28<br>Le masque est donc:<br>255.255.255.0</p>
+<p>Et pour les directeurs, nous trouvons:<br>10 &lt; 24<br>Le masque est donc:<br>255.255.255.240</p>
+<p>Nous avons les masques pour nos trois populations, il ne nous reste plus qu’à y associer des adresses pour avoir nos plages.</p>
+<h4>Etape 3: Calcul des plages</h4>
+<p>C’est ici que la méthode magique va nous être utile, car elle permet facilement de trouver les premières et dernière adresse d’une plage.</p>
+<p>Nous allons donc commencer par les techniciens.<br>Notre plage de départ démarre en 192.168.160.0. Et bien nous allons commencer la plage des techniciens à cette adresse, et allons trouver l’adresse de fin grâce au masque.</p>
+<p>Calculons le nombre magique: 256 – 252 = 4<br>Le prochain multiple de 4 après 160 est 164 – 1 = 163<br>La dernière adresse pour les techniciens est donc 192.168.163.255</p>
+<p>Pour les commerciaux, nous allons donc démarrer à l’adresse juste après pour ne pas empiéter sur la plage des techniciens, soit 192.168.164.0.<br>Nous allons nous passer du nombre magique pour les commerciaux car la coupure se fait parfaitement entre deux octets sur le masque.<br>L’adresse de fin est donc facilement calculée à 192.168.164.255.</p>
+<p>Nous démarrons après pour les directeurs, à l’adresse 192.168.165.0.<br>Le nombre magique vaut 256 – 240 = 16<br>La dernière adresse est donc 192.168.165.15 !</p>
+<h4>Résultat</h4>
+<p>Nous avons donc défini les trois plages:</p>
+<p>Tech: 192.168.160.0/255.255.252.0 soit les adresses allant de 192.168.160.0 à 192.168.163.255</p>
+<p>Comm: 192.168.164.0/255.255.255.0 soit les adresses allant de 192.168.164.0 à 192.168.164.255</p>
+<p>Dirs: 192.168.165.0/255.255.255.240 soit les adresses allant de 192.168.165.0 à 192.168.165.15</p>
+<p>Nous remarquons que pour le réseau des directeurs, l'adresse 192.168.165.15 est une adresse de broadcast...</p>
+<p>Tout s’est bien passé, mais…<br>Il est très facile de placer les plages d’adresses en partant de la plus grande à la plus petite, mais l’inverse est très très très complexe&nbsp;</p>
+<p>&nbsp;</p>
+<h2>Quand ça se complique</h2>
+<p>Imaginons que nous ayons 120 secrétaires qui débarquent sur notre réseau… YOUHOU !!!<br>Calmons nous, cela reste un exemple, dans la vrai vie vous ne verrez pas débarquez 120 secrétaires comme cela&nbsp;</p>
+<p>&nbsp;</p>
+<p><br>Nous voulons leur créer une nouvelle plage, mais sans toucher aux réseaux existants.</p>
+<p>Si nous prenons la même méthode que précédemment, nous allons nous planter.&nbsp;</p>
+<p><br>Voyons pourquoi.</p>
+<p>Nous avions fini la plage des directeurs à l’adresse 192.168.165.15, nous allons donc démarrer celle des secrétaires à l’adresse suivante, soit 192.168.165.16.<br>Le masque pour les secrétaires sera:<br>120 &lt; 27<br>Soit 255.255.255.128<br>Le nombre magique vaut 256 – 128 = 128<br>La plage des secrétaires va donc finir au prochain multiple de 128 moins 1, soit 127.</p>
+<p>Nous avons donc défini la plage des secrétaires allant de 192.168.165.16 à 192.168.165.127…</p>
+<p>Mais cela ne marche pas ! :colere2:</p>
+<p>D’abord car il n’y a pas assez d’adresses. De 16 à 127, nous n’avons que 112 adresses, pas assez pour nos 120 secrétaires.</p>
+<p>Ensuite, et c’est le plus grave, notre plage n’est pas celle que nous pensons…</p>
+<p>En effet, si nous reprenons la méthode magique à 0, cela nous donne.<br>Le nombre magique est 128.<br>les multiples de 128 sont 0, 128 et 256.<br>Notre plage va donc aller de&nbsp;<strong>0 à 127</strong>, et&nbsp;<strong>non de 16 à 127</strong>&nbsp;!</p>
+<p>Nous empiétons donc sur les adresses des directeurs !!</p>
+<p>Oui, mais comment faire ?</p>
+<p>Et bien il suffit de prendre le multiple du nombre magique suivant !<br>Nous allons commencer notre plage non pas en 192.168.165.16, mais en 192.168.165.128, et donc finir en 192.168.165.255</p>
+<p>Et là nous avons bien défini un réseau d’au moins 120 adresses et qui n’empiète pas sur le réseau des directeurs !</p>
+<p>Cependant, nous avons laissé un trou… Les adresses de 16 à 127 ne sont pas utilisées.</p>
+<p>Mais c’est&nbsp;<strong>normal</strong>, et ce n’est pas grave de toute façon. Nous pourrons utiliser ces adresses pour des petits réseaux par la suite si nous le souhaitons.</p>
+<p>Quand on place un réseau plus grand que le précédent dans une plage, il est&nbsp;<strong>nécessaire</strong>&nbsp;de sauter une certaine plage d’adresses.</p>
+<p>Le principe est simple, vu que nous travaillons avec des réseaux dont la taille est un multiple de 2, un petit réseau pourra toujours démarrer sur un multiple d’un grand réseau.</p>
+<p>Par exemple, tout multiple de 8 est un multiple de 16:<br>0, 16, 32, 48…<br>0, 8, 16, 24, 32, 40, 48</p>
+<p>On pourra donc toujours placer une petite plage d'adresses derrière une plage précédente plus grande.</p>
+<p>Et on pourra seulement parfois placer une grande plage derrière une petite, mais dans ce cas il faudra faire attention et bien utiliser la méthode magique.</p>
+<hr>
+<h1>Exercices</h1>
+<h3>Premier exemple</h3>
+<p>Découpez la plage suivante en trois sous-réseaux:<br>10.47.192.0/255.255.240.0</p>
+<p>Avec les populations suivantes:</p>
+<p>880 techniciens</p>
+<p>400 commerciaux</p>
+<p>60 directeurs</p>
+<p>D’abord, on calcules les masques pour chaque population:<br>Techniciens: 880 &lt; 210 ce qui nous donne le masque 255.255.252.0<br>Commerciaux: 400 &lt; 29 ce qui nous donne le masque 255.255.254.0<br>Directeurs: 60 &lt; 26 ce qui nous donne le masque 255.255.255.192</p>
+<p>Ensuite on calcule la plage des techniciens:<br>Le nombre magique vaut 256 – 252 = 4<br>La première adresse est 10.47.192.0 (donnée par l’énoncé) et la dernière 10.47.195.255</p>
+<p>Puis celle des commerciaux:<br>Le nombre magique vaut 256 – 254 = 2<br>La première adresse est 10.47.196.0 (donnée par la fin de la plage des techniciens) et la dernière 10.47.197.255</p>
+<p>Enfin celle des directeurs:<br>Le nombre magique vaut 256 – 192 = 64<br>La première adresse est 10.47.198.0 (donnée par la fin de la plage des commerciaux) et la dernière 10.47.198.63</p>
+<h3>Second exemple… le même que le premier !</h3>
+<p>En fait l’énoncé est le même, mais l’on vous demande de commencer par les directeurs, puis les commerciaux, et enfin les techniciens.</p>
+<p>Ouillouillouille !&nbsp;</p>
+<p>&nbsp;</p>
+<p>La bonne nouvelle, c’est que les masques restent les mêmes !<br>Techniciens: 255.255.252.0<br>Commerciaux: 255.255.254.0<br>Directeurs: 255.255.255.192</p>
+<p>On passe donc à la plage des directeurs:<br>Le nombre magique vaut 64.<br>La première adresse est 10.47.192.0 et donc la dernière va être 10.47.192.63</p>
+<p>Nous serions tentés de continuer pour la plage des commerciaux à l’adresse suivante, mais l’on sait que l’on prendrait alors des risques…</p>
+<p>Pour les commerciaux, le nombre magique vaut 2. Il faut donc que la première adresse démarre sur un nombre pair sur son troisième octet (l’octet significatif dans le masque)<br>On ne peut pas démarrer en 192 puisque quelques adresses sont déjà prises par les directeurs. Il faut donc démarrer en 194.<br>Ce qui nous donne 10.47.194.0 pour la première adresse et 10.47.195.255 pour la dernière adresse.</p>
+<p>On continue pour les techniciens.<br>Le nombre magique vaut 4.<br>192 est un multiple de 4, mais il est déjà utilisé par les directeurs. On peut par contre prendre 196.<br>Ce qui nous donne 10.47.196.0 pour la première adresse et 10.47.199.255 pour la dernière adresse.</p>
+<p>On récapitule:<br>Directeurs: De 10.47.192.0 à 10.47.192.63<br>Commerciaux: De 10.47.194.0 à 10.47.195.255<br>Techniciens: De 10.47.196.0 à 10.47.199.255</p>
+<p>Et ça marche !</p>
+<p>Heu… oui mais là on finit plus loin que la première fois, on n’aurait pas gâché plus d’adresses ?</p>
+<p>Non, nous en avons gâché exactement le même nombre. Sauf qu’ici on le voit bien car les adresses gâchées sont dans les “trous” que nous avons laissés entre chaque plage, alors que dans le premier cas il y a des adresses gâchées, mais elles se situent après nos trois plage.<br><strong>Le résultat est exactement le même !</strong></p>
