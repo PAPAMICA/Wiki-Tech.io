@@ -1,0 +1,194 @@
+<!--
+title: TCP & UDP 
+description: A quoi ça sert et quels sont les principaux ports ?
+published: true
+date: 2021-05-07T09:50:51.705Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T09:50:51.705Z
+-->
+
+<h1>Les protocoles TCP &amp; UDP</h1>
+<p>TCP et UDP sont les 2 principaux protocoles de la couche transport. La différence entre TCP et UDP sont fondamentales.</p>
+<p>Ces deux protocoles servent à échanger des paquets d’information entre 2 machines en utilisant leur adresse&nbsp;<strong>IP</strong>&nbsp;et un numéro de&nbsp;<strong>port</strong>.</p>
+<p>&nbsp;</p>
+<h2>Protocole TCP</h2>
+<p>TCP fonctionne un peu comme le téléphone : il faut d’abord établir une connexion TCP entre les 2 machines, ce qu’on pourrait comparer à composer le numéro de téléphone.</p>
+<p>Une fois que la communication est établie, les 2 machines peuvent dialoguer de manière bidirectionnelle (vous pouvez parler à votre interlocuteur, et c’est réciproque).</p>
+<p>Et vous pouvez communiquer de cette manière autant que vous voulez, tant que vous ne fermez pas la connexion TCP (i.e. tant que vous ne raccrochez pas le combiné téléphonique).</p>
+<p>On dit que TCP est un protocole&nbsp;<strong>stateful</strong>&nbsp;(<i>avec état</i>) : l’état c’est tout simplement la connexion, le fait que les 2 machines sont reliées par un circuit logique à travers internet. En programmation, cette connexion est matérialisée par une socket qui représente l’interface de communication avec la machine distante.</p>
+<h3>Utilisation de TCP</h3>
+<p>TCP sert de socle à de nombreux protocoles de la couche application, que vous connaissez peut-être :</p>
+<ul>
+  <li>HTTP, qui sert à accéder aux sites internet (autrement dit : le web)</li>
+  <li>FTP, qui sert à échanger des fichiers entre 2 ordinateurs</li>
+  <li>POP3 et IMAP qui sert à lire ses emails</li>
+  <li>SMTP qui sert quant à lui à envoyer des emails</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Protocole UDP</h2>
+<p>UDP&nbsp;est un protocole&nbsp;<strong>stateless</strong>&nbsp;(<i>sans état</i>), on peut le comparer au courrier : vous placez le message à envoyer dans une enveloppe qui contient toutes les informations nécessaires au routage : l’adresse IP et le port (i.e. les coordonnées du destinataire), puis vous envoyez l’enveloppe.</p>
+<p>Le paquet UDP (l’enveloppe) va alors être acheminé à travers internet jusqu’à sa destination.</p>
+<h3>Utilisation d’UDP</h3>
+<p>UDP est utilisé pour :</p>
+<ul>
+  <li>DNS, le protocole de résolution des noms de domaines qui permet de connaître l’adresse IP d’un serveur à partir de son nom de domaine (exemple: www.google.fr)</li>
+  <li>Wake on LAN, qui permet d’allumer un ordinateur à l’aide d’un&nbsp;paquet magique</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Les principaux protocoles TCP/UDP</h1>
+<p>Voici dans un tableau les principaux protocoles TCP/UDP et leur port. Cette liste est personnelle, si vous voulez que d’autres protocoles y soit référencé n’hésitez pas à me le demander 🙂</p>
+<p>&nbsp;</p>
+<figure class="table" style="width:1060px;">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:none;">
+    <thead>
+      <tr>
+        <th style="background-color:rgb(217, 237, 247);border-bottom:1px solid rgb(221, 221, 221);border-left:none;border-right:none;border-top:none;padding:10px 20px 10px 15px;width:91px;" colspan="1" rowspan="1"><strong>n° port</strong></th>
+        <th style="background-color:rgb(217, 237, 247);border-bottom:1px solid rgb(221, 221, 221);border-left:none;border-right:none;border-top:none;padding:10px 20px 10px 15px;width:118px;" colspan="1" rowspan="1"><strong>Protocole</strong></th>
+        <th style="background-color:rgb(217, 237, 247);border-bottom:1px solid rgb(221, 221, 221);border-left:none;border-right:none;border-top:none;padding:10px 20px 10px 15px;width:746px;" colspan="1" rowspan="1"><strong>Service associé</strong></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:0px;padding:10px 15px;vertical-align:top;">20</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:0px;padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:0px;padding:10px 15px;vertical-align:top;">ftp-data - File Transfer Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">21</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">ftp - File Transfer Protocol (le flux de contrôle pour le transfert de fichiers)</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">22</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">SSH - Secure Shell</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">23</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">Telnet</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">25</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">SMTP - Simple Mail Transfer Protocol (sans authentification)</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">53</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">DNS - Domain Name Service</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">67</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">DHCP (Client) - Dynamic Host Configuration Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">68</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">DHCP (Serveur) - Dynamic Host Configuration Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">69</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tftp - Trivial File Transfer</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">80</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">HTTP - Hypertext Transfer Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">110</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">pop3 - Post Office Protocol v3</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">123</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">ntp - Network Time Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">137</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">netbios-ns - NETBIOS Name Service</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">143</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">imap4 - Internet Message Access Protocol v4</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">161</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">SNMP - Simple Network Management Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">162</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">SNMPtrap - Simple Network Management Protocol Trap</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">389</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">LDAP - Lightweight Directory Access Protocol</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">443</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">https - HyperText Transfer Protocol Secure</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">445</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">CIFS - Common Internet File System (SMB - Samba)</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">546</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">udp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">DHCPv6 - Dynamic Host Configuration Protocol v6</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">993</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">IMAPS</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">995</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">POP3S</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">1433</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">Microsoft SQL Server</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">1521</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">Oracle SQL</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">3306</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">MySQL</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">5432</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">PostgreSQL</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">5900</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(255, 255, 255);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">VNC Server</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">6667</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">tcp</td>
+        <td style="background-color:rgb(249, 249, 249);border-bottom:none;border-left:none;border-right:none;border-top:1px solid rgb(221, 221, 221);padding:10px 15px;vertical-align:top;">IRC</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
