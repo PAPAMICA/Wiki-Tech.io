@@ -1,0 +1,71 @@
+<!--
+title: Serveur DHCP
+description: Qu’est-ce que c’est et à quoi ça sert ?
+published: true
+date: 2021-05-07T09:56:44.542Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-07T09:56:44.542Z
+-->
+
+<figure class="image image_resized" style="width:17.48%;"><img src="https://cdn.servicepilot.com/images/integration/dhcp.webp" alt="ServicePilot, health control solutions for DHCP applications"></figure>
+<h1>Définition du terme DHCP</h1>
+<p>Un serveur DHCP (ou service DHCP) est un serveur (ou service) qui délivre des adresses IP aux ordinateurs qui se connectent sur le réseau.</p>
+<p>DHCP est l’abréviation de Dynamic Host Configuration Protocol (en français : Protocole de Configuration Dynamique d’Hôte)</p>
+<p>&nbsp;</p>
+<h1>Comment fonctionne le DHCP ?</h1>
+<p>Les cartes réseaux des ordinateurs doivent être paramétrées pour recevoir automatiquement des adresses lorsque l’ordinateur démarre ou que l’on le connecte au réseau. Par défaut c’est le cas, car c’est la méthode la plus simple pour obtenir une adresse IP.</p>
+<p>Je vous rappelle que l’adresse IP doit être unique sur un réseau donc le serveur DHCP (ou service DHCP)&nbsp;va gérer les adresses et n’attribuer que des adresses non utilisées à tout nouvel ordinateur qui en fait la demande.</p>
+<p>En fait, le serveur DHCP (ou service DHCP) va délivrer un bail DHCP à l’ordinateur qui en fait la demande. (et uniquement à ceux qui en font la demande, et non pas à tous les ordinateurs qui se connectent sur le réseau).</p>
+<p>Non, dans ce bail, il y a entre autres 3 choses qui nous intéressent :</p>
+<ol>
+  <li>Une durée de vie (durée du bail)</li>
+  <li>Une adresse IP.</li>
+  <li>Les paramètres du réseau.</li>
+</ol>
+<p>&nbsp;</p>
+<h2>Une durée de vie : durée d’un bail DHCP.</h2>
+<p>Vous l’avez compris, le serveur DHCP (ou service DHCP)&nbsp;m’a donné une adresse IP, mais elle est limitée dans le temps (4h, 6h, … cela dépend du réglage de l’administrateur du service).</p>
+<h4>Pourquoi donner une durée au bail DHCP plutôt que donner une adresse à vie ?</h4>
+<ul>
+  <li>Un des intérêts du DHCP, c’est justement que les baux (un bail = des baux), sont limités dans le temps, car une fois le délai écoulé, l’adresse IP est à nouveau disponible.</li>
+</ul>
+<h4><strong>Alors que se passe-t-il à expiration du délai ?</strong></h4>
+<ul>
+  <li>Eh bien, si l’ordinateur est toujours connecté, alors il recevra un nouveau bail.&nbsp;Cela est complètement transparent. (en fait le&nbsp;renouvellement&nbsp;est fait avant l’expiration)</li>
+  <li>Si l’ordinateur n’est plus présent sur le réseau, alors l’adresse est disponible pour un autre ordinateur.</li>
+</ul>
+<h4><strong>Avantages de ce système ?</strong></h4>
+<ul>
+  <li>Avec ce système, les adresses sont tournantes, c’est à dire qu’un réseau peut accueillir plus d’ordinateurs (pas tous en même temps, bien évidemment) que si tous les ordinateurs avaient une adresse fixe.</li>
+  <li>Pour vous faire comprendre, prenons l’exemple d’un parking :</li>
+</ul>
+<p>Imaginons un parking de 100 places dans une entreprise.1er cas : Adresses IP fixes, &nbsp;nous sommes pas en DHCP :Les 100 places sont réservées pour des personnes bien précises, le nom est affiché sur la place de parking . Et les 100 places sont prises même s’il n’y a pas de voiture dessus !&nbsp;2ème cas : Nous sommes en DHCP :Sur 100 places, nous avons décidé de n’en affecter que 10 à des personnes bien précises, comme au-dessus, le nom est affiché sur ces 10 places.Il reste donc 90 places, qui sont disponibles. (la plage du serveur est alors de 90 places) &nbsp;Et on peut accueillir plus de personnes différentes car toutes les personnes ne sont pas toutes présentes en même temps.Bien évidemment, quand le parking est plein, il est plein.Pour le DHCP c’est pareil, s’il ne reste plus d’adresse IP de disponible, vous ne pourrez pas connecter l’ordinateur au réseau.&nbsp;Vous comprenez bien que dans le cas où l’entreprise comprendrait 150 salariés, la 2ème solution est la meilleure, s’ils ne sont pas tous au travail au même moment.</p>
+<p>&nbsp;</p>
+<h2>Une adresse IP dynamique</h2>
+<p>On dit que les adresses distribuées par ce service sont dynamiques, (par opposition aux adresses statiques, celles que l’on enregistre directement sur l’ordinateur) c’est à dire quelles peuvent changer d’une fois à l’autre.</p>
+<p>Si je reprends l’exemple de mon parking ci-dessus, les salariés qui n’ont pas de place réservée, peuvent garer leur véhicule sur des emplacements libre mais différents chaque jour.</p>
+<p>Comme vous le savez maintenant, une adresse IP seule ne suffit pas, elle doit être accompagnée d’un masque de sous-réseau.&nbsp;Le serveur DHCP (ou service DHCP)&nbsp;&nbsp;vous enverra également ce masque. ( Il&nbsp;enverra aussi d’autres informations, voir plus bas).</p>
+<h4><strong>Avantages de ce système ?</strong></h4>
+<p>Les avantages sont multiples :</p>
+<ul>
+  <li>Il n’y pas besoin d’attribuer une adresse IP à un ordinateur. Cela se fait tout seul. Comme je le disais au-dessus votre box vous a attribué une adresse.</li>
+  <li>La gestion des adresses est complètement automatique. Aucune intervention humaine, une fois qu’il est installé.</li>
+  <li>L’administration de toutes les adresses est centralisée.</li>
+  <li>Le serveur DHCP (ou service DHCP)&nbsp;&nbsp;va également envoyer d’autres informations concernant votre réseau comme nous allons le voir ci-dessous.</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Les paramètres réseaux</h2>
+<p>Dans le même paquet que le bail DHCP, d’autres informations sont envoyées :</p>
+<ul>
+  <li>Adresse de la passerelle</li>
+  <li>Adresse du&nbsp;dns</li>
+  <li>…</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Rectificatif</h1>
+<p>J’ai lu sur plusieurs sites différents une belle bêtise (je suppose que certains ont copié sur d’autres) &nbsp;:</p>
+<p>Voici ce que j’ai trouvé &nbsp;:</p>
+<p><i>«&nbsp;Dans un réseau, on peut donc n’avoir qu’une seule machine avec adresse IP fixe, le serveur DHCP&nbsp;»</i></p>
+<p><strong>C’est totalement faux !</strong><br>Le serveur DHCP distribue des adresses sur une ou des plages données (par exemple des adresses de 201 à 250), rien n’empêche d’avoir des machines avec des adresses IP fixes en dehors de cette plage. ( Regardez mon exemple de places parking au dessus, il y en a 10 de fixes, et le reste des places est disponible.) Dans les réseaux d’entreprise d’autres serveurs (DNS, Passerelle, FW, …) ont des adresses IP fixes.</p>
+<p>C’est lors de la mise en place du serveur DHCP, que l’administrateur réseau va définir une ou plusieurs plages d’adresses, on appelle cela l’étendue. (Il peut définir par exemple de ne distribuer que 50 adresses IP).</p>
