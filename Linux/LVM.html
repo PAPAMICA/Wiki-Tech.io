@@ -1,0 +1,128 @@
+<!--
+title: Linux - LVM
+description: Comprendre et utiliser la gestion des disques logiques.
+published: true
+date: 2021-05-08T09:43:01.185Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-08T09:43:01.185Z
+-->
+
+<figure class="image image_resized" style="width:53.46%;"><img src="https://data.duhaz.fr/media/uploads/sshot4d33ca58bce04.png" alt="Accéder à un volume LVM | M'sieur Duhaz"></figure>
+<h1>Introduction</h1>
+<p>La gestion logique des volumes fournit une vision de plus haut-niveau de l'espace disque sur un ordinateur que la vue traditionnelle des disques et des partitions. Cela offre à l'administrateur plus de souplesse pour allouer du stockage aux applications ou aux utilisateurs.</p>
+<p>Les volumes de stockage créés sous le contrôle du gestionnaire logiques de volumes (LVM) peuvent être redimensionnés et déplacés presque à volonté.</p>
+<p>Il existe plusieurs types :</p>
+<ul>
+  <li><strong>PV</strong> : Volume Physique. Les disques durs, partitions de disques durs, volumes RAID ou unités logiques provenant d'un SAN forment des "volumes physiques" (physical volumes ou PV).</li>
+  <li><strong>VG</strong> : Groupe de Volumes. C'est un assemblage d'un ou plusieurs Volumes Physiques (PV).</li>
+  <li><strong>LV</strong> : Volume logique. Les LV redécoupent les Groupes de Volumes sous forme de partition virtuelle.</li>
+  <li><strong>PE</strong> : pour être manipuler, les données sont divisées en blocs de données appelé extensions physiques (Physical Extents).</li>
+  <li><strong>LE</strong> : même chose que pour les PE mais au niveau logique (Logical Extent). La taille des blocs est la même dans pour chaque volume logique (LV) d'un même groupe de volume (VG).</li>
+</ul>
+<p>Avant toute chose, il faut installer le paquet requis : <code>apt install lvm2</code></p>
+<h1>Création de disques logiques</h1>
+<h2>Création des disques physiques (PV)</h2>
+<blockquote>
+  <p>Rappel : les volumes physiques sont les disques durs physiques, RAID, ... Cette commande va rendre les volumes disponibles pour la création du LVM.</p>
+</blockquote>
+<p><i>Syntaxe :</i></p>
+<pre><code class="language-plaintext">pvcreate /dev/disque</code></pre>
+<p>&nbsp;</p>
+<p>Création :</p>
+<pre><code class="language-plaintext">pvcreate /dev/sdX
+pvcreate /dev/sdY</code></pre>
+<p>&nbsp;</p>
+<blockquote>
+  <p>Il y a deux possibilités sur la création des disques physiques:</p>
+  <ol>
+    <li>On prend tout le disque</li>
+    <li>On crée une partition dédiée au LVM</li>
+  </ol>
+</blockquote>
+<p>Nous l'aurez compris, il faut répéter cette commande pour <strong>tous les disques durs</strong> devant être mis dans le cluster LVM.<br>On vérifie ensuite avec la commande <code>pvdisplay</code>.</p>
+<h2>Création d'un groupe de volume (VG)</h2>
+<blockquote>
+  <p>Rappel : Un groupe de volume va permettre de rassembler plusieurs volumes <strong>physiques</strong> pour n'en faire qu'un. <i>Par exemple, pour 3 disques dur de 1To, on peut créer un groupe sur ces 3 disques, puis créer une partition de 3To si on en a besoin.</i></p>
+</blockquote>
+<p><i>Syntaxe :</i></p>
+<pre><code class="language-plaintext">vgcreate nomGroupe /dev/disque1 /dev/disque2 /dev/disqueX</code></pre>
+<p>&nbsp;</p>
+<p><i>Création d'un groupe </i><code><i>test</i></code><i> avec les disques sda et sdb :</i></p>
+<pre><code class="language-plaintext">vgcreate test /dev/sda /dev/sdb</code></pre>
+<p>&nbsp;</p>
+<p>On vérifie avec la commande <code>vgdisplay</code></p>
+<h2>Création des volumes logiques (LV)</h2>
+<p><i>Syntaxe :</i></p>
+<pre><code class="language-plaintext">lvcreate -n nomVolume -L taille&lt;m/g&gt; nomGroupe</code></pre>
+<p>&nbsp;</p>
+<p><i>Création de deux volumes logiques : sauvegarde et données :</i></p>
+<pre><code class="language-plaintext">lvcreate -n sauvegarde -L 50g test
+lvcreate -n données -L 500g test</code></pre>
+<p>&nbsp;</p>
+<h3>Création des systèmes de fichier</h3>
+<p><i>Syntaxe :</i></p>
+<pre><code class="language-plaintext">mkfs -t &lt;type&gt; /dev/nomGroupe/nomVolume # On formatte la partition
+mkdir /chemin/montage # On crée le chemin pour recevoir le montage
+mount /dev/nomGroupe/nomVolume /chemin/montage # On monte la partition dans répertoire</code></pre>
+<p>&nbsp;</p>
+<p><i>Exemple :</i></p>
+<pre><code class="language-plaintext">mkfs -t ext4 /dev/test/sauvegarde
+mkdir /mnt/sauvegarde
+mount /dev/test/sauvegarde /mnt/sauvegarde</code></pre>
+<p>&nbsp;</p>
+<h1>Manipuler ses disques logiques</h1>
+<h2>Groupe de volume</h2>
+<h3>Agrandir un groupe de volume</h3>
+<ol>
+  <li>Création d'un volume physique (disque à ajouter) :</li>
+</ol>
+<pre><code class="language-plaintext">pvcreate /dev/sdX</code></pre>
+<p>&nbsp;</p>
+<ol>
+  <li>Ajouter le volume physique dans le groupe de volume :</li>
+</ol>
+<pre><code class="language-plaintext">vgextend nomGroupe /dev/sdX</code></pre>
+<p>&nbsp;</p>
+<ol>
+  <li>On étend le volume logique (<i>optionnel, peut être utiliser pour en créer un nouveau au lieu d'en agrandir un.</i>)</li>
+</ol>
+<pre><code class="language-plaintext">lvresize -L +taille&lt;m/g&gt; /dev/nomGroupe/nomVolume # Redimentionner le volume
+resize2fs /dev/nomGroupe/nomVolume # Redimentionner le système de fichier</code></pre>
+<p>&nbsp;</p>
+<h2>Volumes logiques</h2>
+<h3>Agrandir un volume logique</h3>
+<ol>
+  <li>Démonter les systèmes de fichier concernés : <code>umount nomDuMontage</code></li>
+  <li>Augmenter la taille du volume logique : <code>lvresize --size +&lt;taille&gt;G /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt;</code></li>
+</ol>
+<blockquote>
+  <p>ATTENTION : Pour l'étape suivante, ne pas oublier de mettre la taille à la fin de la commande, sinon le système se mettra en erreur.</p>
+</blockquote>
+<ol>
+  <li>Augmenter la taille du système de fichier : <code>resize2fs /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt; TailleFinale&lt;M/G&gt;</code></li>
+  <li>Vérifier d'éventuelles erreurs sur le système de fichier : <code>e2fsck -ff /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt;</code></li>
+</ol>
+<h3>Réduire un volume logique</h3>
+<blockquote>
+  <p>ATTENTION : Si la taille de <strong>destination</strong> du volume est inférieure à la taille <strong>utilisée</strong>, alors il y a un risque de perte de données. Bien que les outils peuvent vous prévenir si c'est le cas, ce n'est pas obligatoire et il faut rester vigilant.</p>
+</blockquote>
+<ol>
+  <li>Démonter le volume concerné : <code>umount &lt;point-de-montage&gt;</code></li>
+  <li>Vérifier d'éventuelles erreurs sur le système de fichier : <code>e2fsck -ff /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt;</code></li>
+</ol>
+<blockquote>
+  <p>ATTENTION : Pour l'étape suivante, ne pas oublier de mettre la taille à la fin de la commande, sinon le système se mettra en erreur.</p>
+</blockquote>
+<ol>
+  <li>Réduire la taille du système de fichier : <code>resize2fs /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt; Taille&lt;M/G&gt;</code></li>
+  <li>Réduire la taille du volume logique : <code>lvreduce -L -&lt;taille&gt;G /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt;</code></li>
+</ol>
+<blockquote>
+  <p>La taille ici correspond à la différence entre la taille initiale et la taille d'arrivée. Le calcul sera donc <strong>taille_initiale-taille_finale</strong>.</p>
+</blockquote>
+<ol>
+  <li>Redimentionner le système de fichier (préventif) : <code>resize2fs /dev/&lt;nom_groupe_vol&gt;/&lt;vol&gt;</code></li>
+  <li>Remonter le système de fichier.</li>
+</ol>
+<p style="text-align:right;">Source : <a href="https://wiki.persold.ovh">Persold.ovh</a></p>
