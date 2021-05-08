@@ -2,14 +2,13 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-04T13:02:40.685Z
+date: 2021-05-08T07:43:29.927Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
 -->
 
-<h1>Commandes utiles</h1>
-<h2>Système</h2>
+<h1>Informations systèmes</h1>
 <figure class="table">
   <table style="background-color:rgb(255, 255, 255);">
     <tbody>
@@ -25,9 +24,98 @@ dateCreated: 2021-04-28T18:24:13.228Z
         <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>systemctl (start/stop/restart/status) &lt;service&gt;</code></td>
         <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Démarre/Arrête/Redémarre/Affiche le statut d'un service</td>
       </tr>
+      <tr>
+        <td><code>uname -a</code></td>
+        <td>&nbsp;Afficher les informations systèmes de linux</td>
+      </tr>
+      <tr>
+        <td><code>uname -r</code></td>
+        <td>Afficher la version du noyau</td>
+      </tr>
+      <tr>
+        <td><code>uptime</code></td>
+        <td>Afficher le temps d'activité du système et affiche la charge</td>
+      </tr>
+      <tr>
+        <td><code>hostname</code></td>
+        <td>Affiche le nom d'hôte de la machine</td>
+      </tr>
+      <tr>
+        <td><code>hostname -I</code></td>
+        <td>Affiche l'adresse IP de l'hôte</td>
+      </tr>
+      <tr>
+        <td><code>last reboot</code></td>
+        <td>Afficher l'historique des redémarrages</td>
+      </tr>
+      <tr>
+        <td><code>date</code></td>
+        <td>Afficher la date et l'heure du système</td>
+      </tr>
+      <tr>
+        <td><code>cal</code></td>
+        <td>Affiche le calendrier du mois</td>
+      </tr>
+      <tr>
+        <td><code>w</code></td>
+        <td>Affiche qui est en ligne</td>
+      </tr>
+      <tr>
+        <td><code>whoami</code></td>
+        <td>Affiche où nous sommes connecté en tant que qui</td>
+      </tr>
     </tbody>
   </table>
 </figure>
+<p>&nbsp;</p>
+<h1>Informations matérielles</h1>
+<figure class="table">
+  <table style="background-color:rgb(33, 33, 33);">
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">dmesg</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les messages du noyau</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">cat /proc/cpuinfo</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du CPU</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">cat /proc/meminfo</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations de la RAM</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">free -h</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la mémoire libre et utilisé (-h pour lisible par l'homme, -m for MB et -g pour GB)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">lspci -tv</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques PCI</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">lsusb -tv</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques USB</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">dmidecode</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">hdparm -i /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du disque /dev/sda</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">hdparm -rT /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Faire un test de vitesse de lecture sur le disque /dev/sda</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">badblocks -s /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Test le disque /dev/sda pour d'éventuels blocks défectueux</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1>Commandes logicielles</h1>
 <h2>Tipee</h2>
 <figure class="table">
   <table style="background-color:rgb(255, 255, 255);">
