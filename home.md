@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T11:44:14.724Z
+date: 2021-05-08T12:05:29.689Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -15,11 +15,6 @@ dateCreated: 2021-04-28T15:15:54.158Z
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
 {.is-info}
-# Les contributeurs
-|--|--|--|--|
-| [![Mickael Asseline](/mickael-asseline.png)](https://mickaelasseline.com) | [![Benjamin Boualam](/benjamin-boualam.png)](https://www.linkedin.com/in/benjamin-boualam) | [![Xelion](/xelion.png)](https://mickaelasseline.com)
-|
- | ![contributeur-blanc.png](/contributeur-blanc.png) | ![contributeur-blanc.png](/contributeur-blanc.png)  | ![contributeur-blanc.png](/contributeur-blanc.png)
 
 # Les différentes catégories
 ## Docker
