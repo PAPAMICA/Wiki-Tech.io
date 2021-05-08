@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T11:15:16.681Z
+date: 2021-05-08T11:31:44.526Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-08T10:53:32.449Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-08T10:53:32.449Z
 {.is-info}
 
 # Les contributeurs
-| [![mickael-asseline.png](/mickael-asseline.png)](https://mickaelasseline.com) | [![mickael-asseline.png](/mickael-asseline.png)](https://mickaelasseline.com) |[![mickael-asseline.png](/mickael-asseline.png)](https://mickaelasseline.com)
+| [![Mickael Asseline](/mickael-asseline.png)](https://mickaelasseline.com) | [![Benjamin Boualam](/benjamin-boualam.png)](https://www.linkedin.com/in/benjamin-boualam) |[![Xelion](/xelion.png)](https://mickaelasseline.com)
 |
 # Les différentes catégories
 ## Docker
