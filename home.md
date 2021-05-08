@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T09:34:46.381Z
+date: 2021-05-08T09:53:28.162Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -109,6 +109,11 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🦝 Switch (commutateur) *Comment fonctionnent-il ?*](/Réseaux/Masques)
 {.links-list}
 
+## Sécurité
+- [✨ Les bases *Avant de commencer...*](/Sécurité/Bases)
+- [🔴 Red Team *Fatty trouve un nom stp*](/Sécurité/Red-Team)
+{.links-list}
+
 ## VMware ESXi
 - [🌀 Installation *Installation de l'hyperviseur ESXi (6.0 / 6.5 / 6.7 / 7.0)*](/ESXi/Installation)
 - [✨ Création d'une VM *Créer sa première machine virtuelle*](/ESXi/Création-VM)
@@ -128,8 +133,6 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [🐧 Bash *Le commencement d'une automatisation*](/Scripting/Bash)
 - [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting/Python)
 - [🪟 Powershell *Un langage puissant dédié à Windows*](/Scripting/Powershell)
-
-
 {.links-list}
 
 ## NAS
