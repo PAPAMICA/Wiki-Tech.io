@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-08T15:23:42.020Z
+date: 2021-05-08T15:24:33.288Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 
 <h1>Menu sous Powershell</h1>
 <p>Pour faire un menu sous powershell,&nbsp;</p>
-<figure class="image"><img src="/capture.png"></figure>
+<figure class="image image_resized" style="width:56.82%;"><img src="/capture.png"></figure>
 <p>&nbsp;</p>
 <h2>Principe de fonctionnement</h2>
 <p>Nous avons besoin de déclarer une variable qui va servir en quelque sorte de bouton “allumé” ou “éteins” : <code>$continue = $true</code></p>
@@ -19,8 +19,8 @@ dateCreated: 2021-05-08T14:42:07.092Z
 {
 &lt;le menu avec des write-host&gt;
 }</code></pre>
-<p>Puis une seconde variable pour stocker mon choix avec<code> $choix = read-host “faire un choix”</code></p>
-<p>Suivant l'état de ce choix le script sortira de la boucle <code>while </code>et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
+<p>Puis une seconde variable pour stocker mon choix avec <code>$choix = read-host “faire un choix”</code></p>
+<p>Suivant l'état de ce choix le script sortira de la boucle <code>while</code> et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
 <p>Pour sortir du script si je fait le choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle while.</p>
 <p>&nbsp;</p>
 <h2>Aperçu d'une construction de menu</h2>
