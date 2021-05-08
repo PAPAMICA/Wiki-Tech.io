@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-08T07:43:29.927Z
+date: 2021-05-08T07:53:56.471Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
@@ -70,51 +70,289 @@ dateCreated: 2021-04-28T18:24:13.228Z
 <p>&nbsp;</p>
 <h1>Informations matérielles</h1>
 <figure class="table">
-  <table style="background-color:rgb(33, 33, 33);">
+  <table>
     <tbody>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">dmesg</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>dmesg</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les messages du noyau</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">cat /proc/cpuinfo</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>cat /proc/cpuinfo</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du CPU</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">cat /proc/meminfo</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>cat /proc/meminfo</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations de la RAM</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">free -h</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>free -h</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la mémoire libre et utilisé (-h pour lisible par l'homme, -m for MB et -g pour GB)</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">lspci -tv</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>lspci -tv</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques PCI</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">lsusb -tv</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>lsusb -tv</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques USB</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">dmidecode</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>dmidecode</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">hdparm -i /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>hdparm -i /dev/sda</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du disque /dev/sda</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">hdparm -rT /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>hdparm -rT /dev/sda</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Faire un test de vitesse de lecture sur le disque /dev/sda</td>
       </tr>
       <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">badblocks -s /dev/sda</td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>badblocks -s /dev/sda</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Test le disque /dev/sda pour d'éventuels blocks défectueux</td>
       </tr>
     </tbody>
   </table>
 </figure>
+<h1>Fichiers et répertoires</h1>
+<h2>ls - Lister le contenu d'un répertoire</h2>
+<p><strong>Permet de lister le contenu d'un répertoire</strong></p>
+<pre><code class="language-plaintext">ls &lt;option&gt; répertoire</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-a</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Lister tout le répertoire (y compris fichier caché)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-l</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Afficher le répertoire sous forme de tableau, avec permission, ...</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille dans un format lisible par l'homme (Mo par exemple)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-R</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Liste également les sous-répertoires</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-s</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des répertoires</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>pwd - Afficher le répertoire courant</h2>
+<p><strong>Affiche le répertoire dans lequel on se situe.</strong></p>
+<pre><code class="language-plaintext">pwd</code></pre>
+<p>&nbsp;</p>
+<h2>mkdir - Créer un répertoire</h2>
+<p><strong>Créer un répertoire.</strong></p>
+<pre><code class="language-plaintext">mkdir -p /chemin/répertoire/à/créer</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-p</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Créer les répertoires parents si ces derniers n'existent pas</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><i>Exemple : Je souhaite créer un répertoire <strong>truc</strong> dans /home/user1/test1, mais le fichier test1 n'existe pas.</i></p>
+<pre><code class="language-plaintext">mkdir -p /home/user1/test1/truc</code></pre>
+<p>&nbsp;</p>
+<h2>cd - Changer de répertoire</h2>
+<p><strong>Permet de se déplacer dans l'arborescence</strong></p>
+<pre><code class="language-plaintext">cd /répertoire/de/destination</code></pre>
+<p>&nbsp;</p>
+<h2>cat - Afficher le contenu d'un fichier</h2>
+<p><strong>Permet d'ouvrir un fichier et d'afficher son contenu.</strong></p>
+<pre><code class="language-plaintext">cat &lt;option&gt; fichier</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-b</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes non vides</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-n</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>df - Afficher la taille d'un répertoire</h2>
+<p><strong>Permet d'afficher la taille d'un répertoire.</strong></p>
+<pre><code class="language-plaintext">df &lt;option&gt; répertoire</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Permet d'obtenir un résultat plus lisible pour un humain (<i>ex Mo, Ko,...</i>)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-k</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en kilobytes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-m</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en megabytes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d <strong>n</strong>.</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des sous-répertoires jusqu'au <strong>n</strong>ème</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>mv - Déplacer un fichier ou dossier</h2>
+<p><strong>Permet de déplacer un fichier ou un répertoire.</strong></p>
+<pre><code class="language-plaintext">mv &lt;option&gt; /chemin/source /chemin/destination</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Forcer le déplacement</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Demander la confirmation de l'utilisateur</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>rm - Supprimer un fichier ou dossier</h2>
+<p><strong>Permet de supprimer un fichier ou un dossier</strong></p>
+<pre><code class="language-plaintext">rm &lt;option&gt; /chemin/truc/a/supprimer</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Efface un répertoire</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Force la suppression</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Demande confirmation à l'utilisateur (<i>Inutile avec </i><code><i>-f</i></code>)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-r</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Récursif</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1>Sessions, Utilisateurs et Permissions</h1>
+<h2>groups - Afficher les groupes d'appartenance d'un utilisateur</h2>
+<p><strong>Permet d'afficher dans quels groupes se trouve l'utilisateur</strong></p>
+<pre><code class="language-plaintext">groups utilisateur</code></pre>
+<p>&nbsp;</p>
+<h2>passwd - Changer le mot de passe</h2>
+<p><strong>Permet de changer le mot de passe d'un utilisateur</strong></p>
+<pre><code class="language-plaintext">passwd &lt;option&gt; utilisateur</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer le mot de passe</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-e</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Faire expirer le mot de passe</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Rendre un compte inactif</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-l</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Verouille le mot de passe et empêche sa modification par l'utilisateur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-S</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le status du compte</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-u</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Déverouille un mot de passe</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
 <h1>Commandes logicielles</h1>
 <h2>Tipee</h2>
 <figure class="table">
