@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T10:58:47.881Z
+date: 2021-05-08T11:02:20.321Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-08T10:53:32.449Z
@@ -15,6 +15,10 @@ dateCreated: 2021-05-08T10:53:32.449Z
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
 {.is-info}
+
+# Les contributeurs
+| ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) | ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) |![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)
+|
 # Les différentes catégories
 ## Docker
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
