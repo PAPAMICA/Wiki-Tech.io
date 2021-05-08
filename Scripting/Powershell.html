@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-08T15:18:55.272Z
+date: 2021-05-08T15:23:42.020Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -12,34 +12,31 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Pour faire un menu sous powershell,&nbsp;</p>
 <figure class="image"><img src="/capture.png"></figure>
 <p>&nbsp;</p>
-<h2>principe de fonctionnement</h2>
-<p>il va falloir déclarer une variable qui va servir en quelque sorte de bouton…allumé ou éteinds</p>
-<p><code>$continue = $true</code></p>
-<p>avec cette variable j'utilise une boucle pour permettre de laisser en permanence l'affichage</p>
-<p><code>while (true)</code></p>
-<p>{</p>
-<p>le menu avec des write-host</p>
-<p>}</p>
-<p>puis il va me falloir une autre variable pour stocker mon choix avec<code> $choix = read-host “faire un choix”</code></p>
-<p>suivant l'état de ce choix je sortirai de la boucle while et cela provoquera soit une action du script soit une sortie du script avec switch ($choix)</p>
-<p>pour sortir du script si je fait le choix ‘x’ je passe la variable <code>$continue à false &nbsp;</code> ce qui aura pour effet d'arrêter la boucle while</p>
+<h2>Principe de fonctionnement</h2>
+<p>Nous avons besoin de déclarer une variable qui va servir en quelque sorte de bouton “allumé” ou “éteins” : <code>$continue = $true</code></p>
+<p>Avec cette variable j'utilise une boucle pour permettre de laisser en permanence l'affichage :&nbsp;</p>
+<pre><code class="language-plaintext">while (true)
+{
+&lt;le menu avec des write-host&gt;
+}</code></pre>
+<p>Puis une seconde variable pour stocker mon choix avec<code> $choix = read-host “faire un choix”</code></p>
+<p>Suivant l'état de ce choix le script sortira de la boucle <code>while </code>et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
+<p>Pour sortir du script si je fait le choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle while.</p>
 <p>&nbsp;</p>
-<h2>aperçu d'une construction de menu</h2>
-<p><code>$continue = $true</code></p>
-<p><code>while (continue)</code></p>
-<p><code>{</code></p>
-<p><code>write-host “----------------------MON TITRE -----------------------”</code></p>
-<p><code>write-host “1. mon action 1”</code></p>
-<p><code>write-host "2. mon action2"</code></p>
-<p><code>write-host"-------------------------------------------------------------------"</code></p>
-<p><code>$choix = read-host “faire un choix”</code></p>
-<p><code>switch ($choix)</code></p>
-<p><code>{</code></p>
-<ol>
-  <li><code>{commande de mon action 1}</code></li>
-  <li><code>{commande de mon action 2}&nbsp;</code></li>
-</ol>
-<p><code>‘x’ {$continue= $false}</code></p>
-<p><code>default {Write-Host "Choix invalide"-ForegroundColor Red}</code></p>
-<p><code>}</code></p>
+<h2>Aperçu d'une construction de menu</h2>
+<pre><code class="language-plaintext">$continue = $true
+while (continue)
+{
+write-host “----------------------MON TITRE -----------------------”
+write-host “1. mon action 1”
+write-host "2. mon action2"
+write-host"-------------------------------------------------------------------"
+$choix = read-host “faire un choix”
+switch ($choix)
+{
+{commande de mon action 1}
+{commande de mon action 2} 
+‘x’ {$continue= $false}
+default {Write-Host "Choix invalide"-ForegroundColor Red}
+}</code></pre>
 <p>&nbsp;</p>
