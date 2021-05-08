@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-08T08:15:30.312Z
+date: 2021-05-08T10:32:37.896Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
@@ -111,6 +111,14 @@ dateCreated: 2021-04-28T18:24:13.228Z
       <tr>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>badblocks -s /dev/sda</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Test le disque /dev/sda pour d'éventuels blocks défectueux</td>
+      </tr>
+      <tr>
+        <td><code>smartctl -a /dev/sda</code></td>
+        <td>Affiche toute les informations SMART du disque /dev/sda</td>
+      </tr>
+      <tr>
+        <td><code>smartctl -t short /dev/sda</code></td>
+        <td>Démarre un test SMART sur le disque /dev/sda (short/long/conveyance sont disponible)</td>
       </tr>
     </tbody>
   </table>
