@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-07T13:16:02.747Z
+date: 2021-05-08T08:30:25.691Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -58,7 +58,8 @@ dateCreated: 2021-04-28T15:15:54.158Z
 ## Linux
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Commandes)
 - [📦 Paquets utiles *La liste de mes paquets indispensables*](/Linux/Paquets)
-- [✋ Sudo *Utiliser et comprendre Sudo*](/Linux/Sudo)
+- [📝 Editeur de texte *Comprendre et utiliser VI, Nano, Joe, etc..*](/Linux/Editeur-de-texte)
+- [✋ Sudo *Comprendre et utiliser Sudo*](/Linux/Sudo)
 - [🔳 Terminal *La configuration de mon terminal*](/Linux/Terminal)
 - [📆 MOTD *Comprendre et changer le message de bienvenue*](/Linux/MOTD)
 - [📈 Check débit *Mesurer sa connexion et le débit entre deux serveurs*](/Linux/Check-debit)
