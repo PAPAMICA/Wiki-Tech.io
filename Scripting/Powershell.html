@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-08T15:28:57.451Z
+date: 2021-05-08T15:29:46.673Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -15,9 +15,8 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <h2>Principe de fonctionnement</h2>
 <p>Nous avons besoin de déclarer une variable qui va servir en quelque sorte de bouton “allumé” ou “éteins” : <code>$continue = $true</code></p>
 <p>Avec cette variable j'utilise une boucle pour permettre de laisser en permanence l'affichage :&nbsp;</p>
-<pre><code class="language-plaintext">while (true)
-{
-&lt;le menu avec des write-host&gt;
+<pre><code class="language-plaintext">while (true){
+	&lt;le menu avec des write-host&gt;
 }</code></pre>
 <p>Puis une seconde variable pour stocker mon choix avec <code>$choix = read-host “faire un choix”</code></p>
 <p>Suivant l'état de ce choix le script sortira de la boucle <code>while</code> et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
@@ -25,19 +24,20 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>&nbsp;</p>
 <h2>Exemple</h2>
 <pre><code class="language-plaintext">$continue = $true
-while (continue)
-{
-write-host “----------------------MON TITRE -----------------------”
-write-host “1. mon action 1”
-write-host "2. mon action2"
-write-host "x. exit"
-write-host"-------------------------------------------------------------------"
-$choix = read-host “faire un choix”
-switch ($choix)
-{
-1{commande de mon action 1}
-2{commande de mon action 2} 
-‘x’ {$continue= $false}
-default {Write-Host "Choix invalide"-ForegroundColor Red}
-}</code></pre>
+while (continue){
+	write-host “----------------------MON TITRE -----------------------”
+	write-host “1. mon action 1”
+	write-host "2. mon action2"
+	write-host "x. exit"
+	write-host"-------------------------------------------------------------------"
+	$choix = read-host “faire un choix”
+	switch ($choix){
+		{commande de mon action 1}
+		{commande de mon action 2} 
+		‘x’ {$continue= $false}
+		default {Write-Host "Choix invalide"-ForegroundColor Red}
+	}
+}
+	
+	</code></pre>
 <p>&nbsp;</p>
