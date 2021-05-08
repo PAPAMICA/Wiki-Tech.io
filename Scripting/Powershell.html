@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-08T15:18:21.174Z
+date: 2021-05-08T15:18:55.272Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -25,21 +25,21 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>pour sortir du script si je fait le choix ‘x’ je passe la variable <code>$continue à false &nbsp;</code> ce qui aura pour effet d'arrêter la boucle while</p>
 <p>&nbsp;</p>
 <h2>aperçu d'une construction de menu</h2>
-<p>$continue = $true</p>
-<p>while (continue)</p>
-<p>{</p>
-<p>write-host “----------------------MON TITRE -----------------------”</p>
-<p>write-host “1. mon action 1”</p>
-<p>write-host "2. mon action2"</p>
-<p>write-host"-------------------------------------------------------------------"</p>
-<p>$choix = read-host “faire un choix”</p>
-<p>switch ($choix)</p>
-<p>{</p>
+<p><code>$continue = $true</code></p>
+<p><code>while (continue)</code></p>
+<p><code>{</code></p>
+<p><code>write-host “----------------------MON TITRE -----------------------”</code></p>
+<p><code>write-host “1. mon action 1”</code></p>
+<p><code>write-host "2. mon action2"</code></p>
+<p><code>write-host"-------------------------------------------------------------------"</code></p>
+<p><code>$choix = read-host “faire un choix”</code></p>
+<p><code>switch ($choix)</code></p>
+<p><code>{</code></p>
 <ol>
-  <li>{commande de mon action 1}</li>
-  <li>{commande de mon action 2}&nbsp;</li>
+  <li><code>{commande de mon action 1}</code></li>
+  <li><code>{commande de mon action 2}&nbsp;</code></li>
 </ol>
-<p>‘x’ {$continue= $false}</p>
-<p>default {Write-Host "Choix invalide"-ForegroundColor Red}</p>
-<p>}</p>
+<p><code>‘x’ {$continue= $false}</code></p>
+<p><code>default {Write-Host "Choix invalide"-ForegroundColor Red}</code></p>
+<p><code>}</code></p>
 <p>&nbsp;</p>
