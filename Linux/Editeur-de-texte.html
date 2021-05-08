@@ -1,0 +1,288 @@
+<!--
+title: Linux - Les éditeurs de textes
+description: Comprendre et utiliser les éditeurs de textes comme VI, Nano, Joe, etc..
+published: true
+date: 2021-05-08T08:42:34.594Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-08T08:42:34.594Z
+-->
+
+<h1>VI</h1>
+<h2>Présentation</h2>
+<p>&nbsp;</p>
+<h2>Manipulation de base</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:w</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Sauvegarder le fichier</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:x ou :wq</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Enregistrer et quitter</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:q</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Quitter si aucun changement n'a été effectué</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:q!</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Quitter et annuler les changements</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:set nu</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Afficher le numéro des lignes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:r <i>fichier</i></code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Importer un <i>fichier</i> dans le fichier actuel</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:<strong>n</strong> r <i>fichier</i></code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Importer un <i>fichier</i> dans le fichier actuel à partir de la ligne <strong>n</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>Suppression</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>x</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer un caractère unique (celui sur lequel est positionné le curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>X</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer le caractère derrière le curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>D</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer le reste de la ligne à partir du curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>dd</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer une ligne entière</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code><strong>n</strong>dw</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer les prochains <strong>n</strong> mots</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code><strong>n</strong>dd</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer les <strong>n</strong> prochaines lignes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:<strong>x</strong>,<strong>y</strong>d</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer depuis la ligne <strong>x</strong> à la ligne <strong>y</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>Entrer en mode insertion (modification)</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer sur le curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>a</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer après le curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>I</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer sur la ligne suivante</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>A</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer sur la ligne précédente</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>o</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer une nouvelle ligne après la ligne actuelle</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>O</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Insérer une ligne avant la ligne actuelle</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code><strong>ESC</strong></code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Quitter le mode d'insertion</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>Copier Coller</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>p</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Coller le contenu du presse papier en dessus de la ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>P</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Coller le contenu du presse papier au dessus de la ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>yy</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Copier une ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>yw</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Copier un mot</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>y$</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Copier depuis la position du curseur jusqu'à la fin de la ligne</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>Rechercher et remplacer</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>/<i>mot souhaité</i></code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Rechercher le <i>mot souhaité</i> après la position du curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>?<i>mot souhaité</i></code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Rechercher le <i>mot souhaité</i> avant la position du curseur</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>n</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Trouver la prochaine occurrence du <i>mot souhaité</i></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>N</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Trouver l'occurrence précédente</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>:%s/<i>ancien mot</i>/<i>nouveau mot</i>/g</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Remplacer toutes les occurrences de l'<i>ancien mot</i> par le <i>nouveau mot</i></td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>&nbsp;</p>
+<h2>Se déplacer</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>h</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer de 1 caractère à gauche</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>j</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer de 1 caractère en bas</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>k</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer de 1 caractère en haut</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>l</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer de 1 caractère à droite</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>w</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au mot suivant</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>b</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au début du mot</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>e</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la fin du mot</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>(</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au début d'une phrase</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>)</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la fin d'une phrase</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>{</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au paragraphe précédent</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>}</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au paragraphe suivant</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>^</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer au début de la ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>$</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la fin de la ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>&lt;<strong>n</strong>&gt;G</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la <strong>n</strong>ème line</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>G</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la dernière ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>gg</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la première ligne</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>%</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Se déplacer à la parenthèse correspondante</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
