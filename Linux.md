@@ -2,7 +2,7 @@
 title: Linux
 description: 
 published: true
-date: 2021-05-08T09:33:45.489Z
+date: 2021-05-08T09:33:53.363Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T17:50:34.318Z
@@ -17,5 +17,5 @@ dateCreated: 2021-04-28T17:50:34.318Z
 - [📆 MOTD *Comprendre et changer le message de bienvenue*](/Linux/MOTD)
 - [📈 Check débit *Mesurer sa connexion et le débit entre deux serveurs*](/Linux/Check-debit)
 - [⚠️ Faire ses backups *Mettre en place les sauvegardes de ses serveurs et ordinateurs*](/Linux/Backup)
-- [💽 LVM *Gestion de disques logiques*](/Linux/Backup)
+- [💽 LVM *Gestion de disques logiques*](/Linux/LVM)
 {.links-list}
