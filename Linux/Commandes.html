@@ -2,546 +2,257 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-08T10:19:48.089Z
+date: 2021-05-08T10:20:36.136Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
 -->
 
-<h1 class="toc-header" id="système"> Système</h1><div>
-</div><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>reboot</code></td>
-<td>Redémarre</td>
-</tr>
-<tr>
-<td><code>shutdown -now</code></td>
-<td>Éteint sans délais</td>
-</tr>
-<tr>
-<td><code>systemctl (start/stop/restart/status) &lt;service&gt;</code></td>
-<td>Démarre/Arrête/Redémarre/Affiche le statut d’un service</td>
-</tr>
-<tr>
-<td><code>uname -a</code></td>
-<td>Afficher les informations systèmes de linux</td>
-</tr>
-<tr>
-<td><code>uname -r</code></td>
-<td>Afficher la version du noyau</td>
-</tr>
-<tr>
-<td><code>uptime</code></td>
-<td>Afficher le temps d’activité du système et affiche la charge</td>
-</tr>
-<tr>
-<td><code>hostname</code></td>
-<td>Affiche le nom d’hôte de la machine</td>
-</tr>
-<tr>
-<td><code>hostname -I</code></td>
-<td>Affiche l’adresse IP de l’hôte</td>
-</tr>
-<tr>
-<td><code>last reboot</code></td>
-<td>Afficher l’historique des redémarrages</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td>Afficher la date et l’heure du système</td>
-</tr>
-<tr>
-<td><code>cal</code></td>
-<td>Affiche le calendrier du mois</td>
-</tr>
-<tr>
-<td><code>w</code></td>
-<td>Affiche qui est en ligne</td>
-</tr>
-<tr>
-<td><code>whoami</code></td>
-<td>Affiche où nous sommes connecté en tant que qui</td>
-</tr>
-</tbody>
-</table><div>
-</div><h1 class="toc-header" id="matériel"> Matériel</h1><div>
-</div><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>dmesg</code></td>
-<td>Affiche les messages du noyau</td>
-</tr>
-<tr>
-<td><code>cat /proc/cpuinfo</code></td>
-<td>Affiche les informations du CPU</td>
-</tr>
-<tr>
-<td><code>cat /proc/meminfo</code></td>
-<td>Affiche les informations de la RAM</td>
-</tr>
-<tr>
-<td><code>free -h</code></td>
-<td>Affiche la mémoire libre et utilisé (-h pour lisible par l’homme, -m for MB et -g pour GB)</td>
-</tr>
-<tr>
-<td><code>lspci -tv</code></td>
-<td>Affiche les périphériques PCI</td>
-</tr>
-<tr>
-<td><code>lsusb -tv</code></td>
-<td>Affiche les périphériques USB</td>
-</tr>
-<tr>
-<td><code>dmidecode</code></td>
-<td>Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS</td>
-</tr>
-<tr>
-<td><code>hdparm -i /dev/sda</code></td>
-<td>Affiche les informations du disque /dev/sda</td>
-</tr>
-<tr>
-<td><code>hdparm -rT /dev/sda</code></td>
-<td>Faire un test de vitesse de lecture sur le disque /dev/sda</td>
-</tr>
-<tr>
-<td><code>badblocks -s /dev/sda</code></td>
-<td>Test le disque /dev/sda pour d’éventuels blocks défectueux</td>
-</tr>
-</tbody>
-</table><div>
-</div><h1 class="toc-header" id="réseau"> Réseau</h1><div>
-</div><table>
-<thead>
-<tr>
-<th>Ancienne commande :</th>
-<th>Nouvelle commande :</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>ifconfig -a</code></td>
-<td><code>ip a</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0 down</code></td>
-<td><code>ip link set enp6s0 down</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0 up</code></td>
-<td><code>ip link set enp6s0 up</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0 192.168.2.24</code></td>
-<td><code>ip addr add 192.168.2.24/24 dev enp6s0</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0 netmask 255.255.255.0</code></td>
-<td><code>ip addr add 192.168.1.1/24 dev enp6s0</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0 mtu 9000</code></td>
-<td><code>ip link set enp6s0 mtu 9000</code></td>
-</tr>
-<tr>
-<td><code>ifconfig enp6s0:0 192.168.2.25</code></td>
-<td><code>ip addr add 192.168.2.25/24 dev enp6s0</code></td>
-</tr>
-<tr>
-<td><code>netstat</code></td>
-<td><code>ss</code></td>
-</tr>
-<tr>
-<td><code>netstat -tulpn</code></td>
-<td><code>ss -tulpn</code></td>
-</tr>
-<tr>
-<td><code>netstat -neopa</code></td>
-<td><code>ss -neopa</code></td>
-</tr>
-<tr>
-<td><code>netstat -g</code></td>
-<td><code>ip maddr</code></td>
-</tr>
-<tr>
-<td><code>route</code></td>
-<td><code>ip r</code></td>
-</tr>
-<tr>
-<td><code>route add -net 192.168.2.0 netmask 255.255.255.0 dev enp6s0</code></td>
-<td><code>ip route add 192.168.2.0/24 dev enp6s0</code></td>
-</tr>
-<tr>
-<td><code>route add default gw 192.168.2.254</code></td>
-<td><code>ip route add default via 192.168.2.254</code></td>
-</tr>
-<tr>
-<td><code>arp -a</code></td>
-<td><code>ip neigh</code></td>
-</tr>
-<tr>
-<td><code>arp -v</code></td>
-<td><code>ip -s neigh</code></td>
-</tr>
-<tr>
-<td><code>arp -s 192.168.2.33 1:2:3:4:5:6</code></td>
-<td><code>ip neigh add 192.168.3.33 lladdr 1:2:3:4:5:6 dev enp6s0</code></td>
-</tr>
-<tr>
-<td><code>arp -i enp6s0 -d 192.168.2.254</code></td>
-<td><code>ip neigh del 192.168.2.254 dev wlp7s0</code></td>
-</tr>
-</tbody>
-</table><div>
-</div><h1 class="toc-header" id="fichiers-et-répertoires"> Fichiers et répertoires</h1><div>
-</div><h2 class="toc-header" id="ls-lister-le-contenu-dun-répertoire"> ls - Lister le contenu d’un répertoire</h2><div>
-</div><p><strong>Permet de lister le contenu d’un répertoire</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">ls &lt;option&gt; répertoire
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-a</code></td>
-<td>Lister tout le répertoire (y compris fichier caché)</td>
-</tr>
-<tr>
-<td><code>-l</code></td>
-<td>Afficher le répertoire sous forme de tableau, avec permission, …</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Affiche les inodes</td>
-</tr>
-<tr>
-<td><code>-h</code></td>
-<td>Affiche la taille dans un format lisible par l’homme (Mo par exemple)</td>
-</tr>
-<tr>
-<td><code>-R</code></td>
-<td>Liste également les sous-répertoires</td>
-</tr>
-<tr>
-<td><code>-s</code></td>
-<td>Affiche la taille des répertoires</td>
-</tr>
-</tbody>
-</table><div>
-</div><h2 class="toc-header" id="pwd-afficher-le-répertoire-courant"> pwd - Afficher le répertoire courant</h2><div>
-</div><p><strong>Affiche le répertoire dans lequel on se situe.</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">pwd
-</code></pre><div>
-</div><h2 class="toc-header" id="mkdir-créer-un-répertoire"> mkdir - Créer un répertoire</h2><div>
-</div><p><strong>Créer un répertoire.</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">mkdir -p /chemin/répertoire/à/créer
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-p</code></td>
-<td>Créer les répertoires parents si ces derniers n’existent pas</td>
-</tr>
-</tbody>
-</table><div>
-</div><p><em>Exemple : Je souhaite créer un répertoire <strong>truc</strong> dans /home/user1/test1, mais le fichier test1 n’existe pas.</em></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">mkdir -p /home/user1/test1/truc
-</code></pre><div>
-</div><h2 class="toc-header" id="cd-changer-de-répertoire"> cd - Changer de répertoire</h2><div>
-</div><p><strong>Permet de se déplacer dans l’arborescence</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">cd /répertoire/de/destination
-</code></pre><div>
-</div><h2 class="toc-header" id="cat-afficher-le-contenu-dun-fichier"> cat - Afficher le contenu d’un fichier</h2><div>
-</div><p><strong>Permet d’ouvrir un fichier et d’afficher son contenu.</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">cat &lt;option&gt; fichier
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-b</code></td>
-<td>Numéroter toutes les lignes non vides</td>
-</tr>
-<tr>
-<td><code>-n</code></td>
-<td>Numéroter toutes les lignes</td>
-</tr>
-</tbody>
-</table><div>
-</div><h2 class="toc-header" id="df-afficher-la-taille-dun-répertoire"> df - Afficher la taille d’un répertoire</h2><div>
-</div><p><strong>Permet d’afficher la taille d’un répertoire.</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">df &lt;option&gt; répertoire
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-h</code></td>
-<td>Permet d’obtenir un résultat plus lisible pour un humain (<em>ex Mo, Ko,…</em>)</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Affiche les inodes</td>
-</tr>
-<tr>
-<td><code>-k</code></td>
-<td>Affiche le résultat en kilobytes</td>
-</tr>
-<tr>
-<td><code>-m</code></td>
-<td>Affiche le résultat en megabytes</td>
-</tr>
-<tr>
-<td><code>-d **n**.</code></td>
-<td>Affiche la taille des sous-répertoires jusqu’au <strong>n</strong>ème</td>
-</tr>
-</tbody>
-</table><div>
-</div><h2 class="toc-header" id="mv-déplacer-un-fichier-ou-dossier"> mv - Déplacer un fichier ou dossier</h2><div>
-</div><p><strong>Permet de déplacer un fichier ou un répertoire.</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">mv &lt;option&gt; /chemin/source /chemin/destination
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-f</code></td>
-<td>Forcer le déplacement</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Demander la confirmation de l’utilisateur</td>
-</tr>
-</tbody>
-</table><div>
-</div><h2 class="toc-header" id="rm-supprimer-un-fichier-ou-dossier"> rm - Supprimer un fichier ou dossier</h2><div>
-</div><p><strong>Permet de supprimer un fichier ou un dossier</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">rm &lt;option&gt; /chemin/truc/a/supprimer
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-d</code></td>
-<td>Efface un répertoire</td>
-</tr>
-<tr>
-<td><code>-f</code></td>
-<td>Force la suppression</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Demande confirmation à l’utilisateur (<em>Inutile avec</em> <code>*-f*</code>)</td>
-</tr>
-<tr>
-<td><code>-r</code></td>
-<td>Récursif</td>
-</tr>
-</tbody>
-</table><div>
-</div><h2 class="toc-header" id="tar-compression-et-décompression"> tar - Compression et décompression</h2><div>
-</div><p><strong>Permet de compresser ou décompresser en fonction des options</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">tar -[options] &lt;nom_fichier_destination&gt; &lt;fichier_ou_dossier_source&gt;
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commentaire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-c</code></td>
-<td>Création d’une archive</td>
-</tr>
-<tr>
-<td><code>-v</code></td>
-<td>Verbose</td>
-</tr>
-<tr>
-<td><code>-f</code></td>
-<td>Indique un nom de fichier de destination</td>
-</tr>
-<tr>
-<td><code>-z</code></td>
-<td>Compression gzip</td>
-</tr>
-<tr>
-<td><code>-j</code></td>
-<td>Compression bzip</td>
-</tr>
-<tr>
-<td><code>-x</code></td>
-<td>Extraction d’une archive</td>
-</tr>
-<tr>
-<td><code>-t</code></td>
-<td>Lire le contenu d’une archive</td>
-</tr>
-<tr>
-<td><code>-r</code></td>
-<td>Ajouter un fichier à une archive existante</td>
-</tr>
-</tbody>
-</table><div>
-</div><p><em>Exemple :&nbsp;Archiver un dossier.</em></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">tar -cvf test.tar /chemin/dossier/a/compresser
-</code></pre><div>
-</div><p>Exemple : Désarchiver un dossier.</p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">tar -xvf test.tar /chemin/dossier/destination
-</code></pre><div>
-</div><h1 class="toc-header" id="sessions-utilisateurs-et-permissions"> Sessions, Utilisateurs et Permissions</h1><div>
-</div><h2 class="toc-header" id="groups-afficher-les-groupes-dappartenance-dun-utilisateur"> groups - Afficher les groupes d’appartenance d’un utilisateur</h2><div>
-</div><p><strong>Permet d’afficher dans quels groupes se trouve l’utilisateur</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">groups utilisateur
-</code></pre><div>
-</div><h2 class="toc-header" id="passwd-changer-le-mot-de-passe"> passwd - Changer le mot de passe</h2><div>
-</div><p><strong>Permet de changer le mot de passe d’un utilisateur</strong></p><div>
-</div><pre v-pre="true" class="prismjs line-numbers"><code class="language-plaintext">passwd &lt;option&gt; utilisateur
-</code></pre><div>
-</div><table>
-<thead>
-<tr>
-<th>Option</th>
-<th>Commande</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-d</code></td>
-<td>Supprimer le mot de passe</td>
-</tr>
-<tr>
-<td><code>-e</code></td>
-<td>Faire expirer le mot de passe</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>Rendre un compte inactif</td>
-</tr>
-<tr>
-<td><code>-l</code></td>
-<td>Verouille le mot de passe et empêche sa modification par l’utilisateur</td>
-</tr>
-<tr>
-<td><code>-S</code></td>
-<td>Affiche le status du compte</td>
-</tr>
-<tr>
-<td><code>-u</code></td>
-<td>Déverouille un mot de passe</td>
-</tr>
-</tbody>
-</table><div>
-</div><h1 class="toc-header" id="logiciel"> Logiciel</h1><div>
-</div><h2 class="toc-header" id="tipee"> Tipee</h2><div>
-</div><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>tipee</code></td>
-<td>Connaitre le temps restant de la journée</td>
-</tr>
-<tr>
-<td><code>tipee punch</code></td>
-<td>Badger les heures</td>
-</tr>
-</tbody>
-</table><div>
-</div><p>Lien : <a rel="noreferrer" target="_blank" class="is-external-link" href="https://gitlab.infomaniak.ch/mickaelasseline/python-tipee">Gitlab</a></p><div>
-</div><h2 class="toc-header" id="git"> Git</h2><div>
-</div><table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>git status</code></td>
-<td>Permets d’afficher le statut du dépôt dans lequel nous sommes (quelle branche, s’il y a des commit à réaliser…)</td>
-</tr>
-<tr>
-<td><code>git add nom_du_fichier</code></td>
-<td>Permet de “tracker” (suivre) le fichier, et ainsi, le faire reconnaître par Git pour des prochaines actions (merge, commit, status…)</td>
-</tr>
-<tr>
-<td><code>git init “nom_du_dossier”</code></td>
-<td>Initialise le dossier, créant ainsi un dossier caché “.git" qui sera reconnu par l’outil Git et les plateformes comme GitHub, GitLab… Sans cela, le dossier ne sera jamais utilisable par Git.</td>
-</tr>
-<tr>
-<td><code>git log</code></td>
-<td>Affiche les dernières actions réalisées sur le repository (incluant les métadatas, les commit ID, commit messages…)</td>
-</tr>
-<tr>
-<td><code>git clone</code></td>
-<td>Clone un projet sur sa machine.</td>
-</tr>
-<tr>
-<td><code>git commit -am “message”</code></td>
-<td>Met à jour le commit avec un message défini.</td>
-</tr>
-<tr>
-<td><code>git fetch</code></td>
-<td>Récupère les informations d’un repository sans télécharger sur la machine.</td>
-</tr>
-<tr>
-<td><code>git push</code></td>
-<td>Envoi la mise à jour au git distant (dit “remote”). Prends en compte le dossier dans lequel on se situe.</td>
-</tr>
-<tr>
-<td><code>git pull</code></td>
-<td>Récupère les dernières mises à jours du répertoire distant</td>
-</tr>
-</tbody>
-</table><div>
-</div>
+# Système
+
+|     |     |
+| --- | --- |
+| `reboot` | Redémarre |
+| `shutdown -now` | Éteint sans délais |
+| `systemctl (start/stop/restart/status) <service>` | Démarre/Arrête/Redémarre/Affiche le statut d'un service |
+| `uname -a` | Afficher les informations systèmes de linux |
+| `uname -r` | Afficher la version du noyau |
+| `uptime` | Afficher le temps d'activité du système et affiche la charge |
+| `hostname` | Affiche le nom d'hôte de la machine |
+| `hostname -I` | Affiche l'adresse IP de l'hôte |
+| `last reboot` | Afficher l'historique des redémarrages |
+| `date` | Afficher la date et l'heure du système |
+| `cal` | Affiche le calendrier du mois |
+| `w` | Affiche qui est en ligne |
+| `whoami` | Affiche où nous sommes connecté en tant que qui |
+
+# Matériel
+
+|     |     |
+| --- | --- |
+| `dmesg` | Affiche les messages du noyau |
+| `cat /proc/cpuinfo` | Affiche les informations du CPU |
+| `cat /proc/meminfo` | Affiche les informations de la RAM |
+| `free -h` | Affiche la mémoire libre et utilisé (-h pour lisible par l'homme, -m for MB et -g pour GB) |
+| `lspci -tv` | Affiche les périphériques PCI |
+| `lsusb -tv` | Affiche les périphériques USB |
+| `dmidecode` | Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS |
+| `hdparm -i /dev/sda` | Affiche les informations du disque /dev/sda |
+| `hdparm -rT /dev/sda` | Faire un test de vitesse de lecture sur le disque /dev/sda |
+| `badblocks -s /dev/sda` | Test le disque /dev/sda pour d'éventuels blocks défectueux |
+
+# Réseau
+
+| Ancienne commande : | Nouvelle commande : |
+| --- | --- |
+| `ifconfig -a` | `ip a` |
+| `ifconfig enp6s0 down` | `ip link set enp6s0 down` |
+| `ifconfig enp6s0 up` | `ip link set enp6s0 up` |
+| `ifconfig enp6s0 192.168.2.24` | `ip addr add 192.168.2.24/24 dev enp6s0` |
+| `ifconfig enp6s0 netmask 255.255.255.0` | `ip addr add 192.168.1.1/24 dev enp6s0` |
+| `ifconfig enp6s0 mtu 9000` | `ip link set enp6s0 mtu 9000` |
+| `ifconfig enp6s0:0 192.168.2.25` | `ip addr add 192.168.2.25/24 dev enp6s0` |
+| `netstat` | `ss` |
+| `netstat -tulpn` | `ss -tulpn` |
+| `netstat -neopa` | `ss -neopa` |
+| `netstat -g` | `ip maddr` |
+| `route` | `ip r` |
+| `route add -net 192.168.2.0 netmask 255.255.255.0 dev enp6s0` | `ip route add 192.168.2.0/24 dev enp6s0` |
+| `route add default gw 192.168.2.254` | `ip route add default via 192.168.2.254` |
+| `arp -a` | `ip neigh` |
+| `arp -v` | `ip -s neigh` |
+| `arp -s 192.168.2.33 1:2:3:4:5:6` | `ip neigh add 192.168.3.33 lladdr 1:2:3:4:5:6 dev enp6s0` |
+| `arp -i enp6s0 -d 192.168.2.254` | `ip neigh del 192.168.2.254 dev wlp7s0` |
+
+# Fichiers et répertoires
+
+## ls - Lister le contenu d'un répertoire
+
+**Permet de lister le contenu d'un répertoire**
+
+```plaintext
+ls <option> répertoire
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-a` | Lister tout le répertoire (y compris fichier caché) |
+| `-l` | Afficher le répertoire sous forme de tableau, avec permission, ... |
+| `-i` | Affiche les inodes |
+| `-h` | Affiche la taille dans un format lisible par l'homme (Mo par exemple) |
+| `-R` | Liste également les sous-répertoires |
+| `-s` | Affiche la taille des répertoires |
+
+## pwd - Afficher le répertoire courant
+
+**Affiche le répertoire dans lequel on se situe.**
+
+```plaintext
+pwd
+```
+
+## mkdir - Créer un répertoire
+
+**Créer un répertoire.**
+
+```plaintext
+mkdir -p /chemin/répertoire/à/créer
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-p` | Créer les répertoires parents si ces derniers n'existent pas |
+
+*Exemple : Je souhaite créer un répertoire **truc** dans /home/user1/test1, mais le fichier test1 n'existe pas.*
+
+```plaintext
+mkdir -p /home/user1/test1/truc
+```
+
+## cd - Changer de répertoire
+
+**Permet de se déplacer dans l'arborescence**
+
+```plaintext
+cd /répertoire/de/destination
+```
+
+## cat - Afficher le contenu d'un fichier
+
+**Permet d'ouvrir un fichier et d'afficher son contenu.**
+
+```plaintext
+cat <option> fichier
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-b` | Numéroter toutes les lignes non vides |
+| `-n` | Numéroter toutes les lignes |
+
+## df - Afficher la taille d'un répertoire
+
+**Permet d'afficher la taille d'un répertoire.**
+
+```plaintext
+df <option> répertoire
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-h` | Permet d'obtenir un résultat plus lisible pour un humain (*ex Mo, Ko,...*) |
+| `-i` | Affiche les inodes |
+| `-k` | Affiche le résultat en kilobytes |
+| `-m` | Affiche le résultat en megabytes |
+| `-d **n**.` | Affiche la taille des sous-répertoires jusqu'au **n**ème |
+
+## mv - Déplacer un fichier ou dossier
+
+**Permet de déplacer un fichier ou un répertoire.**
+
+```plaintext
+mv <option> /chemin/source /chemin/destination
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-f` | Forcer le déplacement |
+| `-i` | Demander la confirmation de l'utilisateur |
+
+## rm - Supprimer un fichier ou dossier
+
+**Permet de supprimer un fichier ou un dossier**
+
+```plaintext
+rm <option> /chemin/truc/a/supprimer
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-d` | Efface un répertoire |
+| `-f` | Force la suppression |
+| `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
+| `-r` | Récursif |
+
+## tar - Compression et décompression
+
+**Permet de compresser ou décompresser en fonction des options**
+
+```plaintext
+tar -[options] <nom_fichier_destination> <fichier_ou_dossier_source>
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-c` | Création d'une archive |
+| `-v` | Verbose |
+| `-f` | Indique un nom de fichier de destination |
+| `-z` | Compression gzip |
+| `-j` | Compression bzip |
+| `-x` | Extraction d'une archive |
+| `-t` | Lire le contenu d'une archive |
+| `-r` | Ajouter un fichier à une archive existante |
+
+*Exemple : Archiver un dossier.*
+
+```plaintext
+tar -cvf test.tar /chemin/dossier/a/compresser
+```
+
+Exemple : Désarchiver un dossier.
+
+```plaintext
+tar -xvf test.tar /chemin/dossier/destination
+```
+
+# Sessions, Utilisateurs et Permissions
+
+## groups - Afficher les groupes d'appartenance d'un utilisateur
+
+**Permet d'afficher dans quels groupes se trouve l'utilisateur**
+
+```plaintext
+groups utilisateur
+```
+
+## passwd - Changer le mot de passe
+
+**Permet de changer le mot de passe d'un utilisateur**
+
+```plaintext
+passwd <option> utilisateur
+```
+
+| Option | Commande |
+| --- | --- |
+| `-d` | Supprimer le mot de passe |
+| `-e` | Faire expirer le mot de passe |
+| `-i` | Rendre un compte inactif |
+| `-l` | Verouille le mot de passe et empêche sa modification par l'utilisateur |
+| `-S` | Affiche le status du compte |
+| `-u` | Déverouille un mot de passe |
+
+# Logiciel
+
+## Tipee
+
+|     |     |
+| --- | --- |
+| `tipee` | Connaitre le temps restant de la journée |
+| `tipee punch` | Badger les heures |
+
+Lien : [Gitlab](https://gitlab.infomaniak.ch/mickaelasseline/python-tipee)
+
+## Git
+
+|     |     |
+| --- | --- |
+| `git status` | Permets d'afficher le statut du dépôt dans lequel nous sommes (quelle branche, s'il y a des commit à réaliser…) |
+| `git add nom_du_fichier` | Permet de “tracker” (suivre) le fichier, et ainsi, le faire reconnaître par Git pour des prochaines actions (merge, commit, status…) |
+| `git init “nom_du_dossier”` | Initialise le dossier, créant ainsi un dossier caché “.git" qui sera reconnu par l'outil Git et les plateformes comme GitHub, GitLab… Sans cela, le dossier ne sera jamais utilisable par Git. |
+| `git log` | Affiche les dernières actions réalisées sur le repository (incluant les métadatas, les commit ID, commit messages…) |
+| `git clone` | Clone un projet sur sa machine. |
+| `git commit -am “message”` | Met à jour le commit avec un message défini. |
+| `git fetch` | Récupère les informations d'un repository sans télécharger sur la machine. |
+| `git push` | Envoi la mise à jour au git distant (dit “remote”). Prends en compte le dossier dans lequel on se situe. |
+| `git pull` | Récupère les dernières mises à jours du répertoire distant |
