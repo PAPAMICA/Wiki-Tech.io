@@ -2,13 +2,13 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-08T07:53:56.471Z
+date: 2021-05-08T08:15:30.312Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
 -->
 
-<h1>Informations systèmes</h1>
+<h1>Système</h1>
 <figure class="table">
   <table style="background-color:rgb(255, 255, 255);">
     <tbody>
@@ -68,7 +68,7 @@ dateCreated: 2021-04-28T18:24:13.228Z
   </table>
 </figure>
 <p>&nbsp;</p>
-<h1>Informations matérielles</h1>
+<h1>Matériel</h1>
 <figure class="table">
   <table>
     <tbody>
@@ -111,6 +111,91 @@ dateCreated: 2021-04-28T18:24:13.228Z
       <tr>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>badblocks -s /dev/sda</code></td>
         <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Test le disque /dev/sda pour d'éventuels blocks défectueux</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h1>Réseau</h1>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Ancienne commande :</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Nouvelle commande :</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig -a</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip a</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 down</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 down</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 up</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 up</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 192.168.2.24</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.2.24/24 dev enp6s0</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 netmask 255.255.255.0</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.1.1/24 dev enp6s0</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 mtu 9000</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 mtu 9000</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0:0 192.168.2.25</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.2.25/24 dev enp6s0</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -tulpn</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss -tulpn</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -neopa</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss -neopa</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -g</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip maddr</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip r</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route add -net 192.168.2.0 netmask 255.255.255.0 dev enp6s0</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip route add 192.168.2.0/24 dev enp6s0</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route add default gw 192.168.2.254</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip route add default via 192.168.2.254</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -a</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -v</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip -s neigh</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -s 192.168.2.33 1:2:3:4:5:6</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh add 192.168.3.33 lladdr 1:2:3:4:5:6 dev enp6s0</code></td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -i enp6s0 -d 192.168.2.254</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh del 192.168.2.254 dev wlp7s0</code></td>
       </tr>
     </tbody>
   </table>
@@ -307,6 +392,59 @@ dateCreated: 2021-04-28T18:24:13.228Z
     </tbody>
   </table>
 </figure>
+<p>&nbsp;</p>
+<h2>tar - Compression et décompression</h2>
+<p><strong>Permet de compresser ou décompresser en fonction des options</strong></p>
+<pre><code class="language-plaintext">tar -[options] &lt;nom_fichier_destination&gt; &lt;fichier_ou_dossier_source&gt;</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-c</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Création d'une archive</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-v</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Verbose</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Indique un nom de fichier de destination</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-z</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Compression gzip</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-j</code></td>
+        <td>Compression bzip</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-x</code></td>
+        <td>Extraction d'une archive</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-t</code></td>
+        <td>Lire le contenu d'une archive</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-r</code></td>
+        <td>Ajouter un fichier à une archive existante</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><i>Exemple :&nbsp;Archiver un dossier.</i></p>
+<pre><code class="language-plaintext">tar -cvf test.tar /chemin/dossier/a/compresser</code></pre>
+<p>Exemple : Désarchiver un dossier.</p>
+<pre><code class="language-plaintext">tar -xvf test.tar /chemin/dossier/destination</code></pre>
 <h1>Sessions, Utilisateurs et Permissions</h1>
 <h2>groups - Afficher les groupes d'appartenance d'un utilisateur</h2>
 <p><strong>Permet d'afficher dans quels groupes se trouve l'utilisateur</strong></p>
@@ -353,7 +491,7 @@ dateCreated: 2021-04-28T18:24:13.228Z
   </table>
 </figure>
 <p>&nbsp;</p>
-<h1>Commandes logicielles</h1>
+<h1>Logiciel</h1>
 <h2>Tipee</h2>
 <figure class="table">
   <table style="background-color:rgb(255, 255, 255);">
