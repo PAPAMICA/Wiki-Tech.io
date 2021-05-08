@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T08:30:25.691Z
+date: 2021-05-08T09:34:46.381Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -10,7 +10,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
 > Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
-> Dernière mise à jours : 07/05/2021
+> Dernière mise à jours : 08/05/2021
 {.is-warning}
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
@@ -64,6 +64,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [📆 MOTD *Comprendre et changer le message de bienvenue*](/Linux/MOTD)
 - [📈 Check débit *Mesurer sa connexion et le débit entre deux serveurs*](/Linux/Check-debit)
 - [⚠️ Faire ses backups *Mettre en place les sauvegardes de ses serveurs et ordinateurs*](/Linux/Backup)
+- [💽 LVM *Gestion de disques logiques*](/Linux/LVM)
 {.links-list}
 
 ## Openstack
