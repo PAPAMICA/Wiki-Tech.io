@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T11:03:27.731Z
+date: 2021-05-08T11:06:19.911Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-08T10:53:32.449Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-08T10:53:32.449Z
 {.is-info}
 
 # Les contributeurs
-| ![wiki_-_tech.png](/wiki_-_tech.png) | ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) |![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)
+| [![Foo](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)](https://mickaelasseline.com) | ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) |![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)
 |
 # Les différentes catégories
 ## Docker
