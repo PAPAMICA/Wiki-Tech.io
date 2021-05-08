@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-08T11:02:20.321Z
+date: 2021-05-08T11:03:27.731Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-08T10:53:32.449Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-08T10:53:32.449Z
 {.is-info}
 
 # Les contributeurs
-| ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) | ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) |![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)
+| ![wiki_-_tech.png](/wiki_-_tech.png) | ![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1) |![enter image description here](https://send.papamica.fr/f.php?h=1hW19cT6&p=1)
 |
 # Les différentes catégories
 ## Docker
