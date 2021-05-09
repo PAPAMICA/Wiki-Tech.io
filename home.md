@@ -2,14 +2,14 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-09T09:52:50.925Z
+date: 2021-05-09T09:53:28.103Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
 ---
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
-> Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
+> 🚧  Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
 > Dernière mise à jours : 09/05/2021
 {.is-warning}
 
