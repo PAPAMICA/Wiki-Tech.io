@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-05-09T16:19:23.314Z
+date: 2021-05-09T16:32:23.001Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T16:18:20.853Z
@@ -27,7 +27,7 @@ dateCreated: 2021-05-09T16:18:20.853Z
 <p>Par défaut, sur la plupart des distributions Linux, l'octroi d'un accès sudo est aussi simple que l'ajout de l'utilisateur au groupe sudo défini dans le fichier <code>/etc/sudoers</code> . Les membres de ce groupe pourront exécuter n'importe quelle commande en tant que root. Le nom du groupe peut différer d'une distribution à l'autre.</p>
 <p>Sur Debian, Ubuntu et leurs dérivés, c'est le groupe <code>sudo</code> &nbsp;:</p>
 <pre><code class="language-plaintext">usermod -aG sudo username</code></pre>
-<p>Sur Debian, Ubuntu et leurs dérivés, c'est le groupe <code>wheel</code> &nbsp;:</p>
+<p>Sur CentOS et ses dérivés, c'est le groupe <code>wheel</code> &nbsp;:</p>
 <pre><code class="language-plaintext">usermod -aG wheel username</code></pre>
 <p>&nbsp;</p>
 <h2>Utilisation de sudo</h2>
