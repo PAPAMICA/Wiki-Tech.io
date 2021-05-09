@@ -1,0 +1,199 @@
+<!--
+title: Docker - Gestion du réseau
+description: Comprendre la gestion du réseau de Docker
+published: true
+date: 2021-05-09T08:52:42.135Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-09T08:52:42.135Z
+-->
+
+<h1><strong>Introduction</strong></h1>
+<p style="text-align:justify;">Pour que les conteneurs Docker puissent communiquer entre eux mais aussi avec le monde extérieur via la machine hôte, alors une couche de mise en réseau est nécessaire. Cette couche réseau rajoute une partie d'isolation des conteneurs, et permet donc de créer des applications Docker qui fonctionnent ensemble de manière sécurisée.</p>
+<p style="text-align:justify;">Docker prend en charge différents types de réseaux qui sont adaptés à certains cas d'utilisation, que nous allons voir à travers ce chapitre.</p>
+<h1><strong>Les différents types de réseau Docker</strong></h1>
+<p style="text-align:justify;">Le système réseau de Docker utilise des drivers (pilotes). Plusieurs drivers existent et fournissent des fonctionnalités différentes.</p>
+<h2><u>Le driver Bridge</u></h2>
+<p style="text-align:justify;">Tout d'abord, lorsque vous installez Docker pour la première fois, il crée automatiquement un réseau bridge nommé <strong>bridge</strong> connecté à l'interface réseau <strong>docker0</strong> ( consultable avec la commande ip addr show docker0 ). Chaque nouveau conteneur Docker est automatiquement connecté à ce réseau, sauf si un réseau personnalisé est spécifié.</p>
+<p style="text-align:justify;">Par ailleurs, le réseau bridge est le type de réseau le plus couramment utilisé. Il est limité aux conteneurs d'un hôte unique exécutant le moteur Docker. Les conteneurs qui utilisent ce driver, ne peuvent communiquer qu'entre eux, cependant ils ne sont pas accessibles depuis l'extérieur.</p>
+<figure class="image image_resized" style="width:56.43%;"><img src="https://devopssec.fr/images/articles/docker/networks/bridge_network_docker.jpg" alt="Docker bridge network"></figure>
+<p style="text-align:justify;">Pour que les conteneurs sur le réseau bridge puissent communiquer ou être accessibles du monde extérieur, vous devez configurer le mappage de port.</p>
+<h2><u>Le driver none</u></h2>
+<p style="text-align:justify;">C'est le type de réseau idéal, si vous souhaitez interdire toute communication interne et externe avec votre conteneur, car votre conteneur sera dépourvu de toute interface réseau (sauf l'interface loopback).</p>
+<h2><u>Le driver host</u></h2>
+<p style="text-align:justify;">Ce type de réseau permet aux conteneurs d'utiliser la même interface que l'hôte. Il supprime donc l'isolation réseau entre les conteneurs et seront par défaut accessibles de l'extérieur. De ce fait, il prendra la même IP que votre machine hôte.</p>
+<figure class="image image_resized" style="width:34.08%;"><img src="https://devopssec.fr/images/articles/docker/networks/host_network_docker.png" alt="Docker host network"></figure>
+<p style="text-align:justify;">Me concernant sur mon pc perso j'utilise le réseau wifi, plus précisément l'interface <strong>wlp3s0</strong>. Voici les informations retournées par la commande ip add show wlp3s0 depuis ma machine hôte :</p>
+<pre><code class="language-plaintext">wlp3s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+link/ether dc:85:de:ce:04:55 brd ff:ff:ff:ff:ff:ff
+inet 192.168.0.11/24 brd 192.168.0.255 scope global dynamic noprefixroute wlp3s0
+    valid_lft 54874sec preferred_lft 54874sec
+inet6 fe80::335:f1f5:127d:b62c/64 scope link noprefixroute 
+    valid_lft forever preferred_lft forever</code></pre>
+<p style="text-align:justify;">Je vais lancer la même commande dans un conteneur basé sur l'image alpine avec un driver de type host :</p>
+<pre><code class="language-plaintext">docker run -it --rm --network host --name net alpine ip add show wlp3s0</code></pre>
+<p style="text-align:justify;">Sans surprise, j'obtiens les mêmes informations que sur ma machine hôte (normal car ils utilisent tous les deux l'interface <strong>wlp3s0</strong> grâce au driver host):</p>
+<pre><code class="language-plaintext">wlp3s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP qlen 1000
+    link/ether dc:85:de:ce:04:55 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.0.11/24 brd 192.168.0.255 scope global dynamic wlp3s0
+       valid_lft 54711sec preferred_lft 54711sec
+    inet6 fe80::335:f1f5:127d:b62c/64 scope link 
+       valid_lft forever preferred_lft forever</code></pre>
+<h2><u>Le driver overlay</u></h2>
+<p style="text-align:justify;">Si vous souhaitez une mise en réseau multi-hôte native, vous devez utiliser un driver overlay. Il crée un réseau distribué entre plusieurs hôtes possédant le moteur Docker. Docker gère de manière transparente le routage de chaque paquet vers et depuis le bon hôte et le bon conteneur.</p>
+<figure class="image image_resized" style="width:43.92%;"><img src="https://devopssec.fr/images/articles/docker/networks/overlay_network_docker.png" alt="Docker overlay network"></figure>
+<h3><u>Le driver macvlan</u></h3>
+<p style="text-align:justify;">L'utilisation du driver macvlan est parfois le meilleur choix lorsque vous utilisez des applications qui s'attendent à être directement connectées au réseau physique, car le driver Macvlan vous permet d'attribuer une adresse MAC à un conteneur, le faisant apparaître comme un périphérique physique sur votre réseau. Le moteur Docker route le trafic vers les conteneurs en fonction de leurs adresses MAC.</p>
+<figure class="image image_resized" style="width:51.05%;"><img src="https://devopssec.fr/images/articles/docker/networks/macvlan_network_docker.jpg" alt="Docker macvlan network"></figure>
+<h1><strong>Manipulation du réseau dans Docker</strong></h1>
+<p style="text-align:justify;">Une fois les présentations finies, il est temps de pratiquer un peu en manipulant le réseau dans Docker.</p>
+<h2><u>Créer et récolter des informations d'un réseau Docker</u></h2>
+<p style="text-align:justify;">La <strong>commande pour créer un réseau Docker</strong> est la suivante :</p>
+<pre><code class="language-plaintext">docker network create --driver &lt;DRIVER TYPE&gt; &lt;NETWORK NAME&gt;</code></pre>
+<p style="text-align:justify;">Dans cet exemple nous allons <strong>créer un réseau de type bridge</strong> nommé <strong>mon-bridge</strong> :</p>
+<pre><code class="language-plaintext">docker network create --driver bridge mon-bridge</code></pre>
+<p style="text-align:justify;">On va ensuite <strong>lister les réseaux docker</strong> avec la commande suivante :</p>
+<pre><code class="language-plaintext">docker network ls</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">NETWORK ID          NAME                     DRIVER              SCOPE
+58b8305ce041        bridge                   bridge              local
+91d7f01dad50        host                     host                local
+ccdbdbf708db        mon-bridge               bridge              local
+10ee25f56420        monimagedocker_default   bridge              local
+6851e9b8e06e        none                     null                local</code></pre>
+<p style="text-align:justify;">Il est possible de <strong>récolter des informations sur le réseau docker</strong>, comme par exemple la config réseau, en tapant la commande suivante :</p>
+<pre><code class="language-plaintext">docker network inspect mon-bridge</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">[
+    {
+        "Name": "mon-bridge",
+        "Id": "ccdbdbf708db7fa901b512c8256bc7f700a7914dfaf6e8182bb5183a95f8dd9b",
+        ...
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "172.21.0.0/16",
+                    "Gateway": "172.21.0.1"
+                }
+            ]
+        },
+        ...
+        "Labels": {}
+    }
+]</code></pre>
+<p>&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<blockquote>
+  <p style="text-align:justify;">Vous pouvez <strong>surcharger la valeur du Subnet et de la Gateway</strong> en utilisant les options <code><strong>--subnet</strong></code> et <code><strong>--gateway</strong></code> de la commande <code>docker network create</code>, comme suit :<br><br><code>docker network create bridge --subnet=172.16.86.0/24 --gateway=172.16.86.1 mon-bridge</code></p>
+</blockquote>
+<p style="text-align:justify;">Pour cet exemple, nous allons <strong>connecter deux conteneurs à notre réseau bridge</strong> créé précédemment :</p>
+<pre><code class="language-plaintext">docker run -dit --name alpine1 --network mon-bridge alpine</code></pre>
+<pre><code class="language-plaintext">docker run -dit --name alpine2 --network mon-bridge alpine</code></pre>
+<p style="text-align:justify;">Si on inspecte une nouvelle fois notre réseau <strong>mon-bridge</strong>, on verra nos deux nouveaux conteneurs dans les informations retournées :</p>
+<pre><code class="language-plaintext">docker network inspect mon-bridge</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">[
+    {
+        "Name": "mon-bridge",
+        "Id": "ccdbdbf708db7fa901b512c8256bc7f700a7914dfaf6e8182bb5183a95f8dd9b",
+        ...
+        "Containers": {
+            "1ab5f1815d98cd492c69a63662419e0eba891c0cadb2cbdd0fb939ab25f94b33": {
+                "Name": "alpine1",
+                "EndpointID": "5f04963f9ec084df659cfc680b9ec32c44237dc89e96184fe4f2310ba6af7570",
+                "MacAddress": "02:42:ac:15:00:02",
+                "IPv4Address": "172.21.0.2/16",
+                "IPv6Address": ""
+            },
+            "a935d2e1ddf76fe49cdb1950653f4a093928020b49ebfea4130ff9d712ffb1d6": {
+                "Name": "alpine2",
+                "EndpointID": "3e009b56104a1bf9106bc622043a2ee06010b102279e24b4807c7b7ffec166dd",
+                "MacAddress": "02:42:ac:15:00:03",
+                "IPv4Address": "172.21.0.3/16",
+                "IPv6Address": ""
+            }
+        },
+        ...
+    }
+]</code></pre>
+<p style="text-align:justify;">D'après le résultat, on peut s'apercevoir que notre conteneur <strong>alpine1</strong> possède l'adresse IP <strong>172.21.0.2</strong>, et notre conteneur <strong>alpine2</strong> possède l'adresse IP <strong>172.21.0.3</strong>. Tentons de les faire communiquer ensemble à l'aide de la commande ping :</p>
+<pre><code class="language-plaintext">docker exec alpine1 ping -c 1 172.21.0.3</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">PING 172.21.0.3 (172.21.0.3): 56 data bytes
+64 bytes from 172.21.0.3: seq=0 ttl=64 time=0.101 ms</code></pre>
+<hr>
+<pre><code class="language-plaintext">docker exec alpine2 ping -c 1 172.21.0.2</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">PING 172.21.0.2 (172.21.0.2): 56 data bytes
+64 bytes from 172.21.0.2: seq=0 ttl=64 time=0.153 mss</code></pre>
+<p style="text-align:justify;">Pour information, vous ne pouvez pas créer un network host, car vous utilisez l'interface de votre machine hôte. D'ailleurs si vous tentez de le créer alors vous recevrez l'erreur suivante :</p>
+<pre><code class="language-plaintext">docker network create --driver host mon-host</code></pre>
+<p style="text-align:justify;"><strong>Erreur :</strong></p>
+<pre><code class="language-plaintext">Error response from daemon: only one instance of "host" network is allowed</code></pre>
+<p style="text-align:justify;">On peut ne peut qu'utiliser le driver host mais pas le créer. Dans cet exemple nous allons démarrer un conteneur Apache sur le port 80 de la machine hôte. Du point de vue de la mise en réseau, il s’agit du même niveau d’isolation que si le processus Apache s’exécutait directement sur la machine hôte et non dans un conteneur. Cependant, le processus reste totalement isolé de la machine hôte.</p>
+<p style="text-align:justify;">Cette procédure nécessite que le port 80 soit disponible sur la machine hôte :</p>
+<pre><code class="language-plaintext">docker run --rm -d --network host --name my_httpd httpd</code></pre>
+<p style="text-align:justify;">Sans aucun mappage, vous pouvez accédez au serveur Apache en accédant à <a href="http://localhost/">http://localhost:80/</a>, vous verrez alors le message "It works!".</p>
+<p style="text-align:justify;">Depuis votre machine hôte, vous pouvez vérifier quel processus est lié au port 80 à l'aide de la commande netstat :</p>
+<pre><code class="language-plaintext">sudo netstat -tulpn | grep :80</code></pre>
+<p style="text-align:justify;">C'est bien le processus httpd qui utilise le port 80 sans avoir recours au mappage de port :</p>
+<pre><code class="language-plaintext">tcp        0      0 127.0.0.1:8000          0.0.0.0:*               LISTEN      5084/php            
+tcp6       0      0 :::80                   :::*                    LISTEN      11133/httpd         
+tcp6       0      0 :::8080                 :::*                    LISTEN      3122/docker-prox</code></pre>
+<p style="text-align:justify;">Enfin arrêtez le conteneur qui sera supprimé automatiquement car il a été démarré à l'aide de l'option <strong>--rm</strong> :</p>
+<pre><code class="language-plaintext">docker container stop my_httpd</code></pre>
+<h2><u>Supprimer, connecter et connecter un réseau Docker</u></h2>
+<p style="text-align:justify;">Avant de supprimer votre réseau docker, il est nécessaire au préalable de supprimer tout conteneur connecté à votre réseau docker, ou sinon il suffit juste de <strong>déconnecter votre conteneur de votre réseau docker sans forcément le supprimer</strong>.</p>
+<p style="text-align:justify;">Nous allons choisir la méthode 2, en déconnectant tous les conteneurs utilisant le réseau docker <strong>mon-bridge</strong> :</p>
+<pre><code class="language-plaintext">docker network disconnect mon-bridge alpine1</code></pre>
+<pre><code class="language-plaintext">docker network disconnect mon-bridge alpine2</code></pre>
+<p style="text-align:justify;">Maintenant, si vous vérifiez les interfaces réseaux de vos conteneurs basées sur l'image alpine, vous ne verrez que l'interface loopback comme pour le driver none :</p>
+<pre><code class="language-plaintext">docker exec alpine1 ip a</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">lo:  mtu 65536 qdisc noqueue state UNKNOWN qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever</code></pre>
+<p style="text-align:justify;">Une fois que vous avez déconnecté tous vos conteneurs du réseau docker <strong>mon-bridge</strong>, vous pouvez alors le supprimer :</p>
+<pre><code class="language-plaintext">docker network rm mon-bridge</code></pre>
+<p style="text-align:justify;">Cependant vos conteneurs se retrouvent maintenant sans interface réseau bridge, il faut donc <strong>reconnecter vos conteneurs au réseau bridge par défaut</strong> pour qu'ils puissent de nouveau communiquer entre eux :</p>
+<pre><code class="language-plaintext">docker network connect bridge alpine1</code></pre>
+<pre><code class="language-plaintext">docker network connect bridge alpine2</code></pre>
+<p style="text-align:justify;">Vérifiez ensuite si vos conteneurs ont bien reçu la bonne Ip :</p>
+<pre><code class="language-plaintext">docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)</code></pre>
+<p style="text-align:justify;"><strong>Résultat :</strong></p>
+<pre><code class="language-plaintext">/alpine2 - 172.17.0.3
+/alpine1 - 172.17.0.2</code></pre>
+<h1><strong>Conclusion</strong></h1>
+<p style="text-align:justify;">Vous pouvez créer autant de réseaux bridge que vous souhaitez, ça reste un bon moyen pour sécuriser la communication entre vos conteneurs, car les conteneurs connectés au bridge1 ne peuvent pas communiquer avec les conteneurs du bridge2, limitant ainsi les communications inutiles.</p>
+<p style="text-align:justify;">Concernant le driver overlay, j’essayerais de vous montrer son utilisation dans un autre article car le sujet est très vaste et demande des connaissances sur d'autres sujets que nous n'avons pas eu encore l'occasion de voir, notamment le docker swarm.</p>
+<p style="text-align:justify;">Comme d'habitude, voici l'aide-mémoire de ce cours :</p>
+<pre><code class="language-plaintext">## Créer un réseau docker
+docker network create --driver &lt;DRIVER TYPE&gt; &lt;NETWORK NAME&gt;
+
+# Lister les réseaux docker
+docker network ls
+
+## Supprimer un ou plusieurs réseau(x) docker
+docker network rm &lt;NETWORK NAME&gt;
+
+## Récolter des informations sur un réseau docker
+docker network inspect &lt;NETWORK NAME&gt;
+    -v ou --verbose : mode verbose pour un meilleur diagnostique
+
+## Supprimer tous les réseaux docker non inutilisés
+docker network prune
+    -f ou --force : forcer la suppression
+
+## Connecter un conteneur à un réseau docker
+docker network connect &lt;NETWORK NAME&gt; &lt;CONTAINER NAME&gt;
+
+## Déconnecter un conteneur à réseau docker
+docker network disconnect &lt;NETWORK NAME&gt; &lt;CONTAINER NAME&gt;
+    -f ou --force : forcer la déconnexion
+
+## Démarrer un conteneur et le connecter à un réseau docker
+docker run --network &lt;NETWORK NAME&gt; &lt;IMAGE NAME&gt;Chapitre précédent</code></pre>
+<p style="text-align:right;">Source : <a href="https://devopssec.fr">devopssec.fr</a></p>
