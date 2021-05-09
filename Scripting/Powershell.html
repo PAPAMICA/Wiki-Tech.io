@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T17:08:01.749Z
+date: 2021-05-09T17:13:43.601Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -43,22 +43,22 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option<code> -online&nbsp;</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
 <p>&nbsp;</p>
-<p>Si je veux de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
-<p>par exemple si je veux de l'aide sur la syntaxe de commande <code>get-childitem</code>&nbsp;</p>
+<p>Si vous voulez de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
+<p>par exemple si vous voulez de l'aide sur la syntaxe de commande <code>get-childitem</code>&nbsp;</p>
 <pre><code class="language-plaintext">get-help get-childitem</code></pre>
 <p>on peut constater dans la capture que certains paramètres sont obligatoires.</p>
 <figure class="image image_resized" style="width:88.82%;"><img src="/capture4.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>La commande <code>get-help</code> permet également de rechercher une commande si, par exemple, je souhaite trouver une commande qui gère les services.</p>
+<p>La commande <code>get-help</code> permet également de rechercher une commande si, par exemple, vous souhaitez trouver une commande qui gère les services.</p>
 <pre><code class="language-plaintext">get-help service</code></pre>
 <p>voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
 <figure class="image image_resized" style="width:86.32%;"><img src="/capture1.png"></figure>
 <p>&nbsp;</p>
 <p>Une autre fonction de l'aide permet d'avoir des informations sur un sujet précis.</p>
-<p>pour lister ces sujet je vais utiliser l'option<code> about_*</code>&nbsp;</p>
+<p>pour lister ces sujet utilisez l'option<code> about_*</code>&nbsp;</p>
 <pre><code class="language-plaintext">get-help about_*</code></pre>
-<p>Par exemple, si je veux de l'aide au sujet de pipeline</p>
+<p>Par exemple, si vous voulez de l'aide au sujet de pipeline</p>
 <pre><code class="language-plaintext">get-help about_pipeline</code></pre>
 <p>voici ce que renvoie la commande</p>
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
@@ -77,10 +77,10 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>pour lister l'ensemble des providers, on utilise la commande</p>
 <pre><code class="language-plaintext">get-psdrive</code></pre>
 <p>L'avantage c'est que vous pouvez parcourir ces éléments comme si c'était un système de fichiers.</p>
-<p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre la parcourir comme si c'était un filesystem et revenir dans mon arborescence Windows avec un <code>cd c:</code>.</p>
+<p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans mon arborescence Windows avec un <code>cd c:</code>.</p>
 <figure class="image"><img src="/capture9.png"></figure>
 <p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base&nbsp;</p>
-<p>exemple avec la commande <code>get-childitem</code> ,vous pouvez consulter tout la base de registre de mon hkey local machine</p>
+<p>exemple avec la commande <code>get-childitem</code> ,vous pouvez consulter toute la base de registre de mon hkey local machine</p>
 <figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
 <p>&nbsp;</p>
 <h2>Création d'un menu sous Powershell</h2>
@@ -95,9 +95,9 @@ dateCreated: 2021-05-08T14:42:07.092Z
 }</code></pre>
 <p>Puis une seconde variable pour stocker mon choix avec <code>$choix = read-host “faire un choix”</code></p>
 <p>Suivant l'état de ce choix le script sortira de la boucle <code>while</code> et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
-<p>Pour sortir du script si je fait le choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle while.</p>
+<p>Pour sortir du script si vous faitesle choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle while.</p>
 <p>le <code>switch </code>va permettre d'indexer les choix ,de les lister et d'exécuter les commandes.</p>
-<p>la commande <code>default </code>permet de renvoyer un message d'avertissement si je rentre un choix qui n'est pas dans le menu.</p>
+<p>la commande <code>default </code>permet de renvoyer un message d'avertissement si vous rentrez un choix qui n'est pas dans le menu.</p>
 <p>&nbsp;</p>
 <h2>Exemple</h2>
 <pre><code class="language-plaintext">$continue = $true
