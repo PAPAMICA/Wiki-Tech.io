@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-05-09T09:23:42.589Z
+date: 2021-05-09T09:25:06.735Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T22:14:05.342Z
@@ -103,7 +103,7 @@ Pour sauvegarder son système on peut utiliser la commande `tar` avec les param
 
 Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui tout en excluant les dossiers temporaires et inutiles pour la restauration. 
 
-> Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre `--exclude`. En revanche, dans tout les cas il est inutile de prendre`/proc`, `/tmp`, `/dev` ,`/sys` et `/run` 
+> Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre `--exclude`. En revanche, dans tout les cas il est inutile de prendre`/proc`, `/tmp`, `/dev` ,`/sys` et `/run` {.is-info}
 
 ## Avec Nohup
 
@@ -112,10 +112,14 @@ On peut aussi lancer la commander avec `nohup` pour éviter de perdre le proces
 [`foo@bar`](mailto:foo@bar)`:/# nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &`
 
 > Remarquez la présence `&` à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande `jobs`). 
+{.is-info}
 
-> Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de **nohup.out** : [`foo@bar:/`](mailto:foo@bar:/)`# tail -f nohup.out`
 
-> Faites attention à bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
+> Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de **nohup.out** : [`foo@bar:/`](mailto:foo@bar:/)`# tail -f nohup.out` {.is-info}
+
+>  Faites attention à bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
+{.is-warning}
+
 
 # Sauvegarder avec Swiss Backup
 
