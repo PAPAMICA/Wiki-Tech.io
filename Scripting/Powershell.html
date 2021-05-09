@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T10:20:18.023Z
+date: 2021-05-09T10:42:49.936Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -11,17 +11,23 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <h1>Powershell</h1>
 <p>&nbsp;</p>
 <h2>Définition</h2>
-<p>PowerShell est un langage script fondé sur la programmation orientée objet. Le logiciel PowerShell &nbsp;est l'interpréteur de l’interface en ligne de commande de l'environnement de développement Windows PowerShell.</p>
-<h2>Les commandes ou applets de commande (cmdlet)</h2>
+<p>PowerShell est un langage script fondé sur la programmation orientée objet. Le logiciel PowerShell &nbsp;est l'interpréteur de l’interface en ligne de commande de l'environnement de développement Windows PowerShell.Les commandes ou applets de commande (cmdlet)</p>
 <p>elles sont composées d’une paire de la forme “verbe ”-“nom” destiné à en faciliter la mémorisation.</p>
-<p>exemple:</p>
+<p>exemple :</p>
 <pre><code class="language-plaintext">get-service</code></pre>
 <p>get = verbe</p>
 <p>service = nom</p>
+<p>&nbsp;</p>
 <h2>les variables</h2>
 <p>Une variable Powershell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
-<p>exemple:</p>
+<p>exemple :</p>
 <pre><code class="language-plaintext">$variable = une valeur</code></pre>
+<p>&nbsp;</p>
+<h2>le pipeline</h2>
+<p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” ([<strong>AltGr</strong>] + [<strong>6</strong>]) permet de d'exécuter plusieurs commandes à la suite.</p>
+<p>exemple :&nbsp;</p>
+<pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
+<p>&nbsp;</p>
 <h2>Création d'un menu sous Powershell</h2>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:56.82%;"><img src="/capture.png"></figure>
