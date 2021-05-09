@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T12:10:06.029Z
+date: 2021-05-09T12:13:41.077Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -21,24 +21,27 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>service = nom</p>
 <p>&nbsp;</p>
 <h2>Les variables</h2>
-<p>Une variable Powershell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
+<p>Une variable PowerShell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
 <p>exemple :</p>
 <pre><code class="language-plaintext">$variable = une valeur</code></pre>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>Le pipeline</h2>
 <p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” ([<strong>AltGr</strong>] + [<strong>6</strong>]) permet d'exécuter plusieurs commandes à la suite.</p>
 <p>exemple :&nbsp;</p>
 <pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
 <p>Dans ce cas précis, la commande sort-object tri les processus par utilisation de Cpu</p>
+<p>&nbsp;</p>
 <h2>L'aide</h2>
 <p>Sous PowerShell la commande get-help permet d'afficher la fonction et des exemples d'une commande.</p>
 <pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande update-help.</p>
-<p>On peut aussi lister des exemples d'utilisation d'un commande avec l'option -examples</p>
+<p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option -examples</p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
 <p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un update-help.</p>
 <p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option - online&nbsp;</p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
+<p>&nbsp;</p>
 <h2>Création d'un menu sous Powershell</h2>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:56.82%;"><img src="/capture.png"></figure>
