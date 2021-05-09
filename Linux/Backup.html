@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-05-09T09:21:43.650Z
+date: 2021-05-09T09:23:05.527Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T22:14:05.342Z
@@ -55,7 +55,7 @@ dateCreated: 2021-04-30T22:14:05.342Z
 <p><code>foo@bar:/# tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /&nbsp;</code></p>
 <p>Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui tout en excluant les dossiers temporaires et inutiles pour la restauration.&nbsp;</p>
 <blockquote>
-  <p>Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre <code>--exclude</code>. En revanche, dans tout les cas il est inutile de prendre<code>/proc</code>, <code>/tmp</code>, <code>/dev</code> ,<code>/sys</code> et <code>/run</code></p>
+  <p>Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre <code>--exclude</code>. En revanche, dans tout les cas il est inutile de prendre<code>/proc</code>, <code>/tmp</code>, <code>/dev</code> ,<code>/sys</code> et <code>/run&nbsp;</code></p>
 </blockquote>
 <h2>Avec Nohup</h2>
 <p>On peut aussi lancer la commander avec&nbsp;<code>nohup</code> pour éviter de perdre le processus une fois le terminal coupé (éviter l'envoi signal SIGHUP alias "<i>signal hang up</i>" qui clôture l'ensemble des processus enfants lancées par le terminal virtuel) :</p>
