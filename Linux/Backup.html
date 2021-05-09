@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-04-30T22:16:09.567Z
+date: 2021-05-09T09:21:43.650Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T22:14:05.342Z
@@ -49,6 +49,26 @@ dateCreated: 2021-04-30T22:14:05.342Z
 <pre><code class="language-plaintext">get MON_IMAGE.gz "| gunzip | dcfldd of=/dev/MA_PARTITION sizeprobe=of statusinterval=5"</code></pre>
 <p>La restauration est en cours, soyez patient !</p>
 <p>Redémarrer votre VPS sur le disque principal.</p>
+<h1>Sauvegarder avec Tar</h1>
+<h2>Utilisation Standard</h2>
+<p>Pour sauvegarder son système on peut utiliser la commande&nbsp;<code>tar</code> avec les paramètres suivants :&nbsp;</p>
+<p><code>foo@bar:/# tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /&nbsp;</code></p>
+<p>Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui tout en excluant les dossiers temporaires et inutiles pour la restauration.&nbsp;</p>
+<blockquote>
+  <p>Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre <code>--exclude</code>. En revanche, dans tout les cas il est inutile de prendre<code>/proc</code>, <code>/tmp</code>, <code>/dev</code> ,<code>/sys</code> et <code>/run</code></p>
+</blockquote>
+<h2>Avec Nohup</h2>
+<p>On peut aussi lancer la commander avec&nbsp;<code>nohup</code> pour éviter de perdre le processus une fois le terminal coupé (éviter l'envoi signal SIGHUP alias "<i>signal hang up</i>" qui clôture l'ensemble des processus enfants lancées par le terminal virtuel) :</p>
+<p><a href="mailto:foo@bar"><code>foo@bar</code></a><code>:/# nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &amp;</code></p>
+<blockquote>
+  <p>Remarquez la présence <code>&amp;</code> à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande <code>jobs</code>).&nbsp;</p>
+</blockquote>
+<blockquote>
+  <p>Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de <strong>nohup.out</strong> :&nbsp;<a href="mailto:foo@bar:/"><code>foo@bar:/</code></a><code># tail -f nohup.out</code></p>
+</blockquote>
+<blockquote>
+  <p>Faites attention à bien exclure le fichier&nbsp;<strong>nohup.out&nbsp;</strong>de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable <strong>$PWD</strong>).</p>
+</blockquote>
 <h1>Sauvegarder avec Swiss Backup</h1>
 <h1>Sauvegarder un serveur avec Active Backup de Synology</h1>
 <h2>Présentation</h2>
