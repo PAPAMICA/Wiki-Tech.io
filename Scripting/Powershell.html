@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T10:51:46.257Z
+date: 2021-05-09T12:10:06.029Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -30,7 +30,15 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>exemple :&nbsp;</p>
 <pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
 <p>Dans ce cas précis, la commande sort-object tri les processus par utilisation de Cpu</p>
-<p>&nbsp;</p>
+<h2>L'aide</h2>
+<p>Sous PowerShell la commande get-help permet d'afficher la fonction et des exemples d'une commande.</p>
+<pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
+<p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande update-help.</p>
+<p>On peut aussi lister des exemples d'utilisation d'un commande avec l'option -examples</p>
+<pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
+<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un update-help.</p>
+<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option - online&nbsp;</p>
+<pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
 <h2>Création d'un menu sous Powershell</h2>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:56.82%;"><img src="/capture.png"></figure>
