@@ -1,0 +1,63 @@
+<!--
+title: Linux - Sudo
+description: Comprendre et utiliser sudo !
+published: true
+date: 2021-05-09T16:18:20.853Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-09T16:18:20.853Z
+-->
+
+<h1 style="text-align:justify;">Présentation</h1>
+<p>La commande sudo vous permet d'exécuter des programmes en tant qu'autre utilisateur, par défaut l'utilisateur root. Si vous passez beaucoup de temps dans votre terminal, sudo est l'une des commandes que vous utiliserez assez fréquemment.</p>
+<p>L'utilisation de sudo au lieu de se connecter en tant que root est plus sécurisée car vous pouvez accorder des privilèges administratifs limités à des utilisateurs individuels sans qu'ils connaissent le mot de passe root.</p>
+<h1 style="text-align:justify;">Installation</h1>
+<p>Le package sudo est préinstallé sur la plupart des distributions Linux.</p>
+<p>Pour vérifier si le package sudo est installé sur votre système, ouvrez votre console, tapez <code>sudo</code>et appuyez sur <code>Enter</code>. Si sudo a installé le système, un court message d'aide s'affiche. Sinon, vous verrez quelque chose comme <code><i>sudo command not found</i></code>.</p>
+<p>Si sudo n'est pas installé, vous pouvez facilement l'installer à l'aide du gestionnaire de packages de votre distribution.</p>
+<h2><strong>Ubuntu et Debian</strong></h2>
+<pre><code class="language-plaintext">apt install sudo</code></pre>
+<h2><strong>CentOS et Fedora</strong></h2>
+<pre><code class="language-plaintext">yum install sudo</code></pre>
+<h2>Arch et Manjaro</h2>
+<pre><code class="language-plaintext">pacman -S sudo</code></pre>
+<h1>Configuration</h1>
+<h2><strong>Ajouter un utilisateur aux Sudoers</strong></h2>
+<p>Par défaut, sur la plupart des distributions Linux, l'octroi d'un accès sudo est aussi simple que l'ajout de l'utilisateur au groupe sudo défini dans le fichier <code>/etc/sudoers</code> . Les membres de ce groupe pourront exécuter n'importe quelle commande en tant que root. Le nom du groupe peut différer d'une distribution à l'autre.</p>
+<p>Sur Debian, Ubuntu et leurs dérivés, c'est le groupe <code>sudo</code> &nbsp;:</p>
+<pre><code class="language-plaintext">usermod -aG sudo username</code></pre>
+<p>Sur Debian, Ubuntu et leurs dérivés, c'est le groupe <code>wheel</code> &nbsp;:</p>
+<pre><code class="language-plaintext">usermod -aG wheel username</code></pre>
+<p>&nbsp;</p>
+<h2>Utilisation de sudo</h2>
+<p>La syntaxe de la <code>sudo</code>commande est la suivante:</p>
+<pre><code class="language-plaintext">sudo &lt;OPTIONS&gt; &lt;COMMANDE&gt;</code></pre>
+<p>La commande <code>sudo</code> a de <a href="https://www.sudo.ws/man/1.8.3/sudo.man.html"><u>nombreuses options</u></a> qui contrôlent son comportement, mais généralement, elle est utilisée dans sa forme la plus basique, sans aucune option.</p>
+<p>Pour utiliser sudo, préfixez simplement la commande avec <code>sudo</code>:</p>
+<pre><code class="language-plaintext">sudo &lt;commande&gt;</code></pre>
+<p>Où <code>commande</code>est la commande pour laquelle vous souhaitez utiliser sudo.</p>
+<p>La première fois que vous utilisez sudo dans une session, vous serez invité à entrer le mot de passe de l'utilisateur et la commande sera exécutée en tant que root.</p>
+<p>Exemple : lister les fichiers du dossier root :</p>
+<pre><code class="language-plaintext">sudo ls /root</code></pre>
+<p>&nbsp;</p>
+<h2>Expiration du mot de passe</h2>
+<p>Par défaut, sudo vous demandera de saisir à nouveau votre mot de passe après cinq minutes d'inactivité sudo. Vous pouvez modifier le délai d'expiration par défaut en modifiant le fichier <code>/etc/sudoers</code>. Ouvrez le fichier avec <code>visudo</code> ou avec :</p>
+<pre><code class="language-plaintext">sudo nano /etc/sudoers</code></pre>
+<p>Définissez le délai par défaut en ajoutant la ligne ci-dessous, où <code>10</code> est le délai spécifié en minutes :</p>
+<pre><code class="language-plaintext">Defaults  timestamp_timeout=10</code></pre>
+<p>Si vous souhaitez modifier l'horodatage uniquement pour un utilisateur spécifique, ajoutez la ligne suivante, où <code>nom_utilisateur</code> est l'utilisateur en question.</p>
+<pre><code class="language-plaintext">Defaults:nom_utilisateur timestamp_timeout=10</code></pre>
+<p>&nbsp;</p>
+<h2><strong>Exécuter une commande en tant qu'utilisateur autre que root</strong></h2>
+<p>Beaucoup de personne pense que <code>sudo</code>n'est utilisée que pour fournir des autorisations root à un utilisateur standars. En fait, vous pouvez utiliser <code>sudo</code>pour exécuter une commande en tant &nbsp;que n'importe quel utilisateur.</p>
+<p>L'option <code>-u</code> vous permet d'exécuter une commande en tant qu'un utilisateur spécifique.</p>
+<p>Dans l'exemple suivant, nous utilisons <code>sudo</code>pour exécuter la commande <code>whoami</code> en tant qu'utilisateur «richard»:</p>
+<pre><code class="language-plaintext">sudo -u richard whoami</code></pre>
+<p>La commande <code>whoami</code> imprimera le nom de l'utilisateur exécutant la commande:</p>
+<pre><code class="language-plaintext">richard</code></pre>
+<p>&nbsp;</p>
+<h2><strong>Rediriger avec Sudo</strong></h2>
+<p>Si vous essayez de rediriger la sortie d'une commande vers un fichier pour lequel votre utilisateur ne dispose d'aucune autorisation d'écriture, vous obtiendrez une erreur «<i>Permission denied</i>».</p>
+<p>Cela se produit car la redirection « <code>&gt;</code>» de la sortie est effectuée sous l'utilisateur auquel vous êtes connecté, et non sous l'utilisateur spécifié avec sudo. La redirection se produit avant que la <code>sudo</code>commande ne soit appelée.</p>
+<p>Une solution consiste à appeler un nouveau shell en tant que root en utilisant <code>sudo sh -c</code>:</p>
+<pre><code class="language-plaintext">sudo sh -c 'echo "test" &gt; /root/file.txt'</code></pre>
