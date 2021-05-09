@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-05-09T16:32:23.001Z
+date: 2021-05-09T17:29:20.639Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T16:18:20.853Z
@@ -61,4 +61,5 @@ dateCreated: 2021-05-09T16:18:20.853Z
 <p>Si vous essayez de rediriger la sortie d'une commande vers un fichier pour lequel votre utilisateur ne dispose d'aucune autorisation d'écriture, vous obtiendrez une erreur «<i>Permission denied</i>».</p>
 <p>Cela se produit car la redirection « <code>&gt;</code>» de la sortie est effectuée sous l'utilisateur auquel vous êtes connecté, et non sous l'utilisateur spécifié avec sudo. La redirection se produit avant que la <code>sudo</code>commande ne soit appelée.</p>
 <p>Une solution consiste à appeler un nouveau shell en tant que root en utilisant <code>sudo sh -c</code>:</p>
-<pre><code class="language-plaintext">sudo sh -c 'echo "test" &gt; /root/file.txt'</code></pre>
+<pre><code class="language-plaintext">sudo sh -c 'echo "test" &gt; /root/file.txt'
+</code></pre>
