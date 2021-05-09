@@ -2,7 +2,7 @@
 title: Docker-Compose
 description: 
 published: true
-date: 2021-05-09T08:41:15.308Z
+date: 2021-05-09T08:44:42.786Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T11:17:52.961Z
@@ -207,7 +207,7 @@ mysql_c   docker-entrypoint.sh mysqld      Up      3306/tcp, 33060/tcp </code></
 <p style="text-align:justify;">Remplissez le formulaire de l'application, et <strong>tuez les conteneurs du docker-compose.yml</strong>, avec la commande suivante :</p>
 <pre><code class="language-plaintext">docker-compose kill</code></pre>
 <p style="text-align:justify;">Relancez ensuite vos services, et vous verrez que vos données sont bel et bien sauvegardées.</p>
-<h2><u>Détails de la communication inter-conteneurs dans les sources de l'application</u></h2>
+<h2><u>Communication inter-conteneurs dans les sources de l'application</u></h2>
 <p style="text-align:justify;">Je ne vais pas trop rentrer dans les détails sur la partie réseau, car je vais rédiger un article qui sera dédié à cette partie. Mais sachez juste qu'un réseau bridge est créé par défaut, plus précisément c'est l'interface docker0 (<code>ip addr show docker0</code>), c'est un <strong>réseau qui permet une communication entre les différents conteneurs</strong>.</p>
 <p style="text-align:justify;">Donc <strong>les conteneurs possèdent par défaut une adresse ip</strong>. Vous pouvez récolter cette information grâce à la commande suivante :</p>
 <pre><code class="language-plaintext">docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)</code></pre>
@@ -262,3 +262,4 @@ docker-compose rm
 
 ## Lister les images utilisées dans le docker-compose.yml
 docker-compose imagesChapitre précédent</code></pre>
+<p style="text-align:right;">Source : <a href="https://devopssec.fr">devopssec.fr</a></p>
