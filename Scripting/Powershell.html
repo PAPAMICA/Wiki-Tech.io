@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T13:26:39.097Z
+date: 2021-05-09T13:41:57.572Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -35,13 +35,21 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
 <pre><code class="language-plaintext"> update-help</code></pre>
-<p>cette commande permet d'avoir une aide manière très général si on souhaite obtenir plus d'information on peut ajouter l'option<code> -detailed</code></p>
+<p>cette commande permet d'avoir une aide manière très générale si on souhaite obtenir plus d'information on peut ajouter l'option<code> -detailed</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -detailed</code></pre>
 <p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
 <p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>update-help.</code></p>
 <p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option<code> -online&nbsp;</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
+<p>&nbsp;</p>
+<p>Si je veux de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
+<p>par exemple si je veux de l'aide sur la syntaxe de commande <code>get-childitem</code>&nbsp;</p>
+<pre><code class="language-plaintext">get-help get-childitem</code></pre>
+<p>on peut constater dans la capture que certains paramètres sont obligatoires.</p>
+<figure class="image"><img src="/capture4.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>La commande <code>get-help</code> permet également de rechercher une commande si, par exemple, je souhaite trouver une commande qui gère les services.</p>
 <pre><code class="language-plaintext">get-help service</code></pre>
 <p>voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
