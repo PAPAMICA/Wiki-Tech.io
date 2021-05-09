@@ -2,7 +2,7 @@
 title: Docker - Gestion du réseau
 description: Comprendre la gestion du réseau de Docker
 published: true
-date: 2021-05-09T08:52:42.135Z
+date: 2021-05-09T08:53:07.253Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T08:52:42.135Z
@@ -42,7 +42,7 @@ inet6 fe80::335:f1f5:127d:b62c/64 scope link noprefixroute
 <h2><u>Le driver overlay</u></h2>
 <p style="text-align:justify;">Si vous souhaitez une mise en réseau multi-hôte native, vous devez utiliser un driver overlay. Il crée un réseau distribué entre plusieurs hôtes possédant le moteur Docker. Docker gère de manière transparente le routage de chaque paquet vers et depuis le bon hôte et le bon conteneur.</p>
 <figure class="image image_resized" style="width:43.92%;"><img src="https://devopssec.fr/images/articles/docker/networks/overlay_network_docker.png" alt="Docker overlay network"></figure>
-<h3><u>Le driver macvlan</u></h3>
+<h2><u>Le driver macvlan</u></h2>
 <p style="text-align:justify;">L'utilisation du driver macvlan est parfois le meilleur choix lorsque vous utilisez des applications qui s'attendent à être directement connectées au réseau physique, car le driver Macvlan vous permet d'attribuer une adresse MAC à un conteneur, le faisant apparaître comme un périphérique physique sur votre réseau. Le moteur Docker route le trafic vers les conteneurs en fonction de leurs adresses MAC.</p>
 <figure class="image image_resized" style="width:51.05%;"><img src="https://devopssec.fr/images/articles/docker/networks/macvlan_network_docker.jpg" alt="Docker macvlan network"></figure>
 <h1><strong>Manipulation du réseau dans Docker</strong></h1>
@@ -90,6 +90,7 @@ ccdbdbf708db        mon-bridge               bridge              local
 </blockquote>
 <p style="text-align:justify;">Pour cet exemple, nous allons <strong>connecter deux conteneurs à notre réseau bridge</strong> créé précédemment :</p>
 <pre><code class="language-plaintext">docker run -dit --name alpine1 --network mon-bridge alpine</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">docker run -dit --name alpine2 --network mon-bridge alpine</code></pre>
 <p style="text-align:justify;">Si on inspecte une nouvelle fois notre réseau <strong>mon-bridge</strong>, on verra nos deux nouveaux conteneurs dans les informations retournées :</p>
 <pre><code class="language-plaintext">docker network inspect mon-bridge</code></pre>
@@ -123,6 +124,7 @@ ccdbdbf708db        mon-bridge               bridge              local
 <p style="text-align:justify;"><strong>Résultat :</strong></p>
 <pre><code class="language-plaintext">PING 172.21.0.3 (172.21.0.3): 56 data bytes
 64 bytes from 172.21.0.3: seq=0 ttl=64 time=0.101 ms</code></pre>
+<p>&nbsp;</p>
 <hr>
 <pre><code class="language-plaintext">docker exec alpine2 ping -c 1 172.21.0.2</code></pre>
 <p style="text-align:justify;"><strong>Résultat :</strong></p>
@@ -148,6 +150,7 @@ tcp6       0      0 :::8080                 :::*                    LISTEN      
 <p style="text-align:justify;">Avant de supprimer votre réseau docker, il est nécessaire au préalable de supprimer tout conteneur connecté à votre réseau docker, ou sinon il suffit juste de <strong>déconnecter votre conteneur de votre réseau docker sans forcément le supprimer</strong>.</p>
 <p style="text-align:justify;">Nous allons choisir la méthode 2, en déconnectant tous les conteneurs utilisant le réseau docker <strong>mon-bridge</strong> :</p>
 <pre><code class="language-plaintext">docker network disconnect mon-bridge alpine1</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">docker network disconnect mon-bridge alpine2</code></pre>
 <p style="text-align:justify;">Maintenant, si vous vérifiez les interfaces réseaux de vos conteneurs basées sur l'image alpine, vous ne verrez que l'interface loopback comme pour le driver none :</p>
 <pre><code class="language-plaintext">docker exec alpine1 ip a</code></pre>
@@ -160,6 +163,7 @@ tcp6       0      0 :::8080                 :::*                    LISTEN      
 <pre><code class="language-plaintext">docker network rm mon-bridge</code></pre>
 <p style="text-align:justify;">Cependant vos conteneurs se retrouvent maintenant sans interface réseau bridge, il faut donc <strong>reconnecter vos conteneurs au réseau bridge par défaut</strong> pour qu'ils puissent de nouveau communiquer entre eux :</p>
 <pre><code class="language-plaintext">docker network connect bridge alpine1</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">docker network connect bridge alpine2</code></pre>
 <p style="text-align:justify;">Vérifiez ensuite si vos conteneurs ont bien reçu la bonne Ip :</p>
 <pre><code class="language-plaintext">docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)</code></pre>
