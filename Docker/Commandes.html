@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Petit mémo avec toutes les commandes utilisées au quotidien avec Docker.
 published: true
-date: 2021-05-09T08:05:59.934Z
+date: 2021-05-09T08:18:31.500Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:31:53.549Z
@@ -53,6 +53,7 @@ dateCreated: 2021-05-01T18:31:53.549Z
 <p>&nbsp;</p>
 <h2>Démarrer un container</h2>
 <pre><code class="language-plaintext">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</code></pre>
+<p>&nbsp;</p>
 <figure class="table">
   <table>
     <thead>
@@ -103,6 +104,10 @@ dateCreated: 2021-05-01T18:31:53.549Z
         <td>Définir le mode réseau entre “Bridge”, “none”, “container:” et “host”</td>
       </tr>
       <tr>
+        <td><code>--network</code></td>
+        <td>Connecter le container à un réseau existant</td>
+      </tr>
+      <tr>
         <td><code>--add-host</code></td>
         <td>Modifier le contenu du fichier “hosts” en y ajoutant les valeurs spécifiées</td>
       </tr>
@@ -125,39 +130,39 @@ dateCreated: 2021-05-01T18:31:53.549Z
     </thead>
     <tbody>
       <tr>
-        <td>docker run &lt;image&gt; &lt;options&gt;</td>
+        <td><code>docker run &lt;image&gt; &lt;options&gt;</code></td>
         <td>Démarrer un container à partir d'une image avec les options configurées</td>
       </tr>
       <tr>
-        <td>docker ps</td>
+        <td><code>docker ps</code></td>
         <td>Afficher tous les containers en cours d'exécutions</td>
       </tr>
       <tr>
-        <td>docker ps -a</td>
+        <td><code>docker ps -a</code></td>
         <td>Afficher tous les containers</td>
       </tr>
       <tr>
-        <td>docker stop &lt;container&gt;</td>
+        <td><code>docker stop &lt;container&gt;</code></td>
         <td>Arrêter un container</td>
       </tr>
       <tr>
-        <td>docker stop $(docker ps -aq)</td>
+        <td><code>docker stop $(docker ps -aq)</code></td>
         <td>Arrêter tous les containers</td>
       </tr>
       <tr>
-        <td>docker restart &lt;container&gt;</td>
+        <td><code>docker restart &lt;container&gt;</code></td>
         <td>Redémarrer un container</td>
       </tr>
       <tr>
-        <td>docker kill &lt;container&gt;</td>
+        <td><code>docker kill &lt;container&gt;</code></td>
         <td>Envoyer la commande kill à un container</td>
       </tr>
       <tr>
-        <td>docker rm &lt;container&gt;</td>
+        <td><code>docker rm &lt;container&gt;</code></td>
         <td>Supprimer un container</td>
       </tr>
       <tr>
-        <td>docker rm $(docker ps -aq)</td>
+        <td><code>docker rm $(docker ps -aq)</code></td>
         <td>Supprimer tous les containers</td>
       </tr>
     </tbody>
@@ -165,5 +170,74 @@ dateCreated: 2021-05-01T18:31:53.549Z
 </figure>
 <p>&nbsp;</p>
 <h2>Gestion des images</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Commande</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>docker search &lt;mot_clé&gt;</code></td>
+        <td>Rechercher une image</td>
+      </tr>
+      <tr>
+        <td><code>docker pull &lt;image:tag&gt;</code></td>
+        <td>Télécharger l'image depuis le repo</td>
+      </tr>
+      <tr>
+        <td><code>docker push &lt;dossier/image&gt;</code></td>
+        <td>Envoyer l'image au repo</td>
+      </tr>
+      <tr>
+        <td><code>docker image</code></td>
+        <td>Afficher les images téléchargées sur la machine</td>
+      </tr>
+      <tr>
+        <td><code>docker rmi &lt;image&gt;</code></td>
+        <td>Supprimer une image</td>
+      </tr>
+      <tr>
+        <td><code>docker rmi $(docker image -q)</code></td>
+        <td>Supprimer toutes les images</td>
+      </tr>
+      <tr>
+        <td><code>docker build &lt;options&gt;</code></td>
+        <td>Créer une image (voir <a href="/Docker/Image">/Docker/Image</a>)</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <p>&nbsp;</p>
+<h2>Gestion des réseaux</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Commande</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>docker network ls</code></td>
+        <td>Afficher les réseaux existants sur la machine</td>
+      </tr>
+      <tr>
+        <td><code>docker network create --driver &lt;driver_type&gt; &lt;réseau&gt;</code></td>
+        <td>Créer un réseau avec un driver spécifique &nbsp;(voir <a href="/Docker/Réseau">/Docker/Réseau</a>)</td>
+      </tr>
+      <tr>
+        <td><code>docker network inspect &lt;réseau&gt;</code></td>
+        <td>Afficher les informations d'un réseau</td>
+      </tr>
+      <tr>
+        <td><code>docker network rm &lt;réseau&gt;</code></td>
+        <td>Supprimer un réseau</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <h1>Docker-Compose</h1>
