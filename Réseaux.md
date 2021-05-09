@@ -2,7 +2,7 @@
 title: Réseaux
 description: 
 published: true
-date: 2021-05-07T11:22:57.416Z
+date: 2021-05-09T09:09:58.156Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T09:49:34.631Z
@@ -17,6 +17,6 @@ dateCreated: 2021-04-30T09:49:34.631Z
 - [⛓️ Serveur DNS *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DNS)
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DHCP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseaux/Masques)
-- [🦝 Switch (commutateur) *Comment fonctionnent-il ?*](/Réseaux/Masques)
+- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Masques)
 
 {.links-list}
