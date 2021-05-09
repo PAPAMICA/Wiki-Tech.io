@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-05-09T09:23:34.801Z
+date: 2021-05-09T09:23:42.589Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T22:14:05.342Z
