@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T14:25:33.036Z
+date: 2021-05-09T14:31:39.315Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -79,7 +79,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Puis une seconde variable pour stocker mon choix avec <code>$choix = read-host “faire un choix”</code></p>
 <p>Suivant l'état de ce choix le script sortira de la boucle <code>while</code> et cela provoquera soit une action du script soit une sortie du script avec switch ($choix).</p>
 <p>Pour sortir du script si je fait le choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle while.</p>
-<p>le <code>switch </code>va permettre d'indexer les choix ,de les lister et d'exécuter les commande</p>
+<p>le <code>switch </code>va permettre d'indexer les choix ,de les lister et d'exécuter les commandes.</p>
 <p>la commande <code>default </code>permet de renvoyer un message d'avertissement si je rentre un choix qui n'est pas dans le menu.</p>
 <p>&nbsp;</p>
 <h2>Exemple</h2>
@@ -87,7 +87,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 while (continue){
 	write-host “----------------------MON TITRE -----------------------”
 	write-host “1. mon action 1”
-	write-host "2. mon action2"
+	write-host "2. mon action 2"
 	write-host "x. exit"
 	write-host"-------------------------------------------------------------------"
 	$choix = read-host “faire un choix :”
