@@ -2,12 +2,128 @@
 title: Commandes utiles
 description: Petit mémo avec toutes les commandes utilisées au quotidien avec Docker.
 published: true
-date: 2021-05-01T18:31:55.106Z
+date: 2021-05-09T07:53:58.857Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:31:53.549Z
 -->
 
 <h1>Docker</h1>
+<h2>Monitoring</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Commande</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>docker ps (-a)</code></td>
+        <td>Afficher les containers en cours de fonctionnement (<code>-a</code> = afficher aussi les containers arrêtés)</td>
+      </tr>
+      <tr>
+        <td><code>docker image ls</code></td>
+        <td>Afficher les images téléchargées et construites sur votre machine</td>
+      </tr>
+      <tr>
+        <td><code>docker network ls</code></td>
+        <td>Afficher les réseaux créer sur votre machine</td>
+      </tr>
+      <tr>
+        <td><code>docker inspect &lt;container&gt;</code></td>
+        <td>Inspecter la configuration d'un conteneur</td>
+      </tr>
+      <tr>
+        <td><code>docker logs (--tail) &lt;container&gt;</code></td>
+        <td>Visualiser les logs d'un conteneur (<code>--tail</code> = afficher les logs en live)</td>
+      </tr>
+      <tr>
+        <td><code>docker exec -it &lt;container&gt; bash</code></td>
+        <td>&nbsp;Exécuter des commandes dans un conteneur actif</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <p>&nbsp;</p>
+<h2>Démarrer un container</h2>
+<pre><code class="language-plaintext">docker run [OPTIONS] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</code></pre>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>-i</code></td>
+        <td>Garder STDIN ouvert, même si pas attaché</td>
+      </tr>
+      <tr>
+        <td><code>-t</code></td>
+        <td>Allouer un pseudo-terminal</td>
+      </tr>
+      <tr>
+        <td><code>-p</code></td>
+        <td>Configurer le port</td>
+      </tr>
+      <tr>
+        <td><code>-v&nbsp;</code></td>
+        <td>Lier un dossier sur le serveur au conteneur</td>
+      </tr>
+      <tr>
+        <td><code>-c</code></td>
+        <td>Créer un partage</td>
+      </tr>
+      <tr>
+        <td><code>-d</code></td>
+        <td>Activer le mode daemon. Le conteneur sera actif et en tâche de fond</td>
+      </tr>
+      <tr>
+        <td><code>-e&nbsp;</code></td>
+        <td>Forcer Docker a utiliser un driver exec spécifique</td>
+      </tr>
+      <tr>
+        <td><code>--name</code></td>
+        <td>Identifier un conteneur par un nom au lieu d’un ID</td>
+      </tr>
+      <tr>
+        <td><code>--dns</code></td>
+        <td>Définir un DNS personnalisé</td>
+      </tr>
+      <tr>
+        <td><code>--net="&lt;mode&gt;"</code></td>
+        <td>Définir le mode réseau entre “Bridge”, “none”, “container:” et “host”</td>
+      </tr>
+      <tr>
+        <td><code>--add-host</code></td>
+        <td>Modifier le contenu du fichier “hosts” en y ajoutant les valeurs spécifiées</td>
+      </tr>
+      <tr>
+        <td><code>--link</code></td>
+        <td>Ajouter un lien vers un autre conteneur</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>Gestion des containers</h2>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Commande</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>docker run&nbsp;</td>
+        <td>Afficher les containers en cours de fonctionnement (<code>-a</code> = afficher aussi les containers arrêtés)</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <h1>Docker-Compose</h1>
