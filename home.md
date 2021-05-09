@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-09T08:47:54.313Z
+date: 2021-05-09T09:10:27.284Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -108,7 +108,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 - [⛓️ Serveur DNS *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DNS)
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DHCP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseaux/Masques)
-- [🦝 Switch (commutateur) *Comment fonctionnent-il ?*](/Réseaux/Masques)
+- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Masques)
 {.links-list}
 
 ## Sécurité
