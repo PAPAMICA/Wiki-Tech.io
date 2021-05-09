@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T13:03:50.798Z
+date: 2021-05-09T13:05:31.921Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -30,21 +30,21 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” (<strong>AltGr</strong> + <strong>6</strong>) permet d'exécuter plusieurs commandes à la suite.</p>
 <p>exemple :&nbsp;</p>
 <pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
-<p>Dans ce cas précis, la commande sort-object tri les processus par utilisation de Cpu</p>
+<p>Dans ce cas précis, la commande <code>sort-object</code> tri les processus par utilisation de Cpu</p>
 <p>&nbsp;</p>
 <h2>L' aide</h2>
-<p>Sous PowerShell la commande get-help permet d'afficher la fonction et des exemples d'une commande.</p>
+<p>Sous PowerShell la commande <code>get-help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
 <pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
 <pre><code class="language-plaintext"> update-help</code></pre>
-<p>cette commande permet d'avoir une aide manière très général si on souhaite obtenir plus d'information on peut ajouter l'option -detailed</p>
+<p>cette commande permet d'avoir une aide manière très général si on souhaite obtenir plus d'information on peut ajouter l'option<code> -detailed</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -detailed</code></pre>
-<p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option -examples</p>
+<p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
-<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un update-help.</p>
-<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option - online&nbsp;</p>
+<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>update-help.</code></p>
+<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option<code> - online&nbsp;</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
-<p>La commande get-help permet également de rechercher une commande si, par exemple je souhaite trouver une commande qui gère les services.</p>
+<p>La commande <code>get-help</code> permet également de rechercher une commande si, par exemple, je souhaite trouver une commande qui gère les services.</p>
 <pre><code class="language-plaintext">get-help service</code></pre>
 <p>voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
 <figure class="image image_resized" style="width:86.32%;"><img src="/capture1.png"></figure>
