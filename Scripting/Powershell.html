@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-09T17:41:16.242Z
+date: 2021-05-09T17:59:32.461Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -28,10 +28,10 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” (<strong>AltGr</strong> + <strong>6</strong>) permet d'exécuter plusieurs commandes à la suite.</p>
 <p>exemple :&nbsp;</p>
 <pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
-<p>Dans ce cas précis, la commande <code>sort-object</code> tri les processus par utilisation de Cpu</p>
+<p>Dans ce cas précis, la commande <code>Sort-Object</code> tri les processus par utilisation de Cpu</p>
 <p>&nbsp;</p>
 <h2>L' aide</h2>
-<p>Sous PowerShell la commande <code>get-help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
+<p>Sous PowerShell la commande <code>Get-Help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
 <pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
 <pre><code class="language-plaintext"> update-help</code></pre>
@@ -39,27 +39,27 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -detailed</code></pre>
 <p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
-<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>update-help.</code></p>
+<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>Update-Help.</code></p>
 <p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option<code> -online&nbsp;</code></p>
 <pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
 <p>&nbsp;</p>
 <p>Si vous voulez de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
-<p>par exemple si vous voulez de l'aide sur la syntaxe de commande <code>get-childitem</code>&nbsp;</p>
-<pre><code class="language-plaintext">get-help get-childitem</code></pre>
+<p>par exemple si vous voulez de l'aide sur la syntaxe de commande <code>Get-ChildItem</code>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help Get-ChildItem</code></pre>
 <p>on peut constater dans la capture que certains paramètres sont obligatoires.</p>
 <figure class="image image_resized" style="width:88.82%;"><img src="/capture4.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>La commande <code>get-help</code> permet également de rechercher une commande si, par exemple, vous souhaitez trouver une commande qui gère les services.</p>
-<pre><code class="language-plaintext">get-help service</code></pre>
+<p>La commande <code>Get-Help</code> permet également de rechercher une commande si, par exemple, vous souhaitez trouver une commande qui gère les services.</p>
+<pre><code class="language-plaintext">Get-Help service</code></pre>
 <p>voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
 <figure class="image image_resized" style="width:86.32%;"><img src="/capture1.png"></figure>
 <p>&nbsp;</p>
 <p>Une autre fonction de l'aide permet d'avoir des informations sur un sujet précis.</p>
 <p>pour lister ces sujets utilisez l'option<code> about_*</code>&nbsp;</p>
-<pre><code class="language-plaintext">get-help about_*</code></pre>
+<pre><code class="language-plaintext">Get-Help about_*</code></pre>
 <p>Par exemple, si vous voulez de l'aide au sujet de pipeline</p>
-<pre><code class="language-plaintext">get-help about_pipeline</code></pre>
+<pre><code class="language-plaintext">Get-Help about_pipeline</code></pre>
 <p>voici ce que renvoie la commande</p>
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
 <p>&nbsp;</p>
@@ -75,12 +75,12 @@ dateCreated: 2021-05-08T14:42:07.092Z
   <li>variable {Variable}</li>
 </ul>
 <p>pour lister l'ensemble des providers, on utilise la commande</p>
-<pre><code class="language-plaintext">get-psdrive</code></pre>
+<pre><code class="language-plaintext">Get-psdrive</code></pre>
 <p>L'avantage c'est que vous pouvez parcourir ces éléments comme si c'était un système de fichiers.</p>
 <p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans votre arborescence Windows avec un <code>cd c:</code>.</p>
 <figure class="image"><img src="/capture9.png"></figure>
 <p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base&nbsp;</p>
-<p>exemple avec la commande <code>get-childitem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
+<p>exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
 <figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
 <p>&nbsp;</p>
 <h2>Création d'un menu sous Powershell</h2>
@@ -97,7 +97,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Suivant l'état de ce choix le script sortira de la boucle <code>while</code> et cela provoquera soit une action du script soit une sortie du script avec <code>switch ($choix)</code>.</p>
 <p>Le <code>switch </code>va permettre d'indexer les choix ,de les lister et d'exécuter les commandes.</p>
 <p>Pour sortir du script si vous faites le choix ‘<i>x</i>’ le script passe la variable <code>$continue</code> à <code>false</code> ce qui aura pour effet d'arrêter la boucle<code> while</code>.</p>
-<p>la commande <code>default </code>permet de renvoyer un message d'avertissement si vous rentrez un choix qui n'est pas dans le menu.</p>
+<p>La commande <code>default </code>permet de renvoyer un message d'avertissement si vous rentrez un choix qui n'est pas dans le menu.</p>
 <p>&nbsp;</p>
 <h2>Exemple</h2>
 <pre><code class="language-plaintext">$continue = $true
