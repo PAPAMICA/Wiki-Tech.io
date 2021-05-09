@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-05-09T09:25:06.735Z
+date: 2021-05-09T09:29:47.068Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T22:14:05.342Z
@@ -97,9 +97,13 @@ Redémarrer votre VPS sur le disque principal.
 
 ## Utilisation Standard
 
-Pour sauvegarder son système on peut utiliser la commande `tar` avec les paramètres suivants : 
+Pour sauvegarder son système on peut utiliser la commande `tar` avec les paramètres suivants :
 
-`foo@bar:/# tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /` 
+```bash
+tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /
+```
+
+> Cette commande est à lancer à la racine. {.is-warning}
 
 Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui tout en excluant les dossiers temporaires et inutiles pour la restauration. 
 
@@ -109,13 +113,15 @@ Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui
 
 On peut aussi lancer la commander avec `nohup` pour éviter de perdre le processus une fois le terminal coupé (éviter l'envoi signal SIGHUP alias "*signal hang up*" qui clôture l'ensemble des processus enfants lancées par le terminal virtuel) :
 
-[`foo@bar`](mailto:foo@bar)`:/# nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &`
+```bash
+nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &
+```
 
 > Remarquez la présence `&` à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande `jobs`). 
 {.is-info}
 
 
-> Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de **nohup.out** : [`foo@bar:/`](mailto:foo@bar:/)`# tail -f nohup.out` {.is-info}
+> Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de **nohup.out** :`tail -f nohup.out` {.is-info}
 
 >  Faites attention à bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
 {.is-warning}
