@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T15:16:03.196Z
+date: 2021-05-10T15:40:06.844Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -395,3 +395,47 @@ ceph mon enable-msgr2</code></pre>
 <p>A tout moment, il est possible de basculer la valeur sur <code>yes</code> ou <code>no</code> :</p>
 <pre><code class="language-plaintext">ocicli cluster-set z --initial-cluster-setup no</code></pre>
 <p>Cependant, il est fortement conseillé de définir la valeur sur no une fois que le cluster est en production.</p>
+<blockquote>
+  <p>Si les 3 contrôleurs de vos clusters exécutent avec succès puppet à
+    la première startup, ils appelleront "<code>oci-report-puppet-success</code>". Une fois le troisième contrôleur fait, <code>initial-cluster-setup</code> sera automatiquement défini sur
+    la valeur «<code>no</code>» dans la base de données OCI.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Ajout d'autres types de nœuds</h2>
+<p>OCI peut gérer, par défaut, les types de nœuds ci-dessous:</p>
+<ul>
+  <li>cephmon : moniteur Ceph</li>
+  <li>cephosd : machines de données Ceph</li>
+  <li>compute : nœuds Nova compute et Neutron DVR</li>
+  <li>controller : nœuds de contrôle OpenStack, exécutant toutes les API et démons</li>
+  <li>swiftproxy : serveurs proxy Swift</li>
+  <li>swiftstore : machines de données Swift</li>
+  <li>volume : nœuds Cinder LVM</li>
+  <li>réseau : routage DHCP, SNAT IPv4 et IPv6</li>
+</ul>
+<p>Il est seulement obligatoire d'installer 3 contrôleurs, puis tout le reste est facultatif. Il n'y a rien à configurer, OCI comprendra ce que l'utilisateur veut en fonction du type de nœuds mis à disposition.</p>
+<p>Si les nœuds <code>cephosd</code> sont déployés, alors tout utilisera Ceph :</p>
+<ul>
+  <li>Nova (c'est-à-dire : <code>/var/lib/nova/instances</code> sur Ceph)</li>
+  <li>Glance (images stockées sur Ceph)</li>
+  <li>Cinder (<code>cinder-volume</code> déployé sur les nœuds de calcul utilisera le backend Ceph)</li>
+</ul>
+<p>Même avec Ceph, la configuration de nœuds de volume ajoutera la capacité de backend LVM. Avec ou sans nœuds de volume, si certains nœuds OSD sont déployés, cinder-volume et cinder-backup avec le backend Ceph seront installés sur les nœuds de calcul.</p>
+<p>La migration en direct des machines virtuelles entre les nœuds de calcul n'est possible que si vous utilisez Ceph (c'est-à-dire si certains nœuds Ceph OSD sont déployés), ou si vous utilisez l'option <code>--block-migration</code>.</p>
+<p>Les nœuds Ceph MON sont facultatifs. S'ils ne sont pas déployés, le Ceph MON et MGR seront installés sur les nœuds du contrôleur.</p>
+<p>Les nœuds de réseau sont facultatifs. S'ils ne sont pas déployés, les contrôleurs agiront en tant que nœuds de routage SNAT et IPv6, et les serveurs DHCP seront installés sur les nœuds de calcul.</p>
+<p>&nbsp;</p>
+<h1>Utilisation avancée</h1>
+<h2>Utilisation de la configuration d'adresse IPMI automatisée</h2>
+<p>Étant donné que la gestion manuelle de cela peut prendre trop de temps, OCI offre la possibilité de configurer automatiquement les adresses IPMI de tous les serveurs découverts. Et comme il est possible que dans la configuration de votre réseau, il y ait plusieurs réseaux IPMI en fonction de l'emplacement physique du serveur, OCI offre la possibilité de choisir automatiquement un réseau IPMI en fonction du réseau DHCP qu'un serveur démarre sur l'image en direct Debian.</p>
+<p>La première chose à faire est de définir un réseau IPMI, de le définir avec le rôle "ipmi", puis de le faire correspondre à l'adresse IP du réseau DHCP:</p>
+<pre><code class="language-plaintext"># ocicli network-create ipmi 192.168.200.0 24 zone-1 no
+# ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match-cidr 24</code></pre>
+<p>Une fois cela fait, l'option automatic_ipmi_numbering = yes doit être définie dans /etc/openstack-cluster-installer/openstack-cluster-installer.conf.</p>
+<p>Lorsque cette option est définie, chaque fois qu'un serveur signale sa configuration matérielle, OCI vérifie s'il possède une IP IPMI correcte. Sinon, OCI effectuera un ssh dans le serveur et exécutera les commandes "ipmitool" nécessaires pour définir une configuration réseau valide. Ce faisant, l'adresse IP sera réservée dans la table "ips" de l'OCI, en veillant à ce que jamais, une adresse IP ne soit utilisée deux fois.</p>
+<p>Avec l'exemple ci-dessus, si un serveur PXE démarre sur le réseau 192.168.100.0/24, une adresse IP IPMI lui sera automatiquement attribuée sur le réseau 192.168.200.0/24. Notez que le mot de passe IPMI est choisi au hasard. Comme nous utilisons openssl rand -base64, il peut être judicieux de vous assurer que votre serveur OCI a une bonne source d'entropie.</p>
+<p>Si auparavant, certains serveurs avaient leur adresse IPMI déjà définie sur quelque chose qui correspond au réseau IPMI, mais que OCI ne l'a pas enregistrée, il est possible d'obtenir cette adresse IP enregistrée dans la base de données d'OCI. Il suffit de taper cette commande pour le faire:</p>
+<pre><code class="language-plaintext"># ocicli ipmi-assign-check</code></pre>
+<p>Cette commande demandera à OCI de parcourir chaque machine enregistrée dans la base de données et de vérifier l'adresse IPMI détectée. Si cette adresse existe dans la base de données, rien n'est fait. Sinon, un nouvel enregistrement sera ajouté à la base de données pour cette machine, pour éviter un conflit d'adresse ultérieur.</p>
+<h2>&nbsp;</h2>
+<p>&nbsp;</p>
