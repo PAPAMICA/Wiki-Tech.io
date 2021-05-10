@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-09T09:53:28.103Z
+date: 2021-05-10T11:25:50.690Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -10,7 +10,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
 > 🚧  Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
-> Dernière mise à jours : 09/05/2021
+> Dernière mise à jours : 10/05/2021
 {.is-warning}
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
