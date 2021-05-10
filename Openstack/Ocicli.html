@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T11:53:45.764Z
+date: 2021-05-10T13:31:36.769Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -19,6 +19,7 @@ dateCreated: 2021-05-10T11:53:45.764Z
 </ul>
 <p>Lors du premier des machines du cluster, un système Debian live est proposé en PXE par OCI, pour agir comme une image de découverte. Ce système remonte directement les caractéristiques matérielles à OCI. Les machines peuvent alors être installés avec Debian à partir de ce système, configurés avec un agent Puppet &nbsp;qui se connectera au master Puppet de OCI. Une fois Debian installé, le serveur redémarre et les services OpenStack sont provisionnés, en fonction du rôle du serveur dans le cluster.</p>
 <p>OCI est entièrement intégré à Debian, y compris tous les modules Puppet. Après avoir installé le package OCI et ses dépendances, aucun autre soft n'est necessaire pour l'installation du cluster, ce qui signifie que si un miroir Debian local est disponible, l'installation du cluster OpenStack peut être effectuée complètement hors ligne.</p>
+<p>&nbsp;</p>
 <h2>Les services OpenStack installés</h2>
 <p>Actuellement, OCI peut installer:</p>
 <ul>
@@ -45,6 +46,53 @@ dateCreated: 2021-05-10T11:53:45.764Z
 <p>Tous les services utilisent uniquement TLS, même au sein du cluster.</p>
 <p>En règle générale, OCI vérifie quel type de nœuds fait partie du cluster et prend des décisions en fonction de celui-ci. Par exemple, s'il existe des nœuds OSD Ceph, OCI utilisera Ceph comme backend pour la sauvegarde Glance, Nova et Cinder. S'il y a des nœuds Cinder Volume, OCI les utilisera avec le backend LVM. S'il existe des nœuds Swiftstore, Swift sera utilisé pour les sauvegardes et les images Glance. S'il existe des nœuds Ceph OSD, mais pas de nœuds Ceph MON dédiés, les contrôleurs agiront comme des moniteurs Ceph. S'il existe des nœuds de calcul, Cinder, Nova et Neutron seront installés sur les nœuds de contrôleur. Etc…</p>
 <p>Le nombre minimum de nœuds de contrôleur est de 3, bien qu'il soit possible, avec un peu de bidouille d'installer les 3 contrôleurs sur des machines virtuelles sur un seul serveur (bien sûr, perdre la fonctionnalité de haute disponibilité en cas de panne du matériel).</p>
+<p>&nbsp;</p>
 <h2>Qui est derrière ce projet ?</h2>
 <p>OCI a été entièrement écrit par Thomas Goirand (zigo). Le travail est entièrement sponsorisé par Infomaniak Networks, qui l'utilise en production dans des clusters raisonnablement grands. Il y a eu quelques contributions sporadiques au sein d'Infomaniak, ainsi que quelques correctifs de contributeurs externes, mais aucune fonctionnalité majeure (pour le moment). Espérons que ce projet, au fil du temps, rassemblera plus de contributeurs.</p>
+<p>&nbsp;</p>
+<h2>Présentation vidéo</h2>
+<p>Si vous souhaitez avoir une présentation rapide de ce que l'OCI peut faire, pour voir si cela répond à vos besoins, vous pouvez regarder la présentation faite pour le sommet OpenStack en novembre 2020. Ce n'est pas long (19 minutes) : <a href="https://www.youtube.com/watch?v=Q25jT2fYDjc">Youtube</a>&nbsp;</p>
+<figure class="media">
+  <oembed url="https://www.youtube.com/watch?v=Q25jT2fYDjc"></oembed>
+</figure>
+<p>&nbsp;</p>
+<h1>Installation</h1>
+<h2>Exigences minimales</h2>
+<p>OCI lui-même fonctionnera bien avec environ 20 Go de disque dur et quelques Go de RAM. Cependant, pour installer OpenStack, vous aurez besoin d'au moins 3 contrôleurs avec un minimum de 16 Go de RAM, 32 Go sont recommandés et le mieux est de 64 Go de RAM. Si vous voulez Ceph, un minimum de 3 Ceph OSD est nécessaire, cependant, nous ne parlons que lorsque votre cluster atteint 100 disques. La recommandation Ceph est qu'un serveur donné ne supprime pas plus de 10% de la capacité totale. Donc, 10 serveurs OSD au début, c'est bien. En ce qui concerne Swift, le nombre minimum de serveurs serait de 3, mais si l'un d'entre eux échoue, vous obtiendrez des délais d'attente. Il est donc probablement préférable de commencer avec au moins 6 nœuds de stockage Swift, et peut-être avec 2 proxies. Pour les autres ressources, c'est à vous de choisir : quelques compute nodes (nœuds de calcul), et probablement 2 nœuds de réseau et quelques nœuds de volume.</p>
+<p>Si vous avez l'intention d'exécuter le package openstack-cluster-installer-poc pour faire du développement ou du test OCI dans un environnement virtualisé, nous vous recommandons un serveur unique avec 1 To de disque dur et 256 Go de RAM. Cette configuration est suffisante pour provisionner 19 VM sur lesquelles OpenStack sera installé. Il est possible de fonctionner avec moins, mais alors peu de nœuds seront disponibles, et vous devrez ajuster le nombre de serveurs dans <code>/etc/oci-poc/oci-poc.conf</code>.</p>
+<p>&nbsp;</p>
+<h2>Installation du paquet</h2>
+<h3>Le dépôt du paquet</h3>
+<p>Le paquet est soit disponible depuis Debian Sid / Buster, soit depuis les référentiels de backport stables d'OpenStack.</p>
+<h3>Utilisation d'Extrepo</h3>
+<p>La nouvelle (meilleure) façon d'utiliser les backports Debian Stable d'OpenStack est d'utiliser extrepo. Extrepo est disponible dans les buster-backports officiels. Voici comment installer OpenStack, par exemple (vous avez besoin du dépôt buster-backports dans votre <code>sources.list</code>) :</p>
+<pre><code class="language-plaintext">apt-get install extrepo
+extrepo enable openstack_wallaby
+apt-get update
+</code></pre>
+<p>Consultez la documentation d'extrepo pour en savoir plus.</p>
+<p>&nbsp;</p>
+<h3>Configuration manuelle des dépôts Debian</h3>
+<p>Si vous souhaitez utiliser Buster avec OpenStack Train, les dépôts ci-dessous doivent être ajoutés au fichier <code>sources.list</code> :</p>
+<pre><code class="language-plaintext">deb http://buster-train.debian.net/debian buster-train-backports main
+deb-src http://buster-train.debian.net/debian buster-train-backports main
+
+deb http://buster-train.debian.net/debian buster-train-backports-nochange main
+deb-src http://buster-train.debian.net/debian buster-train-backports-nochange main
+</code></pre>
+<p>Vous pouvez remplacer buster ci-dessus par n'importe quelle distribution stable Debian (au moment de l'écriture, seuls Stretch et Buster sont pris en charge), et pareil pour le nom de la version OpenStack du jour.</p>
+<p>La clé du dépôt est disponible de cette façon :</p>
+<pre><code class="language-plaintext">apt-get update
+apt-get install --allow-unauthenticated -y openstack-backports-archive-keyring
+apt-get update
+</code></pre>
+<p>Il existe également un miroir contenant TOUTES les versions d'OpenStack en un seul endroit : <a href="http://osbpo.debian.net/debian/">http://osbpo.debian.net/debian/</a></p>
+<p>&nbsp;</p>
+<h3>Installer le paquet</h3>
+<p>Installez simplement <code>openstack-cluster-installer</code> avec :</p>
+<pre><code class="language-plaintext">apt-get install openstack-cluster-installer</code></pre>
+<p>&nbsp;</p>
+<h3>Installer un serveur de base de données</h3>
+<p>Pour MariaDB :</p>
+<pre><code class="language-plaintext">apt-get install mariadb-server dbconfig-common</code></pre>
 <p>&nbsp;</p>
