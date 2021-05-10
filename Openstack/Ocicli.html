@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T15:40:06.844Z
+date: 2021-05-10T15:45:56.658Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -426,16 +426,47 @@ ceph mon enable-msgr2</code></pre>
 <p>Les nœuds de réseau sont facultatifs. S'ils ne sont pas déployés, les contrôleurs agiront en tant que nœuds de routage SNAT et IPv6, et les serveurs DHCP seront installés sur les nœuds de calcul.</p>
 <p>&nbsp;</p>
 <h1>Utilisation avancée</h1>
-<h2>Utilisation de la configuration d'adresse IPMI automatisée</h2>
-<p>Étant donné que la gestion manuelle de cela peut prendre trop de temps, OCI offre la possibilité de configurer automatiquement les adresses IPMI de tous les serveurs découverts. Et comme il est possible que dans la configuration de votre réseau, il y ait plusieurs réseaux IPMI en fonction de l'emplacement physique du serveur, OCI offre la possibilité de choisir automatiquement un réseau IPMI en fonction du réseau DHCP qu'un serveur démarre sur l'image en direct Debian.</p>
-<p>La première chose à faire est de définir un réseau IPMI, de le définir avec le rôle "ipmi", puis de le faire correspondre à l'adresse IP du réseau DHCP:</p>
-<pre><code class="language-plaintext"># ocicli network-create ipmi 192.168.200.0 24 zone-1 no
-# ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match-cidr 24</code></pre>
-<p>Une fois cela fait, l'option automatic_ipmi_numbering = yes doit être définie dans /etc/openstack-cluster-installer/openstack-cluster-installer.conf.</p>
-<p>Lorsque cette option est définie, chaque fois qu'un serveur signale sa configuration matérielle, OCI vérifie s'il possède une IP IPMI correcte. Sinon, OCI effectuera un ssh dans le serveur et exécutera les commandes "ipmitool" nécessaires pour définir une configuration réseau valide. Ce faisant, l'adresse IP sera réservée dans la table "ips" de l'OCI, en veillant à ce que jamais, une adresse IP ne soit utilisée deux fois.</p>
+<h2>Configuration d'adresse IPMI automatisée</h2>
+<p>Étant donné que la gestion manuelle de cela peut prendre trop de temps, OCI offre la possibilité de configurer automatiquement les adresses IPMI de tous les serveurs découverts. Et comme il est possible que dans la configuration de votre réseau, il y ait plusieurs réseaux IPMI en fonction de l'emplacement physique du serveur, OCI offre la possibilité de choisir automatiquement un réseau IPMI en fonction du réseau DHCP qu'un serveur démarre sur l'image Live Debian.</p>
+<p>La première chose à faire est de définir un réseau IPMI, de le définir avec le rôle "<code>ipmi</code>", puis de le faire correspondre à l'adresse IP du réseau DHCP:</p>
+<pre><code class="language-plaintext">ocicli network-create ipmi 192.168.200.0 24 zone-1 no
+ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match-cidr 24</code></pre>
+<p>Une fois cela fait, l'option <code>automatic_ipmi_numbering = yes</code> doit être définie dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code>.</p>
+<p>Lorsque cette option est définie, chaque fois qu'un serveur signale sa configuration matérielle, OCI vérifie s'il possède une IP IPMI correcte. Sinon, OCI effectuera un ssh dans le serveur et exécutera les commandes "<code>ipmitool</code>" nécessaires pour définir une configuration réseau valide. Ce faisant, l'adresse IP sera réservée dans la table "ips" de l'OCI, en veillant à ce que jamais, une adresse IP ne soit utilisée deux fois.</p>
 <p>Avec l'exemple ci-dessus, si un serveur PXE démarre sur le réseau 192.168.100.0/24, une adresse IP IPMI lui sera automatiquement attribuée sur le réseau 192.168.200.0/24. Notez que le mot de passe IPMI est choisi au hasard. Comme nous utilisons openssl rand -base64, il peut être judicieux de vous assurer que votre serveur OCI a une bonne source d'entropie.</p>
-<p>Si auparavant, certains serveurs avaient leur adresse IPMI déjà définie sur quelque chose qui correspond au réseau IPMI, mais que OCI ne l'a pas enregistrée, il est possible d'obtenir cette adresse IP enregistrée dans la base de données d'OCI. Il suffit de taper cette commande pour le faire:</p>
-<pre><code class="language-plaintext"># ocicli ipmi-assign-check</code></pre>
+<p>Si auparavant, certains serveurs avaient leur adresse IPMI déjà définie sur quelque chose qui correspond au réseau IPMI, mais que OCI ne l'a pas enregistrée, il est possible d'obtenir cette adresse IP enregistrée dans la base de données d'OCI. Il suffit de taper cette commande pour le faire :</p>
+<pre><code class="language-plaintext">ocicli ipmi-assign-check</code></pre>
 <p>Cette commande demandera à OCI de parcourir chaque machine enregistrée dans la base de données et de vérifier l'adresse IPMI détectée. Si cette adresse existe dans la base de données, rien n'est fait. Sinon, un nouvel enregistrement sera ajouté à la base de données pour cette machine, pour éviter un conflit d'adresse ultérieur.</p>
+<p>&nbsp;</p>
+<h2>Mise à niveau automatique du BIOS et du micrologiciel IPMI</h2>
+<p>La mise à niveau du BIOS et du micrologiciel IPMI des serveurs peut prendre beaucoup de temps si vous gérez un grand nombre de serveurs. OCI offre donc la possibilité d'effectuer ces mises à niveau automatiquement. Ceci est contrôlé à l'aide d'un fichier de configuration qui peut être trouvé ici: /etc/openstack-cluster-installer/oci-firmware-upgrade-config.json. Voici un exemple de fichier de configuration valide:</p>
+<pre><code class="language-plaintext">{
+	"CL2800 Gen10": {
+		"BIOS": {
+			"version": "2.1.0",
+			"script": "/root/hp-bios-upgrade-2.1.0"
+			},
+		"IPMI": {
+			"version": "2.22",
+			"script": "/root/hp-ipmi-upgrade-2.22"
+			}
+	},
+}</code></pre>
+<p>Avec ce qui précède, si OCI trouve un serveur HP Cloud Line CL2800 dont le micrologiciel BIOS est inférieur à 2.1.0, il tentera de le mettre à niveau en lançant le script /root/hp-bios-upgrade-2.1.0. Pour ajouter ledit script, l'image en direct doit être personnalisée. Pour ce faire, ajoutez simplement quelques fichiers dans le dossier / etc / openstack-cluster-installer / live-image-additions. Tous les fichiers qui s'y trouvent seront ajoutés à l'image en direct. Ensuite, l'image en direct doit être régénérée:</p>
+<pre><code class="language-plaintext"># openstack-cluster-installer-build-live-image</code></pre>
+<p>Une fois que cela est fait, redémarrez les serveurs qui doivent être mis à niveau. À mesure qu'ils démarrent sur l'image en direct, la mise à niveau sera effectuée. Pour référence, voici un exemple de script hp-bios-upgrade-2.1.0, qui sera sauvegardé ici: /etc/openstack-cluster-installer/live-image-additions/root/hp-bios-upgrade-2.1.0 .</p>
+<pre><code class="language-plaintext">#!/bin/sh
+
+set -e
+set -x
+
+cd /root
+tar -xvzf CL2600_CL2800_Gen10_BIOS_v2.1.0_11052019_Linux.tgz
+cd CL2600_CL2800_Gen10_BIOS_v2.1.0_11052019_Linux/FlashTool/
+./flash_bios.sh
+reboot
+sleep 20000</code></pre>
+<p>Le "sleep 20000" permet de s'assurer que l'agent OCI ne redémarre pas avant le redémarrage de la machine. YMMV en fonction de la mise à niveau à effectuer.</p>
+<h2>&nbsp;</h2>
 <h2>&nbsp;</h2>
 <p>&nbsp;</p>
