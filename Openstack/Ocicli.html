@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T14:40:07.999Z
+date: 2021-05-10T14:54:54.620Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -121,6 +121,7 @@ cd /usr/share/openstack-cluster-installer ; php db_sync.php
 <p>Les mots de passe sont hachés en utilisant la fonction PHP <code>password_hash () </code>en utilisant l'algo BCRYPT.</p>
 <p>De plus, OCI est capable d'utiliser un Radius externe pour son authentification. Cependant, vous devez toujours ajouter manuellement des connexions dans la base de données. Ce qui est ci-dessous insère un nouvel utilisateur qui a une entrée dans le serveur Radius :</p>
 <pre><code class="language-plaintext">oci-userdb -r newuser@example.com</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p>&nbsp;Vous devez également configurer votre adresse de serveur Radius et votre secret partagé dans <code>openstack-cluster-installer.conf</code>.</p>
 </blockquote>
@@ -195,4 +196,61 @@ pkgos_inifile set /etc/puppet/puppet.conf master node_terminus exec</code></pre>
 <p>Pour accélérer le téléchargement du paquet, il est fortement recommandé d'installer approx &nbsp;localement sur votre serveur de provisionnement OCI et d'utiliser son adresse lors de la configuration des serveurs (l'adresse est définie dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code>).</p>
 <p>&nbsp;</p>
 <h1>Utiliser OCI</h1>
-<h3>&nbsp;</h3>
+<h2>Démarrage des serveurs</h2>
+<p>Démarrez plusieurs ordinateurs, en les bootant avec PXE. Si tout se passe bien, ils attraperont le DHCP de l'OCI et redémarreront l'image en direct Debian de l'OCI. Une fois le serveur en marche, un agent s'exécutera pour faire un rapport à l'interface Web d'OCI. Rafraîchissez simplement l'interface Web d'OCI et vous verrez des machines. Vous pouvez également utiliser l'outil CLI:</p>
+<pre><code class="language-plaintext">apt-get install openstack-cluster-installer-cli
+ocicli machine-list
+	serial   ipaddr          memory  status     lastseen             cluster  hostname
+	2S2JGM2  192.168.100.37  4096    live       2018-09-20 09:22:31  null
+	2S2JGM3  192.168.100.39  4096    live       2018-09-20 09:22:50  null</code></pre>
+<p>Notez qu'ocicli peut soit utiliser un login / mot de passe qui peut être défini dans la base de données interne de l'OCI, soit l'adresse IP du serveur sur lequel ocicli s'exécute peut être inscrite dans la liste blanche dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code>.</p>
+<p>&nbsp;</p>
+<h2>Création de régions, d'emplacements, de réseaux, de rôles et de clusters Swift</h2>
+<h3>Avant de commencer</h3>
+<p>Dans cette documentation, tout se fait via la ligne de commande en utilisant ocicli. Cependant, absolument tout peut également être fait à l'aide de l'interface Web. Il est simplement plus facile d'expliquer l'utilisation de l'interface de ligne de commande, car cela évite d'avoir à afficher des screenshots de l'interface Web.</p>
+<p>Ici, le seul réseau que vous ajouterez à OCI serait les réseaux internes d'OpenStack. Jamais, vous n'ajouterez les réseaux publics ou ceux des VM OpenStack. Par exemple, un réseau pour la gestion des nœuds, un pour <code>vm-net</code>, un pour le réseau <code>ceph-cluster</code> ... Tous les réseaux que vous utiliserez sur OpenStack, doivent être provisionnés avec OpenStack lui-même à l'aide de l'API OpenStack .</p>
+<p>&nbsp;</p>
+<h3>Création de régions et d'emplacements Swift</h3>
+<p>Avant d'installer les systèmes sur vos serveurs, des clusters doivent être définis. Cela commence par la configuration des régions Swift. Dans un cluster Swift, il existe des zones et des régions. Lors du téléchargement d'un fichier sur Swift, il est répliqué sur N zones (généralement 3). Si 2 régions sont définies, Swift essaie de répliquer des objets sur les deux régions.</p>
+<p>Sous OCI, vous devez d'abord définir les régions Swift. Pour ce faire, cliquez sur "Swift region" sur l'interface web, ou en utilisant ocicli, saisissez :</p>
+<pre><code class="language-plaintext">ocicli swift-region-create datacenter-1
+ocicli swift-region-create datacenter-2</code></pre>
+<p>Créez ensuite des emplacements associés à ces régions:</p>
+<pre><code class="language-plaintext">ocicli dc1-zone1 datacenter-1
+ocicli dc1-zone2 datacenter-1
+ocicli dc2-zone1 datacenter-2</code></pre>
+<p>Plus tard, lors de l'ajout d'un nœud de données Swift à un cluster (les nœuds de données sont les serveurs qui effectueront réellement le stockage Swift), un emplacement doit être sélectionné.</p>
+<p>Une fois les emplacements définis, il est temps de définir les réseaux. Les réseaux sont également rattachés à des emplacements. Les zones et régions Swift seront liées à ces emplacements et régions.</p>
+<p>&nbsp;</p>
+<h3>Créer des réseaux</h3>
+<pre><code class="language-plaintext">ocicli network-create dc1-net1 192.168.101.0 24 dc1-zone1 no</code></pre>
+<p>La commande ci-dessus créera un sous-réseau <code>192.168.101.0/24,</code> situé dans <code>dc1-zone1</code>. Créons 2 réseaux supplémentaires:</p>
+<pre><code class="language-plaintext">ocicli network-create dc1-net2 192.168.102.0 24 dc1-zone2 no
+ocicli network-create dc2-net1 192.168.103.0 24 dc2-zone1 no</code></pre>
+<p>Ensuite, pour que le cluster soit accessible, créons un réseau public sur lequel les clients se connecteront:</p>
+<pre><code class="language-plaintext">ocicli network-create pubnet1 203.0.113.0 28 public yes</code></pre>
+<p>Notez que si vous utilisez un /32, il sera configuré sur l'interface <code>lo</code> de votre contrôleur. La configuration attendue consiste à utiliser BGP pour acheminer cette adresse IP publique sur le contrôleur. Pour ce faire, il est possible de personnaliser l'ENC et d'ajouter le peering BGP à votre routeur. Voir à la fin de cette documentation pour cela.</p>
+<p>&nbsp;</p>
+<h3>Créer un nouveau cluster</h3>
+<p>Créons un nouveau cluster:</p>
+<pre><code class="language-plaintext">ocicli cluster-create swift01 example.com</code></pre>
+<p>Maintenant que nous avons un nouveau cluster, les réseaux que nous avons créés peuvent y être ajoutés:</p>
+<pre><code class="language-plaintext">ocicli network-add dc1-net1 swift01 all eth0
+ocicli network-add dc1-net2 swift01 all eth0
+ocicli network-add dc2-net1 swift01 all eth0
+ocicli network-add pubnet1 swift01 all eth0</code></pre>
+<p>Lors de l'ajout du réseau public, automatiquement, une adresse IP sera réservée au VIP (Virtual Private IP). Cette adresse IP sera plus tard partagée par les nœuds du contrôleur, pour effectuer la haute disponibilité (HA), contrôlée par pacemaker / corosync. Le principe est le suivant: si l'un des nœuds du contrôleur héberge le VIP (et il est affecté à son eth0), et devient indisponible (disons, le serveur plante ou le câble réseau est débranché), alors le VIP est réaffecté au eth0 d'un autre nœud de contrôleur du cluster.</p>
+<p>Si vous sélectionnez 2 interfaces réseau (par exemple, eth0 et eth1), la liaison sera utilisée. Notez que votre équipement réseau (commutateurs, etc.) doit être configuré en conséquence (LACP, etc.), et que la configuration de ces équipements sort du cadre de cette documentation. Consultez votre fournisseur d'équipement réseau pour plus d'informations.</p>
+<p>&nbsp;</p>
+<h2>Véritable certificat pour l'API</h2>
+<p>Par défaut, OCI générera un certificat auto-signé pour tout. Bien que cela fonctionne bien à quelques exceptions près (cela ne fonctionne visiblement pas pour Heat, Magnum et si l'on veut activer le chiffrement sur disque Swift), il est préférable, en production, d'utiliser un vrai certificat API, afin que les clients puissent faites confiance à votre serveur. Pour ce faire, il faut d'abord choisir un nom d'hôte pour l'API. Ceci est défini de cette façon:</p>
+<pre><code class="language-plaintext">ocicli cluster-set z --vip-hostname cloud-api.example.com</code></pre>
+<p>Une fois cela fait, dans le serveur OCI, générez un certificat pour ce nom d'hôte:</p>
+<pre><code class="language-plaintext">oci-gen-slave-node-cert cloud-api.example.com</code></pre>
+<p>Le <code>cd</code> vers <code>/var/lib/oci/ssl/slave-nodes/cloud-api.example.com</code>. Ensuite, vous pouvez trouver le c<code>loud-api.example.com.csr</code> (.csr signifie certificat de signature de certificat) qui peut être utilisé pour opter pour un vrai certificat. Faites signer le certificat, puis remplacez les fichiers <code>.crt</code> et <code>.pem</code> par le vrai contenu signé. Si vous réutilisez un certificat générique, vous souhaitez probablement également remplacer le fichier<code> .key</code>. Notez que le fichier <code>.pem</code> doit contenir le certificat <i><u>et</u></i> la clé privée, concaténés, et peut-être aussi tous les certificats intermédiaires.</p>
+<p>Une fois cela fait, informez simplement OCI que nous utilisons un vrai certificat signé:</p>
+<pre><code class="language-plaintext">ocicli cluster-set z --self-signed-api-cert no</code></pre>
+<p>Désormais, Puppet sera démarré sans utiliser la racine ca de l'OCI comme environnement, et ca_file ne sera pas utilisé dans tous les fichiers de configuration d'OpenStack (une chaîne vide sera définie à la place).</p>
+<p>Si vous avez mis votre cluster en production avant de signer le certificat, il est possible d'utiliser, sur le serveur de Puppet, l'utilitaire <code>oci-update-cluster-certs</code> :</p>
+<pre><code class="language-plaintext"># oci-update-cluster-certs z</code></pre>
+<p>Cela remplacera le certificat cloud-api.example.com partout dans le cluster et redémarrera les services pour l'utiliser. Cet utilitaire shell est également utile chaque fois que votre certificat SSL expire et doit être mis à jour.</p>
