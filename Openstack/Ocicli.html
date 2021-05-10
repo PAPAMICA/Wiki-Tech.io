@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T15:45:56.658Z
+date: 2021-05-10T16:11:53.268Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -438,8 +438,8 @@ ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match
 <pre><code class="language-plaintext">ocicli ipmi-assign-check</code></pre>
 <p>Cette commande demandera à OCI de parcourir chaque machine enregistrée dans la base de données et de vérifier l'adresse IPMI détectée. Si cette adresse existe dans la base de données, rien n'est fait. Sinon, un nouvel enregistrement sera ajouté à la base de données pour cette machine, pour éviter un conflit d'adresse ultérieur.</p>
 <p>&nbsp;</p>
-<h2>Mise à niveau automatique du BIOS et du micrologiciel IPMI</h2>
-<p>La mise à niveau du BIOS et du micrologiciel IPMI des serveurs peut prendre beaucoup de temps si vous gérez un grand nombre de serveurs. OCI offre donc la possibilité d'effectuer ces mises à niveau automatiquement. Ceci est contrôlé à l'aide d'un fichier de configuration qui peut être trouvé ici: /etc/openstack-cluster-installer/oci-firmware-upgrade-config.json. Voici un exemple de fichier de configuration valide:</p>
+<h2>MAJ automatique du BIOS et du micrologiciel IPMI</h2>
+<p>La mise à niveau du BIOS et du micrologiciel IPMI des serveurs peut prendre beaucoup de temps si vous gérez un grand nombre de serveurs. OCI offre donc la possibilité d'effectuer ces mises à niveau automatiquement. Ceci est contrôlé à l'aide d'un fichier de configuration qui peut être trouvé ici: <code>/etc/openstack-cluster-installer/oci-firmware-upgrade-config.json</code>. Voici un exemple de fichier de configuration valide:</p>
 <pre><code class="language-plaintext">{
 	"CL2800 Gen10": {
 		"BIOS": {
@@ -452,9 +452,9 @@ ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match
 			}
 	},
 }</code></pre>
-<p>Avec ce qui précède, si OCI trouve un serveur HP Cloud Line CL2800 dont le micrologiciel BIOS est inférieur à 2.1.0, il tentera de le mettre à niveau en lançant le script /root/hp-bios-upgrade-2.1.0. Pour ajouter ledit script, l'image en direct doit être personnalisée. Pour ce faire, ajoutez simplement quelques fichiers dans le dossier / etc / openstack-cluster-installer / live-image-additions. Tous les fichiers qui s'y trouvent seront ajoutés à l'image en direct. Ensuite, l'image en direct doit être régénérée:</p>
-<pre><code class="language-plaintext"># openstack-cluster-installer-build-live-image</code></pre>
-<p>Une fois que cela est fait, redémarrez les serveurs qui doivent être mis à niveau. À mesure qu'ils démarrent sur l'image en direct, la mise à niveau sera effectuée. Pour référence, voici un exemple de script hp-bios-upgrade-2.1.0, qui sera sauvegardé ici: /etc/openstack-cluster-installer/live-image-additions/root/hp-bios-upgrade-2.1.0 .</p>
+<p>Avec ce qui précède, si OCI trouve un serveur <code>HP Cloud Line CL2800</code> dont le micrologiciel BIOS est inférieur à <code>2.1.0</code>, il tentera de le mettre à niveau en lançant le script <code>/root/hp-bios-upgrade-2.1.0</code>. Pour ajouter ledit script, l'image live doit être personnalisée. Pour ce faire, ajoutez simplement quelques fichiers dans le dossier <code>/etc/openstack-cluster-installer/live-image-additions</code>. Tous les fichiers qui s'y trouvent seront ajoutés à l'image live. Ensuite, l'image live doit être régénérée :</p>
+<pre><code class="language-plaintext">openstack-cluster-installer-build-live-image</code></pre>
+<p>Une fois que cela est fait, redémarrez les serveurs qui doivent être mis à jour. À mesure qu'ils démarrent sur l'image live, la mise à jour sera effectuée. Pour référence, voici un exemple de script <code>hp-bios-upgrade-2.1.0</code>, qui sera sauvegardé ici: <code>/etc/openstack-cluster-installer/live-image-additions/root/hp-bios-upgrade-2.1.0</code>.</p>
 <pre><code class="language-plaintext">#!/bin/sh
 
 set -e
@@ -466,7 +466,173 @@ cd CL2600_CL2800_Gen10_BIOS_v2.1.0_11052019_Linux/FlashTool/
 ./flash_bios.sh
 reboot
 sleep 20000</code></pre>
-<p>Le "sleep 20000" permet de s'assurer que l'agent OCI ne redémarre pas avant le redémarrage de la machine. YMMV en fonction de la mise à niveau à effectuer.</p>
-<h2>&nbsp;</h2>
-<h2>&nbsp;</h2>
+<p>Le "<code>sleep 20000</code>" permet de s'assurer que l'agent OCI ne redémarre pas avant le redémarrage de la machine. Cela dépend de la mise à jour à effectuer.</p>
+<p>&nbsp;</p>
+<h2>Personnalisation du /etc/hosts de tout votre cluster</h2>
+<p>Il est possible d'ajouter des entrées sur tous les <code>/etc/hosts</code> des clusters, si vous ajoutez des entrées à ce fichier sur le serveur OCI:</p>
+<p><code>/etc/openstack-cluster-installer/hosts_append</code></p>
+<p>Tout ce que génère OCI se trouve entre ces balises:</p>
+<pre><code class="language-plaintext"># OCISTA_MAINTAINED: Do not touch between these lines, this is a generated content.
+... some generated content ...
+# OCIFIN_MAINTAINED: Do not touch between these lines, this is a generated content.</code></pre>
+<p>Ensuite, il est possible d'ajouter manuellement des entrées à chaque <code>/etc/hosts</code> après la balise ci-dessus, et ces entrées seront conservées.</p>
+<p>&nbsp;</p>
+<h2>Personnalisation de l'ENC</h2>
+<p>Dans <code>/etc/openstack-cluster-installer/hiera</code>, vous trouverez 2 dossiers et un fichier <code>all.yaml</code>. Celles-ci doivent permettre de personnaliser la sortie de l'ENC de l'OCI. Par exemple, si vous mettez:</p>
+<pre><code class="language-plaintext">   ntp:
+      servers:
+         - 0.us.pool.ntp.org iburst</code></pre>
+<p>dans <code>/etc/openstack-cluster-installer/hiera/all.yaml</code>, alors tous les nœuds seront configurés avec ntp en utilisant <code>0.us.pool.ntp.org</code> pour synchroniser l'heure.</p>
+<p>Si nous avons un cluster swift01, la structure complète des dossiers est la suivante:</p>
+<pre><code class="language-plaintext">/etc/openstack-cluster-installer/hiera/roles/controller.yaml
+/etc/openstack-cluster-installer/hiera/roles/swiftproxy.yaml
+/etc/openstack-cluster-installer/hiera/roles/swiftstore.yaml
+/etc/openstack-cluster-installer/hiera/nodes/-hostname-of-your-node-.yaml
+/etc/openstack-cluster-installer/hiera/all.yaml
+/etc/openstack-cluster-installer/hiera/clusters/swift01/roles/controller.yaml
+/etc/openstack-cluster-installer/hiera/clusters/swift01/roles/swiftproxy.yaml
+/etc/openstack-cluster-installer/hiera/clusters/swift01/roles/swiftstore.yaml
+/etc/openstack-cluster-installer/hiera/clusters/swift01/nodes/-hostname-of-your-node-.yaml
+/etc/openstack-cluster-installer/hiera/clusters/swift01/all.yaml</code></pre>
+<p>&nbsp;</p>
+<h2>Personnalisation du serveur installé au moment de la configuration</h2>
+<p>Parfois, il est souhaitable de configurer un serveur au moment de l'installation. Par exemple, il peut être nécessaire de configurer le routage (à l'aide de BGP) pour que l'adresse IP virtuelle soit disponible au moment de la configuration. OCI offre tout ce qui est nécessaire pour enrichir la configuration du serveur au moment de l'installation, avant même que l'agent Puppet ne démarre.</p>
+<p>Supposons que vous souhaitiez configurer swift01-controller-1 dans votre cluster swift01, y ajouter quagga et ajouter des fichiers de configuration. Créez simplement le dossier, remplissez-y le contenu et ajoutez un fichier <code>oci-packages-list</code> :</p>
+<pre><code class="language-plaintext">mkdir -p /var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-in-target
+cd /var/lib/oci/clusters/swift01/swift01-controller-1.example.com
+echo -n "quagga,tmux" &gt;oci-packages-list
+mkdir -p oci-in-target/etc/quagga
+echo "some conf" &gt;oci-in-target/etc/quagga/bgpd.conf</code></pre>
+<p>Lorsque OCI provisionne le serveur baremetal, il vérifie si le fichier <code>oci-packages-list</code> existe. Si tel est le cas, les packages sont ajoutés lors de l'installation. Ensuite, le contenu <code>oci-in-target</code> est copié dans le système cible.</p>
+<p>&nbsp;</p>
+<h2>Utilisation d'un BGP VIP</h2>
+<p>De la même manière, vous pouvez par exemple décider d'avoir le VIP de vos contrôleurs pour utiliser le routage BGP. Pour ce faire, écrivez dans <code>/etc/openstack-cluster-installer/roles/controller.yaml</code> :</p>
+<pre><code class="language-plaintext">   quagga::bgpd:
+      my_asn: 64496,
+      router_id: 192.0.2.1
+      networks4:
+         - '192.0.2.0/24'
+      peers:
+         64497:
+            addr4:
+               - '192.0.2.2'
+            desc: TEST Network</code></pre>
+<p>Cependant, vous souhaiterez peut-être le faire uniquement pour un nœud spécifique d'un seul cluster de serveurs, plutôt que pour tous. Dans ce cas, utilisez simplement ce schéma de chemin de fichier : <code>/etc/openstack-cluster-installer/clusters/cloud1/nodes/cloud1-controller-1.example.com.yaml</code></p>
+<p>Pour tous les contrôleurs du cluster cloud1, utilisez : <code>/etc/openstack-cluster-installer/clusters/cloud1/roles/controller.yaml</code></p>
+<p>&nbsp;</p>
+<h2>Faire un test dans les manifestes OCI à des fins de débogage</h2>
+<p>Si vous souhaitez tester un changement dans les fichiers de marionnettes de l'OCI, éditez-les dans <code>/usr/share/puppet/modules/oci</code>, puis sur le master run, par exemple :</p>
+<pre><code class="language-plaintext">puppet master --compile swift01-controller-1.example.com
+/etc/init.d/puppet-master stop
+/etc/init.d/puppet-master start</code></pre>
+<p>puis sur <code>swift01-controller-1.example.com</code> vous pouvez exécuter :</p>
+<pre><code class="language-plaintext">OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug</code></pre>
+<p>&nbsp;</p>
+<h2>Personnalisation des fichiers et des packages de vos serveurs</h2>
+<p>Si vous souhaitez personnaliser le contenu des fichiers de vos hôtes, écrivez simplement n'importe quel fichier, par exemple :</p>
+<pre><code class="language-plaintext">/var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-in-target</code></pre>
+<p>et il sera copié sur le serveur que vous installerez.</p>
+<p>De la même manière, vous pouvez ajouter des packages supplémentaires à votre serveur en ajoutant leurs noms dans ce fichier :</p>
+<pre><code class="language-plaintext">/var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-packages-list</code></pre>
+<p>Les packages doivent être répertoriés sur une seule ligne, séparés par des virgules. Par exemple :</p>
+<pre><code class="language-plaintext">quagga,bind</code></pre>
+<h3>Activer Hiera pour l'environnement</h3>
+<p>Si vous devez activer Hiera, vous pouvez le faire de cette façon :</p>
+<pre><code class="language-plaintext">mkdir -p /etc/puppet/code/environments/production/manifests/
+echo "hiera_include('classes')" &gt; /etc/puppet/code/environments/production/manifests/site.pp
+cat /etc/puppet/code/hiera/common.yaml
+---
+classes:
+  - xxx
+...</code></pre>
+<p>&nbsp;</p>
+<h1>Une fois le déploiement prêt</h1>
+<p>Il y a actuellement quelques problèmes qui doivent être résolus manuellement. Espérons que tous ces éléments seront automatisés dans un proche avenir. En attendant, veuillez contribuer aux correctifs si vous découvrez comment, ou procédez simplement comme indiqué ci-dessous.</p>
+<p>&nbsp;</p>
+<h2>Réparation des contrôleurs</h2>
+<p>Malheureusement, parfois, il y a des problèmes de planification dans Puppet. Si cela se produit, on peut essayer de relancer Puppet :</p>
+<pre><code class="language-plaintext">OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug 2&gt;&amp;1 | tee /var/log/puppet-run-1</code></pre>
+<p>Faites-le d'abord sur le nœud du contrôleur 1, attendez qu'il se termine, puis redémarrez-le sur les autres nœuds de contrôleur.</p>
+<p>&nbsp;</p>
+<h2>Ajout de règles de pare-feu personnalisées</h2>
+<p>OCI utilise <code>puppet-module-puppetlabs-firewall</code> et vide les iptables à chaque exécution. Par conséquent, si vous avez besoin de règles de pare-feu personnalisées, vous devez également le faire via Puppet. Si vous souhaitez appliquer les mêmes règles de pare-feu sur tous les nœuds, modifiez simplement <code>site.pp</code> comme ceci dans <code>/etc/puppet/code/environments/production/manifests/site.pp</code> :</p>
+<pre><code class="language-plaintext">hiera_include('classes')
+
+firewall { '000 allow monitoring network':
+  proto       =&gt; tcp,
+  action      =&gt; accept,
+  source      =&gt; "10.3.50.0/24",
+}</code></pre>
+<p>Notez que la règle de pare-feu est précédée d'un nombre. Ceci est obligatoire. Assurez-vous également que ce numéro n'entre pas en conflit avec une règle déjà existante.</p>
+<p>Ce que fait OCI, c'est : protéger le VIP du contrôleur (lui refuser l'accès de l'extérieur) et protéger les ports swiftstore pour les serveurs de comptes, de conteneurs et d'objets contre toute requête ne provenant pas du cluster. Ainsi, ce qui précède permettra à un serveur de surveillance à partir de 10.3.50.0/24 de surveiller votre swiftstore.</p>
+<p>Si vous souhaitez appliquer ce qui précède uniquement à un nœud spécifique, il est possible de le faire en ne faisant correspondre que certains noms d'hôte. Voici un exemple simple, avec une adresse IP différente autorisée en fonction des rôles de la machine :</p>
+<pre><code class="language-plaintext">hiera_include('classes')
+
+node /^z-controller.*/ {
+  firewall { '000 allow monitoring network':
+    proto       =&gt; tcp,
+    action      =&gt; accept,
+    source      =&gt; "10.1.2.0/24",
+  }
+}
+
+node default {
+  firewall { '000 allow monitoring network':
+    proto       =&gt; tcp,
+    action      =&gt; accept,
+    source      =&gt; "10.3.4.0/24",
+  }
+}</code></pre>
+<p>&nbsp;</p>
+<h2>Ajout de nœuds de calcul</h2>
+<p>Avec la dernière version d'OCI, ceci est effectué automatiquement : après qu'un nœud de calcul exécute puppet avec succès, il appelle <code>oci-report-puppet-success</code>, qui contacte le nœud d'approvisionnement, qui à son tour ssh à l'un des contrôleurs pour exécuter "<code>nova -manage cell_v2 Discover_hosts</code> ". Donc, ce qui suit n'est nécessaire que si le nœud de calcul ne s'est pas installé correctement directement.</p>
+<p>Pour ajouter le nœud de calcul au cluster et vérifier qu'il est là, sur le contrôleur, procédez comme suit:</p>
+<pre><code class="language-plaintext"> . oci-openrc
+ su nova -s /bin/sh -c "nova-manage cell_v2 discover_hosts"
+ openstack hypervisor list
+	+----+-------------------------------+-----------------+---------------+-------+
+	| ID | Hypervisor Hostname           | Hypervisor Type | Host IP       | State |
+	+----+-------------------------------+-----------------+---------------+-------+
+	|  4 | swift01-compute-1.example.com | QEMU            | 192.168.103.7 | up    |
+	+----+-------------------------------+-----------------+---------------+-------+</code></pre>
+<p>Il n'y a rien de plus ... :)</p>
+<p>&nbsp;</p>
+<h2>Ajout de la prise en charge du GPU dans un nœud de calcul</h2>
+<p>Actuellement, seuls les cartes Nvidia sont prises en charge. Tout d'abord, localisez votre GPU dans votre hôte de calcul. Voici un exemple avec une carte Nvidia T4 :</p>
+<pre><code class="language-plaintext">lspci -nn | grep -i nvidia
+	5e:00.0 3D controller [0302]: NVIDIA Corporation TU104GL [Tesla T4] [10de:1eb8] (rev a1)</code></pre>
+<p>Lorsque vous avez cela, entrez-le simplement avec ocicli :</p>
+<pre><code class="language-plaintext">ocicli machine-set 1CJ9FV2 --use-gpu yes --gpu-vendor-id 10de --gpu-produc-id 1eb8 --gpu-name nvidia-t4 --gpu-device-type type-PF --vfio-ids 10de:1eb8+10de:0fb9</code></pre>
+<p>Veuillez noter que les identifiants dans <code>--vfio-ids</code> doivent être séparés par <code>+</code> et non par une virgule (la conversion est effectuée plus tard par OCI et Puppet).</p>
+<p>De plus, le type de périphérique <code>--gpu</code> dépend du type de carte GPU et du micrologiciel que vous utilisez. Par exemple, les anciens micrologiciels Nvidia T4 nécessitent le type-PCI, tandis que les nouveaux micrologiciels nécessitent le type-PF. Si vous faites une erreur ici, le nova-scheduler ne saura pas où créer une VM et retournera "<code>no valid host</code>".</p>
+<p>Cela remplira <code>/etc/modprobe.d/blacklist-nvidia.conf</code> pour mettre sur liste noire le pilote Nvidia et quelques autres, <code>/etc/modules-load.d/vfio.conf</code> pour charger le module <code>vfio-pci</code>, et <code>/etc/modprobe.d/vfio.conf</code> avec ce contenu (pour permettre d'exposer des appareils aux invités):</p>
+<pre><code class="language-plaintext">options vfio-pci ids=10de:1eb8,10de:0fb9</code></pre>
+<p>Le fichier <code>/etc/default/grub</code> doit ensuite être modifié à la main pour ajouter ceci (manuellement) :</p>
+<pre><code class="language-plaintext">intel_iommu=on</code></pre>
+<p>Redémarrez la machine de calcul, appliquez Puppet à la fois sur le nœud de calcul et sur les contrôleurs.</p>
+<p>Maintenant, créons l'image Glance et Nova pour utiliser ce nouveau GPU et démarrer l'instance:</p>
+<pre><code class="language-plaintext">openstack image set bionic-server-cloudimg-amd64_20190726_GPU --property img_hide_hypervisor_id='true'
+openstack flavor create --ram 6144 --disk 20 --vcpus 2 cpu2-ram6-disk20-gpu-nvidia-t4
+openstack flavor set cpu6-ram20-disk20-gpu-t4 --property pci_passthrough:alias=nvidia-t4:1
+openstack server create --image bionic-server-cloudimg-amd64_20190726_GPU --nic net-id=demo-net --key-name demo-keypair --flavor cpu6-ram20-disk20-gpu-nvidia-t4 my-instance-with-gpu</code></pre>
+<p>Dans l'instance, nous pouvons utiliser Cuda et le vérifier:</p>
+<pre><code class="language-plaintext">wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.168-1_amd64.deb
+apt-get update
+apt-get install cuda cuda-toolkit-10-1  nvidia-cuda-toolkit
+cat /proc/driver/nvidia/version
+	NVRM version: NVIDIA UNIX x86_64 Kernel Module  430.26  Tue Jun  4 17:40:52 CDT 2019
+	GCC version:  gcc version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)</code></pre>
+<p>&nbsp;</p>
+<h2>Plusieurs backends Cinder LVM</h2>
+<p>Si vous utilisez plusieurs types de backend LVM (par exemple, SSD et HDD), il peut être utile de sélectionner le nom du backend lors de la configuration d'un nouveau nœud de volume. Ceci est fait de cette façon:</p>
+<pre><code class="language-plaintext">ocicli machine-set 1CJ9FV2 --lvm-backend-name HDD_1</code></pre>
+<p>Vous pouvez également avoir plusieurs backends sur un seul serveur. Dans ce cas, il est possible d'utiliser un seul backend par lecteur, au lieu de tous les utiliser sur un seul VG. Pour ce faire, faites quelque chose comme ceci:</p>
+<pre><code class="language-plaintext">ocicli machine set 5KC2J63 --cinder-separate-volume-groups yes --cinder-enabled-backends LVM_SDA:LVM_SDB:LVM_SDC</code></pre>
+<p>Cela configurera de nouveaux types de volume LVM_SDA, LVM_SDB et LVM_SDC. Pour revenir à la manière normale (c'est-à-dire: un gros VG), il est possible de remettre la valeur de non-remplacement:</p>
+<pre><code class="language-plaintext">ocicli machine-set 5KC2J63 no-override</code></pre>
+<p>Attention cependant, OCI ne fera ce qu'il faut qu'une seule fois, lors du provisionnement du système.</p>
+<p>&nbsp;</p>
+<h1>Automatisation avancée</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
