@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T14:54:54.620Z
+date: 2021-05-10T15:02:21.365Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -252,5 +252,69 @@ ocicli network-add pubnet1 swift01 all eth0</code></pre>
 <pre><code class="language-plaintext">ocicli cluster-set z --self-signed-api-cert no</code></pre>
 <p>Désormais, Puppet sera démarré sans utiliser la racine ca de l'OCI comme environnement, et ca_file ne sera pas utilisé dans tous les fichiers de configuration d'OpenStack (une chaîne vide sera définie à la place).</p>
 <p>Si vous avez mis votre cluster en production avant de signer le certificat, il est possible d'utiliser, sur le serveur de Puppet, l'utilitaire <code>oci-update-cluster-certs</code> :</p>
-<pre><code class="language-plaintext"># oci-update-cluster-certs z</code></pre>
-<p>Cela remplacera le certificat cloud-api.example.com partout dans le cluster et redémarrera les services pour l'utiliser. Cet utilitaire shell est également utile chaque fois que votre certificat SSL expire et doit être mis à jour.</p>
+<pre><code class="language-plaintext">oci-update-cluster-certs z</code></pre>
+<p>Cela remplacera le certificat <code>cloud-api.example.com</code> partout dans le cluster et redémarrera les services pour l'utiliser. Cet utilitaire shell est également utile chaque fois que votre certificat SSL expire et doit être mis à jour.</p>
+<p>&nbsp;</p>
+<h2>Inscription de serveurs dans un cluster</h2>
+<p>Maintenant que nous avons des réseaux affectés au cluster, il est temps d'ajouter des serveurs d'attribution au cluster. Disons que nous avons la sortie ci-dessous:</p>
+<pre><code class="language-plaintext">ocicli machine-list
+	serial  ipaddr          memory  status  lastseen             cluster  hostname
+	C1      192.168.100.20  8192    live    2018-09-19 20:31:57  null
+	C2      192.168.100.21  8192    live    2018-09-19 20:31:04  null
+	C3      192.168.100.22  8192    live    2018-09-19 20:31:14  null
+	C4      192.168.100.23  5120    live    2018-09-19 20:31:08  null
+	C5      192.168.100.24  5120    live    2018-09-19 20:31:06  null
+	C6      192.168.100.25  5120    live    2018-09-19 20:31:14  null
+	C7      192.168.100.26  4096    live    2018-09-19 20:31:18  null
+	C8      192.168.100.27  4096    live    2018-09-19 20:31:26  null
+	C9      192.168.100.28  4096    live    2018-09-19 20:30:50  null
+	CA      192.168.100.29  4096    live    2018-09-19 20:31:00  null
+	CB      192.168.100.30  4096    live    2018-09-19 20:31:07  null
+	CC      192.168.100.31  4096    live    2018-09-19 20:31:20  null
+	CD      192.168.100.32  4096    live    2018-09-19 20:31:28  null
+	CE      192.168.100.33  4096    live    2018-09-19 20:31:33  null
+	CF      192.168.100.34  4096    live    2018-09-19 20:31:40  null
+	D0      192.168.100.35  4096    live    2018-09-19 20:31:47  null
+	D1      192.168.100.37  4096    live    2018-09-21 20:31:23  null
+	D2      192.168.100.39  4096    live    2018-09-21 20:31:31  null</code></pre>
+<p>Ensuite, nous pouvons inscrire des machines dans le cluster de cette manière:</p>
+<pre><code class="language-plaintext">ocicli machine-add C1 swift01 controller dc1-zone1
+ocicli machine-add C2 swift01 controller dc1-zone2
+ocicli machine-add C3 swift01 controller dc2-zone1
+ocicli machine-add C4 swift01 swiftproxy dc1-zone1
+ocicli machine-add C5 swift01 swiftproxy dc1-zone2
+ocicli machine-add C6 swift01 swiftproxy dc2-zone1
+ocicli machine-add C7 swift01 swiftstore dc1-zone1
+ocicli machine-add C8 swift01 swiftstore dc1-zone2
+ocicli machine-add C9 swift01 swiftstore dc2-zone1
+ocicli machine-add CA swift01 swiftstore dc1-zone1
+ocicli machine-add CB swift01 swiftstore dc1-zone2
+ocicli machine-add CC swift01 swiftstore dc2-zone1</code></pre>
+<p>En conséquence, il y aura 1 contrôleur, 1 proxy Swift et 2 nœuds de données Swift sur chaque zone de nos clusters. Les adresses IP seront automatiquement attribuées aux serveurs lorsque vous les ajoutez aux clusters. Ils ne sont pas affichés dans ocicli, mais vous pouvez les vérifier via l'interface Web. Le résultat devrait être comme ceci:</p>
+<pre><code class="language-plaintext">ocicli machine-list
+	serial  ipaddr          memory  status  lastseen             cluster  hostname
+	C1      192.168.100.20  8192    live    2018-09-19 20:31:57  7        swift01-controller-1.example.com
+	C2      192.168.100.21  8192    live    2018-09-19 20:31:04  7        swift01-controller-2.example.com
+	C3      192.168.100.22  8192    live    2018-09-19 20:31:14  7        swift01-controller-3.example.com
+	C4      192.168.100.23  5120    live    2018-09-19 20:31:08  7        swift01-swiftproxy-1.example.com
+	C5      192.168.100.24  5120    live    2018-09-19 20:31:06  7        swift01-swiftproxy-2.example.com
+	C6      192.168.100.25  5120    live    2018-09-19 20:31:14  7        swift01-swiftproxy-3.example.com
+	C7      192.168.100.26  4096    live    2018-09-19 20:31:18  7        swift01-swiftstore-1.example.com
+	C8      192.168.100.27  4096    live    2018-09-19 20:31:26  7        swift01-swiftstore-2.example.com
+	C9      192.168.100.28  4096    live    2018-09-19 20:30:50  7        swift01-swiftstore-3.example.com
+	CA      192.168.100.29  4096    live    2018-09-19 20:31:00  7        swift01-swiftstore-4.example.com
+	CB      192.168.100.30  4096    live    2018-09-19 20:31:07  7        swift01-swiftstore-5.example.com
+	CC      192.168.100.31  4096    live    2018-09-19 20:31:20  7        swift01-swiftstore-6.example.com
+	CD      192.168.100.32  4096    live    2018-09-19 20:31:28  null
+	CE      192.168.100.33  4096    live    2018-09-19 20:31:33  null
+	CF      192.168.100.34  4096    live    2018-09-19 20:31:40  null
+	D0      192.168.100.35  4096    live    2018-09-19 20:31:47  null
+	D1      192.168.100.37  4096    live    2018-09-21 20:31:23  null
+	D2      192.168.100.39  4096    live    2018-09-21 20:31:31  null</code></pre>
+<p>Comme vous pouvez le voir, les noms d'hôte sont également calculés automatiquement.</p>
+<p>&nbsp;</p>
+<h2>Calcul du ring Swift</h2>
+<p>Avant de commencer à installer les serveurs, le ring Swift doit être construit. Exécutez simplement cette commande:</p>
+<pre><code class="language-plaintext">ocicli swift-calculate-ring swift01</code></pre>
+<p>Notez que cela peut prendre très longtemps, en fonction de la taille de votre cluster. Ceci est attendu. Soyez juste patient.</p>
+<h2>&nbsp;</h2>
