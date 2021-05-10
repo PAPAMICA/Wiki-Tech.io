@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T15:02:21.365Z
+date: 2021-05-10T15:16:03.196Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -316,5 +316,82 @@ ocicli machine-add CC swift01 swiftstore dc2-zone1</code></pre>
 <h2>Calcul du ring Swift</h2>
 <p>Avant de commencer à installer les serveurs, le ring Swift doit être construit. Exécutez simplement cette commande:</p>
 <pre><code class="language-plaintext">ocicli swift-calculate-ring swift01</code></pre>
-<p>Notez que cela peut prendre très longtemps, en fonction de la taille de votre cluster. Ceci est attendu. Soyez juste patient.</p>
-<h2>&nbsp;</h2>
+<p>Notez que cela peut prendre très longtemps, en fonction de la taille de votre cluster.C'est normal, soyez juste patient.</p>
+<p>&nbsp;</p>
+<h2>Installation des serveurs</h2>
+<p>Il n'y a pas (encore) de gros bouton «installer le cluster» sur l'interface Web ou sur la CLI. Au lieu de cela, les serveurs doivent être installés un par un:</p>
+<pre><code class="language-plaintext">ocicli machine-install-os C1
+ocicli machine-install-os C2
+ocicli machine-install-os C3</code></pre>
+<p>Il est conseillé d'installer d'abord les nœuds de contrôleur, de vérifier manuellement qu'ils sont correctement installés (par exemple, vérifier que "<code>openstack user list</code>" fonctionne), puis les nœuds de stockage Swift, puis les nœuds proxy Swift. Cependant, les nœuds du même type peuvent être installés en même temps. De plus, en raison de l'utilisation d'un VIP et d'un corosync / pacemaker, les nœuds de contrôleur <i><u>doivent</u></i> être installés à peu près en même temps.</p>
+<p>Il est également possible de voir les dernières lignes du journal d'installation d'un serveur à l'aide de l'interface de ligne de commande:</p>
+<pre><code class="language-plaintext">ocicli machine-install-log C1</code></pre>
+<p>Cela affichera les journaux de l'installation du système à partir de <code>/var/log/oci</code>, puis une fois que le serveur aura redémarré, il affichera les journaux de Puppet depuis <code>/var/log/puppet-first-run</code>.</p>
+<p>&nbsp;</p>
+<h2>Vérification de votre installation</h2>
+<p>Connectez-vous sur un nœud de contrôleur. Pour ce faire, listez son IP:</p>
+<pre><code class="language-plaintext">CONTROLLER_IP=$(ocicli machine-list | grep C1 | awk '{print $2}')
+ssh root@${CONTROLLER_IP}</code></pre>
+<p>Une fois connecté au contrôleur, vous verrez les informations de connexion sous <code>/root/oci-openrc.sh</code>. Trouvez-le et essayez:</p>
+<pre><code class="language-plaintext">. /root/oci-openrc.sh
+openstack user list</code></pre>
+<p>Vous pouvez également essayer Swift:</p>
+<pre><code class="language-plaintext">. /root/oci-openrc.sh
+openstack container create foo
+echo "test" &gt;bar
+openstack object create foo bar
+rm bar
+openstack object delete foo bar</code></pre>
+<p>&nbsp;</p>
+<h2>Activation du chiffrement d'objets Swift</h2>
+<p>Localement sur le store Swift, Swift stocke l'objet sous une forme claire. Cela signifie que toute personne ayant un accès physique au centre de données peut extraire un disque dur et que les objets sont accessibles à partir du dossier <code>/srv/node</code>. Pour atténuer ce risque, Swift peut chiffrer les objets qu'il stocke. Les métadonnées (comptes, containters, etc.) seront toujours stockées sous une forme claire, mais au moins, les données stockées chiffrées.</p>
+<p>La façon dont cela est implémenté dans OCI consiste à utiliser Barbican. C'est la raison pour laquelle Barbican est provisionné par défaut sur les nœuds du contrôleur. Par défaut, le chiffrement n'est pas activé. Pour l'activer, vous devez d'abord stocker la clé de chiffrement d'objet dans le store Barbican. Cela peut être fait de cette façon:</p>
+<pre><code class="language-plaintext">ENC_KEY=$(openssl rand -hex 32)
+openstack secret store --name swift-encryption-key \
+  --payload-content-type=text/plain --algorithm aes \
+  --bit-length 256 --mode ctr --secret-type symmetric \
+  --payload ${ENC_KEY}
+  
+	+---------------+--------------------------------------------------------------------------------------------+
+	| Field         | Value                                                                                      |
+	+---------------+--------------------------------------------------------------------------------------------+
+	| Secret href   | https://swift01-api.example.com/keymanager/v1/secrets/6ba8dd62-d752-4144-b803-b32012d707d0 |
+	| Name          | swift-encryption-key                                                                       |
+	| Created       | None                                                                                       |
+	| Status        | None                                                                                       |
+	| Content types | {'default': 'text/plain'}                                                                  |
+	| Algorithm     | aes                                                                                        |
+	| Bit length    | 256                                                                                        |
+	| Secret type   | symmetric                                                                                  |
+	| Mode          | ctr                                                                                        |
+	| Expiration    | None                                                                                       |
+	+---------------+--------------------------------------------------------------------------------------------+</code></pre>
+<p>Une fois cela fait, l'ID de clé (ici: <code>6ba8dd62-d752-4144-b803-b32012d707d0</code>) doit être entré dans l'interface Web de l'OCI, dans la définition du cluster, sous "ID de clé de chiffrement Swift (vide: pas de chiffrement) :". Une fois que cela est fait, une autre exécution de Puppet est nécessaire sur les nœuds proxy Swift:</p>
+<pre><code class="language-plaintext">OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug</code></pre>
+<p>Cela devrait activer le chiffrement. Notez que la clé de cryptage doit être stockée dans Barbican sous les services utilisateur swift et project, afin que Swift y ait accès.</p>
+<p>&nbsp;</p>
+<h2>Correction de node1 inutile dans corosync</h2>
+<p>Parfois, "<code>node1</code>" apparaît lors de l'exécution de "<code>crm status</code>". Pour nettoyer cela, faites simplement:</p>
+<pre><code class="language-plaintext">crm_node -R node1 --force</code></pre>
+<p>&nbsp;</p>
+<h2>Correction de ceph -s</h2>
+<p>Cela corrige tous les avertissements Ceph après une configuration:</p>
+<pre><code class="language-plaintext">ceph osd pool application enable glance rbd
+ceph osd pool application enable nova rbd
+ceph osd pool application enable cinder rbd
+ceph osd pool application enable gnocchi rbd
+ceph osd pool application enable cinderback rbd
+ceph mon enable-msgr2</code></pre>
+<p>&nbsp;</p>
+<h2>Variable de configuration initiale du cluster</h2>
+<p>Pour éviter de faire trop de choses lorsque le cluster est en production (comme, par exemple, démarrer MySQL pour faire la configuration initiale du cluster Galera), OCI a une variable appelée "<code>initial-cluster-setup</code>". Elle est activée par défaut lors des premières exécutions, et une fois que tous les contrôleurs ont signalé une exécution réussie à Puppet, cette variable est automatiquement définie sur <code>no</code>. Voici une liste (probablement non exhaustive) de choses qu'OCI ne fait que si i<code>nitial-cluster-setup</code> est défini sur <code>yes</code> :</p>
+<ul>
+  <li>ressource openstack-api-vip dans corosync</li>
+  <li>Cluster Galera</li>
+  <li>Faire en sorte que les contrôleurs rejoignent le cluster rabbitmq</li>
+  <li>Utilisateurs du domaine Heat et Magnum</li>
+  <li>Configuration des cellules Nova v2</li>
+</ul>
+<p>A tout moment, il est possible de basculer la valeur sur <code>yes</code> ou <code>no</code> :</p>
+<pre><code class="language-plaintext">ocicli cluster-set z --initial-cluster-setup no</code></pre>
+<p>Cependant, il est fortement conseillé de définir la valeur sur no une fois que le cluster est en production.</p>
