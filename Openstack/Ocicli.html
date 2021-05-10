@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T13:42:27.269Z
+date: 2021-05-10T14:40:07.999Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -121,4 +121,78 @@ cd /usr/share/openstack-cluster-installer ; php db_sync.php
 <p>Les mots de passe sont hachés en utilisant la fonction PHP <code>password_hash () </code>en utilisant l'algo BCRYPT.</p>
 <p>De plus, OCI est capable d'utiliser un Radius externe pour son authentification. Cependant, vous devez toujours ajouter manuellement des connexions dans la base de données. Ce qui est ci-dessous insère un nouvel utilisateur qui a une entrée dans le serveur Radius :</p>
 <pre><code class="language-plaintext">oci-userdb -r newuser@example.com</code></pre>
+<blockquote>
+  <p>&nbsp;Vous devez également configurer votre adresse de serveur Radius et votre secret partagé dans <code>openstack-cluster-installer.conf</code>.</p>
+</blockquote>
+<blockquote>
+  <p>Même s'il existe un système d'authentification, il est fortement conseillé de ne pas exposer OCI à Internet. La meilleure configuration est si votre serveur d'approvisionnement n'est pas du tout accessible de l'extérieur.</p>
+</blockquote>
 <p>&nbsp;</p>
+<h2>Installation des services annexes</h2>
+<h3>ISC-DHCPD</h3>
+<p>Configurez <code>isc-dhcp</code> pour qu'il corresponde à votre configuration réseau. Notez que "<code>next-server</code>" doit être l'adresse de votre nœud master Puppet (c'est-à-dire : le serveur DHCP que nous sommes en train de configurer).</p>
+<p>Modifiez <code>/etc/default/isc-dhcpd</code> :</p>
+<pre><code class="language-plaintext">sed -i 's/INTERFACESv4=.*/INTERFACESv4="eth0"/' /etc/default/isc-dhcp-server</code></pre>
+<p>Puis éditez <code>/etc/dhcp/dhcpd.conf</code> :</p>
+<pre><code class="language-plaintext">allow booting;
+allow bootp;
+default-lease-time 600;--
+max-lease-time 7200;
+ddns-update-style none;
+authoritative;
+ignore-client-uids On;
+
+subnet 192.168.100.0 netmask 255.255.255.0 {
+        range 192.168.100.20 192.168.100.80;
+        option domain-name example.com;
+        option domain-name-servers 9.9.9.9;
+        option routers 192.168.100.1;
+        option subnet-mask 255.255.255.0;
+        option broadcast-address 192.168.100.255;
+        next-server 192.168.100.2;
+        if exists user-class and option user-class = "iPXE" {
+                filename "http://192.168.100.2/oci/ipxe.php";
+        } else {
+                filename "lpxelinux.0";
+        }
+}</code></pre>
+<p>Notez soigneusement que <code>192.168.100.2</code> doit être l'adresse de votre serveur OCI, car il sera utilisé pour servir PXE, TFTP et Web pour les nœuds esclaves. Il est bien sûr très bien d'utiliser une autre adresse si votre serveur OCI le fait, alors n'hésitez pas à adapter ce qui précède à votre guise.</p>
+<p>Notez qu'à partir de la version 28 d'OCI et au-dessus, le chargement de l'initrd et du noyau se fait via HTTP, donc l'utilisation de <code>lpxelinux.0</code> est obligatoire (<code>pxelinux.0</code> ne devrait plus être utilisé, car il ne supporte que TFTP).</p>
+<p>De plus, pour qu'OCI autorise les requêtes à partir de la plage DHCP, vous devez ajouter vos sous-réseaux DHCP à <code>TRUSTED_NETWORKS</code> dans <code>openstack-cluster-installer.conf</code>. Sinon, le reporting matériel ne fonctionnera jamais.</p>
+<p>&nbsp;</p>
+<h3>tftpd</h3>
+<p>Configurez <code>tftp-hpa</code> pour servir les fichiers depuis OCI:</p>
+<pre><code class="language-plaintext">sed -i 's#TFTP_DIRECTORY=.*#TFTP_DIRECTORY="/var/lib/openstack-cluster-installer/tftp"#' /etc/default/tftpd-hpa</code></pre>
+<p>Puis redémarrez <code>tftpd-hpa</code>.</p>
+<p>&nbsp;</p>
+<h2>Préparation de l'installation des serveurs</h2>
+<h3>Configuration des clés SSH</h3>
+<p>Lors de la configuration, OCI créera une paire de clés ssh publique / privée ici:</p>
+<pre><code class="language-plaintext">/etc/openstack-cluster-installer/id_rsa</code></pre>
+<p>Une fois cela fait, il copiera le contenu <code>id_rsa.pub</code> correspondant dans:</p>
+<pre><code class="language-plaintext">/etc/openstack-cluster-installer/authorized_keys</code></pre>
+<p>et ajoutera également toutes les clés publiques qu'il trouve sous <code>/root/.ssh/authorized_keys</code>. Plus tard, ce fichier sera copié dans l'image live OCI Debian, et dans tous les nouveaux systèmes qu'OCI installera. OCI utilisera plus tard la clé privée qu'il a générée pour se connecter aux serveurs, tandis que vos clés seront également présentes afin que vous puissiez vous connecter à chaque serveur individuel en utilisant votre clé privée. Par conséquent, il est fortement conseillé de personnaliser <code>/etc/openstack-cluster-installer/allowed_keys</code> <i><u>avant</u> de</i> construire l'image OCI Debian Live.</p>
+<p>&nbsp;</p>
+<h3>Construire l'image en direct d'OCI</h3>
+<pre><code class="language-plaintext">mkdir -p /root/live-image
+cd /root/live-image
+openstack-cluster-installer-build-live-image --pxe-server-ip 192.168.100.2 --debian-mirror-addr http://deb.debian.org/debian --debian-security-mirror-addr http://security.debian.org/
+cp -auxf /var/lib/openstack-cluster-installer/tftp/* /usr/share/openstack-cluster-installer
+cd ..
+rm -rf /root/live-image</code></pre>
+<p>Il est possible d'utiliser des serveurs proxy de paquets comme <code>approx</code>, ou des miroirs locaux, ce qui donne la possibilité de déconnecter complètement votre cluster et OCI lui-même d'Internet.</p>
+<p>&nbsp;</p>
+<h3>Configurer l'ENC de Puppet</h3>
+<p>Une fois le service master Puppet installé, ses directives de classificateur de nœud externe (ENC) doivent être définies, de sorte que OCI agisse comme ENC (ce qui signifie que OCI définira les rôles et les classes de puppet à appeler lors de l'installation d'un nouveau serveur avec puppet) :</p>
+<pre><code class="language-plaintext">. /usr/share/openstack-pkg-tools/pkgos_func
+pkgos_add_directive /etc/puppet/puppet.conf master "external_nodes = /usr/bin/oci-puppet-external-node-classifier" "# Path to enc"
+pkgos_inifile set /etc/puppet/puppet.conf master external_nodes /usr/bin/oci-puppet-external-node-classifier
+pkgos_add_directive /etc/puppet/puppet.conf master "node_terminus = exec" "# Tell what type of ENC"
+pkgos_inifile set /etc/puppet/puppet.conf master node_terminus exec</code></pre>
+<p>Puis redémarrez le service Puppet-Master.</p>
+<p>&nbsp;</p>
+<h3>Facultatif: approx</h3>
+<p>Pour accélérer le téléchargement du paquet, il est fortement recommandé d'installer approx &nbsp;localement sur votre serveur de provisionnement OCI et d'utiliser son adresse lors de la configuration des serveurs (l'adresse est définie dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code>).</p>
+<p>&nbsp;</p>
+<h1>Utiliser OCI</h1>
+<h3>&nbsp;</h3>
