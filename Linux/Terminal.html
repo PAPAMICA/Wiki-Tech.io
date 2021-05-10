@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-05-10T07:57:10.426Z
+date: 2021-05-10T08:16:41.516Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T07:29:51.462Z
@@ -47,7 +47,25 @@ dateCreated: 2021-05-10T07:29:51.462Z
 <h2>Les thèmes</h2>
 <h1>Screen</h1>
 <h2>Présentation</h2>
-<p>Avez-vous déjà été confronté à une situation où vous exécutez une tâche de longue durée sur une machine distante, et soudainement votre connexion tombe, la session SSH est interrompue et votre travail est perdu. Eh bien, cela nous est arrivé à tous à un moment donné, n'est-ce pas? Heureusement, il existe un utilitaire appelé <code>screen</code>qui nous permet de reprendre les sessions.</p>
+<p>Avez-vous déjà été confronté à une situation où vous exécutez une tâche de longue durée sur une machine distante, et soudainement votre connexion tombe, la session SSH est interrompue et votre travail est perdu. Et bien, cela nous est arrivé à tous à un moment donné, n'est-ce pas? Heureusement, il existe un utilitaire appelé <code>screen</code>qui nous permet de reprendre les sessions.</p>
+<p>Screen ou GNU Screen est un multiplexeur terminal. En d'autres termes, cela signifie que vous pouvez démarrer une session, puis ouvrir n'importe quel nombre de fenêtres (terminaux virtuels) à l'intérieur de cette session. Les processus exécutés dans Screen continueront de s'exécuter même si vous êtes déconnecté.</p>
 <h2>Installation</h2>
+<p>Le package <code>screen</code> est pré-installé sur la plupart des distributions Linux de nos jours. Vous pouvez vérifier s'il est installé sur votre système avec la commande : <code>screen --version</code></p>
+<pre><code class="language-plaintext">screen --version
+Screen version 4.08.00 (GNU) 05-Feb-20</code></pre>
+<p>Si <code>screen</code> n'est pas installé, vous pouvez l'installer facilement avec le gestionnaire de paquet de votre distribution :</p>
+<h3>Debian &amp; Ubuntu family</h3>
+<pre><code class="language-plaintext">sudo apt install screen</code></pre>
+<h3>Fedora &amp; CentOS family</h3>
+<pre><code class="language-plaintext">sudo dnf install screen</code></pre>
+<h3>Arch &amp; Manjaro family</h3>
+<pre><code class="language-plaintext">sudo pacman -S screen</code></pre>
+<p>&nbsp;</p>
 <h2>Utilisation</h2>
+<p>Pour démarrer une session, il suffit simplement d'utiliser la commande :</p>
+<pre><code class="language-plaintext">screen</code></pre>
+<p>Mais je vous conseille plutôt de démarrer vos sessions avec un nom à chaque fois :</p>
+<pre><code class="language-plaintext"> screen -S &lt;nom_session&gt;</code></pre>
+<p>Vous pouvez lister toutes les sessions screen en cours avec :</p>
+<pre><code class="language-plaintext">screen -ls</code></pre>
 <h1>Autres astuces</h1>
