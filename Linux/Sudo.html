@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-05-09T17:30:13.023Z
+date: 2021-05-10T20:18:24.242Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T16:18:20.853Z
@@ -22,44 +22,148 @@ dateCreated: 2021-05-09T16:18:20.853Z
 <pre><code class="language-plaintext">yum install sudo</code></pre>
 <h2>Arch et Manjaro</h2>
 <pre><code class="language-plaintext">pacman -S sudo</code></pre>
-<h1>Configuration</h1>
+<h1>Configuration rapide</h1>
 <h2><strong>Ajouter un utilisateur aux Sudoers</strong></h2>
 <p>Par défaut, sur la plupart des distributions Linux, l'octroi d'un accès sudo est aussi simple que l'ajout de l'utilisateur au groupe sudo défini dans le fichier <code>/etc/sudoers</code> . Les membres de ce groupe pourront exécuter n'importe quelle commande en tant que root. Le nom du groupe peut différer d'une distribution à l'autre.</p>
 <p>Sur Debian, Ubuntu et leurs dérivés, c'est le groupe <code>sudo</code> &nbsp;:</p>
 <pre><code class="language-plaintext">usermod -aG sudo username</code></pre>
-<p>Sur CentOS et ses dérivés, c'est le groupe <code>wheel</code> &nbsp;:</p>
+<p>Sur la plupart des autres distributions Linux (incluant Red-Hat et ses dérivés comme CentOS), sur BSD ou Unix c'est le groupe <code>wheel</code> &nbsp;:</p>
 <pre><code class="language-plaintext">usermod -aG wheel username</code></pre>
 <p>&nbsp;</p>
-<h2>Utilisation de sudo</h2>
-<p>La syntaxe de la <code>sudo</code>commande est la suivante:</p>
+<h2>Expiration du mot de passe</h2>
+<p>Par défaut, sudo vous demandera de saisir à nouveau votre mot de passe après cinq minutes d'inactivité sudo. Vous pouvez modifier le délai d'expiration par défaut en modifiant le fichier <code>/etc/sudoers</code>. <strong>La modification directe du fichier sudoers est déconseillée</strong>, il vaut mieux éditer le fichier à l'aide de <code>visudo</code> (commande installée avec le paquet sudo) qui vérifiera qu'aucune erreur de syntaxe n'a été effectuée avant enregistrement des modifications et bloquera l'édition concurrente du fichier :</p>
+<pre><code class="language-plaintext">visudo</code></pre>
+<p>Si vous souhaitez éditer la configuration de sudo sans être logué à root il vous faudra utiliser la commande suivante (si autorisé par les permissions sudo de votre utilisateur) :</p>
+<pre><code class="language-plaintext">sudo visudo</code></pre>
+<p>Définissez le délai par défaut en ajoutant la ligne ci-dessous, où <code>10</code> est le délai spécifié en minutes, 0 permettra de demander le mot de passe de l'utilisateur à chaque lancement d'une commande avec sudo :</p>
+<pre><code class="language-plaintext">Defaults timestamp_timeout=10</code></pre>
+<p>Si vous souhaitez modifier l'horodatage uniquement pour un utilisateur spécifique, ajoutez la ligne suivante, où <code>NOM_UTILISATEUR</code> est l'utilisateur en question.</p>
+<pre><code class="language-plaintext">Defaults:&lt;NOM_UTILISATEUR&gt; timestamp_timeout=10</code></pre>
+<p>&nbsp;</p>
+<h1>Utilisation de sudo</h1>
+<p>La syntaxe de la commande <code>sudo</code> est la suivante:</p>
 <pre><code class="language-plaintext">sudo &lt;OPTIONS&gt; &lt;COMMANDE&gt;</code></pre>
 <p>La commande <code>sudo</code> a de <a href="https://www.sudo.ws/man/1.8.3/sudo.man.html"><u>nombreuses options</u></a> qui contrôlent son comportement, mais généralement, elle est utilisée dans sa forme la plus basique, sans aucune option.</p>
 <p>Pour utiliser sudo, préfixez simplement la commande avec <code>sudo</code>:</p>
-<pre><code class="language-plaintext">sudo &lt;commande&gt;</code></pre>
-<p>Où <code>commande</code>est la commande pour laquelle vous souhaitez utiliser sudo.</p>
+<pre><code class="language-plaintext">sudo &lt;COMMANDE&gt;</code></pre>
+<p>Où <code>COMMANDE</code> est la commande pour laquelle vous souhaitez utiliser sudo.</p>
 <p>La première fois que vous utilisez sudo dans une session, vous serez invité à entrer le mot de passe de l'utilisateur et la commande sera exécutée en tant que root.</p>
 <p>Exemple : lister les fichiers du dossier root :</p>
 <pre><code class="language-plaintext">sudo ls /root</code></pre>
 <p>&nbsp;</p>
-<h2>Expiration du mot de passe</h2>
-<p>Par défaut, sudo vous demandera de saisir à nouveau votre mot de passe après cinq minutes d'inactivité sudo. Vous pouvez modifier le délai d'expiration par défaut en modifiant le fichier <code>/etc/sudoers</code>. Ouvrez le fichier avec <code>visudo</code> ou avec :</p>
-<pre><code class="language-plaintext">sudo nano /etc/sudoers</code></pre>
-<p>Définissez le délai par défaut en ajoutant la ligne ci-dessous, où <code>10</code> est le délai spécifié en minutes :</p>
-<pre><code class="language-plaintext">Defaults  timestamp_timeout=10</code></pre>
-<p>Si vous souhaitez modifier l'horodatage uniquement pour un utilisateur spécifique, ajoutez la ligne suivante, où <code>nom_utilisateur</code> est l'utilisateur en question.</p>
-<pre><code class="language-plaintext">Defaults:nom_utilisateur timestamp_timeout=10</code></pre>
-<p>&nbsp;</p>
 <h2><strong>Exécuter une commande en tant qu'utilisateur autre que root</strong></h2>
-<p>Beaucoup de personne pense que <code>sudo</code>n'est utilisée que pour fournir des autorisations root à un utilisateur standars. En fait, vous pouvez utiliser <code>sudo</code>pour exécuter une commande en tant &nbsp;que n'importe quel utilisateur.</p>
+<p>Beaucoup de personne pense que <code>sudo</code> n'est utilisée que pour fournir des autorisations root à un utilisateur standard. En fait, vous pouvez utiliser <code>sudo</code> pour exécuter une commande en tant &nbsp;que n'importe quel utilisateur.</p>
 <p>L'option <code>-u</code> vous permet d'exécuter une commande en tant qu'un utilisateur spécifique.</p>
-<p>Dans l'exemple suivant, nous utilisons <code>sudo</code>pour exécuter la commande <code>whoami</code> en tant qu'utilisateur «richard»:</p>
+<p>Dans l'exemple suivant, nous utilisons <code>sudo</code> pour exécuter la commande <code>whoami</code> en tant qu'utilisateur «richard» :</p>
 <pre><code class="language-plaintext">sudo -u richard whoami</code></pre>
-<p>La commande <code>whoami</code> imprimera le nom de l'utilisateur exécutant la commande:</p>
+<p>La commande <code>whoami</code> imprimera le nom de l'utilisateur exécutant la commande :</p>
 <pre><code class="language-plaintext">richard</code></pre>
 <p>&nbsp;</p>
 <h2><strong>Rediriger avec Sudo</strong></h2>
 <p>Si vous essayez de rediriger la sortie d'une commande vers un fichier pour lequel votre utilisateur ne dispose d'aucune autorisation d'écriture, vous obtiendrez une erreur «<i>Permission denied</i>».</p>
-<p>Cela se produit car la redirection « <code>&gt;</code>» de la sortie est effectuée sous l'utilisateur auquel vous êtes connecté, et non sous l'utilisateur spécifié avec sudo. La redirection se produit avant que la <code>sudo</code>commande ne soit appelée.</p>
+<p>Cela se produit car la redirection « <code>&gt;</code>» de la sortie est effectuée sous l'utilisateur auquel vous êtes connecté, et non sous l'utilisateur spécifié avec sudo. La redirection se produit avant que la commande <code>sudo</code> ne soit appelée.</p>
 <p>Une solution consiste à appeler un nouveau shell en tant que root en utilisant <code>sudo sh -c</code>:</p>
-<pre><code class="language-plaintext">sudo sh -c 'echo "test" &gt; /root/file.txt'
-</code></pre>
+<pre><code class="language-plaintext">sudo sh -c 'echo "test" &gt; /root/file.txt'</code></pre>
+<p>&nbsp;</p>
+<h2>Obtenir la liste des permissions de sudo</h2>
+<p>Sur des environnements où la configuration de sudo n'est pas celle par défaut, permettant l'utilisation de toutes les commandes avec tous les utilisateurs, il est utile de connaître les droits que l'on peut avoir avec <code>sudo</code>. Il suffit d'exécuter la commande suivante pour avoir la liste des permissions de son utilisateur :</p>
+<pre><code class="language-plaintext">sudo -l</code></pre>
+<p>&nbsp;</p>
+<h1>Configuration avancée</h1>
+<h2>Créer des alias d'utilisateurs</h2>
+<p>Sudo nous permet de spécifier des alias d'utilisateurs pour les regrouper sous des appellations plus facile à retenir (par exemple DBA pourrait contenir tous les utilisateurs administrateurs de base de données). De plus deux types d'alias utilisateurs existent : les <code>User_Alias</code> et les <code>Runas_Alias</code>.</p>
+<p>&nbsp;</p>
+<p>Les <code>User_Alias</code> permettent de regrouper sous un alias différents utilisateurs ou groupes utilisateurs qui pourront exécuter certaines commandes. Leur création est de cette forme :</p>
+<pre><code class="language-plaintext">User_Alias &lt;NOM_USER_ALIAS&gt; = &lt;LISTE_USER&gt;</code></pre>
+<p>Où <code>NOM_USER_ALIAS</code> est le nom donné à l'alias. Il doit être composé de lettres en majuscules, de chiffres ou d'un underscore et commencer par une lettre majuscule.</p>
+<p>Où <code>LISTE_USER</code> est la liste des utilisateurs séparés par des <code>,</code>. Les différentes formes que peuvent prendre les utilisateurs sont les suivantes :</p>
+<ul>
+  <li>Nom du login de l'utilisateur : techos</li>
+  <li>ID de l'utilisateur précédé par un <code>#</code> : #1000</li>
+  <li>Nom d'un groupe utilisateur précédé par un <code>%</code> : %dba</li>
+  <li>ID d'un groupe utilisateur précédé par <code>%#</code> : %#1005</li>
+  <li>Nom d'un <code>User_Alias</code> précédemment spécifié</li>
+</ul>
+<p>&nbsp;</p>
+<p>Les <code>Runas_Alias</code> permettent de regrouper sous un alias différents utilisateurs ou groupes utilisateurs qui seront les utilisateurs ou groupes utilisateurs disponibles pour l'exécution des commandes. Leur création est de cette forme :</p>
+<pre><code class="language-plaintext">Runas_Alias &lt;NOM_RUNAS_ALIAS&gt; = &lt;LISTE_RUNAS_USER&gt;</code></pre>
+<p>Où <code>NOM_RUNAS_ALIAS</code> est le nom donné à l'alias. Il doit être composé de lettres en majuscules, de chiffres ou d'un underscore et commencer par une lettre majuscule.</p>
+<p>Où <code>LISTE_RUNAS_USER</code> est la liste des utilisateurs séparés par des <code>,</code>. Les différentes formes que peuvent prendre les utilisateurs sont les suivantes :</p>
+<ul>
+  <li>Nom du login de l'utilisateur : root</li>
+  <li>ID de l'utilisateur précédé par un <code>#</code> : #0</li>
+  <li>Nom d'un groupe utilisateur précédé par un <code>%</code> : %dba</li>
+  <li>ID d'un groupe utilisateur précédé par <code>%#</code> : %#1005</li>
+  <li>Nom d'un <code>Runas_Alias</code> précédemment spécifié</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Créer des alias d'hôtes</h2>
+<p>Sudo peut permettre l'application de droits suivant l'hôte sur lequel la commande sudo est exécutée. C'est une fonctionnalité intéressante à partir du moment que la configuration sudoers est reportée sur différentes machines qui ont des rôles différents (serveur Web, serveur de BDD, serveur DNS, etc.). Pour créer un alias <code>Host_Alias</code> il faudra l'ajouter à l'aide de <code>visudo</code> :</p>
+<pre><code class="language-plaintext">Host_Alias &lt;NOM_HOTE_ALIAS&gt; = &lt;LISTE_HOTE&gt;</code></pre>
+<p>Où <code>NOM_HOTE_ALIAS</code> est le nom donné à l'alias. Il doit être composé de lettres en majuscules, de chiffres ou d'un underscore et commencer par une lettre majuscule.</p>
+<p>Où <code>LISTE_HOTE</code> est la liste des hôtes séparés par des <code>,</code>. Les différentes formes que peuvent prendre les hôtes sont les suivantes :</p>
+<ul>
+  <li>Nom de l'hôte : SRV0001</li>
+  <li>FQDN : SRV0001.domain.local</li>
+  <li>Adresse IP : 192.168.0.100</li>
+  <li>Sous-réseau IP avec masque de sous-réseau : 192.168.0.0/255.255.255.128</li>
+  <li>Sous-réseau IP au format CIDR : 192.168.0.0/25</li>
+  <li>Nom d'un <code>Host_Alias</code> précédemment spécifié</li>
+</ul>
+<p>&nbsp;</p>
+<h2>Créer des alias de commandes</h2>
+<p>Les alias de commandes permettent de regrouper sous un alias plusieurs commandes qui pourront être ajoutées à des permissions. Ces alias sont à créer sous cette forme :</p>
+<pre><code class="language-plaintext">Cmnd_Alias &lt;NOM_CMND_ALIAS&gt; = &lt;LISTE_CMND&gt;</code></pre>
+<p>Où <code>NOM_CNMD_ALIAS</code> est le nom donné à l'alias. Il doit être composé de lettres en majuscules, de chiffres ou d'un underscore et commencer par une lettre majuscule.</p>
+<p>Où <code>LISTE_CNMD</code> est la liste des commandes séparées par des <code>,</code>. Les différentes formes que peuvent prendre les commandes sont les suivantes :</p>
+<ul>
+  <li>Le chemin vers une commande : /sbin/visudo</li>
+  <li>Le chemin vers une commande + précisions des arguments autorisés (supporte le wildcard) : /usr/bin/systemctl status *</li>
+  <li>L'interdiction d'une commande en commençant par <code>!</code> : !/usr/bin/passwd *root*</li>
+  <li>Nom d'un <code>Cnmd_Alias</code> précédemment spécifié</li>
+</ul>
+<p>&nbsp;</p>
+<p>Pour plus de sécurité il est aussi possible de spécifier le hash SHA-2 (sha224, sha256, sha384 ou sha512) du fichier de commande pour que son exécution ne soit possible que si le hash, calculé dynamiquement à l'exécution de sudo, correspond à celui présent dans sudoers. Le hash devant être au format hexadécimale ou base64. Pour réaliser une telle configuration il suffit de renseigner l'alias sous cette forme :</p>
+<pre><code class="language-plaintext">Cmnd_Alias &lt;NOM_CMND_ALIAS&gt; = &lt;HASH_TYPE&gt;:&lt;HASH&gt; &lt;LISTE_CMND&gt;</code></pre>
+<p>Où <code>HASH_TYPE</code> précise le type de hash utilisé : sha224, sha256, sha384 ou sha512.</p>
+<p>Où <code>HASH</code> est le résultat du hash calculé sur le fichier de commande.</p>
+<p>&nbsp;</p>
+<h2>Créer de nouvelles permissions</h2>
+<p>Les permissions dans sudoers ont toutes cette forme :</p>
+<pre><code class="language-plaintext">&lt;USER&gt; &lt;HOTE&gt;=(&lt;RUNAS_USER&gt;:&lt;RUNAS_GROUP&gt;) &lt;COMMANDE&gt;</code></pre>
+<p>Où <code>USER</code> spécifie l'utilisateur ou les utilisateurs pour qui cette permission les concerne. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>User_Alias</code>. Il est bien entendu possible d'utiliser des <code>User_Alias</code> précédemment créés.</p>
+<p>Où <code>HOTE</code> spécifie l'hôte ou les hôtes pour lesquels cette permission est appliquée. Il est possible de spécifier plusieurs hôtes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Host_Alias</code>. Il est bien entendu possible d'utiliser des <code>Host_Alias</code> précédemment créés.</p>
+<p>Où <code>RUNAS_USER</code> spécifie l'utilisateur ou les utilisateurs avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
+<p>Où <code>RUNAS_GROUP</code> spécifie le group ou les groupes avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs groupes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
+<p>Où <code>COMMANDE</code> spécifie une ou des commandes qui sont autorisées par cette permission. Il est possible de spécifier plusieurs commandes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Cmnd_Alias</code>. Il est bien entendu possible d'utiliser des <code>Cnmd_Alias</code> précédemment créés.</p>
+<p>La forme peut se résumer en : Qui Où = (Comme qui) Quoi.</p>
+<p>A noter que chacun des éléments précédents peuvent être remplacés par <code>ALL</code> s'il n'y a pas besoin d'avoir un filtrage particulier.</p>
+<p>&nbsp;</p>
+<p>Il est aussi possible de rajouter des <code>TAG</code> qui s'appliqueront à toutes les commandes suivantes. La forme passe donc à ceci :</p>
+<pre><code class="language-plaintext">&lt;USER&gt; &lt;HOTE&gt;=(&lt;RUNAS_USER&gt;:&lt;RUNAS_GROUP&gt;) &lt;TAG&gt;: &lt;COMMANDE&gt;</code></pre>
+<p>Voici deux <code>TAG</code> pouvant être utiles :</p>
+<ul>
+  <li><code>PASSWD</code> et <code>NOPASSWD</code> : par défaut c'est <code>PASSWD</code> qui est actif, ce tag permet de requérir le mot de passe de l'utilisateur à l'exécution de sudo (<code>PASSWD</code>) ou de ne jamais lui demander son mot de passe pour l'exécution des commandes permises (<code>NOPASSWD</code>).</li>
+  <li><code>EXEC</code> et <code>NOEXEC</code> : par défaut c'est <code>EXEC</code> qui est actif, ce tag permet d'autoriser l'exécution de commandes (<code>EXEC</code>) à l'intérieur d'une commande (avec vim, less ou more il est possible d'exécuter des commandes en les précédant par <code>!</code>) ou bien de ne pas autoriser ce fonctionnement (<code>NOEXEC</code>).</li>
+</ul>
+<p>Il est possible de spécifier plusieurs <code>TAG</code> à la suite et leur effet s'appliquera pour une permission jusqu'à ce qu'un <code>TAG</code> à l'effet opposé soit défini.</p>
+<p>&nbsp;</p>
+<h2>Vigilance sur la sécurité vis-à-vis des configurations de sudo</h2>
+<p>Bien que sudo est avantageux et permet d'augmenter la sécurité des machines, du moins lorsqu'on n'utilise pas les paramètres par défaut, une mauvaise configuration de ce dernier et plusieurs accès indésirables pourront s'ouvrir. Les erreurs les plus courantes étant de donner des permissions à des utilisateurs sur des commandes qui peuvent exécuter d'autres commandes, dont un shell. Bien que pouvant être contré en partie avec le tag <code>NOEXEC</code>, des utilisations particulières pourront donner l'accès à un shell root ou bien permettre la lecture de fichiers que seul root est sensé pouvoir lire. Il faut tenter de <strong>réduire au maximum les commandes autorisées et de spécifier les options/arguments au maximum</strong>.</p>
+<p>En exemple un administrateur souhaite donner l'accès à un utilisateur à la gestion du service sshd pour vérifier son statut et éventuellement le redémarrer :</p>
+<pre><code class="language-plaintext">techos ALL=(root) /usr/bin/systemctl * sshd</code></pre>
+<p>L'utilisateur pourra bien vérifier le statut du daemon sshd et le redémarrer mais l'utilisation du wildcard fait que cet utilisateur pourra aussi l'arrêter, le désactiver (disable) et même agir sur d'autres daemon tant que sa commande termine par “sshd”. Pour restreindre l'utilisateur au maximum nous sommes obligés de préciser les deux commandes autorisées sans utiliser de wildcard :</p>
+<pre><code class="language-plaintext">techos ALL=(root) /usr/bin/systemctl status sshd, /usr/bin/systemctl restart sshd</code></pre>
+<p>Tout semble cette fois-ci parfait et pourtant le résultat de la commande <code>sudo systemctl status sshd</code> peut être réalisée au sein d'un pager, qui utilise <code>less</code> (suivant la configuration du système), et qui permet d'ouvrir un shell en tant que root. Avec ce cas &nbsp;précis l'utilisation du tag <code>NOEXEC</code> n'est pas possible car systemctl retournera une erreur lors de son exécution. La documentation de systemctl (obtenable avec <code>man systemctl</code> si man a été installé) nous renseigne sur l'existence d'un paramètre pouvant être défini pour ne pas avoir de pager, c'est <code>--no-pager</code>. Nous pouvons modifier le sudoers comme ceci :</p>
+<pre><code class="language-plaintext"> techos ALL=(root) /usr/bin/systemctl --no-pager status sshd, /usr/bin/systemctl restart sshd</code></pre>
+<p>&nbsp;</p>
+<p>Autre principe à essayer d'appliquer : si un utilisateur demande à avoir une nouvelle permission afin de pouvoir éditer un fichier dont il n'a pas l'accès, il vaut mieux d'abord chercher à lui donner les droits en lecture et écriture sur le fichier (si c'est possible), plutôt que de lui rajouter une permission avec sudo. Ceci pour trois raisons :</p>
+<ol>
+  <li>Il y a peut-être une raison pour que cet utilisateur ne puisse pas modifier le fichier demandé, il faudra vérifier dans un premier temps si sa demande est recevable.</li>
+  <li>La création d'une nouvelle permission pourrait être mal réalisée et l'utilisateur pourrait éditer plus de fichiers qu'il n'en a réellement le droit.</li>
+  <li>Il pourrait utiliser l'éditeur de texte pour ouvrir un shell root.</li>
+</ol>
+<p>Si l'utilisation de sudo semble inévitable alors au lieu de lui fournir un accès avec son éditeur de texte favoris, il vaut mieux lui imposer l'utilisation de <code>sudoedit</code> qui s'appuiera sur les variables, dans cet ordre, de l'utilisateur pour le choix de l'éditeur : <code>SUDO_EDITOR</code>, <code>VISUAL</code> et enfin <code>EDITOR</code>. Le contenu de ces variables devant être le chemin complet à un éditeur de texte. L'utilisation de <code>sudoedit</code> (ou <code>sudo -e</code>) a pour avantage de prémunir de l'utilisation de l'exécution de commande pour ouvrir un shell root car l'utilisateur travaillera sur un fichier temporaire avec ses droits utilisateur à lui.&nbsp;</p>
+<p>Du côté de l'administrateur, s'il souhaite donner l'accès en édition du fichier /etc/resolv.conf, il devra inscrire une permission de ce type :</p>
+<pre><code class="language-plaintext">techos ALL=(root) /usr/bin/sudoedit /etc/resolv.conf</code></pre>
+<p>&nbsp;</p>
