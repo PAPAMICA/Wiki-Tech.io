@@ -1,0 +1,50 @@
+<!--
+title: Ocicli
+description: Installer un cluster Openstack avec ocicli sous Debian
+published: true
+date: 2021-05-10T11:53:45.764Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-10T11:53:45.764Z
+-->
+
+<figure class="image image_resized" style="width:28.86%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/OpenStack%C2%AE_Logo_2016.svg/1200px-OpenStack%C2%AE_Logo_2016.svg.png" alt="OpenStack — Wikipédia"></figure>
+<h1>Présentation</h1>
+<p>OCI (OpenStack Cluster Installer) est un logiciel permettant de provisionner automatiquement des clusters OpenStack. Ce package installe une machine d'approvisionnement, qui utilise les composants ci-dessous:</p>
+<ul>
+  <li>un serveur DHCP (isc-dhcp-server)</li>
+  <li>un serveur de démarrage PXE (tftp-hpa)</li>
+  <li>un serveur web (apache2)</li>
+  <li>un serveur Puppet</li>
+</ul>
+<p>Lors du premier des machines du cluster, un système Debian live est proposé en PXE par OCI, pour agir comme une image de découverte. Ce système remonte directement les caractéristiques matérielles à OCI. Les machines peuvent alors être installés avec Debian à partir de ce système, configurés avec un agent Puppet &nbsp;qui se connectera au master Puppet de OCI. Une fois Debian installé, le serveur redémarre et les services OpenStack sont provisionnés, en fonction du rôle du serveur dans le cluster.</p>
+<p>OCI est entièrement intégré à Debian, y compris tous les modules Puppet. Après avoir installé le package OCI et ses dépendances, aucun autre soft n'est necessaire pour l'installation du cluster, ce qui signifie que si un miroir Debian local est disponible, l'installation du cluster OpenStack peut être effectuée complètement hors ligne.</p>
+<h2>Les services OpenStack installés</h2>
+<p>Actuellement, OCI peut installer:</p>
+<ul>
+  <li>Swift (avec des nœuds proxy dédiés en option)</li>
+  <li>Keystone</li>
+  <li>Cinder (backend LVM ou Ceph)</li>
+  <li>Glance (backend File, Swift ou Ceph, Swift peut être externalisé)</li>
+  <li>Heat</li>
+  <li>Horizon</li>
+  <li>Nova (avec prise en charge du GPU)</li>
+  <li>Neutron</li>
+  <li>Barbican</li>
+  <li>Octavia</li>
+  <li>Telemetry (Ceilometer, Gnocchi, Panko, Aodh)</li>
+  <li>Cloudkitty</li>
+</ul>
+<p>Des efforts sont actuellement en cours pour intégrer:</p>
+<ul>
+  <li>Magnum</li>
+  <li>Designate</li>
+</ul>
+<p>De plus, OCI prend désormais en charge l'exécution de CephOSD sur les nœuds de calcul (ce que l'on appelle «hyper-converged») en tant qu'option pour chaque nœud de calcul. (compute nodes)&nbsp;</p>
+<p>Tout cela avec de la haute disponibilité, en utilisant haproxy et corosync sur les nœuds de contrôleur pour tous les services.</p>
+<p>Tous les services utilisent uniquement TLS, même au sein du cluster.</p>
+<p>En règle générale, OCI vérifie quel type de nœuds fait partie du cluster et prend des décisions en fonction de celui-ci. Par exemple, s'il existe des nœuds OSD Ceph, OCI utilisera Ceph comme backend pour la sauvegarde Glance, Nova et Cinder. S'il y a des nœuds Cinder Volume, OCI les utilisera avec le backend LVM. S'il existe des nœuds Swiftstore, Swift sera utilisé pour les sauvegardes et les images Glance. S'il existe des nœuds Ceph OSD, mais pas de nœuds Ceph MON dédiés, les contrôleurs agiront comme des moniteurs Ceph. S'il existe des nœuds de calcul, Cinder, Nova et Neutron seront installés sur les nœuds de contrôleur. Etc…</p>
+<p>Le nombre minimum de nœuds de contrôleur est de 3, bien qu'il soit possible, avec un peu de bidouille d'installer les 3 contrôleurs sur des machines virtuelles sur un seul serveur (bien sûr, perdre la fonctionnalité de haute disponibilité en cas de panne du matériel).</p>
+<h2>Qui est derrière ce projet ?</h2>
+<p>OCI a été entièrement écrit par Thomas Goirand (zigo). Le travail est entièrement sponsorisé par Infomaniak Networks, qui l'utilise en production dans des clusters raisonnablement grands. Il y a eu quelques contributions sporadiques au sein d'Infomaniak, ainsi que quelques correctifs de contributeurs externes, mais aucune fonctionnalité majeure (pour le moment). Espérons que ce projet, au fil du temps, rassemblera plus de contributeurs.</p>
+<p>&nbsp;</p>
