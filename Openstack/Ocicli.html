@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T13:31:36.769Z
+date: 2021-05-10T13:42:27.269Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -95,4 +95,30 @@ apt-get update
 <h3>Installer un serveur de base de données</h3>
 <p>Pour MariaDB :</p>
 <pre><code class="language-plaintext">apt-get install mariadb-server dbconfig-common</code></pre>
+<p>Il est possible de créer la base de données et les informations d'identification à la main, ou de laisser OCI le gérer automatiquement avec <code>dbconfig-common</code>. Si APT s'exécute en mode non interactif, ou si pendant l'installation, l'utilisateur ne demande pas la gestion automatique de la base de données par <code>dbconfig-common</code>, voici comment créer la base de données :&nbsp;</p>
+<pre><code class="language-plaintext">apt-get install openstack-pkg-tools
+. /usr/share/openstack-pkg-tools/pkgos_func
+PASSWORD=$(openssl rand -hex 16)
+pkgos_inifile set /etc/openstack-cluster-installer/openstack-cluster-installer.conf database connection mysql+pymysql://oci:${PASSWORD}@localhost:3306/oci"
+mysql --execute 'CREATE DATABASE oci;'
+mysql --execute "GRANT ALL PRIVILEGES ON oci.* TO 'oci'@'localhost' IDENTIFIED BY '${PASSWORD}';"
+</code></pre>
+<p>Il faut alors s'assurer que la directive "<code>connection</code>" dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code> ne contient pas d'espaces avant et après le signe égal.</p>
+<p>&nbsp;</p>
+<h3>Configurer OCI</h3>
+<p>Assurez-vous que la base de données est synchronisée (si c'est le cas, vous verrez que'il y a des erreurs dans le tableau) :</p>
+<pre><code class="language-plaintext">apt-get install -y php-cli
+cd /usr/share/openstack-cluster-installer ; php db_sync.php
+</code></pre>
+<p>Puis éditez <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code> et configurer les options comme vous le souhaitez (par exemple: changer les valeurs du réseau, etc.).</p>
+<p>&nbsp;</p>
+<h3>Générer l'autorité de certification racine d'OCI</h3>
+<p>Pour supporter TLS, OCI utilise sa propre autorité de certification racine. Le certificat d'autorité de certification racine est distribué sur tous les nœuds du cluster. Pour créer l'autorité de certification racine initiale, il existe un script pour tout faire :</p>
+<pre><code class="language-plaintext">oci-root-ca-gen</code></pre>
+<p>À ce stade, vous devriez pouvoir naviguer dans l'interface Web d'OCI : <code>http://your-ip-address/oci/</code></p>
+<p>Cependant, vous avez besoin d'un login / pass pour entrer. Il y a un utilitaire shell pour gérer vos noms d'utilisateur. Pour ajouter un nouvel utilisateur, procédez comme suit :</p>
+<pre><code class="language-plaintext">oci-userdb -a mylogin mypassword</code></pre>
+<p>Les mots de passe sont hachés en utilisant la fonction PHP <code>password_hash () </code>en utilisant l'algo BCRYPT.</p>
+<p>De plus, OCI est capable d'utiliser un Radius externe pour son authentification. Cependant, vous devez toujours ajouter manuellement des connexions dans la base de données. Ce qui est ci-dessous insère un nouvel utilisateur qui a une entrée dans le serveur Radius :</p>
+<pre><code class="language-plaintext">oci-userdb -r newuser@example.com</code></pre>
 <p>&nbsp;</p>
