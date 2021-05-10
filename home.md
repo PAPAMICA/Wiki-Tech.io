@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-10T11:28:48.447Z
+date: 2021-05-10T11:28:56.837Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -70,7 +70,7 @@ dateCreated: 2021-04-28T15:15:54.158Z
 {.links-list}
 
 ## Openstack
-- [✨ Ocicli *Installer un cluster Openstack avec ocicli sous Debian*](/Openstack/Installation)
+- [✨ Ocicli *Installer un cluster Openstack avec ocicli sous Debian*](/Openstack/Ocicli)
 - [🌀 Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
 - [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
 - [🏁 Guide rapide *Créer son premier serveur*](/Openstack/Premier-Pas)
