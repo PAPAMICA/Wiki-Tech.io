@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-05-10T20:19:19.209Z
+date: 2021-05-10T20:20:59.892Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T16:18:20.853Z
@@ -132,10 +132,10 @@ dateCreated: 2021-05-09T16:18:20.853Z
 <p>Les permissions dans sudoers ont toutes cette forme :</p>
 <pre><code class="language-plaintext">&lt;USER&gt; &lt;HOTE&gt;=(&lt;RUNAS_USER&gt;:&lt;RUNAS_GROUP&gt;) &lt;COMMANDE&gt;</code></pre>
 <p>Où <code>USER</code> spécifie l'utilisateur ou les utilisateurs pour qui cette permission les concerne. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-dutilisateurs">syntaxe évoquée plus haut</a> pour la création d'alias <code>User_Alias</code>. Il est bien entendu possible d'utiliser des <code>User_Alias</code> précédemment créés.</p>
-<p>Où <code>HOTE</code> spécifie l'hôte ou les hôtes pour lesquels cette permission est appliquée. Il est possible de spécifier plusieurs hôtes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Host_Alias</code>. Il est bien entendu possible d'utiliser des <code>Host_Alias</code> précédemment créés.</p>
-<p>Où <code>RUNAS_USER</code> spécifie l'utilisateur ou les utilisateurs avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
-<p>Où <code>RUNAS_GROUP</code> spécifie le group ou les groupes avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs groupes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
-<p>Où <code>COMMANDE</code> spécifie une ou des commandes qui sont autorisées par cette permission. Il est possible de spécifier plusieurs commandes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Cmnd_Alias</code>. Il est bien entendu possible d'utiliser des <code>Cnmd_Alias</code> précédemment créés.</p>
+<p>Où <code>HOTE</code> spécifie l'hôte ou les hôtes pour lesquels cette permission est appliquée. Il est possible de spécifier plusieurs hôtes en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-dh%C3%B4tes">syntaxe évoquée plus haut</a> pour la création d'alias <code>Host_Alias</code>. Il est bien entendu possible d'utiliser des <code>Host_Alias</code> précédemment créés.</p>
+<p>Où <code>RUNAS_USER</code> spécifie l'utilisateur ou les utilisateurs avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-dutilisateurs">syntaxe évoquée plus haut</a> pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
+<p>Où <code>RUNAS_GROUP</code> spécifie le group ou les groupes avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs groupes en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-dutilisateurs">syntaxe évoquée plus haut</a> pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
+<p>Où <code>COMMANDE</code> spécifie une ou des commandes qui sont autorisées par cette permission. Il est possible de spécifier plusieurs commandes en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-de-commandes">syntaxe évoquée plus haut</a> pour la création d'alias <code>Cmnd_Alias</code>. Il est bien entendu possible d'utiliser des <code>Cnmd_Alias</code> précédemment créés.</p>
 <p>La forme peut se résumer en : Qui Où = (Comme qui) Quoi.</p>
 <p>A noter que chacun des éléments précédents peuvent être remplacés par <code>ALL</code> s'il n'y a pas besoin d'avoir un filtrage particulier.</p>
 <p>&nbsp;</p>
