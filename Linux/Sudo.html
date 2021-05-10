@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-05-10T20:18:24.242Z
+date: 2021-05-10T20:19:19.209Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-09T16:18:20.853Z
@@ -131,7 +131,7 @@ dateCreated: 2021-05-09T16:18:20.853Z
 <h2>Créer de nouvelles permissions</h2>
 <p>Les permissions dans sudoers ont toutes cette forme :</p>
 <pre><code class="language-plaintext">&lt;USER&gt; &lt;HOTE&gt;=(&lt;RUNAS_USER&gt;:&lt;RUNAS_GROUP&gt;) &lt;COMMANDE&gt;</code></pre>
-<p>Où <code>USER</code> spécifie l'utilisateur ou les utilisateurs pour qui cette permission les concerne. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>User_Alias</code>. Il est bien entendu possible d'utiliser des <code>User_Alias</code> précédemment créés.</p>
+<p>Où <code>USER</code> spécifie l'utilisateur ou les utilisateurs pour qui cette permission les concerne. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la <a href="https://wiki-tech.io/Linux/Sudo#cr%C3%A9er-des-alias-dutilisateurs">syntaxe évoquée plus haut</a> pour la création d'alias <code>User_Alias</code>. Il est bien entendu possible d'utiliser des <code>User_Alias</code> précédemment créés.</p>
 <p>Où <code>HOTE</code> spécifie l'hôte ou les hôtes pour lesquels cette permission est appliquée. Il est possible de spécifier plusieurs hôtes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Host_Alias</code>. Il est bien entendu possible d'utiliser des <code>Host_Alias</code> précédemment créés.</p>
 <p>Où <code>RUNAS_USER</code> spécifie l'utilisateur ou les utilisateurs avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs utilisateurs en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
 <p>Où <code>RUNAS_GROUP</code> spécifie le group ou les groupes avec qui les commandes pourront être exécutées. Il est possible de spécifier plusieurs groupes en les séparant par des <code>,</code> et en respectant la syntaxe évoquée plus haut pour la création d'alias <code>Runas_Alias</code>. Il est bien entendu possible d'utiliser des <code>Runas_Alias</code> précédemment créés.</p>
