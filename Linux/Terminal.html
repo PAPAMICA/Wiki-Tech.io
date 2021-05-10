@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-05-10T08:19:31.481Z
+date: 2021-05-10T08:30:36.939Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T07:29:51.462Z
@@ -12,6 +12,7 @@ dateCreated: 2021-05-10T07:29:51.462Z
 <h2>La base</h2>
 <p>Simplement celui de votre environnement de bureau !</p>
 <p>Pour ma part j'utilise KDE qui fournit Konsole : simple, personnalisable et bien pensé. Il est un très bon terminal pour débuter sous Linux.</p>
+<p>&nbsp;</p>
 <h2>Le jolie et complet</h2>
 <p>Mon petit chouchou, disponible sous <strong>Linux</strong>, <strong>MacOS</strong> et <strong>Windows</strong> : <a href="https://extraterm.org/index.html">Extraterm</a></p>
 <p>Il est développé avec Electron ce qui le rend accessible sur tous les OS mais il souffre aussi de quelques ralentissement par moment. Cependant il intègre beaucoup de fonctionnalités très intéressantes comme :</p>
@@ -27,6 +28,7 @@ dateCreated: 2021-05-10T07:29:51.462Z
 </ul>
 <p>Et il est évidemment OpenSource, bref c'est vraiment un terminal à tester !</p>
 <figure class="image image_resized" style="width:59.78%;"><img src="https://extraterm.org/selection_mode2.gif" alt="Extraterm keyboard cursor and selection"></figure>
+<p>&nbsp;</p>
 <h2>Le rapide</h2>
 <p>Si vous aimez la rapidité plus que tout (coucou Arnold), il serait temps de vous intéresser à ce petit terminal qui mise tout dessus : <a href="https://github.com/alacritty/alacritty">Alacritty</a> !</p>
 <p>Alacritty est un émulateur de terminal moderne qui est livré avec une configuration par défaut simple, mais permet une configuration étendue.&nbsp;</p>
@@ -38,17 +40,21 @@ dateCreated: 2021-05-10T07:29:51.462Z
 <h2>Le simple</h2>
 <p>Il porte bien son nom car il se nome : <a href="https://st.suckless.org">st</a> pour “Simple Terminal" !</p>
 <p>Un petit retour aux sources, pas de fonctionnalités “superflus” ici, juste votre terminal. Un outil parfait pour les puristes de Linux.</p>
+<p>&nbsp;</p>
 <h2>Le discret</h2>
 <p>Intégré nativement dans KDE, il me semble nécessaire de le mentionner ici vu que je l'utilise au quotidien en supplément de mon terminal par défaut.</p>
 <p>Je parle de <a href="https://apps.kde.org/yakuake/">Yakuake</a> qui, d'une touche, fait apparaître un terminal du haut de votre écran et “se range” dès que vous avez terminé. Il est si accessible que c'est ce dernier que j'utilise lorsque j'ai juste une petite commande à faire. Il s'intègre parfaitement avec mon workflow !</p>
 <h1>Zsh</h1>
 <h2>Présentation</h2>
+<p>&nbsp;</p>
 <h2>Installation</h2>
+<p>&nbsp;</p>
 <h2>Les thèmes</h2>
 <h1>Screen</h1>
 <h2>Présentation</h2>
 <p>Avez-vous déjà été confronté à une situation où vous exécutez une tâche de longue durée sur une machine distante, et soudainement votre connexion tombe, la session SSH est interrompue et votre travail est perdu. Et bien, cela nous est arrivé à tous à un moment donné, n'est-ce pas? Heureusement, il existe un utilitaire appelé <code>screen</code>qui nous permet de reprendre les sessions.</p>
 <p>Screen ou GNU Screen est un multiplexeur terminal. En d'autres termes, cela signifie que vous pouvez démarrer une session, puis ouvrir n'importe quel nombre de fenêtres (terminaux virtuels) à l'intérieur de cette session. Les processus exécutés dans Screen continueront de s'exécuter même si vous êtes déconnecté.</p>
+<p>&nbsp;</p>
 <h2>Installation</h2>
 <p>Le package <code>screen</code> est pré-installé sur la plupart des distributions Linux de nos jours. Vous pouvez vérifier s'il est installé sur votre système avec la commande : <code>screen --version</code></p>
 <pre><code class="language-plaintext">screen --version
@@ -70,7 +76,70 @@ Screen version 4.08.00 (GNU) 05-Feb-20</code></pre>
 <pre><code class="language-plaintext">screen -ls</code></pre>
 <p>Pour reprendre une session déjà ouverte :</p>
 <pre><code class="language-plaintext">screen -r &lt;id_session&gt;</code></pre>
+<p>&nbsp;</p>
 <h2>Raccourcis clavier</h2>
 <p>Voici un petit récapitulatif des raccourcis clavier pour screen :</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Raccourci</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>Ctrl+a</code> <code>c</code></td>
+        <td>Créer une nouvelle fenêtre (avec shell)</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>"</code></td>
+        <td>Répertorier toutes les fenêtres</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>&lt;0-9&gt;</code></td>
+        <td>Passer à la fenêtre 0-9 (par numéro)</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>A</code></td>
+        <td>Renommer la fenêtre actuelle</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>S</code></td>
+        <td>Diviser la région actuelle horizontalement en deux régions</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>|</code></td>
+        <td>Diviser la région actuelle verticalement en deux régions</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>tab</code></td>
+        <td>Basculer le focus d'entrée sur la région suivante</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>Ctrl+a</code></td>
+        <td>Basculer entre la fenêtre actuelle et la fenêtre précédente</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>Q</code></td>
+        <td>Fermer toutes les régions sauf la région actuelle</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>X</code></td>
+        <td>Fermer la région actuelle</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>d</code></td>
+        <td>Déconnecter de la session</td>
+      </tr>
+      <tr>
+        <td><code>Ctrl+a</code> <code>?</code></td>
+        <td>Afficher les raccourcis disponibles</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <p>&nbsp;</p>
+<h2>Configuration</h2>
+<p>Screen est configurable directement via son fichier de configuration dans <code>/etc/screenrc</code> et <code>~/.screenrc</code>.</p>
 <h1>Autres astuces</h1>
