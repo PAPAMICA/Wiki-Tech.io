@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-05-10T08:44:18.468Z
+date: 2021-05-10T09:53:16.938Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T07:29:51.462Z
@@ -48,10 +48,32 @@ dateCreated: 2021-05-10T07:29:51.462Z
 <h2>Présentation</h2>
 <p>&nbsp;</p>
 <h2>Installation</h2>
+<p>Zsh est en général installer par défaut sur les distribution Linux récentes, cependant si vous ne l'avez pas, installer le avec votre gestionnaire de paquet.</p>
+<p>Pour Oh-My-Zsh c'est très simple avec une simple commande <code>curl</code> :</p>
+<pre><code class="language-plaintext">sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre>
+<p>Ou si vous préférez, avec <code>get</code> :</p>
+<pre><code class="language-plaintext">sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"</code></pre>
+<p>Le fichier de configuration se trouve ici : <code>~/.zshrc</code></p>
 <p>&nbsp;</p>
 <h2>Les thèmes</h2>
+<p>L'avantage avec Oh-My-Zsh c'est la possibilité de personnaliser son shell très simpelment avec des thèmes préfait.</p>
+<p>Vous pouvez retrouver la liste des thèmes ici : &nbsp;<a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Themes">Github</a></p>
+<p>J'ai personnellement une petite préférence pour le thème <code>agnoster</code> :</p>
+<figure class="image image_resized" style="width:48.21%;"><img src="https://cloud.githubusercontent.com/assets/2618447/6316862/70f58fb6-ba03-11e4-82c9-c083bf9a6574.png" alt="Agnoster theme"></figure>
+<p>Pour configurer le thème il suffit de modifier la ligne <code>ZSH_THEME</code> dans le fichier <code>~/.zshrc</code> avec le thème souhaité :</p>
+<pre><code class="language-plaintext">ZSH_THEME="agnoster"</code></pre>
 <p>&nbsp;</p>
 <h2>Les plugins</h2>
+<p>Comme pour les thèmes, une grande force de Oh-My-Zsh est sa looooongue liste de plugins disponible. Vous pouvez les retrouver ici : <a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins">Github</a></p>
+<p>Pour les utiliser, vous devez les renseigner dans le fichier de configuration <code>~/.zshrc</code> :</p>
+<pre><code class="language-plaintext">plugins=(
+  git
+  ansible
+  autojump
+  syntax-highlighting
+  autosuggestions
+  zsh-completions
+)</code></pre>
 <h1>Screen</h1>
 <h2>Présentation</h2>
 <p>Avez-vous déjà été confronté à une situation où vous exécutez une tâche de longue durée sur une machine distante, et soudainement votre connexion tombe, la session SSH est interrompue et votre travail est perdu. Et bien, cela nous est arrivé à tous à un moment donné, n'est-ce pas? Heureusement, il existe un utilitaire appelé <code>screen</code>qui nous permet de reprendre les sessions.</p>
