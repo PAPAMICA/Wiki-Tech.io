@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T21:40:34.824Z
+date: 2021-05-11T21:52:30.948Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -21,11 +21,10 @@ dateCreated: 2021-05-11T19:26:41.152Z
 <p>Avec le temps, votre relai va se voir confier de plus en plus de trafic à mesure que sa stabilité et sa fiabilité seront jugées «&nbsp;aptes&nbsp;» par l’algorythme du réseau. Si votre relai est robuste il se verra certainement attribuer le rôle «&nbsp;<i>d’entry guard&nbsp;</i>» (ou simplement «&nbsp;<i>guard&nbsp;</i>») ce qui est une consécration puisque le rôle des guards est primordial pour la sécurité des utilisateurs de Tor et le fonctionnement du réseau.</p>
 <p>&nbsp;</p>
 <h3>II. Création de la machine virtuelle</h3>
-<p>C’est parti&nbsp;! Comme souvent lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian et c’est un système plus que passable pour cet usage bien qu’un peu de hardening soit nécessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.</p>
+<p>C’est parti&nbsp;! Comme souvent lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian qui est un système plus que passable pour cet usage bien qu’un peu de hardening soit nécessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.</p>
 <p>Pour créer la VM, quelques conseil sur les ressources&nbsp;:</p>
-<p><strong>HDD&nbsp;:</strong> 5Go<br><strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffire sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.&nbsp;<br><strong>Mémoire&nbsp;:</strong> 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br><strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.</p>
-<p>&nbsp;</p>
-<p><i>Petite note pour les utilisateurs de Raspberry Pi : mes chers amis, un raspy ne possède pas d'instructions AES-NI. Il galère à mort avec le chiffrement et génère d'horribles latences sur le réseau. Si vus voulez faire des expériences ponctuelles et vous former à Tor vous pouvez utiliser un Pi comme lab. Si vous souhaitez aider la communauté Tor merci de l’installer sur un </i><a href="https://fr.wikipedia.org/wiki/Serveur_informatique"><i>serveur.</i></a></p>
+<p><strong>HDD&nbsp;:</strong> 5Go<br><strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffire sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.&nbsp;<br><strong>Mémoire&nbsp;:</strong> 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br><strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.<br>&nbsp;</p>
+<p><i>Petite note pour les utilisateurs de Raspberry Pi : mes chers amis, un Raspberry Pi ne possède pas d'instructions AES-NI. Il galère à mort avec le chiffrement et génère d'horribles latences sur le réseau. Si vus voulez faire des expériences ponctuelles et vous former à Tor vous pouvez utiliser un Pi comme lab. Si vous souhaitez aider la communauté Tor merci de l’installer sur un </i><a href="https://fr.wikipedia.org/wiki/Serveur_informatique"><i>serveur.</i></a></p>
 <p>&nbsp;</p>
 <p><span class="text-big"><strong>a. Préparation de l'environnement</strong></span></p>
 <p>Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine (<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>):</p>
@@ -57,7 +56,7 @@ System clock synchronized: yes
               NTP service: active
 RTC in local TZ: no</code></pre>
 <p>&nbsp;</p>
-<p>Bien que le firewall ne soit pas d'une utilité transcendante dans notre cas de figure je l'active par principe :&nbsp;</p>
+<p>Bien que le firewall ne soit pas d'une utilité transcendante dans notre cas de figure je l'active par principe, surtout pour la sécurité du LAN.</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext"># apt install nftables
 # systemctl enable --now nftables
@@ -127,13 +126,18 @@ May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre
 <p>&nbsp;</p>
 <figure class="image"><img src="/nyx.png"></figure>
 <p>&nbsp;</p>
-<p>Je vous laisse checker la doc de cet outil<a href="https://nyx.torproject.org/"> à cet endroit</a> ainsi que dans le manuel e nyx(1). Ce qu'il y a de bien avec Nyx c'est qu'on peut faire beaucoup de choses avec. Il n'est pas indispensable pour tout mais toujours le bienvenu pour avoir un visuel sur nos ressources. Vous remarquerez que les notices s'affichent ici, bref il vous le faut !</p>
-<p><span class="text-big"><strong>d. Tweaks</strong></span></p>
-<p>En ouvrant Nyx vous avez surement remarqué la ligne <code>Bandwidth (limit: 1 GB/s, burst: 1 GB/s)</code>C'est que Tor va vous pomper votre bande passante. Beaucoup plus que vous ne le pensez surtout lorsque l’algorithme de Tor va juger votre serveur “apte à prendre du trafic”. Si vous opérez un relai il va saturer votre NIC. J'ai une grosse connexion et le fait que ma VM consomme 1Gb ne me gêne pas mais je comprendrais si vous vouliez ajouter cette petite option à la fin de votre <code>/etc/tor/torrc</code> :</p>
+<p>Je vous laisse checker la doc&nbsp;<a href="https://nyx.torproject.org/"> à cet endroit</a> ainsi que dans le manuel e nyx(1). Ce qu'il y a de bien avec Nyx c'est qu'on peut faire beaucoup de choses avec. Il n'est pas indispensable pour tout mais toujours le bienvenu pour avoir un visuel sur nos ressources. Vous remarquerez que les notices s'affichent ici, bref il vous le faut !</p>
+<p><span class="text-big"><strong>d. Nyx</strong></span></p>
+<p>En ouvrant Nyx vous avez sûrement remarqué la ligne <code>Bandwidth (limit: 1 GB/s, burst: 1 GB/s)</code>C'est que Tor va vous pomper votre bande passante. Beaucoup plus que vous ne le pensez surtout lorsque l’algorithme de Tor va juger votre serveur “apte à prendre du gros trafic”. Si vous opérez un relai il va saturer votre NIC. J'ai une grosse connexion et le fait que ma VM consomme 1Gb ne me gêne pas mais je comprendrais si vous vouliez ajouter cette petite option à la fin de votre <code>/etc/tor/torrc</code> :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">RelayBandwidthRate 40000 KBytes
 RelayBandwidthBurst 100000 KBytes</code></pre>
-<p>Il existe d'autres options (comme pour tout avec Tor) <a href="https://support.torproject.org/operators/limit-total-bandwidth/">mais je vous laisse les découvrir</a>.&nbsp;</p>
+<p>Il existe d'autres options (comme pour tout avec Tor) <a href="https://support.torproject.org/operators/limit-total-bandwidth/">mais je vous laisse les découvrir</a>.</p>
+<p><span class="text-big"><strong>e. Maintenir le système à jour.</strong></span></p>
+<p>Comme vous l'avez constaté un relai Tor n'est vraiment pas compliqué à mettre en prod… Le travail que cela demande est quasi nul. Prenez le temps de donner un peu d'amour à votre VM avec un joli <code>cron(8)</code> de mise à jour automatique et un petit reboot par semaine. Je vais créer un papier dans ce wiki avec tout ça mais en attendant, <a href="https://wiki.debian.org/UnattendedUpgrades">RTFM</a>.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
