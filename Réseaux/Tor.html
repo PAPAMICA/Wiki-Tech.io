@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:56:03.433Z
+date: 2021-05-11T21:08:40.700Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -86,7 +86,7 @@ deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
 # uid=1001(_tor) gid=1001(_tor) groupes=1001(_tor)</code></pre>
-<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier <code>/etc/tor/torrc</code>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
+<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier <code>/etc/tor/torrc</code>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / dé-commenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
 <pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
 DataDirectory /var/lib/tor         		   # Si on se sert de notre VM pour autre chose qu'un relay
 Log notice file /var/log/tor/notices.log   # oui on log ce que fait Tor autrepart que dans syslog
@@ -121,5 +121,8 @@ May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre
 # apt update &amp;&amp; apt full-upgrade &amp;&amp; systemctl reboot</code></pre>
 <p>&nbsp;</p>
 <p><span class="text-big"><strong>c. Audit du daemon</strong></span></p>
+<p>A ce stade votre relai est lancé. Comme pour n'importe quel serveur vous avez besoin de l'auditer, savoir combien de bande passante il consomme etc. <code>nyx(1)</code> est la pour vous aider ! Nyx c'est un outil qu'il est bien. Il va vous permettre d'observer en mode console votre trafic de manière semi-graphique un peu comme un htop. Nous l'avons déjà installé plus haut. Nous avons déjà écrit le nécessaire à son fonctionnement dans notre <code>/etc/tor/torrc</code> &nbsp;il ne nous reste plus qu'à le lancer !</p>
 <p>&nbsp;</p>
+<figure class="image"><img src="/nyx.png"></figure>
 <p>&nbsp;</p>
+<p>Je vous laisse checker la doc de cet outil<a href="https://nyx.torproject.org/"> à cet endroit</a>. Ce qu'il y a de bien avec Nyx c'est qu'on peut faire beaucoup de choses avec. Il n'est pas indispensable pour tout mais toujours le bienvenu pour avoir un visuel sur ce qui se passe dans votre machine. Vous remarquerez que les notices s'affichent ici.</p>
