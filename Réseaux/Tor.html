@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:13:14.723Z
+date: 2021-05-11T20:19:05.485Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -65,11 +65,26 @@ RTC in local TZ: no</code></pre>
  Process: 242 ExecStart=/usr/sbin/nft -f /etc/nftables.conf (code=exited, status=0/SUCCESS)
 Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
 <p>&nbsp;</p>
-<p>Par défaut sous UNIX on fait tourner le daemon Tor avec l’utilisateur _tor et on cloisonne l’exécutable avec Pledge… C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut. Au-delà de Tor c’est à mon sens un indispensable à n’importe quel serveur qui écoute sur le réseau.</p>
+<p>Par défaut sous UNIX on fait tourner le daemon Tor avec l’utilisateur _tor et on cloisonne l’exécutable avec Pledge… C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans torrc. Je comprends que sous Windows on puisse exécuter un “service” avec Administrateur mais au-delà de Tor c’est à mon sens un indispensable à n’importe quel serveur qui écoute sur le réseau pour un système UNIX-like…&nbsp;</p>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext"># sudo useradd _tor
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
 # uid=1001(_tor) gid=1001(_tor) groupes=1001(_tor)</code></pre>
+<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier torrc. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;</p>
+<pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
+DataDirectory /var/lib/tor         		   #&nbsp;pour récupérer notre cookie d’authentification
+Log notice file /var/log/tor/notices.log   # oui on log ce que fait Tor autrepart que dans syslog
+ControlPort 9051                     	   # pour auditer le démon avec Nyx
+SocksPort 0								   # pas de proxy SOCKS
+RunAsDaemon 1		             	       #&nbsp;on le fait tourner comme un daemon en background
+ORPort 9001                                # pour auditer les logs avec Nyx
+Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
+ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau.</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
