@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-10T16:11:53.268Z
+date: 2021-05-11T07:28:17.849Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -396,9 +396,7 @@ ceph mon enable-msgr2</code></pre>
 <pre><code class="language-plaintext">ocicli cluster-set z --initial-cluster-setup no</code></pre>
 <p>Cependant, il est fortement conseillé de définir la valeur sur no une fois que le cluster est en production.</p>
 <blockquote>
-  <p>Si les 3 contrôleurs de vos clusters exécutent avec succès puppet à
-    la première startup, ils appelleront "<code>oci-report-puppet-success</code>". Une fois le troisième contrôleur fait, <code>initial-cluster-setup</code> sera automatiquement défini sur
-    la valeur «<code>no</code>» dans la base de données OCI.</p>
+  <p>Si les 3 contrôleurs de vos clusters exécutent avec succès puppet à la première startup, ils appelleront "<code>oci-report-puppet-success</code>". Une fois le troisième contrôleur fait, <code>initial-cluster-setup</code> sera automatiquement défini sur la valeur «<code>no</code>» dans la base de données OCI.</p>
 </blockquote>
 <p>&nbsp;</p>
 <h2>Ajout d'autres types de nœuds</h2>
@@ -633,6 +631,261 @@ cat /proc/driver/nvidia/version
 <p>Attention cependant, OCI ne fera ce qu'il faut qu'une seule fois, lors du provisionnement du système.</p>
 <p>&nbsp;</p>
 <h1>Automatisation avancée</h1>
+<h2>Installation entièrement automatisée</h2>
+<p>Lors de la gestion de grands clusters, l'approvisionnement matériel peut prendre une longue partie de votre temps. Il n'y a malheureusement aucun moyen de compresser le temps nécessaire à l'installation physique du matériel, mais OCI est là pour fournir une installation complète sans même avoir à taper une seule ligne de commande.</p>
+<p>Les nœuds matériels sont d'abord démarrés dans l'environnement Live, leur matériel est ensuite découvert, et s'il correspond à un profil matériel défini (par vous) dans OCI, le serveur peut être entièrement provisionné sans aucune action humaine.</p>
+<p>Si l'on souhaite automatiser entièrement le provisionnement, voici la liste des directives à définir dans <code>/etc/openstack-cluster-installer/openstack-cluster-installer.conf</code> :</p>
+<pre><code class="language-plaintext">[megacli]
+megacli_auto_clear=yes
+megacli_auto_clear=yes
+megacli_auto_clear_num_of_discovery=3
+megacli_auto_apply=yes
+megacli_auto_apply_num_of_discovery=7
+
+[ipmi]
+automatic_ipmi_numbering=yes
+automatic_ipmi_username=ocirox
+
+[dns_plugin]
+call_dns_shell_script=yes
+
+[root_pass_plugin]
+call_root_password_change=yes
+
+[monitoring_plugin]
+call_monitoring_plugin=yes
+
+[auto_provision]
+auto_add_machines_to_cluster=yes
+auto_add_machines_cluster_name=cluster1
+auto_add_machines_num_of_discovery=9
+
+[auto_racking]
+auto_rack_machines_info=yes
+auto_rack_machines_num_of_discovery=7
+
+[auto_install_os]
+auto_install_machines_os=yes
+auto_install_machines_num_of_discovery=15</code></pre>
+<p>Notez que tout ce qui précède est défini sur <code>no</code> par défaut.</p>
+<p>Sur ce qui précède, nous pouvons voir quelques directives avec "<code>num_of_discovery</code>". Ce qui se passe, c'est que lorsqu'une machine démarre dans l'image Live OCI, l'openstack-cluster-installer-agent s'exécute en boucle, toutes les 30 secondes (en fait, à tout moment pendant une période de 30 secondes, car le script attend au hasard pour éviter d'envoyer le rapport d'agent de découverte à OCI en même temps ... mais je m'écarte ici ...). Chaque fois que l'agent OCI signale une configuration matérielle pour un serveur, un compteur est incrémenté. C'est notre "<code>num_of_discovery</code>". Comme les valeurs de "<code>num_of_discovery</code>" sont différentes, une liste d'actions s'effectue sur les serveurs nouvellement découverts. Par exemple, avec les valeurs par défaut, voici la planification (voir ci-dessous pour les détails de chaque opération) :</p>
+<ul>
+  <li>configuration d'IPMI</li>
+  <li>effacement de la configuration RAID</li>
+  <li>application de la "<code>machine-set</code>"</li>
+  <li>application du profil RAID</li>
+  <li>récupérer les informations LLDP pour remplir OCI (serveur dc, rack, U ...)</li>
+  <li>ajout d'un serveur au cluster par défaut avec le bon rôle</li>
+  <li>installer le système d'exploitation et redémarrer le serveur</li>
+</ul>
+<p>Notez que les valeurs par défaut de "n<code>um_of_discovery</code>" sont correctes, et il n'est pas conseillé de les changer à moins que vous ne soyez vraiment sûr de ce que vous faites. Par exemple, il est normal qu'un cycle de découverte matérielle est laissé entre «l'effacement de la configuration RAID» et «l'application du profil RAID», et la découverte LLDP est laissée après de nombreuses exécutions de l'agent car LLDP peut parfois prendre du temps.</p>
+<p>Pour réinitialiser le nombre de compteur de découverte:</p>
+<pre><code class="language-plaintext">ocicli machine-report-counter-reset SERIAL</code></pre>
 <p>&nbsp;</p>
+<h2>Racking automatique</h2>
+<p>OCI s'appuie sur le protocole LLDP pour découvrir à quel switch un serveur est connecté et utilise ces informations pour indiquer où il se trouve et quoi faire. Vos noms de switch vers les informations de mise en rack sont définis dans un fichier Json statique dans <code>/etc/openstack-cluster-installer/auto-racking.json</code>. C'est fait de cette façon, car on ne s'attend pas à ce que ces données changent avec le temps.</p>
+<p>Ce fichier contient 3 sections principales:</p>
+<ul>
+  <li><code>productnames</code></li>
+  <li><code>switchhostnames</code></li>
+  <li><code>switchportnames</code></li>
+</ul>
+<p>Sous les <code>productnames</code>, il n'y a actuellement qu'une description du nombre d'unités de rack dont un serveur a besoin.</p>
+<p>OCI suppose que chaque serveur de chaque U sera connecté au numéro de port du switch correspondant. Par exemple, le serveur en U-4 sera connecté au port 4 du switch, conformément au LLDP de votre switch.</p>
+<p>OCI lira ensuite la description des noms de produits pour indiquer le nombre d'unités de rack qu'un serveur prend.</p>
+<p>OCI suppose également que chacun de vos switch utilisera LLDP pour publier les noms et les ports des commutateurs, et que chaque switch est défini avec un nom d'hôte unique dans vos centres de données.</p>
+<p>Prenons un exemple. Disons que nous avons un switch numéro 5, dans le rack 3 de la ligne b, dans le Datacenter 2. Prenons le nom d'hôte <code>dc2-b3-5</code>. Nous définirons ensuite dans <code>/etc/openstack-cluster-installer/auto-racking.json</code> :</p>
+<pre><code class="language-plaintext">"switchhostnames": {
+    "dc2-b3-5": {
+        "dc": "2",
+        "row": "b",
+        "rack": "3",
+        "location-name": "zone-3",
+        "compute-aggregate": "AZ3"
+    },</code></pre>
+<p>Ce qui précède indique que tout ce qui est connecté à ce switch sera provisionné dans la zone d'emplacement 3 d'OCI (selon le paramètre d'emplacement "<code>ocicli machine-add</code>"), et s'il s'agit d'un serveur de calcul Nova, il peut être utilisé dans un agrégat nommé AZ3. Cela sera utilisé ci-dessous.</p>
+<p>Pour pouvoir déboguer, quelques commandes sont disponibles:</p>
+<pre><code class="language-plaintext">ocicli machine-guess-racking SERIAL</code></pre>
+<p>Cela dira où la machine est en rack, étant donné les informations dans le fichier <code>auto-racking.json</code> et les informations LLDP publiées par le commutateur.</p>
+<pre><code class="language-plaintext">ocicli machine-auto-rack SERIAL</code></pre>
+<p>Sert à remplir les informations de mise en rack.</p>
+<pre><code class="language-plaintext">ocicli machine-auto-add SERIAL</code></pre>
+<p>Ajoutera le serveur à l'emplacement défini dans <code>auto-racking.json</code> et avec le rôle défini dans le profil matériel.</p>
 <p>&nbsp;</p>
+<h2>Profils matériels</h2>
+<p>Pour pouvoir prendre des décisions, OCI doit détecter automatiquement le matériel et le faire correspondre à un profil matériel. OCI prend un matériel donné et se compare à la liste des profils. Chaque fois que quelque chose ne correspond pas, un profil matériel est supprimé de la liste. Si l'utilisateur a correctement conçu les profils matériels, à la fin, il ne reste qu'un seul profil. Dans ce cas, le rôle défini dans ce profil peut être utilisé et le profil RAID appliqué à l'aide de MegaCli.</p>
+<p>Voici un exemple:</p>
+<pre><code class="language-plaintext">    "compute-with-var-lib-nova-instance": {
+        "role": "compute",
+        "product-name": [
+            "PowerEdge R640",
+        ],
+        "ram": {
+            "min": 256,
+            "max": 512
+            },
+        "hdd": {
+            "controller": "megacli",
+            "hdd-num-exact-match": "yes",
+            "layout": {
+                "0": {
+                    "raid-type": 1,
+                    "software-raid": "no",
+                    "options": "WB RA Direct",
+                    "size_min": 220,
+                    "size_max": 250,
+                    "num_min": 2,
+                    "num_max": 2
+                },
+                "1": {
+                    "raid-type": 1,
+                    "software-raid": "no",
+                    "options": "WB RA Direct",
+                    "size_min": 800,
+                    "size_max": 1800,
+                    "num_min": 2,
+                    "num_max": 4
+                }
+            }
+        },
+        "machine-set": [ "--use_ceph_if_available no --cpu-mode custom --cpu-model Skylake-Server-IBRS"],
+        "after-puppet-controller-command": [
+            "openstack compute service set --disable %%HOSTNAME%%",
+            "openstack aggregate add host %%COMPUTE_AGGREGATE%% %%HOSTNAME%%",
+            "openstack aggregate add host INTEL_COMPUTE %%HOSTNAME%%"
+            ]
+    },</code></pre>
+<p>Le profil ci-dessus ne correspondra qu'aux machines avec le nom de produit «PowerEdge R640», avec entre 256 et 512 Go de RAM, un contrôleur RAID LSI, avec exactement 2 disques système de 220 à 250 Go et 2 à 4 disques de données de 800 à 1800 GB. Lorsque le profil RAID est appliqué, il fournira 2 matrices RAID1, une pour le système avec les plus petits disques et une autre plus grande qui sera utilisée plus tard dans <code>/var/lib/nova/instances</code>.</p>
+<p>Ce qui est dans <code>machine-set</code> sont des commandes ocicli à émettre lorsque le profil matériel est reconnu. Sur l'exemple ci-dessus, nous pouvons voir que nous configurons un modèle de CPU en fonction du profil matériel. Évidemment, on peut définir un autre profil matériel pour "PowerEdge R6525" (c'est une machine AMD) avec un modèle de CPU différent, par exemple.</p>
+<p>Le contenu de la commande <code>after-puppet-controller-command</code> sera émis une fois que la première exécution de Puppet aura réussi. N'hésitez pas à y ajouter n'importe quelle commande OpenStack, sachant que <code>%% HOSTNAME %%</code> sera remplacé par le FQDN réel du serveur provisionné, et <code>%% COMPUTE_AGGREGATE %%</code> sera remplacé par tout ce qui est défini dans <code>auto-racking.json</code>. Ici, nous utilisons le profil matériel pour définir la machine dans un agrégat <code>INTEL_COMPUTE</code>, car ce cluster possède également des nœuds de calcul AMD. Nous utilisons également <code>%% COMPUTE_AGGREGATE %%</code> pour définir automatiquement la bonne zone de disponibilité.</p>
+<p>Pour vérifier quel profil matériel correspond à un serveur donné, on peut taper :</p>
+<pre><code class="language-plaintext">ocicli machine-guessed-profile SERIAL</code></pre>
+<p>Il est également possible d'appliquer manuellement un profil RAID avec :</p>
+<pre><code class="language-plaintext">ocicli machine-megacli-reset-raid SERIAL
+ocicli machine-megacli-apply SERIAL</code></pre>
+<blockquote>
+  <p>Attention à ne pas faire ce qui précède sur un serveur en production.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Plug-in DNS</h2>
+<p>OCI peut appeler votre propre script personnalisé pour publier les noms d'hôte des nœuds dans votre DNS. A vous de l'écrire. Le script sera appelé chaque fois que des serveurs sont ajoutés à un cluster (automatiquement ou manuellement).</p>
+<p>Pour tester le plugin DNS, il est possible de l'appeler manuellement en utilisant :</p>
+<pre><code class="language-plaintext">ocicli machine-to-dns HOSTNAME</code></pre>
+<p>&nbsp;</p>
+<h2>Plug-in de mot de passe root</h2>
+<p>Lorsqu'une machine est déclarée comme installée, il est possible de définir automatiquement un mot de passe pour elle. Ce mot de passe peut être enregistré quelque part (par exemple en utilisant hashicorp vault, ou un simple fichier texte), en utilisant le script du plugin.</p>
+<p>Pour tester le plugin de mot de passe root, une fois qu'une machine est installée, il est possible de l'appeler manuellement en utilisant :</p>
+<pre><code class="language-plaintext">ocicli machine-gen-root-pass HOSTNAME</code></pre>
+<p>&nbsp;</p>
+<h2>Plugin de supervision</h2>
+<p>OCI ne fournit pas de surveillance, mais si vous avez un tel service, par exemple Zabbix, vous pouvez appeler un script de plugin pour enregistrer les machines dans votre solution de supervision.</p>
+<p>Pour appeler manuellement le plugin d'enregistrement de surveillance, on peut taper :</p>
+<pre><code class="language-plaintext">ocicli machine-to-monitoring HOSTHANE</code></pre>
+<p>&nbsp;</p>
+<h1>Gérer le déploiement d'OpenStack</h1>
+<h2>Activer la classification cloudkitty</h2>
+<p>Tout d'abord, ajoutez le rôle rating à l'utilisateur cloudkitty :</p>
+<pre><code class="language-plaintext">openstack role add --user cloudkitty --project services rating</code></pre>
+<p>Ensuite, activez le module hashmap :</p>
+<pre><code class="language-plaintext">cloudkitty module enable hashmap
+cloudkitty module set priority hashmap 100</code></pre>
+<p>Notez que l'erreur 503 peut être simplement ignorée, elle fonctionne toujours, comme le montre la liste des modules. Maintenant, ajoutons une note pour les instances :</p>
+<pre><code class="language-plaintext">cloudkitty hashmap group create instance_uptime_flavor
+cloudkitty hashmap service create compute
+cloudkitty hashmap field create 96a34245-83ae-406b-9621-c4dcd627fb8e flavor</code></pre>
+<p>L'ID ci-dessus est celui du service de <code>hashmap create</code>. Ensuite, nous réutilisons l'<code>ID du champ create</code> que nous venons d'avoir pour le paramètre <code>-f</code>, et l'<code>ID de groupe</code> pour le paramètre <code>-g</code> ci-dessous:</p>
+<pre><code class="language-plaintext">cloudkitty hashmap mapping create --field-id ce85c041-00a9-4a6a-a25d-9ebf028692b6 --value demo-flavor -t flat -g 2a986ce8-60a3-4f09-911e-c9989d875187 0.03</code></pre>
+<p>&nbsp;</p>
+<h2>Création de sondes pour la facturation</h2>
+<p>Dans cet exemple, nous allons présenter que nous voulons facturer n'importe quel port sur un réseau spécifique appelé "ext-net1" qui contient des adresses IP publiques. Pour ce faire, nous avons besoin d'un ceilometer-polling, dans les 3 contrôleurs, pour interroger l'API Neutron toutes les 5 minutes, et demander tous les ports utilisant le réseau "ext-net1". Chaque port associé à un projet OpenStack aura besoin d'un enregistrement personnalisé dans la série chronologique Gnocchi.</p>
+<p>Donc, tout d'abord, nous devons concevoir notre sondeur (c'est-à-dire: l'élément qui interrogera l'API). Disons que lorsque nous faisons cela:</p>
+<pre><code class="language-plaintext">openstack port list --network ext-net1 --long --debug</code></pre>
+<p>le mode de débogage montre que nous pouvons traduire cela en cette requête curl:</p>
+<pre><code class="language-plaintext">curl -g -X GET "https://pub1-api.cloud.infomaniak.ch/network/v2.0/ports?network_id=5a7f5f53-627c-4d0e-be89-39efad5ac54d" \
+	-H "Accept: application/json" -H "User-Agent: openstacksdk/0.50.0 keystoneauth1/4.2.1 python-requests/2.23.0 CPython/3.7.3" \
+	-H "X-Auth-Token: "$(openstack token issue --format value -c id) | jq .</code></pre>
+<p>l'API OpenStack répondant de cette façon:</p>
+<pre><code class="language-plaintext">{
+  "ports": [
+    {
+      "id": "c558857c-d010-41ba-8f93-08c3cb876ebe",
+      "name": "",
+      "network_id": "5a7f5f53-627c-4d0e-be89-39efad5ac54d",
+      "tenant_id": "ac4fafd60021431585bbb23470119557",
+      "mac_address": "fa:16:3e:d5:3f:13",
+      "admin_state_up": true,
+      "status": "ACTIVE",
+      "device_id": "0c2b0e8f-0a59-4d81-9545-fd90dc7fee73",
+      "device_owner": "compute:b4",
+      "fixed_ips": [
+        {
+          "subnet_id": "615ddc30-2ed5-4b0a-aba7-acb19b843276",
+          "ip_address": "203.0.113.14"
+        },
+        {
+          "subnet_id": "2c7d6ee4-d317-4749-b6a5-339803ac01f2",
+          "ip_address": "2001:db8:1:1::2e8"
+        }
+      ],
+      "allowed_address_pairs": [],
+      "extra_dhcp_opts": [],
+      "security_groups": [
+        "5d9b69fb-2dae-4ed2-839c-91f645d53eeb",
+        "c901c534-fd90-4738-aa6b-007cd7a5081b"
+      ],
+      "description": "",
+      "binding:vnic_type": "normal",
+      "binding:profile": {},
+      "binding:host_id": "cl1-compute-8.example.com",
+      "binding:vif_type": "ovs",
+      "binding:vif_details": {
+        "connectivity": "l2",
+        "port_filter": true,
+        "ovs_hybrid_plug": true,
+        "datapath_type": "system",
+        "bridge_name": "br-int"
+      },
+      "port_security_enabled": true,
+      "qos_policy_id": null,
+      "qos_network_policy_id": null,
+      "resource_request": null,
+      "ip_allocation": "immediate",
+      "tags": [],
+      "created_at": "2021-02-25T08:57:30Z",
+      "updated_at": "2021-02-25T09:42:47Z",
+      "revision_number": 8,
+      "project_id": "ac4fafd60021431585bbb23470119557"
+    }
+  ]
+}</code></pre>
+<p>Nous créons ensuite le type de ressource correspondant dans Gnocchi:</p>
+<p>TODO: ce n'est pas encore clair quoi faire ...</p>
+<pre><code class="language-plaintext">gnocchi resource-type create -a status:string:true:max_length=3 -a device_id:uuid:false -a mac_address:string:true:max_length=20  network.ports.ext-net1
+gnocchi resource-type create -a status:string:false:max_length=3 -a mac_address:string:false:max_length=20 public_ip
+gnocchi resource-type create -a cidr:string:false:max_length=4 -a network_id:uuid:false -a description:string:false:max_length=64 public_subnet</code></pre>
+<p>Dans /etc/openstack-cluster-installer/pollsters.d, nous écrivons simplement un nouveau fichier qui ressemble à ceci:</p>
+<pre><code class="language-plaintext">---
+
+- name: "network.ports.ext-net1"
+  sample_type: "gauge"
+  unit: "ip"
+  endpoint_type: "network"
+  url_path: "/network/v2.0/ports?network_id=5a7f5f53-627c-4d0e-be89-39efad5ac54d"
+  value_attribute: "status"
+  response_entries_key: "ports"
+  project_id_attribute: "project_id"
+  value_mapping:
+    ACTIVE: "1"
+  metadata_fields:
+    - "mac_address"
+    - "device_id"
+    - "device_owner"
+    - "fixed_ips"
+    - "binding:vnic_type"
+    - "binding:host_id"
+    - "binding:vif_type"
+    - "created_at"
+    - "updated_at"</code></pre>
+<p>Le url_path ci-dessus correspond à ce que nous écrivons dans la requête curl. Le response_entries_key est le nom de l'objet de niveau supérieur l'objet json auquel Neutron répond. Ecrire ceci dans /etc/openstack-cluster-installer/pollsters.d/ext-net-ports.yaml est la seule chose nécessaire. OCI écrira automatiquement ce fichier dans /etc/ceilometer/pollsters.d dans les nœuds du contrôleur, et listera ce sondeur dans /etc/ceilometer/polling.yaml.</p>
+<h2>&nbsp;</h2>
 <p>&nbsp;</p>
