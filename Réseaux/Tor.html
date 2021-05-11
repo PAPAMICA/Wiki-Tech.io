@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T22:40:44.194Z
+date: 2021-05-11T22:52:41.452Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -36,12 +36,11 @@ dateCreated: 2021-05-11T19:26:41.152Z
 </figure>
 <p style="text-align:justify;"><br><i>Petite note pour les utilisateurs de Raspberry Pi : mes chers amis, un Raspberry Pi ne possède pas d'instructions AES-NI. Il galère à mort avec le chiffrement et génère d'horribles latences sur le réseau. Si vus voulez faire des expériences ponctuelles et vous former à Tor vous pouvez utiliser un Pi comme lab. Si vous souhaitez aider la communauté Tor merci de l’installer sur un </i><a href="https://fr.wikipedia.org/wiki/Serveur_informatique"><i>serveur </i></a>ou bien allez voir ailleurs.</p>
 <p style="text-align:justify;"><strong>B. Préparation de l'environnement</strong></p>
-<p style="text-align:justify;">Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine (<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>):</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Commencez par vérifier que votre VM voit bien les instructions AES-NI sur votre CPU.&nbsp;</p>
+<pre><code class="language-plaintext"># lscpu | grep aes</code></pre>
+<p style="text-align:justify;"><br>Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine (<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>):</p>
 <pre><code class="language-plaintext">#&nbsp;apt install -y net-tools sudo vim</code></pre>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">Une adresse IP fixe n’est pas requise par Tor pour fonctionner correctement mais j’ai envie de pouvoir me connecter à ma VM en ssh&nbsp;:</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;"><br>Une adresse IP fixe n’est pas requise par Tor pour fonctionner correctement mais j’ai envie de pouvoir me connecter à ma VM en ssh&nbsp;:</p>
 <pre><code class="language-plaintext">$ cat /etc/network/interfaces
 auto lo
 iface lo inet loopback
@@ -52,10 +51,9 @@ iface eth0 inet static
     	netmask 255.255.255.0
     	gateway 192.168.1.1
 </code></pre>
-<p style="text-align:justify;">On redémarre le réseau :<br>&nbsp;</p>
+<p style="text-align:justify;"><br>On redémarre le réseau :</p>
 <pre><code class="language-plaintext"># systemctl restart networking</code></pre>
-<p style="text-align:justify;">Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée, que votre TZ est correcte. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du temps très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre à votre disposition . Personnellement j'aime ntpd(8) donc je l'utilise. Le résultat final doit ressembler à ça&nbsp;:</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;"><br>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée, que votre TZ est correcte. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du temps très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre à votre disposition . Personnellement j'aime ntpd(8) donc je l'utilise. Le résultat final doit ressembler à ça&nbsp;:</p>
 <pre><code class="language-plaintext"># timedatectl 
                Local time: mar. 2021-05-11 17:43:45 CEST
            Universal time: mar. 2021-05-11 15:43:45 UTC
@@ -66,7 +64,6 @@ System clock synchronized: yes
 RTC in local TZ: no</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">Bien que le firewall ne soit pas d'une utilité transcendante dans notre cas de figure je l'active par principe, surtout pour la sécurité du LAN.</p>
-<p style="text-align:justify;">&nbsp;</p>
 <pre><code class="language-plaintext"># apt install nftables
 # systemctl enable --now nftables
 # systemctl status nftables
@@ -78,27 +75,27 @@ RTC in local TZ: no</code></pre>
  Process: 242 ExecStart=/usr/sbin/nft -f /etc/nftables.conf (code=exited, status=0/SUCCESS)
 Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
 <p style="text-align:justify;">Les repos du projet Tor sont toujours les premiers à recevoir les upgrades. C'est extrêmement important. Nous allons donc les installer afin d'être au top. N'utilisez <strong>JAMAIS</strong> les paquets maintenus par les distributions car ces derniers sont bien trop souvent anciens et vulnérables.</p>
-<p style="text-align:justify;">Commencez par éditer <code>/etc/apt/sources</code><br>&nbsp;</p>
+<p style="text-align:justify;">Commencez par éditer <code>/etc/apt/sources</code></p>
 <pre><code class="language-plaintext"># cat /etc/apt/sources 
 deb https://deb.torproject.org/torproject.org stretch main
 deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
-<p style="text-align:justify;">Ajoutez les PGP du repo :&nbsp;<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Ajoutez les PGP du repo :&nbsp;</p>
 <pre><code class="language-plaintext"># curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import
 # gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -</code></pre>
-<p style="text-align:justify;">Et pour finir on update :<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Et pour finir on update :&nbsp;</p>
 <pre><code class="language-plaintext"># apt update &amp;&amp; apt install tor deb.torproject.org-keyring</code></pre>
-<p style="text-align:justify;">On installe finalement Tor et Nyx sur la machine.<br>&nbsp;</p>
+<p style="text-align:justify;"><br>On installe finalement Tor et Nyx sur la machine.&nbsp;</p>
 <pre><code class="language-plaintext"># apt install tor Nyx</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">Maintenant que vous avez les derniers binaires et que votre VM ressemble de loin à un serveur, l'environnement est prêt. il ne nous reste plus qu'à créer notre relai.&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <h3 style="text-align:justify;"><span class="text-big">III. Configuration du relai</span></h3>
-<p style="text-align:justify;"><br>Par défaut sous OpenBSD on fait tourner le daemon <code>tor(1)</code> avec l’utilisateur <code>_tor</code> et on cloisonne l’exécutable sous <a href="https://man.openbsd.org/pledge.2">pledge(2)</a>. C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans le torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement (ou s'il le lance avec l'utilisateur daemon au hasard) mais ce n'est vraiment pas explicite… dans le doute :<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Par défaut sous OpenBSD on fait tourner le daemon <code>tor(1)</code> avec l’utilisateur <code>_tor</code> et on cloisonne l’exécutable sous <a href="https://man.openbsd.org/pledge.2">pledge(2)</a>. C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans le torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement (ou s'il le lance avec l'utilisateur daemon au hasard) mais ce n'est vraiment pas explicite… dans le doute :&nbsp;</p>
 <pre><code class="language-plaintext"># sudo useradd _tor
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
 # uid=1001(_tor) gid=1001(_tor) groupes=1001(_tor)</code></pre>
-<p style="text-align:justify;">Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment nous en resterons la… Nous allons maintenant modifier notre fichier <code>/etc/tor/torrc</code>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / dé-commenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment nous en resterons la… Nous allons maintenant modifier notre fichier <code>/etc/tor/torrc</code>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / dé-commenter / ajouter se trouve ici :&nbsp;&nbsp;</p>
 <pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
 DataDirectory /var/lib/tor         		   # Si on se sert de notre VM pour autre chose qu'un relay
 Log notice file /var/log/tor/notices.log   # oui on log ce que fait Tor autrepart que dans syslog
@@ -110,11 +107,11 @@ Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
 ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau
 DirPort 9030							   # notre serveur sera un directory mirror (voir doc)
 ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit l'écoute explicitement sur toutes les interfaces</code></pre>
-<p style="text-align:justify;"><br>Nous créons maintenant les fichiers nécessaires pour les logs.<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Nous créons maintenant les fichiers nécessaires pour les logs.&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;touch /var/log/tor/notices.log
 # chown _tor:_tor /var/log/tor/notices.log
 #&nbsp;chrmod 650 /var/log/tor/notices.log</code></pre>
-<p style="text-align:justify;">Et on donne des droits à notre utilisateur <code>_tor</code> afin qu’il puisse écrire dans <code>/var/lib/tor</code><br>&nbsp;</p>
+<p style="text-align:justify;"><br>Et on donne des droits à notre utilisateur <code>_tor</code> afin qu’il puisse écrire dans <code>/var/lib/tor</code>&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;chown -R _tor:_tor /var/lib/tor</code></pre>
 <p style="text-align:justify;">Assurez-vous que les droits UNIX sur les répertoires auxquels le démon a accès soient bien en 650 &nbsp;pour <code>_tor:_tor</code> si non il va vous rappeler à l’ordre au lancement. On check que tout s’exécute correctement :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># tor
@@ -124,9 +121,10 @@ May 11 20:09:59.819 [notice] Tor can't help you if you use it wrong! Learn how t
 May 11 20:09:59.821 [notice] Read configuration file "/etc/tor/torrc".
 May 11 20:09:59.836 [notice] Opening Socks listener on 127.0.0.1:9050
 May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre>
-<p style="text-align:justify;">Pas d'erreur ni de warning, la classe. Votre node de roxXor est bientôt prêt. On upgrade le système, on active le daemon et on reboot !<br>&nbsp;</p>
+<p style="text-align:justify;"><br>Pas d'erreur ni de warning, la classe. Votre node de roxXor est bientôt prêt. On upgrade le système, on active le daemon et on reboot !</p>
 <pre><code class="language-plaintext"># systemctl enable tor
 # apt update &amp;&amp; apt full-upgrade &amp;&amp; systemctl reboot</code></pre>
+<p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">wooOOT !<br>&nbsp;</p>
 <p style="text-align:justify;"><span class="text-big"><strong>IV. Audit du trafic avec Nyx</strong></span></p>
 <p style="text-align:justify;">A ce stade votre relai est lancé. Comme pour n'importe quel serveur vous avez besoin de l'auditer, savoir combien de bande passante il consomme etc. <code>nyx(1)</code> est la pour vous aider ! Nyx c'est un outil qu'il est bien. Il va vous permettre d'observer en mode console votre trafic de manière semi-graphique un peu comme htop. Nous l'avons déjà installé plus haut. Nous avons déjà écrit le nécessaire à son fonctionnement dans notre <code>/etc/tor/torrc</code> &nbsp;il ne nous reste plus qu'à le lancer !</p>
