@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-11T07:28:17.849Z
+date: 2021-05-11T07:36:04.090Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -797,14 +797,14 @@ cloudkitty hashmap field create 96a34245-83ae-406b-9621-c4dcd627fb8e flavor</cod
 <pre><code class="language-plaintext">cloudkitty hashmap mapping create --field-id ce85c041-00a9-4a6a-a25d-9ebf028692b6 --value demo-flavor -t flat -g 2a986ce8-60a3-4f09-911e-c9989d875187 0.03</code></pre>
 <p>&nbsp;</p>
 <h2>Création de sondes pour la facturation</h2>
-<p>Dans cet exemple, nous allons présenter que nous voulons facturer n'importe quel port sur un réseau spécifique appelé "ext-net1" qui contient des adresses IP publiques. Pour ce faire, nous avons besoin d'un ceilometer-polling, dans les 3 contrôleurs, pour interroger l'API Neutron toutes les 5 minutes, et demander tous les ports utilisant le réseau "ext-net1". Chaque port associé à un projet OpenStack aura besoin d'un enregistrement personnalisé dans la série chronologique Gnocchi.</p>
-<p>Donc, tout d'abord, nous devons concevoir notre sondeur (c'est-à-dire: l'élément qui interrogera l'API). Disons que lorsque nous faisons cela:</p>
+<p>Dans cet exemple, nous voulons facturer n'importe quel port sur un réseau spécifique appelé "<code>ext-net1</code>" qui contient des adresses IP publiques. Pour ce faire, nous avons besoin d'un <code>ceilometer-polling</code>, dans les 3 contrôleurs, pour interroger l'API Neutron toutes les 5 minutes, et demander tous les ports utilisant le réseau "<code>ext-net1</code>". Chaque port associé à un projet OpenStack aura besoin d'un enregistrement personnalisé dans la série chronologique Gnocchi.</p>
+<p>Donc, tout d'abord, nous devons concevoir notre sonde (c'est-à-dire: l'élément qui interrogera l'API). Disons que lorsque nous faisons cela :</p>
 <pre><code class="language-plaintext">openstack port list --network ext-net1 --long --debug</code></pre>
-<p>le mode de débogage montre que nous pouvons traduire cela en cette requête curl:</p>
+<p>le mode de débogage montre que nous pouvons traduire cela en cette requête curl :</p>
 <pre><code class="language-plaintext">curl -g -X GET "https://pub1-api.cloud.infomaniak.ch/network/v2.0/ports?network_id=5a7f5f53-627c-4d0e-be89-39efad5ac54d" \
 	-H "Accept: application/json" -H "User-Agent: openstacksdk/0.50.0 keystoneauth1/4.2.1 python-requests/2.23.0 CPython/3.7.3" \
 	-H "X-Auth-Token: "$(openstack token issue --format value -c id) | jq .</code></pre>
-<p>l'API OpenStack répondant de cette façon:</p>
+<p>l'API OpenStack répondant de cette façon :</p>
 <pre><code class="language-plaintext">{
   "ports": [
     {
@@ -858,12 +858,11 @@ cloudkitty hashmap field create 96a34245-83ae-406b-9621-c4dcd627fb8e flavor</cod
     }
   ]
 }</code></pre>
-<p>Nous créons ensuite le type de ressource correspondant dans Gnocchi:</p>
-<p>TODO: ce n'est pas encore clair quoi faire ...</p>
+<p>Nous créons ensuite le type de ressource correspondant dans Gnocchi :</p>
 <pre><code class="language-plaintext">gnocchi resource-type create -a status:string:true:max_length=3 -a device_id:uuid:false -a mac_address:string:true:max_length=20  network.ports.ext-net1
 gnocchi resource-type create -a status:string:false:max_length=3 -a mac_address:string:false:max_length=20 public_ip
 gnocchi resource-type create -a cidr:string:false:max_length=4 -a network_id:uuid:false -a description:string:false:max_length=64 public_subnet</code></pre>
-<p>Dans /etc/openstack-cluster-installer/pollsters.d, nous écrivons simplement un nouveau fichier qui ressemble à ceci:</p>
+<p>Dans <code>/etc/openstack-cluster-installer/pollsters.d</code>, nous écrivons simplement un nouveau fichier qui ressemble à ceci :</p>
 <pre><code class="language-plaintext">---
 
 - name: "network.ports.ext-net1"
@@ -886,6 +885,40 @@ gnocchi resource-type create -a cidr:string:false:max_length=4 -a network_id:uui
     - "binding:vif_type"
     - "created_at"
     - "updated_at"</code></pre>
-<p>Le url_path ci-dessus correspond à ce que nous écrivons dans la requête curl. Le response_entries_key est le nom de l'objet de niveau supérieur l'objet json auquel Neutron répond. Ecrire ceci dans /etc/openstack-cluster-installer/pollsters.d/ext-net-ports.yaml est la seule chose nécessaire. OCI écrira automatiquement ce fichier dans /etc/ceilometer/pollsters.d dans les nœuds du contrôleur, et listera ce sondeur dans /etc/ceilometer/polling.yaml.</p>
+<p>Le <code>url_path</code> ci-dessus correspond à ce que nous écrivons dans la requête curl. Le <code>response_entries_key</code> est le nom de l'objet de niveau supérieur l'objet json auquel Neutron répond. Ecrire ceci dans <code>/etc/openstack-cluster-installer/pollsters.d/ext-net-ports.yaml</code> est la seule chose nécessaire. OCI écrira automatiquement ce fichier dans <code>/etc/ceilometer/pollsters.d</code> dans les nœuds du contrôleur, et listera cette sonde dans <code>/etc/ceilometer/polling.yaml</code>.</p>
+<p>&nbsp;</p>
+<h2>Installer une première image OpenStack</h2>
+<pre><code class="language-plaintext">wget http://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
+openstack image create \
+	--container-format bare --disk-format qcow2 \
+	--file debian-9-openstack-amd64.qcow2 \
+	debian-9-openstack-amd64</code></pre>
+<p>&nbsp;</p>
+<h2>Mise en réseau</h2>
+<p>Il existe de nombreuses façons de gérer la mise en réseau dans OpenStack. Cette documentation ne couvre que rapidement un seul moyen, vous pouvez retrouver une documentation plus complète ici : . Cependant, le lecteur doit savoir que OCI installe des nœuds de calcul à l'aide de DVR (Distributed Virtual Routers), ce qui signifie qu'un routeur Neutron est installé sur tous les nœuds de calcul. En outre, OpenVSwitch est utilisé, en utilisant VXLan entre les nœuds de calcul. Quoi qu'il en soit, voici une façon de configurer le réseau. Quelque chose comme ça peut le faire:</p>
+<pre><code class="language-plaintext"># Create external network
+openstack network create --external --provider-physical-network external --provider-network-type flat ext-net
+openstack subnet create --network ext-net --allocation-pool start=192.168.105.100,end=192.168.105.199 --dns-nameserver 84.16.67.69 --gateway 192.168.105.1 --subnet-range 192.168.105.0/24 --no-dhcp ext-subnet
+
+# Create internal network
+openstack network create --share demo-net
+openstack subnet create --network demo-net --subnet-range 192.168.200.0/24 --dns-nameserver 84.16.67.69 demo-subnet
+
+# Create router, add it to demo-subnet and set it as gateway
+openstack router create demo-router
+openstack router add subnet demo-router demo-subnet
+openstack router set demo-router --external-gateway ext-net
+
+# Create a few floating IPs
+openstack floating ip create ext-net
+openstack floating ip create ext-net
+openstack floating ip create ext-net
+openstack floating ip create ext-net
+openstack floating ip create ext-net
+
+# Add rules to the admin's security group to allow ping and ssh
+SECURITY_GROUP=$(openstack security group list --project admin --format=csv | q -d , -H 'SELECT ID FROM -')
+openstack security group rule create --ingress --protocol tcp --dst-port 22 ${SECURITY_GROUP}
+openstack security group rule create --protocol icmp --ingress ${SECURITY_GROUP}</code></pre>
 <h2>&nbsp;</h2>
 <p>&nbsp;</p>
