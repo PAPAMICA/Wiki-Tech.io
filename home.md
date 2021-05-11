@@ -2,18 +2,21 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-11T09:54:10.908Z
+date: 2021-05-11T11:36:57.074Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
 ---
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
+Wiki-Tech se veut être un endroit pour partager nos connaissances ensemble. Nous sommes plusieurs professionnels de l’IT, étudiants ou passionnés à rédiger des notes ou des documentations sur différents sujets et les garder sur nos postes. Alors pourquoi ne pas les partager entre nous ? Cela nous permettrais de monter en compétences, de découvrir des solutions et de s’instruire mutuellement.
+Ce projet repose sur Wikijs et est entièrement disponible sur Github directement. 
+
 > 🚧  Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
 > Dernière mise à jours : 11/05/2021
 {.is-warning}
 
-> Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! N'hésitez pas à m'envoyer un mail à  mickael@papamica.com ❤️
+> Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/Devenir-Contributeur) ❤️
 {.is-info}
 
 # Les différentes catégories
