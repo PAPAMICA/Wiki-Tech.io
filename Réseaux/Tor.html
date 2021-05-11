@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:50:19.192Z
+date: 2021-05-11T20:53:53.299Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -81,12 +81,12 @@ deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
 <pre><code class="language-plaintext"># apt install tor Nyx</code></pre>
 <p>&nbsp;</p>
 <p><span class="text-big"><strong>b. Configuration du relai Tor</strong></span></p>
-<p>Par défaut sous UNIX on fait tourner le daemon Tor avec l’utilisateur _tor et on cloisonne l’exécutable avec Pledge… C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement, dans le doute :<br>&nbsp;</p>
+<p>Par défaut sous OpenBSD on fait tourner le daemon <code>tor(1)</code> avec l’utilisateur <code>_tor</code> et on cloisonne l’exécutable avec <a href="https://man.openbsd.org/pledge.2">pledge(2)</a> C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement, dans le doute :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># sudo useradd _tor
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
 # uid=1001(_tor) gid=1001(_tor) groupes=1001(_tor)</code></pre>
-<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier <strong>/etc/tor/torrc</strong>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
+<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier <code>/etc/tor/torrc</code>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
 <pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
 DataDirectory /var/lib/tor         		   # Si on se sert de notre VM pour autre chose qu'un relay
 Log notice file /var/log/tor/notices.log   # oui on log ce que fait Tor autrepart que dans syslog
@@ -98,13 +98,13 @@ Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
 ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau
 DirPort 9030							   # notre serveur sera un directory mirror (voir doc)
 ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit l'écoute explicitement sur toutes les interfaces</code></pre>
-<p><br>Nous créons maintenant les fichiers necessaires pour les logs<br>&nbsp;</p>
+<p><br>Nous créons maintenant les fichiers nécessaires pour les logs.<br>&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;touch /var/log/tor/notices.log
 # chown _tor:_tor /var/log/tor/notices.log
 #&nbsp;chrmod 650 /var/log/tor/notices.log</code></pre>
-<p>Et on donnne des droits à notre utilisateur _tor afin qu’il puisse écrire dans la /var/lib/tor<br>&nbsp;</p>
+<p>Et on donne des droits à notre utilisateur <code>_tor</code> afin qu’il puisse écrire dans <code>/var/lib/tor</code><br>&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;chown -R _tor:_tor /var/lib/tor</code></pre>
-<p>Assurez-vous que les droits UNIX sur les répertoires auxquels le démon a accès soient bien en 650 &nbsp;pour _tor :_tor si non il va vous rappeler à l’ordre au lancement. On check que tout s’exécute correctement :<br>&nbsp;</p>
+<p>Assurez-vous que les droits UNIX sur les répertoires auxquels le démon a accès soient bien en 650 &nbsp;pour <code>_tor :_tor</code> si non il va vous rappeler à l’ordre au lancement. On check que tout s’exécute correctement :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># tor
 
 May 11 20:09:59.818 [notice] Tor 0.3.5.14 running on Linux with Libevent 2.1.8-stable, OpenSSL 1.1.1d, Zlib 1.2.11, Liblzma 5.2.4, and Libzstd 1.3.8.
