@@ -2,34 +2,34 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T19:44:44.016Z
+date: 2021-05-11T20:06:42.359Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
 -->
 
-<h1 id="avant-propos" class="toc-header"> Avant propos</h1><div>
-</div><p>Ce tutorial n’a pas pour but d’enseigner ce qu’est Tor ou comment vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront crtainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p><div>
-</div><p>La page Wikipedia</p><div>
-</div><p>Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont necessaires avant de s’attaquer à Tor sous Linux.</p><div>
-</div><h3 id="i-opérer-un-nœud-tor" class="toc-header"> I. Opérer un nœud Tor</h3><div>
-</div><p>Comme vous l’avez lu dans la documentaiton, lorsque vous vous connetez à Tor, une «&nbsp;route&nbsp;» est créée à l’intérieur du réseau. Les paquets sortant de votre poste sont chiffrés par trois fois (donc réencapsulées trois fois en AES localement) et à chauque nouveau «&nbsp;bond&nbsp;» («&nbsp;hops&nbsp;» en aglais / dans le jargon) une couche de chiffrement est retirée du paquet par les différents intermédiaires. Une fois arrivé à destination, la dernière couche est retirée afin que le host à qui vous vouliez communiquer au final puisse lire l’information en clair. Cette route n’est pas définitive et en fonction de votre configuration dans /etc/tor/torrc elle sera plus oui moins éphémère. Une fois expirée, une nouvelle route sera créée par le client et ainsi de suite. Laissez les réglages par défaut à ce sujet.</p><div>
-</div><p>Il existe plusieurs types de relais (<a href="https://community.torproject.org/relay/types-of-relays/" class="is-external-link" target="_blank" rel="noreferrer">https://community.torproject.org/relay/types-of-relays/</a>) et les héberger est plus ou moins dangereux pour l’opérateur (donc vous). Je vous déconseille plus que vivement d’héberger un nœud de sortie à moins que vous ne souhaitiez très fort que la police sonne à votre porte dans les heures à venir.  De multiples opérateurs dans des pays pourtant libres et civilisés on eu de très gros problèmes légaux. Vous êtes prévenus.</p><div>
-</div><p>Un relais intermédiaire (middle relay) se charge de recevoir un paquet d’un côté à l’intérieur de Tor. Ce paquet est chiffré. Il retire une couche de chiffrement et le renvoie au prochain maillon de la chaine de l’autre côté. Le paquet n’est pas totalement déchiffré ce qui veut dire qu’entant qu’oprateur d’un nœud à ce niveau vous ne pouvez pas lire l’information qu’il contient. Ce type de nœud est plutôt simple à maintenir et pas très dangereux puisque votre relai est caché à l’intérieur de Tor, rien ne sort sur Internet. La localisation géographique de votre relai n’est jamais divulgée et votre identité non plus.</p><div>
-</div><p>Avec le temps, votre relai va se voir confier de plus en plus de trafic à mesure que sa stabilité et sa fiabilité seront jugées «&nbsp;aptes&nbsp;» par l’algorythme du réseau. Si votre relai est robuste il se verra certainement attribuer le rôle «&nbsp;d’entry guard&nbsp;» (ou simplement «&nbsp;guard&nbsp;») ce qui est une consécration puisque le rôle des guards est primordial pour la sécurité des utilisateurs de Tor et le fonctionnement du réseau.</p><div>
-</div><h3 id="ii-création-de-la-machine-virtuelle" class="toc-header"> II. Création de la machine virtuelle</h3><div>
-</div><p>C’est parti&nbsp;!</p><div>
-</div><p>Comme nous allons souvent le faire lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian et c’est un système plus que passable pour cet usage bien qu’un peu de hardening soit necessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.</p><div>
-</div><p>Pour créer la VM, quelques conseil sur les ressources&nbsp;:</p><div>
-</div><p><strong>HDD&nbsp;:</strong> 5Go<br>
-<strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.<br>
-**Mémoire&nbsp;: **512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br>
-<strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.</p><div>
-</div><p>Uin relais Tor est extrêmement simple… N’installez que le strict necessaire sur votre machine&nbsp;:</p><div>
-</div><p><code> #&nbsp;apt install -y tor nyx net-tools sudo vim</code></p><div>
-</div><p>une adresse IP fixe n’est pas requise par Tor pour foncitonner correctement mais j’ai envie de pouvoir me connecter à ma VM en ssh&nbsp;:</p><div>
-</div><hr><div>
-</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-">$ cat /etc/network/interfaces
+<h1>Avant propos</h1>
+<p>Ce tutorial n’a pas pour but d’enseigner ce qu’est Tor ou comment vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront crtainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p>
+<p><a href="https://en.wikipedia.org/wiki/Tor_(anonymity_network)">La page Wikipedia</a></p>
+<p><a href="https://gitlab.torproject.org/tpo/team/-/wikis/home">L'incontournable doc de Tor</a></p>
+<p>Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont necessaires avant de s’attaquer à Tor sous Linux.</p>
+<h3>I. Opérer un nœud Tor</h3>
+<p>Comme vous l’avez lu dans la documentaiton, lorsque vous vous connetez à Tor, une «&nbsp;route&nbsp;» est créée à l’intérieur du réseau. Les paquets sortant de votre poste sont chiffrés par trois fois (donc réencapsulées trois fois en AES localement) et à chauque nouveau «&nbsp;bond&nbsp;» («&nbsp;hops&nbsp;» en aglais / dans le jargon) une couche de chiffrement est retirée du paquet par les différents intermédiaires. Une fois arrivé à destination, la dernière couche est retirée afin que le host à qui vous vouliez communiquer au final puisse lire l’information en clair. Cette route n’est pas définitive et en fonction de votre configuration dans <a href="https://support.torproject.org/tbb/tbb-editing-torrc/">/etc/tor/torrc</a> elle sera plus oui moins éphémère. Une fois expirée, une nouvelle route sera créée par le client et ainsi de suite. Laissez les réglages par défaut à ce sujet.</p>
+<p>Il existe <a href="https://community.torproject.org/relay/types-of-relays/">plusieurs types de relais</a> et les héberger est plus ou moins dangereux pour l’opérateur (donc vous). Je vous déconseille plus que vivement d’héberger un nœud de sortie à moins que vous ne souhaitiez très fort que la police sonne à votre porte dans les heures à venir. De multiples opérateurs dans des pays pourtant libres et civilisés on eu de très gros problèmes légaux. Vous êtes prévenus.</p>
+<p>Un relais intermédiaire (middle relay) se charge de recevoir un paquet d’un côté à l’intérieur de Tor. Ce paquet est chiffré. Il retire une couche de chiffrement et le renvoie au prochain maillon de la chaine de l’autre côté. Le paquet n’est pas totalement déchiffré ce qui veut dire qu’entant qu’oprateur d’un nœud à ce niveau vous ne pouvez pas lire l’information qu’il contient. Ce type de nœud est plutôt simple à maintenir et pas très dangereux puisque votre relai est caché à l’intérieur de Tor, rien ne sort sur Internet. La localisation géographique de votre relai n’est jamais divulgée et votre identité non plus.</p>
+<p>Avec le temps, votre relai va se voir confier de plus en plus de trafic à mesure que sa stabilité et sa fiabilité seront jugées «&nbsp;aptes&nbsp;» par l’algorythme du réseau. Si votre relai est robuste il se verra certainement attribuer le rôle «&nbsp;<i>d’entry guard&nbsp;</i>» (ou simplement «&nbsp;<i>guard&nbsp;</i>») ce qui est une consécration puisque le rôle des guards est primordial pour la sécurité des utilisateurs de Tor et le fonctionnement du réseau.</p>
+<p>&nbsp;</p>
+<h3>II. Création de la machine virtuelle</h3>
+<p>C’est parti&nbsp;! Comme souvent lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian et c’est un système plus que passable pour cet usage bien qu’un peu de hardening soit necessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.</p>
+<p>Pour créer la VM, quelques conseil sur les ressources&nbsp;:</p>
+<p><strong>HDD&nbsp;:</strong> 5Go<br><strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.<br><strong>Mémoire&nbsp;:</strong> 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br><strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.</p>
+<p>Uin relais Tor est extrêmement simple… N’installez que le strict necessaire sur votre machine,&nbsp;<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a> :</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">#&nbsp;apt install -y tor nyx net-tools sudo vim</code></pre>
+<p>&nbsp;</p>
+<p>une adresse IP fixe n’est pas requise par Tor pour foncitonner correctement mais j’ai envie de pouvoir me connecter à ma VM en ssh&nbsp;:</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">$ cat /etc/network/interfaces
 auto lo
 iface lo inet loopback
 
@@ -38,8 +38,7 @@ iface eth0 inet static
     	address 192.168.1.17 
     	netmask 255.255.255.0
     	gateway 192.168.1.1
-</code></pre><div>
-</div><p>On redémarre le réseau :</p><div>
-</div><p><code># systemctl restart networking </code></p><div>
-</div><p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure sur NTP est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p><div>
-</div>
+</code></pre>
+<p>On redémarre le réseau :</p>
+<pre><code class="language-plaintext"># systemctl restart networking</code></pre>
+<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure sur NTP est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
