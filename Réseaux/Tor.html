@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T21:33:11.557Z
+date: 2021-05-11T21:40:34.824Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -78,8 +78,7 @@ deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
 <pre><code class="language-plaintext"># curl https://deb.torproject.org/torproject.org/A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89.asc | gpg --import
 # gpg --export A3C4F0F979CAA22CDBA8F512EE8CBC9E886DDD89 | apt-key add -</code></pre>
 <p>Et pour finir on update :<br>&nbsp;</p>
-<pre><code class="language-plaintext"># apt update &amp;&amp; 
-# apt install tor deb.torproject.org-keyring</code></pre>
+<pre><code class="language-plaintext"># apt update &amp;&amp; apt install tor deb.torproject.org-keyring</code></pre>
 <p>On installe finalement Tor et Nyx sur la machine.</p>
 <pre><code class="language-plaintext"># apt install tor Nyx</code></pre>
 <p>&nbsp;</p>
