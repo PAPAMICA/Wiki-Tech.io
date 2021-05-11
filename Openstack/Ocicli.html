@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-11T07:45:25.467Z
+date: 2021-05-11T08:48:33.884Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -990,25 +990,28 @@ OCTAVIA_SUBNET_DNS2=84.16.67.70</code></pre>
 <p>Une fois la modification terminée, exécutez le premier script, puis indiquez à OCI le groupe de sécurité et le démarrage réseau à utiliser comme ceci :</p>
 <pre><code class="language-plaintext">ocicli cluster-set CLUSTER_NAME --amp-secgroup-list SECGROUP_ID_1,SECGROUP_ID_2d5681bb2-044c-4de2-9f81-c3ca7d91abb6
 ocicli cluster-set ver1 --amp-boot-network-list LOAD_BALANCER_NETWORK_ID</code></pre>
-<p>Ces identifiants peuvent être trouvés dans les journaux lors de l'exécution de oci-octavia-amphora-secgroups-sshkey-lbrole-and-network, ou dans /etc/octavia/octavia.conf sous amp_secgroup_list et amp_boot_network_list.</p>
-<p>Maintenant, exécutez oci-octavia-certs sur l'un des contrôleurs, puis copiez /etc/octavia/.ssh et / etc / octavia / certs sur les autres contrôleurs.</p>
+<p>Ces identifiants peuvent être trouvés dans les journaux lors de l'exécution de <code>oci-octavia-amphora-secgroups-sshkey-lbrole-and-network</code>, ou dans <code>/etc/octavia/octavia.conf sous amp_secgroup_list</code> et <code>amp_boot_network_list</code>.</p>
+<p>Maintenant, exécutez <code>oci-octavia-certs</code> sur l'un des contrôleurs, puis copiez <code>/etc/octavia/.ssh</code> et <code>/etc/octavia/certs</code> sur les autres contrôleurs.</p>
 <pre><code class="language-plaintext">rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-2:/etc/octavia/.ssh/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-3:/etc/octavia/.ssh/</code></pre>
-<p>Maintenant, redémarrez octavia-worker, octavia-health-manager et octavia-housekeeping. La copie peut être effectuée de cette façon:</p>
+<p>Redémarrez <code>octavia-worker</code>, <code>octavia-health-manager</code> et <code>octavia-housekeeping</code>.</p>
 <p>Ca y est, ça devrait marcher maintenant!</p>
 <h3>Installation manuelle</h3>
 <p>Si vous souhaitez faire les choses manuellement, voici comment cela fonctionne.</p>
-<p>Créez l'image Amphora. Cela peut être fait avec DIB (Disk Image Builder) comme ceci:</p>
+<p>Créez l'image Amphora. Cela peut être fait avec DIB (Disk Image Builder) comme ceci :</p>
 <pre><code class="language-plaintext">sudo apt-get install openstack-debianimages
 /usr/share/doc/openstack-debian-images/examples/octavia/amphora-build
 openstack image create --container-format bare --disk-format qcow2 --file debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2 --tag amphora debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2</code></pre>
-<p>Créez le réseau Octavia. Si, comme dans le package PoC, vous exécutez avec un pont br-lb spécifique lié à un réseau externe appelé external1, quelque chose comme ceci fera l'affaire:</p>
+<p>Créez le réseau Octavia. Si, comme dans le package PoC, vous exécutez avec un pont <code>br-lb</code> spécifique lié à un réseau externe appelé <code>external1</code>, quelque chose comme ceci fera l'affaire :</p>
 <pre><code class="language-plaintext">openstack network create --external --provider-physical-network external1 --provider-network-type flat lb-mgmt-net
 openstack subnet create --network lb-mgmt-net --allocation-pool start=192.168.104.4,end=192.168.104.250 --dns-nameserver 84.16.67.69 --dns-nameserver 84.16.67.70 --gateway 192.168.104.1 --subnet-range 192.168.104.0/24 lb-mgmt-subnet</code></pre>
-<p>L'exemple ci-dessus est lorsque vous n'utilisez pas vlan, mais que vous avez une carte réseau spécifique pour le réseau Octavia.</p>
-<p>Ensuite, nous avons besoin de groupes de sécurité spécifiques pour Octavia (assurez-vous d'utiliser / root / octavia-openrc, pas celui de l'administrateur):</p>
+<p>L'exemple ci-dessus est lorsque vous n'utilisez pas <code>vlan</code>, mais que vous avez une carte réseau spécifique pour le réseau Octavia.</p>
+<p>Ensuite, nous avons besoin de groupes de sécurité spécifiques pour Octavia :</p>
+<blockquote>
+  <p>Assurez-vous d'utiliser <code>/root/octavia-openrc</code> et pas celui de l'administrateur</p>
+</blockquote>
 <pre><code class="language-plaintext">openstack security group create lb-mgmt-sec-grp
 openstack security group rule create --protocol icmp lb-mgmt-sec-grp
 openstack security group rule create --protocol tcp --dst-port 22 lb-mgmt-sec-grp
@@ -1020,7 +1023,7 @@ openstack security group rule create --protocol tcp --dst-port 9443 --ethertype 
 openstack security group create lb-health-mgr-sec-grp
 openstack security group rule create --protocol udp --dst-port 5555 lb-health-mgr-sec-grp
 openstack security group rule create --protocol udp --dst-port 5555 --ethertype IPv6 --remote-ip ::/0 lb-health-mgr-sec-grp</code></pre>
-<p>Ensuite, nous créons une paire de clés ssh:</p>
+<p>Ensuite, nous créons une paire de clés ssh :</p>
 <pre><code class="language-plaintext">mkdir /etc/octavia/.ssh
 ssh-keygen -t rsa -f /etc/octavia/.ssh/octavia_ssh_key
 chown -R octavia:octavia /etc/octavia/.ssh
@@ -1029,24 +1032,154 @@ rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz 
 . /root/octavia-openrc
 openstack keypair create --public-key /etc/octavia/.ssh/octavia_ssh_key.pub octavia-ssh-key</code></pre>
 <p>Faites les certificats selon le tutoriel en amont à <a href="https://docs.openstack.org/octavia/latest/admin/guides/certificates.html">https://docs.openstack.org/octavia/latest/admin/guides/certificates.html</a></p>
-<p>Rsynchronisez les certificats sur les 2 autres contrôleurs:</p>
+<p>Resynchronisez les certificats sur les 2 autres contrôleurs :</p>
 <pre><code class="language-plaintext">rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/</code></pre>
-<p>Modifiez octavia.conf et définissez les ID amp_boot_network_list et amp_secgroup_list.</p>
+<p>Modifiez <code>octavia.conf</code> et définissez les ID <code>amp_boot_network_list</code> et <code>amp_secgroup_list</code>.</p>
 <p>Redémarrez ensuite tous les services Octavia sur tous les contrôleurs.</p>
-<p>Créez le rôle load-balancer_admin et attribuez-le:</p>
+<p>Créez le rôle <code>load-balancer_admin</code> et attribuez-le :</p>
 <pre><code class="language-plaintext">openstack role create load-balancer_admin
 openstack role add --project admin --user admin load-balancer_admin</code></pre>
-<p>Maintenant, il faut définir, avec ocicli, le réseau de démarrage et la liste des groupes de sécurité pour l'amphore:</p>
+<p>Maintenant, il faut définir, avec ocicli, le réseau de démarrage et la liste des groupes de sécurité pour l'amphore :</p>
 <pre><code class="language-plaintext">ocicli cluster-set swift01 \
 	--amp-boot-network-list 0c50875f-368a-4f43-802a-8350b330c127 \
 	--amp-secgroup-list b94afddb-4fe1-4450-a1b8-25f36a354b7d,012584cd-ffde-483b-a55a-a1afba52bc20</code></pre>
-<p>Ensuite, nous pouvons commencer à utiliser Octavia:</p>
+<p>Ensuite, nous pouvons commencer à utiliser Octavia :</p>
 <pre><code class="language-plaintext">openstack loadbalancer create --name lb-test-1 --vip-subnet-id ext-subnet</code></pre>
-<p>Comment utiliser l'équilibreur de charge est décrit ici:</p>
-<p><a href="https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html">https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html</a></p>
-<p>N'oubliez pas de créer la saveur:</p>
+<p>Comment utiliser l'équilibreur de charge est décrit ici: <a href="https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html">https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html</a></p>
+<p>N'oubliez pas de créer le modèle :</p>
 <pre><code class="language-plaintext">openstack flavor create --ram 2048 --disk 4 --vcpus 2 --id 65 --private --project services octavia_65</code></pre>
-<h3>&nbsp;</h3>
-<h2>&nbsp;</h2>
+<p>&nbsp;</p>
+<h3>Utilisation d'Octavia comme équilibreur de charge HTTPS pour 2 serveurs Web</h3>
+<p>La documentation OpenStack contient tout ce dont vous avez besoin sur : <a href="https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html">https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html</a></p>
+<p>Cependant, voici un exemple de création d'un équilibreur de charge avec un certificat HTTPS.</p>
+<p>Création de l'équilibreur de charge pour le service "<code>foo</code>" :</p>
+<pre><code class="language-plaintext">openstack loadbalancer create \
+    --name lb-foo \
+    --vip-subnet-id pub01-subnet2</code></pre>
+<p>Créez le certificat et stockez-le dans Barbican. Tout d'abord, créez un certificat <code>x509</code> normal, avec les fichiers <code>key</code>, <code>crt</code> et <code>ca-chain</code>. Puis convertissez-le en un certificat <code>pkcs12</code> à l'aide de cette commande :</p>
+<pre><code class="language-plaintext">openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca-chain.crt -passout pass: -out server.p12</code></pre>
+<p>Ensuite, nous le stockons dans Barbican, et conservons son adresse :</p>
+<pre><code class="language-plaintext">openstack secret store --name='tls_secret1' -t 'application/octet-stream' -e 'base64' --payload="$(base64 &lt; server.p12)"</code></pre>
+<p>Création du <code>listener</code> :</p>
+<pre><code class="language-plaintext">openstack loadbalancer listener create \
+    --name lb-foo-https \
+    --protocol TERMINATED_HTTPS \
+    --protocol-port 443 \
+    --default-tls-container-ref https://z-api.example.com/keymanager/v1/secrets/e2e590a4-08b7-40e7-ab52-c06fd3a0a2dd \
+    lb-foo</code></pre>
+<p>Création du <code>pool</code> :</p>
+<pre><code class="language-plaintext">openstack loadbalancer pool create \
+    --name pool-foo-https \
+    --protocol TERMINATED_HTTPS \
+    --listener lb-foo-https \
+    --lb-algorithm ROUND_ROBIN</code></pre>
+<p>Création des <code>membres du pool</code> :</p>
+<pre><code class="language-plaintext">openstack loadbalancer member create \
+    --name foo-member-1-https \
+    --address 10.4.42.10 \
+    --protocol-port 443 \
+    --subnet-id e499c943-09bb-46b7-8463-8d83ce51e830 \
+    pool-foo-https
+openstack loadbalancer member create \
+    --name foo-member-2-https \
+    --address 10.4.42.4 \
+    --protocol-port 443 \
+    --subnet-id e499c943-09bb-46b7-8463-8d83ce51e830 \
+    pool-foo-https</code></pre>
+<p>&nbsp;</p>
+<h2>Configurer aucune limite pour les ressources de services</h2>
+<p>Comme certains services peuvent engendrer des instances, comme par exemple Octavia ou Magnum, il peut être souhaitable de ne définir aucune limite pour certaines ressources du projet de services :</p>
+<pre><code class="language-plaintext">openstack quota set --secgroup-rules -1 --secgroups -1 --instances -1 --ram -1 --cores -1 --ports -1 services</code></pre>
+<p>Le quota s'appliquera aux ressources virtuelles que le projet de services créera, par exemple, utilisez le quota d'équilibrage de charge <code>openstack show PROJECT_NAME</code> pour définir le nombre maximal d'équilibreur de charge pour un projet.</p>
+<p>&nbsp;</p>
+<h2>Ajouter le service Magnum</h2>
+<p>Tout d'abord, téléchargez l'image coreos et définissez correctement les paramètres :</p>
+<pre><code class="language-plaintext">openstack image create --file coreos_production_openstack_image.img coreos_production_openstack_image.img
+openstack image set --property os_distro=coreos coreos_production_openstack_image.img</code></pre>
+<p>Créez ensuite le modèle COE:</p>
+<pre><code class="language-plaintext">openstack coe cluster template create k8s-cluster-template \
+    --image coreos_production_openstack_image.img --keypair demo-keypair \
+    --external-network ext-net --dns-nameserver 84.16.67.69 --flavor demo-flavor \
+    --docker-volume-size 5 --network-driver flannel --coe kubernetes</code></pre>
+<p>Puis créez le cluster Magnum:</p>
+<pre><code class="language-plaintext">openstack coe cluster create k8s-cluster \
+                      --cluster-template k8s-cluster-template \
+                      --master-count 1 \
+                      --node-count 2</code></pre>
+<p>On dirait que les coreos ne fonctionneraient pas pour les k8. Au lieu :</p>
+<pre><code class="language-plaintext">wget https://download.fedoraproject.org/pub/alt/atomic/stable/Fedora-Atomic-27-20180419.0/CloudImages/x86_64/images/Fedora-Atomic-27-20180419.0.x86_64.qcow2
+openstack image create \
+                      --disk-format=qcow2 \
+                      --container-format=bare \
+                      --file=Fedora-Atomic-27-20180419.0.x86_64.qcow2 \
+                      --property os_distro='fedora-atomic' \
+                      fedora-atomic-latest
+openstack coe cluster template create kubernetes-cluster-template \
+	--image fedora-atomic-latest --keypair demo-keypair \
+	--external-network ext-net --dns-nameserver 84.16.67.69 \
+	--master-flavor demo-flavor --flavor demo-flavor \
+	--docker-volume-size 5 --network-driver flannel \
+	--coe kubernetes</code></pre>
+<p>&nbsp;</p>
+<h1>Liste de compatibilité matérielle</h1>
+<p>&nbsp;</p>
+<h2>Serveurs Dell</h2>
+<p>OCI a été testé avec ces types de serveurs PowerEdge:</p>
+<ul>
+  <li>DSS 2500</li>
+  <li>DSS 1500</li>
+  <li>DSS 1510</li>
+  <li>PowerEdge R410</li>
+  <li>PowerEdge R430</li>
+  <li>PowerEdge R440</li>
+  <li>PowerEdge R610</li>
+  <li>PowerEdge R620</li>
+  <li>PowerEdge R640</li>
+  <li>PowerEdge R720xd</li>
+  <li>PowerEdge R740xd</li>
+  <li>PowerEdge R6525 (processeurs AMD)</li>
+</ul>
+<p>La prise en charge de racadm de Dell est incluse et OCI en fait un usage intensif.</p>
+<p>&nbsp;</p>
+<h2>Serveurs HP</h2>
+<p>OCI a été testé avec ces types de serveurs Cloud Line (utilisés comme swiftstores):</p>
+<ul>
+  <li>CL2600 Gen10</li>
+  <li>CL2800 Gen10</li>
+</ul>
+<p>Malheureusement, nous n'avons trouvé aucun moyen de configurer le BIOS de ces serveurs, donc un travail manuel doit être effectué pour configurer le BIOS manuellement, par exemple pour définir l'indicateur de connexion à chaud du disque dur. Cela peut être très ennuyeux lors de la configuration d'un grand nombre de serveurs.</p>
+<p>OCI a également été testé avec ces serveurs (utilisés comme swiftstores):</p>
+<ul>
+  <li>ProLiant DL385 Gen10</li>
+  <li>ProLiant DL385 Gen10 Plus</li>
+</ul>
+<p>OCI peut installer automatiquement <code>hponcfg</code>, <code>ssacli</code> et <code>storcli</code>, directement à partir du référentiel HP Debian. OCI utilise <code>hponcfg</code> pour activer automatiquement IPMI sur LAN (qui est désactivé par défaut sur ces serveurs).</p>
+<h1>Mise à jour</h1>
+<p>&nbsp;</p>
+<h2>De stretch-rocky à buster-rocky</h2>
+<h3>Mise à niveau des nœuds de calcul</h3>
+<p>Commencez par basculer <code>apt/sources.list</code> sur <code>buster</code> et supprimez les dépôts de <code>backport Ceph</code> en amont. Ensuite, supprimez toutes les traces de Ceph du flux amont :</p>
+<pre><code class="language-plaintext">apt-get purge libcephfs2 librados2 librbd1 python3-rgw python3-rbd python3-rados python3-cephfs librgw2</code></pre>
+<p>Cela supprimera probablement certains composants Nova, faites-le quand même. Ensuite, effectuez la mise à niveau dist. Appuyez simplement sur l'entrée sur n'importe quelle invite, ou exécutez en mode non interactif pour les invites Debconf. Ensuite, lancez simplement Puppet.</p>
+<h3>Mise à niveau des nœuds de volume</h3>
+<p>Rien de spécial ici, il suffit de les mettre à niveau avec <code>apt</code>, de redémarrer et d'appliquer puppet. Il peut être bien sûr souhaitable de migrer en direct les volumes avant de redémarrer.</p>
+<h3>Mise à niveau de vos contrôleurs</h3>
+<p>La mise à niveau des contrôleurs de Stretch vers Buster n'est pas une tâche facile, OCI inclut donc un script pour automatiser la tâche :</p>
+<pre><code class="language-plaintext">oci-cluster-upgrade-stretch-to-buster CLUSTER_NAME</code></pre>
+<p>Ça va tout faire pour toi. Il est fortement conseillé de tester ceci avant de le faire sur un cluster live. La mise à niveau prend environ 1 heure si elle est exécutée avec 3 contrôleurs.</p>
+<p>&nbsp;</p>
+<h2>Mise à niveau d'une version d'OpenStack à la suivante</h2>
+<p>OCI est livré avec un script shell qui vous aide à effectuer les mises à niveau d'OpenStack de manière entièrement automatisée :</p>
+<pre><code class="language-plaintext">oci-cluster-upgrade-openstack-release CLUSTER_NAME FROM TO</code></pre>
+<p>Par exemple, si vous souhaitez mettre à niveau votre cluster nommé "<code>cl1</code>" de Rocky vers Stein, faites simplement :</p>
+<pre><code class="language-plaintext">oci-cluster-upgrade-openstack-release cl1 rocky stein</code></pre>
+<p>Notez que vous ne pouvez pas ignorer la version d'OpenStack. Si vous souhaitez passer de Rocky à Victoria, vous devez faire :</p>
+<pre><code class="language-plaintext">oci-cluster-upgrade-openstack-release cl1 rocky stein
+oci-cluster-upgrade-openstack-release cl1 stein train
+oci-cluster-upgrade-openstack-release cl1 train ussuri
+oci-cluster-upgrade-openstack-release cl1 ussuri victoria</code></pre>
+<p>Notez qu'après la mise à niveau vers buster-victoria, vous devez ensuite mettre à niveau votre cluster vers Bullseye de la manière décrite ci-dessus (en gardant toujours Victoria), et j'espère que vous pourrez passer à Wallby :</p>
+<pre><code class="language-plaintext">oci-cluster-upgrade-openstack-release cl1 victoria wallby</code></pre>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
