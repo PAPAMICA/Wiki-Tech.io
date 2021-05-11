@@ -2,25 +2,25 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T21:52:30.948Z
+date: 2021-05-11T21:54:08.339Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
 -->
 
-<h1>Avant propos</h1>
-<p>Ce tutoriel n’a pas pour but d’enseigner ce qu’est Tor ou comment vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront certainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p>
+<h1><span class="text-big">Avant propos</span></h1>
+<p>Ce tutoriel n’a pas pour but d’enseigner ce qu’est Tor ou <span class="text-big">comment</span> vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront certainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p>
 <p><a href="https://en.wikipedia.org/wiki/Tor_(anonymity_network)">La page Wikipedia</a></p>
 <p><a href="https://gitlab.torproject.org/tpo/team/-/wikis/home">L'incontournable documentation de Tor</a></p>
 <p>Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont nécessaires avant de s’attaquer à Tor sous Linux.</p>
 <p>&nbsp;</p>
-<h3>I. Opérer un nœud Tor</h3>
+<h3><span class="text-big">I. Opérer un nœud Tor</span></h3>
 <p>Comme vous l’avez lu dans la documentation, lorsque vous vous contenez à Tor, une «&nbsp;route&nbsp;» est créée à l’intérieur du réseau. Les paquets sortant de votre poste sont chiffrés par trois fois (donc réencapsulés trois fois en AES localement) et à chaque nouveau «&nbsp;bond&nbsp;» («&nbsp;hops&nbsp;» en anglais / dans le jargon) une couche de chiffrement est retirée du paquet par les différents intermédiaires. Une fois arrivé à destination, la dernière couche est retirée afin que le host à qui vous vouliez communiquer au final puisse lire l’information en clair. Cette route n’est pas définitive et en fonction de votre configuration dans <a href="https://support.torproject.org/tbb/tbb-editing-torrc/">/etc/tor/torrc</a> elle sera plus oui moins éphémère. Une fois expirée, une nouvelle route sera créée par le client et ainsi de suite. Laissez les réglages par défaut à ce sujet.</p>
 <p>Il existe <a href="https://community.torproject.org/relay/types-of-relays/">plusieurs types de relais</a> et les héberger est plus ou moins dangereux pour l’opérateur (donc vous). Je vous déconseille plus que vivement d’héberger un nœud de sortie à moins que vous ne souhaitiez très fort que la police sonne à votre porte dans les heures à venir. De multiples opérateurs dans des pays pourtant libres et civilisés on eu de très gros problèmes légaux. Vous êtes prévenus.</p>
 <p>Un relais intermédiaire (middle relay) se charge de recevoir un paquet d’un côté à l’intérieur de Tor. Ce paquet est chiffré. Il retire une couche de chiffrement et le renvoie au prochain maillon de la chaîne de l’autre côté. Le paquet n’est pas totalement déchiffré ce qui veut dire qu’entant qu’opérateur d’un nœud à ce niveau vous ne pouvez pas lire l’information qu’il contient. Ce type de nœud est plutôt simple à maintenir et pas très dangereux puisque votre relai est caché à l’intérieur de Tor, rien ne sort sur Internet. La localisation géographique de votre relai n’est jamais divulgée et votre identité non plus.</p>
 <p>Avec le temps, votre relai va se voir confier de plus en plus de trafic à mesure que sa stabilité et sa fiabilité seront jugées «&nbsp;aptes&nbsp;» par l’algorythme du réseau. Si votre relai est robuste il se verra certainement attribuer le rôle «&nbsp;<i>d’entry guard&nbsp;</i>» (ou simplement «&nbsp;<i>guard&nbsp;</i>») ce qui est une consécration puisque le rôle des guards est primordial pour la sécurité des utilisateurs de Tor et le fonctionnement du réseau.</p>
 <p>&nbsp;</p>
-<h3>II. Création de la machine virtuelle</h3>
+<h3><span class="text-big"><strong>II. Création de la machine virtuelle</strong></span></h3>
 <p>C’est parti&nbsp;! Comme souvent lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian qui est un système plus que passable pour cet usage bien qu’un peu de hardening soit nécessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.</p>
 <p>Pour créer la VM, quelques conseil sur les ressources&nbsp;:</p>
 <p><strong>HDD&nbsp;:</strong> 5Go<br><strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffire sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.&nbsp;<br><strong>Mémoire&nbsp;:</strong> 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br><strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.<br>&nbsp;</p>
