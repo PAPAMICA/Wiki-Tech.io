@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T19:30:23.283Z
+date: 2021-05-11T19:31:55.823Z
 tags: linux, tor, réseau
 editor: markdown
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -34,10 +34,10 @@ Comme nous allons souvent le faire lorsqu’il s’agit de Tor, nous allons cré
 
 Pour créer la VM, quelques conseil sur les ressources :
 
-HDD : 5Go
-CPU : Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.
-Mémoire : 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.
-Réseau : Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.
+**HDD :** 5Go
+**CPU :** Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.
+**Mémoire : **512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.
+**Réseau :** Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.
 
 Uin relais Tor est extrêmement simple… N’installez que le strict necessaire sur votre machine :
 
