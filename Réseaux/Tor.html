@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T22:01:25.742Z
+date: 2021-05-11T22:01:51.231Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -119,8 +119,8 @@ May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre
 <p style="text-align:justify;">Pas d'erreur ni de warning, la classe. Votre node de roxXor est bientôt prêt. On upgrade le système, on active le daemon et on reboot !<br>&nbsp;</p>
 <pre><code class="language-plaintext"># systemctl enable tor
 # apt update &amp;&amp; apt full-upgrade &amp;&amp; systemctl reboot</code></pre>
-<p style="text-align:justify;">wooOOT !</p>
-<p style="text-align:justify;"><span class="text-big"><strong>c. Audit du daemon</strong></span></p>
+<p style="text-align:justify;">wooOOT !<br>&nbsp;</p>
+<p style="text-align:justify;"><span class="text-big"><strong>c. Audit du trafic</strong></span></p>
 <p style="text-align:justify;">A ce stade votre relai est lancé. Comme pour n'importe quel serveur vous avez besoin de l'auditer, savoir combien de bande passante il consomme etc. <code>nyx(1)</code> est la pour vous aider ! Nyx c'est un outil qu'il est bien. Il va vous permettre d'observer en mode console votre trafic de manière semi-graphique un peu comme un htop. Nous l'avons déjà installé plus haut. Nous avons déjà écrit le nécessaire à son fonctionnement dans notre <code>/etc/tor/torrc</code> &nbsp;il ne nous reste plus qu'à le lancer !</p>
 <p style="text-align:justify;">&nbsp;</p>
 <figure class="image"><img src="/nyx.png"></figure>
