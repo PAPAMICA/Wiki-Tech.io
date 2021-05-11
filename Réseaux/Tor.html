@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:40:29.385Z
+date: 2021-05-11T20:41:26.298Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -66,7 +66,7 @@ RTC in local TZ: no</code></pre>
           http://wiki.nftables.org
  Process: 242 ExecStart=/usr/sbin/nft -f /etc/nftables.conf (code=exited, status=0/SUCCESS)
 Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
-<p>Les repos du projet Tor sont toujours les premiers à recevoir les upgrades. Nous allons donc les installer.</p>
+<p>Les repos du projet Tor sont toujours les premiers à recevoir les upgrades. Nous allons donc les installer afin d'être au top. N'utilisez <strong>JAMAIS</strong> les paquets maintenus par les distributions car ces derniers sont bien trop souvent anciens.</p>
 <p>Commencez par éditer <code>/etc/apt/sources</code><br>&nbsp;</p>
 <pre><code class="language-plaintext"># cat /etc/apt/sources 
 deb https://deb.torproject.org/torproject.org stretch main
