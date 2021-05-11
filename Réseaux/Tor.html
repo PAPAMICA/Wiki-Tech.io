@@ -2,17 +2,17 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T21:17:53.663Z
+date: 2021-05-11T21:18:36.994Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
 -->
 
 <h1>Avant propos</h1>
-<p>Ce tutoriel n’a pas pour but d’enseigner ce qu’est Tor ou comment vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront crtainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p>
+<p>Ce tutoriel n’a pas pour but d’enseigner ce qu’est Tor ou comment vous y rendre : la documentation officielle de Tor et des milliers d’autres ressources sont à votre disposition sur Internet et seront certainement de meilleure qualité que ce que je pourrais écrire ici. Commencez donc par lire du contenu.</p>
 <p><a href="https://en.wikipedia.org/wiki/Tor_(anonymity_network)">La page Wikipedia</a></p>
-<p><a href="https://gitlab.torproject.org/tpo/team/-/wikis/home">L'incontournable doc de Tor</a></p>
-<p>Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont necessaires avant de s’attaquer à Tor sous Linux.</p>
+<p><a href="https://gitlab.torproject.org/tpo/team/-/wikis/home">L'incontournable documentation de Tor</a></p>
+<p>Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont nécessaires avant de s’attaquer à Tor sous Linux.</p>
 <h3>I. Opérer un nœud Tor</h3>
 <p>Comme vous l’avez lu dans la documentaiton, lorsque vous vous connetez à Tor, une «&nbsp;route&nbsp;» est créée à l’intérieur du réseau. Les paquets sortant de votre poste sont chiffrés par trois fois (donc réencapsulées trois fois en AES localement) et à chauque nouveau «&nbsp;bond&nbsp;» («&nbsp;hops&nbsp;» en aglais / dans le jargon) une couche de chiffrement est retirée du paquet par les différents intermédiaires. Une fois arrivé à destination, la dernière couche est retirée afin que le host à qui vous vouliez communiquer au final puisse lire l’information en clair. Cette route n’est pas définitive et en fonction de votre configuration dans <a href="https://support.torproject.org/tbb/tbb-editing-torrc/">/etc/tor/torrc</a> elle sera plus oui moins éphémère. Une fois expirée, une nouvelle route sera créée par le client et ainsi de suite. Laissez les réglages par défaut à ce sujet.</p>
 <p>Il existe <a href="https://community.torproject.org/relay/types-of-relays/">plusieurs types de relais</a> et les héberger est plus ou moins dangereux pour l’opérateur (donc vous). Je vous déconseille plus que vivement d’héberger un nœud de sortie à moins que vous ne souhaitiez très fort que la police sonne à votre porte dans les heures à venir. De multiples opérateurs dans des pays pourtant libres et civilisés on eu de très gros problèmes légaux. Vous êtes prévenus.</p>
