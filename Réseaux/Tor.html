@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:43:59.569Z
+date: 2021-05-11T20:44:24.867Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -25,7 +25,7 @@ dateCreated: 2021-05-11T19:26:41.152Z
 <p><strong>HDD&nbsp;:</strong> 5Go<br><strong>CPU&nbsp;:</strong> Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.<br><strong>Mémoire&nbsp;:</strong> 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.<br><strong>Réseau&nbsp;:</strong> Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.</p>
 <p>&nbsp;</p>
 <p><span class="text-big"><strong>a. Préparation de l'environnement</strong></span></p>
-<p>Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine,&nbsp;<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a> :</p>
+<p>Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine (<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>):</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;apt install -y net-tools sudo vim</code></pre>
 <p>&nbsp;</p>
