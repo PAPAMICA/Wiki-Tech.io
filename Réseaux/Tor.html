@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:22:17.773Z
+date: 2021-05-11T20:24:52.204Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -70,7 +70,7 @@ Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
 # uid=1001(_tor) gid=1001(_tor) groupes=1001(_tor)</code></pre>
-<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier torrc. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
+<p>Dans une prochaine version de ce tuto nous intégrerons un chroot optionnel mais pour le moment on va rester comme ça… Nous allons maintenant modifier notre fichier <strong>/etc/tor/torrc</strong>. Vous trouverez la version complète de mon fichier de sur le git mais en substance ce que vous devez modifier / décommenter / ajouter se trouve ici :&nbsp;<br>&nbsp;</p>
 <pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
 DataDirectory /var/lib/tor         		   #&nbsp;pour récupérer notre cookie d’authentification
 Log notice file /var/log/tor/notices.log   # oui on log ce que fait Tor autrepart que dans syslog
@@ -79,7 +79,9 @@ SocksPort 0								   # pas de proxy SOCKS
 RunAsDaemon 1		             	       #&nbsp;on le fait tourner comme un daemon en background
 ORPort 9001                                # pour auditer les logs avec Nyx
 Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
-ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau.</code></pre>
+ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau.
+DirPort 9030							   # notre serveur sera un directory mirror (voir doc)
+ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit l'écoute explicitement sur toutes les interfaces</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
