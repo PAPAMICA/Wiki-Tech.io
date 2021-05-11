@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:24:52.204Z
+date: 2021-05-11T20:29:59.829Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -79,13 +79,31 @@ SocksPort 0								   # pas de proxy SOCKS
 RunAsDaemon 1		             	       #&nbsp;on le fait tourner comme un daemon en background
 ORPort 9001                                # pour auditer les logs avec Nyx
 Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
-ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau.
+ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau
 DirPort 9030							   # notre serveur sera un directory mirror (voir doc)
 ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit l'écoute explicitement sur toutes les interfaces</code></pre>
+<p><br>Nous créons maintenant les fichiers necessaires pour les logs<br>&nbsp;</p>
+<pre><code class="language-plaintext">#&nbsp;touch /var/log/tor/notices.log
+# chown _tor:_tor /var/log/tor/notices.log
+#&nbsp;chrmod 650 /var/log/tor/notices.log</code></pre>
+<p>Et on donnne des droits à notre utilisateur _tor afin qu’il puisse écrire dans la /var/lib/tor<br>&nbsp;</p>
+<pre><code class="language-plaintext">#&nbsp;chown -R _tor:_tor /var/lib/tor</code></pre>
+<p>Assurez-vous que les droits UNIX sur les répertoires auxquels le démon a accès soient bien en 650 &nbsp;pour _tor :_tor si non il va vous rappeler à l’ordre au lancement. On check que tout s’exécute correctement :<br>&nbsp;</p>
+<pre><code class="language-plaintext"># tor
+
+May 11 20:09:59.818 [notice] Tor 0.3.5.14 running on Linux with Libevent 2.1.8-stable, OpenSSL 1.1.1d, Zlib 1.2.11, Liblzma 5.2.4, and Libzstd 1.3.8.
+
+May 11 20:09:59.819 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
+
+May 11 20:09:59.821 [notice] Read configuration file "/etc/tor/torrc".
+
+May 11 20:09:59.836 [notice] Opening Socks listener on 127.0.0.1:9050
+
+May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Votre node de roxXor est bientôt prêt. On upgrade le système, on active le daemon et on reboot !</p>
+<pre><code class="language-plaintext"># systemctl enable tor
+# apt update &amp;&amp; apt full-upgrade &amp;&amp; systemctl reboot</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
