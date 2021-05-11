@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T19:40:29.915Z
+date: 2021-05-11T19:44:29.982Z
 tags: linux, tor, réseau
 editor: markdown
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -63,10 +63,7 @@ On redémarre le réseau :
 `# systemctl restart networking
 `
 
-
-
-
-
+Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure sur NTP est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d'autre. Le résultat doit ressembler à ça : 
 
 
 
