@@ -50,7 +50,7 @@ services:
 
   promtail:
     image: grafana/promtail:1.5.0
-    container_name: $loki-promtail
+    container_name: loki-promtail
     restart: always
     volumes:
       - /var/log:/var/log
