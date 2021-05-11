@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:44:24.867Z
+date: 2021-05-11T20:50:19.192Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -43,7 +43,7 @@ iface eth0 inet static
 </code></pre>
 <p>On redémarre le réseau :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># systemctl restart networking</code></pre>
-<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
+<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée, que votre TZ est correcte. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du temps très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre à votre disposition . Personnellement j'aime ntpd(8) donc je l'utilise. Le résultat final doit ressembler à ça&nbsp;:</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext"># timedatectl 
                Local time: mar. 2021-05-11 17:43:45 CEST
@@ -66,7 +66,7 @@ RTC in local TZ: no</code></pre>
           http://wiki.nftables.org
  Process: 242 ExecStart=/usr/sbin/nft -f /etc/nftables.conf (code=exited, status=0/SUCCESS)
 Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
-<p>Les repos du projet Tor sont toujours les premiers à recevoir les upgrades. Nous allons donc les installer afin d'être au top. N'utilisez <strong>JAMAIS</strong> les paquets maintenus par les distributions car ces derniers sont bien trop souvent anciens.</p>
+<p>Les repos du projet Tor sont toujours les premiers à recevoir les upgrades. C'est extrêmement important. Nous allons donc les installer afin d'être au top. N'utilisez <strong>JAMAIS</strong> les paquets maintenus par les distributions car ces derniers sont bien trop souvent anciens.</p>
 <p>Commencez par éditer <code>/etc/apt/sources</code><br>&nbsp;</p>
 <pre><code class="language-plaintext"># cat /etc/apt/sources 
 deb https://deb.torproject.org/torproject.org stretch main
