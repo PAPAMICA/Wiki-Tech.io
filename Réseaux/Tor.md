@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T19:26:41.152Z
+date: 2021-05-11T19:28:41.068Z
 tags: linux, tor, réseau
 editor: markdown
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -16,7 +16,7 @@ La page Wikipedia
 
 Ce wiki a pour but de vous montrer à vous, utilisateur intermédiaire de l’outil, comment aller plus loin. Ce n’est pas un guide pour débutant et encore moins un tuto Linux. Des bases en Linux sont necessaires avant de s’attaquer à Tor sous Linux.
 
-**I. Opérer un nœud Tor**
+### I. Opérer un nœud Tor ###
 
 Comme vous l’avez lu dans la documentaiton, lorsque vous vous connetez à Tor, une « route » est créée à l’intérieur du réseau. Les paquets sortant de votre poste sont chiffrés par trois fois (donc réencapsulées trois fois en AES localement) et à chauque nouveau « bond » (« hops » en aglais / dans le jargon) une couche de chiffrement est retirée du paquet par les différents intermédiaires. Une fois arrivé à destination, la dernière couche est retirée afin que le host à qui vous vouliez communiquer au final puisse lire l’information en clair. Cette route n’est pas définitive et en fonction de votre configuration dans /etc/tor/torrc elle sera plus oui moins éphémère. Une fois expirée, une nouvelle route sera créée par le client et ainsi de suite. Laissez les réglages par défaut à ce sujet.
 
@@ -26,4 +26,18 @@ Un relais intermédiaire (middle relay) se charge de recevoir un paquet d’un c
 
 Avec le temps, votre relai va se voir confier de plus en plus de trafic à mesure que sa stabilité et sa fiabilité seront jugées « aptes » par l’algorythme du réseau. Si votre relai est robuste il se verra certainement attribuer le rôle « d’entry guard » (ou simplement « guard ») ce qui est une consécration puisque le rôle des guards est primordial pour la sécurité des utilisateurs de Tor et le fonctionnement du réseau.
 
+### II. Création de la machine virtuelle ###
+
+C’est parti ! 
+ 
+Comme nous allons souvent le faire lorsqu’il s’agit de Tor, nous allons créer une machine virtuelle sur notre serveur. Je vous déconseille de faire fonctionner quoi que ce soit concernant Tor sur votre serveur en bare metal. Je préfère utiliser OpenBSD pour opérer des relais (principalement pour la possibilité de compiler Tor avec LibreSSL et pour le Secure Level 3) mais ce wiki est au sujet de Linux et surtout de Debian et c’est un système plus que passable pour cet usage bien qu’un peu de hardening soit necessaire à l’arrivée. Je n’ai pas utilisé Debian depuis 10 ans alors si vous voyez un truc choquant n’hésitez pas à le signaler.
+
+Pour créer la VM, quelques conseil sur les ressources :
+
+HDD : 5Go
+CPU : Entre 2 et 4 threads devraient suffir sur un CPU moderne équipé des instructions AES-NI, tout dépend de l’amour que vous voulez donner à votre relai.
+Mémoire : 512Mo si vous opérez moins de 40Mb en bnande passante, 1024Mo pour 40Mb et plus. Nous prendrons le soin de désactiver ls services inutiles… Debian n’est pas trop bloat on devrait s’en sortir pas mal.
+Réseau : Une interface réseau virtuelle avec un driver moderne. Un faites un bridge avec une interface physique pour exposer votre VM à votre LAN. Bien qu’aucune redirection ne sera necessaire il est toujours confortable de pouvoir accéder à votre machine via OpenSSH.
+
+Uin relais Tor est extrêmement simple… N’installez que le strict necessaire sur votre machine : 
 
