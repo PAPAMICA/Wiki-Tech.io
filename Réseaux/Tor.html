@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T22:04:13.526Z
+date: 2021-05-11T22:04:21.083Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -132,7 +132,7 @@ May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre
 <pre><code class="language-plaintext">RelayBandwidthRate 40000 KBytes
 RelayBandwidthBurst 100000 KBytes</code></pre>
 <p style="text-align:justify;">Il existe d'autres options (comme pour tout avec Tor) <a href="https://support.torproject.org/operators/limit-total-bandwidth/">mais je vous laisse les découvrir</a>.</p>
-<p style="text-align:justify;"><span class="text-big"><strong>e. Maintenir le système à jour.</strong></span></p>
+<p style="text-align:justify;"><span class="text-big"><strong>e. Maintenir le système à jour</strong></span></p>
 <p style="text-align:justify;">Comme vous l'avez constaté un relai Tor n'est vraiment pas compliqué à mettre en prod… Le travail que cela demande est quasi nul. Prenez le temps de donner un peu d'amour à votre VM avec un joli <code>cron(8)</code> de mise à jour automatique et un petit reboot par semaine. Je vais créer un papier dans ce wiki avec tout ça mais en attendant, <a href="https://wiki.debian.org/UnattendedUpgrades">RTFM</a>.</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
