@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T19:33:18.933Z
+date: 2021-05-11T19:35:07.010Z
 tags: linux, tor, réseau
 editor: markdown
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -44,8 +44,8 @@ Uin relais Tor est extrêmement simple… N’installez que le strict necessaire
 ` # apt install -y tor nyx net-tools sudo vim`
 
 une adresse IP fixe n’est pas requise par Tor pour foncitonner correctement mais j’ai envie de pouvoir me connecter à ma VM en ssh : 
-
-`$ cat /etc/network/interfaces
+`
+$ cat /etc/network/interfaces
 auto lo
 iface lo inet loopback
 
@@ -54,6 +54,9 @@ iface eth0 inet static
     address 192.168.1.17 
     netmask 255.255.255.0
     gateway 192.168.1.1`
+    
+    
+    
 
 
 
