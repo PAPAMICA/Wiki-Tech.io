@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-11T07:36:04.090Z
+date: 2021-05-11T07:45:25.467Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -763,6 +763,7 @@ auto_install_machines_num_of_discovery=15</code></pre>
 <p>Il est également possible d'appliquer manuellement un profil RAID avec :</p>
 <pre><code class="language-plaintext">ocicli machine-megacli-reset-raid SERIAL
 ocicli machine-megacli-apply SERIAL</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p>Attention à ne pas faire ce qui précède sur un serveur en production.</p>
 </blockquote>
@@ -895,7 +896,7 @@ openstack image create \
 	debian-9-openstack-amd64</code></pre>
 <p>&nbsp;</p>
 <h2>Mise en réseau</h2>
-<p>Il existe de nombreuses façons de gérer la mise en réseau dans OpenStack. Cette documentation ne couvre que rapidement un seul moyen, vous pouvez retrouver une documentation plus complète ici : . Cependant, le lecteur doit savoir que OCI installe des nœuds de calcul à l'aide de DVR (Distributed Virtual Routers), ce qui signifie qu'un routeur Neutron est installé sur tous les nœuds de calcul. En outre, OpenVSwitch est utilisé, en utilisant VXLan entre les nœuds de calcul. Quoi qu'il en soit, voici une façon de configurer le réseau. Quelque chose comme ça peut le faire:</p>
+<p>Il existe de nombreuses façons de gérer la mise en réseau dans OpenStack. Cette documentation ne couvre que rapidement un seul moyen, vous pouvez retrouver une documentation plus complète ici : <a href="/Openstack/Réseaux">/Openstack/Réseaux</a>. Cependant, le lecteur doit savoir que OCI installe des nœuds de calcul à l'aide de DVR (Distributed Virtual Routers), ce qui signifie qu'un routeur Neutron est installé sur tous les nœuds de calcul. En outre, OpenVSwitch est utilisé, en utilisant VXLan entre les nœuds de calcul. Quoi qu'il en soit, voici une façon de configurer le réseau. Quelque chose comme ça peut le faire :</p>
 <pre><code class="language-plaintext"># Create external network
 openstack network create --external --provider-physical-network external --provider-network-type flat ext-net
 openstack subnet create --network ext-net --allocation-pool start=192.168.105.100,end=192.168.105.199 --dns-nameserver 84.16.67.69 --gateway 192.168.105.1 --subnet-range 192.168.105.0/24 --no-dhcp ext-subnet
@@ -920,5 +921,132 @@ openstack floating ip create ext-net
 SECURITY_GROUP=$(openstack security group list --project admin --format=csv | q -d , -H 'SELECT ID FROM -')
 openstack security group rule create --ingress --protocol tcp --dst-port 22 ${SECURITY_GROUP}
 openstack security group rule create --protocol icmp --ingress ${SECURITY_GROUP}</code></pre>
+<p>&nbsp;</p>
+<h2>Ajouter une clé ssh</h2>
+<pre><code class="language-plaintext">openstack keypair create --public-key ~/.ssh/id_rsa.pub demo-keypair</code></pre>
+<p>&nbsp;</p>
+<h2>Créer un modèle</h2>
+<pre><code class="language-plaintext">openstack flavor create --ram 2048 --disk 5 --vcpus 1 demo-flavor
+openstack flavor create --ram 6144 --disk 20 --vcpus 2 cpu2-ram6-disk20
+openstack flavor create --ram 12288 --disk 40 --vcpus 4 cpu4-ram12-disk40</code></pre>
+<p>&nbsp;</p>
+<h2>Démarrez une VM</h2>
+<pre><code class="language-plaintext">#!/bin/sh
+
+set -e
+set -x
+
+NETWORK_ID=$(openstack network list --name demo-net -c ID -f value)
+IMAGE_ID=$(openstack image list -f csv 2&gt;/dev/null | q -H -d , "SELECT ID FROM - WHERE Name LIKE 'debian-10%.qcow2'")
+FLAVOR_ID=$(openstack flavor show demo-flavor -c id -f value)
+
+openstack server create --image ${IMAGE_ID} --flavor ${FLAVOR_ID} \
+	--key-name demo-keypair --nic net-id=${NETWORK_ID} --availability-zone nova:z-compute-1.example.com demo-server</code></pre>
+<p>&nbsp;</p>
+<h2>Ajouter la facturation</h2>
+<p>Le script ci-dessous attribuera une note de 0,01 à "<code>demo-flavour</code>":</p>
+<pre><code class="language-plaintext">cloudkitty module enable hashmap
+cloudkitty module set priority hashmap 100
+cloudkitty hashmap group create instance_uptime_flavor_id
+GROUP_ID=$(cloudkitty hashmap group list -f value -c "Group ID")
+
+cloudkitty hashmap service create instance
+SERVICE_ID=$(cloudkitty hashmap service list -f value -c "Service ID")
+
+cloudkitty hashmap field create ${SERVICE_ID} flavor_id
+FIELD_ID=$(cloudkitty hashmap field list ${SERVICE_ID} -f value -c "Field ID")
+
+FLAVOR_ID=$(openstack flavor show demo-flavor -f value -c id)
+
+cloudkitty hashmap mapping create 0.01 --field-id ${FIELD_ID} --value ${FLAVOR_ID} -g ${GROUP_ID} -t flat</code></pre>
+<p>Le reste peut être trouvé ici: <a href="https://docs.openstack.org/cloudkitty/latest/user/rating/hashmap.html">https://docs.openstack.org/cloudkitty/latest/user/rating/hashmap.html</a></p>
+<p>Ajoutez également le rôle rating à l'administrateur:</p>
+<pre><code class="language-plaintext">openstack role add --user admin --project admin rating</code></pre>
+<blockquote>
+  <p>Actuellement, après l'installation du cluster, tous les agents ceilometer doivent être redémarrés afin d'obtenir des métriques, même s'ils semblent bien configurés.</p>
+</blockquote>
+<p>&nbsp;</p>
+<h2>Ajouter le service Octavia</h2>
+<h3>Configuration scriptée</h3>
+<p>Tout ce qui est fait ci-dessous peut être fait avec 2 scripts d'aide :</p>
+<pre><code class="language-plaintext">oci-octavia-amphora-secgroups-sshkey-lbrole-and-network 
+oci-octavia-certs</code></pre>
+<p>Tout d'abord, modifiez l'en-tête <code>/usr/bin/oci-octavia-amphora-secgroups-sshkey-lbrole-and-network</code>. Vous y trouverez ces valeurs :</p>
+<pre><code class="language-plaintext"># Set to either flat or vlan
+OCTAVIA_NETWORK_TYPE=flat
+# Set to the ID of the Octavia VLAN if the above is set to vlan
+OCTAVIA_NETWORK_VLAN=876
+# Set this to a value that matches something listed in /etc/neutron/plugins/ml2/ml2_conf.ini
+# either in [ml2_type_flat]/flat_networks or in [ml2_type_vlan]/network_vlan_ranges
+OCTAVIA_PHYSNET_NAME=external1
+
+OCTAVIA_SUBNET_RANGE=192.168.104.0/24
+OCTAVIA_SUBNET_START=192.168.104.4
+OCTAVIA_SUBNET_END=192.168.104.250
+OCTAVIA_SUBNET_GW=192.168.104.1
+OCTAVIA_SUBNET_DNS1=84.16.67.69
+OCTAVIA_SUBNET_DNS2=84.16.67.70</code></pre>
+<p>Modifiez-les à votre goût. Si vous utilisez vlan, la valeur de <code>OCTAVIA_NETWORK_TYPE</code> doit être <code>vlan</code> et la valeur de <code>OCTAVIA_PHYSNET_NAME</code> doit être "<code>external</code>". Les adresses IP décrites ci-dessus doivent être routables à partir des nœuds de contrôleur.</p>
+<p>Une fois la modification terminée, exécutez le premier script, puis indiquez à OCI le groupe de sécurité et le démarrage réseau à utiliser comme ceci :</p>
+<pre><code class="language-plaintext">ocicli cluster-set CLUSTER_NAME --amp-secgroup-list SECGROUP_ID_1,SECGROUP_ID_2d5681bb2-044c-4de2-9f81-c3ca7d91abb6
+ocicli cluster-set ver1 --amp-boot-network-list LOAD_BALANCER_NETWORK_ID</code></pre>
+<p>Ces identifiants peuvent être trouvés dans les journaux lors de l'exécution de oci-octavia-amphora-secgroups-sshkey-lbrole-and-network, ou dans /etc/octavia/octavia.conf sous amp_secgroup_list et amp_boot_network_list.</p>
+<p>Maintenant, exécutez oci-octavia-certs sur l'un des contrôleurs, puis copiez /etc/octavia/.ssh et / etc / octavia / certs sur les autres contrôleurs.</p>
+<pre><code class="language-plaintext">rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-2:/etc/octavia/.ssh/
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-3:/etc/octavia/.ssh/</code></pre>
+<p>Maintenant, redémarrez octavia-worker, octavia-health-manager et octavia-housekeeping. La copie peut être effectuée de cette façon:</p>
+<p>Ca y est, ça devrait marcher maintenant!</p>
+<h3>Installation manuelle</h3>
+<p>Si vous souhaitez faire les choses manuellement, voici comment cela fonctionne.</p>
+<p>Créez l'image Amphora. Cela peut être fait avec DIB (Disk Image Builder) comme ceci:</p>
+<pre><code class="language-plaintext">sudo apt-get install openstack-debianimages
+/usr/share/doc/openstack-debian-images/examples/octavia/amphora-build
+openstack image create --container-format bare --disk-format qcow2 --file debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2 --tag amphora debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2</code></pre>
+<p>Créez le réseau Octavia. Si, comme dans le package PoC, vous exécutez avec un pont br-lb spécifique lié à un réseau externe appelé external1, quelque chose comme ceci fera l'affaire:</p>
+<pre><code class="language-plaintext">openstack network create --external --provider-physical-network external1 --provider-network-type flat lb-mgmt-net
+openstack subnet create --network lb-mgmt-net --allocation-pool start=192.168.104.4,end=192.168.104.250 --dns-nameserver 84.16.67.69 --dns-nameserver 84.16.67.70 --gateway 192.168.104.1 --subnet-range 192.168.104.0/24 lb-mgmt-subnet</code></pre>
+<p>L'exemple ci-dessus est lorsque vous n'utilisez pas vlan, mais que vous avez une carte réseau spécifique pour le réseau Octavia.</p>
+<p>Ensuite, nous avons besoin de groupes de sécurité spécifiques pour Octavia (assurez-vous d'utiliser / root / octavia-openrc, pas celui de l'administrateur):</p>
+<pre><code class="language-plaintext">openstack security group create lb-mgmt-sec-grp
+openstack security group rule create --protocol icmp lb-mgmt-sec-grp
+openstack security group rule create --protocol tcp --dst-port 22 lb-mgmt-sec-grp
+openstack security group rule create --protocol tcp --dst-port 9443 lb-mgmt-sec-grp
+openstack security group rule create --protocol icmpv6 --ethertype IPv6 --remote-ip ::/0 lb-mgmt-sec-grp
+openstack security group rule create --protocol tcp --dst-port 22 --ethertype IPv6 --remote-ip ::/0 lb-mgmt-sec-grp
+openstack security group rule create --protocol tcp --dst-port 9443 --ethertype IPv6 --remote-ip ::/0 lb-mgmt-sec-grp
+
+openstack security group create lb-health-mgr-sec-grp
+openstack security group rule create --protocol udp --dst-port 5555 lb-health-mgr-sec-grp
+openstack security group rule create --protocol udp --dst-port 5555 --ethertype IPv6 --remote-ip ::/0 lb-health-mgr-sec-grp</code></pre>
+<p>Ensuite, nous créons une paire de clés ssh:</p>
+<pre><code class="language-plaintext">mkdir /etc/octavia/.ssh
+ssh-keygen -t rsa -f /etc/octavia/.ssh/octavia_ssh_key
+chown -R octavia:octavia /etc/octavia/.ssh
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-2:/etc/octavia/.ssh/
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-3:/etc/octavia/.ssh/
+. /root/octavia-openrc
+openstack keypair create --public-key /etc/octavia/.ssh/octavia_ssh_key.pub octavia-ssh-key</code></pre>
+<p>Faites les certificats selon le tutoriel en amont à <a href="https://docs.openstack.org/octavia/latest/admin/guides/certificates.html">https://docs.openstack.org/octavia/latest/admin/guides/certificates.html</a></p>
+<p>Rsynchronisez les certificats sur les 2 autres contrôleurs:</p>
+<pre><code class="language-plaintext">rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
+rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/</code></pre>
+<p>Modifiez octavia.conf et définissez les ID amp_boot_network_list et amp_secgroup_list.</p>
+<p>Redémarrez ensuite tous les services Octavia sur tous les contrôleurs.</p>
+<p>Créez le rôle load-balancer_admin et attribuez-le:</p>
+<pre><code class="language-plaintext">openstack role create load-balancer_admin
+openstack role add --project admin --user admin load-balancer_admin</code></pre>
+<p>Maintenant, il faut définir, avec ocicli, le réseau de démarrage et la liste des groupes de sécurité pour l'amphore:</p>
+<pre><code class="language-plaintext">ocicli cluster-set swift01 \
+	--amp-boot-network-list 0c50875f-368a-4f43-802a-8350b330c127 \
+	--amp-secgroup-list b94afddb-4fe1-4450-a1b8-25f36a354b7d,012584cd-ffde-483b-a55a-a1afba52bc20</code></pre>
+<p>Ensuite, nous pouvons commencer à utiliser Octavia:</p>
+<pre><code class="language-plaintext">openstack loadbalancer create --name lb-test-1 --vip-subnet-id ext-subnet</code></pre>
+<p>Comment utiliser l'équilibreur de charge est décrit ici:</p>
+<p><a href="https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html">https://docs.openstack.org/octavia/latest/user/guides/basic-cookbook.html</a></p>
+<p>N'oubliez pas de créer la saveur:</p>
+<pre><code class="language-plaintext">openstack flavor create --ram 2048 --disk 4 --vcpus 2 --id 65 --private --project services octavia_65</code></pre>
+<h3>&nbsp;</h3>
 <h2>&nbsp;</h2>
 <p>&nbsp;</p>
