@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:08:43.787Z
+date: 2021-05-11T20:11:43.898Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -41,7 +41,7 @@ iface eth0 inet static
 </code></pre>
 <p>On redémarre le réseau :</p>
 <pre><code class="language-plaintext"># systemctl restart networking</code></pre>
-<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure réseau est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
+<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor est bourré de chiffrement. Vérifiez bien que l’heure réseau est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext"># timedatectl 
                Local time: mar. 2021-05-11 17:43:45 CEST
@@ -52,9 +52,17 @@ System clock synchronized: yes
               NTP service: active
 RTC in local TZ: no</code></pre>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Bien que le firewall ne soit pas d'une utilité transcendente je l'active :&nbsp;</p>
+<pre><code class="language-plaintext"># apt install nftables
+# systemctl enable --now nftables
+# systemctl status nftables
+● nftables.service - nftables
+  Loaded: loaded (/lib/systemd/system/nftables.service; enabled; vendor preset: enabled)
+  Active: active (exited) since Tue 2021-05-11 20:08:40 CEST; 2h 2min ago
+    Docs: man:nft(8)
+          http://wiki.nftables.org
+ Process: 242 ExecStart=/usr/sbin/nft -f /etc/nftables.conf (code=exited, status=0/SUCCESS)
+Main PID: 242 (code=exited, status=0/SUCCESS)</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
