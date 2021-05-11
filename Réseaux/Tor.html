@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:41:26.298Z
+date: 2021-05-11T20:41:39.395Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -77,7 +77,6 @@ deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
 <p>Et pour finir on update :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># apt update &amp;&amp; 
 # apt install tor deb.torproject.org-keyring</code></pre>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>Par défaut sous UNIX on fait tourner le daemon Tor avec l’utilisateur _tor et on cloisonne l’exécutable avec Pledge… C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement, dans le doute :<br>&nbsp;</p>
 <pre><code class="language-plaintext"># sudo useradd _tor
