@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T20:06:42.359Z
+date: 2021-05-11T20:08:43.787Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -41,4 +41,22 @@ iface eth0 inet static
 </code></pre>
 <p>On redémarre le réseau :</p>
 <pre><code class="language-plaintext"># systemctl restart networking</code></pre>
-<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure sur NTP est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
+<p>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable. Vérifiez bien que l’heure réseau est bien activée. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du NTP très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais quoi d’autre. Le résultat doit ressembler à ça&nbsp;:</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext"># timedatectl 
+               Local time: mar. 2021-05-11 17:43:45 CEST
+           Universal time: mar. 2021-05-11 15:43:45 UTC
+                 RTC time: mar. 2021-05-11 15:42:03
+                Time zone: Europe/Paris (CEST, +0200)
+System clock synchronized: yes
+              NTP service: active
+RTC in local TZ: no</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
