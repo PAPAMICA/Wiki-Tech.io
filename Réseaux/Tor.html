@@ -2,7 +2,7 @@
 title: Tor : opérer un middle relay
 description: Opérez un noeud Tor sous Debian
 published: false
-date: 2021-05-11T22:02:52.295Z
+date: 2021-05-11T22:04:04.132Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -120,13 +120,13 @@ May 11 20:09:59.836 [notice] Opened Socks listener on 127.0.0.1:9050</code></pre
 <pre><code class="language-plaintext"># systemctl enable tor
 # apt update &amp;&amp; apt full-upgrade &amp;&amp; systemctl reboot</code></pre>
 <p style="text-align:justify;">wooOOT !<br>&nbsp;</p>
-<p style="text-align:justify;"><span class="text-big"><strong>c. Audit du trafic</strong></span></p>
+<p style="text-align:justify;"><span class="text-big"><strong>c. Audit du trafic ave Nyx</strong></span></p>
 <p style="text-align:justify;">A ce stade votre relai est lancé. Comme pour n'importe quel serveur vous avez besoin de l'auditer, savoir combien de bande passante il consomme etc. <code>nyx(1)</code> est la pour vous aider ! Nyx c'est un outil qu'il est bien. Il va vous permettre d'observer en mode console votre trafic de manière semi-graphique un peu comme htop. Nous l'avons déjà installé plus haut. Nous avons déjà écrit le nécessaire à son fonctionnement dans notre <code>/etc/tor/torrc</code> &nbsp;il ne nous reste plus qu'à le lancer !</p>
 <p style="text-align:justify;">&nbsp;</p>
 <figure class="image"><img src="/nyx.png"></figure>
 <p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">Je vous laisse checker la doc <a href="https://nyx.torproject.org/">à cet endroit</a> ainsi que dans le manuel e nyx(1). Ce qu'il y a de bien avec Nyx c'est qu'on peut faire beaucoup de choses avec. Il n'est pas indispensable pour tout mais toujours le bienvenu pour avoir un visuel sur nos ressources. Vous remarquerez que les notices s'affichent ici, bref il vous le faut !</p>
-<p style="text-align:justify;"><span class="text-big"><strong>d. Nyx</strong></span></p>
+<p style="text-align:justify;">Je vous laisse checker la doc <a href="https://nyx.torproject.org/">à cet endroit</a> ainsi que dans le manuel e nyx(1). Ce qu'il y a de bien avec Nyx c'est qu'on peut faire beaucoup de choses. Il n'est pas indispensable pour tout mais toujours le bienvenu pour avoir un visuel sur nos ressources, c'est l'outil un peu eye candy de Tor ! &nbsp;Vous remarquerez que les notices s'affichent ici, bref il vous le faut.</p>
+<p style="text-align:justify;"><span class="text-big"><strong>d. Les débits</strong></span></p>
 <p style="text-align:justify;">En ouvrant Nyx vous avez sûrement remarqué la ligne <code>Bandwidth (limit: 1 GB/s, burst: 1 GB/s)</code>C'est que Tor va vous pomper votre bande passante. Beaucoup plus que vous ne le pensez surtout lorsque l’algorithme de Tor va juger votre serveur “apte à prendre du gros trafic”. Si vous opérez un relai il va saturer votre NIC. J'ai une grosse connexion et le fait que ma VM consomme 1Gb ne me gêne pas mais je comprendrais si vous vouliez ajouter cette petite option à la fin de votre <code>/etc/tor/torrc</code> :</p>
 <p style="text-align:justify;">&nbsp;</p>
 <pre><code class="language-plaintext">RelayBandwidthRate 40000 KBytes
