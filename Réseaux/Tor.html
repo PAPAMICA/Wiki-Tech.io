@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T09:04:41.508Z
+date: 2021-05-12T09:09:23.402Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -207,8 +207,26 @@ ListenAddress 127.0.0.1     # oui on écoute sur LocalHost puisque notre démon 
 ListenAddress 192.168.1.17  # écouter localhost ne nous empêche pas de continuer à écouter sur notre interface classique.
 #ListenAddress ::</code></pre>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Si tor est déjà lancé on le kill et on le relance depuis le terminal pour s'assurer que toutes les notices sont au vert : &nbsp;</p>
+<pre><code class="language-plaintext"># systemctl stop tor
+# tor
+May 12 11:04:36.357 [notice] Tor 0.3.5.14 running on Linux with Libevent 2.1.8-stable, OpenSSL 1.1.1d, Zlib 1.2.11, Liblzma 5.2.4, and Libzstd 1.3.8.
+May 12 11:04:36.357 [notice] Tor can't help you if you use it wrong! Learn how to be safe at https://www.torproject.org/download/download#warning
+May 12 11:04:36.357 [notice] Read configuration file "/etc/tor/torrc".
+May 12 11:04:36.367 [notice] Opening Socks listener on 127.0.0.1:9050
+May 12 11:04:36.367 [notice] Opened Socks listener on 127.0.0.1:9050
+May 12 11:04:36.367 [notice] Opening Control listener on 127.0.0.1:9051
+May 12 11:04:36.367 [notice] Opened Control listener on 127.0.0.1:9051</code></pre>
+<p>Bon Tor se lance ça a l'air pas mal… Allons voir s'il a bien écrit les éléments nécessaires à notre HS OpenSSH dans <code>/var/lib/tor/openssh</code> :&nbsp;</p>
+<pre><code class="language-plaintext"># ls -lah /var/lib/tor/openssh/
+total 24K
+drwx--S--- 3 _tor _tor 4,0K mai   12 11:04 .
+drwx--S--- 4 _tor _tor 4,0K mai   12 11:06 ..
+drwx--S--- 2 _tor _tor 4,0K mai   12 11:04 authorized_clients
+-rw------- 1 _tor _tor   63 mai   12 11:04 hostname
+-rw------- 1 _tor _tor   64 mai   12 11:04 hs_ed25519_public_key
+-rw------- 1 _tor _tor   96 mai   12 11:04 hs_ed25519_secret_key</code></pre>
+<p><br>Comme vous pouvez le constater le démon Tor a écrit des choses dans notre répertoire qui n'est plus vide du tout.&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
