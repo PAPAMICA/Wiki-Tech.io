@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T17:28:16.781Z
+date: 2021-05-12T17:31:30.605Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -104,7 +104,7 @@ ORPort 9001                                # man torrc
 Nickname RoxXoRNOde666                     #&nbsp;Le nom de votre node de HaxXoR
 ContactInfo TonMailDeRoxXor@hacker.com     # le mail de contact. Utilisez un mail que vous allez lire mais aussi votre cerveau
 DirPort 9030							   # notre serveur sera un directory mirror (voir doc)
-ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit l'écoute explicitement sur toutes les interfaces</code></pre>
+ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, on interdit la sortie explicitement sur toutes les interfaces</code></pre>
 <p style="text-align:justify;"><br>Nous créons maintenant les fichiers nécessaires pour les logs.&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;touch /var/log/tor/notices.log
 # chown _tor:_tor /var/log/tor/notices.log
