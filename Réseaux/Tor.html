@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T17:33:07.402Z
+date: 2021-05-12T17:35:29.994Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -109,6 +109,7 @@ ExitPolicy  reject *:*                     # ce n’est pas un noeud de sortie, 
 <pre><code class="language-plaintext">#&nbsp;touch /var/log/tor/notices.log
 # chown _tor:_tor /var/log/tor/notices.log
 #&nbsp;chrmod 650 /var/log/tor/notices.log</code></pre>
+<p style="text-align:justify;">Si vous souhaitez débuger Tor ou avoir une meilleure granularité vous allez voir que d'autres options sont à votre disposition. Pour faire fonctionner un relai au quotidien un niveau “notices” suffira. Le tout est surtout de bien créer ce fichier afin de séparer les logs Tor des logs système.</p>
 <p style="text-align:justify;"><br>Et on donne des droits à notre utilisateur <code>_tor</code> afin qu’il puisse écrire dans <code>/var/lib/tor</code>&nbsp;</p>
 <pre><code class="language-plaintext">#&nbsp;chown -R _tor:_tor /var/lib/tor</code></pre>
 <p style="text-align:justify;">Assurez-vous que les droits UNIX sur les répertoires auxquels le démon a accès soient bien en 650 &nbsp;pour <code>_tor:_tor</code> si non il va vous rappeler à l’ordre au lancement. On check que tout s’exécute correctement :<br>&nbsp;</p>
