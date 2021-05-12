@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-12T12:59:26.458Z
+date: 2021-05-12T13:16:23.622Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -39,8 +39,8 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Docker/Portainer)
 {.links-list}
 ## Kubernetes
-- [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Kubernetes/Présentation)
-- [🌀 Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Kubernetes/Installation)
+- [🐳 Présentation 🚧  *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Kubernetes/Présentation)
+- [🌀 Installation 🚧  *Debian, Manjaro, CentOS, etc...*](/Docker/Kubernetes/Installation)
 {.links-list}
 
 # SelfHosted
@@ -115,18 +115,18 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 # Gestionnaire de configuration
 
-- [🔥 Présentation et comparaison *Comparaison des principaux gestionnaires de configurations*](/Configurations/Comparaison)
+- [🔥 Présentation et comparaison 🚧  *Comparaison des principaux gestionnaires de configurations*](/Configurations/Comparaison)
 {.links-list}
 ## Ansible
-- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Ansible/Commandes)
+- [🔥 Commandes utiles 🚧  *Les principales commandes utilisées chaque jour*](/Configurations/Ansible/Commandes)
 {.links-list}
 
 ## Puppet
-- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Puppet/Commandes)
+- [🔥 Commandes utiles 🚧  *Les principales commandes utilisées chaque jour*](/Configurations/Puppet/Commandes)
 {.links-list}
 
 ## Terraform
-- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Terraform/Commandes)
+- [🔥 Commandes utiles 🚧  *Les principales commandes utilisées chaque jour*](/Configurations/Terraform/Commandes)
 {.links-list}
 
 # Réseaux
