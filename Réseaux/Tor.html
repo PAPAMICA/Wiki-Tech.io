@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T17:35:29.994Z
+date: 2021-05-12T17:40:34.394Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -185,19 +185,15 @@ HiddenServicePort 2222 127.0.0.1:22        # Depuis l'extérieur on écoute 2222
 <pre><code class="language-plaintext"># mkdir /var/lib/tor/openssh
 # chown -R _tor:_tor /var/lib/tor/openssh
 # chmod 700 /var/lib/tor/openssh</code></pre>
-<p>On vérifie que les droits sont corrects :&nbsp;</p>
-<pre><code class="language-plaintext"># ls -alh
-total 7,7M
-drwx--S---  4 _tor _tor 4,0K mai   12 10:46 .
-drwxr-xr-x 30 root root 4,0K mai   11 17:48 ..
--rw-------  1 _tor _tor  20K mai   11 17:03 cached-certs
--rw-------  1 _tor _tor 2,2M mai   11 23:37 cached-microdesc-consensus
--rw-------  1 _tor _tor 5,5M mai   11 17:30 cached-microdescs
--rw-------  1 _tor _tor  47K mai   11 20:11 cached-microdescs.new
-drwx--S---  2 _tor _tor 4,0K mai   11 17:04 keys
--rw-------  1 _tor _tor    0 mai   12 00:42 lock
-drwxr-sr-x  2  650 _tor 4,0K mai   12 10:46 openssh
--rw-------  1 _tor _tor 8,8K mai   12 00:42 state</code></pre>
+<p>On vérifie que les droits sont corrects dans le répertoire :&nbsp;</p>
+<pre><code class="language-plaintext"># ls -lah
+total 24K
+drwx--S--- 3 _tor _tor 4,0K mai   12 11:04 .
+drwx--S--- 4 _tor _tor 4,0K mai   12 11:57 ..
+drwx--S--- 2 _tor _tor 4,0K mai   12 11:04 authorized_clients
+-rw------- 1 _tor _tor   63 mai   12 11:04 hostname
+-rw------- 1 _tor _tor   64 mai   12 11:04 hs_ed25519_public_key
+-rw------- 1 _tor _tor   96 mai   12 11:04 hs_ed25519_secret_key</code></pre>
 <p>&nbsp;</p>
 <p>Dans cet exemple nous n'allons pas nous attarder sur la sécurité de notre serveur ssh mais uniquement sur l'écoute de notre serveur. Il va de soi que si vous vouliez un véritable service vous installeriez sshguard et désactiveriez l'authentification par mot de passe, au minimum. Ce qui nous intéresse c'est surtout la manière dont le serveur ssh va écouter. Éditez votre <code>/etc/ssh/sshd_config</code> :</p>
 <p>&nbsp;</p>
