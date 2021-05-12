@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T20:35:05.727Z
+date: 2021-05-12T20:38:38.901Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -321,11 +321,13 @@ descriptor:x25519:HJN3IK5HZVZR7JXO343JTKFATO5JHCBTZ3PQWRZWOCJMP3KY6VSQ</code></p
 <pre><code class="language-plaintext"># mkdir /var/lib/tor/authorized_clients
 # chmod -R 700 /var/lib/tor/authorized_clients
 # chown -R _tor:_tor /var/lib/tor/authorized_clients
-# vim _tor:_tor /var/lib/tor/authorized_clients/user01.auth_private</code></pre>
-<p style="text-align:justify;">Et on y écrit nos clefs !</p>
-<pre><code class="language-plaintext"># cat /var/lib/tor/authorized_clients
-
+# vim /var/lib/tor/authorized_clients/user01.auth_private</code></pre>
+<p>&nbsp;</p>
+<p>Et on y écrit notre clef privée !</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext"># cat /var/lib/tor/authorized_clients/user01.auth_private
 </code></pre>
+<p>&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
