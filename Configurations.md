@@ -2,12 +2,14 @@
 title: Configurations
 description: 
 published: true
-date: 2021-05-12T12:56:28.065Z
+date: 2021-05-12T13:00:00.006Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-12T12:23:33.099Z
 ---
 
+- [🔥 Présentation et comparaison *Comparaison des principaux gestionnaires de configurations*](/Configurations/Comparaison)
+{.links-list}
 # Ansible
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Ansible/Commandes)
 {.links-list}
