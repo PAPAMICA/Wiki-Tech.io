@@ -2,7 +2,7 @@
 title: Python
 description: 
 published: true
-date: 2021-05-12T13:20:02.614Z
+date: 2021-05-12T13:21:00.456Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T19:56:01.357Z
@@ -313,8 +313,14 @@ while 1 != 10:
 &lt;__main__.People object at 0x03C12820&gt;</code></pre>
 <p>Nous allons donc utiliser un représentateur pour mettre en forme l'objet.</p>
 <p>Cette méthode se définit “ __repr__ ”.</p>
-<pre><code class="language-python">def __repr__(self):
-    return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)</code></pre>
+<pre><code class="language-python">class People:
+    def __init__(self,firstname,lastname,age):
+        self.firstname = firstname
+        self.lastname  = lastname
+        self.age       = age
+
+    def __repr__(self):
+        return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)</code></pre>
 <pre><code class="language-python">&gt;&gt;&gt; repr(chuck)
 'Nom : Norris , Prenom : Chuck , Age : 81'
 </code></pre>
