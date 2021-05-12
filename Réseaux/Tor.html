@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T19:19:24.185Z
+date: 2021-05-12T19:23:21.636Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -272,7 +272,46 @@ Last login: Wed May 12 10:27:11 2021 from 10.0.0.69</code></pre>
 <pre><code class="language-plaintext"># pip install pynacl</code></pre>
 <p>on se créé un petit espace dédié à nos scripts sur le serveur, on fait notre cuisine :&nbsp;</p>
 <pre><code class="language-plaintext"># mkdir /root/scipts
-# </code></pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+# vim /root/scipts/keygen.py</code></pre>
+<p>On colle le script :&nbsp;</p>
+<pre><code class="language-plaintext"># cat /root/scipts/keygen.py 
+#!/usr/bin/env python3
+import base64
+try:
+    import nacl.public
+except ImportError:
+    print('PyNaCl is required: "pip install pynacl" or similar')
+    exit(1)
+
+
+def key_str(key):
+    # bytes to base 32
+    key_bytes = bytes(key)
+    key_b32 = base64.b32encode(key_bytes)
+    # strip trailing ====
+    assert key_b32[-4:] == b'===='
+    key_b32 = key_b32[:-4]
+    # change from b'ASDF' to ASDF
+    s = key_b32.decode('utf-8')
+    return s
+
+
+def main():
+    priv_key = nacl.public.PrivateKey.generate()
+    pub_key = priv_key.public_key
+    print('public:  %s' % key_str(pub_key))
+    print('private: %s' % key_str(priv_key))
+
+
+if __name__ == '__main__':
+    exit(main())</code></pre>
+<p style="text-align:justify;"><br>et on l'utilise !&nbsp;</p>
+<pre><code class="language-plaintext">public:  HJN3IK5HZVZR7JXO343JTKFATO5JHCBTZ3PQWRZWOCJMP3KY6VSQ
+private: DK6XMZX7JJZNE464JI2HKIVANRT7ADDUS64PM5ERY6UMVDQW4BKQ</code></pre>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
