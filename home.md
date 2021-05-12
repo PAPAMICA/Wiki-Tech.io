@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-12T10:40:58.744Z
+date: 2021-05-12T12:37:17.679Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -22,8 +22,10 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/Devenir-Contributeur) ❤️
 {.is-info}
 
-# Les différentes catégories
-## Docker
+ ---
+ 
+ # Docker
+ ## Les outils de bases
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
 - [🌀 Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Docker/Image)
@@ -31,12 +33,17 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [✅ L'instruction Healthcheck *S'assurer du bon fonctionnement de ses containers*](/Docker/Heathcheck)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Docker/Docker-Compose)
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Docker/Commandes)
+{.links-list}
+## Quelques outils utiles
 - [💙 Traefik 🚧 *Un reverse-proxy pour tous les services*](/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Docker/Portainer)
 {.links-list}
+## Kubernetes
+- [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Kubernetes/Présentation)
+- [🌀 Installation *Debian, Manjaro, CentOS, etc...*](/Docker/Kubernetes/Installation)
+{.links-list}
 
-
-## SelfHosted
+# SelfHosted
 - [🌀 Nextcloud 🚧 *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
 - [💠 Bitwarden (Vaultwarden) *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
 - [🔥 Jirafeau *Envoi de fichiers. Alternative à WeTransfert*](/SelfHosted/Jirafeau)
@@ -63,7 +70,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique/Jeedom)
 {.links-list}
 
-## Linux
+# Linux
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Commandes)
 - [📦 Paquets utiles 🚧 *La liste de mes paquets indispensables*](/Linux/Paquets)
 - [📝 Editeur de texte *Comprendre et utiliser VI, Nano, Joe, etc..*](/Linux/Editeur-de-texte)
@@ -75,7 +82,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [💽 LVM *Gestion de disques logiques*](/Linux/LVM)
 {.links-list}
 
-## Openstack
+# Openstack
 - [✨ Ocicli *Installer un cluster Openstack avec ocicli sous Debian*](/Openstack/Ocicli)
 - [🌀 Installer le client *Debian, Manjaro, CentOS, etc...*](/Openstack/Installation)
 - [⚜️ Première configuration *Connexion, gestion des projets, des utilisateurs et des rôles*](/Openstack/Environnement)
@@ -91,7 +98,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [📃 Logs 🚧 *Localiser et lire les logs*](/Openstack/Logs)
 {.links-list}
 
-## Zabbix
+# Zabbix
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Zabbix/Installation)
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Zabbix/SNMP)
@@ -100,13 +107,13 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 {.links-list}
 
-## Grafana
+# Grafana
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Grafana/Installation)
 - [🔴 Dashboard Zabbix 🚧 *Création des dashboards pour Zabbix*](/Grafana/Zabbix)
 - [🟠 Loki *Installation et configuration d'un agrégateur de logs*](/Grafana/Loki)
 {.links-list}
 
-## Réseaux
+# Réseaux
 - [✨ Les bases 🚧 *Avant de commencer...*](/Réseaux/Bases)
 - [💠 OpenVPN sur pfSense *Comment installer et utiliser un serveur OpenVPN sur pfSense*](/Réseaux/pfSense-OpenVPN)
 - [🌲 Spanning-Tree *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/Spanning-Tree)
@@ -119,14 +126,14 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [🧅 Tor 🚧*Comprendre et utiliser le réseau Tor*](/Réseaux/Tor)
 {.links-list}
 
-## Sécurité
+# Sécurité
 - [✨ Les bases 🚧 *Avant de commencer...*](/Sécurité/Bases)
 - [🧨 Nessus 🚧 *Lancer et utiliser Nessus sur son poste*](/Sécurité/Nessus)
 - [🔴 Red Team 🚧 *Fatty trouve un nom stp*](/Sécurité/Red-Team)
 - [🔑 Yubikey 🚧 *Comment utiliser une Yubikey pour améliorer la sécurité de ses accès ?*](/Sécurité/Yubikey)
 {.links-list}
 
-## VMware ESXi
+# VMware ESXi
 - [🌀 Installation 🚧 *Installation de l'hyperviseur ESXi (6.0 / 6.5 / 6.7 / 7.0)*](/ESXi/Installation)
 - [✨ Création d'une VM 🚧 *Créer sa première machine virtuelle*](/ESXi/Création-VM)
 - [🔥 vCenter 🚧 *Installer l'Appliance vCenter Server*](/ESXi/vCenter)
@@ -135,26 +142,26 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [💿 Routeur pfSense 🚧 *Comment installer et utiliser pfSense avec ESxi*](/ESXi/pfSense)
 {.links-list}
 
-## Domotique
+# Domotique
 - [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique/Jeedom)
 - [🍎 Homebridge 🚧 *Ajouter la compatibilité avec HomeKit*](/Domotique/Jeedom)
 {.links-list}
 
-## Scripting
+# Scripting
 - [✨ Les bases 🚧 *Quel que soit le langage utilisé, il y a quelques notions à connaitre*](/Scripting/Base)
 - [🐧 Bash 🚧 *Le commencement d'une automatisation*](/Scripting/Bash)
 - [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting/Python)
 - [🪟 Powershell 🚧 *Un langage puissant dédié à Windows*](/Scripting/Powershell)
 {.links-list}
 
-## NAS
+# NAS
 - [🔥 Xpenology *Installer DSM sur du hardware dédié*](/NAS/Xpenology)
 - [🔥 Xpenology Virtualisé *Installer DSM dans une VM ESXi*](/NAS/Xpenology-VM)
 - [📦 Active Backup sur Xpenology *Activer et installer Active Backup sur un Xpenology*](/NAS/Active-Backup-Xpenology)
 - [📼 Licence Surveillance Station 🚧 *Cumuler les licences Surveillance Station*](/NAS/Active-Backup-Xpenology)
 {.links-list}
 
-## Windows
+# Windows
 - [🔥 Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Windows/Commandes)
 - [💽 Partition Windows *Créer et gérer les partitions sous Windows*](/Windows/Partitions)
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
