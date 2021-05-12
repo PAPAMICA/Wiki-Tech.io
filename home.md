@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-12T12:37:17.679Z
+date: 2021-05-12T12:52:48.527Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -139,7 +139,6 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [🔥 vCenter 🚧 *Installer l'Appliance vCenter Server*](/ESXi/vCenter)
 - [💿 VMware Tools 🚧 *Installer les VMware Tools*](/ESXi/VMware-Tools)
 - [💠 Routeur pfSense 🚧 *Comment installer et utiliser pfSense avec ESxi*](/ESXi/pfSense)
-- [💿 Routeur pfSense 🚧 *Comment installer et utiliser pfSense avec ESxi*](/ESXi/pfSense)
 {.links-list}
 
 # Domotique
