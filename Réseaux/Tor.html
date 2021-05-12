@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T09:24:42.151Z
+date: 2021-05-12T09:36:50.902Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -233,9 +233,23 @@ drwx--S--- 2 _tor _tor 4,0K mai   12 11:04 authorized_clients
 <p><code>-rw------- 1 _tor _tor &nbsp; 96 mai &nbsp; 12 11:04 hs_ed25519_secret_key</code> : A chaque fois que les droits ne sont pas corrects sur ce fichier un bébé chat décède quelque part dans le monde.</p>
 <p>&nbsp;</p>
 <p>Notez que si le démon trouve des problèmes au moment de son lancement en particulier au niveau des droits, les notices vous le diront, c'est très bien fait. Allons chercher notre hostname de hacker :</p>
-<p>&nbsp;</p>
 <pre><code class="language-plaintext"># cat /var/lib/tor/openssh/hostname  
 bz5tu5d6vqblla4ioccd6rng3o6rubqe55h6tm4oagapjk9behjdgfqd.onion</code></pre>
+<p>&nbsp;</p>
+<p>A ce stade si vous veniez de créer un serveur web vous pourriez immédiatement lui rendre visite avec Tor-Browser mais notre cas de figure est un serveur ssh… Nous allons devoir configurer le démon Tor de notre client pour y accéder, c'est ce qui rend ce service intéressant pour apprendre Tor. Sur votre poste, lancez un Terminal. Si vous êtes sous Windows ou Mac, installez Linux (rappelez-vous, on ne se rend pas sur Tor avec ces systèmes). Cet exemple de client se base sur Kali mais ça marche pareil partout.</p>
+<p>On installe les paquets nécessaires (avec les repos officiels, c'est mieux…. Voir la première partie du tuto) :</p>
+<pre><code class="language-plaintext"># apt install tor torsocks</code></pre>
+<p>Alors <code>torsocks(8)</code> est un outil extrêmement pratique qui va faire passer un flux réseau (comme une connexion ssh) par le proxy SOCKS que créé le démon Tor quand il se lance. Cela implique que notre client ait aussi un démon tor lancé et configuré.</p>
+<pre><code class="language-plaintext"># systemctl enable --now tor                                                                                                                                                                                                           3 ⨯
+Synchronizing state of tor.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable tor
+Created symlink /etc/systemd/system/multi-user.target.wants/tor.service → /lib/systemd/system/tor.service.</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
