@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-12T12:52:48.527Z
+date: 2021-05-12T12:59:26.458Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -111,6 +111,22 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Grafana/Installation)
 - [🔴 Dashboard Zabbix 🚧 *Création des dashboards pour Zabbix*](/Grafana/Zabbix)
 - [🟠 Loki *Installation et configuration d'un agrégateur de logs*](/Grafana/Loki)
+{.links-list}
+
+# Gestionnaire de configuration
+
+- [🔥 Présentation et comparaison *Comparaison des principaux gestionnaires de configurations*](/Configurations/Comparaison)
+{.links-list}
+## Ansible
+- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Ansible/Commandes)
+{.links-list}
+
+## Puppet
+- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Puppet/Commandes)
+{.links-list}
+
+## Terraform
+- [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Configurations/Terraform/Commandes)
 {.links-list}
 
 # Réseaux
