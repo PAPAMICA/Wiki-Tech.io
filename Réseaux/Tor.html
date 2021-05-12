@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-12T09:50:01.772Z
+date: 2021-05-12T09:56:41.770Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -262,8 +262,8 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Wed May 12 10:27:11 2021 from 10.0.0.69</code></pre>
 <p>&nbsp;</p>
-<p>Nous venons de créer un serveur ssh et de nous y connecter via Tor. Comme vous l'avez remarqué nous n'avons créé aucune règle de NAT sur notre firewall, rien. C'est parce que Tor bypass preque tout (nous y reviendrons en détails, c'est très important). Le “port d'écoute TCP” du démon Tor n'a de valeur que pour Tor. OpenSSH écoute sur ses port habituels. Vous devez voir cette ligne de torrc comme une redirection sur un firewall : <code>HiddenServicePort <strong>2222</strong> 127.0.0.1:<strong>22</strong></code></p>
-<p>&nbsp;</p>
+<p>Nous venons de créer un serveur ssh et de nous y connecter via Tor. Comme vous l'avez remarqué nous n'avons créé aucune règle de NAT sur notre firewall, rien. C'est parce que Tor bypass preque tout (nous y reviendrons en détails, c'est très important). Le “port d'écoute TCP” du démon Tor n'a de valeur que pour Tor, notre routeur lui pourrait être en full deny en entrée… C'est d'ailleurs le cas de ma VM de test dans cet exemple. OpenSSH écoute sur ses port habituels. Vous devez voir cette ligne de torrc comme une redirection sur un firewall : <code>HiddenServicePort <strong>2222</strong> 127.0.0.1:<strong>22</strong></code></p>
+<p><i>note : puisque aucun port n'est nécessairement ouvert &nbsp;pour faire écouter un HS Tor sur le réseau vous imaginez bien qu'il faudra dégainer un packet sniffer et voir le trafic Tor dans la trame pour détecter la présence de Tor au réseau. J'espère que ça vous donne quelques idées.</i></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
