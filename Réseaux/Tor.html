@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T16:31:07.391Z
+date: 2021-05-13T16:33:03.467Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -479,7 +479,7 @@ HiddenServicePort 8060 127.0.0.1:8060			# Le port par défaut de Onioncat est le
 <pre><code class="language-plaintext"># systemctl restart tor
 # cat /var/lib/tor/onioncat/hostname 
 conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
-<p style="text-align:justify;">Sur chaque hosts nous allons devoir générer l'IP6 avec <code>ocat -i adresse-en-onion.onion</code> et aller écrire dans le fichier <code>/var/lib/tor/onioncat/hosts.oc</code>. Ensuite nous allons copier le contenu de <code>/var/lib/tor/onioncat/hosts.oc</code> sur les deux machines. Si vous avez plus de hosts alors il faudra les faire aussi. La syntaxe du fichier <code>/var/lib/tor/onioncat/hosts.oc</code> doit ressembler à ça :&nbsp;</p>
+<p style="text-align:justify;">Sur chaque hosts nous allons devoir générer l'IP6 avec <code>ocat -i adresse-en-onion.onion</code> et aller écrire dans le fichier <code>/var/lib/tor/onioncat/hosts.oc</code>. Ensuite nous allons copier le contenu de <code>/var/lib/tor/onioncat/hosts.oc</code> sur les deux machines. Si vous avez plus de hosts alors il faudra les faire aussi. C'est un ajout un peu lourd des dernières versions d'Onioncat pour la V3 des HS, ce n'était pas présent auparavant. La syntaxe du fichier <code>/var/lib/tor/onioncat/hosts.oc</code> doit ressembler à ça :&nbsp;</p>
 <pre><code class="language-plaintext"># machine01
 745:b072:4fe0:82:a703 u5egdjwykspucpbvdmfgcxceu7hdfncu5wmupp2vk5c3a4sp4aaifjyd.onion onioncat-a
 # machine02
