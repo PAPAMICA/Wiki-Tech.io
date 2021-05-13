@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T09:31:14.925Z
+date: 2021-05-13T09:35:33.178Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -362,10 +362,90 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
 <p style="text-align:justify;">Sous OpenBSD Onioncat est maintenu dans les ports (il y a même un joli binaire) mais sous Debian apparemment il faut le compiler (ma version de Debian ne contient pas les paquets je pense qu'il ne sont plus maintenus).</p>
 <pre><code class="language-plaintext"># apt install autoconf automake git
 # mkdir /root/comp &amp;&amp; cd /root/comp
-# git clone https://github.com/rahra/onioncat</code></pre>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
+# git clone https://github.com/rahra/onioncat
+# cd onioncat
+# autoreconf -f
+# ./configure
+# make
+# make install</code></pre>
+<p style="text-align:justify;">On check tout ça :&nbsp;</p>
+<pre><code class="language-plaintext">debian-tor:~/ocat/onioncat# ls -lah
+total 732K
+drwxr-xr-x 11 root root 4,0K mai   13 11:32 .
+drwxr-xr-x  3 root root 4,0K mai   13 11:30 ..
+-rw-r--r--  1 root root  41K mai   13 11:32 aclocal.m4
+drwxr-xr-x  2 root root 4,0K mai   13 11:30 android
+-rw-r--r--  1 root root  262 mai   13 11:30 AUTHORS
+drwxr-xr-x  2 root root 4,0K mai   13 11:32 autom4te.cache
+-rw-r--r--  1 root root  12K mai   13 11:30 ax_pthread.m4
+-rw-r--r--  1 root root 5,2K mai   13 11:30 ChangeLog
+-rwxr-xr-x  1 root root 7,2K mai   13 11:30 compile
+-rwxr-xr-x  1 root root  42K mai   13 11:30 config.guess
+-rw-r--r--  1 root root 5,5K mai   13 11:32 config.h
+-rw-r--r--  1 root root 5,1K mai   13 11:32 config.h.in
+-rw-r--r--  1 root root  62K mai   13 11:32 config.log
+-rwxr-xr-x  1 root root  34K mai   13 11:32 config.status
+-rwxr-xr-x  1 root root  36K mai   13 11:30 config.sub
+-rwxr-xr-x  1 root root 182K mai   13 11:32 configure
+-rw-r--r--  1 root root 5,7K mai   13 11:30 configure.ac
+-rw-r--r--  1 root root  35K mai   13 11:30 COPYING
+drwxr-xr-x  2 root root 4,0K mai   13 11:30 debian
+-rwxr-xr-x  1 root root  24K mai   13 11:30 depcomp
+drwxr-xr-x  2 root root 4,0K mai   13 11:30 freebsd
+drwxr-xr-x  8 root root 4,0K mai   13 11:30 .git
+-rw-r--r--  1 root root  141 mai   13 11:30 .gitignore
+-rw-r--r--  1 root root  19K mai   13 11:30 GitLog
+-rw-r--r--  1 root root  529 mai   13 11:30 glob_id.txt
+-rw-r--r--  1 root root  104 mai   13 11:30 hosts.onioncat
+drwxr-xr-x  2 root root 4,0K mai   13 11:32 i2p
+-rw-r--r--  1 root root  16K mai   13 11:30 INSTALL
+-rwxr-xr-x  1 root root  15K mai   13 11:30 install-sh
+-rw-r--r--  1 root root  27K mai   13 11:32 Makefile
+-rw-r--r--  1 root root  114 mai   13 11:30 Makefile.am
+-rw-r--r--  1 root root  27K mai   13 11:32 Makefile.in
+drwxr-xr-x  2 root root 4,0K mai   13 11:32 man
+-rwxr-xr-x  1 root root 6,8K mai   13 11:30 missing
+-rw-r--r--  1 root root   67 mai   13 11:30 NEWS
+-rwxr-xr-x  1 root root  442 mai   13 11:30 ocat-ifup
+lrwxrwxrwx  1 root root    9 mai   13 11:30 README -&gt; README.md
+-rw-r--r--  1 root root  15K mai   13 11:30 README.md
+drwxr-xr-x  4 root root 4,0K mai   13 11:33 src
+-rw-r--r--  1 root root   23 mai   13 11:32 stamp-h1
+drwxr-xr-x  2 root root 4,0K mai   13 11:30 systemd
+-rw-r--r--  1 root root 1,8K mai   13 11:30 TODO</code></pre>
+<p style="text-align:justify;">Et on esssaye de le lancer !</p>
+<pre><code class="language-plaintext">debian-tor:~/ocat/onioncat# ocat
+onioncat 0.3.8 (c) Bernhard R. Fischer (OnionCat mode)
+usage: ocat [OPTIONS] &lt;onion_hostname&gt;
+   -a                    create connect log at "$HOME/.ocat/ocat_connect_log" (default = 0)
+   -b                    daemonize (default = 1)
+   -B                    do not daemonize (default = 0)
+   -h                    display usage message
+   -H                    toggle hosts lookup (default = 0, see also option -g)
+   -C                    disable local controller interface
+   -d &lt;n&gt;                set debug level to n, default = 7
+   -e &lt;ifup-script&gt;      execute ifup-script after opening interface
+   -f &lt;config_file&gt;      read config from config_file (default = /usr/local/etc/ocat.conf)
+   -g &lt;hosts_path&gt;       set path to hosts file for hosts lookup, defaults to system hosts file, if not set.
+                         This option implicitly activates -H.
+   -i                    convert onion hostname to IPv6 and exit
+   -I                    GarliCat mode, use I2P instead of Tor
+   -l [&lt;ip&gt;:]&lt;port&gt;      set ocat listen address and port, default = 127.0.0.1:8060
+   -L &lt;log_file&gt;         log output to &lt;log_file&gt; (default = stderr)
+   -n &lt;tunname&gt;          set the tun device name, may contain format string (e.g. tun%d)
+   -o &lt;ipv6_addr&gt;        convert IPv6 address to onion url and exit
+   -p                    use TAP device instead of TUN
+   -P [&lt;pid_file&gt;]       create pid file at location of &lt;pid_file&gt; (default = /var/run/ocat.pid)
+   -r                    run as root, i.e. do not change uid/gid
+   -R                    generate a random local onion URL
+   -s &lt;port&gt;             set hidden service virtual port, default = 8060
+   -t [&lt;ip&gt;:]&lt;port&gt;      set Tor SOCKS address and port, default = 127.0.0.1:9050
+   -T &lt;tun_device&gt;       path to tun character device, default = "/dev/net/tun"
+   -U                    disable unidirectional mode
+   -u &lt;user&gt;             change UID to user, default = "tor"
+   -4                    enable IPv4 support (default = 0)
+   -5 [socks5|direct]    use SOCKS5 or direct connections instead of SOCKS4A (default = 0)
+</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
