@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T11:44:52.904Z
+date: 2021-05-13T11:50:34.081Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -504,8 +504,32 @@ conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
        valid_lft forever preferred_lft forever</code></pre>
 <p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière, car oui nous aurons un HS sur notre client. Je vous laisse faire. En attendant on peut kill onioncat et le relancer en mode démon (donc sans l'option <code>-B</code> en argument) :&nbsp;</p>
 <pre><code class="language-plaintext"> # ocat -u _tor conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
-<p style="text-align:justify;">côté client j'ai mon HS qui tourne correctement, &nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Côté client j'ai mon HS qui tourne correctement, &nbsp;je peux reproduire la même opération afin d'obtenir mon IP6 :&nbsp;</p>
+<pre><code class="language-plaintext"># ocat -u debian-tor 3fksfdz2zm2elmag5qd5rwhcpfw75gdr7b36rp6xeo5rug3cx2okj7ad.onion</code></pre>
+<p style="text-align:justify;">Et j'obtiens mon interface tun0 et mon ip6 :&nbsp;</p>
+<pre><code class="language-plaintext"># ip addr show
+1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: eth0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu 1500 qdisc pfifo_fast state DOWN group default qlen 1000
+    link/ether 00:68:eb:90:26:cd brd ff:ff:ff:ff:ff:ff
+3: wlan0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default qlen 1000
+    link/ether 40:23:43:c7:68:d5 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.0.69/24 brd 10.0.0.255 scope global dynamic noprefixroute wlan0
+       valid_lft 26250sec preferred_lft 26250sec
+    inet6 fe80::6ca8:34ed:966a:bc2e/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+4: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UNKNOWN group default qlen 500
+    link/none 
+    inet6 fd87:d87e:eb43:23bb:1a1b:62be:9ca4:fc03/48 scope global 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::652e:db47:6c97:d7e2/64 scope link stable-privacy 
+       valid_lft forever preferred_lft forever
+</code></pre>
+<p style="text-align:justify;">Dites donc…. On ne pourrais pas pinger tout ça par hasard ?</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
