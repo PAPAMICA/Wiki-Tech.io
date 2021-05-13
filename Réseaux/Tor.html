@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T11:10:46.883Z
+date: 2021-05-13T11:21:27.204Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -474,5 +474,23 @@ HiddenServicePort 8060 127.0.0.1:8060			# Le port par défaut de Onioncat est le
 <pre><code class="language-plaintext"># mkdir onioncat
 # chown _tor:_tor onioncat
 # chmod 700 onioncat/</code></pre>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Avant de pouvoir lancer Onioncat il nous faut notre adresse en <code>*.onion</code> pour ce service. Il faut donc redémarrer Tor afin qu'il la génère.</p>
+<pre><code class="language-plaintext"># systemctl restart tor
+# cat /var/lib/tor/onioncat/hostname 
+conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Et on lance l'outil. Notez que par défaut Onioncat se lance avec l'utilsiateur <code>tor</code> mais ce denier n'existe pas sur notre système. Nous allons donc utiliser l'option <code>-u</code> afin de lancer l'outil correctement, avec notre utilisateur <code>_tor</code>.</p>
+<pre><code class="language-plaintext"># ocat -u _tor -B </code></pre>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
