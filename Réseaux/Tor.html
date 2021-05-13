@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T12:08:00.542Z
+date: 2021-05-13T15:51:38.259Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -473,14 +473,20 @@ HiddenServicePort 8060 127.0.0.1:8060			# Le port par défaut de Onioncat est le
 <p style="text-align:justify;">Ensuite on créé l'environnement du service :&nbsp;</p>
 <pre><code class="language-plaintext"># mkdir onioncat
 # chown _tor:_tor onioncat
-# chmod 700 onioncat/</code></pre>
-<p style="text-align:justify;">&nbsp;</p>
+# chmod 700 onioncat/
+# touch /var/lib/tor/onioncat/hosts.oc &amp;&amp; chmod 700 /var/lib/tor/onioncat/hosts.oc &amp;&amp; chown _tor:_tor /var/lib/tor/onioncat/hosts.oc</code></pre>
+<p style="text-align:justify;">Concernant la dernière ligne nous y reviendrons mais c'est un prérequis un peu lourd pour les HSv3 avec Onioncat.</p>
 <p style="text-align:justify;">Avant de pouvoir lancer Onioncat il nous faut notre adresse en <code>*.onion</code> pour ce service. Il faut donc redémarrer Tor afin qu'il la génère.</p>
 <pre><code class="language-plaintext"># systemctl restart tor
 # cat /var/lib/tor/onioncat/hostname 
 conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">Et on lance l'outil. Notez que par défaut Onioncat se lance avec l'utilsiateur <code>tor</code> mais ce denier n'existe pas sur notre système. Nous allons donc utiliser l'option <code>-u</code> afin de lancer l'outil correctement, avec notre utilisateur <code>_tor</code>.</p>
+<p style="text-align:justify;">Sur chaque hosts nous allons devoir générer l'IP6 avec <code>ocat -i adresse-en-onion.onion</code> et aller écrire dans le fichier <code>/var/lib/tor/onioncat/hosts.oc</code>. Ensuite nous allons copier le contenu de <code>/var/lib/tor/onioncat/hosts.oc</code> sur les deux machines. Si vous avez plus de hosts alors il faudra les faire aussi. La syntaxe du fichier <code>/var/lib/tor/onioncat/hosts.oc</code> doit ressembler à ça :&nbsp;</p>
+<pre><code class="language-plaintext"># machine01
+745:b072:4fe0:82:a703 u5egdjwykspucpbvdmfgcxceu7hdfncu5wmupp2vk5c3a4sp4aaifjyd.onion onioncat-a
+# machine02
+fd87:d87e:eb43:7b:9818:380:7a5b:303 conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion onioncat-b</code></pre>
+<p style="text-align:justify;">Donc : <code>adresse-ip6 adresse-en.onion onioncat-a.</code> L'ordre des machines n'a aucune importance… Dans cette architecture il n'y a ni serveur ni client, tout cela importe peu.</p>
+<p style="text-align:justify;">Et on lance l'outil. Notez que par défaut Onioncat se lance avec l’utilisateur <code>tor</code> mais ce denier n'existe pas sur notre système. Nous allons donc utiliser l'option <code>-u</code> afin de lancer l'outil correctement, avec notre utilisateur <code>_tor</code>.</p>
 <pre><code class="language-plaintext"># ocat -u _tor -B conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
 <p style="text-align:justify;">On check à quoi ressemblent nos interfaces…</p>
 <pre><code class="language-plaintext"># ip addr show
@@ -529,7 +535,7 @@ conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
     inet6 fe80::652e:db47:6c97:d7e2/64 scope link stable-privacy 
        valid_lft forever preferred_lft forever
 </code></pre>
-<p style="text-align:justify;">Dites donc…. On ne pourrais pas pinger tout ça par hasard ?</p>
+<p style="text-align:justify;">Dites donc…. On ne pourrais pas pinger tout ça par hasard ? Notre Tor-VPN &nbsp;a l'air de fonctionner .&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
