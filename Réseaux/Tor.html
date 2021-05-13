@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T08:09:36.970Z
+date: 2021-05-13T08:49:20.799Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -345,8 +345,16 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
   </table>
 </figure>
 <p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">On peut tester notre HS en se reconnectant : tout fonctionne !&nbsp;</p>
+<p style="text-align:justify;">On peut tester notre HS en se reconnectant : tout fonctionne ! A ce stade si tout se passe bien vous devriez commencer à bien comprendre comment Tor Daemon va lire et écrire dans /var/lib et quelle est l'utilité de chaque fichiers. Je vous invite à tester &nbsp;avec des serveurs web et ce qui vous passe par la tête afin de bien maîtriser les services cachés. “<i>Il n'y a qu'en forgeant…</i>” :)</p>
 <p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;"><span class="text-big"><strong>ONIONCAT</strong></span></p>
+<p style="text-align:justify;">&nbsp;</p>
+<figure class="image image-style-align-left"><img src="/cat.png"></figure>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">(meow)</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Depuis que nous avons commencé ce tuto je n'ai absolument pas abordé le sujet mais Tor ne peut router que du TCP et rien d'autre. C'est comme ça. Ne me demandez pas pourquoi, beaucoup de gens bien plus intelligents que moi pourraient répondre à cette question. Tor c'est TCP. Alors c'est la que vous allez me dire “<i>mais j'ai envie d'utiliser d'autres flux que du TCP moi, j'ai envie de créer un serveur de VoIP et même… Des DNS !</i>”. Et bien moi aussi mon pt'it ! Il y a quelques temps deux types (Daniel Haslinger, Bernhard Fischer) on décidé qu'ils allaient développer <a href="https://www.onioncat.org/">Onioncat</a>. C'est outil hyper élégant présenté <a href="https://www.youtube.com/watch?v=rx4rS1gvp7Y">en vidéo</a> ici qui permet de faire transiter n'importe quel type de flux via Tor : de l'UDP, de l'ICMP bref, n'importe quoi.</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
