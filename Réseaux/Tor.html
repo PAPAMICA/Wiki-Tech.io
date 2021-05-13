@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T09:22:55.009Z
+date: 2021-05-13T09:31:14.925Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -359,7 +359,10 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
 <p style="text-align:justify;">Un point important que je souhaite éclaircir, Onioncat ne chiffre rien lui-même et confie entièrement cette tâche au démon Tor. Quand vous allez envoyer des paquets dans l'interface TUN cette dernière va simplement les envoyer en clair au démon qui fera ce qu'il fait toujours : les chiffrer plusieurs fois en les ré-encapsulant en AES et les envoyer par la route qu'il aura créé dans le réseau Tor. C'est simple mais tellement efficace et surtout infiniment pratique.</p>
 <p style="text-align:justify;">J'ai longtemps réfléchis à la manière dont j'allais vous faire expérimenter Onioncat et j'ai décidé que j'allais utiliser un serveur <a href="https://wiki.mumble.info/wiki/Murmurguide">murmur</a>. Sachez que Murmur peut être configuré pour remplacer UDP par TCP sur la voix mais au travers de cet exemple nous garderons UDP et nous en profiterons pour &nbsp;commencer à étudier sérieusement les options avancées de <code>/etc/tor/torrc</code>. Si ça vous plaît, on commence !</p>
 <p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">Sous OpenBSD Onioncat est maintenu dans les ports (il y a même un joli binaire) mais sous Debian apparemment il faut le compiler (ma version de Debian ne contient pas les paquets je pense qu'il ne sont plus maintenus).</p>
+<pre><code class="language-plaintext"># apt install autoconf automake git
+# mkdir /root/comp &amp;&amp; cd /root/comp
+# git clone https://github.com/rahra/onioncat</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
