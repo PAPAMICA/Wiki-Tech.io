@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-10T04:25:42.667Z
+date: 2021-05-13T06:45:48.724Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -12,59 +12,56 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>PowerShell est un langage script fondé sur la programmation orientée objet. Le logiciel PowerShell &nbsp;est l'interpréteur de l’interface en ligne de commande de l'environnement de développement Windows PowerShell.</p>
 <p>&nbsp;</p>
 <h2>Les commandes ou applets de commande (cmdlet)</h2>
-<p>elles sont composées d’une paire de la forme “verbe ”-“nom” destiné à en faciliter la mémorisation.</p>
+<p>Elles sont composées d’une paire de la forme “verbe ”-“nom” destiné à en faciliter la mémorisation.</p>
 <p>exemple :</p>
-<pre><code class="language-plaintext">get-service</code></pre>
+<pre><code class="language-plaintext">Get-Service</code></pre>
 <p>get = verbe</p>
 <p>service = nom</p>
 <p>&nbsp;</p>
 <h2>Les variables</h2>
 <p>Une variable PowerShell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
-<p>exemple :</p>
+<p>Exemple :</p>
 <pre><code class="language-plaintext">$variable = une valeur </code></pre>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>Le pipeline</h2>
 <p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” (<strong>AltGr</strong> + <strong>6</strong>) permet d'exécuter plusieurs commandes à la suite.</p>
-<p>exemple :&nbsp;</p>
-<pre><code class="language-plaintext">get-process | Sort-Object CPU</code></pre>
+<p>Exemple :&nbsp;</p>
+<pre><code class="language-plaintext">Get-Process | Sort-Object CPU</code></pre>
 <p>Dans ce cas précis, la commande <code>Sort-Object</code> tri les processus par utilisation de Cpu</p>
 <p>&nbsp;</p>
 <h2>L' aide</h2>
 <p>Sous PowerShell la commande <code>Get-Help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
-<pre><code class="language-plaintext">get-help  &lt;la commande&gt;</code></pre>
+<pre><code class="language-plaintext">Get-Help  &lt;la commande&gt;</code></pre>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
-<pre><code class="language-plaintext"> update-help</code></pre>
-<p>cette commande permet d'avoir une aide de manière très générale si on souhaite obtenir plus d'information on peut ajouter l'option<code> -detailed</code></p>
-<pre><code class="language-plaintext">get-help &lt;la commande&gt; -detailed</code></pre>
+<pre><code class="language-plaintext"> Update-Help</code></pre>
+<p>Cette commande <code>Get-Help</code> permet d'avoir une aide de manière très générale si on souhaite obtenir plus d'information on peut ajouter l'option <code>-detailed</code></p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -detailed</code></pre>
 <p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
-<pre><code class="language-plaintext">get-help &lt;la commande&gt; -examples</code></pre>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -examples</code></pre>
 <p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>Update-Help.</code></p>
-<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option<code> -online&nbsp;</code></p>
-<pre><code class="language-plaintext">get-help &lt;la commande&gt; -online</code></pre>
-<p>&nbsp;</p>
+<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option <code>-online</code>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -online</code></pre>
 <p>Si vous voulez de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
-<p>par exemple si vous voulez de l'aide sur la syntaxe de commande <code>Get-ChildItem</code>&nbsp;</p>
+<p>Par exemple si vous voulez de l'aide sur la syntaxe de commande <code>Get-ChildItem</code>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Help Get-ChildItem</code></pre>
-<p>on peut constater dans la capture que certains paramètres sont obligatoires.</p>
+<p>On peut constater dans la capture que certains paramètres sont obligatoires.</p>
 <figure class="image image_resized" style="width:88.82%;"><img src="/capture4.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>La commande <code>Get-Help</code> permet également de rechercher une commande si, par exemple, vous souhaitez trouver une commande qui gère les services.</p>
 <pre><code class="language-plaintext">Get-Help service</code></pre>
-<p>voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
+<p>Voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
 <figure class="image image_resized" style="width:86.32%;"><img src="/capture1.png"></figure>
 <p>&nbsp;</p>
 <p>Une autre fonction de l'aide permet d'avoir des informations sur un sujet précis.</p>
-<p>pour lister ces sujets utilisez l'option<code> about_*</code>&nbsp;</p>
+<p>Pour lister ces sujets utilisez l'option <code>about_*</code>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Help about_*</code></pre>
 <p>Par exemple, si vous voulez de l'aide au sujet de pipeline</p>
 <pre><code class="language-plaintext">Get-Help about_pipeline</code></pre>
-<p>voici ce que renvoie la commande</p>
+<p>Voici ce que renvoie la commande</p>
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
 <p>&nbsp;</p>
 <h2>Les providers</h2>
-<p>&nbsp;</p>
 <p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système à l'environnement etc…</p>
 <ul>
   <li>Base de Registre {HKLM, HKCU}</li>
@@ -74,13 +71,13 @@ dateCreated: 2021-05-08T14:42:07.092Z
   <li>Function {Function}</li>
   <li>variable {Variable}</li>
 </ul>
-<p>pour lister l'ensemble des providers, on utilise la commande</p>
-<pre><code class="language-plaintext">Get-psdrive</code></pre>
+<p>Pour lister l'ensemble des providers, on utilise la commande</p>
+<pre><code class="language-plaintext">Get-Psdrive</code></pre>
 <p>L'avantage c'est que vous pouvez parcourir ces éléments comme si c'était un système de fichiers.</p>
 <p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans votre arborescence Windows avec un <code>cd c:</code>.</p>
 <figure class="image"><img src="/capture9.png"></figure>
-<p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base&nbsp;</p>
-<p>exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
+<p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base.</p>
+<p>Exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
 <figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
 <p>&nbsp;</p>
 <h1>Création d'un menu sous Powershell</h1>
