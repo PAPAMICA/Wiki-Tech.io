@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T11:34:15.793Z
+date: 2021-05-13T11:44:52.904Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -502,9 +502,9 @@ conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
        valid_lft forever preferred_lft forever
     inet6 fe80::82ec:2574:ff:57a0/64 scope link stable-privacy 
        valid_lft forever preferred_lft forever</code></pre>
-<p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière. Je vous laisse faire. En attendant on peut kill onioncat et le relancer en mode démon (donc sans l'option <code>-B</code> en argument) :&nbsp;</p>
+<p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière, car oui nous aurons un HS sur notre client. Je vous laisse faire. En attendant on peut kill onioncat et le relancer en mode démon (donc sans l'option <code>-B</code> en argument) :&nbsp;</p>
 <pre><code class="language-plaintext"> # ocat -u _tor conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">côté client j'ai mon HS qui tourne correctement, &nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
