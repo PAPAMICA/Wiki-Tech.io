@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T07:38:41.951Z
+date: 2021-05-13T07:42:34.046Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -324,18 +324,18 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:HJN3I
 # chmod -R 700 /var/lib/tor/authorized_clients
 # chown -R debian-tor:debian-tor /var/lib/tor/authorized_clients
 # vim /var/lib/tor/authorized_clients/user01.auth_private</code></pre>
-<p>Et on y écrit notre clef privée ! sous le même format que la clef publique à savoir&nbsp;</p>
+<p>Et on y écrit notre clef privée toujours sous le même format que la clef publique à savoir :</p>
 <p><code>adresse-en-onion-sans-le-onion<strong>:descriptor:x25519:</strong>la-clef-privée-en-entier</code></p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext"># cat /var/lib/tor/authorized_clients/user01.auth_private
 az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XMZX7JJZNE464JI2HKIVANRT7ADDUS64PM5ERY6UMVDQW4BKQ</code></pre>
 <p>&nbsp;</p>
+<p style="text-align:justify;">Un petit récap :&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">&nbsp;</p>
+<ol>
+  <li style="text-align:justify;">Ajouter <code>ClientOnionAuthDir /chemin/vers/les/clefs/</code> dans <code>/etc/tor/torrc</code> sur le client et le serveur et bien gérer les droits sur les répertoires en question.</li>
+  <li style="text-align:justify;">&nbsp;</li>
+</ol>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
