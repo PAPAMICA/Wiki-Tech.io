@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T09:57:05.256Z
+date: 2021-05-13T09:58:53.725Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -413,7 +413,7 @@ drwxr-xr-x  4 root root 4,0K mai   13 11:33 src
 -rw-r--r--  1 root root   23 mai   13 11:32 stamp-h1
 drwxr-xr-x  2 root root 4,0K mai   13 11:30 systemd
 -rw-r--r--  1 root root 1,8K mai   13 11:30 TODO</code></pre>
-<p style="text-align:justify;">Et on esssaye de le lancer !</p>
+<p style="text-align:justify;">Et on esssaye de le lancer.</p>
 <pre><code class="language-plaintext">debian-tor:~/ocat/onioncat# ocat
 onioncat 0.3.8 (c) Bernhard R. Fischer (OnionCat mode)
 usage: ocat [OPTIONS] &lt;onion_hostname&gt;
@@ -449,7 +449,7 @@ usage: ocat [OPTIONS] &lt;onion_hostname&gt;
 <p style="text-align:justify;">Comme sur des roulettes. Après avoir éviement fait la même chose sur votre marchine cliente (puisqu'il faut que Onioncat soit installé de part et d'autre rappelez vous…) nous pouvons installer notre serveur murmur. Il est dans les repos, chill !</p>
 <pre><code class="language-plaintext"># apt install mumble-server</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
-<p style="text-align:justify;">Pour votre gouverne on configure Murmur via le fichier <code>/etc/mumble-server.ini</code>. Pour le moment on laisse les options par défaut. Notez juste que le port qui nous interesse est le 64738 que je vous invite évidement à changer. Pour l'instant nous avons un serveur ssh qui tourne sur le serveur de test. Le démon Tor écoute sur 2222 et le serveur ssh écoute 22/TCP sur 127.0.0.1. Par ailleurs notre démon Tor n'accepte que les connexions de notre poste puisque nous avons le AuthCookie et que notre HS est stealth. Cela veut dire que Onioncat n'écoutera que notre poste. Libre à vous de commenter l'option <code>ClientOnionAuthDir</code> (sur le client ainqi que le serveur), personnellement je la laisse.</p>
+<p style="text-align:justify;">Pour votre gouverne on configure Murmur via le fichier <code>/etc/mumble-server.ini</code>. Pour le moment on laisse les options par défaut. Notez juste que le port qui nous interesse est le 64738. Pour le moment nous avons <code>sshd</code> qui tourne sur le serveur de test. Le démon Tor écoute sur 2222 et le serveur ssh écoute 22/TCP sur 127.0.0.1. Par ailleurs notre démon Tor n'accepte que les connexions de notre poste puisque nous avons le AuthCookie et que notre HS est stealth. Cela veut dire que Onioncat n'écoutera que notre poste. Libre à vous de commenter l'option <code>ClientOnionAuthDir</code> (sur le client ainsi que le serveur), personnellement je la laisse.</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
