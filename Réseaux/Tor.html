@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T07:47:07.805Z
+date: 2021-05-13T07:49:47.380Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -330,11 +330,21 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:HJN3I
 <pre><code class="language-plaintext"># cat /var/lib/tor/authorized_clients/user01.auth_private
 az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XMZX7JJZNE464JI2HKIVANRT7ADDUS64PM5ERY6UMVDQW4BKQ</code></pre>
 <p>&nbsp;</p>
-<p style="text-align:justify;">Un petit récap :&nbsp;</p>
-<p style="text-align:justify;">0. Installer ce qu'il faut pour exécuter notre script python lamentablement volé à quelqu'un d'autre et générer les clefs.&nbsp;<br><br>1. Ajouter <code>ClientOnionAuthDir /chemin/vers/les/clefs/</code> dans <code>/etc/tor/torrc</code> sur le client et le serveur et bien gérer les droits sur les répertoires en question.</p>
-<p style="text-align:justify;">2. Créer les paires de clefs et les &nbsp;écrire dans <code>/chemin/vers/les/clefs/clef-privée</code> sur le client et <code>/chemin/vers/les/clefs/clef-publique</code>sur le serveur.</p>
-<p style="text-align:justify;">3. Redémarrer tor sur le serveur ainsi que le client.</p>
-<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:center;">&nbsp;</p>
+<p style="text-align:center;"><span class="text-big">Un petit récapitulatif de ce que l'on vient de faire</span></p>
+<figure class="table">
+  <table>
+    <tbody>
+      <tr>
+        <td>
+          <p style="text-align:justify;">0. Installer ce qu'il faut pour exécuter notre script python lamentablement volé à quelqu'un d'autre et générer les clefs.&nbsp;<br><br>1. Ajouter <code>ClientOnionAuthDir /chemin/vers/les/clefs/</code> dans <code>/etc/tor/torrc</code> sur le client et le serveur et bien gérer les droits sur les répertoires en question.</p>
+          <p style="text-align:justify;">2. Créer les paires de clefs et les &nbsp;écrire dans <code>/chemin/vers/les/clefs/clef-privée</code> sur le client et <code>/chemin/vers/les/clefs/clef-publique</code> sur le serveur.</p>
+          <p style="text-align:justify;">3. Redémarrer Tor sur le serveur ainsi que le client.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
