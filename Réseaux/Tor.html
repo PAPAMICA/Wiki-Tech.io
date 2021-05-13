@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T07:26:24.081Z
+date: 2021-05-13T07:35:43.325Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -317,13 +317,13 @@ descriptor:x25519:HJN3IK5HZVZR7JXO343JTKFATO5JHCBTZ3PQWRZWOCJMP3KY6VSQ</code></p
 <pre><code class="language-plaintext">ClientOnionAuthDir /var/lib/tor/openssh/authorized_clients</code></pre>
 <p style="text-align:justify;"><strong>Sur le client </strong>ajoutez ça dans vote <code>/etc/tor/torrc</code> :&nbsp;</p>
 <pre><code class="language-plaintext">ClientOnionAuthDir /var/lib/tor/openssh/authorized_clients # toujours dans la même section</code></pre>
-<p style="text-align:justify;"><strong>Toujours sur le client</strong> on créé le répertoire qui va contenir notre clefs :</p>
+<p style="text-align:justify;"><strong>Toujours sur le client</strong> on créé le répertoire qui va contenir notre clefs (bon voilà depuis que j'ai commencé ce tuto j'ai vu le user <code>debian-tor</code>, on va l'utiliser sur notre client)</p>
 <pre><code class="language-plaintext"># mkdir /var/lib/tor/authorized_clients
 # chmod -R 700 /var/lib/tor/authorized_clients
-# chown -R _tor:_tor /var/lib/tor/authorized_clients
+# chown -R debian-tor:debian-tor /var/lib/tor/authorized_clients
 # vim /var/lib/tor/authorized_clients/user01.auth_private</code></pre>
-<p>&nbsp;</p>
-<p>Et on y écrit notre clef privée !</p>
+<p>Et on y écrit notre clef privée ! sous le même format que la clef publique à savoir&nbsp;</p>
+<p>adresse-en-onion-sans-le-onion<strong>:descriptor:x25519:</strong>la-clef-privée-en-entier</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext"># cat /var/lib/tor/authorized_clients/user01.auth_private
 </code></pre>
