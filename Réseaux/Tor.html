@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T12:00:05.837Z
+date: 2021-05-13T12:04:49.598Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -308,8 +308,8 @@ if __name__ == '__main__':
 <pre><code class="language-plaintext"># python keygen.py
 public:  HJN3IK5HZVZR7JXO343JTKFATO5JHCBTZ3PQWRZWOCJMP3KY6VSQ
 private: DK6XMZX7JJZNE464JI2HKIVANRT7ADDUS64PM5ERY6UMVDQW4BKQ</code></pre>
-<p style="text-align:justify;"><br>On note notre sortie logique dans un coin…. Je veux dire <strong>la votre </strong>(<i>si vous utilisez cette paire de clefs vous n'irez pas loin dans la vie pauvre être inférieur</i>). Allez on édite <code>/var/lib/tor/openssh/authorized_clients/ton_user<strong>.auth</strong></code> et on y écrit notre clef . Nous devrions avoir quelque chose comme ça :</p>
-<pre><code class="language-plaintext"># cat /var/lib/tor/openssh/authorized_clients/user01.auth 
+<p style="text-align:justify;"><br>On note notre sortie logique dans un coin…. Je veux dire <strong>la votre </strong>(<i>si vous utilisez cette paire de clefs vous n'irez pas loin dans la vie pauvre être inférieur</i>). Allez on édite <code>/var/lib/tor/openssh/authorized_clients/ton_user<strong>.auth_private</strong></code> et on y écrit notre clef . Nous devrions avoir quelque chose comme ça :</p>
+<pre><code class="language-plaintext"># cat /var/lib/tor/openssh/authorized_clients/user01.auth_private
 az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:HJN3IK5HZVZR7JXO343JTKFATO5JHCBTZ3PQWRZWOCJMP3KY6VSQ</code></pre>
 <p style="text-align:justify;">Le format est donc : <code>adresse-en-onion-sans-le-onion<strong>:descriptor:x25519:</strong>la-clef-publique-en-entier</code></p>
 <p style="text-align:justify;">&nbsp;</p>
@@ -337,7 +337,7 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
       <tr>
         <td>
           <p style="text-align:justify;">0. Installer ce qu'il faut pour exécuter notre script python lamentablement volé à quelqu'un d'autre et générer les clefs.&nbsp;<br><br>1. Ajouter <code>ClientOnionAuthDir /chemin/vers/les/clefs/</code> dans <code>/etc/tor/torrc</code> sur le client et le serveur et bien gérer les droits sur les répertoires en question.</p>
-          <p style="text-align:justify;">2. Créer les paires de clefs et les &nbsp;écrire dans <code>/chemin/vers/les/clefs/clef-privée</code> sur le client et <code>/chemin/vers/les/clefs/clef-publique</code> sur le serveur.</p>
+          <p style="text-align:justify;">2. Créer les paires de clefs et les &nbsp;écrire dans <code>/chemin/vers/les/clefs/clef-privée.auth_private</code> sur le client et <code>/chemin/vers/les/clefs/clef-publique.auth_private</code> sur le serveur.</p>
           <p style="text-align:justify;">3. Redémarrer Tor sur le serveur ainsi que le client.</p>
         </td>
       </tr>
