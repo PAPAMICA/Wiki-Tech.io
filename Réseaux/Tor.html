@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T08:58:47.480Z
+date: 2021-05-13T08:59:20.318Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -356,6 +356,12 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">Depuis que nous avons commencé ce tuto je n'ai absolument pas abordé le sujet mais Tor ne peut router que du TCP et rien d'autre. C'est comme ça. Ne me demandez pas pourquoi, beaucoup de gens bien plus intelligents que moi pourraient répondre à cette question. Tor c'est TCP. Alors c'est la que vous allez me dire “<i>mais j'ai envie d'utiliser d'autres flux que du TCP moi, j'ai envie de créer un serveur de VoIP et même… Des DNS !</i>”. Et bien moi aussi mon pt'it ! Il y a quelques temps deux types (Daniel Haslinger, Bernhard Fischer) on décidé qu'ils allaient développer <a href="https://www.onioncat.org/">Onioncat</a>. C'est outil hyper élégant présenté <a href="https://www.youtube.com/watch?v=rx4rS1gvp7Y">en vidéo</a> ici qui permet de faire transiter n'importe quel type de flux via Tor au travers d'une interface TUN : de l'UDP, de l'ICMP bref, n'importe quoi.</p>
 <p style="text-align:justify;">L'idée c'est d'installer Onioncat sur un serveur et sur un client… De chaque côté Onioncat va créer une interface TUN et lui attribuer une adresse IP. A partir de ce moment les autres hosts équipés d'Onioncat et connectés à Tor vont pouvoir la joindre sur cette IP. Tout ce qui passe dans l'if TUN est routé dans Tor. Il va de soi qu'il s'agit d'une encapsulation car Tor ne comprend toujours que TCP mais c'est totalement transparent pour les applications qui elles peuvent utiliser n'importe quel protocole de couche 3+ sur le modèle TCP/IP.</p>
+<p style="text-align:justify;">Onioncat se compose de plusieurs&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">&nbsp;</p>
