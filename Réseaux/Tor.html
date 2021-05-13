@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-13T16:46:54.758Z
+date: 2021-05-13T16:47:39.224Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -536,7 +536,7 @@ fd87:d87e:eb43:7b:9818:380:7a5b:303 conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5z
 </code></pre>
 <p style="text-align:justify;">Dites donc…. On ne pourrais pas pinger par hasard ? (avec <code>ping6</code> cela va de &nbsp;soi) &nbsp;Notre Tor-VPN &nbsp;a l'air de fonctionner ! Plusieurs choses : Si au premier paquet vous avez une latence d'une minute ou plus c'est normal puisque Tor doit créer la route avant que vous ne puissiez joindre l'hôte. Par ailleurs le tunnel se désactive au bout de 120 secondes.</p>
 <ul>
-  <li style="text-align:justify;">Note importante à propos de <code>ifconfig</code> : Oui <code>ifconfig(8)</code> est un prérequis pour Onioncat, installez le paquet <code>net-tools</code> si vous êtes sous Debian <a href="https://imgr.cineserie.com/2021/01/elephant-man-sur-netflix-de-quelle-maladie-souffre-john.png?imgeng=/f_jpg/cmpr_0/w_2202/h_1150/m_cropbox&amp;ver=1">ou autres dérivés</a>.</li>
+  <li style="text-align:justify;">Note importante à propos de <code>ifconfig</code> : Oui <code>ifconfig(8)</code> est un prérequis pour Onioncat, installez le paquet <code>net-tools</code> si vous êtes sous Debian <a href="https://imgr.cineserie.com/2021/01/elephant-man-sur-netflix-de-quelle-maladie-souffre-john.png?imgeng=/f_jpg/cmpr_0/w_2202/h_1150/m_cropbox&amp;ver=1">ou autres dérivés</a>. (ça me fait penser à systemctl reboot j'ai très hâte de retrouver ma machine BSD)</li>
 </ul>
 <p style="text-align:justify;"><i>De mon côté j'ai bien galéré avec ma machine Kali qui gère les droits du démon Tor d'une manière très… humm… Enfin qui ne gère rien du tout. Au début ça ne fonctionnait pas j'ai vu des alertes sur les droits et dans le doute j'ai lancé Onioncat sur mon firewall OpenBSD qui répondait très bien avec la même conf. J'ai finis par cloner ma VM debian-tor sur laquelle tout fonctionne enfin. Une bonne grosse galère !&nbsp;</i></p>
 <p style="text-align:justify;">&nbsp;</p>
