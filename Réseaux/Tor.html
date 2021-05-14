@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:37:59.061Z
+date: 2021-05-14T09:38:54.841Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -88,7 +88,7 @@ deb-src https://deb.torproject.org/torproject.org stretch main</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">Maintenant que vous avez les derniers binaires et que votre VM ressemble de loin à un serveur, l'environnement est prêt. il ne nous reste plus qu'à créer notre relai.&nbsp;</p>
 <h2 style="text-align:justify;"><span class="text-big">Configuration du relai</span></h2>
-<p style="text-align:justify;"><br>Par défaut sous OpenBSD on fait tourner le daemon <code>tor(1)</code> avec l’utilisateur <code>_tor</code> et on cloisonne l’exécutable sous <a href="https://man.openbsd.org/pledge.2">pledge(2)</a>. C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans le torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement (ou s'il le lance avec l'utilisateur daemon au hasard) mais ce n'est vraiment pas explicite… dans le doute :&nbsp;</p>
+<p style="text-align:justify;"><br>Par défaut sous OpenBSD on fait tourner le démon <code>tor(1)</code> avec l’utilisateur <code>_tor</code> et on cloisonne l’exécutable sous <a href="https://man.openbsd.org/pledge.2">pledge(2)</a>. C’est la première fois que j’exécute le démon sous Linux en mode serveur et j’étais très surpris de voir que l’option «&nbsp;User&nbsp;» n’est pas activée par défaut dans le torrc. Je ne sais pas &nbsp;trop s'il le fait automatiquement (ou s'il le lance avec l'utilisateur daemon au hasard) mais ce n'est vraiment pas explicite… dans le doute :&nbsp;</p>
 <pre><code class="language-plaintext"># sudo useradd _tor
 # sudo usermod -s /sbin/nologin _tor
 # id _tor
