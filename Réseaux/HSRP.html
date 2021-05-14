@@ -2,7 +2,7 @@
 title: Réseau - HSRP
 description: Qu'est-ce que c'est et à quoi ça sert ?
 published: true
-date: 2021-05-14T10:51:46.416Z
+date: 2021-05-14T11:01:45.869Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-14T10:30:03.421Z
@@ -15,7 +15,7 @@ dateCreated: 2021-05-14T10:30:03.421Z
 <p>Le HSRP est un protocole propriétaire de Cisco.</p>
 <h1>Fonctionnement</h1>
 <p>Dans chaque réseau où le HSRP est actif, on définit un groupe de routeurs. Chaque groupe est associé à une adresse IP virtuelle distincte.</p>
-<p>Dans un groupe, un routeur actif est défini : c’est celui qui aura la priorité la plus élevée. Les autres routeurs sont en standby et écoutent les requêtes émis par le routeur actif. Périodiquement, les routeurs du groupe échangent des messages pour s'assurer que les routeurs du groupe sont encore joignables. Par défaut, les messages sont envoyés toutes les 3 secondes, et un délai de plus de 10 secondes sans message de la part du routeur actif entraîne la promotion du routeur Standby en actif.</p>
+<p>Dans un groupe, un routeur actif est défini : c’est celui qui aura la priorité la plus élevée. Les autres routeurs sont en standby et écoutent les requêtes émises par le routeur actif. Périodiquement, les routeurs du groupe échangent des messages pour s'assurer que les routeurs du groupe sont encore joignables. Par défaut, les messages sont envoyés toutes les 3 secondes, et un délai de plus de 10 secondes sans message de la part du routeur actif entraîne la promotion du routeur Standby en actif.</p>
 <p>Si le routeur actif principal devient inaccessible, un autre routeur sera élu : celui qui a la deuxième priorité la plus élevée. Tous les messages entre les routeurs sont échangés en utilisant l'adresse multicast 224.0.0.2 via UDP sur le port 1985.</p>
 <p>Si un routeur A découvre qu'un autre routeur B est actif pour le même groupe et dans le même réseau et que ce dernier a une priorité inférieure à la sienne, alors le routeur A reprend le rôle de routeur actif.</p>
 <p>Le changement de routeur actif est transparent pour les hôtes qui utilisent l'adresse virtuelle.</p>
