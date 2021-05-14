@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T08:52:31.736Z
+date: 2021-05-14T08:54:27.113Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -446,7 +446,7 @@ usage: ocat [OPTIONS] &lt;onion_hostname&gt;
 <p style="text-align:justify;">&nbsp;</p>
 <p style="text-align:justify;">Pour le moment Tor écoute sur 2222 et le serveur ssh écoute 22/TCP sur 127.0.0.1. Par ailleurs notre démon Tor n'accepte que les connexions de notre poste (<strong>pour le service ssh uniquement et pas les autres</strong>) puisque nous avons le AuthCookie et que notre HS est stealth. Cela ne veut pas dire que Onioncat aura besoin d’utilisateurs authentifiés, libre à vous de déclarer <code>ClientOnionAuthDir</code> pour Onioncat et de généerr de nouvelles paires de clefs ce qui serait un joli hardening à votre Tor-VPN.</p>
 <p style="text-align:justify;">C'est le moment de créer notre interface TUN avec Onioncat mais vous ne vous en sortirez pas sans savoir comment ça fonctionne (au moins dans les grandes lignes) bande de script kiddies. Quand vous allez lancer Onioncat, l'outil va utiliser un driver particulier (celui de OpenVPN) pour créer l'interface TUN. Après il va chopper l'adresse en <code>*.onion</code> de votre host (que vous lui donnerez en entrée au moment du lancement) et via un mécanisme de hash il va créer une <i>adresse IP pseudo-unique</i>. De base, les développeurs d'Onioncat recommandent l'usage d'IP6 parce que faire un hash d'un <code>*.onion</code> comme ça <code>az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd.onion</code> et le transformer en IP6 comme ça &nbsp;<code>2001:db8:3c4d:15:7c37:e7d1:fc9c:d2cb/64</code> fait que <a href="https://fr.wikipedia.org/wiki/Collision_(informatique)">les collisions</a> (<i>si vous ne savez pas ce qu'est une collision merci de lire avant de continuer</i>) sont bien moins probables qu'avec une adresse comme ça <code>10.0.1.56</code> et qu'en théorie vous êtes le SEUL à avoir cette adresse IP6 sur l'ensemble du réseau Tor. L'option <code>-4</code> existe, vous pouvez l'utiliser mais ne le faites que si l'outil que vous souhaitez utiliser dans le tunel n'est pas compatible avec IP6.</p>
-<p style="text-align:justify;">Bref, Onioncat est géré comme n'importe quel HS sur votre système. Tor peut être configuré pour servir autant de HS que vous désirez sur un seul et même système (une seule instance du démon), chaque HS ayant son propre répertoire, sa propre identité, ses propres clefs et surtout sa propre adresse en <code>*.onion</code>. Cela signifie que vous pouvez garder votre HSv3 OpenSSH actif et créer un autre HSv3 pour Onioncat sans aucun problème. Commençons par éditer notre <code>/etc/tor/torrc</code> afin de lui signifier la présence d'Onioncat à la suite de notre HS OpenSSH !</p>
+<p style="text-align:justify;">Bref, Onioncat est géré comme n'importe quel HS sur votre système. Comme vous l'avez compris Tor peut être configuré pour servir autant de HS que vous désirez sur un seul et même système (une seule instance du démon), chaque HS ayant son propre répertoire, sa propre identité, ses propres clefs et surtout sa propre adresse en <code>*.onion</code>. Cela signifie que vous pouvez garder votre HSv3 OpenSSH actif et créer un autre HSv3 pour Onioncat sans aucun problème. Commençons par éditer notre <code>/etc/tor/torrc</code> afin de lui signifier la présence d'Onioncat à la suite de notre HS OpenSSH !</p>
 <p style="text-align:justify;">&nbsp;</p>
 <pre><code class="language-plaintext">############### This section is just for location-hidden services ###
 
@@ -517,7 +517,7 @@ Fri, 14 May 2021 10:43:02.762 +0200 [0:main      :   err] no route to destinatio
        valid_lft forever preferred_lft forever
     inet6 fe80::82ec:2574:ff:57a0/64 scope link stable-privacy 
        valid_lft forever preferred_lft forever</code></pre>
-<p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière, car oui nous aurons un HS sur notre client. Je vous laisse faire. En attendant on peut kill Onioncat et le relancer en mode démon (donc sans l'argument <code>-B</code>) :&nbsp;</p>
+<p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière. Je vous laisse faire. En attendant on peut kill Onioncat et le relancer en mode démon (donc sans l'argument <code>-B</code>) :&nbsp;</p>
 <pre><code class="language-plaintext"> # ocat -u _tor conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
 <p style="text-align:justify;">Côté client j'ai mon HS qui tourne correctement, &nbsp;je peux reproduire la même opération afin d'obtenir mon IP6 :&nbsp;</p>
 <pre><code class="language-plaintext"># ocat -u debian-tor 3fksfdz2zm2elmag5qd5rwhcpfw75gdr7b36rp6xeo5rug3cx2okj7ad.onion
