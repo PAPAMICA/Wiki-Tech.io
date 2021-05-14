@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T08:54:27.113Z
+date: 2021-05-14T08:54:48.134Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -519,7 +519,7 @@ Fri, 14 May 2021 10:43:02.762 +0200 [0:main      :   err] no route to destinatio
        valid_lft forever preferred_lft forever</code></pre>
 <p style="text-align:justify;">On voit que <code>tun0</code> a bien été créée et que nous avons une IP6 en <code>fd87:d87e:eb43:7b:9818:380:7a5b:303/48</code>. Parfait. On recommence l'opération sur notre machine cliente sur laquelle on va devoir créer <code>/var/lib/tor/onioncat</code> et lancer l'outil de la même manière. Je vous laisse faire. En attendant on peut kill Onioncat et le relancer en mode démon (donc sans l'argument <code>-B</code>) :&nbsp;</p>
 <pre><code class="language-plaintext"> # ocat -u _tor conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
-<p style="text-align:justify;">Côté client j'ai mon HS qui tourne correctement, &nbsp;je peux reproduire la même opération afin d'obtenir mon IP6 :&nbsp;</p>
+<p style="text-align:justify;">Sur l'autre machine j'ai mon HS qui tourne correctement, &nbsp;je peux reproduire la même opération afin d'obtenir mon IP6 :&nbsp;</p>
 <pre><code class="language-plaintext"># ocat -u debian-tor 3fksfdz2zm2elmag5qd5rwhcpfw75gdr7b36rp6xeo5rug3cx2okj7ad.onion
 # ip addr show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
