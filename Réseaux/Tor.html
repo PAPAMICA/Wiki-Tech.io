@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:59:28.992Z
+date: 2021-05-14T10:01:13.865Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -184,17 +184,6 @@ HiddenServicePort 2222 127.0.0.1:22        # Depuis l'extérieur on écoute 2222
 <pre><code class="language-plaintext"># mkdir /var/lib/tor/openssh
 # chown -R _tor:_tor /var/lib/tor/openssh
 # chmod 700 /var/lib/tor/openssh</code></pre>
-<p>On redémarre Tor pour qu'il prenne en compte notre nouveau <code>/etc/tor/torrc</code> . C'est en démarrant et en lisant la config qu'il va aller écrire les fichiers dans <code>/var/lib/tor/openssh</code>. Nous vérifions maintenant que les droits sont corrects :&nbsp;</p>
-<pre><code class="language-plaintext"># systemctl restart tor
-# ls -lah /var/lib/tor/openssh
-total 24K
-drwx--S--- 3 _tor _tor 4,0K mai   12 11:04 .
-drwx--S--- 4 _tor _tor 4,0K mai   12 11:57 ..
-drwx--S--- 2 _tor _tor 4,0K mai   12 11:04 authorized_clients
--rw------- 1 _tor _tor   63 mai   12 11:04 hostname
--rw------- 1 _tor _tor   64 mai   12 11:04 hs_ed25519_public_key
--rw------- 1 _tor _tor   96 mai   12 11:04 hs_ed25519_secret_key</code></pre>
-<p>&nbsp;</p>
 <p>Dans cet exemple nous n'allons pas nous attarder sur la sécurité de notre serveur ssh mais uniquement sur l'écoute de notre serveur. Il va de soi que si vous vouliez un véritable service vous installeriez sshguard et désactiveriez l'authentification par mot de passe, au minimum. Ce qui nous intéresse c'est surtout la manière dont le serveur ssh va écouter. Éditez votre <code>/etc/ssh/sshd_config</code> :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Port 22                     # Dans notre exemple de torrc on redirige les requêtes 2222 (tor) vers 22 donc on écoute sur le port 22
@@ -213,7 +202,7 @@ May 12 11:04:36.367 [notice] Opening Socks listener on 127.0.0.1:9050
 May 12 11:04:36.367 [notice] Opened Socks listener on 127.0.0.1:9050
 May 12 11:04:36.367 [notice] Opening Control listener on 127.0.0.1:9051
 May 12 11:04:36.367 [notice] Opened Control listener on 127.0.0.1:9051</code></pre>
-<p>Bon Tor se lance ça a l'air pas mal… Allons voir s'il a bien écrit les éléments nécessaires à notre HS OpenSSH dans <code>/var/lib/tor/openssh</code> :&nbsp;</p>
+<p>Bon Tor se lance ça a l'air pas mal… Allons voir s'il a bien écrit les éléments nécessaires à notre HS OpenSSH dans <code>/var/lib/tor/openssh</code> au moment du lancement : &nbsp;</p>
 <pre><code class="language-plaintext"># ls -lah /var/lib/tor/openssh/
 total 24K
 drwx--S--- 3 _tor _tor 4,0K mai   12 11:04 .
