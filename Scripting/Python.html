@@ -2,7 +2,7 @@
 title: Python
 description: 
 published: true
-date: 2021-05-12T13:21:00.456Z
+date: 2021-05-14T14:53:02.319Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T19:56:01.357Z
@@ -321,6 +321,23 @@ while 1 != 10:
 
     def __repr__(self):
         return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-python">&gt;&gt;&gt; repr(chuck)
-'Nom : Norris , Prenom : Chuck , Age : 81'
-</code></pre>
+'Nom : Norris , Prenom : Chuck , Age : 81'</code></pre>
+<h2>Le décorateur</h2>
+<p>Le décorateur est une fonction permettant de modifier le comportement d'autres fonctions, évitant la répétition de code. Il est appelé par “ @nom_décoraeur ”.</p>
+<pre><code class="language-python">def title_decorator(function):
+    def wrapper(*args, **kwargs):
+        print("*"*30)
+        print("-"*30)
+        function(*args, **kwargs)
+        print("-"*30)
+        print("*"*30)
+    return wrapper
+
+@title_decorator
+def title(titre):
+    print(titre)
+
+titre = "Ceci est mon texte décoré"
+title(titre)</code></pre>
