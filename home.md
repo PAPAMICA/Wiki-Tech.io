@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-14T11:26:14.640Z
+date: 2021-05-14T11:31:46.521Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -16,7 +16,7 @@ Nous sommes plusieurs professionnels de l’IT, étudiants ou passionnés à ré
 Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible sur [Github](https://github.com/PAPAMICA/Documentation) directement. 
 
 > 🚧  Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
-> Dernière mise à jours : 12/05/2021
+> Dernière mise à jours : 14/05/2021
 {.is-warning}
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/Devenir-Contributeur) ❤️
