@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-14T10:32:59.819Z
+date: 2021-05-14T10:39:53.732Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -180,9 +180,13 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 # Windows
 - [🔥 Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Windows/Commandes)
 - [💽 Partition Windows *Créer et gérer les partitions sous Windows*](/Windows/Partitions)
-- [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
 - [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Windows/Robocopy)
-- [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
+{.links-list}
+## Windows 7/10
 - [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Windows/RDP)
+{.links-list}
+## Windows Server 2016 / 2019
+- [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
+- [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
 - [✨ GPO *Comprendre et créer des GPO*](/Windows/GPO)
 {.links-list}
