@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:35:27.144Z
+date: 2021-05-14T09:37:59.061Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -52,7 +52,7 @@ iface eth0 inet static
 </code></pre>
 <p style="text-align:justify;"><br>On redémarre le réseau :</p>
 <pre><code class="language-plaintext"># systemctl restart networking</code></pre>
-<p style="text-align:justify;"><br>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée, que votre TZ est correcte. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du temps très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre à votre disposition . Personnellement j'aime ntpd(8) donc je l'utilise. Le résultat final doit ressembler à ça&nbsp;:</p>
+<p style="text-align:justify;"><br>Le serveur doit impérativement être à l’heure. C’est un prérequis indispensable car le chiffrement se base sur le temps et Tor c'est du chiffrement. Vérifiez bien que l’heure réseau est activée, que votre TZ est correcte. Si ce n’est pas le cas il faut que vous l’activiez… Je trouve la gestion du temps très pourrie sous Debian, je vous laisse faire vous-même. Choisissez un démon entre chrony, ntp et je ne sais pas quoi d’autre à votre disposition. Personnellement j'aime ntpd(8) donc je l'utilise. Le résultat final doit ressembler à ça&nbsp;:</p>
 <pre><code class="language-plaintext"># timedatectl 
                Local time: mar. 2021-05-11 17:43:45 CEST
            Universal time: mar. 2021-05-11 15:43:45 UTC
