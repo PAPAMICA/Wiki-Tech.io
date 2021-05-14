@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T10:07:21.775Z
+date: 2021-05-14T10:07:32.728Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -254,7 +254,7 @@ Last login: Wed May 12 10:27:11 2021 from 10.0.0.69</code></pre>
 <p>Les<i> Hidden Services Stealth</i> sont un type particulier de de Hidden Services. Lorsque vous tentez de communiquer avec l'un d'entre eux vous aller tout d'abord envoyer un cookie (un <i>Auth Cookie </i>pour être exact). Si ce cookie correspond à une identité connue du serveur alors le démon Tor de ce dernier transmettra le paquet au service auquel vous souhaitez vous connecter. Si votre service est privé et que vous souhaitez le mettre à dispo de &nbsp;vos amis alors c'est ce qu'il vous faut. Le layer de sécurité supplémentaire qu'un HSv3 stealth offre est excellent. Il existe beaucoup de vecteurs d'attaque sur le réseau Tor mais ajouter ce type d'option permet réellement de gagner sûreté, je ne saurais suffisamment le recommander.</p>
 <p><i>Plus loin dans l'article je vous montrerais comment auditer via Tor vos HS avec nmap et vous verrez à quel point un HS stealth est puissant. Dans cette config, si le AuthCookie n'est pas envoyé en préfixe d'une communication avec le serveur le démon Tor drop tous les paquets sans condition et ici pas de </i><a href="https://datatracker.ietf.org/doc/html/rfc793"><i>RFC 793</i></a><i> bizarre pour nous dire de répondre avec des RST à nos requêtes malformées, cette fois-ci Tor rulez ! <u>Imaginez un serveur qui n'existe que pour les utilisateurs authentifiés, le rêve</u> !</i><span class="text-small"><i> (au cas ou vous ne le remarquiez pas j'aime beaucoup écrire cet article).</i></span></p>
 <p>Les HS Stealth V2 étaient déjà très performants et fonctionnaient simplement en auto-générant les AuthCookies des users lorsqu'on redémarrait <code>/usr/bin/tor</code>. Les HS V3 sont un peu plus compliqués puisqu'il faut générer des paires de clefs manuellement mais la complexité de ces dernières et le fait que l'on puisse les générer avec le moteur d'entropie de notre choix fait des Stealth V3 un incontournable.</p>
-<p>Bob et Alice vont papoter un peu, faites chauffer votre CPU ! Pour ce tuto je vais utiliser un script très simple (et très bien) <a href="https://github.com/pastly/python-snippits/blob/master/src/tor/x25519-gen.py">pompé ici</a>. Vous pouvez générer vos clefs de la manière de votre choix et d'ailleurs si le chiffrement vous intéresse<strong> n'utilisez surtout pas ce script</strong> mais plutôt votre cerveau. Bref pour notre machine Debian de RoxXor, normalement python(je veux dire pyton2) est déjà installé. On installe donc pip raipdos :</p>
+<p>Bob et Alice vont papoter un peu, faites chauffer ! Pour ce tuto je vais utiliser un script très simple (et très bien) <a href="https://github.com/pastly/python-snippits/blob/master/src/tor/x25519-gen.py">pompé ici</a>. Vous pouvez générer vos clefs de la manière de votre choix et d'ailleurs si le chiffrement vous intéresse<strong> n'utilisez surtout pas ce script</strong> mais plutôt votre cerveau. Bref pour notre machine Debian de RoxXor, normalement python(je veux dire pyton2) est déjà installé. On installe donc pip raipdos :</p>
 <pre><code class="language-plaintext"># apt install python-pip</code></pre>
 <p>Et on installe les dépendances de son script qu'il est bien :</p>
 <pre><code class="language-plaintext"># pip install pynacl</code></pre>
