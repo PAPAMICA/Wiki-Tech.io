@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T08:41:05.128Z
+date: 2021-05-14T08:42:19.885Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -480,7 +480,7 @@ conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
 # machine02
 fd87:d87e:eb43:7b:9818:380:7a5b:303 conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion onioncat-b</code></pre>
 <p style="text-align:justify;">Donc : <code>adresse-ip6 adresse-en.onion onioncat-a.</code> L'ordre des machines n'a aucune importance… Dans cette architecture il n'y a ni serveur ni client, tout cela importe peu.</p>
-<p style="text-align:justify;">Et on lance l'outil. Notez que par défaut Onioncat se lance avec l’utilisateur <code>tor</code> mais ce denier n'existe pas sur notre système. Nous allons donc utiliser l'option <code>-u</code> afin de lancer l'outil correctement, avec notre utilisateur <code>_tor</code>. Les autres options, je vous laisses les étudier par vous-même dans le help d'Onioncat en tapant la commande<code>ocat</code> sans argument.</p>
+<p style="text-align:justify;">Lançons l'outil. Notez que par défaut Onioncat se lance avec l’utilisateur <code>tor</code> mais ce denier n'existe pas sur notre système. Nous allons donc utiliser l'option <code>-u</code> afin de lancer l'outil correctement, avec notre utilisateur <code>_tor</code>. Les autres options, je vous laisses les étudier par vous-même dans le help d'Onioncat en tapant la commande sans argument.</p>
 <pre><code class="language-plaintext"># ocat -B -H -U -g /var/lib/tor/onioncat/hosts.oc -u _tor conqontlv34qgp7nmedyldffy4rpjgneabr4zzsdab5zqgadqb5fwayd.onion</code></pre>
 <p style="text-align:justify;">On check à quoi ressemblent nos interfaces…</p>
 <pre><code class="language-plaintext"># ip addr show
