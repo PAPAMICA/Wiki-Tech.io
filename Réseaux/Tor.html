@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:53:55.476Z
+date: 2021-05-14T09:55:37.671Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -177,7 +177,7 @@ HiddenServiceDir /var/lib/tor/openssh      # le répertoire de notre HS
 HiddenServicePort 2222 127.0.0.1:22        # Depuis l'extérieur on écoute 2222 et on redirige vers 22 sur localhost</code></pre>
 <p>&nbsp;</p>
 <p>késako ?</p>
-<p><code>HiddenServiceDir /var/lib/tor/openssh</code>: Lorsque Tor va redémarrer il va aller écrire les clefs de chiffrement de votre hidden service dans ce répertoire. Il va aussi y stocker l'adresse en *.onion. Faites très attention aux droits sur ce répertoire car il est critique. Nous allons le créer plus bas.</p>
+<p><code>HiddenServiceDir /var/lib/tor/openssh</code>: Lorsque Tor va redémarrer il va aller écrire les clefs de chiffrement de votre HS dans ce répertoire. Il va aussi y stocker l'adresse en *.onion. Faites très attention aux droits sur ce répertoire car il est critique. Nous allons le créer plus bas.</p>
 <p><code>HiddenServicePort 2222 127.0.0.1:22</code> : La beauté de tor c'est la simplicité. Imaginez-vous un NAT avec un port d'écoute et une redirection. Le démon écoute le port 2222 et le redirige sur le port 22 de localhost. le plus important c'est de toujours écouter 127.0.0.1. N'écoutez jamais une autre adresse car cela pourrait avoir des conséquences importantes sur la sécurité de votre serveur.</p>
 <p>&nbsp;</p>
 <p>On s'en va créer <code>/var/lib/tor/openssh</code>&nbsp;</p>
