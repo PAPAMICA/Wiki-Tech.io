@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-14T11:17:44.622Z
+date: 2021-05-14T11:26:14.640Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -108,7 +108,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 ## Centreon
-- [🌀 Installation 🚧 *Mise en place sous Docker*](/Supervision/Centreon/Installation)
+- [🌀 Installation 🚧 *Mise en place d'un serveur de supervision Centreon*](/Supervision/Centreon/Installation)
 {.links-list}
 
 # Grafana
