@@ -2,7 +2,7 @@
 title: Réseau - HSRP
 description: Qu'est-ce que c'est et à quoi ça sert ?
 published: true
-date: 2021-05-14T10:32:15.780Z
+date: 2021-05-14T10:50:43.124Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-14T10:30:03.421Z
@@ -10,4 +10,34 @@ dateCreated: 2021-05-14T10:30:03.421Z
 
 <figure class="image image_resized" style="width:22.33%;"><img src="https://formip.com/wp-content/uploads/2018/01/hsrp-fhrp-redondance-de-passerelle-par-defaut-3.png" alt="Core Cisco"></figure>
 <h1>Présentation</h1>
+<p>Le terme HSRP est un protocole qui permet de mettre en place la tolérance de panne d’une passerelle pour les équipements qui se connectent à notre réseau.</p>
+<p>&nbsp;</p>
+<p>HSRP est l’abréviation de <strong>H</strong>ot <strong>S</strong>tandby <strong>R</strong>outer <strong>P</strong>rotocol.</p>
+<p>&nbsp;</p>
+<p>Le HSRP est un protocole propriétaire de Cisco.</p>
 <h1>Fonctionnement</h1>
+<p>Dans chaque réseau où le HSRP est actif, on définit un groupe de routeurs. Chaque groupe est associé à une adresse IP virtuelle distincte.</p>
+<p>Dans un groupe, un routeur actif est défini : c’est celui qui aura la priorité la plus élevée. Les autres routeurs sont en standby et écoutent les requêtes émis par le routeur actif. Périodiquement, les routeurs du groupe échangent des messages pour s'assurer que les routeurs du groupe sont encore joignables. Par défaut, les messages sont envoyés toutes les 3 secondes, et un délai de plus de 10 secondes sans message de la part du routeur actif entraîne la promotion du routeur Standby en actif.</p>
+<p>Si le routeur actif principal devient inaccessible, un autre routeur sera élu : celui qui a la deuxième priorité la plus élevée. Tous les messages entre les routeurs sont échangés en utilisant l'adresse multicast 224.0.0.2 via UDP sur le port 1985.</p>
+<p>Si un routeur A découvre qu'un autre routeur B est actif pour le même groupe et dans le même réseau et que ce dernier a une priorité inférieure à la sienne, alors le routeur A reprend le rôle de routeur actif.</p>
+<p>Le changement de routeur actif est transparent pour les hôtes qui utilisent l'adresse virtuelle.</p>
+<h1>Limitations du HSRP</h1>
+<p>Il n'y a pas de partage de charge entre les routeurs.</p>
+<p>L'utilisation de l'adresse multicast 224.0.0.2, permet à tous les routeurs du réseau de recevoir les messages.</p>
+<h1><strong>Exemple de configuration&nbsp;</strong></h1>
+<p>Il nous faut à minima deux routeurs de marque Cisco (A et B) utilisant le protocole HSRP pour produire une tolérance de panne. Le routeur A utilisera l'adresse IP 192.168.1.252 avec un masque de sous-réseau de 255.255.255.0, tandis que le routeur B utilisera l'adresse IP 192.168.1.253 avec le même masque de sous-réseau.</p>
+<p>L'adresse IP virtuelle est 192.168.1.254. Cela correspond à l’IP que l’on devra renseigner comme passerelle par défaut sur nos équipements de notre réseau.</p>
+<p>&nbsp;</p>
+<p><strong>Routeur A</strong></p>
+<p><i>interface fastethernet 0/0</i></p>
+<p><i>ip address 192.168.1.252 255.255.255.0</i></p>
+<p><i>standby 10 ip 192.168.1.254</i></p>
+<p><i>standby 10 priority 105</i></p>
+<p><i>standby 10 preempt</i></p>
+<p>&nbsp;</p>
+<p><strong>Routeur B</strong></p>
+<p><i>interface fastethernet 0/0</i></p>
+<p><i>ip address 192.168.1.253 255.255.255.0</i></p>
+<p><i>standby 10 ip 192.168.1.254</i></p>
+<p><i>standby 10 priority 100</i></p>
+<p><i>standby 10 preempt</i></p>
