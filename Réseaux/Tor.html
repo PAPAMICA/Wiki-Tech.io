@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:33:44.902Z
+date: 2021-05-14T09:35:27.144Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -35,7 +35,7 @@ dateCreated: 2021-05-11T19:26:41.152Z
 </figure>
 <p style="text-align:justify;"><br><i>Petite note pour les utilisateurs de Raspberry Pi : mes chers amis, un Raspberry Pi ne possède pas d'instructions AES-NI. Il galère à mort avec le chiffrement et génère d'horribles latences sur le réseau. Si vous voulez faire des expériences ponctuelles et vous former à Tor vous pouvez utiliser un Pi comme lab. Si vous souhaitez aider la communauté Tor merci de l’installer sur un </i><a href="https://fr.wikipedia.org/wiki/Serveur_informatique"><i>serveur.</i></a></p>
 <h3 style="text-align:justify;"><strong>Préparation de l'environnement</strong></h3>
-<p style="text-align:justify;">Commencez par vérifier que votre VM voit bien les instructions AES-NI sur votre CPU.&nbsp;</p>
+<p style="text-align:justify;">Commencez par vérifier que votre VM voit bien les instructions AES-NI sur votre CPU.</p>
 <pre><code class="language-plaintext"># lscpu | grep aes</code></pre>
 <p style="text-align:justify;"><br>Un relais Tor est extrêmement simple… N’installez que le strict nécessaire sur votre machine (<a href="https://en.wikipedia.org/wiki/KISS_principle">KISS</a>):</p>
 <pre><code class="language-plaintext">#&nbsp;apt install -y net-tools sudo vim</code></pre>
