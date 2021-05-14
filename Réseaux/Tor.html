@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T10:03:41.101Z
+date: 2021-05-14T10:04:50.527Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -247,7 +247,7 @@ Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
 permitted by applicable law.
 Last login: Wed May 12 10:27:11 2021 from 10.0.0.69</code></pre>
 <p>Lorsque vous voulez faire passer par Tor une application TCP, <code>torsocks</code> est une option extrêmement viable. <a href="https://tor.stackexchange.com/questions/20997/whats-the-difference-between-torify-usewithtor-tsocks-and-torsocks">D'autres outils existent</a> mais vous n'en aurez pas besoin, sachez juste qu'ils sont la.</p>
-<p>Nous venons de créer un serveur ssh et de nous y connecter via Tor. Comme vous l'avez remarqué nous n'avons créé aucune règle de NAT sur notre firewall, rien. C'est parce que Tor bypass presque tout (nous y reviendrons en détails, c'est très important). Le “port d'écoute TCP” du démon Tor n'a de valeur que dans Tor, notre routeur lui pourrait être en full deny en entrée… C'est d'ailleurs le cas de ma VM de test dans cet exemple. De son côté OpenSSH écoute sur ses port habituels sur localhost. Vous devez voir cette ligne de torrc comme une redirection sur un firewall : <code>HiddenServicePort <strong>2222</strong> 127.0.0.1:<strong>22</strong></code></p>
+<p>Nous venons de créer un serveur ssh et de nous y connecter via Tor. Comme vous l'avez remarqué nous n'avons créé aucune règle de NAT sur notre firewall, rien. C'est parce que Tor bypass presque tout (nous y reviendrons en détails, c'est très important). Le “<i>port d'écoute TCP</i>” du démon Tor n'a de valeur que dans Tor, notre routeur lui pourrait être en full deny en entrée… C'est d'ailleurs le cas de ma VM de test dans cet exemple. De son côté OpenSSH écoute sur ses port habituels sur LocalHost. Vous devez voir cette ligne de torrc comme une redirection sur un firewall : <code>HiddenServicePort <strong>2222</strong> 127.0.0.1:<strong>22</strong></code></p>
 <p><i>note : puisque aucun port n'est nécessairement ouvert &nbsp;pour trouver un HS Tor sur le réseau &nbsp;local vous imaginez bien qu'il faudra dégainer wireshark pour détecter la présence de Tor au réseau. J'espère que ça vous donne quelques idées… Et encore, niveau obfuscation &nbsp;vous n'avez <u>vraiment rien vu</u> croyez moi (et continuez la lecture on commence juste à s'amuser !)</i></p>
 <p>&nbsp;</p>
 <p><span class="text-big"><strong>Hidden Services Stealth V3</strong></span></p>
