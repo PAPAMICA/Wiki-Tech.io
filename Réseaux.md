@@ -2,7 +2,7 @@
 title: Réseaux
 description: 
 published: true
-date: 2021-05-11T07:48:14.327Z
+date: 2021-05-14T10:28:50.756Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T09:49:34.631Z
@@ -16,6 +16,7 @@ dateCreated: 2021-04-30T09:49:34.631Z
 - [🧪 Modèle OSI *Présentation et détails de chaques couches*](/Réseaux/OSI)
 - [⛓️ Serveur DNS *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DNS)
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DHCP)
+- [🧭 Protocole HSRP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/HSRP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseaux/Masques)
 - [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Masques)
 - [🧅 Tor *Comprendre et utiliser le réseau Tor*](/Réseaux/Tor)
