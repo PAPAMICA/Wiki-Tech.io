@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:56:18.498Z
+date: 2021-05-14T09:57:25.703Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -184,8 +184,9 @@ HiddenServicePort 2222 127.0.0.1:22        # Depuis l'extérieur on écoute 2222
 <pre><code class="language-plaintext"># mkdir /var/lib/tor/openssh
 # chown -R _tor:_tor /var/lib/tor/openssh
 # chmod 700 /var/lib/tor/openssh</code></pre>
-<p>On vérifie que les droits sont corrects sur le répertoire :&nbsp;</p>
-<pre><code class="language-plaintext"># ls -lah
+<p>On redémarre Tor pour qu'il prenne en compte notre nouveau <code>/etc/tor/torrc</code> et on vérifie que les droits sont corrects dans le répertoire :&nbsp;</p>
+<pre><code class="language-plaintext"># systemctl restart tor
+# ls -lah
 total 24K
 drwx--S--- 3 _tor _tor 4,0K mai   12 11:04 .
 drwx--S--- 4 _tor _tor 4,0K mai   12 11:57 ..
