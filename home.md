@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-14T10:41:54.219Z
+date: 2021-05-14T11:08:20.659Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -98,7 +98,8 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [📃 Logs 🚧 *Localiser et lire les logs*](/Openstack/Logs)
 {.links-list}
 
-# Zabbix
+# Supervision
+## Zabbix
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Zabbix/Installation)
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Zabbix/SNMP)
