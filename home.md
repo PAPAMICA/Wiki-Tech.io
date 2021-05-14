@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-14T10:39:53.732Z
+date: 2021-05-14T10:41:54.219Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -189,4 +189,6 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows/BGInfo)
 - [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows/Spooler)
 - [✨ GPO *Comprendre et créer des GPO*](/Windows/GPO)
+- [✨ Serveur DHCP *Créer et gérer un serveur DHCP sous Windows Server*](/Windows/DHCP)
+- [✨ Serveur Active Directory *Créer et gérer un serveur AD sous Windows Server*](/Windows/Active-Directory)
 {.links-list}
