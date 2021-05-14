@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T10:02:50.403Z
+date: 2021-05-14T10:03:41.101Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -230,7 +230,7 @@ Synchronizing state of tor.service with SysV service script with /lib/systemd/sy
 Executing: /lib/systemd/systemd-sysv-install enable tor
 Created symlink /etc/systemd/system/multi-user.target.wants/tor.service → /lib/systemd/system/tor.service.</code></pre>
 <p>&nbsp;</p>
-<p>Et la magie opère ! Utilisons <code>torsocks</code> comme préfixe à notre client ssh et connectons nous à notre serveur avec notre adrresse en *.onion sur le port d'écoute en 2222.&nbsp;</p>
+<p>Et la magie opère ! Utilisons <code>torsocks</code> comme préfixe à notre client ssh et connectons nous à notre serveur avec son adresse en <code>*.onion</code> sur le port d'écoute en 2222.&nbsp;</p>
 <pre><code class="language-plaintext"># torsocks ssh laudanum@bz5tu5d6vqblla4ioccd6rng3o6rubqe55h6tm4oagapjk9behjdgfqd.onion -p 2222                                                                                                                                       255 ⨯
 The authenticity of host '[bz5tu5d6vqblla4ioccd6rng3o6rubqe55h6tm4oagapjk9behjdgfqd.onion]:2222 ([127.42.42.0]:2222)' can't be established.
 ECDSA key fingerprint is SHA256:KF3IIltCCSTjf1bpcRN58y6UENJGMx55Axcjw/KXxt4.
