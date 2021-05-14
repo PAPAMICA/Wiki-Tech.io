@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-14T09:52:26.180Z
+date: 2021-05-14T09:53:34.999Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -143,10 +143,9 @@ RelayBandwidthBurst 100000 KBytes</code></pre>
 <p style="text-align:justify;">&nbsp;</p>
 <p>Dans le jargon de Tor un Hidden Service peut être n'importe quoi : un site web qui écoute sur les ports classiques (dans Tor), un service de VoIP, un serveur de messagerie… Il s'agit d'un serveur à l’intérieur du réseau Tor et qui ne sort pas de Tor. Si votre NextCloud écoute sur Tor alors votre Nextcloud est un Hidden Service. Le mécanisme avec lequel votre serveur se connecte à Tor est sensiblement le même que si votre poste était un simple client à la différence que le démon Tor va exposer les ports de votre choix. Je ne vais pas expliquer comment créer un serveur web dans cet article mais comment faire en sorte que le démon Tor route correctement les ports appropriés.</p>
 <p><i>Note à propos des Hidden Services V2 (HSv2) : Si vous cherchez des ressources au sujet des Hidden Services vous verrez que l'on parle souvent de “Hidden Services V2” et “hidden services ”V3". Sachez que l'ancien protocole (V2) ne sera plus supporté en octobre 2021 donc ce tuto ne vous expliquera pas comment vous en servir. Le nouveau protocole (HSv3) est vraiment plus puissant bien qu'un tout petit peu plus complexe.</i></p>
-<p>&nbsp;</p>
 <p>Beaucoup de gens utilisent Tor pour “rester anonymes sur Internet" et se prennent pour des hackers. <a href="https://www.niussp.org/wp-content/uploads/2016/11/Old_people2.jpg">Mon imaginaire les voit plutôt comme ça</a>. Je pense sincèrement que sortir (sur Internet) via Tor est une bêtise pour des tonnes de raisons très valables. Je pense que Tor ne doit pas servir à naviguer sur Internet puisque les exit relays voient passer vos requêtes… Même en SSL cela pose problème car les exit nodes ont évidement <a href="https://en.wikipedia.org/wiki/Man-in-the-middle_attack">une position bien confortable</a>, récemment un hacker s'est créé des tonnes d'exits nodes toutes équipées de sslstrip et <a href="https://thehackernews.com/2021/05/over-25-of-tor-exit-relays-are-spying.html">ça représente 27% des sorties</a>. Si Tor n'est pas une solution idéale pour naviguer sur Internet Tor est extrêmement efficace lorsqu'il s'agit de rester dans Tor. Si vous opérez vous-même le service c'est encore mieux.</p>
 <p><br>Nous allons aussi voir plus loin dans cet article qu'un Hidden Service peut être classique mais aussi “stealth” et… Pas caché du tout. Si votre HS ne fait rien de bizarre et &nbsp;que vous souhaitez juste offrir la possibilité à vos utilisateurs de le visiter via Tor pour protéger leur propre anonymat c'est très possible. Le <a href="https://en.wikipedia.org/wiki/Facebookcorewwwi.onion">serveur de Facebook</a> ne se cache pas par exemple, il permet en revanche aux personne vivant dans des pays “compliqués” de s'y connecter sans avoir besoin de “sortir” via un exit node ce qui comme nous l'avons vu est très appréciable.</p>
-<p>Nous allons commencer par créer un serveur ssh joignable dans Tor comme un hidden service. C'est un exemple simple mais qui peut s'avérer utile. Reprenons notre machine Debian la ou nous en étions. Nous allons commencer par désactiver les options du relai dans <code>/etc/tor/torrc</code></p>
+<p>Nous allons commencer par créer un serveur ssh joignable dans Tor comme un Hidden Service. C'est un exemple simple mais qui peut s'avérer utile. Reprenons notre machine Debian la ou nous en étions. Nous allons commencer par désactiver les options du relai dans <code>/etc/tor/torrc</code></p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">User _tor		        		           #&nbsp;pour doper les privilèges
 DataDirectory /var/lib/tor         		   # Si on se sert de notre VM pour autre chose qu'un relay
