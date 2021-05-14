@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-14T09:17:44.181Z
+date: 2021-05-14T09:18:43.101Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -89,7 +89,8 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <h2>Principe de fonctionnement</h2>
 <p>Nous avons besoin de déclarer une variable qui va servir en quelque sorte de bouton “allumé” ou “éteins” : <code>$continue = $true</code></p>
 <p>Avec cette variable j'utilise une boucle pour permettre de laisser en permanence l'affichage :&nbsp;</p>
-<pre><code class="language-plaintext">while (true){
+<pre><code class="language-plaintext">While ($continue)
+{
 	&lt;le menu avec des write-host&gt;
 }</code></pre>
 <p>Puis une seconde variable pour stocker mon choix avec <code>$choix = read-host “faire un choix”</code></p>
