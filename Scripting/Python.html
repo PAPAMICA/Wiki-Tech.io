@@ -2,7 +2,7 @@
 title: Python
 description: 
 published: true
-date: 2021-05-14T14:53:02.319Z
+date: 2021-05-14T15:07:54.275Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T19:56:01.357Z
@@ -339,5 +339,18 @@ while 1 != 10:
 def title(titre):
     print(titre)
 
-titre = "Ceci est mon texte décoré"
-title(titre)</code></pre>
+&gt;&gt;&gt; titre = "Ceci est mon texte décoré"
+&gt;&gt;&gt; title(titre)
+******************************
+------------------------------
+Ceci est mon texte décoré
+------------------------------
+******************************</code></pre>
+<p>Ce décorateur permet simplement de mettre en forme un titre. Mais le décorateur, critiqué pour son nom ne définissant pas assez clairement sa fonction, peut avoir bien d'autres usages.</p>
+<p>Par exemple, dans le cadre du développement web, les décorateurs sont très utilisés. Typiquement, pour les pages nécessitant une authentification, le décorateur “ @login_required ” du framework Django est très utile.</p>
+<pre><code class="language-python">from django.contrib.auth.decorators import login_required
+
+@login_required
+def my_page(request):
+    ...</code></pre>
+<p>Tout comme “ @login_required ”, beaucoup de décorateurs sont déjà développés, nécessitant un simple import.</p>
