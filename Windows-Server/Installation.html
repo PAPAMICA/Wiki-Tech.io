@@ -2,7 +2,7 @@
 title: Installation de Windows serveur
 description: 
 published: false
-date: 2021-05-14T13:06:27.784Z
+date: 2021-05-14T15:09:40.324Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-14T11:24:50.088Z
@@ -66,4 +66,27 @@ dateCreated: 2021-05-14T11:24:50.088Z
   <li>Une fois le mot de passe, défini cliquer sur <strong>Terminer.</strong></li>
 </ul>
 <h1><strong>Configuration post-installation</strong></h1>
-<p><strong>à Venir</strong></p>
+<p>Une fois connecté, &nbsp;le Gestionnaire de serveur se lance automatiquement.</p>
+<figure class="image"><img src="/images/install10.png"></figure>
+<ul>
+  <li style="text-align:justify;">Cliquez sur le nom de l’ordinateur afin d’ouvrir les propriétés système. WIN-XX</li>
+  <li style="text-align:justify;">Dans la fenêtre <strong>Propriétés système :</strong>
+    <ul>
+      <li style="text-align:justify;">Cliquez sur <strong>Modifier</strong> et changer le nom du serveur (Renseigner le nom que vous souhaitez), nous allons choisir wikitech</li>
+      <li style="text-align:justify;">Cliquez &nbsp;sur <strong>OK </strong>puis sur <strong>Fermer</strong>.</li>
+      <li style="text-align:justify;"><strong>Redémarrez le serveur</strong> pour rendre &nbsp;les modifications actifs.</li>
+    </ul>
+  </li>
+</ul>
+<p style="text-align:justify;">Maintenant nous allons passer à la configuration réseau du serveur.</p>
+<ul>
+  <li style="text-align:justify;">Effectuez le raccourci clavier Windows + r, une fenêtre s'ouvre.<ul>
+      <li style="text-align:justify;">Taper la commande ncpa.cpl, puis cliquer sur ok.</li>
+      <li style="text-align:justify;">Clic droit sur la carte réseau, puis sur <strong>Propriété</strong></li>
+      <li style="text-align:justify;">Double clic sur <strong>Protocole Internet version 4 (TCP/IPv4)</strong></li>
+    </ul>
+  </li>
+</ul>
+<figure class="image"><img src="/images/conf_ip.png"></figure>
+<p>&nbsp;</p>
+<p>Voilà. Vous venez d’installer Windows Server 2019.</p>
