@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-14T09:19:11.292Z
+date: 2021-05-15T08:48:14.852Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -81,7 +81,13 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
 <p>&nbsp;</p>
 <h2>Récupérer des informations WMI</h2>
-<p>&nbsp;</p>
+<p>Wmi(Windows Management instrumentation),implémenté dans Windows, permet d'obtenir des informations sur un système et même à distance tel que la version du bios, le nom de la machine, le fabricant, le modèle etc. il permet en quelques sortes de faire un inventaire matériel et logiciel de votre système.</p>
+<p>il existe deux commandes pour obtenir ces informations, mais on peut également invoquer des méthodes, par exemple redémarrer un service et je vais vous montrez la différence.</p>
+<p>Pour finir je vous montrerai comment fouiner dans la liste des requêtes WMI.</p>
+<ol>
+  <li><u>Get-WmiObject :</u> cette commande se base sur du RPC (Remote Procedure Call).</li>
+  <li><u>Get-CimInstance:</u> cette commande se base sur du WINRM (Windows Remote management).</li>
+</ol>
 <h1>Création d'un menu sous Powershell</h1>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:58.46%;"><img src="/capture2.png"></figure>
