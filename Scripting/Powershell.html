@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-15T14:04:55.161Z
+date: 2021-05-15T14:10:53.375Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -108,8 +108,8 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Il existe deux commandes pour obtenir ces informations, mais on peut également invoquer des méthodes et des propriétés avec celle-ci, par exemple redémarrer un service, demander des infos sur vos disques et je vais vous montrez les différences qu'il peut exister.&nbsp;</p>
 <p>Pour finir je vous montrerai une astuce pour “fouiner” dans la liste des requêtes WMI et et les instances CIM.</p>
 <ol>
-  <li><code><u>Get-WmiObject </u></code><u>:</u> À partir de PowerShell 3.0, cette applet de commande a été remplacée par <code>Get-CimInstance</code>. Elle n'est plus mise à jour sous PowerShell et se base sur des requêtes WMI et le protocole RPC (Remote Procedure Call)</li>
-  <li><code><u>Get-CimInstance</u></code><u>:</u> cette commande, se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole SOAP (Simple Object Access Protocol)</li>
+  <li><code><u>Get-WmiObject</u></code>: À partir de PowerShell 3.0, cette applet de commande a été remplacée par <code>Get-CimInstance</code>. Elle n'est plus mise à jour sous PowerShell et se base sur des requêtes WMI et le protocole RPC (Remote Procedure Call)</li>
+  <li><code><u>Get-CimInstance</u></code>: cette commande, se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole SOAP (Simple Object Access Protocol)</li>
 </ol>
 <p>Par conséquent, je vous conseille vivement d'utiliser le plus souvent possible <code>Get-CimInstance</code>, il y a encore tout un tas de raisons de l'utiliser mais je ne vais pas m'attarder la dessus c'est pas le but.</p>
 <p>Voyons comment utiliser ces commandes et obtenir des infos sur un système.</p>
