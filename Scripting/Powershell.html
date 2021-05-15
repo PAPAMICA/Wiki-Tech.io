@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-15T14:33:27.736Z
+date: 2021-05-15T14:34:51.830Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -15,6 +15,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>PowerShell est un langage orienté “objet”. C'est à dire que PowerShell considère tout les éléments qu'il traite ainsi. Pour vous expliquez cela, je vais prendre comme exemple une voiture. Une voiture a des propriétés comme sa couleur, sa forme, sa taille etc…et ses méthodes seraient donc rouler, tourner, avancer, reculer etc…&nbsp;</p>
 <p>Pour être concret, un service a comme propriétés son nom, son statuts et comme méthodes démarrer, arrêté, en attente etc…et bien PowerShell fonctionne ainsi.</p>
 <p>on verra plus tard comment lister tout ces éléments et savoir si nous sommes devant une propriété ou une méthode.</p>
+<p>&nbsp;</p>
 <h2>Les raccourcis clavier</h2>
 <p>Avant de se lancer tête baissée, dans PowerShell, deux raccourci clavier sont indispensables dans le sens où il vont vous permettre d'obtenir de l'aide et de gagner du temps.</p>
 <ol>
@@ -32,6 +33,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>service = nom</p>
 <p>petite astuce, vous pouvez lister tout les verbes que PowerShell utilise avec la commande <code>Get-verb</code>. faites un essai…</p>
 <p>simple non?</p>
+<p>&nbsp;</p>
 <h2>Les variables</h2>
 <p>Une variable PowerShell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
 <p>Exemple :</p>
@@ -75,6 +77,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Voici ce que renvoie la commande</p>
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
 <h2>Lister les méthodes et les propriétés</h2>
 <p>Maintenant que nous avons vu, comment était composée une commande, le pipeline et l'aide, il est temps, comme je vous l'ai dis dans le premier chapitre, que tout était objet dans PowerShell et de découvrir plus en détail ce que sont les propriétés les méthodes. C'est à cet instant, que nous alors voir quelle commande va nous permettre de lister tout cela.</p>
 <p><code>Get-Member</code> est la commande qui nous dis quels sont les propriétés et les méthodes que nous pouvons appliquer à un objet.</p>
@@ -83,6 +86,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>(Vous remarquerez que j'utilise la commande <code>Get-Service</code>, que je récupère toutes les méthodes et propriétés en passant par une seconde commande <code>Get-Member</code> et pour enchainer ces commandes j'opte pour un pipeline)</p>
 <p>C'est à partir de ces éléments qu'à présent on peut savoir quelles sont les propriétés et les méthodes d'un service.&nbsp;</p>
 <p>Par exemple: Pause, Stop, Refresh sont des méthodes. Displayname, Servicename, ServiceType sont des propriétés.</p>
+<p>&nbsp;</p>
 <h2>Les providers</h2>
 <p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système à l'environnement etc…</p>
 <ul>
@@ -101,6 +105,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base.</p>
 <p>Exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
 <figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h2>Récupérer des informations WMI et CIM</h2>
 <p><strong>en cours de construction….</strong></p>
