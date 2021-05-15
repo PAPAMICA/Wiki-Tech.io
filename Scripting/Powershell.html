@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-15T10:03:12.489Z
+date: 2021-05-15T10:20:32.192Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -74,6 +74,14 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Voici ce que renvoie la commande</p>
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
 <p>&nbsp;</p>
+<h2>Lister les méthodes et les propriétés</h2>
+<p>Maintenant que nous avons vu, comment était composée une commande, le pipeline et l'aide, il est temps, comme je vous les dis dans le premier chapitre que tout était objet dans PowerShell. C'est à cet instant que nous alors voir quel commande va nous permettre de lister tout cela.</p>
+<p><code>Get-Member</code> est la commande qui nous dis quels sont les propriétés et les méthodes que nous pouvons appliquer à un objet.</p>
+<p>un exemple concret est plus parlant:</p>
+<figure class="image"><img src="/get-member.png"></figure>
+<p>(Vous remarquerez que j'utilise la commande <code>Get-Service</code>, que je récupère toutes les méthodes et propriétés en passant par une seconde commande <code>Get-Member</code> et pour enchainer ces commandes je passe par un pipeline)</p>
+<p>C'est à partir de ces éléments qu'à présent on peut savoir quel sont les propriétés et les méthodes d'un service.&nbsp;</p>
+<p>Par exemple: Pause, Stop, Refresh sont des méthodes. Displayname, Servicename, ServiceType sont des propriétés.</p>
 <h2>Les providers</h2>
 <p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système à l'environnement etc…</p>
 <ul>
