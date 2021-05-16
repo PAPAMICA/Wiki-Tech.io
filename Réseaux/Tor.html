@@ -2,7 +2,7 @@
 title: Réseau - Tor
 description: Comprendre et utiliser le réseau Tor
 published: false
-date: 2021-05-16T17:36:45.622Z
+date: 2021-05-16T17:40:09.864Z
 tags: linux, tor, réseau
 editor: ckeditor
 dateCreated: 2021-05-11T19:26:41.152Z
@@ -348,9 +348,9 @@ az5tu5d6vqblla2ioccd6rng3o6rubqe55h6tm4oagapjk4behjdgfqd:descriptor:x25519:DK6XM
 <p style="text-align:justify;">Un autre point important que je souhaite éclaircir, Onioncat ne chiffre rien lui-même et confie entièrement cette tâche au démon Tor. Quand vous allez envoyer des paquets dans l'interface TUN cette dernière va simplement les envoyer en clair au démon Tor qui fera ce qu'il fait toujours : les chiffrer plusieurs fois en les ré-encapsulant en AES et les envoyer par la route qu'il aura créé dans le réseau Tor. C'est simple mais tellement efficace et surtout infiniment pratique. Cela veut dire que le chiffrement de vos applications est toujours très loin d'être une option. Dans Tor traditionnellement on chiffre tous les flux.<br>&nbsp;</p>
 <p style="text-align:justify;">Sous OpenBSD Onioncat est maintenu dans les ports, il y a même un joli binaire mais sous Debian apparemment il faut le compiler (ma version de Debian ne contient pas les paquets, ils y étaient avant mais je pense qu'il ne sont plus maintenus).&nbsp;</p>
 <pre><code class="language-plaintext"># apt install autoconf automake git
-# mkdir /root/comp &amp;&amp; cd /root/comp
+# mkdir /tmp/comp &amp;&amp; cd /tmp/comp
 # git clone https://github.com/rahra/onioncat
-# cd onioncat
+# cd /onioncat
 # autoreconf -f
 # ./configure
 # make
@@ -486,7 +486,7 @@ Fri, 14 May 2021 10:42:58.451 +0200 [1:acceptor  :  info] inserting peer fd 12 t
 Fri, 14 May 2021 10:42:58.451 +0200 [2:receiver  :  info] incoming connection on 12 from fd87:d87e:eb43::dead:beef is now identified
 Fri, 14 May 2021 10:42:58.647 +0200 [6:lloopback :  info] loopback_handler ready listening on fd87:d87e:eb43::dead:beef
 Fri, 14 May 2021 10:43:02.762 +0200 [0:main      :   err] no route to destination ff02::2, dropping frame.</code></pre>
-<p style="text-align:justify;">Onioncat foncitonne correctement. Dans un autre terminal je check à quoi ressemblent mes interfaces…</p>
+<p style="text-align:justify;">Onioncat fonctionne correctement. Dans un autre terminal je check à quoi ressemblent mes interfaces…</p>
 <pre><code class="language-plaintext"># ip addr show
 1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
