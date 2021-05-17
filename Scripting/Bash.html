@@ -2,12 +2,13 @@
 title: Scripting - Bash
 description: Les bases de l'automatisation !
 published: true
-date: 2021-05-17T12:28:26.818Z
+date: 2021-05-17T12:29:20.973Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-17T08:41:21.766Z
 -->
 
+<figure class="image image_resized" style="width:30.5%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Gnu-bash-logo.svg/1200px-Gnu-bash-logo.svg.png" alt="Fichier:Gnu-bash-logo.svg — Wikipédia"></figure>
 <h1 style="text-align:justify;">Shell</h1>
 <p style="text-align:justify;">Sous Linux, un shell est l’interpréteur de commandes qui fait office d’interface entre l'utilisateur et le système d’exploitation. Il s’agit d’interpréteurs, cela implique que chaque commande saisie par l’utilisateur et vérifiée puis exécutée. Nous avons déjà parlé des différents types de shell existants (csh, tcsh, sh, bash, ksh, dash, etc.). Nous travaillerons plus avec le bash (Bourne Again SHell).</p>
 <p style="text-align:justify;"><br>Pour rappel, un shell possède deux principaux aspects :</p>
@@ -125,12 +126,14 @@ echo “Nombre d’arguments : $#”
 echo “Source : $1”
 echo “Destination $2”
 cp $1 $2</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">$ chmod u+x monpremierbash.sh
 $ monpremierbash.sh /etc/passwd /root/copiepasswd
 Nom du programme : ./monpremierbash.sh
 Nb d’arguments : 2
 Source : /etc/passwd
 Destination : /root/copiepasswd</code></pre>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">$ set un deux trois quatre
 $ echo $* # affiche tous les arguments
 un deux trois quatre
