@@ -2,7 +2,7 @@
 title: Scripting - Bash
 description: Les bases de l'automatisation !
 published: true
-date: 2021-05-17T08:58:33.704Z
+date: 2021-05-17T09:15:56.027Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-17T08:41:21.766Z
@@ -211,318 +211,119 @@ pass</code></pre>
 pass
 fin</code></pre>
 <p>La commande <code>ls pass</code> a un code de retour égal à 0, donc la commande <code>ls tutu</code> ne sera pas exécutée; le code de retour de l’ensemble <code>ls pass || ls tutu</code> sera donc égal à <code>0</code>. La commande <code>echo</code> suite et n’est pas exécutée donc le code de retour de l’ensemble reste <code>0</code> <code>echo fin</code> sera donc exécutée.</p>
-<h4 style="text-align:justify;">Boucles et structure de contrôle</h4>
-<h5 style="text-align:justify;">case, structure de choix multiple</h5>
-<p style="text-align:justify;">Syntaxe :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>case mot in</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>[modele [ | modele] ...) suite de commandes ;; ] ...</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>esac</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Le shell va étudier la valeur de mot puis la comparer séquentiellement à chaque modèle. Quand un modèle correspond à mot, la suite de commandes associée est exécutée, terminant l’exécution de la commande interne case. Les mots case et esac sont des mots-clés; ils doivent être le premier mot d’une commande. suite de commandes doit se terminer par 2 caractères ; collés de manière à ce qu’il n’y ait pas d’ambiguïté avec l’enchaînement séquentiel de commande cmd1; cmd2; etc. Quand au modèle , il peut-être construit à l’aide de caractères et expressions génériques de bash (*, . , [], etc.). Dans ce contexte le symbole | signifiera OU. Pour indiquer le cas par défaut (si aucun des autres ne survient) on utilisera le modèle *. il doit être placé en dernier modèle. Le code de retour de la commande composée case est égal à 0, si aucun modèle n’a pu correspondre à la valeur de mot. Sinon, c’est celui de la dernière commande exécutée de suite de commandes.</p>
-<p style="text-align:justify;">Exemple 1: Programme shell oui affichant OUI si l’utilisateur a saisi le caractère o ou O</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>read -p “Entrez votre réponse : “ rep</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>case $rep in</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>o|O ) echo OUI ;;</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>* ) echo Indefini</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>esac</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Exemple 2 : Programme shell nombre prenant une chaîne de caractères en argument, et qui affiche cette chaîne si elle est constituée d’une suite de chiffres. ([:digit:] , [:upper:], [:lower:], [:alnum:]</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p># on autorise l’utilisation des expressions générique</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>shopt -s extglob</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>case $1 in</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>+([[:digit:]]) ) echo ′′$1 est une suite de chiffres′′ ;;</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>esac</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Exemple 3 : Si l’on souhaite ignorer la casse on peut modifier le flash de shopt</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>read -p “Entrez un mot : “ mot</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>shopt -s nocasematch</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>case $mot in</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>oui ) echo ′′Vous avez écrit oui” ;;</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>* ) echo “$mot n’est pas le mot oui” ;;</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>esac</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h5 style="text-align:justify;">While</h5>
-<p style="text-align:justify;">La commande interne while correspond à l’itération ‘faire - tant que’ présente dans de nombreux langage de programmation.<br>Syntaxe :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>while suite_cmd1</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>do</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>suite_cmd2</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>done</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">La suite de commandes suite_cmd1 est exécutée, si son code de retour est égal à 0, alors la suite de commande suite_cmd2 est exécutée, puis suite_cmd1 est re-exécutée. Si son code de retour est différent de 0, la suite se termine. L’originalité de cette méthode est que le test ne porte pas sur une condition booléenne, mais sur le code de retour issu de l’exécution d’une suite de commandes. Une commande while, comme toutes commandes internes, peut être écrite directement sur la ligne de commande.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ while who | grep root&gt; /dev/null</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>&gt; do</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>&gt; echo “Utilisateur root est connecté”</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>&gt; sleep 5</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>&gt; done</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>Utilisateur root est connecté</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>Utilisateur root est connecté</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>Utilisateur root est connecté</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>^C</p>
-<p>10</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Commande interne while est :<br>La commande interne : associée à une itération while compose rapidement un serveur (démon) rudimentaire.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ while : #=&gt; Boucle infinie</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>&gt; do</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>&gt; who | cut -d’ ‘-f1 &gt; fic #=&gt; Traitement à effectuer</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>&gt; sleep 300 #=&gt; Temporiser</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>&gt; done &amp;</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>[1] 1123 #=&gt; pour arrêter l’exécution kill -15 1123</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">On peut parfois utilisée la commande while pour lire un fichier texte. La lecture se fait alors ligne par ligne. Pour cela, il suffit de :</p>
+<h1 style="text-align:justify;">Boucles et structure de contrôle</h1>
+<h2 style="text-align:justify;">Case, structure de choix multiple</h2>
+<p style="text-align:justify;"><strong>Syntaxe :</strong></p>
+<pre><code class="language-plaintext">case mot in
+[modele [ | modele] ...) suite de commandes ;; ] ...
+esac</code></pre>
+<p style="text-align:justify;">Le shell va étudier la valeur de mot puis la comparer séquentiellement à chaque modèle. Quand un modèle correspond à mot, la suite de commandes associée est exécutée, terminant l’exécution de la commande interne case. Les mots case et esac sont des mots-clés; ils doivent être le premier mot d’une commande. La suite des commandes doit se terminer par 2 caractères ; collés de manière à ce qu’il n’y ait pas d’ambiguïté avec l’enchaînement séquentiel de commande cmd1; cmd2; etc. Quand au modèle , il peut-être construit à l’aide de caractères et expressions génériques de bash (*, . , [], etc.). Dans ce contexte le symbole <code>|</code> signifiera OU. Pour indiquer le cas par défaut (si aucun des autres ne survient) on utilisera le modèle <code>*</code>. Il doit être placé en dernier modèle. Le code de retour de la commande composée case est égal à <code>0</code>, si aucun modèle n’a pu correspondre à la valeur de mot. Sinon, c’est celui de la dernière commande exécutée de suite de commandes.</p>
+<p style="text-align:justify;"><strong>Exemple 1: Programme shell oui affichant OUI si l’utilisateur a saisi le caractère o ou O</strong></p>
+<pre><code class="language-plaintext">#!/bin/bash
+read -p “Entrez votre réponse : “ rep
+case $rep in
+o|O ) echo OUI ;;
+* ) echo Indefini
+esac</code></pre>
+<p style="text-align:justify;"><strong>Exemple 2 : Programme shell nombre prenant une chaîne de caractères en argument, et qui affiche cette chaîne si elle est constituée d’une suite de chiffres. ([:digit:] , [:upper:], [:lower:], [:alnum:]</strong></p>
+<pre><code class="language-plaintext">#!/bin/bash
+# on autorise l’utilisation des expressions générique
+shopt -s extglob
+case $1 in
++([[:digit:]]) ) echo ′′$1 est une suite de chiffres′′ ;;
+esac</code></pre>
+<p style="text-align:justify;"><strong>Exemple 3 : Si l’on souhaite ignorer la casse on peut modifier le flash de shopt</strong></p>
+<pre><code class="language-plaintext">#!/bin/bash
+read -p “Entrez un mot : “ mot
+shopt -s nocasematch
+case $mot in
+oui ) echo ′′Vous avez écrit oui” ;;
+* ) echo “$mot n’est pas le mot oui” ;;
+esac</code></pre>
+<h2 style="text-align:justify;">While</h2>
+<p style="text-align:justify;">La commande interne <code>while</code> correspond à l’itération ‘faire - tant que’ présente dans de nombreux langage de programmation.<br><strong>Syntaxe :</strong></p>
+<pre><code class="language-plaintext">while suite_cmd1
+do
+suite_cmd2
+done</code></pre>
+<p style="text-align:justify;">La suite de commandes <code>suite_cmd1</code> est exécutée, si son code de retour est égal à <code>0</code>, alors la suite de commande <code>suite_cmd2</code> est exécutée, puis <code>suite_cmd1</code> est re-exécutée. Si son code de retour est différent de <code>0</code>, la suite se termine. L’originalité de cette méthode est que le test ne porte pas sur une condition booléenne, mais sur le code de retour issu de l’exécution d’une suite de commandes. Une commande <code>while</code>, comme toutes commandes internes, peut être écrite directement sur la ligne de commande.</p>
+<p style="text-align:justify;"><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ while who | grep root&gt; /dev/null
+&gt; do
+&gt; echo “Utilisateur root est connecté”
+&gt; sleep 5
+&gt; done
+Utilisateur root est connecté
+Utilisateur root est connecté
+Utilisateur root est connecté
+^C
+$</code></pre>
+<p style="text-align:justify;"><br><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ while : #=&gt; Boucle infinie
+&gt; do
+&gt; who | cut -d’ ‘-f1 &gt; fic #=&gt; Traitement à effectuer
+&gt; sleep 300 #=&gt; Temporiser
+&gt; done &amp;
+[1] 1123 #=&gt; pour arrêter l’exécution kill -15 1123
+$</code></pre>
+<p style="text-align:justify;">On peut parfois utilisée la commande <code>while</code> pour lire un fichier texte. La lecture se fait alors ligne par ligne. Pour cela, il suffit de :</p>
 <ul>
-  <li style="text-align:justify;">placer la commande read dans suite_cmd1</li>
-  <li style="text-align:justify;">de placer les commandes de traitement de la ligne courante dans suite_cmd2</li>
-  <li style="text-align:justify;">de rediriger l’entrée standard de la commande while avec le fichier lire</li>
+  <li style="text-align:justify;">placer la commande <code>read</code> dans <code>suite_cmd1</code></li>
+  <li style="text-align:justify;">de placer les commandes de traitement de la ligne courante dans <code>suite_cmd2</code></li>
+  <li style="text-align:justify;">de rediriger l’entrée standard de la commande <code>while</code> avec le fichier lire</li>
 </ul>
-<p style="text-align:justify;">Syntaxe :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>while read [var1 ...]</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>do</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>Commandes de traitements</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>done &lt; fichier à lire</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>who &gt; tmp</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>while read nom divers</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>do</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>echo $nom</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>done &lt; tmp</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>rm tmp</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Notez que l’utilisation du while pour lire un fichier n’est pas très performante. On préférera en général utiliser une suite de filtre pour obtenir les résultats voulus (cut, awk, ...)</p>
-<h4 style="text-align:justify;">Modificateur de chaîne</h4>
-<h5 style="text-align:justify;">Échappement</h5>
-<p style="text-align:justify;">Différents caractères particuliers servent en shell pour effectuer ses propres traitements ($ pour la substitution, &gt; pour la redirection, * en joker). Pour utiliser ces caractères particuliers en tant que simple caractère, il faut les échapper en les précédant du caractère \<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ ls</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>tata toto</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ echo *</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>tata toto</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo \*</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>*</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>$ echo \\</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>\</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Autre particularité, le caractère \ peut aussi échapper les retours à la ligne. On peut donc aller à la ligne sans exécuter la commande.<br>Comme nous l’avons déjà vu, les caractères “ et ‘ permettre une protection partielle, ou total (‘) d’une chaîne de caractères.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ echo “&lt; * $PWD ‘ &gt;”</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>&lt; * /root ‘ &gt;</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$ echo “\”$PS2\””</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>“&gt; “</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>$ echo ‘&lt; * $PWD “ &gt;’</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>&lt; * $PWD “ &gt;’</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>$ echo c’est lundi</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>&gt;</p>
-<p>10</p>
-<p>&nbsp;</p>
-<p>&gt; ‘</p>
-<p>11</p>
-<p>&nbsp;</p>
-<p>cest lundi</p>
-<p>12</p>
-<p>&nbsp;</p>
-<p>$ echo c\’est lundi</p>
-<p>13</p>
-<p>&nbsp;</p>
-<p>c’est lundi</p>
-<p>14</p>
-<p>&nbsp;</p>
-<p>$ echo “c’est lundi”</p>
-<p>15</p>
-<p>&nbsp;</p>
-<p>c’est lundi</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h5 style="text-align:justify;">Chaîne de caractères longueur</h5>
-<p style="text-align:justify;">Syntaxe : <code>${#paramètre}</code><br>Cette syntaxe permet d’obtenir la longueur d’une chaîne de caractères.<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo $PWD</p><p>2</p><p>&nbsp;</p><p>/root</p><p>3</p><p>&nbsp;</p><p>$ echo ${#PWD}</p><p>4</p><p>&nbsp;</p><p>5</p><p>5</p><p>&nbsp;</p><p>$ set “Bonjour à tous”</p><p>6</p><p>&nbsp;</p><p>$ echo ${#1}</p><p>7</p><p>&nbsp;</p><p>14</p><p>8</p><p>&nbsp;</p><p>$ ls &gt; /dev/null</p><p>9</p><p>&nbsp;</p><p>$</p><p>10</p><p>&nbsp;</p><p>$ echo ${#?}</p><p>11</p><p>&nbsp;</p><p>1 #=&gt; la longueur du code de retour (0) est de 1 caractère</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Chaîne de caractères modificateur</h5><p style="text-align:justify;">On peut modifier les chaîne de caractères directement :<br>Syntaxe : ${paramètre#modèle} pour supprimer la plus <strong>courte</strong> sous-chaîne à gauche<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo $PWD</p><p>2</p><p>&nbsp;</p><p>/home/christophe</p><p>3</p><p>&nbsp;</p><p>$ echo ${PWD#*/}</p><p>4</p><p>&nbsp;</p><p>home/christophe #=&gt; le premier caractère / a été supprimé</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ set “25b75b”</p><p>7</p><p>&nbsp;</p><p>$</p><p>8</p><p>&nbsp;</p><p>$ echo ${1#*b}</p><p>9</p><p>&nbsp;</p><p>75b #=&gt; Suppression de la sous-chaîne 25b</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Syntaxe: <code>${paramètre##modèle}</code> pour supprimer la plus <strong>longue</strong> sous-chaîne à gauche<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo $PWD</p><p>2</p><p>&nbsp;</p><p>/home/christophe</p><p>3</p><p>&nbsp;</p><p>$ echo ${PWD##*/}</p><p>4</p><p>&nbsp;</p><p>christophe #=&gt; suppression jusqu’au dernier caractère /</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ set “25b75b”</p><p>7</p><p>&nbsp;</p><p>$</p><p>8</p><p>&nbsp;</p><p>$ echo ${1##*b}</p><p>9</p><p>&nbsp;</p><p>b</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Pour la suppression par la droite, c’est la même chose en utilise le caractère % comme contrôle<br>Syntaxe :<br><code>${paramètre%modèle}</code> pour supprimer la plus courte sous-chaîne à droite<br><code>${paramètre%%modèle}</code> pour supprimer la plus longue sous-chaîne à droite</p><p style="text-align:justify;">On peut extraire une sous-chaîne également :<br>Syntaxe:<br><code>${paramètre:ind}</code> : extrait la valeur de paramètre de la sous-chaîne débutant à l’indice ind.<br><code>${paramètre:ind:nb}</code> : extrait nb caractères à partir de l’indice ind<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ lettres=”abcdefghijklmnopqrstuvwxyz”</p><p>2</p><p>&nbsp;</p><p>$</p><p>3</p><p>&nbsp;</p><p>$ echo {$lettre:20}</p><p>4</p><p>&nbsp;</p><p>uvwxyz</p><p>5</p><p>&nbsp;</p><p>$ echo {$lettre:3:4}</p><p>6</p><p>&nbsp;</p><p>defg</p><p>7</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Remplacement dans une sous-chaîne<br>Syntaxe:<br><code>${paramètre/mod/ch}</code><br>bash recherchera dans paramètre la plus longue sous-chaîne satisfaisant le modèle mod puis remplacera cette sous-chaîne par<br>la chaîne ch. Seule la première sous-chaîne trouvée sera remplacée. mod peut être des caractères ou expressions génériques.<br><code>${paramètre//mod/ch}</code> :<br>Pour replacer toutes les occurrences et pas seulement la première<br><code>${paramètre/mod/}</code> :<br><code>${paramètre//mod/}</code> :<br>Supprime au lieu de remplacer<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ v=totito</p><p>2</p><p>&nbsp;</p><p>$ echo {$v/to/lo}</p><p>3</p><p>&nbsp;</p><p>lotito</p><p>4</p><p>&nbsp;</p><p>$ echo {$v//to/lo}</p><p>5</p><p>&nbsp;</p><p>lotilo</p><p>&nbsp;</p><p>&nbsp;</p><h4 style="text-align:justify;">Structure de contrôle for et if</h4><h5 style="text-align:justify;">Itération et for</h5><p style="text-align:justify;">Syntaxe 1:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>for var</p><p>2</p><p>&nbsp;</p><p>do</p><p>3</p><p>&nbsp;</p><p>suite_de_commandes</p><p>4</p><p>&nbsp;</p><p>done</p><p>5</p><p>&nbsp;</p><p>Syntaxe 2:</p><p>6</p><p>&nbsp;</p><p>for var in liste_mots</p><p>7</p><p>&nbsp;</p><p>do</p><p>8</p><p>&nbsp;</p><p>suite_de_commandes</p><p>9</p><p>&nbsp;</p><p>done</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Dans la première forme, la variable var prend successivement la valeur de chaque paramètre de position initialisé<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_args.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for i</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo $i</p><p>6</p><p>&nbsp;</p><p>echo “next ...”</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./for_args.sh first second third</p><p>10</p><p>&nbsp;</p><p>first</p><p>11</p><p>&nbsp;</p><p>next ...</p><p>12</p><p>&nbsp;</p><p>second</p><p>13</p><p>&nbsp;</p><p>next ...</p><p>14</p><p>&nbsp;</p><p>third</p><p>15</p><p>&nbsp;</p><p>next ...</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Exemple 2:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_set.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>set $(date)</p><p>4</p><p>&nbsp;</p><p>for i</p><p>5</p><p>&nbsp;</p><p>do</p><p>6</p><p>&nbsp;</p><p>echo $i</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./for_set.sh</p><p>10</p><p>&nbsp;</p><p>samedi</p><p>11</p><p>&nbsp;</p><p>29</p><p>12</p><p>&nbsp;</p><p>Juin</p><p>13</p><p>&nbsp;</p><p>2019,</p><p>14</p><p>&nbsp;</p><p>12:09:21</p><p>15</p><p>&nbsp;</p><p>(UTC+0200)</p><p>16</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">La deuxième syntaxe permet à var de prendre successivement la valeur de chaque mot de liste_mots.<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_liste.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for a in toto tata</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo $a</p><p>6</p><p>&nbsp;</p><p>done</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Si liste_mots contient des substitutions, elles sont préalablement traitées par bash<br>Exemple 2:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat affiche_ls.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for i in /tmp ${pwd}</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo “ --- $i ---”</p><p>6</p><p>&nbsp;</p><p>ls $i</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./affiche_ls.sh</p><p>10</p><p>&nbsp;</p><p>--- /tmp ---</p><p>11</p><p>&nbsp;</p><p>toto tutu</p><p>12</p><p>&nbsp;</p><p>--- /home/christophe</p><p>13</p><p>&nbsp;</p><p>for_liste.sh affiche_ls.sh alpha tmp</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">If et le choix</h5><p style="text-align:justify;">La commande interne if implante le choix alternatif<br>Syntaxe :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>if suite_commande1</p><p>2</p><p>&nbsp;</p><p>then</p><p>3</p><p>&nbsp;</p><p>suite_commande2</p><p>4</p><p>&nbsp;</p><p>[elif suite_de_commandes; then suite_de_commande] ...</p><p>5</p><p>&nbsp;</p><p>[else suite_de_commandes]</p><p>6</p><p>&nbsp;</p><p>fi</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Le principe de fonctionnement est le même que pour le for, on test la valeur de retour d’une commande plutôt qu’une valeur booléenne simple. Donc dans notre exemple, suite_commande2 est exécuté, si suite_commande1 renvoi 0 (pas d’erreur). Sinon c’est elif ou bien else qui sera exécuté.<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat rm1.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>if rm “$1” 2&gt; /dev/null</p><p>4</p><p>&nbsp;</p><p>then echo $1 a été supprimé</p><p>5</p><p>&nbsp;</p><p>else echo $1 n\’a pas été supprimé</p><p>6</p><p>&nbsp;</p><p>fi</p><p>7</p><p>&nbsp;</p><p>​</p><p>8</p><p>&nbsp;</p><p>$ &gt;toto</p><p>9</p><p>&nbsp;</p><p>$ rm1 toto</p><p>10</p><p>&nbsp;</p><p>toto a été supprimé</p><p>11</p><p>&nbsp;</p><p>$</p><p>12</p><p>&nbsp;</p><p>$ rm1 toto</p><p>13</p><p>&nbsp;</p><p>toto n’a pas été supprimé</p><p>14</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Lorsque rm1 toto est lancé, si le fichier toto est effaçable, il le sera, et la commande rm renvoi 0.<br>Notez qu’il est possible d’imbriquer les if ensembles<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>if...</p><p>2</p><p>&nbsp;</p><p>&nbsp; then....</p><p>3</p><p>&nbsp;</p><p>&nbsp; if...</p><p>4</p><p>&nbsp;</p><p>&nbsp; &nbsp; then ...</p><p>5</p><p>&nbsp;</p><p>&nbsp; fi</p><p>6</p><p>&nbsp;</p><p>&nbsp; else ...</p><p>7</p><p>&nbsp;</p><p>fi</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Tests</h5><p style="text-align:justify;">Dans les bash, vous retrouverez souvent une notation de commande interne [[ souvent utilisé avec le if. Elle permet l’évaluation de d’expressions conditionnelles portant sur des objets aussi différents que les permissions sur une entrée, la valeur d’une chaîne de caractères ou encore l’état d’une option de la commande interne set.<br>Syntaxe: <code>[[ expr_conditionelle ]]</code><br>Les deux caractères crochets doivent être collés et un caractère séparateur doit être présent de part et d’autre de expr_conditionelle. Les mots [[ et ]] sont des mots-clés. On a vu que le if fonctionne selon la valeur de retour d’une commande, et pas d’un booléen, cette syntaxe permet “d'exécuter un test” qui renverra 1 si le test est vrai, 0 sinon. Si l’expression contient des erreurs syntaxique une autre valeur sera retournée. La commande interne [[ offre de nombreuses expressions conditionnelles, c’est pourquoi seules les principales formes de exp_conditionnelle seront présentées, regroupées par catégories.</p><h5 style="text-align:justify;">Permission</h5><p style="text-align:justify;">-r entrée vraie si entrée existe et est accessible en lecture par le processus courant<br>-w entrée vraie si entrée existe et est accessible en écriture par le processus courant<br>-x entrée vraie si entrée existe et est accessible en exécutable par le processus courant ou si le répertoire entrée existe et</p><p style="text-align:justify;">le processus courant possède la permission de passage<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo coucou &gt; toto</p><p>2</p><p>&nbsp;</p><p>$ chmod 200 toto</p><p>3</p><p>&nbsp;</p><p>$ ls -l toto</p><p>4</p><p>&nbsp;</p><p>--w- --- --- 1 christophe christophe 29 juin 1 14:04 toto</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ if [[ -r toto ]]</p><p>7</p><p>&nbsp;</p><p>&gt; then cat toto</p><p>8</p><p>&nbsp;</p><p>&gt; fi</p><p>9</p><p>&nbsp;</p><p>$ =&gt; rien ne ce passe</p><p>10</p><p>&nbsp;</p><p>$ echo $?</p><p>11</p><p>&nbsp;</p><p>0 =&gt; code de retour de la commande interne if</p><p>12</p><p>&nbsp;</p><p>$</p><p>13</p><p>&nbsp;</p><p>MAIS</p><p>14</p><p>&nbsp;</p><p>$ [[ -r toto ]]</p><p>15</p><p>&nbsp;</p><p>$ echo $?</p><p>16</p><p>&nbsp;</p><p>1 =&gt; code de retour de la commande interne [[</p><p>17</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Type d’une entrée</h5><p style="text-align:justify;">-f entrée vraie si entrée existe et est un fichier ordinaire<br>-d entrée vraie si entrée existe et est un répertoire<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat afficher.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>if [[ -f “$1” ]]</p><p>4</p><p>&nbsp;</p><p>then</p><p>5</p><p>&nbsp;</p><p>echo “$1” : fichier ordinaire</p><p>6</p><p>&nbsp;</p><p>cat “$1”</p><p>7</p><p>&nbsp;</p><p>elif [[ -d “$1” ]]</p><p>8</p><p>&nbsp;</p><p>then</p><p>9</p><p>&nbsp;</p><p>echo “$1” : répertoire</p><p>10</p><p>&nbsp;</p><p>ls “$1”</p><p>11</p><p>&nbsp;</p><p>else</p><p>12</p><p>&nbsp;</p><p>echo “$1” : type non traité</p><p>13</p><p>&nbsp;</p><p>fi</p><p>14</p><p>&nbsp;</p><p>​</p><p>15</p><p>&nbsp;</p><p>$ ./afficher</p><p>16</p><p>&nbsp;</p><p>. : répertoire</p><p>17</p><p>&nbsp;</p><p>afficher.sh test.sh toto alpha rm1.sh</p><p>18</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Renseignement divers sur une entrée<br>-a entrée vraie si entrée existe<br>-s entrée vraie si entrée existe et sa taille est différente de 0 (un répertoire vide &gt; 0)<br>entrée 1 -nt entrée 2 vraie si entrée 1 existe et sa date de modification est plus récente que celle de entrée2<br>entrée1 -ot entrée 2 vraie si entrée1 existe et sa date de modification est plus ancienne que celle de entrée2<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ &gt; err</p><p>2</p><p>&nbsp;</p><p>$</p><p>3</p><p>&nbsp;</p><p>$ ls -l err</p><p>4</p><p>&nbsp;</p><p>-rw-rw-r-- 1 christophe christophe 0 juin 29 14:30 err</p><p>5</p><p>&nbsp;</p><p>$ if [[ -a err ]]</p><p>6</p><p>&nbsp;</p><p>&gt; then echo err existe</p><p>7</p><p>&nbsp;</p><p>&gt; fi</p><p>8</p><p>&nbsp;</p><p>err existe</p><p>9</p><p>&nbsp;</p><p>$ if [[ -s err ]]</p><p>10</p><p>&nbsp;</p><p>&gt; then echo err n’est pas vide</p><p>11</p><p>&nbsp;</p><p>&gt; else err est vide</p><p>12</p><p>&nbsp;</p><p>&gt; fi</p><p>13</p><p>&nbsp;</p><p>err est vide</p><p>14</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Longueur d’une chaîne de caractère</h5><p style="text-align:justify;">-Z ch vraie si la longueur de ch est égale à 0<br>ch ou (-n ch) vraie si la longueur de ch est différente de 0<br>ch1 &lt; ch2 vraie si ch1 précède ch2<br>ch1 &gt; ch2 vraie si ch1 suit ch2<br>ch == mod vraie si la chaîne ch correspond au modèle mod<br>ch != mod vraie si la chaîne ch ne correspond pas au modèle mod<br>-o opt vraie si l’option interne opt est sur on</p><p style="text-align:justify;">Important : il existe un opérateur =~ qui permet de mettre en correspondance une chaîne de caractères ch avec une expression<br>régulière.</p><p>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$a=01/01/2010</p><p>2</p><p>&nbsp;</p><p>$[[ $a =~ [0-9]{2}\/[0-9]{2}\/[0-9]{2,4} ]]</p><p>3</p><p>&nbsp;</p><p>$ echo $?</p><p>4</p><p>&nbsp;</p><p>0</p><p>5</p><p>&nbsp;</p><p>$ a=45/54/1</p><p>6</p><p>&nbsp;</p><p>$[[ $a =~ [0-9]{2}\/[0-9]{2}\/[0-9]{2,4} ]]</p><p>7</p><p>&nbsp;</p><p>$ echo $?</p><p>8</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Expressions conditionnelles</h5><p style="text-align:justify;">( cond ) vraie si cond est vraie<br>! cond vraie si cond est fausse<br>cond1 &amp;&amp; cond 2 vraie si cond1 et 2 sont vraie, l’évaluation s’arrête si cond1 est fausse<br>cond1 || cond2 vraie si cond1 ou 2 sont vraie.</p><p style="text-align:justify;">Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ ls -l /etc/at.deny</p><p>2</p><p>&nbsp;</p><p>-rw-r----- 1 root daemon 144 oct. 25 2018 /etc/at.deny</p><p>3</p><p>&nbsp;</p><p>$</p><p>4</p><p>&nbsp;</p><p>$ if [[ ! ( -w /etc/at.deny || -r /etc/at.deny ) ]]</p><p>5</p><p>&nbsp;</p><p>&gt; then</p><p>6</p><p>&nbsp;</p><p>&gt; echo OUI</p><p>7</p><p>&nbsp;</p><p>&gt; else</p><p>8</p><p>&nbsp;</p><p>&gt; echo NON</p><p>9</p><p>&nbsp;</p><p>&gt; fi</p><p>10</p><p>&nbsp;</p><p>OUI</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">&nbsp;</p>
+<p style="text-align:justify;"><strong>Syntaxe :</strong></p>
+<pre><code class="language-plaintext">while read [var1 ...]
+do
+Commandes de traitements
+done &lt; fichier à lire</code></pre>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">#!/bin/bash
+who &gt; tmp
+while read nom divers
+do
+echo $nom
+done &lt; tmp
+rm tmp</code></pre>
+<p style="text-align:justify;">L’utilisation du <code>while</code> pour lire un fichier n’est pas très performante. On préférera en général utiliser une suite de filtre pour obtenir les résultats voulus (cut, awk, ...)</p>
+<h1 style="text-align:justify;">Modificateur de chaîne</h1>
+<h2 style="text-align:justify;">Échappement</h2>
+<p style="text-align:justify;">Différents caractères particuliers servent en shell pour effectuer ses propres traitements (<code>$</code> pour la substitution, <code>&gt;</code> pour la redirection, <code>*</code> en joker). Pour utiliser ces caractères particuliers en tant que simple caractère, il faut les échapper en les précédant du caractère <code>\</code></p>
+<p style="text-align:justify;"><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ ls
+tata toto
+$ echo *
+tata toto
+$ echo \*
+*
+$ echo \\
+\</code></pre>
+<p style="text-align:justify;">Autre particularité, le caractère <code>\</code> peut aussi échapper les retours à la ligne. On peut donc aller à la ligne sans exécuter la commande.<br>Comme nous l’avons déjà vu, les caractères <code>“</code> et <code>‘</code> permettre une protection partielle, ou total <code>(‘)</code> d’une chaîne de caractères.</p>
+<p style="text-align:justify;"><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ echo “&lt; * $PWD ‘ &gt;”
+&lt; * /root ‘ &gt;
+$
+$ echo “\”$PS2\””
+“&gt; “
+$ echo ‘&lt; * $PWD “ &gt;’
+&lt; * $PWD “ &gt;’
+$ echo c’est lundi
+&gt;
+&gt; ‘
+cest lundi
+$ echo c\’est lundi
+c’est lundi
+$ echo “c’est lundi”
+c’est lundi</code></pre>
+<h2 style="text-align:justify;">Chaîne de caractères longueur</h2>
+<p style="text-align:justify;">Syntaxe : <code>${#paramètre}</code><br>Cette syntaxe permet d’obtenir la longueur d’une chaîne de caractères.</p><p style="text-align:justify;"><strong>Exemple :</strong></p><pre><code class="language-plaintext">$ echo $PWD
+/root
+$ echo ${#PWD}
+5
+$ set “Bonjour à tous”
+$ echo ${#1}
+14
+$ ls &gt; /dev/null
+$
+$ echo ${#?}
+1 #=&gt; la longueur du code de retour (0) est de 1 caractère</code></pre><h2 style="text-align:justify;">Chaîne de caractères modificateur</h2><p style="text-align:justify;">On peut modifier les chaîne de caractères directement :<br>Syntaxe : ${paramètre#modèle} pour supprimer la plus <strong>courte</strong> sous-chaîne à gauche<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo $PWD</p><p>2</p><p>&nbsp;</p><p>/home/christophe</p><p>3</p><p>&nbsp;</p><p>$ echo ${PWD#*/}</p><p>4</p><p>&nbsp;</p><p>home/christophe #=&gt; le premier caractère / a été supprimé</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ set “25b75b”</p><p>7</p><p>&nbsp;</p><p>$</p><p>8</p><p>&nbsp;</p><p>$ echo ${1#*b}</p><p>9</p><p>&nbsp;</p><p>75b #=&gt; Suppression de la sous-chaîne 25b</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Syntaxe: <code>${paramètre##modèle}</code> pour supprimer la plus <strong>longue</strong> sous-chaîne à gauche<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo $PWD</p><p>2</p><p>&nbsp;</p><p>/home/christophe</p><p>3</p><p>&nbsp;</p><p>$ echo ${PWD##*/}</p><p>4</p><p>&nbsp;</p><p>christophe #=&gt; suppression jusqu’au dernier caractère /</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ set “25b75b”</p><p>7</p><p>&nbsp;</p><p>$</p><p>8</p><p>&nbsp;</p><p>$ echo ${1##*b}</p><p>9</p><p>&nbsp;</p><p>b</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Pour la suppression par la droite, c’est la même chose en utilise le caractère % comme contrôle<br>Syntaxe :<br><code>${paramètre%modèle}</code> pour supprimer la plus courte sous-chaîne à droite<br><code>${paramètre%%modèle}</code> pour supprimer la plus longue sous-chaîne à droite</p><p style="text-align:justify;">On peut extraire une sous-chaîne également :<br>Syntaxe:<br><code>${paramètre:ind}</code> : extrait la valeur de paramètre de la sous-chaîne débutant à l’indice ind.<br><code>${paramètre:ind:nb}</code> : extrait nb caractères à partir de l’indice ind<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ lettres=”abcdefghijklmnopqrstuvwxyz”</p><p>2</p><p>&nbsp;</p><p>$</p><p>3</p><p>&nbsp;</p><p>$ echo {$lettre:20}</p><p>4</p><p>&nbsp;</p><p>uvwxyz</p><p>5</p><p>&nbsp;</p><p>$ echo {$lettre:3:4}</p><p>6</p><p>&nbsp;</p><p>defg</p><p>7</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Remplacement dans une sous-chaîne<br>Syntaxe:<br><code>${paramètre/mod/ch}</code><br>bash recherchera dans paramètre la plus longue sous-chaîne satisfaisant le modèle mod puis remplacera cette sous-chaîne par<br>la chaîne ch. Seule la première sous-chaîne trouvée sera remplacée. mod peut être des caractères ou expressions génériques.<br><code>${paramètre//mod/ch}</code> :<br>Pour replacer toutes les occurrences et pas seulement la première<br><code>${paramètre/mod/}</code> :<br><code>${paramètre//mod/}</code> :<br>Supprime au lieu de remplacer<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ v=totito</p><p>2</p><p>&nbsp;</p><p>$ echo {$v/to/lo}</p><p>3</p><p>&nbsp;</p><p>lotito</p><p>4</p><p>&nbsp;</p><p>$ echo {$v//to/lo}</p><p>5</p><p>&nbsp;</p><p>lotilo</p><p>&nbsp;</p><p>&nbsp;</p><h4 style="text-align:justify;">Structure de contrôle for et if</h4><h5 style="text-align:justify;">Itération et for</h5><p style="text-align:justify;">Syntaxe 1:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>for var</p><p>2</p><p>&nbsp;</p><p>do</p><p>3</p><p>&nbsp;</p><p>suite_de_commandes</p><p>4</p><p>&nbsp;</p><p>done</p><p>5</p><p>&nbsp;</p><p>Syntaxe 2:</p><p>6</p><p>&nbsp;</p><p>for var in liste_mots</p><p>7</p><p>&nbsp;</p><p>do</p><p>8</p><p>&nbsp;</p><p>suite_de_commandes</p><p>9</p><p>&nbsp;</p><p>done</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Dans la première forme, la variable var prend successivement la valeur de chaque paramètre de position initialisé<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_args.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for i</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo $i</p><p>6</p><p>&nbsp;</p><p>echo “next ...”</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./for_args.sh first second third</p><p>10</p><p>&nbsp;</p><p>first</p><p>11</p><p>&nbsp;</p><p>next ...</p><p>12</p><p>&nbsp;</p><p>second</p><p>13</p><p>&nbsp;</p><p>next ...</p><p>14</p><p>&nbsp;</p><p>third</p><p>15</p><p>&nbsp;</p><p>next ...</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Exemple 2:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_set.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>set $(date)</p><p>4</p><p>&nbsp;</p><p>for i</p><p>5</p><p>&nbsp;</p><p>do</p><p>6</p><p>&nbsp;</p><p>echo $i</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./for_set.sh</p><p>10</p><p>&nbsp;</p><p>samedi</p><p>11</p><p>&nbsp;</p><p>29</p><p>12</p><p>&nbsp;</p><p>Juin</p><p>13</p><p>&nbsp;</p><p>2019,</p><p>14</p><p>&nbsp;</p><p>12:09:21</p><p>15</p><p>&nbsp;</p><p>(UTC+0200)</p><p>16</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">La deuxième syntaxe permet à var de prendre successivement la valeur de chaque mot de liste_mots.<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat for_liste.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for a in toto tata</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo $a</p><p>6</p><p>&nbsp;</p><p>done</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Si liste_mots contient des substitutions, elles sont préalablement traitées par bash<br>Exemple 2:</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat affiche_ls.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>for i in /tmp ${pwd}</p><p>4</p><p>&nbsp;</p><p>do</p><p>5</p><p>&nbsp;</p><p>echo “ --- $i ---”</p><p>6</p><p>&nbsp;</p><p>ls $i</p><p>7</p><p>&nbsp;</p><p>done</p><p>8</p><p>&nbsp;</p><p>​</p><p>9</p><p>&nbsp;</p><p>$ ./affiche_ls.sh</p><p>10</p><p>&nbsp;</p><p>--- /tmp ---</p><p>11</p><p>&nbsp;</p><p>toto tutu</p><p>12</p><p>&nbsp;</p><p>--- /home/christophe</p><p>13</p><p>&nbsp;</p><p>for_liste.sh affiche_ls.sh alpha tmp</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">If et le choix</h5><p style="text-align:justify;">La commande interne if implante le choix alternatif<br>Syntaxe :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>if suite_commande1</p><p>2</p><p>&nbsp;</p><p>then</p><p>3</p><p>&nbsp;</p><p>suite_commande2</p><p>4</p><p>&nbsp;</p><p>[elif suite_de_commandes; then suite_de_commande] ...</p><p>5</p><p>&nbsp;</p><p>[else suite_de_commandes]</p><p>6</p><p>&nbsp;</p><p>fi</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Le principe de fonctionnement est le même que pour le for, on test la valeur de retour d’une commande plutôt qu’une valeur booléenne simple. Donc dans notre exemple, suite_commande2 est exécuté, si suite_commande1 renvoi 0 (pas d’erreur). Sinon c’est elif ou bien else qui sera exécuté.<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat rm1.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>if rm “$1” 2&gt; /dev/null</p><p>4</p><p>&nbsp;</p><p>then echo $1 a été supprimé</p><p>5</p><p>&nbsp;</p><p>else echo $1 n\’a pas été supprimé</p><p>6</p><p>&nbsp;</p><p>fi</p><p>7</p><p>&nbsp;</p><p>​</p><p>8</p><p>&nbsp;</p><p>$ &gt;toto</p><p>9</p><p>&nbsp;</p><p>$ rm1 toto</p><p>10</p><p>&nbsp;</p><p>toto a été supprimé</p><p>11</p><p>&nbsp;</p><p>$</p><p>12</p><p>&nbsp;</p><p>$ rm1 toto</p><p>13</p><p>&nbsp;</p><p>toto n’a pas été supprimé</p><p>14</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Lorsque rm1 toto est lancé, si le fichier toto est effaçable, il le sera, et la commande rm renvoi 0.<br>Notez qu’il est possible d’imbriquer les if ensembles<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>if...</p><p>2</p><p>&nbsp;</p><p>&nbsp; then....</p><p>3</p><p>&nbsp;</p><p>&nbsp; if...</p><p>4</p><p>&nbsp;</p><p>&nbsp; &nbsp; then ...</p><p>5</p><p>&nbsp;</p><p>&nbsp; fi</p><p>6</p><p>&nbsp;</p><p>&nbsp; else ...</p><p>7</p><p>&nbsp;</p><p>fi</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Tests</h5><p style="text-align:justify;">Dans les bash, vous retrouverez souvent une notation de commande interne [[ souvent utilisé avec le if. Elle permet l’évaluation de d’expressions conditionnelles portant sur des objets aussi différents que les permissions sur une entrée, la valeur d’une chaîne de caractères ou encore l’état d’une option de la commande interne set.<br>Syntaxe: <code>[[ expr_conditionelle ]]</code><br>Les deux caractères crochets doivent être collés et un caractère séparateur doit être présent de part et d’autre de expr_conditionelle. Les mots [[ et ]] sont des mots-clés. On a vu que le if fonctionne selon la valeur de retour d’une commande, et pas d’un booléen, cette syntaxe permet “d'exécuter un test” qui renverra 1 si le test est vrai, 0 sinon. Si l’expression contient des erreurs syntaxique une autre valeur sera retournée. La commande interne [[ offre de nombreuses expressions conditionnelles, c’est pourquoi seules les principales formes de exp_conditionnelle seront présentées, regroupées par catégories.</p><h5 style="text-align:justify;">Permission</h5><p style="text-align:justify;">-r entrée vraie si entrée existe et est accessible en lecture par le processus courant<br>-w entrée vraie si entrée existe et est accessible en écriture par le processus courant<br>-x entrée vraie si entrée existe et est accessible en exécutable par le processus courant ou si le répertoire entrée existe et</p><p style="text-align:justify;">le processus courant possède la permission de passage<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ echo coucou &gt; toto</p><p>2</p><p>&nbsp;</p><p>$ chmod 200 toto</p><p>3</p><p>&nbsp;</p><p>$ ls -l toto</p><p>4</p><p>&nbsp;</p><p>--w- --- --- 1 christophe christophe 29 juin 1 14:04 toto</p><p>5</p><p>&nbsp;</p><p>$</p><p>6</p><p>&nbsp;</p><p>$ if [[ -r toto ]]</p><p>7</p><p>&nbsp;</p><p>&gt; then cat toto</p><p>8</p><p>&nbsp;</p><p>&gt; fi</p><p>9</p><p>&nbsp;</p><p>$ =&gt; rien ne ce passe</p><p>10</p><p>&nbsp;</p><p>$ echo $?</p><p>11</p><p>&nbsp;</p><p>0 =&gt; code de retour de la commande interne if</p><p>12</p><p>&nbsp;</p><p>$</p><p>13</p><p>&nbsp;</p><p>MAIS</p><p>14</p><p>&nbsp;</p><p>$ [[ -r toto ]]</p><p>15</p><p>&nbsp;</p><p>$ echo $?</p><p>16</p><p>&nbsp;</p><p>1 =&gt; code de retour de la commande interne [[</p><p>17</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Type d’une entrée</h5><p style="text-align:justify;">-f entrée vraie si entrée existe et est un fichier ordinaire<br>-d entrée vraie si entrée existe et est un répertoire<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ cat afficher.sh</p><p>2</p><p>&nbsp;</p><p>#!/bin/bash</p><p>3</p><p>&nbsp;</p><p>if [[ -f “$1” ]]</p><p>4</p><p>&nbsp;</p><p>then</p><p>5</p><p>&nbsp;</p><p>echo “$1” : fichier ordinaire</p><p>6</p><p>&nbsp;</p><p>cat “$1”</p><p>7</p><p>&nbsp;</p><p>elif [[ -d “$1” ]]</p><p>8</p><p>&nbsp;</p><p>then</p><p>9</p><p>&nbsp;</p><p>echo “$1” : répertoire</p><p>10</p><p>&nbsp;</p><p>ls “$1”</p><p>11</p><p>&nbsp;</p><p>else</p><p>12</p><p>&nbsp;</p><p>echo “$1” : type non traité</p><p>13</p><p>&nbsp;</p><p>fi</p><p>14</p><p>&nbsp;</p><p>​</p><p>15</p><p>&nbsp;</p><p>$ ./afficher</p><p>16</p><p>&nbsp;</p><p>. : répertoire</p><p>17</p><p>&nbsp;</p><p>afficher.sh test.sh toto alpha rm1.sh</p><p>18</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">Renseignement divers sur une entrée<br>-a entrée vraie si entrée existe<br>-s entrée vraie si entrée existe et sa taille est différente de 0 (un répertoire vide &gt; 0)<br>entrée 1 -nt entrée 2 vraie si entrée 1 existe et sa date de modification est plus récente que celle de entrée2<br>entrée1 -ot entrée 2 vraie si entrée1 existe et sa date de modification est plus ancienne que celle de entrée2<br>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ &gt; err</p><p>2</p><p>&nbsp;</p><p>$</p><p>3</p><p>&nbsp;</p><p>$ ls -l err</p><p>4</p><p>&nbsp;</p><p>-rw-rw-r-- 1 christophe christophe 0 juin 29 14:30 err</p><p>5</p><p>&nbsp;</p><p>$ if [[ -a err ]]</p><p>6</p><p>&nbsp;</p><p>&gt; then echo err existe</p><p>7</p><p>&nbsp;</p><p>&gt; fi</p><p>8</p><p>&nbsp;</p><p>err existe</p><p>9</p><p>&nbsp;</p><p>$ if [[ -s err ]]</p><p>10</p><p>&nbsp;</p><p>&gt; then echo err n’est pas vide</p><p>11</p><p>&nbsp;</p><p>&gt; else err est vide</p><p>12</p><p>&nbsp;</p><p>&gt; fi</p><p>13</p><p>&nbsp;</p><p>err est vide</p><p>14</p><p>&nbsp;</p><p>$</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Longueur d’une chaîne de caractère</h5><p style="text-align:justify;">-Z ch vraie si la longueur de ch est égale à 0<br>ch ou (-n ch) vraie si la longueur de ch est différente de 0<br>ch1 &lt; ch2 vraie si ch1 précède ch2<br>ch1 &gt; ch2 vraie si ch1 suit ch2<br>ch == mod vraie si la chaîne ch correspond au modèle mod<br>ch != mod vraie si la chaîne ch ne correspond pas au modèle mod<br>-o opt vraie si l’option interne opt est sur on</p><p style="text-align:justify;">Important : il existe un opérateur =~ qui permet de mettre en correspondance une chaîne de caractères ch avec une expression<br>régulière.</p><p>Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$a=01/01/2010</p><p>2</p><p>&nbsp;</p><p>$[[ $a =~ [0-9]{2}\/[0-9]{2}\/[0-9]{2,4} ]]</p><p>3</p><p>&nbsp;</p><p>$ echo $?</p><p>4</p><p>&nbsp;</p><p>0</p><p>5</p><p>&nbsp;</p><p>$ a=45/54/1</p><p>6</p><p>&nbsp;</p><p>$[[ $a =~ [0-9]{2}\/[0-9]{2}\/[0-9]{2,4} ]]</p><p>7</p><p>&nbsp;</p><p>$ echo $?</p><p>8</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>&nbsp;</p><h5 style="text-align:justify;">Expressions conditionnelles</h5><p style="text-align:justify;">( cond ) vraie si cond est vraie<br>! cond vraie si cond est fausse<br>cond1 &amp;&amp; cond 2 vraie si cond1 et 2 sont vraie, l’évaluation s’arrête si cond1 est fausse<br>cond1 || cond2 vraie si cond1 ou 2 sont vraie.</p><p style="text-align:justify;">Exemple :</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>1</p><p>&nbsp;</p><p>$ ls -l /etc/at.deny</p><p>2</p><p>&nbsp;</p><p>-rw-r----- 1 root daemon 144 oct. 25 2018 /etc/at.deny</p><p>3</p><p>&nbsp;</p><p>$</p><p>4</p><p>&nbsp;</p><p>$ if [[ ! ( -w /etc/at.deny || -r /etc/at.deny ) ]]</p><p>5</p><p>&nbsp;</p><p>&gt; then</p><p>6</p><p>&nbsp;</p><p>&gt; echo OUI</p><p>7</p><p>&nbsp;</p><p>&gt; else</p><p>8</p><p>&nbsp;</p><p>&gt; echo NON</p><p>9</p><p>&nbsp;</p><p>&gt; fi</p><p>10</p><p>&nbsp;</p><p>OUI</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p style="text-align:justify;">&nbsp;</p>
