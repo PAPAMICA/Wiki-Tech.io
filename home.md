@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-17T06:31:40.093Z
+date: 2021-05-17T12:54:20.749Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -169,7 +169,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 # Scripting
 - [✨ Les bases 🚧 *Quel que soit le langage utilisé, il y a quelques notions à connaitre*](/Scripting/Base)
-- [🐧 Bash 🚧 *Le commencement d'une automatisation*](/Scripting/Bash)
+- [🐧 Bash *Le commencement d'une automatisation*](/Scripting/Bash)
 - [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting/Python)
 - [🪟 Powershell 🚧 *Un langage puissant dédié à Windows*](/Scripting/Powershell)
 {.links-list}
