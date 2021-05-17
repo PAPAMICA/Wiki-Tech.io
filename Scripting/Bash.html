@@ -2,7 +2,7 @@
 title: Scripting - Bash
 description: Les bases de l'automatisation !
 published: true
-date: 2021-05-17T08:41:21.766Z
+date: 2021-05-17T08:58:33.704Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-17T08:41:21.766Z
@@ -79,439 +79,138 @@ $ echo $((mavariable +3)) #=&gt; affiche la valeur de l’expression mavariable
 <h2 style="text-align:justify;">Les constantes :</h2>
 <p style="text-align:justify;">Une constante est une variable en lecture seul d’une certaine manière, elle n’a pas pour but d’être modifié dans le programme (d’où son nom). Pour créer une constante, vous pouvez utiliser la commande declare -r.<br>Exemple: <code>declare -r pi=3.14159</code></p>
 <h2>Les variables d’environnement :</h2>
-<p style="text-align:justify;">Les variables d’environnement existent dans le shell pour lequel elles sont créées, mais aussi pour toutes les commandes qui sont utilisées dans ce shell. On utilise couramment des majuscules pour nommer ses variables d’environnement.<br>Exemple1 :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#Transformer une variable</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>ENVVAR=10 #Création d’une variable locale</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>export ENVVAR #Transforme la variable locale en variable d’environnement</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Exemple 2:</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p># Créer une variable d’environnement</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>export ENVVAR2 = 11 &nbsp; &nbsp; # Première solution</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>declare -x ENVVAR3 = 12 # Deuxième solution</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>typeset -x ENVVAR4 = 13 # Troisième solution</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h5 style="text-align:justify;">Commandes utiles pour les variables :</h5>
+<p style="text-align:justify;">Les variables d’environnement existent dans le shell pour lequel elles sont créées, mais aussi pour toutes les commandes qui sont utilisées dans ce shell. On utilise couramment des majuscules pour nommer ses variables d’environnement.<br><strong>Exemple1 : Transformer une variable</strong></p>
+<pre><code class="language-plaintext">ENVVAR=10 #Création d’une variable locale
+export ENVVAR #Transforme la variable locale en variable d’environnement</code></pre>
+<p style="text-align:justify;"><strong>Exemple 2: Créer une variable d’environnement</strong></p>
+<pre><code class="language-plaintext">export ENVVAR2 = 11     # Première solution
+declare -x ENVVAR3 = 12 # Deuxième solution
+typeset -x ENVVAR4 = 13 # Troisième solution</code></pre>
+<h2 style="text-align:justify;">Commandes utiles pour les variables :</h2>
 <ul>
-  <li style="text-align:justify;">echo : Vous pouvez utiliser la commande echo si vous souhaitez connaître le contenu d’une variable.</li>
+  <li style="text-align:justify;"><code>echo</code> : Vous pouvez utiliser la commande echo si vous souhaitez connaître le contenu d’une variable.</li>
 </ul>
 <p style="text-align:justify;">Exemple : <code>echo $PATH</code> permettra d’afficher le contenu de la variable d’environnement PATH qui contient les chemins de fichier de<br>commande dans le shell.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ set param1 param2</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$ echo $1</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>param1</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$ set --</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo $1</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>$ #on a perdu les valeurs</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">$ set param1 param2
+$ echo $1
+param1
+$ set --
+$ echo $1
+$ #on a perdu les valeurs</code></pre>
 <p style="text-align:justify;">Pour connaître le nombre de variables de position, il existe une variable spéciale $#</p>
 <ul>
-  <li style="text-align:justify;">shift : permet de décaler les variables de position (sans toucher au $0)</li>
+  <li style="text-align:justify;"><code>shift</code> : permet de décaler les variables de position (sans toucher au $0)</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ set a b c d e f g h i j # param 1 2 3 4 5 6 7 8 9</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$ echo $1 $2 $#</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>a b 9</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$ shift 2 # variable deviennent c d e f g h i j</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo $1 $2 $#</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>c d 7</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">$ set a b c d e f g h i j # param 1 2 3 4 5 6 7 8 9
+$ echo $1 $2 $#
+a b 9
+$ shift 2 # variable deviennent c d e f g h i j
+$ echo $1 $2 $#
+c d 7</code></pre>
 <p style="text-align:justify;">L’utilisation du shift sans argument équivaut à faire un <code>shift 1</code></p>
 <ul>
-  <li style="text-align:justify;">unset : permet de supprimer une variable</li>
+  <li style="text-align:justify;"><code>unset</code> : permet de supprimer une variable</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ set myvar=1</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$ echo $myvar</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$ unset myvar</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo $myvar</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h4 style="text-align:justify;">Mon premier bash</h4>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>echo “Nom du programme : $0”</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>echo “Nombre d’arguments : $#”</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>echo “Source : $1”</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>echo “Destination $2”</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>cp $1 $2</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ chmod u+x monpremierbash.sh</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ monpremierbash.sh /etc/passwd /root/copiepasswd</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>Nom du programme : ./monpremierbash.sh</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>Nb d’arguments : 2</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>Source : /etc/passwd</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>Destination : /root/copiepasswd</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ set un deux trois quatre</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ echo $* # affiche tous les arguments</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>un deux trois quatre</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo $@ # affiche tous les arguments</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>un deux trois quatre</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>$ set un “deux trois” quatre # testons avec 3 paramètres et des guillemets</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>$ set “$*” # équivalent à set “un deux trois quatre”</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>$ echo $#</p>
-<p>10</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>11</p>
-<p>&nbsp;</p>
-<p>$ echo $1</p>
-<p>12</p>
-<p>&nbsp;</p>
-<p>un deux trois quatre</p>
-<p>13</p>
-<p>&nbsp;</p>
-<p>$ set un “deux trois” quatre # testons $@ avec 3 paramètres et des guillemets</p>
-<p>14</p>
-<p>&nbsp;</p>
-<p>$ set “$@” # équivalent à set “bonjour” “deux trois” “quatre”</p>
-<p>15</p>
-<p>&nbsp;</p>
-<p>$ echo $#</p>
-<p>16</p>
-<p>&nbsp;</p>
-<p>3</p>
-<p>17</p>
-<p>&nbsp;</p>
-<p>$ echo $2</p>
-<p>18</p>
-<p>&nbsp;</p>
-<p>deux trois</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Si dans un bash on souhaite supprimer les ambiguïtés d’interprétation des paramètres de position, on utilise le ${paramètre}, comme dans l’exemple suivant.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ x=bon</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$ x1=jour</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ echo $x1</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>jour</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>$ echo ${x}1</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>bon1</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>$ set un deux trois quatre cinq six sept huit neuf dix onze douze</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>$ echo $11</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>un1</p>
-<p>10</p>
-<p>&nbsp;</p>
-<p>$ echo ${11}</p>
-<p>11</p>
-<p>&nbsp;</p>
-<p>onze</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<h4 style="text-align:justify;">Indirections</h4>
-<p style="text-align:justify;">Bash offre la possibilité d’obtenir la valeur d’une variable v1 dont le nom est contenu “v1” dans une autre variable mavar. Il suffit pour cela d’utiliser la syntaxe de substitution : ${!mavar}.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ var=v1</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$ v1=un</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$ echo ${!var}</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>un</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Ce mécanisme, appelé indirection,permet d’accéder de manière indirecte et par conséquent de façon plus souple, à la valeur d’un<br>deuxième objet. Voyons un autre exemple d’utilisation :<br>Exemple d’un fichier indir:</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>#!/bin/bash</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>agePierre=10</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>ageJean=20</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>read -p “Quel âge (Pierre ou Jean) voulez-vous connaître ? “ prenom</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>rep=age$prenom #construction du nom de la variable</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>echo ${!rep}</p>
-<p>7</p>
-<p>&nbsp;</p>
-<p>$ indir</p>
-<p>8</p>
-<p>&nbsp;</p>
-<p>Quel âge (Pierre ou Jean) voulez-vous connaître ? Pierre</p>
-<p>9</p>
-<p>&nbsp;</p>
-<p>10</p>
-<p>10</p>
-<p>&nbsp;</p>
-<p>$ indir</p>
-<p>11</p>
-<p>&nbsp;</p>
-<p>Quel âge (Pierre ou Jean) voulez-vous connaître ? Jean</p>
-<p>12</p>
-<p>&nbsp;</p>
-<p>20</p>
-<p>13</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext">$ set myvar=1
+$ echo $myvar
+1
+$ unset myvar
+$ echo $myvar
+$</code></pre>
+<p>&nbsp;</p>
+<h1 style="text-align:justify;">Mon premier bash</h1>
+<pre><code class="language-plaintext">#!/bin/bash
+echo “Nom du programme : $0”
+echo “Nombre d’arguments : $#”
+echo “Source : $1”
+echo “Destination $2”
+cp $1 $2</code></pre>
+<pre><code class="language-plaintext">$ chmod u+x monpremierbash.sh
+$ monpremierbash.sh /etc/passwd /root/copiepasswd
+Nom du programme : ./monpremierbash.sh
+Nb d’arguments : 2
+Source : /etc/passwd
+Destination : /root/copiepasswd</code></pre>
+<pre><code class="language-plaintext">$ set un deux trois quatre
+$ echo $* # affiche tous les arguments
+un deux trois quatre
+$ echo $@ # affiche tous les arguments
+un deux trois quatre
+$ set un “deux trois” quatre # testons avec 3 paramètres et des guillemets
+$ set “$*” # équivalent à set “un deux trois quatre”
+$ echo $#
+1
+$ echo $1
+un deux trois quatre
+$ set un “deux trois” quatre # testons $@ avec 3 paramètres et des guillemets
+$ set “$@” # équivalent à set “bonjour” “deux trois” “quatre”
+$ echo $#
+3
+$ echo $2
+deux trois</code></pre>
+<p>Si dans un bash on souhaite supprimer les ambiguïtés d’interprétation des paramètres de position, on utilise le ${paramètre}, comme dans l’exemple suivant.</p>
+<p><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ x=bon
+$ x1=jour
+$ echo $x1
+jour
+$ echo ${x}1
+bon1
+$ set un deux trois quatre cinq six sept huit neuf dix onze douze
+$ echo $11
+un1
+$ echo ${11}
+onze</code></pre>
+<h1 style="text-align:justify;">Indirections</h1>
+<p style="text-align:justify;">Bash offre la possibilité d’obtenir la valeur d’une variable v1 dont le nom est contenu “<code>v1</code>” dans une autre variable <code>mavar</code>. Il suffit pour cela d’utiliser la syntaxe de substitution : <code>${!mavar}</code>.</p>
+<p style="text-align:justify;"><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ var=v1
+$ v1=un
+$ echo ${!var}
+un</code></pre>
+<p style="text-align:justify;">Ce mécanisme, appelé indirection, permet d’accéder de manière indirecte et par conséquent de façon plus souple, à la valeur d’un deuxième objet. Voyons un autre exemple d’utilisation :</p>
+<p style="text-align:justify;"><strong>Exemple d’un fichier indir :</strong></p>
+<pre><code class="language-plaintext">#!/bin/bash
+agePierre=10
+ageJean=20
+read -p “Quel âge (Pierre ou Jean) voulez-vous connaître ? “ prenom
+rep=age$prenom #construction du nom de la variable
+echo ${!rep}
+$ indir
+Quel âge (Pierre ou Jean) voulez-vous connaître ? Pierre
+10
+$ indir
+Quel âge (Pierre ou Jean) voulez-vous connaître ? Jean
+20</code></pre>
 <p style="text-align:justify;">Ce mécanisme s’applique également aux deux autres types de paramètres : les paramètres de position et les paramètres spéciaux ($1, $2, , ...)</p>
-<h4 style="text-align:justify;">Résultats, Code de retour et opérateur sur les code de retour</h4>
-<p style="text-align:justify;">Il ne faut pas confondre le résultat d’une commande et son code de retour : le résultat correspond à ce qui est écrit sur sa sortie standard; le code de retour indique uniquement si l’exécution de la commande s’est bien effectuée ou non. Parfois, on est intéressé uniquement par le code de retour d’une commande et non par les résultats qu’elle produit sur la sortie standard ou la sortie d’erreur.<br>Exemple :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ grep toto pass &gt; /dev/null 2&gt;&amp;1 #=&gt; ou bien : grep toto pass &amp;&gt;/dev/null</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ echo $?</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>1 #=&gt; on en déduit que la chaîne toto n’est pas présente dans pass</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Les opérateurs &amp;&amp; et || autorisent l’exécution conditionnelle d’une commande cmd suivant la valeur qu’a pris le code de retour de la dernière commande précédemment exécutée.</p>
-<p style="text-align:justify;">Exemple pour &amp;&amp; :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ grep toto pass &gt; /dev/null 2&gt;&amp;1 #=&gt; ou bien : grep toto pass &amp;&gt;/dev/null</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ echo $?</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>1 #=&gt; on en déduit que la chaîne toto n’est pas présente dans pass</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">La chaîne de caractères daemon est présente dans le fichier pass, le code de retour renvoyé par l’exécution de grep est 0; par conséquent, la commande echo est exécutée.<br>Exemple pour || :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ ls pass tutu</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>ls : impossible d’accéder à tutu: Aucun fichier ou dossier de ce type pass</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$ rm tutu || echo tutu non effacé</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>rm : impossible de supprimer tutu: Aucun fichier ou dossier de ce type</p>
-<p>5</p>
-<p>&nbsp;</p>
-<p>tutu non effacé</p>
-<p>6</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Le fichier tutu n’existant pas, la commande rm tutu affiche un message d’erreur et produit un code de retour différent de 0; la commande interne echo est exécutée.<br>Exemple combiné || et || :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ ls pass || ls tutu || echo fin aussi</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>pass</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">Le code de retour ls pass est égal à 0 car pass existe, la commande ls tutu ne sera pas exécutée. D’autre part le code de retour de l’ensemble ls pass || ls tutu est le code de retour de la dernière commande exécutée, c’est-à-dire 0 (ls pass). donc echo fini aussi n’est pas exécutée.<br>Exemple combiné &amp;&amp; et || :</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>1</p>
-<p>&nbsp;</p>
-<p>$ ls pass || ls tutu || echo suite et &amp;&amp; echo fin</p>
-<p>2</p>
-<p>&nbsp;</p>
-<p>pass</p>
-<p>3</p>
-<p>&nbsp;</p>
-<p>fin</p>
-<p>4</p>
-<p>&nbsp;</p>
-<p>$</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p style="text-align:justify;">la commande ls pass a un code de retour égal à 0, donc la commande ls tutu ne sera pas exécutée; le code de retour de l’ensemble ls pass || ls tutu sera donc égal à 0. la commande echo suite et n’est pas exécutée donc le code de retour de l’ensemble reste 0 echo fin sera donc exécutée.</p>
+<h1 style="text-align:justify;">Résultats, Code de retour et opérateur sur les code de retour</h1>
+<p style="text-align:justify;">Il ne faut pas confondre le résultat d’une commande et son code de retour : le résultat correspond à ce qui est écrit sur sa sortie standard; le code de retour indique uniquement si l’exécution de la commande s’est bien effectuée ou non. Parfois, on est intéressé uniquement par le code de retour d’une commande et non par les résultats qu’elle produit sur la sortie standard ou la sortie d’erreur.</p>
+<p style="text-align:justify;"><strong>Exemple :</strong></p>
+<pre><code class="language-plaintext">$ grep toto pass &gt; /dev/null 2&gt;&amp;1 #=&gt; ou bien : grep toto pass &amp;&gt;/dev/null
+$ echo $?
+1 #=&gt; on en déduit que la chaîne toto n’est pas présente dans pass</code></pre>
+<p style="text-align:justify;">Les opérateurs <code>&amp;&amp;</code> et <code>||</code> autorisent l’exécution conditionnelle d’une commande cmd suivant la valeur qu’a pris le code de retour de la dernière commande précédemment exécutée.</p>
+<p style="text-align:justify;"><strong>Exemple pour &amp;&amp; :</strong></p>
+<pre><code class="language-plaintext">$ grep toto pass &gt; /dev/null 2&gt;&amp;1 #=&gt; ou bien : grep toto pass &amp;&gt;/dev/null
+$ echo $?
+1 #=&gt; on en déduit que la chaîne toto n’est pas présente dans pass</code></pre>
+<p style="text-align:justify;">La chaîne de caractères daemon est présente dans le fichier <code>pass</code>, le code de retour renvoyé par l’exécution de <code>grep</code> est <code>0</code>; par conséquent, la commande <code>echo</code> est exécutée.</p>
+<p style="text-align:justify;"><strong>Exemple pour || :</strong></p>
+<pre><code class="language-plaintext">$ ls pass tutu
+ls : impossible d’accéder à tutu: Aucun fichier ou dossier de ce type pass
+$ rm tutu || echo tutu non effacé
+rm : impossible de supprimer tutu: Aucun fichier ou dossier de ce type
+tutu non effacé</code></pre>
+<p>Le fichier tutu n’existant pas, la commande <code>rm tutu</code> affiche un message d’erreur et produit un code de retour différent de <code>0</code>; la commande interne <code>echo</code> est exécutée.</p>
+<p><strong>Exemple combiné || et || :</strong></p>
+<pre><code class="language-plaintext">$ ls pass || ls tutu || echo fin aussi
+pass</code></pre>
+<p style="text-align:justify;">Le code de retour <code>ls pass</code> est égal à <code>0</code> car <code>pass</code> existe, la commande<code> ls tutu</code> ne sera pas exécutée. D’autre part le code de retour de l’ensemble <code>ls pass || ls tutu</code> est le code de retour de la dernière commande exécutée, c’est-à-dire <code>0</code> (<code>ls pass</code>). Donc <code>echo</code> fini aussi n’est pas exécutée.</p>
+<p style="text-align:justify;"><strong>Exemple combiné &amp;&amp; et || :</strong></p>
+<pre><code class="language-plaintext">$ ls pass || ls tutu || echo suite et &amp;&amp; echo fin
+pass
+fin</code></pre>
+<p>La commande <code>ls pass</code> a un code de retour égal à 0, donc la commande <code>ls tutu</code> ne sera pas exécutée; le code de retour de l’ensemble <code>ls pass || ls tutu</code> sera donc égal à <code>0</code>. La commande <code>echo</code> suite et n’est pas exécutée donc le code de retour de l’ensemble reste <code>0</code> <code>echo fin</code> sera donc exécutée.</p>
 <h4 style="text-align:justify;">Boucles et structure de contrôle</h4>
 <h5 style="text-align:justify;">case, structure de choix multiple</h5>
 <p style="text-align:justify;">Syntaxe :</p>
