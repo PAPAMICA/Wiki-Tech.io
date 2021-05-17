@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-17T08:28:12.837Z
+date: 2021-05-17T10:05:33.516Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-10T11:53:45.764Z
@@ -1867,6 +1867,11 @@ ocicli cluster-set <CLUSTER-NAME> --initial-cluster-setup yes
 ```
 > Voir [Ocicli : Variable "initial-cluster-setup"](#variable-de-configuration-initiale-du-cluster)
 {.is-info}
+
+### Effacer les disques 
+```bash
+for i in $(ocicli -csv machine-list | q -H -d, "SELECT serial FROM -"); do ocicli machine-wipe $i; done
+```
 
 ### Lancer le déploiement
 ```bash
