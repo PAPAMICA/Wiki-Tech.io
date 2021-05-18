@@ -2,7 +2,7 @@
 title: Matomo
 description: Enfin une alternative viable à Google Analytics !
 published: true
-date: 2021-05-05T13:46:08.531Z
+date: 2021-05-18T16:44:45.572Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-03T11:22:10.212Z
@@ -60,7 +60,7 @@ services:
       - MATOMO_DATABASE_USERNAME=matomo
       - MATOMO_DATABASE_PASSWORD=Matomo65468431
     volumes:
-      - /apps/matomo/data:/var/www/html matomo
+      - /apps/matomo/data:/var/www/html/matomo
     depends_on:
       - matomo-db
     # Facultatif avec Traefik  
