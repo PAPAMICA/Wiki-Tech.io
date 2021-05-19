@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-19T09:32:48.682Z
+date: 2021-05-19T09:41:16.434Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
@@ -213,6 +213,92 @@ dateCreated: 2021-04-28T18:24:13.228Z
   </table>
 </figure>
 <h1>Fichiers et répertoires</h1>
+<h2>cat - Afficher le contenu d'un fichier</h2>
+<p><strong>Permet d'ouvrir un fichier et d'afficher son contenu.</strong></p>
+<pre><code class="language-plaintext">cat &lt;option&gt; fichier</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-b</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes non vides</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-n</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>cd - Changer de répertoire</h2>
+<p><strong>Permet de se déplacer dans l'arborescence</strong></p>
+<pre><code class="language-plaintext">cd /répertoire/de/destination</code></pre>
+<h2>df - Afficher la taille d'un répertoire</h2>
+<p><strong>Permet d'afficher la taille d'un répertoire.</strong></p>
+<pre><code class="language-plaintext">df &lt;option&gt; répertoire</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
+        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Permet d'obtenir un résultat plus lisible pour un humain (<i>ex Mo, Ko,...</i>)</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-k</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en kilobytes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-m</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en megabytes</td>
+      </tr>
+      <tr>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d <strong>n</strong>.</code></td>
+        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des sous-répertoires jusqu'au <strong>n</strong>ème</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2><strong>head - A</strong>fficher l'en-tête d'un fichier</h2>
+<p><strong>Affiche l'en-tête d'un fichier</strong></p>
+<pre><code class="language-plaintext">head &lt;option&gt; fichier</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center;"><code>-n</code></td>
+        <td>spécifie le nombre de ligne à afficher</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<h2>less - Afficher un fichier page par page</h2>
+<p><strong>&nbsp;Affiche le fichier page par page. C'est donc pratique pour les longs fichiers.</strong></p>
+<pre><code class="language-plaintext">less fichier</code></pre>
 <h2>ls - Lister le contenu d'un répertoire</h2>
 <p><strong>Permet de lister le contenu d'un répertoire</strong></p>
 <pre><code class="language-plaintext">ls &lt;option&gt; répertoire</code></pre>
@@ -253,11 +339,6 @@ dateCreated: 2021-04-28T18:24:13.228Z
     </tbody>
   </table>
 </figure>
-<p>&nbsp;</p>
-<h2>pwd - Afficher le répertoire courant</h2>
-<p><strong>Affiche le répertoire dans lequel on se situe.</strong></p>
-<pre><code class="language-plaintext">pwd</code></pre>
-<p>&nbsp;</p>
 <h2>mkdir - Créer un répertoire</h2>
 <p><strong>Créer un répertoire.</strong></p>
 <pre><code class="language-plaintext">mkdir -p /chemin/répertoire/à/créer</code></pre>
@@ -280,119 +361,6 @@ dateCreated: 2021-04-28T18:24:13.228Z
 </figure>
 <p><i>Exemple : Je souhaite créer un répertoire <strong>truc</strong> dans /home/user1/test1, mais le fichier test1 n'existe pas.</i></p>
 <pre><code class="language-plaintext">mkdir -p /home/user1/test1/truc</code></pre>
-<p>&nbsp;</p>
-<h2>cd - Changer de répertoire</h2>
-<p><strong>Permet de se déplacer dans l'arborescence</strong></p>
-<pre><code class="language-plaintext">cd /répertoire/de/destination</code></pre>
-<p>&nbsp;</p>
-<h2>cat - Afficher le contenu d'un fichier</h2>
-<p><strong>Permet d'ouvrir un fichier et d'afficher son contenu.</strong></p>
-<pre><code class="language-plaintext">cat &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-b</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes non vides</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-n</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
-<h2>less - Afficher un fichier page par page</h2>
-<p><strong>&nbsp;Affiche le fichier page par page. C'est donc pratique pour les longs fichiers.</strong></p>
-<pre><code class="language-plaintext">less fichier</code></pre>
-<p>&nbsp;</p>
-<h2><strong>head - A</strong>fficher l'en-tête d'un fichier</h2>
-<p><strong>Affiche l'en-tête d'un fichier</strong></p>
-<pre><code class="language-plaintext">head &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;"><code>-n</code></td>
-        <td>spécifie le nombre de ligne à afficher</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
-<h2>tail - Afficher la fin d'un fichier</h2>
-<p><strong>Affiche la fin d'un fichier</strong></p>
-<pre><code class="language-plaintext">tail &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;"><code>-f</code></td>
-        <td>permet de mettre à jour en temps réel l'affichage de la fin du fichier</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
-<h2>df - Afficher la taille d'un répertoire</h2>
-<p><strong>Permet d'afficher la taille d'un répertoire.</strong></p>
-<pre><code class="language-plaintext">df &lt;option&gt; répertoire</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Permet d'obtenir un résultat plus lisible pour un humain (<i>ex Mo, Ko,...</i>)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-k</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en kilobytes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-m</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en megabytes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d <strong>n</strong>.</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des sous-répertoires jusqu'au <strong>n</strong>ème</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
 <h2>mv - Déplacer un fichier ou dossier</h2>
 <p><strong>Permet de déplacer un fichier ou un répertoire.</strong></p>
 <pre><code class="language-plaintext">mv &lt;option&gt; /chemin/source /chemin/destination</code></pre>
@@ -417,7 +385,9 @@ dateCreated: 2021-04-28T18:24:13.228Z
     </tbody>
   </table>
 </figure>
-<p>&nbsp;</p>
+<h2>pwd - Afficher le répertoire courant</h2>
+<p><strong>Affiche le répertoire dans lequel on se situe.</strong></p>
+<pre><code class="language-plaintext">pwd</code></pre>
 <h2>rm - Supprimer un fichier ou dossier</h2>
 <p><strong>Permet de supprimer un fichier ou un dossier</strong></p>
 <pre><code class="language-plaintext">rm &lt;option&gt; /chemin/truc/a/supprimer</code></pre>
@@ -450,7 +420,31 @@ dateCreated: 2021-04-28T18:24:13.228Z
     </tbody>
   </table>
 </figure>
+<h2>sftp - Récupérer un fichier sur un serveur</h2>
+<p><strong>Permet de se connecter en SFTP à un serveur</strong></p>
+<pre><code class="language-plaintext">sftp -P &lt;PORT&gt; &lt;UTILISATEUR&gt;@&lt;SERVEUR&gt;</code></pre>
+<p><strong>Permet de récupérer simplement un fichier</strong></p>
+<pre><code class="language-plaintext">get &lt;CHEMIN&gt;/&lt;FICHIER&gt;</code></pre>
+<h2>tail - Afficher la fin d'un fichier</h2>
+<p><strong>Affiche la fin d'un fichier</strong></p>
+<pre><code class="language-plaintext">tail &lt;option&gt; fichier</code></pre>
 <p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center;"><code>-f</code></td>
+        <td>permet de mettre à jour en temps réel l'affichage de la fin du fichier</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
 <h2>tar - Compression et décompression</h2>
 <p><strong>Permet de compresser ou décompresser en fonction des options</strong></p>
 <pre><code class="language-plaintext">tar -[options] &lt;nom_fichier_destination&gt; &lt;fichier_ou_dossier_source&gt;</code></pre>
@@ -503,12 +497,6 @@ dateCreated: 2021-04-28T18:24:13.228Z
 <pre><code class="language-plaintext">tar -cvf test.tar /chemin/dossier/a/compresser</code></pre>
 <p>Exemple : Désarchiver un dossier.</p>
 <pre><code class="language-plaintext">tar -xvf test.tar /chemin/dossier/destination</code></pre>
-<h2>sftp - Récupérer un fichier sur un serveur</h2>
-<p><strong>Permet de se connecter en SFTP à un serveur</strong></p>
-<pre><code class="language-plaintext">sftp -P &lt;PORT&gt; &lt;UTILISATEUR&gt;@&lt;SERVEUR&gt;</code></pre>
-<p><strong>Permet de récupérer simplement un fichier</strong></p>
-<pre><code class="language-plaintext">get &lt;CHEMIN&gt;/&lt;FICHIER&gt;</code></pre>
-<p>&nbsp;</p>
 <h1>Sessions, Utilisateurs et Permissions</h1>
 <h2>groups - Afficher les groupes d'appartenance d'un utilisateur</h2>
 <p><strong>Permet d'afficher dans quels groupes se trouve l'utilisateur</strong></p>
