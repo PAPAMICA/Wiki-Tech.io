@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-19T09:41:16.434Z
+date: 2021-05-19T09:54:46.206Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
@@ -276,6 +276,52 @@ dateCreated: 2021-04-28T18:24:13.228Z
     </tbody>
   </table>
 </figure>
+<h2>find - Chercher un fichier</h2>
+<p>Permet de trouver un fichier précis ou une liste de fichier</p>
+<pre><code class="language-plaintext">find &lt;DOSSIER&gt; &lt;OPTIONS&gt; -iname "&lt;FICHIER&gt;"</code></pre>
+<p>&nbsp;</p>
+<figure class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Option</th>
+        <th>Commentaire</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center;"><code>-iname &lt;FICHIER&gt;</code></td>
+        <td>Cherche par nom de fichier</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-name &lt;FICHIER&gt;</code></td>
+        <td>Cherche par nom de fichier (sensible à la casse)</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-type f/d</code></td>
+        <td>Cherche un certain type (<code>f</code> = fichier - <code>d</code> = dossier)</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-size +/- &lt;TAILLE&gt;</code></td>
+        <td>Cherche en fonction de la taille</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-user &lt;UTILISATEUR&gt;</code></td>
+        <td>Cherche en fonction de l'utilisateur</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-group &lt;GROUPE&gt;</code></td>
+        <td>Cherche en fonction du groupe</td>
+      </tr>
+      <tr>
+        <td style="text-align:center;"><code>-perm &lt;PERMISSION&gt;</code></td>
+        <td>Cherche en fonction de la permission</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p>Exemple : Chercher des fichier de plus de 200ko qui ne contienne pas le dans le nom “2015” dans le dossier “/photosdevacances”</p>
+<pre><code class="language-plaintext">find /photosdevacances -type f -size +200k -not -iname "*2015*"</code></pre>
 <h2><strong>head - A</strong>fficher l'en-tête d'un fichier</h2>
 <p><strong>Affiche l'en-tête d'un fichier</strong></p>
 <pre><code class="language-plaintext">head &lt;option&gt; fichier</code></pre>
@@ -291,7 +337,7 @@ dateCreated: 2021-04-28T18:24:13.228Z
     <tbody>
       <tr>
         <td style="text-align:center;"><code>-n</code></td>
-        <td>spécifie le nombre de ligne à afficher</td>
+        <td>Spécifie le nombre de ligne à afficher</td>
       </tr>
     </tbody>
   </table>
