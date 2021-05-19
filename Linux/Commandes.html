@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-11T14:23:46.045Z
+date: 2021-05-19T09:32:48.682Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
@@ -503,6 +503,12 @@ dateCreated: 2021-04-28T18:24:13.228Z
 <pre><code class="language-plaintext">tar -cvf test.tar /chemin/dossier/a/compresser</code></pre>
 <p>Exemple : Désarchiver un dossier.</p>
 <pre><code class="language-plaintext">tar -xvf test.tar /chemin/dossier/destination</code></pre>
+<h2>sftp - Récupérer un fichier sur un serveur</h2>
+<p><strong>Permet de se connecter en SFTP à un serveur</strong></p>
+<pre><code class="language-plaintext">sftp -P &lt;PORT&gt; &lt;UTILISATEUR&gt;@&lt;SERVEUR&gt;</code></pre>
+<p><strong>Permet de récupérer simplement un fichier</strong></p>
+<pre><code class="language-plaintext">get &lt;CHEMIN&gt;/&lt;FICHIER&gt;</code></pre>
+<p>&nbsp;</p>
 <h1>Sessions, Utilisateurs et Permissions</h1>
 <h2>groups - Afficher les groupes d'appartenance d'un utilisateur</h2>
 <p><strong>Permet d'afficher dans quels groupes se trouve l'utilisateur</strong></p>
