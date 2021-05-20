@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-20T21:50:22.530Z
+date: 2021-05-20T21:52:56.383Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -21,7 +21,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <p>Le serveur <strong>Exchange acceptera de traiter les emails pour cet espace de nom</strong> car il en aura la «&nbsp;responsabilité&nbsp;».<br>Sans cette configuration le serveur ne traitera pas les messages électroniques reçus ou envoyés par cet espace de noms SMTP.</p>
 <ul>
-  <li>Les types de domaines acceptés&nbsp;</li>
+  <li>Les types de domaines acceptés</li>
 </ul>
 <p><u>Domaine faisant autorité</u></p>
 <p><strong>Tous les destinataires</strong> figurant dans le domaine faisant autorité <strong>existent dans l'organisation Exchange</strong>.<br>Exchange est chargé de générer des <strong>notifications d'échec</strong> de remise (également appelées notifications de non-remise) pour les destinataires ne figurant pas dans un domaine faisant autorité.<br>Le serveur <strong>Exchange est donc totalement «&nbsp;maître&nbsp;» de ce domaine</strong> et en aura une totale responsabilité.<br>L’intégralité des boites mails du domaine sera gérée par le serveur Exchange de l’entreprise.</p>
@@ -31,13 +31,13 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><u>Domaine de relais externe</u></p>
 <p><strong>Aucun des destinataires figurant dans le domaine de relais externe n'existe dans l'organisation Exchange</strong>.<br>Exchange <strong>n'est pas chargé de générer des notifications d'échec</strong> de remise pour les destinataires ne figurant pas dans un domaine de relais externe.<br>Pour avoir des notifications, il faudra créer un connecteur d'envoi avec l'espace d'adressage du domaine de relais externe.<br>Il faudra également approvisionner ce connecteur d'envoi sur un <strong>serveur de transport Edge</strong> ou un serveur de boîtes aux lettres connecté à Internet pour relayer les messages destinés aux destinataires absents du domaine.<br>Cette configuration permettra de relayer les e-mails vers des destinataires externes de l’entreprise ne faisant pas parti de l’organisation Exchange de l’entreprise.<br>Aucune des boites mails n’est gérée par le serveur Exchange.</p>
 <ul>
-  <li>Les domaines acceptés se <strong>configurent de deux manières</strong> différentes&nbsp;</li>
+  <li>Les domaines acceptés se <strong>configurent de deux manières</strong> différentes</li>
 </ul>
 <p><u>Depuis l’EAC</u></p>
 <p>Se connecter à l’EAC puis se rendre dans la partie flux de messagerie et enfin cliquer sur domaines acceptés</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/eac-2.png"></figure>
+<p>Cliquer sur le symbole <span class="text-big"><strong>+ </strong></span>puis remplir les informations demandées</p>
+<figure class="image image_resized" style="width:60%;"><img src="/images/eac-3.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
