@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T07:37:24.341Z
+date: 2021-05-20T07:42:22.263Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -125,23 +125,30 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>si on exécute cette commande on vois que la liste est longue et que cela peut paraitre un peu compliqué et par forcément facile à lire.</p>
 <p>&nbsp;Pour cela 3 solutions :</p>
 <ul>
-  <li>renvoyer le tout dans un fichier texte le sauvegarder pour l'avoir sous la main puis un petit <strong>contrôle + F</strong> pour rechercher dans la liste.</li>
+  <li><u>renvoyer le tout dans un fichier texte</u> le sauvegarder pour l'avoir sous la main puis un petit <strong>contrôle + F</strong> pour rechercher dans la liste.</li>
 </ul>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-CimClass | Out-File</code></pre>
+<p>&nbsp;</p>
 <ul>
-  <li>renvoyer le tout dans un fichier Excel et faire sa petite recherche à l'aide d'outils incorporés.</li>
+  <li><u>renvoyer le tout dans un fichier Excel</u> et faire sa petite recherche à l'aide d'outils incorporés.</li>
 </ul>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Cimclass | Select-Object CimClassName | Export-Csv -Path C:\classescim.csv</code></pre>
+<p>&nbsp;</p>
 <p>Petite remarque: <code>Select-object</code> permet de filtrer les informations de la commande en récupérant unique la partie CimclassName de <code>Get-CimClass</code></p>
 <ul>
-  <li>renvoyer le tout dans un GridView, un outil fourni dans PowerShell bien pratique.</li>
+  <li><u>renvoyer le tout dans un GridView</u>, un outil fourni dans PowerShell bien pratique.</li>
 </ul>
+<p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Cimclass | Out-GridView</code></pre>
-<p>J'en profite pour vous montrer le Gridview.</p>
+<p>&nbsp;</p>
+<p>J'en profite pour vous montrer le Gridview. Profitez-en pour le manipuler.</p>
 <figure class="image"><img src="/gridview.png"></figure>
 <p>&nbsp;</p>
 <p>C'est une Fenêtre, bien pratique, qui permet dans ce cas, de mettre directement sous forme de tableau, de filtrer ou de rechercher des éléments renvoyés par une commande.</p>
 <p>Vous commencez certainement à vous dire POWAAA!! &nbsp;puissant le truc…</p>
+<p>Allez a vous de jouer! Essayer de récupérer des infos, comme par exemple sur le bios, la date e l'installation du système, le ou les disque(s) dur etc…</p>
 <h1>Création d'un menu sous Powershell</h1>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:58.46%;"><img src="/capture2.png"></figure>
