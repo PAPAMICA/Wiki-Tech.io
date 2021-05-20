@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-19T22:41:37.734Z
+date: 2021-05-20T13:20:14.630Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -109,9 +109,17 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 ## Centreon
-- [🌀 Installation 🚧 *Mise en place d'un serveur de supervision Centreon*](/Supervision/Centreon/Installation)
+- [👁️‍🗨️ Présentation 🚧 *Qu'est ce qu'est Centreon ?*](/Supervision/Centreon/Présentation)
+- [🌀 Installation 🚧 *Mise en place d'un serveur Centreon*](/Supervision/Centreon/Installation)
+- [👥 Comptes et Groupes 🚧 *Gestion des comptes et des groupes dans Centreon*](/Supervision/Centreon/Gestion-Comptes-Groupes)
+- [🕹️ Les commandes 🚧 *Contrôler son serveur de supervision en ligne de commande*](/Supervision/Centreon/Commandes)
+- [🛢️ Les templates 🚧 *Comprendre,  créer et utiliser les modèles*](/Supervision/Centreon/Templates)
+- [💎 Les plugins 🚧 *Comprendre et utiliser les plugins*](/Supervision/Centreon/Plugins)
+- [📍 Les hôtes 🚧 *Qu'est-ce qu'un hôte et comment les ajouter ?*](/Supervision/Centreon/Hotes)
+- [📧 Notifications mails 🚧 *Configurer les notifications mails et les personnaliser*](/Supervision/Centreon/Notifications-Mails)
+- [💘 Déployer la configuration 🚧 *Démarrer la supervision à l'aide de Centreon !*](/Supervision/Centreon/Deployer-Configuration)
+- [📊 Vues personnalisées 🚧 *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Notifications-Mails)
 {.links-list}
-
 # Grafana
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Grafana/Installation)
 - [🔴 Dashboard Zabbix 🚧 *Création des dashboards pour Zabbix*](/Grafana/Zabbix)
