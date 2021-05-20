@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T07:42:33.369Z
+date: 2021-05-20T07:56:09.601Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -119,11 +119,10 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Voyons comment utiliser ces commandes et obtenir des infos sur un système.</p>
 <figure class="image"><img src="/get-ciminstance.png"></figure>
 <p>&nbsp;</p>
-<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, les toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour fouiner dans toutes ces classes.</p>
-<p>c'est alors que nous viens en aide la commande et que je vous montre mon astuce pour fouiller dans tout ce Bazard:</p>
-<pre><code class="language-plaintext">Get-Cimclass</code></pre>
-<p>si on exécute cette commande on vois que la liste est longue et que cela peut paraitre un peu compliqué et par forcément facile à lire.</p>
-<p>&nbsp;Pour cela 3 solutions :</p>
+<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour fouiner dans toutes ces classes.</p>
+<p>C'est alors que nous viens en aide la commande<code> Get-Cimclass</code> et que je vous montre mon astuce pour fouiller dans tout ce Bazard</p>
+<p>Si on exécute cette commande on voit que la liste est longue et que cela peut paraitre un peu compliqué et par forcément facile à lire. De plus, la commande renvoie l'ensemble des classes Wmi et Cim.</p>
+<p>&nbsp;Pour cela 3 solutions pour s'y retrouver:</p>
 <ul>
   <li><u>renvoyer le tout dans un fichier texte</u> le sauvegarder pour l'avoir sous la main puis un petit <strong>contrôle + F</strong> pour rechercher dans la liste.</li>
 </ul>
@@ -147,6 +146,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <figure class="image"><img src="/gridview.png"></figure>
 <p>&nbsp;</p>
 <p>C'est une Fenêtre, bien pratique, qui permet dans ce cas, de mettre directement sous forme de tableau, de filtrer ou de rechercher des éléments renvoyés par une commande.</p>
+<p>A partir de la, connaitre à quoi servent tout les requêtes et les instance CIM serait un peu fou. c'est pourquoi je vous renvoie vers ce <a href="https://docs.microsoft.com/fr-fr/windows/win32/cimwin32prov/cimwin32-wmi-providers">lien</a> pour en connaitre leur utilité&nbsp;</p>
 <p>Vous commencez certainement à vous dire POWAAA!! &nbsp;puissant le truc…</p>
 <p>Allez a vous de jouer! Essayer de récupérer des infos, comme par exemple sur le bios, la date de l'installation du système, le ou les disque(s) dur etc…</p>
 <h1>Création d'un menu sous Powershell</h1>
