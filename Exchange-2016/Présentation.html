@@ -2,7 +2,7 @@
 title: Présentation et Prérequis
 description: Présentation de Exchange 2016
 published: true
-date: 2021-05-20T21:10:16.520Z
+date: 2021-05-20T21:15:33.537Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T13:30:25.064Z
@@ -395,7 +395,34 @@ dateCreated: 2021-05-20T13:30:25.064Z
 <figure class="image"><img src="/images/powershell_install-1.png"></figure>
 <p>A savoir qu’il est possible de renseigner de nombreuses informations lors de la commande d’installation.<br>Voici la liste des informations possibles&nbsp;</p>
 <figure class="image image_resized" style="width:36.42%;"><img src="/images/powershell_install-2.png"></figure>
-<p>&nbsp;</p>
+<h2>Vérification de l’installation</h2>
+<p>Lorsque l’installation de Exchange est terminée, que ça soit en graphique ou en ligne de commande, il est <strong>impératif de vérifier que tout s’est bien déroulé</strong>.<br>Pour ce faire il y a plusieurs choses à contrôler.</p>
+<ul>
+  <li>Lire le <strong>rapport du setup.exe</strong> en fin d’installation</li>
+  <li>Lire <strong>les logs de l’installation</strong> (ils sont par défaut en mode verbose)</li>
+</ul>
+<p>Ces logs se trouvent dans <i><strong>&lt;system drive&gt; \ExchangeSetupLogs\ExchangeSetup.log</strong></i></p>
+<figure class="image"><img src="/images/vérif_install-1.png"></figure>
+<ul>
+  <li>Vérifier les informations disponibles dans l’Observateur d’évènements (principalement dans le journal Application)</li>
+</ul>
+<figure class="image image_resized" style="width:83.79%;"><img src="/images/vérif_install-2.png"></figure>
+<ul>
+  <li>Vérifier l’état des services démarrés sur le serveur. Les services Exchanges devraient être opérationnels et démarrés.</li>
+</ul>
+<figure class="image"><img src="/images/vérif_install-3.png"></figure>
+<ul>
+  <li>Contrôler les sites IIS</li>
+</ul>
+<figure class="image"><img src="/images/vérif_install-4.png"></figure>
+<ul>
+  <li>Lancer la console PowerShell Exchange Management Tools et exécuter la commande suivante</li>
+</ul>
+<pre><code class="language-plaintext">Get-ExchangeServer</code></pre>
+<figure class="image"><img src="/images/vérif_install-5.png"></figure>
+<ul>
+  <li>Redémarrer le serveur et contrôler de nouveau tout à part les logs d’installation</li>
+</ul>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
