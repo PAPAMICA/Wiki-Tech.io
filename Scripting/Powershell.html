@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T05:45:56.561Z
+date: 2021-05-20T05:59:38.925Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -122,9 +122,20 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>&nbsp;</p>
 <p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, les toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour fouiner dans toutes ces classes.</p>
 <p>c'est alors que nous viens en aide la commande et que je vous montre mon astuce pour fouiller dans tout ce Bazard:</p>
-<p><code>Get-Cimclass</code></p>
+<pre><code class="language-plaintext">Get-Cimclass</code></pre>
 <p>si on exécute cette commande on vois que la liste est longue et que cela peut paraitre un peu compliqué et par forcément facile à lire.</p>
-<p>&nbsp;</p>
+<p>&nbsp;Pour cela 3 solutions :</p>
+<ul>
+  <li>renvoyer le tout dans un fichier texte puis un petit <strong>contrôle + F</strong> pour rechercher dans la liste.</li>
+</ul>
+<pre><code class="language-plaintext">Get-CimClass | Out-File</code></pre>
+<ul>
+  <li>renvoyer le tout dans un fichier Excel et faire sa petite recherche à l'aide d'outils incorporés.</li>
+</ul>
+<p>Get-Cimclass</p>
+<ul>
+  <li>renvoyer le tout dans un GridView, un outil fourni dans PowerShell bien pratique.</li>
+</ul>
 <h1>Création d'un menu sous Powershell</h1>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:58.46%;"><img src="/capture2.png"></figure>
