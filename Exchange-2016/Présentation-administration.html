@@ -2,7 +2,7 @@
 title: Présentation de l’administration
 description: Administration via EAC et EMS
 published: true
-date: 2021-05-20T21:36:48.649Z
+date: 2021-05-20T21:38:33.119Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:33:32.817Z
@@ -29,6 +29,24 @@ dateCreated: 2021-05-20T21:33:32.817Z
 <p>EMS <strong>s’appuie sur l’environnement PowerShell</strong> et hérite de ses caractéristiques pour l’administration simplifiée.&nbsp;<br>La console Exchange Management Shell permet de <strong>réaliser des tâches répétitives</strong> (sous forme de script par exemple) pour gagner du temps et réduire les erreurs. Il est donc possible <strong>d’automatiser des tâches</strong>, pour la <strong>maintenance des serveurs Exchange ou pour la création de boîtes aux lettres utilisateurs en masse</strong>.</p>
 <figure class="image"><img src="/ems-1.png"></figure>
 <figure class="image image_resized" style="width:40.91%;"><img src="/ems-2.png"></figure>
+<h2>Installation des outils d’administration Exchange 2016</h2>
+<p><strong>Par défaut</strong> les outils d’administration sont <strong>installés sur le serveur Exchange 2016</strong> et ne nécessitent pas d’installation complémentaire.<br>Toutefois, l’installation de ces outils <strong>peut se faire sur un poste sur laquelle Exchange 2016 n’est pas installé</strong>.<br>Cela permet de gérer Exchange 2016 sans avoir à se connecter directement sur le serveur mais offre également la possibilité de déléguer l’administration complète ou une partie.</p>
+<figure class="image"><img src="/outil_admin-1.png"></figure>
+<p><strong>Le compte de l’utilisateur qui utilisera les outils d’administration devra être placé dans l’un des groupes de sécurité Exchange disponibles dans l’Active Directory</strong>. Ce sont les groupes qui ont été indiqués précédemment (par exemple «&nbsp;Helpdesk&nbsp;»)</p>
+<p><u>Rappel des prérequis pour l’installation des outils d’administration&nbsp;:&nbsp;</u></p>
+<ul>
+  <li>Un OS sous Windows 8.1 64bits, Windows 10 64bits, Windows Server 2012 ou Windows Server 2012 R2</li>
+  <li>.Netframework 4.5.2 minimum</li>
+  <li>Les outils d’administration IIS</li>
+  <li>Utiliser un compte ayant les droits pour installer des applications sur le poste.(par exemple administrateur local)</li>
+  <li>Utiliser un compte et un poste du domaine</li>
+</ul>
+<p>Il existe deux modes d’installations de ces outils&nbsp;:</p>
+<ul>
+  <li>Avec un assistant en mode graphique</li>
+  <li>En ligne de commande depuis la console Exchange Management Shell (sans assistant)</li>
+</ul>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
