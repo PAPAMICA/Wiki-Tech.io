@@ -2,7 +2,7 @@
 title: Présentation de l’administration
 description: Administration via EAC et EMS
 published: true
-date: 2021-05-20T21:42:41.433Z
+date: 2021-05-20T21:45:20.597Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:33:32.817Z
@@ -66,10 +66,19 @@ dateCreated: 2021-05-20T21:33:32.817Z
 <p>Ensuite, après avoir monté l’ISO de Exchange, <strong>se rendre dans le lecteur contenant l’ISO et lancer sur le setup.exe</strong> en tant qu’administrateur.</p>
 <figure class="image"><img src="/images/prog_fonc-4.png"></figure>
 <p>Suivre l’assistant et choisir l’installation des <strong>Outils d’administration</strong></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/prog_fonc-5.png"></figure>
+<p>Suivre à nouveau les instructions de l’assistant pour terminer l’installation.</p>
+<h3>2 – Installation sans l’assistant graphique</h3>
+<p><u>Marche à suivre&nbsp;:</u></p>
+<ul>
+  <li>Disposer des sources Exchange</li>
+  <li>Monter l’ISO</li>
+  <li>Lancer l’invite de commande PowerShell en tant qu’administrateur</li>
+  <li>Se rendre dans le chemin du lecteur contenant l’ISO de Exchange</li>
+  <li>Exécuter la commande d’installation suivante&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">.\setup.exe /Role:ManagementTools /IAcceptExchangeServerLicenseTerms</code></pre>
+<figure class="image"><img src="/images/prog_fonc-6.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
