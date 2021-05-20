@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-17T10:05:33.516Z
+date: 2021-05-20T14:35:04.106Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-10T11:53:45.764Z

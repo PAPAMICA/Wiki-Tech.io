@@ -2,7 +2,7 @@
 title: Scripting
 description: Les bases et différents langages.
 published: true
-date: 2021-05-09T09:27:44.600Z
+date: 2021-05-20T14:33:40.699Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-04T07:12:09.623Z

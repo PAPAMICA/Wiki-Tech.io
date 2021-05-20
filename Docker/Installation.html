@@ -2,107 +2,60 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-17T13:50:44.728Z
+date: 2021-05-20T14:34:15.735Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
 -->
 
-<figure class="image image_resized" style="width:53.41%;"><img src="https://i1.wp.com/labo-tech.fr/wp-content/uploads/2019/11/docker.png?resize=920%2C316&amp;ssl=1"></figure>
-<h1>Installation</h1>
-<p>Le package d’installation Docker disponible dans le référentiel officiel Debian n’est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel.<br>Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.</p>
-<p>&nbsp;</p>
-<h2>Debian &amp; Ubuntu</h2>
-<p>1 - Mettez à jour votre liste de packages existante :</p>
-<pre><code class="language-plaintext">sudo apt update</code></pre>
-<p>2 - Installez quelques packages prérequis qui permettent à <code>apt</code> d’utiliser des packages via HTTPS :</p>
-<pre><code class="language-plaintext">sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common</code></pre>
-<p>3 - Ajoutez la clé GPG du référentiel Docker officiel à votre système :</p>
-<pre><code class="language-plaintext">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -</code></pre>
-<p>4 - Ajoutez le référentiel Docker aux sources APT :</p>
-<pre><code class="language-plaintext">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"</code></pre>
-<p>5 - Mettez à jour la base de données des packages avec les packages Docker du repo nouvellement ajouté :</p>
-<pre><code class="language-plaintext">sudo apt update</code></pre>
-<p>6 - Installez Docker :</p>
-<pre><code class="language-plaintext">sudo apt install docker-ce</code></pre>
-<p>7 - Activez et lancer le daemon Docker :</p>
-<pre><code class="language-plaintext">sudo systemctl enable docker
-sudo systemctl start docker</code></pre>
-<p>&nbsp;</p>
-<h2>Arch &amp; Manjaro</h2>
-<p>1 - Mettez à jour votre liste de packages existante et votre système :</p>
-<pre><code class="language-plaintext">sudo pacman -Syu</code></pre>
-<p>&nbsp;2 - Installez Docker :</p>
-<pre><code class="language-plaintext">sudo pacman -S docker</code></pre>
-<p>&nbsp;3 - Activez et lancer le daemon Docker :</p>
-<pre><code class="language-plaintext">sudo systemctl start docker
-sudo systemctl enable docker</code></pre>
-<p>&nbsp;</p>
-<h2>CentOS &amp; Fedora</h2>
-<p>1 - Utilisez DNF pour ajouter et activer le référentiel officiel Docker CE. :</p>
-<pre><code class="language-plaintext">sudo dnf config-manager --add-repo=https://download.docker.com/linux/centos/docker-ce.repo</code></pre>
-<p>Ou pour Fedora :</p>
-<pre><code class="language-plaintext">sudo dnf config-manager --add-repo=https://download.docker.com/linux/fedora/docker-ce.repo</code></pre>
-<p>&nbsp;2 - Installez Docker :</p>
-<pre><code class="language-plaintext">sudo dnf install docker-ce</code></pre>
-<p>&nbsp;3 - Activez et démarrer le service Docker :</p>
-<pre><code class="language-plaintext">sudo systemctl enable --now docker</code></pre>
-<p>&nbsp;</p>
-<h2>MacOS</h2>
-<p>Docker Desktop pour Mac est une application de bureau facile à installer pour créer, déboguer et tester des applications conteneurisées sur un Mac. Docker Desktop pour Mac est un environnement de développement complet profondément intégré à la structure, au réseau et au système de fichiers de l'hyperviseur Mac OS. Docker Desktop - Mac est le moyen le plus rapide et le plus fiable d'exécuter Docker sur un Mac.</p>
-<p>Pour une liste des prérequis, veuillez consulter <a href="https://docs.docker.com/docker-for-mac/install/#system-requirements">la documentation</a>.</p>
-<h3><strong>Télécharger Docker :</strong></h3>
-<ul>
-  <li><a href="https://desktop.docker.com/mac/stable/amd64/Docker.dmg"><strong>📦 Mac avec processeur Intel</strong></a></li>
-  <li><a href="https://desktop.docker.com/mac/stable/arm64/Docker.dmg"><strong>📦 Mac avec processeur Apple</strong></a></li>
-</ul>
-<h3>Installation</h3>
-<p>Double-cliquez sur <code>Docker.dmg</code> pour démarrer l'installation.</p>
-<p>Lorsque l'installation est terminée et que Docker démarre, la baleine dans la barre d'état supérieure indique que Docker est en cours d'exécution et accessible à partir d'un terminal.</p>
-<figure class="image image_resized" style="width:29.84%;"><img src="https://d1q6f0aelx0por.cloudfront.net/icons/whale-in-menu-bar.png" alt="Whale in menu bar"></figure>
-<p>&nbsp;</p>
-<h2>Windows</h2>
-<p>Je vais me permettre de te tutoyer juste quelques lignes.<br>Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘<br>Plus sérieusement, le client Docker pour Windows n’est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.<br>Passe directement par un Debian sous WSL et fait l’installation de Docker dedans.<br>Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖</p>
-<p>&nbsp;</p>
-<h2>Vérification de l'installation</h2>
-<p>Il suffit pour cela de vérifier avec la commande suivante :&nbsp;</p>
-<pre><code class="language-plaintext">sudo docker version</code></pre>
-<p>C'est censé vous renvoyer : <code>docker &lt;version&gt;</code></p>
-<p>&nbsp;</p>
-<h1>Utiliser les commandes Docker sans Sudo</h1>
-<p>Par défaut, seuls les utilisateurs disposant de privilèges root ou sudo peuvent exécuter ou gérer Docker. Si vous souhaitez exécuter docker sans privilèges root ou sans avoir à ajouter sudo à chaque fois, il suffit d'ajouter son utilisateur au groupe docker :</p>
-<pre><code class="language-plaintext">sudo usermod -aG docker $USER</code></pre>
-<p>&nbsp;</p>
-<h1>Déplacer le dossier Docker</h1>
-<p>Le répertoire de données standard utilisé pour docker est <code>/var/lib/docker</code>, et comme ce répertoire stockera toutes vos images, volumes, etc., il peut devenir assez volumineux assez rapidement</p>
-<p>Si vous souhaitez déplacer le répertoire de données du docker vers un autre emplacement, vous pouvez suivre les étapes simples suivantes.</p>
-<h3><strong>&nbsp;Arrêtez le daemon Docker :</strong></h3>
-<pre><code class="language-plaintext">sudo service docker stop</code></pre>
-<h3><strong>Ajoutez un fichier de configuration pour indiquer au daemon docker quel est l'emplacement du nouveau répertoire de données :</strong></h3>
-<p>En utilisant votre éditeur de texte préféré, ajoutez un fichier nommé <code>daemon.json</code> sous le répertoire <code>/etc/docker</code>. Le fichier doit avoir ce contenu:</p>
-<pre><code class="language-python">{ 
-&nbsp;&nbsp;&nbsp;"data-root": "/path/to/your/docker" 
-}</code></pre>
-<p><i>Evidemment pensez à changer “</i><code><i>/path/to/your/docker</i></code><i>” &nbsp;avec le chemin de votre dossier voulu.</i></p>
-<h3>Copiez le répertoire de données actuel dans le nouveau</h3>
-<pre><code class="language-plaintext">sudo rsync -aP /var/lib/docker/ /path/to/your/docker</code></pre>
-<h3>Renommez l'ancien répertoire de Docker</h3>
-<pre><code class="language-plaintext">sudo mv&nbsp;/var/lib/docker&nbsp;/var/lib/docker.old</code></pre>
-<p><i>Ceci est juste une vérification de cohérence pour voir que tout va bien et que le daemon docker utilisera correctement le nouvel emplacement pour ses données.</i></p>
-<h3>Redémarrez le daemon Docker</h3>
-<pre><code class="language-plaintext">sudo service docker start</code></pre>
-<h3>Testez !</h3>
-<p>Si tout va bien, vous ne devriez voir aucune différence dans l'utilisation de vos conteneurs Docker. Lorsque vous êtes sûr que le nouveau répertoire est utilisé correctement par le daemon docker, vous pouvez supprimer l'ancien répertoire de données.</p>
-<pre><code class="language-plaintext">sudo rm -rf /var/lib/docker.old</code></pre>
-<p>&nbsp;</p>
-<h1>Utilisation de base de Docker</h1>
-<p>Si tout se passe bien, à ce stade vous devriez être en mesure de créer vos propres conteneurs sur votre machine.</p>
-<p>Nous allons voir dans cette section une des nombreuses possibilités d’utilisation de Docker. Par exemple je souhaite avoir un environnement ubuntu vierge. Via la commande ci-dessous je vais tout simplement récupérer la dernière image d’un conteneur debian et lancer un conteneur local associé.</p>
-<pre><code class="language-plaintext">docker run ubuntu</code></pre>
-<p>Vous pouvez bien évidemment changer “ubuntu” par un autre système linux , ou par un conteneur plus précis (comme une image debian avec nginx installé). Je vous invite à vous rendre sur le <a href="https://hub.docker.com/explore">Hub Docker</a> pour voir toutes les images disponibles.</p>
-<p>Vous pouvez également, simplement récupérer l’image via un :</p>
-<pre><code class="language-plaintext">docker pull ubuntu</code></pre>
-<p>Une fois que votre conteneur est créé et lancé, il vous faut accéder à celui-ci. Avec cette commande vous allez accéder au bash de votre conteneur et ainsi modifier ou ajouter des fonctionnalités manuellement.</p>
-<pre><code class="language-plaintext">docker run -it ubuntu bash</code></pre>
-<p>Voilà un rapide et simple exemple pour vous montrer le fonctionnement le plus basique de Docker. Bien évidemment cette solution va bien au-delà de ça. Vous pouvez aussi créer vos propres images personnalisées via des scripts pour des besoins précis.</p>
-<p>Si vous voulez en savoir plus, rendez-vous sur le site de Docker.</p>
+# Installation
+Le package d'installation Docker disponible dans le référentiel officiel Debian n'est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel. 
+Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.
+
+## Debian & Ubuntu
+  1 - Mettez à jour votre liste de packages existante :
+ ```
+ sudo apt update
+ ```
+  2 - Installez quelques packages prérequis qui permettent à `apt` d'utiliser des packages via HTTPS : 
+ ```
+ sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common
+ ```
+  3 - Ajoutez la clé GPG du référentiel Docker officiel à votre système :
+ ```
+ curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+ ```
+  4 - Ajoutez le référentiel Docker aux sources APT :
+ ```
+ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+ ```
+  5 - Mettez à jour la base de données des packages avec les packages Docker du repo nouvellement ajouté :
+ ```
+ sudo apt update
+ ```
+  6 - Installez Docker :
+ ```
+ sudo apt install docker-ce
+ ```
+  7 - Activez et lancer le daemon Docker :
+ ```
+ sudo systemctl enable docker
+ sudo systemctl start docker
+ ```  
+ 
+## Arch & Manjaro
+
+## CentOS & Fedora
+
+## MacOS
+
+## Windows
+Je vais me permettre de te tutoyer juste quelques lignes.
+Si tu es sous Windows, installe Linux et on verra plus tard pour Docker 😘
+Plus serieusement, le client Docker pour Windows n'est pas foufou : il utilise WSL pour faire une VM et ensuite installer Docker dedans.
+Passe directement par un Debian sous WSL et fait l'installation de Docker dedans.
+Bon courage ! Paix à ton âme. Il est jamais trop tard pour entrée dans la lumière. 🖖
+
+
+
+# Utiliser les commandes Docker sans Sudo

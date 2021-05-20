@@ -1,0 +1,357 @@
+<!--
+title: Présentation et Prérequis
+description: Présentation de Exchange 2016
+published: true
+date: 2021-05-20T14:44:57.320Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-20T13:30:25.064Z
+-->
+
+<h1>Présentation et prérequis&nbsp;</h1>
+<h2>Présentation d’Exchange 2016</h2>
+<p>Microsoft Exchange est un logiciel de groupe de travail de <strong>messagerie électronique</strong> <strong>pour professionnels</strong> s’installant sur un serveur. Il fût créé par Microsoft notamment pour concurrencer Lotus Domino d'IBM et Postfix pour Linux.<br>Microsoft Exchange est très utilisé dans les entreprises, 52 % du marché des plates-formes de messagerie et de collaboration d'entreprise en 2008.<br>C'est un produit de la gamme des serveurs Microsoft apportant un ensemble de services tels que&nbsp;:</p>
+<ul>
+  <li>La gestion des échanges de messages électroniques au sein de l’entreprise</li>
+  <li>La gestion des échanges de messages électroniques vers et depuis l’extérieur de l’entreprise</li>
+  <li>La gestion de la sécurité des informations de messages électroniques</li>
+  <li>La gestion des ressources (salles de réunion, salles informatiques, du matériel, etc.)</li>
+  <li>La gestion d'agenda</li>
+  <li>La gestion des contacts</li>
+  <li>Le stockage des informations</li>
+</ul>
+<p>Microsoft Exchange est <strong>basé sur l’Active Directory</strong> de Microsoft, sur <strong>l’utilisation des DNS</strong> et est <strong>indissociable</strong> de ces derniers.<br>C’est-à-dire que les boites aux lettres utilisateurs auront des éléments qui seront stockés dans les profils des comptes utilisateurs de l’annuaire Active Directory et que les DNS seront utilisés afin de faire du routage de message électronique (client Outlook, serveurs externes, etc.)&nbsp;</p>
+<p><u>Historique des différentes versions de Microsoft Exchange :&nbsp;</u></p>
+<ul>
+  <li>1996 - Exchange Server 4.0</li>
+  <li>1997 - Exchange Server 5.0</li>
+  <li>1997 - Exchange Server 5.5 (Standard Edition - Entreprise Edition)</li>
+  <li>2000 - Exchange Server 2000 (Standard Edition - Entreprise Edition)</li>
+  <li>2003 - Exchange Server 2003 (Standard Edition, limité à une base de données de 16Go - Entreprise Edition)</li>
+  <li>2007 - Exchange Server 2007 (32, non recommandé en production et 64 bits)</li>
+  <li>2009 - Exchange Server 2010 (64 bits - Standard Edition - Entreprise Edition)</li>
+  <li>2009 - Exchange Online</li>
+  <li>2011 – Office365 (remplaçant de Exchange Online)</li>
+  <li>2013 – Exchange Server 2013 (64 bits – Standard Edition – Entreprise Edition)</li>
+  <li>2016 – Exchange Server 2016 (64 bits – Standard Edition – Entreprise Edition)</li>
+</ul>
+<h2>Les nouveautés d’Exchange 2016 par rapport à Exchange 2013</h2>
+<h3>1 – seulement 2 Rôles disponibles</h3>
+<ul>
+  <li><strong>Mailbox</strong>&nbsp;: regroupement des rôles HUB, CAS et BMX (Mailbox)</li>
+  <li><strong>Edge</strong>&nbsp;: rôle à placer sur un serveur <u>relais</u> de messagerie qui sera par exemple positionné en <u>DMZ</u>. Les différents échanges de messages électroniques passeront par le serveur Edge, permettant de ne pas cibler directement le serveur Mailbox.</li>
+</ul>
+<h3>2 – Haute disponibilité DAG</h3>
+<ul>
+  <li><strong>Amélioration d’environ 33% des performances de détection de pannes</strong> et de réactivité de basculement de l’utilisation d’une base de données d’un serveur à l’autre.</li>
+  <li><strong>Possibilité d’améliorer la fréquence d’analyse et la répartition des bases de données. </strong>Le service de réplication inspecte l’état des différentes bases de données sur les serveurs par défaut toutes les heures afin de détecter des problèmes et effectuer un basculement d’un serveur à l’autre en «&nbsp;montant&nbsp;» et «&nbsp;démontant&nbsp;» la ou les base de données à problème. Ce laps de temps devient modifiable.</li>
+  <li><strong>Relay Lag Manager activé par défaut</strong>. Permet de choisir quelles bases de données auront les informations en temps réel et lesquelles auront un délai de réception de ces données ainsi que les serveurs qui hébergeront ces deux types de BDD. Par exemple un serveur peut comporter des BDD qui auront les données en temps réel tandis qu’un autre serveur aura des BDD qui auront 7 jours de «&nbsp;retard&nbsp;» sur les informations stockées. Permet d’éviter la corruption de toutes les bases de données en cas de problème de réplication ou d’attaque, la corruption de toutes les boites en même temps, de corriger un problème suppression de boite mail utilisateur, etc.</li>
+  <li><strong>Création du DAG sans adresse IP.&nbsp;</strong>IP<strong>&nbsp;</strong>Obligatoire pour les versions précédentes.</li>
+  <li><strong>Coexistence entre Exchange 2013 ET Exchange 2016.&nbsp;</strong>(Théorique selon Microsoft mais à éviter)</li>
+</ul>
+<h3>3 – Connectivité (clients&nbsp;: Téléphones, Outlook, etc.)</h3>
+<ul>
+  <li><strong>MAPI activé par défaut</strong>. Nouveau protocole de connexion et de communication entre Outlook et le serveur Exchange pour de meilleurs performances. Remplace «&nbsp;Outlook AnyWhere&nbsp;»</li>
+  <li><strong>ActiveSync version 16</strong>. Gestion de la connexion et de la synchronisation des téléphones.</li>
+  <li><strong>Basé sur SHA2</strong>.</li>
+</ul>
+<h3>4 – Evolution de la fonction de recherche</h3>
+<ul>
+  <li><strong>Amélioration des performances</strong>. Dans un environnement DAG</li>
+  <li><strong>Recherches exécutées coté serveur</strong>.</li>
+  <li><strong>Recherche dans le calendrier possible</strong>.</li>
+</ul>
+<h3>4 – Sources</h3>
+<ul>
+  <li>Disponibles sous forme d’<strong>ISO</strong></li>
+</ul>
+<h3>5 – Outlook version Web</h3>
+<ul>
+  <li>Meilleurs rendu HTML.</li>
+  <li>Gestion des conversations «&nbsp;épinglées&nbsp;» et «&nbsp;rangées&nbsp;».</li>
+</ul>
+<h3>6 – Diagramme des flux de connexion</h3>
+<figure class="image"><img src="/diagramme_flux_connexion.png"></figure>
+<h3>7 – Schéma du rôle Mailbox (boite aux lettres)</h3>
+<figure class="image"><img src="/schema_role_mailbox.png"></figure>
+<h3>8 – Les services</h3>
+<p>Seul le rôle <strong>MAILBOX</strong> gère les services suivants</p>
+<h4>8.1 – Le service de boite aux lettres</h4>
+<ul>
+  <li>Hébergement des bases de données (Mailbox + dossiers publics)</li>
+  <li>DAG (haute disponibilité)</li>
+</ul>
+<h4>8.2 – Le service d’accès clients&nbsp;</h4>
+<ul>
+  <li>Gère les connexions des clients</li>
+  <li>Ce service effectue le routage des clients vers les boites aux lettres</li>
+  <li>Gère la sécurité frontale</li>
+</ul>
+<h4>8.3 – Le service de routage et de transport de messages</h4>
+<ul>
+  <li>Service de transport HUB</li>
+  <li>Service de transport de boite aux lettres</li>
+</ul>
+<h4>8.4 – Le service de messagerie unifiée</h4>
+<ul>
+  <li>Gestion d’un répondeur lorsqu’un environnement SKYPE est greffé à l’infrastructure</li>
+</ul>
+<h2>Licences et Compatibilités</h2>
+<h3>1 – Licences</h3>
+<p>Il existe <strong>deux types de licences</strong>&nbsp;:&nbsp;</p>
+<ul>
+  <li>Une pour la partie <u>serveur</u></li>
+  <li>Une pour la partie <u>accès clients</u></li>
+</ul>
+<h4>1.1 – Partie serveur</h4>
+<p>La partie serveur se compose elle-même de deux licences différentes, une version <strong>Standard</strong> et une version <strong>Entreprise</strong>.<br>La version <strong>Standard</strong> de la licence permet de «&nbsp;monter&nbsp;» jusqu’à <strong>5 bases de données</strong> en même temps. C’est-à-dire que même si le serveur héberge 10 bases de données ou plus par exemple, seulement 5 pourront être «&nbsp;montées&nbsp;» et utilisées.<br>La version <strong>Entreprise</strong> quant à elle, permet de «&nbsp;monter&nbsp;» jusqu’à <strong>100 bases de données</strong> en même temps. Dans ce cas aussi, si le serveur héberge plus de 100 bases de données, seulement 100 pourront être montées et utilisées au maximum.</p>
+<h4>1.2 – Partie Accès Clients (CAL)</h4>
+<p>Cette partie se compose également des version <strong>Standard</strong> et <strong>Entreprise</strong>.<br>Certaines fonctions sont présentes uniquement dans la version Entreprise, par exemple la fonction d’archivage n’est pas présente dans la version standard. Pour l’utiliser il faudra obligatoirement une licence Entreprise.</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: pour utiliser une licence Entreprise, il faudra la greffer obligatoirement sur une licence Standard. Il faudra donc les 2 licences afin d’utiliser une licence Entreprise.</mark></i></p>
+<h3>2 – Types de déploiements</h3>
+<h4>2.1 – Mode local</h4>
+<p>Comme le nom l’indique, le mode local consiste à <strong>héberger soit même en local</strong> le ou les serveurs Exchange de l’organisation.<br>Dans cette configuration, il est possible de faire coexister Exchange 2016 avec les versions antérieures suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>Exchange 2010 SP3 RU11 Minimum</li>
+  <li>Exchange 2013 CU10 &gt;Minimum</li>
+</ul>
+<p>Il est donc possible d’avoir ces 3 versions d’Exchange en même temps si les versions requises sont respectées. Toutefois il est conseiller d’avoir une seule version identique sur tous les serveurs de l’organisation</p>
+<h4>2.2 – Mode hybride</h4>
+<p>Ce mode consiste à utiliser à la fois un ou des serveurs en local mais également un ou des serveurs dans le Cloud via Exchange Online Office365.<br>Les deux parties seront en rapport l’une avec l’autre et la synchronisation entre les serveurs sera effectuée à l’aide d’un serveur Exchange qui aura un rôle particulier.<br>Pour mettre en place le mode hybride, il faudra obligatoirement avoir un nom de domaine ainsi qu’un ou plusieurs contrôleurs de domaine dans Office365.</p>
+<figure class="image"><img src="/hybride_office365.png"></figure>
+<h3>3 – Compatibilité des clients Outlook</h3>
+<p>Exchange 2016 est compatible avec les clients Outlook suivants&nbsp;:</p>
+<ul>
+  <li>Outlook 2010 SP2 avec KB2965295 d’Avril 2015</li>
+  <li>Outlook 2013 SP1</li>
+  <li>Outlook 2016</li>
+  <li>Outlook Office365</li>
+</ul>
+<p>En cas d’utilisation de MAC, les versions suivantes sont compatibles&nbsp;:&nbsp;</p>
+<ul>
+  <li>Outlook 2011 pour MAC (<u>au minimum</u>)</li>
+  <li>Outlook Office365 pour MAC</li>
+</ul>
+<h2>Prérequis Active Directory pour Exchange 2016</h2>
+<h3>1 – Rappel des bases</h3>
+<p>Exchange stocke l’intégralité de sa configuration dans l’Active Directory.<br>Le lien entre Exchange et l’Active Directory est donc très étroit, Exchange ne peut pas fonctionner sans Active Directory.<br>Dans l’Active Directory il existe 4 partitions&nbsp;:</p>
+<ul>
+  <li><strong>Schéma</strong></li>
+  <li><strong>Configuration</strong></li>
+  <li><strong>Domaine</strong></li>
+  <li><strong>Application</strong> (non utilisée par Exchange)</li>
+</ul>
+<p>Les partition Schéma et Configuration sont répliquées dans toute la forêt tandis que les partition Domaine et Applications son répliquées dans un même domaine.<br>Toutes les informations de type «&nbsp;<strong>classes d’objet et attributs Exchange</strong>&nbsp;» sont stockées dans la partition <strong>Schéma</strong>.<br>La réplication est au niveau de la <strong>forêt</strong>.<br>Toutes les informations de type «&nbsp;<strong>Configuration des serveurs Exchange et d’Organisation Exchange</strong>&nbsp;» sont stockées dans la partition <strong>Configuration</strong>.<br>La réplication est au niveau de la <strong>forêt</strong>.<br>Toutes les informations de type «&nbsp;<strong>Destinataires Exchange</strong>&nbsp;» sont stockées dans la partition <strong>Domaine</strong>.<br>La réplication est au niveau du <strong>domaine</strong>.</p>
+<p><u>Résumé en schéma&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/schema_replication.png"></figure>
+<h3>2 – Les prérequis pour Exchange 2016</h3>
+<ul>
+  <li>Les contrôleurs de domaine&nbsp;:</li>
+</ul>
+<p>Au minimum, les contrôleurs de domaines de l’organisation doivent être en 2008.<br>Il est recommandé pour l’instant d’avoir au maximum des contrôleurs de domaine en 2012 R2 car Exchange 2016 n’est pas encore officiellement supporté sur la version Windows Server 2016.</p>
+<ul>
+  <li>La forêt&nbsp;:</li>
+</ul>
+<p>Le niveau fonctionnel de la forêt doit être au minimum en 2008.</p>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">Exchange ne peut pas s’installer dans un domaine où ne figurent que des contrôleurs Read Only (RODC) car il utilise le catalogue global. Exchange effectue des écritures dans l’Active Directory en permanence. Il est donc impératif d’avoir dans le domaine au moins un contrôleur en lecture écriture avec le catalogue global.</mark></i></p>
+<h3>3 – Bonnes pratiques avant installation</h3>
+<ul>
+  <li>Avoir des DC à jour</li>
+  <li>Avoir une bonne configuration réseau (routage, firewall, etc.)</li>
+  <li>Avoir une configuration IP bien étudiée et optimisée</li>
+  <li>Contrôler la réplication Active Directory entre les contrôleurs de domaine</li>
+  <li>Vérifier la configuration des sites Actives Directory (noms, sous réseau, liens, etc.)</li>
+  <li>Avoir une OU (Unité Organisationnelle) pour les destinataires de messagerie</li>
+  <li>Vérifier le service de temps et le rôle PDC</li>
+</ul>
+<h3>4 – Préparation de l’Active Directory pour l’arrivée de Exchange</h3>
+<p>Il est obligatoire de préparer la forêt Active Directory pour l’arrivée de Exchange.<br>Cette préparation est valable à la fois pour installer Exchange mais également pour effectuer une mise à niveau.<br>Le compte qui devra préparer Active Directory devra avoir les droits nécessaires pour le faire.</p>
+<p>Il est possible d’effectuer la préparation de deux manières&nbsp;:&nbsp;</p>
+<ul>
+  <li>Avant l’installation de Exchange (via un compte Admin du domaine)</li>
+  <li>Pendant le déploiement de Exchange (si le compte utilisé pour l’installation à les droits nécessaires)</li>
+</ul>
+<p>Les étapes de la préparation sont les suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>Préparation du schéma</li>
+  <li>Préparation du nom de l’organisation (en cas de première installation)</li>
+  <li>Préparation de la configuration</li>
+  <li>Préparation du domaine (qui recevra les ressources des destinataires Exchange)</li>
+</ul>
+<h2>Préparation de l’Active Directory pour Exchange</h2>
+<h3>1 - Vérification des prérequis</h3>
+<p>Il est impératif de vérifier les éléments suivants&nbsp;:&nbsp;</p>
+<ul>
+  <li>Le niveau fonctionnel de la forêt</li>
+</ul>
+<p>Via la console Active Directory Domains And Trust<br>Via l’outil ADSI Edit «&nbsp;msDS-Behavior-Version&nbsp;»</p>
+<ul>
+  <li>Vérifier quels contrôleurs de domaine possèdent les rôles FSMO (surtout le rôleur de maître du schéma)</li>
+</ul>
+<pre><code class="language-plaintext">netdom query fsmo</code></pre>
+<p>&nbsp;</p>
+<figure class="image"><img src="/netdom_query_fsmo.png"></figure>
+<ul>
+  <li>Vérifier l’état de la réplication entre les contrôleurs de domaine à l’aide de la commande suivante&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">repadmin /replsummary</code></pre>
+<p>&nbsp;</p>
+<figure class="image"><img src="/repadmin_replsummary.png"></figure>
+<ul>
+  <li>Installer via PowerShell les RSAT-Tools sur un poste non contrôleur de domaine afin de préparer l’Active Directory</li>
+</ul>
+<pre><code class="language-plaintext">Install-WindowsFeature RSAT-ADDS</code></pre>
+<p>&nbsp;</p>
+<figure class="image"><img src="/images/install-windowsfeature_rsat_adds.png"></figure>
+<p>&nbsp;</p>
+<h3>2 – Préparation de l’Active Directory</h3>
+<p>Afin de préparer l’Active Directory, il va falloir suivre différentes étapes depuis un poste ayant d’installé :&nbsp;</p>
+<ul>
+  <li>.NETFramework 4.5.2</li>
+  <li>Les outils d’administration à distance ADDS (Install-WindowsFeature RSAT-ADDS) SI ce n’est pas un contrôleur de domaine</li>
+</ul>
+<p>Les étapes sont les suivantes&nbsp;:</p>
+<ul>
+  <li><strong>/PrepareSchema</strong> (prépare le schéma)</li>
+</ul>
+<p>Nécessite un <strong>compte membre du groupe Administrateur de schéma et du groupe Administrateur de l’entreprise</strong>.<br>Doit être exécuté depuis un poste x64 étant <strong>dans le même domaine ET le même site AD que le DC maître de schéma</strong>.<br>Il est possible de spécifier directement le DC qui est maître de schéma à l’aide du paramètre /DomainController «&nbsp;nom_du_DC&nbsp;»</p>
+<ul>
+  <li><strong>/PrepareAD /OrganizationName:«&nbsp;nom de l’organisation&nbsp;»</strong> (prépare le domaine, les objets Exchange globaux, créé les groupes de sécurité Exchange dans le domaine racine de la forêt)</li>
+</ul>
+<p>Nécessite un compte membre du groupe <strong>Administrateur de l’entreprise</strong>.<br>Doit être exécuté depuis un poste x64 étant <strong>dans le même domaine ET le même site AD que le DC maître de schéma</strong> (ou depuis le maître de schéma directement).<br>Doit être exécuté depuis un poste qui peut <strong>communiquer avec l’ensemble de tous les domaines de la forêt sur le port TCP 389</strong></p>
+<ul>
+  <li><strong>/PrepareDomain </strong>(prépare le domaine courant)</li>
+</ul>
+<p>Nécessite un compte membre du groupe <strong>Administrateur de l’entreprise</strong>.<br>Si le domaine à préparer existait <strong>AVANT</strong> l’exécution de setup /PrepareAD, le compte doit être <strong>membre du groupe Administrateur de domaine de ce même domaine</strong>.<br>Si le domaine à préparer a été créé <strong>APRES</strong> l’exécution de setup /PrepareAD, le compte doit être <strong>membre du groupe Administrateur d’organisation Exchange ET du groupe Administrateur de domaine de ce même domaine</strong>.<br>Cette commande n’est pas nécessaire dans le domaine dans lequel le setup /PrepareAD a été effectué.</p>
+<ul>
+  <li><strong>/PrepareDomain «&nbsp;nom du domaine en FQDN&nbsp;»&nbsp;</strong>(si l’on souhaite préparer un domaine spécifique)</li>
+</ul>
+<p>Nécessite les <strong>droits dans ce domaine</strong> (identique au setup /PrepareDomain)<br>Doit être exécuté depuis un poste pouvant <strong>communiquer avec le domaine spécifié sur le port TCP 389</strong>.</p>
+<ul>
+  <li><strong>/PrepareAllDomains</strong> (si l’on souhaite préparer tous les domaines de l’organisation)</li>
+</ul>
+<p>Doit être exécuté depuis un poste pouvant <strong>communiquer avec l’ensemble des domaines de la forêt sur le port TCP 389</strong><br>Ces commandes devront être lancées depuis <strong>PowerShell</strong> soit après avoir <strong>défini le chemin du setup.exe de Exchange</strong> soit après s’être directement positionné dans le lecteur contenant l’iso de Exchange et devront TOUTES être suivi du paramètre «&nbsp;<strong>/iacceptexchangeserverlicenseterms</strong>&nbsp;» :</p>
+<p><u>Préparation du schéma&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/images/prepareschema.png"></figure>
+<figure class="image"><img src="/images/prepareschema_warning.png"></figure>
+<p><u>Préparation de l’Active Directory&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/images/preparead.png"></figure>
+<figure class="image"><img src="/images/preparead_warning.png"></figure>
+<p><u>Préparation du domaine :&nbsp;</u></p>
+<p>Cette partie n’est pas obligatoire SI ET SEULEMENT SI le PrepareAD a été effectué.</p>
+<h2>Prérequis pour Exchange Serveur</h2>
+<h3>1 - Les systèmes d’exploitation supportés</h3>
+<p>Pour installer Exchange 2016, seulement <strong>deux OS sont supportés</strong>.<br>Il s’agit de <strong>Windows Server 2012 et 2012R2</strong> dans les version <strong>Standard</strong> ou <strong>Datacenter</strong>.</p>
+<p>Les outils d’administration à distance <strong>RSAT Tools</strong> peuvent être installés quant à eux sur les OS suivant&nbsp;:&nbsp;</p>
+<ul>
+  <li>Windows 8.1 en 64bits</li>
+  <li>Windows 10 en 64bits</li>
+  <li>Windows Server 2012 en Standard ou Datacenter</li>
+  <li>Windows Server 2012 R2 en Standard ou Datacenter</li>
+</ul>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red"><u>version graphique UNIQUEMENT</u>, pas de version Core</mark></i></p>
+<h3>2 – Matériel requis&nbsp;</h3>
+<figure class="image"><img src="/images/hardware_prerequis.png"></figure>
+<p>Il est recommandé d’utiliser des disques dur SSD ou SAS.</p>
+<h3>3 – Bonnes pratiques</h3>
+<p>Afin d’optimiser au mieux son installation de Exchange, il est recommandé les pratiques suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>Eviter de faire du RAID pour plutôt <strong>privilégier la haute disponibilité</strong> à l’aide de <strong>DAG</strong> ou JBD</li>
+  <li>Utiliser des <strong>ressources matérielles dédiées</strong> (partitions système séparée des partitions pour les BDD, etc.)</li>
+</ul>
+<h3>4 – Architecture machine recommandée par Microsoft</h3>
+<p>Il est recommandé de privilégier des serveurs physiques plutôt que des serveurs virtuels puis de&nbsp;</p>
+<ul>
+  <li>Désactiver la fonction «&nbsp;<strong>Virtual Technologie</strong>&nbsp;»</li>
+  <li>Désactiver la fonction «&nbsp;<strong>Hyper Threading</strong>&nbsp;»</li>
+  <li>Utiliser des disques <strong>SAS</strong> avec un minimum <strong>7200tr/min</strong> (Le mieux étant du <strong>1000tr/min</strong> ou du <strong>1500tr/min</strong>) ou alors des <strong>SSD</strong></li>
+  <li><strong>Jusqu’à 96Go de RAM</strong>. Au-delàs de cette quantité l’utilisation de la RAM ne sera pas optimisée.</li>
+  <li><strong>2 processeurs (24 cœurs max)</strong>. Au-delàs de cette quantité l’utilisation ne sera pas optimisée</li>
+  <li>RAID 1 <u>uniquement</u> pour le <strong>système d’exploitation</strong> (surtout pas sur la partition BDD)</li>
+</ul>
+<h3>5 – Architecture machine virtuelle</h3>
+<p>Voici les <strong>recommandations en cas de virtualisation</strong> des serveurs Exchange&nbsp;:</p>
+<ul>
+  <li>2 processeurs virtuels par processeur physique (fonctionne également avec du 1 pour 1)</li>
+  <li>Stockage en mode Pass-trough (SCSI, SMB3 pour les VHDX)</li>
+  <li>Utilisation statique de la RAM, pas en dynamique</li>
+  <li>Sur Hyper-V, activer NUMA</li>
+  <li>Désactiver les snapshot (ce n’est pas une sauvegarde et cela grossi considérablement les logs et les VM)</li>
+  <li>Ne pas utiliser de disques de différentiation ou similaire</li>
+</ul>
+<h3>6 – Les prérequis du système d’exploitation</h3>
+<p>L’OS sur lequel sera installé Exchange devra impérativement avoir <strong>Netframework 4.5.2 et Microsoft Unified Communication managed API 4.0 Core Runtime 64bits</strong> d’installés.<br>Les fonctionnalités pour le rôle de boite aux lettres sont les suivantes&nbsp;:</p>
+<pre><code class="language-plaintext">Install-WindowsFeature AS-http-Activation, Desktop-Experience, NET-Framework-45-Features, RPC-over-http-proxy, RSAT-Clustering, RSAT-Clustering-CmdInterface, RSAT-Clustering-Mgmt, RSAT-Clustering-PowerShell, Web-Mgmt-Console, WAS-Process-model, Web-Asp-Net45, Web-Basic-Auth, Web-Client-Auth, Web-Digest-Auth, Web-Dir-Brownsing, Web-Dyn-Compression, Web-http-Errors, Web-http-Logging, Web-http-Redirect, Web-http-Tracing, Web-ISAPI-Ext, Web-ISAPI-Filter, Web-Lgcy-Mgmt-Console, Web-Metabase, Web-Mgmt-Console, Web-Mgmt-Service, Web-Net-Ext45, Web-Request-Monitor, Web-Server, Web-Stat-Compression, Web-Static-Content, Web-Windows-Auth, Web-WMI, Windows-Identity-Foundation</code></pre>
+<h2>Prérequis d’infrastructure</h2>
+<h3>1 - Flux réseau&nbsp;: Partie clients</h3>
+<p>Il est <strong>OBLIGATOIRE</strong> d’ouvrir le port <strong>TCP 443</strong> afin d’autoriser les connexions pour les clients Web de l’organisation.<br>Pour les clients <strong>IMAP4</strong> et <strong>POP3</strong> les ports à ouvrir sont respectivement les ports TCP 143 et TCP 110, toutefois il est conseillé de n’ouvrir que les <strong>ports sécurisés</strong> pour ces protocoles. A savoir <strong>TCP 993 pour IMAP4 et TCP 995 pour POP3</strong>.<br>Ne pas oublier d’ouvrir le port 25 pour les flux SMTP.</p>
+<p>Attention si certaines GPO bloquent certains de ces ports, il faudra les désactiver pour le ou les serveurs Exchange.</p>
+<figure class="image"><img src="/images/schema_ports.png"></figure>
+<h3>2 - Flux réseau&nbsp;: Partie routage</h3>
+<p>Pour que le flux de messages électroniques puisse circuler sur le réseau il est OBLIGATOIRE d’ouvrir les ports suivants&nbsp;:</p>
+<ul>
+  <li><strong>TCP 25</strong> (SMTP, cela permettra la circulation des courriers entrant et sortant avec ou sans serveur proxy d’accès client).</li>
+  <li><strong>UDP 53</strong> (requêtes DNS)</li>
+  <li><strong>TCP 389</strong> (requêtes LDAP)</li>
+  <li><strong>TCP 50636</strong> (EdgeSync, dans le cadre d’utilisation d’un serveur Edge)</li>
+  <li><strong>717</strong> (connexion proxy sortantes)</li>
+  <li><strong>465</strong> (connexions proxy entrantes)</li>
+  <li><strong>475</strong> (connexions SMTP pour les serveurs autres que les serveurs Mailbox)</li>
+  <li><strong>TCP 2525</strong> (connexions entrantes depuis le même serveur)</li>
+</ul>
+<p><u>Schéma de flux interne au serveur Exchange&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/images/schéma_flux_interne.png"></figure>
+<h3>3 – Les certificats</h3>
+<p>Pour la partie «&nbsp;connectée à Internet&nbsp;», il n’est pas conseillé d’utiliser des certificats auto-signés. L’idéal est <strong>d’utiliser des certificats d’une autorité de certification tierce de confiance PUBLIQUE</strong>. Par défaut le certificat est auto-signé.</p>
+<h1>Installation de Exchange 2016</h1>
+<h2>Les différents types d’installations et de droits</h2>
+<h3>1 - Les types d’installations</h3>
+<p>Il existe <strong>deux types d’installations</strong> des serveurs Exchange&nbsp;:&nbsp;</p>
+<ul>
+  <li>Installation de Exchange avec assistant d’installation <u>graphique</u></li>
+  <li>Installation de Exchange sans assistant et donc via des lignes de commandes <u>PowerShell</u></li>
+</ul>
+<p>Il est également possible d’installer Exchange de <strong>deux manières différentes</strong>&nbsp;:</p>
+<ul>
+  <li>Avec un compte <u>administrateur de l’organisation</u></li>
+  <li>Avec un <u>compte «&nbsp;délégué</u>&nbsp;» (Utile pour les grosses infrastructures dont les services sont cloisonnés. Le compte utilisé ne pourra pas toucher les autres serveurs mais seulement effectuer l’installation sur un site précis).</li>
+</ul>
+<h3>2 - Les droits nécessaires à l’installation</h3>
+<ul>
+  <li>Installation du premier serveur Exchange de l’organisation</li>
+</ul>
+<p>Lors d’une installation d’un <strong>tout premier serveur Exchange</strong> dans une organisation, le compte qui sera utilisé devra faire partie du groupe <strong>Administrateur de l’entreprise</strong>.</p>
+<ul>
+  <li>Installation d’un nouveau serveur Exchange dans une organisation qui en possède déjà</li>
+</ul>
+<p>Le compte qui sera utilisé devra faire partie du groupe <strong>Gestion de l’organisation</strong>.</p>
+<ul>
+  <li>Installation d’un serveur Exchange en mode «&nbsp;délégué&nbsp;»</li>
+</ul>
+<p>Dans ce cas précis, <strong>deux étapes</strong> seront à effectuer.<br>Dans un premier temps il faudra exécuter le <strong>provisionnement du serveur Exchange</strong> dans l’organisation avec un compte membre du groupe <strong>Gestion de l’organisation</strong>. Cette action va créer les différents objets concernant le serveur dans l’Active Directory (y compris les prérequis nécessaires à l’installation).</p>
+<pre><code class="language-plaintext">.\setup.exe /NewProvisionedServer /IAcceptExchangeServerLicenseTerms</code></pre>
+<p>Puis effectuer l’installation avec un <strong>autre compte</strong> qui devra être membre du groupe <strong>Installation déléguée</strong> (Delegated Setup)</p>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">ces groupes sont présents uniquement dans un contrôleur de domaine du domaine RACINE.</mark></i></p>
+<figure class="image"><img src="/images/groups.png"></figure>
+<h2>Installation avec assistant d’installation graphique</h2>
+<p><u>Plan d’action&nbsp;:</u></p>
+<ul>
+  <li>Récupérer les sources de Exchange 2016 sur le lien TechNet de Microsoft</li>
+</ul>
+<p><a href="https://technet.microsoft.com/fr-fr/library/hh135098(v=exchg.150).aspx">https://technet.microsoft.com/fr-fr/library/hh135098(v=exchg.150).aspx</a></p>
+<ul>
+  <li>Monter l’ISO</li>
+  <li>Se positionner dans le lecteur contenant l’ISO</li>
+  <li>Lancer le setup.exe en tant qu’<strong>administrateur</strong></li>
+  <li>Suivre l’assistant et renseigner les informations nécessaires et demandées</li>
+</ul>
+<p><u>Installation&nbsp;:&nbsp;</u></p>
+<p>Lancer le «&nbsp;Setup.exe&nbsp;». Pour les besoins de la démonstration de l’installation, nous ne ferons pas les updates.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

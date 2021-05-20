@@ -2,650 +2,257 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-19T09:54:46.206Z
+date: 2021-05-20T14:34:36.456Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T18:24:13.228Z
 -->
 
-<h1>Système</h1>
-<figure class="table">
-  <table style="background-color:rgb(255, 255, 255);">
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>reboot</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Redémarre</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>shutdown -now</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Éteint sans délais</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>systemctl (start/stop/restart/status) &lt;service&gt;</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Démarre/Arrête/Redémarre/Affiche le statut d'un service</td>
-      </tr>
-      <tr>
-        <td><code>uname -a</code></td>
-        <td>&nbsp;Afficher les informations systèmes de linux</td>
-      </tr>
-      <tr>
-        <td><code>uname -r</code></td>
-        <td>Afficher la version du noyau</td>
-      </tr>
-      <tr>
-        <td><code>uptime</code></td>
-        <td>Afficher le temps d'activité du système et affiche la charge</td>
-      </tr>
-      <tr>
-        <td><code>hostname</code></td>
-        <td>Affiche le nom d'hôte de la machine</td>
-      </tr>
-      <tr>
-        <td><code>hostname -I</code></td>
-        <td>Affiche l'adresse IP de l'hôte</td>
-      </tr>
-      <tr>
-        <td><code>last reboot</code></td>
-        <td>Afficher l'historique des redémarrages</td>
-      </tr>
-      <tr>
-        <td><code>date</code></td>
-        <td>Afficher la date et l'heure du système</td>
-      </tr>
-      <tr>
-        <td><code>cal</code></td>
-        <td>Affiche le calendrier du mois</td>
-      </tr>
-      <tr>
-        <td><code>w</code></td>
-        <td>Affiche qui est en ligne</td>
-      </tr>
-      <tr>
-        <td><code>whoami</code></td>
-        <td>Affiche où nous sommes connecté en tant que qui</td>
-      </tr>
-      <tr>
-        <td><code>screenfetch</code></td>
-        <td>Affiche les informations systèmes (nécessite le paquet <i>screenfetch</i>)</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
-<h1>Matériel</h1>
-<figure class="table">
-  <table>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>dmesg</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les messages du noyau</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>cat /proc/cpuinfo</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du CPU</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>cat /proc/meminfo</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations de la RAM</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>free -h</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la mémoire libre et utilisé (-h pour lisible par l'homme, -m for MB et -g pour GB)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>lspci -tv</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques PCI</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>lsusb -tv</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les périphériques USB</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>dmidecode</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>hdparm -i /dev/sda</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les informations du disque /dev/sda</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>hdparm -rT /dev/sda</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Faire un test de vitesse de lecture sur le disque /dev/sda</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>badblocks -s /dev/sda</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Test le disque /dev/sda pour d'éventuels blocks défectueux</td>
-      </tr>
-      <tr>
-        <td><code>smartctl -a /dev/sda</code></td>
-        <td>Affiche toute les informations SMART du disque /dev/sda</td>
-      </tr>
-      <tr>
-        <td><code>smartctl -t short /dev/sda</code></td>
-        <td>Démarre un test SMART sur le disque /dev/sda (short/long/conveyance sont disponible)</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h1>Réseau</h1>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Ancienne commande :</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Nouvelle commande :</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig -a</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip a</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 down</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 down</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 up</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 up</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 192.168.2.24</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.2.24/24 dev enp6s0</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 netmask 255.255.255.0</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.1.1/24 dev enp6s0</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0 mtu 9000</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip link set enp6s0 mtu 9000</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ifconfig enp6s0:0 192.168.2.25</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip addr add 192.168.2.25/24 dev enp6s0</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -tulpn</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss -tulpn</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -neopa</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ss -neopa</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>netstat -g</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip maddr</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip r</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route add -net 192.168.2.0 netmask 255.255.255.0 dev enp6s0</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip route add 192.168.2.0/24 dev enp6s0</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>route add default gw 192.168.2.254</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip route add default via 192.168.2.254</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -a</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -v</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip -s neigh</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -s 192.168.2.33 1:2:3:4:5:6</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh add 192.168.3.33 lladdr 1:2:3:4:5:6 dev enp6s0</code></td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>arp -i enp6s0 -d 192.168.2.254</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;"><code>ip neigh del 192.168.2.254 dev wlp7s0</code></td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h1>Fichiers et répertoires</h1>
-<h2>cat - Afficher le contenu d'un fichier</h2>
-<p><strong>Permet d'ouvrir un fichier et d'afficher son contenu.</strong></p>
-<pre><code class="language-plaintext">cat &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-b</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes non vides</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-n</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Numéroter toutes les lignes</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>cd - Changer de répertoire</h2>
-<p><strong>Permet de se déplacer dans l'arborescence</strong></p>
-<pre><code class="language-plaintext">cd /répertoire/de/destination</code></pre>
-<h2>df - Afficher la taille d'un répertoire</h2>
-<p><strong>Permet d'afficher la taille d'un répertoire.</strong></p>
-<pre><code class="language-plaintext">df &lt;option&gt; répertoire</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Permet d'obtenir un résultat plus lisible pour un humain (<i>ex Mo, Ko,...</i>)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-k</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en kilobytes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-m</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le résultat en megabytes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d <strong>n</strong>.</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des sous-répertoires jusqu'au <strong>n</strong>ème</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>find - Chercher un fichier</h2>
-<p>Permet de trouver un fichier précis ou une liste de fichier</p>
-<pre><code class="language-plaintext">find &lt;DOSSIER&gt; &lt;OPTIONS&gt; -iname "&lt;FICHIER&gt;"</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;"><code>-iname &lt;FICHIER&gt;</code></td>
-        <td>Cherche par nom de fichier</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-name &lt;FICHIER&gt;</code></td>
-        <td>Cherche par nom de fichier (sensible à la casse)</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-type f/d</code></td>
-        <td>Cherche un certain type (<code>f</code> = fichier - <code>d</code> = dossier)</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-size +/- &lt;TAILLE&gt;</code></td>
-        <td>Cherche en fonction de la taille</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-user &lt;UTILISATEUR&gt;</code></td>
-        <td>Cherche en fonction de l'utilisateur</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-group &lt;GROUPE&gt;</code></td>
-        <td>Cherche en fonction du groupe</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-perm &lt;PERMISSION&gt;</code></td>
-        <td>Cherche en fonction de la permission</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>Exemple : Chercher des fichier de plus de 200ko qui ne contienne pas le dans le nom “2015” dans le dossier “/photosdevacances”</p>
-<pre><code class="language-plaintext">find /photosdevacances -type f -size +200k -not -iname "*2015*"</code></pre>
-<h2><strong>head - A</strong>fficher l'en-tête d'un fichier</h2>
-<p><strong>Affiche l'en-tête d'un fichier</strong></p>
-<pre><code class="language-plaintext">head &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;"><code>-n</code></td>
-        <td>Spécifie le nombre de ligne à afficher</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>less - Afficher un fichier page par page</h2>
-<p><strong>&nbsp;Affiche le fichier page par page. C'est donc pratique pour les longs fichiers.</strong></p>
-<pre><code class="language-plaintext">less fichier</code></pre>
-<h2>ls - Lister le contenu d'un répertoire</h2>
-<p><strong>Permet de lister le contenu d'un répertoire</strong></p>
-<pre><code class="language-plaintext">ls &lt;option&gt; répertoire</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-a</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Lister tout le répertoire (y compris fichier caché)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-l</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Afficher le répertoire sous forme de tableau, avec permission, ...</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche les inodes</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-h</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille dans un format lisible par l'homme (Mo par exemple)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-R</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Liste également les sous-répertoires</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-s</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche la taille des répertoires</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>mkdir - Créer un répertoire</h2>
-<p><strong>Créer un répertoire.</strong></p>
-<pre><code class="language-plaintext">mkdir -p /chemin/répertoire/à/créer</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-p</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Créer les répertoires parents si ces derniers n'existent pas</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p><i>Exemple : Je souhaite créer un répertoire <strong>truc</strong> dans /home/user1/test1, mais le fichier test1 n'existe pas.</i></p>
-<pre><code class="language-plaintext">mkdir -p /home/user1/test1/truc</code></pre>
-<h2>mv - Déplacer un fichier ou dossier</h2>
-<p><strong>Permet de déplacer un fichier ou un répertoire.</strong></p>
-<pre><code class="language-plaintext">mv &lt;option&gt; /chemin/source /chemin/destination</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Forcer le déplacement</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Demander la confirmation de l'utilisateur</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>pwd - Afficher le répertoire courant</h2>
-<p><strong>Affiche le répertoire dans lequel on se situe.</strong></p>
-<pre><code class="language-plaintext">pwd</code></pre>
-<h2>rm - Supprimer un fichier ou dossier</h2>
-<p><strong>Permet de supprimer un fichier ou un dossier</strong></p>
-<pre><code class="language-plaintext">rm &lt;option&gt; /chemin/truc/a/supprimer</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Efface un répertoire</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Force la suppression</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Demande confirmation à l'utilisateur (<i>Inutile avec </i><code><i>-f</i></code>)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-r</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Récursif</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>sftp - Récupérer un fichier sur un serveur</h2>
-<p><strong>Permet de se connecter en SFTP à un serveur</strong></p>
-<pre><code class="language-plaintext">sftp -P &lt;PORT&gt; &lt;UTILISATEUR&gt;@&lt;SERVEUR&gt;</code></pre>
-<p><strong>Permet de récupérer simplement un fichier</strong></p>
-<pre><code class="language-plaintext">get &lt;CHEMIN&gt;/&lt;FICHIER&gt;</code></pre>
-<h2>tail - Afficher la fin d'un fichier</h2>
-<p><strong>Affiche la fin d'un fichier</strong></p>
-<pre><code class="language-plaintext">tail &lt;option&gt; fichier</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th>Option</th>
-        <th>Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="text-align:center;"><code>-f</code></td>
-        <td>permet de mettre à jour en temps réel l'affichage de la fin du fichier</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<h2>tar - Compression et décompression</h2>
-<p><strong>Permet de compresser ou décompresser en fonction des options</strong></p>
-<pre><code class="language-plaintext">tar -[options] &lt;nom_fichier_destination&gt; &lt;fichier_ou_dossier_source&gt;</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;text-align:center;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commentaire</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-c</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Création d'une archive</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-v</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Verbose</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-f</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Indique un nom de fichier de destination</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-z</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Compression gzip</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-j</code></td>
-        <td>Compression bzip</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-x</code></td>
-        <td>Extraction d'une archive</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-t</code></td>
-        <td>Lire le contenu d'une archive</td>
-      </tr>
-      <tr>
-        <td style="text-align:center;"><code>-r</code></td>
-        <td>Ajouter un fichier à une archive existante</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p><i>Exemple :&nbsp;Archiver un dossier.</i></p>
-<pre><code class="language-plaintext">tar -cvf test.tar /chemin/dossier/a/compresser</code></pre>
-<p>Exemple : Désarchiver un dossier.</p>
-<pre><code class="language-plaintext">tar -xvf test.tar /chemin/dossier/destination</code></pre>
-<h1>Sessions, Utilisateurs et Permissions</h1>
-<h2>groups - Afficher les groupes d'appartenance d'un utilisateur</h2>
-<p><strong>Permet d'afficher dans quels groupes se trouve l'utilisateur</strong></p>
-<pre><code class="language-plaintext">groups utilisateur</code></pre>
-<p>&nbsp;</p>
-<h2>passwd - Changer le mot de passe</h2>
-<p><strong>Permet de changer le mot de passe d'un utilisateur</strong></p>
-<pre><code class="language-plaintext">passwd &lt;option&gt; utilisateur</code></pre>
-<p>&nbsp;</p>
-<figure class="table">
-  <table>
-    <thead>
-      <tr>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Option</th>
-        <th style="border-bottom:2px solid rgb(158, 158, 158);padding:0.75rem;">Commande</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-d</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Supprimer le mot de passe</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-e</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Faire expirer le mot de passe</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-i</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Rendre un compte inactif</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-l</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Verouille le mot de passe et empêche sa modification par l'utilisateur</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-S</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Affiche le status du compte</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;text-align:center;"><code>-u</code></td>
-        <td style="border-bottom:1px solid rgb(238, 238, 238);padding:0.75rem;">Déverouille un mot de passe</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>&nbsp;</p>
-<h1>Logiciel</h1>
-<h2>Tipee</h2>
-<figure class="table">
-  <table style="background-color:rgb(255, 255, 255);">
-    <tbody>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>tipee</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Connaitre le temps restant de la journée</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>tipee punch</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Badger les heures</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
-<p>Lien : <a href="https://gitlab.infomaniak.ch/mickaelasseline/python-tipee">Gitlab</a></p>
-<h2>Git</h2>
-<figure class="table">
-  <table style="background-color:rgb(255, 255, 255);">
-    <tbody>
-      <tr>
-        <td><code>git status</code></td>
-        <td>Permets d'afficher le statut du dépôt dans lequel nous sommes (quelle branche, s'il y a des commit à réaliser…)</td>
-      </tr>
-      <tr>
-        <td><code>git add nom_du_fichier</code></td>
-        <td>Permet de “tracker” (suivre) le fichier, et ainsi, le faire reconnaître par Git pour des prochaines actions (merge, commit, status…)</td>
-      </tr>
-      <tr>
-        <td><code>git init “nom_du_dossier”</code></td>
-        <td>Initialise le dossier, créant ainsi un dossier caché “.git" qui sera reconnu par l'outil Git et les plateformes comme GitHub, GitLab… Sans cela, le dossier ne sera jamais utilisable par Git.</td>
-      </tr>
-      <tr>
-        <td><code>git log</code></td>
-        <td>Affiche les dernières actions réalisées sur le repository (incluant les métadatas, les commit ID, commit messages…)</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>git clone</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Clone un projet sur sa machine.</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>git commit -am “message”</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Met à jour le commit avec un message défini.</td>
-      </tr>
-      <tr>
-        <td><code>git fetch</code></td>
-        <td>Récupère les informations d'un repository sans télécharger sur la machine.</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>git push</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Envoi la mise à jour au git distant (dit “remote”). Prends en compte le dossier dans lequel on se situe.</td>
-      </tr>
-      <tr>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;"><code>git pull</code></td>
-        <td style="border-bottom:1px solid rgb(207, 216, 220);border-left:1px solid rgb(207, 216, 220);border-right:1px solid rgb(207, 216, 220);border-top:1px solid rgb(207, 216, 220);padding:0.5rem 0.75rem;">Récupère les dernières mises à jours du répertoire distant.</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
+# Système
+
+|     |     |
+| --- | --- |
+| `reboot` | Redémarre |
+| `shutdown -now` | Éteint sans délais |
+| `systemctl (start/stop/restart/status) <service>` | Démarre/Arrête/Redémarre/Affiche le statut d'un service |
+| `uname -a` | Afficher les informations systèmes de linux |
+| `uname -r` | Afficher la version du noyau |
+| `uptime` | Afficher le temps d'activité du système et affiche la charge |
+| `hostname` | Affiche le nom d'hôte de la machine |
+| `hostname -I` | Affiche l'adresse IP de l'hôte |
+| `last reboot` | Afficher l'historique des redémarrages |
+| `date` | Afficher la date et l'heure du système |
+| `cal` | Affiche le calendrier du mois |
+| `w` | Affiche qui est en ligne |
+| `whoami` | Affiche où nous sommes connecté en tant que qui |
+
+# Matériel
+
+|     |     |
+| --- | --- |
+| `dmesg` | Affiche les messages du noyau |
+| `cat /proc/cpuinfo` | Affiche les informations du CPU |
+| `cat /proc/meminfo` | Affiche les informations de la RAM |
+| `free -h` | Affiche la mémoire libre et utilisé (-h pour lisible par l'homme, -m for MB et -g pour GB) |
+| `lspci -tv` | Affiche les périphériques PCI |
+| `lsusb -tv` | Affiche les périphériques USB |
+| `dmidecode` | Affiche les information DMI/SMBIOS (informations systèmes) depuis le BIOS |
+| `hdparm -i /dev/sda` | Affiche les informations du disque /dev/sda |
+| `hdparm -rT /dev/sda` | Faire un test de vitesse de lecture sur le disque /dev/sda |
+| `badblocks -s /dev/sda` | Test le disque /dev/sda pour d'éventuels blocks défectueux |
+
+# Réseau
+
+| Ancienne commande : | Nouvelle commande : |
+| --- | --- |
+| `ifconfig -a` | `ip a` |
+| `ifconfig enp6s0 down` | `ip link set enp6s0 down` |
+| `ifconfig enp6s0 up` | `ip link set enp6s0 up` |
+| `ifconfig enp6s0 192.168.2.24` | `ip addr add 192.168.2.24/24 dev enp6s0` |
+| `ifconfig enp6s0 netmask 255.255.255.0` | `ip addr add 192.168.1.1/24 dev enp6s0` |
+| `ifconfig enp6s0 mtu 9000` | `ip link set enp6s0 mtu 9000` |
+| `ifconfig enp6s0:0 192.168.2.25` | `ip addr add 192.168.2.25/24 dev enp6s0` |
+| `netstat` | `ss` |
+| `netstat -tulpn` | `ss -tulpn` |
+| `netstat -neopa` | `ss -neopa` |
+| `netstat -g` | `ip maddr` |
+| `route` | `ip r` |
+| `route add -net 192.168.2.0 netmask 255.255.255.0 dev enp6s0` | `ip route add 192.168.2.0/24 dev enp6s0` |
+| `route add default gw 192.168.2.254` | `ip route add default via 192.168.2.254` |
+| `arp -a` | `ip neigh` |
+| `arp -v` | `ip -s neigh` |
+| `arp -s 192.168.2.33 1:2:3:4:5:6` | `ip neigh add 192.168.3.33 lladdr 1:2:3:4:5:6 dev enp6s0` |
+| `arp -i enp6s0 -d 192.168.2.254` | `ip neigh del 192.168.2.254 dev wlp7s0` |
+
+# Fichiers et répertoires
+
+## ls - Lister le contenu d'un répertoire
+
+**Permet de lister le contenu d'un répertoire**
+
+```plaintext
+ls <option> répertoire
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-a` | Lister tout le répertoire (y compris fichier caché) |
+| `-l` | Afficher le répertoire sous forme de tableau, avec permission, ... |
+| `-i` | Affiche les inodes |
+| `-h` | Affiche la taille dans un format lisible par l'homme (Mo par exemple) |
+| `-R` | Liste également les sous-répertoires |
+| `-s` | Affiche la taille des répertoires |
+
+## pwd - Afficher le répertoire courant
+
+**Affiche le répertoire dans lequel on se situe.**
+
+```plaintext
+pwd
+```
+
+## mkdir - Créer un répertoire
+
+**Créer un répertoire.**
+
+```plaintext
+mkdir -p /chemin/répertoire/à/créer
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-p` | Créer les répertoires parents si ces derniers n'existent pas |
+
+*Exemple : Je souhaite créer un répertoire **truc** dans /home/user1/test1, mais le fichier test1 n'existe pas.*
+
+```plaintext
+mkdir -p /home/user1/test1/truc
+```
+
+## cd - Changer de répertoire
+
+**Permet de se déplacer dans l'arborescence**
+
+```plaintext
+cd /répertoire/de/destination
+```
+
+## cat - Afficher le contenu d'un fichier
+
+**Permet d'ouvrir un fichier et d'afficher son contenu.**
+
+```plaintext
+cat <option> fichier
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-b` | Numéroter toutes les lignes non vides |
+| `-n` | Numéroter toutes les lignes |
+
+## df - Afficher la taille d'un répertoire
+
+**Permet d'afficher la taille d'un répertoire.**
+
+```plaintext
+df <option> répertoire
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-h` | Permet d'obtenir un résultat plus lisible pour un humain (*ex Mo, Ko,...*) |
+| `-i` | Affiche les inodes |
+| `-k` | Affiche le résultat en kilobytes |
+| `-m` | Affiche le résultat en megabytes |
+| `-d **n**.` | Affiche la taille des sous-répertoires jusqu'au **n**ème |
+
+## mv - Déplacer un fichier ou dossier
+
+**Permet de déplacer un fichier ou un répertoire.**
+
+```plaintext
+mv <option> /chemin/source /chemin/destination
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-f` | Forcer le déplacement |
+| `-i` | Demander la confirmation de l'utilisateur |
+
+## rm - Supprimer un fichier ou dossier
+
+**Permet de supprimer un fichier ou un dossier**
+
+```plaintext
+rm <option> /chemin/truc/a/supprimer
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-d` | Efface un répertoire |
+| `-f` | Force la suppression |
+| `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
+| `-r` | Récursif |
+
+## tar - Compression et décompression
+
+**Permet de compresser ou décompresser en fonction des options**
+
+```plaintext
+tar -[options] <nom_fichier_destination> <fichier_ou_dossier_source>
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-c` | Création d'une archive |
+| `-v` | Verbose |
+| `-f` | Indique un nom de fichier de destination |
+| `-z` | Compression gzip |
+| `-j` | Compression bzip |
+| `-x` | Extraction d'une archive |
+| `-t` | Lire le contenu d'une archive |
+| `-r` | Ajouter un fichier à une archive existante |
+
+*Exemple : Archiver un dossier.*
+
+```plaintext
+tar -cvf test.tar /chemin/dossier/a/compresser
+```
+
+Exemple : Désarchiver un dossier.
+
+```plaintext
+tar -xvf test.tar /chemin/dossier/destination
+```
+
+# Sessions, Utilisateurs et Permissions
+
+## groups - Afficher les groupes d'appartenance d'un utilisateur
+
+**Permet d'afficher dans quels groupes se trouve l'utilisateur**
+
+```plaintext
+groups utilisateur
+```
+
+## passwd - Changer le mot de passe
+
+**Permet de changer le mot de passe d'un utilisateur**
+
+```plaintext
+passwd <option> utilisateur
+```
+
+| Option | Commande |
+| --- | --- |
+| `-d` | Supprimer le mot de passe |
+| `-e` | Faire expirer le mot de passe |
+| `-i` | Rendre un compte inactif |
+| `-l` | Verouille le mot de passe et empêche sa modification par l'utilisateur |
+| `-S` | Affiche le status du compte |
+| `-u` | Déverouille un mot de passe |
+
+# Logiciel
+
+## Tipee
+
+|     |     |
+| --- | --- |
+| `tipee` | Connaitre le temps restant de la journée |
+| `tipee punch` | Badger les heures |
+
+Lien : [Gitlab](https://gitlab.infomaniak.ch/mickaelasseline/python-tipee)
+
+## Git
+
+|     |     |
+| --- | --- |
+| `git status` | Permets d'afficher le statut du dépôt dans lequel nous sommes (quelle branche, s'il y a des commit à réaliser…) |
+| `git add nom_du_fichier` | Permet de “tracker” (suivre) le fichier, et ainsi, le faire reconnaître par Git pour des prochaines actions (merge, commit, status…) |
+| `git init “nom_du_dossier”` | Initialise le dossier, créant ainsi un dossier caché “.git" qui sera reconnu par l'outil Git et les plateformes comme GitHub, GitLab… Sans cela, le dossier ne sera jamais utilisable par Git. |
+| `git log` | Affiche les dernières actions réalisées sur le repository (incluant les métadatas, les commit ID, commit messages…) |
+| `git clone` | Clone un projet sur sa machine. |
+| `git commit -am “message”` | Met à jour le commit avec un message défini. |
+| `git fetch` | Récupère les informations d'un repository sans télécharger sur la machine. |
+| `git push` | Envoi la mise à jour au git distant (dit “remote”). Prends en compte le dossier dans lequel on se situe. |
+| `git pull` | Récupère les dernières mises à jours du répertoire distant |
