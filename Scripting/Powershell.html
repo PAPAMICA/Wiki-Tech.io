@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T08:05:44.971Z
+date: 2021-05-20T08:07:33.774Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -112,14 +112,14 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Il existe deux commandes pour obtenir ces informations, mais on peut également invoquer des méthodes et des propriétés avec celle-ci, par exemple redémarrer un service, demander des infos sur vos disques et je vais vous montrez les différences qu'il peut exister.&nbsp;</p>
 <p>Pour finir je vous montrerai une astuce pour “fouiner” dans la liste des requêtes WMI et les instances CIM.</p>
 <ol>
-  <li><code><u>Get-WmiObject</u></code>: À partir de PowerShell 3.0, cette applet de commande a été remplacée par <code>Get-CimInstance</code>. Elle n'est plus mise à jour sous PowerShell et se base sur des requêtes WMI et le protocole RPC (Remote Procedure Call).</li>
+  <li><code><u>Get-WmiObject</u></code>: À partir de PowerShell 3.0, cette applet de commande a été remplacée par <code>Get-CimInstance</code>. Elle n'est plus mise à jour sous PowerShell. Elle se base sur des requêtes WMI et le protocole RPC (Remote Procedure Call).</li>
   <li><code><u>Get-CimInstance</u></code>: cette commande, se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole WInRM (<i>Windows Remote Management), couplé au protocole SOAP (Simple Object Acces Protocol).</i></li>
 </ol>
 <p>Par conséquent, je vous conseille vivement d'utiliser le plus souvent possible <code>Get-CimInstance</code>, il y a encore tout un tas de raisons de l'utiliser mais je ne vais pas m'attarder la dessus, ce n'est pas le but.</p>
 <p>Voyons comment utiliser ces commandes et obtenir des infos sur un système.</p>
 <figure class="image"><img src="/get-ciminstance.png"></figure>
 <p>&nbsp;</p>
-<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour fouiner dans toutes ces classes.</p>
+<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour trouver dans toutes ces classes.</p>
 <p>C'est alors que nous viens en aide la commande<code> Get-Cimclass</code>.</p>
 <p>Si on exécute cette commande on voit que la liste est longue et que cela peut paraitre un peu compliqué à première vue et par forcément facile à lire. De plus, la commande renvoie l'ensemble des classes Wmi et Cim.</p>
 <p>&nbsp;Pour cela 3 solutions pour s'y retrouver:</p>
