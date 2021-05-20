@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-19T21:02:57.911Z
+date: 2021-05-20T13:21:48.609Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -27,7 +27,7 @@ dateCreated: 2021-04-29T06:38:46.149Z
 {.links-list}
 
 # Exchange 2016
-- [🌀 Présentation et Prérequis 🚧 *Gz*](/Exchange-2016/Présentation)
+- [🌀 Présentation et Prérequis 🚧 *Présentation de Exchange 2016*](/Exchange-2016/Présentation)
 - [🌀 Installation 🚧 *Gz*](/Exchange-2016/Installation)
 - [🌀 Présentation de l'administration 🚧 *Gz*](/Exchange-2016/Présentation-administration)
 - [🌀 Configuration des boîtes aux lettres 🚧 *Gz*](/Exchange-2016/Configuration-Boites-aux-lettres)
