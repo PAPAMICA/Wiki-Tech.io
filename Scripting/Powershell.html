@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T07:08:38.293Z
+date: 2021-05-20T07:34:50.208Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -132,10 +132,16 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <ul>
   <li>renvoyer le tout dans un fichier Excel et faire sa petite recherche à l'aide d'outils incorporés.</li>
 </ul>
-<pre><code class="language-plaintext">Get-Cimclass</code></pre>
+<pre><code class="language-plaintext">Get-Cimclass | Select-Object CimClassName | Export-Csv -Path C:\classescim.csv</code></pre>
 <ul>
   <li>renvoyer le tout dans un GridView, un outil fourni dans PowerShell bien pratique.</li>
 </ul>
+<pre><code class="language-plaintext">Get-Cimclass | Out-GridView</code></pre>
+<p>J'en profite pour vous montrer le Gridview.</p>
+<figure class="image"><img src="/gridview.png"></figure>
+<p>&nbsp;</p>
+<p>C'est une Fenêtre, bien pratique, qui permet dans ce cas, de mettre directement sous forme de tableau, de filtrer ou de rechercher des éléments renvoyés par une commande.</p>
+<p>Vous commencez certainement à vous dire POWAAA!! &nbsp;puissant le truc…</p>
 <h1>Création d'un menu sous Powershell</h1>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:58.46%;"><img src="/capture2.png"></figure>
