@@ -1,0 +1,52 @@
+<!--
+title: Configuration de la partie Boite Aux Lettres (BAL)
+description: Configuration BAL
+published: true
+date: 2021-05-20T21:50:22.530Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-20T21:50:22.530Z
+-->
+
+<figure class="image image_resized" style="width:39.88%;"><img src="/images/exchange2016_logo.png"></figure>
+<h1>Configuration de la partie boite aux lettres Exchange 2016</h1>
+<h2>&nbsp;Configuration d'un domaine accepté et stratégies d'adresse e-mail</h2>
+<h3>1 - Configuration d’un domaine accepté</h3>
+<ul>
+  <li>Qu’est-ce qu’un domaine accepté</li>
+</ul>
+<p>Un domaine accepté est un <strong>espace de noms SMTP</strong> (également appelé espaces d’adressage) qui sera configuré dans une organisation Exchange afin d’envoyer et de recevoir des messages électroniques pour ce même espace de nom SMTP.<br>Il est obligatoire de configurer un domaine accepté</p>
+<ul>
+  <li>Pourquoi ajouter un domaine accepté</li>
+</ul>
+<p>Le serveur <strong>Exchange acceptera de traiter les emails pour cet espace de nom</strong> car il en aura la «&nbsp;responsabilité&nbsp;».<br>Sans cette configuration le serveur ne traitera pas les messages électroniques reçus ou envoyés par cet espace de noms SMTP.</p>
+<ul>
+  <li>Les types de domaines acceptés&nbsp;</li>
+</ul>
+<p><u>Domaine faisant autorité</u></p>
+<p><strong>Tous les destinataires</strong> figurant dans le domaine faisant autorité <strong>existent dans l'organisation Exchange</strong>.<br>Exchange est chargé de générer des <strong>notifications d'échec</strong> de remise (également appelées notifications de non-remise) pour les destinataires ne figurant pas dans un domaine faisant autorité.<br>Le serveur <strong>Exchange est donc totalement «&nbsp;maître&nbsp;» de ce domaine</strong> et en aura une totale responsabilité.<br>L’intégralité des boites mails du domaine sera gérée par le serveur Exchange de l’entreprise.</p>
+<p>Il est possible d’avoir plusieurs domaines faisant autorité dans la même organisation.</p>
+<p><u>Domaine de relais interne</u></p>
+<p>C<strong>ertains destinataires dans le domaine de relais interne peuvent exister dans l'organisation Exchange</strong> mais ce n’est pas le cas de tous les destinataires.<br>Exchange n'est <strong>pas chargé de générer des notifications d'échec</strong> de remise pour les destinataires ne figurant pas dans un domaine de relais interne. Pour avoir des notifications, il faudra créer un connecteur d'envoi avec l'espace d'adressage du domaine de relais interne. Il faudra également approvisionner ce connecteur d'envoi sur un serveur de boîtes aux lettres interne pour relayer les messages destinés aux destinataires absents du domaine.<br>Cette configuration <strong>permettra de relayer les e-mails en interne</strong> vers des destinataires internes ne faisant pas parti de l’organisation Exchange de l’entreprise.<br>Une partie des boites mails est gérée par le serveur Exchange, si toutefois certains destinataires font partie de l’organisation Exchange de l’entreprise.</p>
+<p><u>Domaine de relais externe</u></p>
+<p><strong>Aucun des destinataires figurant dans le domaine de relais externe n'existe dans l'organisation Exchange</strong>.<br>Exchange <strong>n'est pas chargé de générer des notifications d'échec</strong> de remise pour les destinataires ne figurant pas dans un domaine de relais externe.<br>Pour avoir des notifications, il faudra créer un connecteur d'envoi avec l'espace d'adressage du domaine de relais externe.<br>Il faudra également approvisionner ce connecteur d'envoi sur un <strong>serveur de transport Edge</strong> ou un serveur de boîtes aux lettres connecté à Internet pour relayer les messages destinés aux destinataires absents du domaine.<br>Cette configuration permettra de relayer les e-mails vers des destinataires externes de l’entreprise ne faisant pas parti de l’organisation Exchange de l’entreprise.<br>Aucune des boites mails n’est gérée par le serveur Exchange.</p>
+<ul>
+  <li>Les domaines acceptés se <strong>configurent de deux manières</strong> différentes&nbsp;</li>
+</ul>
+<p><u>Depuis l’EAC</u></p>
+<p>Se connecter à l’EAC puis se rendre dans la partie flux de messagerie et enfin cliquer sur domaines acceptés</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
