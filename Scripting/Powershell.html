@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-17T07:08:07.993Z
+date: 2021-05-20T05:43:50.426Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -118,7 +118,12 @@ dateCreated: 2021-05-08T14:42:07.092Z
 </ol>
 <p>Par conséquent, je vous conseille vivement d'utiliser le plus souvent possible <code>Get-CimInstance</code>, il y a encore tout un tas de raisons de l'utiliser mais je ne vais pas m'attarder la dessus, ce n'est pas le but.</p>
 <p>Voyons comment utiliser ces commandes et obtenir des infos sur un système.</p>
+<figure class="image"><img src="/get-ciminstance.png"></figure>
 <p>&nbsp;</p>
+<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, les toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour fouiner dans toutes ces classes.</p>
+<p>c'est alors que nous viens en aide la commande et que je vous montre mon astuce pour fouiller dans tout ce Bazard:</p>
+<p><code>Get-Cimclass</code></p>
+<p>si on exécute cette commande on vois que la liste&nbsp;</p>
 <h1>Création d'un menu sous Powershell</h1>
 <p>Voici un exemple de menu qu'il est possible de faire avec la méthode suivante :</p>
 <figure class="image image_resized" style="width:58.46%;"><img src="/capture2.png"></figure>
