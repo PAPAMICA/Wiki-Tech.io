@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-20T21:59:58.699Z
+date: 2021-05-20T22:01:58.875Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -81,6 +81,22 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p>Dans le cas où le domaine serai du type «&nbsp;domaine.local&nbsp;» et que l’on souhaite que les utilisateurs utilisent l’adresse de messagerie du domaine externe qui lui est du type «&nbsp;domaine.com&nbsp;», il faudra <strong>rajouter un suffixe UPN</strong> <strong>dans la configuration AD</strong>.<br>Cela permettra aux utilisateurs de se <strong>connecter directement dans Outlook avec leur adresse externe</strong> en «&nbsp;domaine.com&nbsp;»<br>Puis une fois cette manipulation faite, créer une stratégie de messagerie pour que tous les utilisateurs utilisent l’adresse en «&nbsp;domaine.com&nbsp;».</p>
 <p>Pour effectuer cette configuration il faut se rendre dans «&nbsp;<strong>domaines et approbations Active Directory</strong>&nbsp;» puis faire un clic droit/propriété sur le dossier domaines et approbations Active Directory.&nbsp;</p>
 <figure class="image image_resized" style="width:51.81%;"><img src="/images/dom_approb-1.png"></figure>
+<p>Puis ajouter le <strong>suffixe UPN</strong> «&nbsp;domaine.com&nbsp;»</p>
+<figure class="image"><img src="/images/dom_approb-2.png"></figure>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">Cette configuration est également à faire lors d’une configuration Exchange hybride (On-Premise ET Cloud)</mark></i></p>
+<p>Il reste maintenant à créer la stratégie d’adresse pour que tous les utilisateurs de l’organisation utilisent l’adresse de messagerie externe.<br>Pour cela il faut se connecter à l’EAC puis aller dans «&nbsp;<strong>flux de messagerie</strong>&nbsp;» et cliquer sur «&nbsp;<strong>stratégies d’adresse de messagerie</strong>&nbsp;»</p>
+<figure class="image"><img src="/images/eac-4.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
