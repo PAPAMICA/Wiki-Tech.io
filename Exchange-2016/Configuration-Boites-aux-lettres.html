@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-20T21:56:00.051Z
+date: 2021-05-20T21:59:58.699Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -42,12 +42,45 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><u>Depuis PowerShell avec la commande suivante&nbsp;:</u></p>
 <pre><code class="language-plaintext">New-AcceptedDomain -Name «nom_FQDN_du_domaine» -DomainName «nom_FQDN_du_domaine» -DomainType «type_du_domaine» </code></pre>
 <figure class="image image_resized" style="width:100%;"><img src="/images/ems-3.png"></figure>
+<h3>2 – Les stratégies d’adresses de messagerie</h3>
+<ul>
+  <li>Qu’est-ce qu’une stratégie d’adresse de messagerie&nbsp;</li>
+</ul>
+<p>Une stratégie d’adresse de messagerie permet de <strong>configurer l’adresse par défaut qu’aura un certain groupe de personne</strong>.<br>Elle <strong>définit les règles qui créent des adresses</strong> de messagerie de destinataires dans l’ organisation Exchange.</p>
+<ul>
+  <li>Pourquoi en configurer</li>
+</ul>
+<p>Permet d’attribuer automatiquement des adresses mails d’un certain type à certaines types ou groupes d’utilisateurs.</p>
+<ul>
+  <li>Les types de stratégies</li>
+</ul>
+<p><u>Adresse de messagerie SMTP prédéfinie</u></p>
+<p>Il s’agit d’<strong>adresses par défaut proposées par Exchange</strong> en fonction du domaine créé.</p>
+<p><u>Adresse de messagerie SMTP personnalisée</u></p>
+<p>Il s’agit de la <strong>personnalisation des adresses de messageries</strong> de l’organisation.</p>
+<p><u>Adresse de messagerie NON SMTP</u></p>
+<ul>
+  <li>A qui l’appliquer</li>
+</ul>
+<p>Les stratégies <strong>s’appliquent à un groupe de destinataires</strong> correspondant à différents critères de filtrages afin de définir leur adresse de messagerie selon les besoins.</p>
+<ul>
+  <li>Comment la configurer</li>
+</ul>
+<p><u>Via l’ECA</u></p>
+<p><u>Via Exchange Management Shell (EMS)</u></p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Pour créer la stratégie d’adresse&nbsp;:&nbsp;<br>&nbsp;</p>
+<pre><code class="language-plaintext">New-EmailAddresspolicy -Name «nom_de_la_stratégie» -IncludedRecipients MailboxUsers -EnabledEmailAddressTemplates «SMTP:%g.%.%s@domaine.com»</code></pre>
+<p>Pour appliquer la stratégie d’adresse&nbsp;:&nbsp;<br>&nbsp;</p>
+<pre><code class="language-plaintext">Update-EmailAddressPolicy -Identity «nom_de_la_stratégie»</code></pre>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">il faut laisser les guillemets dans la ligne de commande</mark></i></p>
+<p><u>Exemple d’application d’une stratégie&nbsp;:&nbsp;</u></p>
+<ul>
+  <li>Via l’EAC&nbsp;:&nbsp;</li>
+</ul>
+<p>Dans le cas où le domaine serai du type «&nbsp;domaine.local&nbsp;» et que l’on souhaite que les utilisateurs utilisent l’adresse de messagerie du domaine externe qui lui est du type «&nbsp;domaine.com&nbsp;», il faudra <strong>rajouter un suffixe UPN</strong> <strong>dans la configuration AD</strong>.<br>Cela permettra aux utilisateurs de se <strong>connecter directement dans Outlook avec leur adresse externe</strong> en «&nbsp;domaine.com&nbsp;»<br>Puis une fois cette manipulation faite, créer une stratégie de messagerie pour que tous les utilisateurs utilisent l’adresse en «&nbsp;domaine.com&nbsp;».</p>
+<p>Pour effectuer cette configuration il faut se rendre dans «&nbsp;<strong>domaines et approbations Active Directory</strong>&nbsp;» puis faire un clic droit/propriété sur le dossier domaines et approbations Active Directory.&nbsp;</p>
+<figure class="image image_resized" style="width:51.81%;"><img src="/images/dom_approb-1.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
