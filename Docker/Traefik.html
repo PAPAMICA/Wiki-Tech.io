@@ -2,7 +2,7 @@
 title: Traefik
 description: Un reverse-proxy qui s'occupe de tout vos services sous Docker !
 published: true
-date: 2021-05-21T20:10:01.660Z
+date: 2021-05-21T20:49:10.370Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:35:28.132Z
@@ -16,11 +16,135 @@ dateCreated: 2021-05-01T18:35:28.132Z
 <p>Traefik est nativement compatible avec les principales technologies de cluster, telles que Kubernetes, Docker, Docker Swarm, AWS, Mesos, Marathon, et bien d'autres encore. (Il fonctionne même pour les logiciels hérités fonctionnant sur du métal nu).</p>
 <p>Avec Traefik, il n'est pas nécessaire de maintenir et de synchroniser un fichier de configuration séparé : tout se passe automatiquement, en temps réel (pas de redémarrage, pas d'interruption de connexion). On trouve deux types de fichiers de configuration, que l'on verra plus tard.</p>
 <p>En développant Traefik, notre objectif principal est de le rendre simple à utiliser, et nous sommes sûrs que vous allez l'apprécier.<br><br>Vous pouvez retrouver le projet <a href="https://traefik.io/traefik/">ici</a> ou sur <a href="https://github.com/traefik/traefik/">Github</a>.</p>
+<h1>Préparatifs</h1>
+<p>Pour obtenir un certificat automatiquement, il est nécessaire d'ouvrir le port HTTP sur votre routeur et serveur.&nbsp;</p>
+<p>Dans mon cas, les parties liées au certificat sont commentées, car j'utilise un certificat wildcard généré au préalable via un challenge DNS (OVH).</p>
+<h1>Configuration</h1>
+<p>Il faut d'abord commencer par créer les fichiers de configuration. Traefik utilise deux types de configuration.</p>
+<ul>
+  <li>La configuration dynamique : routage, middlewares, certificats… Elle peut être modifiée à chaud.</li>
+  <li>La configuration de démarrage (statique) : éléments pour démarrer comme l'endroit de connexion, ports d'écoute, protocoles…</li>
+</ul>
+<p>Vous pouvez retrouver un exemple <a href="https://github.com/Khroners/Traefik-with-A-plus-on-SSL-Labs-Headers">ici</a>.</p>
 <h1>Installation</h1>
 <h2>Docker-compose</h2>
 <p>L'installation se fait majoritairement via une image Docker. J'ai choisi le déploiement par docker-compose, je trouve cela bien plus pratique.</p>
-<p>```yml</p>
-<p>version: ‘3.8’</p>
-<p>```<br>&nbsp;</p>
-<h1>Configuration</h1>
-<p>&nbsp;</p>
+<pre><code class="language-plaintext"># By Khroners
+version: '3.8'
+services:
+  traefik:
+    image: traefik:2.4.8 #utiliser le dernier tag
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /apps/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - /apps/traefik/config/:/etc/traefik/config/:ro
+# Décommentez cette ligne si vous n'utilisez pas un certificat déjà généré
+#      - /apps/traefik/acme.json:/acme.json
+#Commentez cette ligne si vous n'utilisez pas un certificat généré au préalable      
+      - /etc/letsencrypt/archive/khroners.fr-0001/:/certs:ro # Edit the path of your certificates
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik.entrypoints=http
+      - traefik.http.routers.traefik.rule=Host("traefik.exemple.fr")
+      - traefik.http.middlewares.traefik-auth.basicauth.users=admin:{SHA}0DPiKuNIrrVmD8IUCuw1hQxNqZc=
+      - traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https
+      - traefik.http.routers.traefik.middlewares=traefik-https-redirect
+      - traefik.http.routers.traefik-secure.entrypoints=https
+      - traefik.http.routers.traefik-secure.rule=Host("traefik.exemple.fr")
+      - traefik.http.routers.traefik-secure.middlewares=traefik-auth
+      - traefik.http.routers.traefik-secure.tls=true
+# Décommentez cette ligne si vous n'utilisez pas un certificat déjà généré
+#      - traefik.http.routers.traefik-secure.tls.certresolver=http
+      - traefik.http.routers.traefik-secure.service=api@internal
+
+networks:
+  proxy:
+    external: true</code></pre>
+<p>Le fichier docker-compose.yml est également disponible <a href="https://github.com/Khroners/Traefik-with-A-plus-on-SSL-Labs-Headers">ici</a>.</p>
+<p>Pour une installation rapide, vous pouvez récupérer le répertoire, modifier les fichiers de configuration (les URL, certificats, tags des images) et lancer le conteneur.</p>
+<pre><code class="language-plaintext">mkdir /apps/
+cd /apps/
+git clone https://github.com/Khroners/Traefik-with-A-plus-on-SSL-Labs-Headers</code></pre>
+<p>Une fois les fichiers de configuration modifiés (traefik.yml, config.yml et tls.yml), vous pouvez lancer le conteneur et vérifier son bon fonctionnement.</p>
+<pre><code class="language-plaintext">docker-compose up -d
+docker logs &lt;id_du_conteneur&gt;</code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Pensez bien à modifier les fichiers de configuration pour correspondre à votre infrastructure (URL, chemin de destination des volumes, certificats, …)</p>
+</blockquote>
+<h1>Configuration des conteneurs pour l'utilisation de Traefik</h1>
+<p>Il est nécessaire de rajouter des étiquettes ("labels") aux conteneurs pour qu'ils soit détectés par Traefik. Voici un exemple avec le déploiement de Wordpress.</p>
+<pre><code class="language-plaintext">version: "3.8"
+
+services:
+   # Base de données
+   wordpress-db:
+     container_name: $SERVICE-db
+     image: mysql:5.7.34
+     volumes:
+       - $DATA_LOCATION/db:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: $DB_ROOT
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: $DB_USER
+       MYSQL_PASSWORD: $DB_PASSWORD
+
+ 
+     networks:
+       - proxy
+
+   wordpress:
+     container_name: $SERVICE
+     depends_on:
+       - wordpress-db
+     image: wordpress:php7.4
+     restart: always
+     volumes:
+       - $DATA_LOCATION/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+       - $DATA_LOCATION/html:/var/www/html
+     environment:
+       WORDPRESS_DB_HOST: wordpress-db:3306
+       WORDPRESS_DB_USER: $DB_USER
+       WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+       WORDPRESS_DB_NAME: wordpress
+#     ports:
+#      - 8082:8082
+
+
+     networks:
+       - proxy
+
+     labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.$SERVICE.entrypoints=http"
+      - "traefik.http.routers.$SERVICE.rule=Host(`$SERVICE.$NDD`)"
+      - "traefik.http.middlewares.$SERVICE-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.$SERVICE.middlewares=$SERVICE-https-redirect"
+      - "traefik.http.routers.$SERVICE.middlewares=hsts-headers@file"
+      - "traefik.http.routers.$SERVICE-secure.entrypoints=https"
+      - "traefik.http.routers.$SERVICE-secure.rule=Host(`$SERVICE.$NDD`)"
+      - "traefik.http.routers.$SERVICE-secure.middlewares=hsts-headers@file"
+      - "traefik.http.routers.$SERVICE-secure.tls=true"
+#      - "traefik.http.routers.$SERVICE-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+ 
+networks:
+  proxy:
+    external:
+      name: proxy</code></pre>
+<p>On remarque ici que pour chaque service, on rajoute le réseau “proxy” qui correspond au réseau de Traefik. Ce réseau est déclaré à la fin du fichier.</p>
+<p>Les labels sont rajoutés pour le service exposé.&nbsp;</p>
+<blockquote>
+  <p><strong>Attention :</strong> Décommentez le label commenté si vous n'utilisez pas un certificat pré-généré.</p>
+</blockquote>
+<p>Le serveur Wordpress sera donc accessible via https://$SERVICE.$NDD/.&nbsp;</p>
