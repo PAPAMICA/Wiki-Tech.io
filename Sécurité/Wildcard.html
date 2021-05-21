@@ -2,7 +2,7 @@
 title: Certificat Wildcard - OVH
 description: Génération d'un certificat Wildcard pour tous vos sous-domaines d'OVH
 published: true
-date: 2021-05-21T22:05:31.966Z
+date: 2021-05-21T22:06:48.959Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-21T21:25:16.097Z
@@ -13,7 +13,7 @@ dateCreated: 2021-05-21T21:25:16.097Z
 <p>La présence d'un certificat SSL sur vos sites web est essentiel pour la sécurisation des transferts de données. Celui-ci est nécessaire pour le bon fonctionnement du protocole HTTPS, remplaçant du protocole HTTP.</p>
 <p>Le protocole HTTPS (HyperText Transfer Protocol Secure) permet de sécuriser les échanges entre le serveur et le visiteur. On parle alors de communication chiffrée. Pour cela, HTTPS utilise un protocole de transport appelée SSL/TLS.</p>
 <p>Avec Let's Encrypt, il est possible de générer des certificats SSL pour un domaine ou sous-domaine, mais il est également possible de générer un certificat pour plusieurs sous-domaines. On appelle ces certificats des certificats Wildcard. Ils certifient des noms DNS du type *.exemple.fr.</p>
-<h1>Génération du certificat</h1>
+<h1>Préparatifs</h1>
 <p>Dans mon cas, mon nom de domaine est enregistré sur OVH. Pour générer le Wildcard, nous allons utiliser un plugin de certbot, <a href="https://certbot-dns-ovh.readthedocs.io/en/stable/">dns-ovh</a>.</p>
 <h2>Installation des dépendances</h2>
 <pre><code class="language-plaintext">apt install python3-pip
@@ -42,6 +42,9 @@ dns_ovh_application_key = xxx
 dns_ovh_application_secret = xxx
 dns_ovh_consumer_key = xxx</code></pre>
 <p>On attribue ensuite les droits sur ce fichier.</p>
+<pre><code class="language-plaintext">chmod 600 /root/.ovhapi</code></pre>
+<h1>Génération du certificat Wildcard</h1>
+<p>La génération du certificat s'effectue en une seule ligne de commande :</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
