@@ -2,15 +2,14 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-21T06:54:58.186Z
+date: 2021-05-21T06:56:00.895Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
 -->
 
 <figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png"></figure>
-<h1>&nbsp;Première configuration</h1>
-<h2>Configuration d’un domaine accepté</h2>
+<h1>Configuration d’un domaine accepté</h1>
 <ul>
   <li>Qu’est-ce qu’un domaine accepté</li>
 </ul>
@@ -22,12 +21,12 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <ul>
   <li>Les types de domaines acceptés</li>
 </ul>
-<h3>Domaine faisant autorité</h3>
+<h2>Domaine faisant autorité</h2>
 <p><strong>Tous les destinataires</strong> figurant dans le domaine faisant autorité <strong>existent dans l'organisation Exchange</strong>.<br>Exchange est chargé de générer des <strong>notifications d'échec</strong> de remise (également appelées notifications de non-remise) pour les destinataires ne figurant pas dans un domaine faisant autorité.<br>Le serveur <strong>Exchange est donc totalement «&nbsp;maître&nbsp;» de ce domaine</strong> et en aura une totale responsabilité.<br>L’intégralité des boites mails du domaine sera gérée par le serveur Exchange de l’entreprise.</p>
 <p>Il est possible d’avoir plusieurs domaines faisant autorité dans la même organisation.</p>
-<h3>Domaine de relais interne</h3>
+<h2>Domaine de relais interne</h2>
 <p>C<strong>ertains destinataires dans le domaine de relais interne peuvent exister dans l'organisation Exchange</strong> mais ce n’est pas le cas de tous les destinataires.<br>Exchange n'est <strong>pas chargé de générer des notifications d'échec</strong> de remise pour les destinataires ne figurant pas dans un domaine de relais interne. Pour avoir des notifications, il faudra créer un connecteur d'envoi avec l'espace d'adressage du domaine de relais interne. Il faudra également approvisionner ce connecteur d'envoi sur un serveur de boîtes aux lettres interne pour relayer les messages destinés aux destinataires absents du domaine.<br>Cette configuration <strong>permettra de relayer les e-mails en interne</strong> vers des destinataires internes ne faisant pas parti de l’organisation Exchange de l’entreprise.<br>Une partie des boites mails est gérée par le serveur Exchange, si toutefois certains destinataires font partie de l’organisation Exchange de l’entreprise.</p>
-<h3>Domaine de relais externe</h3>
+<h2>Domaine de relais externe</h2>
 <p><strong>Aucun des destinataires figurant dans le domaine de relais externe n'existe dans l'organisation Exchange</strong>.<br>Exchange <strong>n'est pas chargé de générer des notifications d'échec</strong> de remise pour les destinataires ne figurant pas dans un domaine de relais externe.<br>Pour avoir des notifications, il faudra créer un connecteur d'envoi avec l'espace d'adressage du domaine de relais externe.<br>Il faudra également approvisionner ce connecteur d'envoi sur un <strong>serveur de transport Edge</strong> ou un serveur de boîtes aux lettres connecté à Internet pour relayer les messages destinés aux destinataires absents du domaine.<br>Cette configuration permettra de relayer les e-mails vers des destinataires externes de l’entreprise ne faisant pas parti de l’organisation Exchange de l’entreprise.<br>Aucune des boites mails n’est gérée par le serveur Exchange.</p>
 <ul>
   <li>Les domaines acceptés se <strong>configurent de deux manières</strong> différentes</li>
@@ -41,7 +40,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><u>Depuis PowerShell avec la commande suivante&nbsp;:</u></p>
 <pre><code class="language-plaintext">New-AcceptedDomain -Name «nom_FQDN_du_domaine» -DomainName «nom_FQDN_du_domaine» -DomainType «type_du_domaine» </code></pre>
 <p>&nbsp;</p>
-<h2>Les stratégies d’adresses de messagerie</h2>
+<h1>Les stratégies d’adresses de messagerie</h1>
 <ul>
   <li>Qu’est-ce qu’une stratégie d’adresse de messagerie</li>
 </ul>
