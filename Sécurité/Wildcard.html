@@ -2,7 +2,7 @@
 title: Certificat Wildcard - OVH
 description: Génération d'un certificat Wildcard pour tous vos sous-domaines d'OVH
 published: true
-date: 2021-05-21T22:07:35.817Z
+date: 2021-05-21T22:12:12.111Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-21T21:25:16.097Z
@@ -45,6 +45,8 @@ dns_ovh_consumer_key = xxx</code></pre>
 <pre><code class="language-plaintext">chmod 600 /root/.ovhapi</code></pre>
 <h1>Génération du certificat Wildcard</h1>
 <p>La génération du certificat s'effectue en une seule ligne de commande :</p>
-<pre><code class="language-plaintext">&nbsp;</code></pre>
+<pre><code class="language-plaintext">certbot certonly --dns-ovh --dns-ovh-credentials ~/.ovhapi -d exemple.fr -d *.exemple.fr</code></pre>
+<p>Pensez bien à remplacer “exemple.fr” par votre nom de domaine.</p>
+<p>Dans ce cas, le domaine exemple.fr ainsi que tous ses sous-domaines seront certifiés.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
