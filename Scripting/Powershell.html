@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-20T14:35:31.946Z
+date: 2021-05-21T06:34:39.434Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -13,11 +13,11 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>&nbsp;</p>
 <h2>Le Langage objet</h2>
 <p>PowerShell est un langage orienté “objet”. C'est à dire que PowerShell considère tout les éléments qu'il traite ainsi. Pour vous expliquez cela, je vais prendre comme exemple une voiture. Une voiture a des propriétés comme sa couleur, sa forme, sa taille etc.. les propriétés d'un objet s'apparentent plutôt à des éléments physiques, ses méthodes seraient donc rouler, tourner, avancer, reculer etc… les méthodes sont davantage liées à une action.</p>
-<p>Pour être concret, un service a comme propriétés son nom, son statuts et comme méthodes démarrer, arrêté, en attente etc…et bien PowerShell fonctionne ainsi.</p>
+<p>Pour être concret, un service a comme propriétés son nom, son statuts et comme méthodes démarrer, arrêter, en attente etc…et bien PowerShell fonctionne ainsi.</p>
 <p>on verra plus tard comment lister tout ces éléments et savoir si nous sommes devant une propriété ou une méthode.</p>
 <p>&nbsp;</p>
 <h2>Les raccourcis clavier</h2>
-<p>Avant de se lancer tête baissée, dans PowerShell, deux raccourci clavier sont indispensables dans le sens où il vont vous permettre d'obtenir de l'aide et de gagner du temps.</p>
+<p>Avant de se lancer tête baissée, dans PowerShell, deux raccourcis clavier sont indispensables dans le sens où il vont vous permettre d'obtenir de l'aide et de gagner du temps.</p>
 <ol>
   <li><strong><u>tabulation:</u></strong> vous permet de faire de la complétion, c'est à dire compléter le mot que vous êtes en train d'écrire.</li>
   <li><strong><u>ctrl + espace:</u></strong> lorsque vous souhaitez connaitre toutes les options d'une commande PowerShell, via ce raccourci, une liste de toutes les options possibles d'une commande vous sera suggérées voir même vous afficher des éléments pour compléter cette même option.</li>
@@ -88,7 +88,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Par exemple: Pause, Stop, Refresh sont des méthodes. Displayname, Servicename, ServiceType sont des propriétés.</p>
 <p>&nbsp;</p>
 <h2>Les providers</h2>
-<p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système à l'environnement etc…</p>
+<p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système, à l'environnement etc…</p>
 <ul>
   <li>Base de Registre {HKLM, HKCU}</li>
   <li>Alias {alias}</li>
@@ -125,7 +125,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <p>Si on exécute cette commande on voit que la liste est longue et que cela peut paraitre un peu compliqué, à première vue, et par forcément facile à lire. De plus, la commande renvoie l'ensemble des classes Wmi et Cim.</p>
 <p>&nbsp;Pour cela 3 solutions pour s'y retrouver:</p>
 <ul>
-  <li><u>renvoyer le tout dans un fichier texte,</u> le sauvegarder pour l'avoir sous la main puis un petit <strong>ctrl + F</strong> pour rechercher dans la liste.</li>
+  <li><u>renvoyer le tout dans un fichier texte,</u> le sauvegarder pour l'avoir sous la main puis un petit “<strong>ctrl + F”</strong> pour rechercher dans la liste.</li>
 </ul>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-CimClass | Out-File -path c:\classcim.txt</code></pre>
@@ -137,6 +137,7 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <pre><code class="language-plaintext">Get-Cimclass | Select-Object CimClassName | Export-Csv -Path C:\classescim.csv</code></pre>
 <p>&nbsp;</p>
 <p>Petite remarque: <code>Select-Object</code> permet de filtrer les informations de la commande en récupérant uniquement la partie CimclassName de <code>Get-CimClass</code></p>
+<p>&nbsp;</p>
 <ul>
   <li><u>renvoyer le tout dans un GridView</u>, un outil fourni dans PowerShell bien utile.</li>
 </ul>
