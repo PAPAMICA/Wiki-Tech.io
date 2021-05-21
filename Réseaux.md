@@ -2,7 +2,7 @@
 title: Réseaux
 description: 
 published: true
-date: 2021-05-20T14:33:37.218Z
+date: 2021-05-21T07:23:06.218Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-30T09:49:34.631Z
@@ -18,7 +18,7 @@ dateCreated: 2021-04-30T09:49:34.631Z
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DHCP)
 - [🧭 Protocole HSRP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/HSRP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseaux/Masques)
-- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Masques)
+- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Switch)
 - [🧅 Tor *Comprendre et utiliser le réseau Tor*](/Réseaux/Tor)
 
 {.links-list}
