@@ -2,7 +2,7 @@
 title: Certificat Wildcard - OVH
 description: Génération d'un certificat Wildcard pour tous vos sous-domaines d'OVH
 published: true
-date: 2021-05-21T22:14:57.301Z
+date: 2021-05-21T22:21:21.342Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-21T21:25:16.097Z
@@ -15,6 +15,9 @@ dateCreated: 2021-05-21T21:25:16.097Z
 <p>Avec Let's Encrypt, il est possible de générer des certificats SSL pour un domaine ou sous-domaine, mais il est également possible de générer un certificat pour plusieurs sous-domaines. On appelle ces certificats des certificats Wildcard. Ils certifient des noms DNS du type *.exemple.fr.</p>
 <h1>Préparatifs</h1>
 <p>Dans mon cas, mon nom de domaine est enregistré sur OVH. Pour générer le Wildcard, nous allons utiliser un plugin de certbot, <a href="https://certbot-dns-ovh.readthedocs.io/en/stable/">dns-ovh</a>.</p>
+<p>Création de l'entrée DNS</p>
+<p>Tout d'abord, il est important de créer un enregistrement de type A pointant vers votre serveur.</p>
+<p>Dans votre <a href="https://www.ovh.com/manager/#/">tableau de bord OVH</a>,&nbsp;</p>
 <h2>Installation des dépendances</h2>
 <pre><code class="language-plaintext">apt install python3-pip
 apt-get install certbot
