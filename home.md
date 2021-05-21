@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-21T07:12:35.428Z
+date: 2021-05-21T07:35:07.462Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -152,7 +152,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/DHCP)
 - [🧭 Protocole HSRP 🚧 *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseaux/HSRP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseaux/Masques)
-- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Masques)
+- [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseaux/Switch)
 - [🧅 Tor 🚧*Comprendre et utiliser le réseau Tor*](/Réseaux/Tor)
 {.links-list}
 
