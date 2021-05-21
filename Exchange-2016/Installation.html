@@ -2,16 +2,15 @@
 title: Installation
 description: Installation de Exchange 2016
 published: true
-date: 2021-05-20T21:23:19.478Z
+date: 2021-05-21T06:50:21.324Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:21:09.806Z
 -->
 
-<figure class="image image_resized" style="width:39.88%;"><img src="/images/exchange2016_logo.png"></figure>
-<h1>Installation de Exchange 2016</h1>
-<h2>Les différents types d’installations et de droits</h2>
-<h3>1 - Les types d’installations</h3>
+<figure class="image image_resized" style="width:27.93%;"><img src="/images/exchange2016_logo.png"></figure>
+<h1>Les différents types d’installations et de droits</h1>
+<h2>Les types d’installations</h2>
 <p>Il existe <strong>deux types d’installations</strong> des serveurs Exchange&nbsp;:&nbsp;</p>
 <ul>
   <li>Installation de Exchange avec assistant d’installation <u>graphique</u></li>
@@ -22,7 +21,7 @@ dateCreated: 2021-05-20T21:21:09.806Z
   <li>Avec un compte <u>administrateur de l’organisation</u></li>
   <li>Avec un <u>compte «&nbsp;délégué</u>&nbsp;» (Utile pour les grosses infrastructures dont les services sont cloisonnés. Le compte utilisé ne pourra pas toucher les autres serveurs mais seulement effectuer l’installation sur un site précis).</li>
 </ul>
-<h3>2 - Les droits nécessaires à l’installation</h3>
+<h2>Les droits nécessaires à l’installation</h2>
 <ul>
   <li>Installation du premier serveur Exchange de l’organisation</li>
 </ul>
@@ -38,9 +37,9 @@ dateCreated: 2021-05-20T21:21:09.806Z
 <pre><code class="language-plaintext">.\setup.exe /NewProvisionedServer /IAcceptExchangeServerLicenseTerms</code></pre>
 <p>Puis effectuer l’installation avec un <strong>autre compte</strong> qui devra être membre du groupe <strong>Installation déléguée</strong> (Delegated Setup)</p>
 <p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">ces groupes sont présents uniquement dans un contrôleur de domaine du domaine RACINE.</mark></i></p>
-<figure class="image image_resized" style="width:72.39%;"><img src="/images/groups.png"></figure>
-<h2>Installation avec assistant d’installation graphique</h2>
-<p><u>Plan d’action&nbsp;:</u></p>
+<figure class="image image_resized" style="width:53.03%;"><img src="/images/groups.png"></figure>
+<h1>Installation avec assistant d’installation graphique</h1>
+<h2>Plan d’action&nbsp;:</h2>
 <ul>
   <li>Récupérer les sources de Exchange 2016 sur le lien TechNet de Microsoft</li>
 </ul>
@@ -51,34 +50,34 @@ dateCreated: 2021-05-20T21:21:09.806Z
   <li>Lancer le setup.exe en tant qu’<strong>administrateur</strong></li>
   <li>Suivre l’assistant et renseigner les informations nécessaires et demandées</li>
 </ul>
-<p><u>Installation&nbsp;:&nbsp;</u></p>
+<h2>Installation&nbsp;:&nbsp;</h2>
 <p>Lancer le «&nbsp;Setup.exe&nbsp;». Pour les besoins de la démonstration de l’installation, nous ne ferons pas les updates.</p>
-<figure class="image"><img src="/images/install-1.png"></figure>
+<figure class="image image_resized" style="width:15.84%;"><img src="/images/install-1.png"></figure>
 <p>Cliquer sur «&nbsp;suivant&nbsp;»</p>
-<figure class="image"><img src="/images/install-2.png"></figure>
-<figure class="image"><img src="/images/install-3.png"></figure>
-<figure class="image"><img src="/images/install-4.png"></figure>
+<figure class="image image_resized" style="width:18.43%;"><img src="/images/install-2.png"></figure>
+<figure class="image image_resized" style="width:15.06%;"><img src="/images/install-3.png"></figure>
+<figure class="image image_resized" style="width:13.52%;"><img src="/images/install-4.png"></figure>
 <p>Cliquer sur «&nbsp;suivant&nbsp;» et accepter les termes de la licence et cliquer à nouveau sur «&nbsp;suivant&nbsp;»</p>
-<figure class="image"><img src="/images/install-5.png"></figure>
+<figure class="image image_resized" style="width:15.63%;"><img src="/images/install-5.png"></figure>
 <p>choisir l’installation manuelle&nbsp;</p>
-<figure class="image"><img src="/images/install-6.png"></figure>
+<figure class="image image_resized" style="width:14.21%;"><img src="/images/install-6.png"></figure>
 <p>Cliquer sur «&nbsp;suivant&nbsp;» puis choisir le rôle désiré pour le serveur, ici nous choisirons le rôle de boite aux lettres</p>
-<figure class="image"><img src="/images/install-7.png"></figure>
+<figure class="image image_resized" style="width:14.58%;"><img src="/images/install-7.png"></figure>
 <p>Cliquer sur «&nbsp;suivant&nbsp;» et choisir le lieu d’installation et cliquer sur «&nbsp;suivant&nbsp;»</p>
-<figure class="image"><img src="/images/install-8.png"></figure>
+<figure class="image image_resized" style="width:11.71%;"><img src="/images/install-8.png"></figure>
 <p>Choisir l’option voulu pour la protection contre les malwares</p>
-<figure class="image"><img src="/images/install-9.png"></figure>
+<figure class="image image_resized" style="width:16.66%;"><img src="/images/install-9.png"></figure>
 <p>Cliquer sur «&nbsp;suivant&nbsp;», l’installation vérifiera les prérequis</p>
-<figure class="image"><img src="/images/install-10.png"></figure>
+<figure class="image image_resized" style="width:16.15%;"><img src="/images/install-10.png"></figure>
 <p>Une fois les prérequis vérifiés, cliquer sur «&nbsp;installer&nbsp;»</p>
-<figure class="image"><img src="/images/install-11.png"></figure>
+<figure class="image image_resized" style="width:15.5%;"><img src="/images/install-11.png"></figure>
 <p>L’installation commence</p>
-<figure class="image"><img src="/images/install-12.png"></figure>
+<figure class="image image_resized" style="width:20.03%;"><img src="/images/install-12.png"></figure>
 <p>L’installation peut prendre un certain temps</p>
-<figure class="image"><img src="/images/install-13.png"></figure>
-<figure class="image"><img src="/images/install-14.png"></figure>
-<h2>Installation sans assistant via des lignes de commandes PowerShell</h2>
-<p><u>Plan d’action&nbsp;:</u></p>
+<figure class="image image_resized" style="width:19.58%;"><img src="/images/install-13.png"></figure>
+<figure class="image image_resized" style="width:18.97%;"><img src="/images/install-14.png"></figure>
+<h1>Installation sans assistant via des lignes de commandes PowerShell</h1>
+<h2>Plan d’action&nbsp;:</h2>
 <ul>
   <li>Récupérer les sources de Exchange 2016 sur le lien TechNet de Microsoft</li>
 </ul>
@@ -90,42 +89,42 @@ dateCreated: 2021-05-20T21:21:09.806Z
   <li>Exécuter la <strong>commande d’installation</strong></li>
   <li><strong>Vérifier</strong> l’installation</li>
 </ul>
-<p><u>Installation&nbsp;:&nbsp;</u></p>
+<h2>Installation&nbsp;:&nbsp;</h2>
 <p>Pour effectuer l’installation il suffit d’entrer les commandes suivantes&nbsp;:</p>
 <pre><code class="language-plaintext">lettre_du_lecteur»:
 
 .\Setup.exe /mode:install /role:Mailbox /OrganizationName:«nom_du_domaine» /IAcceptExchangeServerLicenseTerms
 </code></pre>
 <p>Une fois la commande passée, l’installation s’effectue puis on procède à la vérification de l’installation. Il ne doit pas y avoir d’erreurs et tout doit être en «&nbsp;<strong>Terminé</strong>&nbsp;»</p>
-<figure class="image image_resized" style="width:58.89%;"><img src="/images/powershell_install-1.png"></figure>
+<figure class="image image_resized" style="width:40.57%;"><img src="/images/powershell_install-1.png"></figure>
 <p>A savoir qu’il est possible de renseigner de nombreuses informations lors de la commande d’installation.<br>Voici la liste des informations possibles&nbsp;</p>
-<figure class="image image_resized" style="width:31.39%;"><img src="/images/powershell_install-2.png"></figure>
-<h2>Vérification de l’installation</h2>
+<figure class="image image_resized" style="width:31.14%;"><img src="/images/powershell_install-2.png"></figure>
+<h1>Vérification de l’installation</h1>
 <p>Lorsque l’installation de Exchange est terminée, que ça soit en graphique ou en ligne de commande, il est <strong>impératif de vérifier que tout s’est bien déroulé</strong>.<br>Pour ce faire il y a plusieurs choses à contrôler.</p>
 <ul>
   <li>Lire le <strong>rapport du setup.exe</strong> en fin d’installation</li>
   <li>Lire <strong>les logs de l’installation</strong> (ils sont par défaut en mode verbose)</li>
 </ul>
 <p>Ces logs se trouvent dans <i><strong>&lt;system drive&gt; \ExchangeSetupLogs\ExchangeSetup.log</strong></i></p>
-<figure class="image"><img src="/images/vérif_install-1.png"></figure>
+<figure class="image image_resized" style="width:25.51%;"><img src="/images/vérif_install-1.png"></figure>
 <ul>
   <li>Vérifier les informations disponibles dans l’Observateur d’évènements (principalement dans le journal Application)</li>
 </ul>
-<figure class="image image_resized" style="width:63.73%;"><img src="/images/vérif_install-2.png"></figure>
+<figure class="image image_resized" style="width:58.92%;"><img src="/images/vérif_install-2.png"></figure>
 <ul>
   <li>Vérifier l’état des services démarrés sur le serveur. Les services Exchanges devraient être opérationnels et démarrés.</li>
 </ul>
-<figure class="image image_resized" style="width:51.37%;"><img src="/images/vérif_install-3.png"></figure>
+<figure class="image image_resized" style="width:47.17%;"><img src="/images/vérif_install-3.png"></figure>
 <ul>
   <li>Contrôler les sites IIS</li>
 </ul>
-<figure class="image"><img src="/images/vérif_install-4.png"></figure>
+<figure class="image image_resized" style="width:27.08%;"><img src="/images/vérif_install-4.png"></figure>
 <ul>
   <li>Lancer la console PowerShell Exchange Management Tools et exécuter la commande suivante</li>
 </ul>
 <pre><code class="language-plaintext">Get-ExchangeServer</code></pre>
 <p>&nbsp;</p>
-<figure class="image"><img src="/images/vérif_install-5.png"></figure>
+<figure class="image image_resized" style="width:23.06%;"><img src="/images/vérif_install-5.png"></figure>
 <ul>
   <li>Redémarrer le serveur et contrôler de nouveau tout à part les logs d’installation</li>
 </ul>
