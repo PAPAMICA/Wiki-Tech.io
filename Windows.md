@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-20T21:47:09.982Z
+date: 2021-05-21T06:37:33.721Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -27,9 +27,9 @@ dateCreated: 2021-04-29T06:38:46.149Z
 {.links-list}
 
 # Exchange 2016
-- [🌀 Présentation et Prérequis 🚧 *Présentation de Exchange 2016*](/Exchange-2016/Présentation)
-- [🌀 Installation 🚧 *Comment installer Exchange 2016*](/Exchange-2016/Installation)
-- [🌀 Présentation de l'administration 🚧 *Administration via EAC et EMS*](/Exchange-2016/Présentation-administration)
+- [🌀 Présentation et Prérequis *Présentation de Exchange 2016*](/Exchange-2016/Présentation)
+- [🌀 Installation *Comment installer Exchange 2016*](/Exchange-2016/Installation)
+- [🌀 Présentation de l'administration *Administration via EAC et EMS*](/Exchange-2016/Présentation-administration)
 - [🌀 Configuration des boîtes aux lettres 🚧 *Configuration BAL*](/Exchange-2016/Configuration-Boites-aux-lettres)
 - [🌀 Configuration des accès clients 🚧 *Gz*](/Exchange-2016/Configuration-Acces-Clients)
 - [🌀 Configuration du routage des messages 🚧 *Gz*](/Exchange-2016/Configuration-Routage-Messages)
