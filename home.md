@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-21T06:57:03.387Z
+date: 2021-05-21T07:12:35.428Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -109,7 +109,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 ## Centreon
-- [👁️‍🗨️ Présentation 🚧 *Qu'est ce qu'est Centreon ?*](/Supervision/Centreon/Présentation)
+- [👁️‍🗨️ Présentation *Qu'est ce qu'est Centreon ?*](/Supervision/Centreon/Présentation)
 - [🌀 Installation 🚧 *Mise en place d'un serveur Centreon*](/Supervision/Centreon/Installation)
 - [👥 Comptes et Groupes 🚧 *Gestion des comptes et des groupes dans Centreon*](/Supervision/Centreon/Gestion-Comptes-Groupes)
 - [🕹️ Les commandes 🚧 *Contrôler son serveur de supervision en ligne de commande*](/Supervision/Centreon/Commandes)
