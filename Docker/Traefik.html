@@ -2,7 +2,7 @@
 title: Traefik
 description: Un reverse-proxy qui s'occupe de tout vos services sous Docker !
 published: true
-date: 2021-05-21T20:56:50.837Z
+date: 2021-05-21T21:15:47.296Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-01T18:35:28.132Z
@@ -18,7 +18,7 @@ dateCreated: 2021-05-01T18:35:28.132Z
 <p>En développant Traefik, notre objectif principal est de le rendre simple à utiliser, et nous sommes sûrs que vous allez l'apprécier.<br><br>Vous pouvez retrouver le projet <a href="https://traefik.io/traefik/">ici</a> ou sur <a href="https://github.com/traefik/traefik/">Github</a>.</p>
 <h1>Prérequis</h1>
 <ul>
-  <li>Pour obtenir un certificat automatiquement, il est nécessaire d'ouvrir le port HTTP sur votre routeur et serveur.&nbsp;</li>
+  <li>Pour obtenir un certificat automatiquement, il est nécessaire d'ouvrir le port HTTP sur votre routeur et serveur.</li>
   <li>Avoir <a href="https://wiki-tech.io/Docker/Installation">Docker</a> et <a href="https://wiki-tech.io/Docker/Docker-Compose">Docker-compose</a> d'installés</li>
   <li>Ports 80 et 443 d'ouverts au niveau du pare-feu</li>
 </ul>
@@ -80,8 +80,10 @@ networks:
 cd /apps/
 git clone https://github.com/Khroners/Traefik-with-A-plus-on-SSL-Labs-Headers</code></pre>
 <p>Une fois les fichiers de configuration modifiés (traefik.yml, config.yml et tls.yml), vous pouvez lancer le conteneur et vérifier son bon fonctionnement.</p>
-<pre><code class="language-plaintext">docker-compose up -d
+<pre><code class="language-plaintext">cd Traefik-with-A-plus-on-SSL-Labs-Headers/
+docker-compose up -d
 docker logs &lt;id_du_conteneur&gt;</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p><strong>Attention :</strong> Pensez bien à modifier les fichiers de configuration pour correspondre à votre infrastructure (URL, chemin de destination des volumes, certificats, …)</p>
 </blockquote>
