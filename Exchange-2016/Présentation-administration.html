@@ -2,36 +2,35 @@
 title: Présentation de l’administration
 description: Administration via EAC et EMS
 published: true
-date: 2021-05-20T21:45:20.597Z
+date: 2021-05-21T06:53:12.651Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:33:32.817Z
 -->
 
-<figure class="image image_resized" style="width:39.88%;"><img src="/images/exchange2016_logo.png"></figure>
-<h1>Présentation de l’administration de Exchange 2016</h1>
-<h2>Découverte des outils</h2>
+<figure class="image image_resized" style="width:26.45%;"><img src="/images/exchange2016_logo.png"></figure>
+<h1>Découverte des outils</h1>
 <p>Il existe 3 outils pour administrer l’environnement Exchange 2016.</p>
 <ul>
   <li>Centre d’administration Exchange en Web (Exchange Administration Consol)</li>
 </ul>
 <p>Le centre d’administration Exchange (EAC) est une <strong>console de gestion web</strong>. Elle est optimisée pour les serveurs On-Premise, dans le cloud et hybride. Cette console a été introduite dans Exchange Server 2013 et <strong>remplace la Console de gestion Exchange (EMC) et le panneau de configuration de contrôle d’Exchange (ECP)</strong>.</p>
-<figure class="image"><img src="/eac-1.png"></figure>
+<figure class="image image_resized" style="width:22.1%;"><img src="/eac-1.png"></figure>
 <ul>
   <li>Exchange Toolbox</li>
 </ul>
 <p>Propose les outils suivants :&nbsp;</p>
 <p><strong>Afficheur des files d’attente</strong> : permet d’afficher la file d’attente SMTP et d’analyser l’origine des erreurs de remise des e-mails domaine par domaine. Ce module est très souvent utilisé pour dépanner les services de transport.<br><strong>Analyseur de connectivité à distance</strong> : lance le site web du même nom qui permet de valider la connectivité extérieure du serveur Exchange mais aussi Lync, Office 365…<br><strong>Éditeur de modèles détaillés</strong> : permet la personnalisation de l’interface d’administration pour chacune des langues.</p>
-<figure class="image"><img src="/toolbox.png"></figure>
+<figure class="image image_resized" style="width:21.15%;"><img src="/toolbox.png"></figure>
 <ul>
   <li>Exchange Management Shell (EMS)</li>
 </ul>
 <p>EMS <strong>s’appuie sur l’environnement PowerShell</strong> et hérite de ses caractéristiques pour l’administration simplifiée.&nbsp;<br>La console Exchange Management Shell permet de <strong>réaliser des tâches répétitives</strong> (sous forme de script par exemple) pour gagner du temps et réduire les erreurs. Il est donc possible <strong>d’automatiser des tâches</strong>, pour la <strong>maintenance des serveurs Exchange ou pour la création de boîtes aux lettres utilisateurs en masse</strong>.</p>
-<figure class="image"><img src="/ems-1.png"></figure>
+<figure class="image image_resized" style="width:23.67%;"><img src="/ems-1.png"></figure>
 <figure class="image image_resized" style="width:40.91%;"><img src="/ems-2.png"></figure>
-<h2>Installation des outils d’administration Exchange 2016</h2>
+<h1>Installation des outils d’administration Exchange 2016</h1>
 <p><strong>Par défaut</strong> les outils d’administration sont <strong>installés sur le serveur Exchange 2016</strong> et ne nécessitent pas d’installation complémentaire.<br>Toutefois, l’installation de ces outils <strong>peut se faire sur un poste sur laquelle Exchange 2016 n’est pas installé</strong>.<br>Cela permet de gérer Exchange 2016 sans avoir à se connecter directement sur le serveur mais offre également la possibilité de déléguer l’administration complète ou une partie.</p>
-<figure class="image"><img src="/outil_admin-1.png"></figure>
+<figure class="image image_resized" style="width:12.06%;"><img src="/outil_admin-1.png"></figure>
 <p><strong>Le compte de l’utilisateur qui utilisera les outils d’administration devra être placé dans l’un des groupes de sécurité Exchange disponibles dans l’Active Directory</strong>. Ce sont les groupes qui ont été indiqués précédemment (par exemple «&nbsp;Helpdesk&nbsp;»)</p>
 <p><u>Rappel des prérequis pour l’installation des outils d’administration&nbsp;:&nbsp;</u></p>
 <ul>
@@ -46,7 +45,7 @@ dateCreated: 2021-05-20T21:33:32.817Z
   <li>Avec un assistant en mode graphique</li>
   <li>En ligne de commande depuis la console Exchange Management Shell (sans assistant)</li>
 </ul>
-<h3>1 – Installation graphique avec l’assistant</h3>
+<h2>Installation graphique avec l’assistant</h2>
 <p><u>Marche à suivre&nbsp;:</u></p>
 <ul>
   <li>Disposer des sources Exchange</li>
@@ -68,16 +67,17 @@ dateCreated: 2021-05-20T21:33:32.817Z
 <p>Suivre l’assistant et choisir l’installation des <strong>Outils d’administration</strong></p>
 <figure class="image"><img src="/images/prog_fonc-5.png"></figure>
 <p>Suivre à nouveau les instructions de l’assistant pour terminer l’installation.</p>
-<h3>2 – Installation sans l’assistant graphique</h3>
+<h2>Installation sans l’assistant graphique</h2>
 <p><u>Marche à suivre&nbsp;:</u></p>
 <ul>
   <li>Disposer des sources Exchange</li>
   <li>Monter l’ISO</li>
   <li>Lancer l’invite de commande PowerShell en tant qu’administrateur</li>
   <li>Se rendre dans le chemin du lecteur contenant l’ISO de Exchange</li>
-  <li>Exécuter la commande d’installation suivante&nbsp;</li>
+  <li>Exécuter la commande d’installation suivante</li>
 </ul>
 <pre><code class="language-plaintext">.\setup.exe /Role:ManagementTools /IAcceptExchangeServerLicenseTerms</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/prog_fonc-6.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
