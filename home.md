@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-20T14:33:54.736Z
+date: 2021-05-21T06:57:03.387Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -198,8 +198,9 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 ## Windows 7/10
 - [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Windows/RDP)
 {.links-list}
+
 ## Windows Server 2016 / 2019
-- [🌀 Installation 🚧 *Installation de Windows Server*](/Windows-Server/Installation)
+- [🌀 Installation *Installation de Windows Server*](/Windows-Server/Installation)
 - [ℹ️ BGInfo *Afficher des informations importantes sur le bureau*](/Windows-Server/BGInfo)
 - [🖨️ Spooler bloqué *Résoudre les problème de spooler d'impression*](/Windows-Server/Spooler)
 - [✨ GPO *Comprendre et créer des GPO*](/Windows-Server/GPO)
@@ -208,10 +209,10 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 # Exchange 2016
-- [🌀 Présentation et Prérequis 🚧 *Gz*](/Exchange-2016/Présentation)
-- [🌀 Installation 🚧 *Gz*](/Exchange-2016/Installation)
-- [🌀 Présentation de l'administration 🚧 *Gz*](/Exchange-2016/Présentation-administration)
-- [🌀 Configuration des boîtes aux lettres 🚧 *Gz*](/Exchange-2016/Configuration-Boites-aux-lettres)
+- [🌀 Présentation et Prérequis *Présentation de Exchange 2016*](/Exchange-2016/Présentation)
+- [🌀 Installation *Comment installer Exchange 2016*](/Exchange-2016/Installation)
+- [🌀 Présentation de l'administration *Administration via EAC et EMS*](/Exchange-2016/Présentation-administration)
+- [🌀 Configuration des boîtes aux lettres 🚧 *Configuration BAL*](/Exchange-2016/Configuration-Boites-aux-lettres)
 - [🌀 Configuration des accès clients 🚧 *Gz*](/Exchange-2016/Configuration-Acces-Clients)
 - [🌀 Configuration du routage des messages 🚧 *Gz*](/Exchange-2016/Configuration-Routage-Messages)
 - [🌀 Configuration de la gestion de la conformité 🚧 *Gz*](/Exchange-2016/Configuration-Gestion-Conformité)
