@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-21T07:00:51.601Z
+date: 2021-05-22T18:00:43.799Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -84,9 +84,195 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">Cette configuration est également à faire lors d’une configuration Exchange hybride (On-Premise ET Cloud)</mark></i></p>
 <p>Il reste maintenant à créer la stratégie d’adresse pour que tous les utilisateurs de l’organisation utilisent l’adresse de messagerie externe.<br>Pour cela il faut se connecter à l’EAC puis aller dans «&nbsp;<strong>flux de messagerie</strong>&nbsp;» et cliquer sur «&nbsp;<strong>stratégies d’adresse de messagerie</strong>&nbsp;»</p>
 <figure class="image"><img src="/images/eac-4.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Cliquer sur le symbole <span class="text-huge"><strong>+ </strong></span>pour ajouter une stratégie</p>
+<figure class="image"><img src="/images/eac-5.png"></figure>
+<p>Cliquer à nouveau sur le <span class="text-huge"><strong>+&nbsp;</strong></span></p>
+<figure class="image"><img src="/images/eac-6.png"></figure>
+<p>Toujours sur la même fenêtre, descendre le curseur pour définir à qui appliquer cette stratégie</p>
+<figure class="image"><img src="/images/eac-7.png"></figure>
+<p>Une fois la stratégie est créée il faut <strong>IMPÉRATIVEMENT</strong> l’appliquer.</p>
+<figure class="image"><img src="/images/eac-8.png"></figure>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">Toute stratégie créée mais non appliquée ne sera pas prise en compte dans la configuration</mark></i></p>
+<ul>
+  <li>Via Exchange Management Shell (EMS)</li>
+</ul>
+<figure class="image"><img src="/images/ems-4.png"></figure>
+<p><strong>New-EmailAddresspolicy</strong>&nbsp;: indique la création d’une nouvelle stratégie</p>
+<ul>
+  <li><strong>Name «nom_de_la_stratégie»</strong>&nbsp;:indique le nom de la stratégie</li>
+  <li><strong>IncludedRecipients MailboxUsers</strong>&nbsp;: indique à qui sera appliqué cette stratégie (ici tous les utilisateurs de boites de messagerie)</li>
+  <li><strong>EnabledEmailAddressTemplates «SMTP:%g.%.%s@domaine.com</strong>»&nbsp;: indique le format de l’adresse de messagerie (ici prenom.nom@domaine.com)</li>
+</ul>
+<p>Pour vérifier si la stratégie a bien été créée il faut taper la commande suivante&nbsp;</p>
+<pre><code class="language-plaintext">Get-EmailAdresspolicy</code></pre>
+<figure class="image"><img src="/images/ems-5.png"></figure>
+<p>Il ne reste plus qu’à appliquer la stratégie&nbsp;</p>
+<pre><code class="language-plaintext">Update-EmailAddressPolicy -Identity «nom_de_la_stratégie»</code></pre>
+<figure class="image"><img src="/images/ems-6.png"></figure>
+<h2>Base de données de boites aux lettres</h2>
+<p><u>Bref rappel du fonctionnement de la réception d’un e-mail&nbsp;:</u></p>
+<ul>
+  <li>Un e-mail est reçu par le serveur</li>
+  <li>Le serveur traite le mail s’il est pour un domaine accepté.et va remettre remet le message.</li>
+  <li>Dans le cas d’une boite aux lettres hébergée par le serveur, dans un 1<sup>er</sup> temps le serveur dépose le mail dans la RAM et en même temps dans les logs (fichier .log&nbsp; qui sont des logs de transaction). Dans un 2eme temps il l’écrit dans le fichier «&nbsp;.edb&nbsp;» qui est en réalité la BDD</li>
+  <li>Une fois écrit dans la BDD, le serveur écrit dans les logs de check «&nbsp;.chk&nbsp;» qui servent à valider l’écriture en BDD</li>
+  <li>Pour finir, l’utilisateur pourra voir le mail dans sa boite aux lettres.</li>
+</ul>
+<figure class="image"><img src="/images/schema_bdd_mailbox.png"></figure>
+<p><strong>Attention</strong>&nbsp;: <i>Tant que la vérification via le «&nbsp;.chk&nbsp;» n’a pas été faite, l’utilisateur ne pourra pas voir le mail et ce même s’il a été positionné précédemment par le serveur dans sa boite aux lettres dans la BDD</i>&nbsp;</p>
+<h3>1 - La composition d’une base de données</h3>
+<p>Une base de données de boite aux lettres est une base de données qui va stocker les boites aux lettres des utilisateurs, avec par exemple les mails, les contacts, le calendrier etc.<br>Une base de données de boite aux lettres est composée des éléments suivants&nbsp;:</p>
+<ul>
+  <li>Fichier «&nbsp;tmp.edb&nbsp;»</li>
+</ul>
+<p>Il s’agit de fichiers temporaires&nbsp;</p>
+<ul>
+  <li>Fichier «&nbsp;.edb&nbsp;»</li>
+</ul>
+<p>La base de données de boite aux lettres</p>
+<ul>
+  <li>Fichier «&nbsp;.log&nbsp;»</li>
+</ul>
+<p>Les journaux de transactions&nbsp;</p>
+<ul>
+  <li>Fichier «&nbsp;.chk&nbsp;»</li>
+</ul>
+<p>Point de contrôle</p>
+<ul>
+  <li>Fichiers «&nbsp;E##res0001.jrs – E##res000A.log&nbsp;»</li>
+</ul>
+<p>Fichiers de journaux de réserve&nbsp;</p>
+<h3>2 – personnalisation de la base de données</h3>
+<p>Il existe de <strong>nombreux éléments</strong> des bases de données qui peuvent être <strong>personnalisés</strong>.<br>Voici un exemple des éléments principaux&nbsp;:</p>
+<ul>
+  <li>Taille de la base de données</li>
+</ul>
+<p>Il est possible de définir la taille maximum de la base de données. De plus, il est conseillé que le stockage de la BDD soit différent de celui pour l’OS</p>
+<ul>
+  <li>Le quota de la boite aux lettres</li>
+</ul>
+<p>Permet de définir la taille maximum d’une boite aux lettres utilisateur.</p>
+<ul>
+  <li>La période de rétention des éléments et des boites aux lettres supprimées</li>
+</ul>
+<p>Permet de définir la période durant laquelle les éléments supprimés ou les boites aux lettres supprimées pourront être accessibles avant d’être supprimé définitivement.</p>
+<ul>
+  <li>Le carnet d’adresses</li>
+</ul>
+<p>Il est possible de faire créer un carnet d’adresse par site géographique (par exemple une BDD avec toutes les boites de Paris permettra de créer un carnet d’adresse «&nbsp;Paris&nbsp;»)</p>
+<ul>
+  <li>Les logs circulaires</li>
+</ul>
+<p>Il s’agit des fichiers «&nbsp;.log&nbsp;» détaillés plus haut.</p>
+<p>Il est conseillé de mettre un système de sauvegarde, de purge et une taille maximum des logs car ces derniers grossissent souvent et rapidement. Dans le cadre d’un DAG cette configuration est vivement conseillée.</p>
+<ul>
+  <li>Le montage automatique de la base de données</li>
+</ul>
+<p>Il est possible de configurer le montage automatique des BDD. Par exemple, au redémarrage d’un serveur les bases de données seront remontées automatiquement évidement de le faire manuellement et permettant que les BDD soient utilisables.</p>
+<ul>
+  <li>L’activation d’indexation</li>
+</ul>
+<p>Cette configuration permettra de créer un index pour chaque données dans les boites aux lettres facilitant et améliorant les recherches.</p>
+<h3>3 – Comment administrer les bases de données</h3>
+<p><u>Via l’EAC</u></p>
+<p>La liste des bases de données se trouve dans la partie «&nbsp;<strong>serveur</strong>&nbsp;» puis «&nbsp;<strong>base de données</strong>&nbsp;».</p>
+<figure class="image"><img src="/images/eac-9.png"></figure>
+<p>Pour ajouter une base de données cliquer sur <span class="text-huge"><strong>+ </strong></span>et remplir les champs nécessaires</p>
+<figure class="image"><img src="/images/eac-10.png"></figure>
+<p>Une fois la BDD créée, elle sera visible dans la liste.&nbsp;</p>
+<figure class="image"><img src="/images/eac-11.png"></figure>
+<p>Pour <strong>personnaliser la BDD</strong> faire un <strong>double clic</strong> dessus et toutes les configurations là concernant seront visibles.</p>
+<figure class="image"><img src="/images/eac-12.png"></figure>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">Penser à redémarrer le service Exchange Information Store (banque d’information).</mark></i><br><i>Nécessite un compte avec les droits adaptés</i></p>
+<p><u>Via Exchange Management Shell (EMS)</u></p>
+<ul>
+  <li>Création d’une base de données&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">New-MailboxDatabase -Name «nom_de_la_base» -EdbFilePath «Chemin_du_stockage_de_la_BDD\nom_de_la_base.edb» -LogFolderpath «Chemin_du_stockage_des_logs»</code></pre>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">il faut laisser les guillemets dans la ligne de commande</mark></i></p>
+<ul>
+  <li>Personnaliser la base de données</li>
+</ul>
+<pre><code class="language-plaintext">Set-MailboxDatabase</code></pre>
+<ul>
+  <li>Voir les informations de configuration de la base de données</li>
+</ul>
+<pre><code class="language-plaintext">Get-MailboxDatabase</code></pre>
+<ul>
+  <li>Démonter une base de données</li>
+</ul>
+<pre><code class="language-plaintext">Dismount-Database</code></pre>
+<ul>
+  <li>Monter une base de données</li>
+</ul>
+<pre><code class="language-plaintext">Mount-Database</code></pre>
+<ul>
+  <li>Modifier le chemin de stockage d’une base de données</li>
+</ul>
+<pre><code class="language-plaintext">Move-DatabasePath</code></pre>
+<ul>
+  <li>Création d’une base de données «&nbsp;dossier publique&nbsp;» (attention depuis Exchange 2013 il ne s’agit pas d’une NDD à part entière mais d’une boite aux lettres)</li>
+</ul>
+<pre><code class="language-plaintext">New-Mailbox -PublicFolder -Name «nom_de_la_mailbox»</code></pre>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">il faut laisser les guillemets dans la ligne de commande. De plus, après n’importe laquelle de ces commandes, penser à redémarrer le service Exchange Information Store (banque d’information). Nécessite un compte avec les droits adaptés</mark></i></p>
+<h2>Les destinataires de messagerie</h2>
+<h3>1 - Définition</h3>
+<p>Les destinataires de messagerie électronique Exchange sont tous <strong>des objets de l’Active Directory</strong>, qu’il s’agisse de <strong>personnes physiques ou de ressources&nbsp;</strong>(salles, matériels ,etc.).<br>Tous ces objets ont une <strong>extension de messagerie</strong> <strong>permettant de délivrer ou de router des messages électroniques</strong>.</p>
+<h3>2 - Les types de destinataires</h3>
+<p><u>Il existe plusieurs types de destinataires&nbsp;:</u></p>
+<ul>
+  <li>Boites aux lettres utilisateurs (aussi appelé «&nbsp;utilisateur à extension de boite aux lettres&nbsp;»)</li>
+</ul>
+<p>Il s’agit d’une boite aux lettres INDIVIDUELLE pour un <strong>seul utilisateur</strong>.<br>Nécessite une licence CAL</p>
+<ul>
+  <li>Contacts de messagerie</li>
+</ul>
+<p>Il s’agit d’un <strong>objet qui est dans l’annuaire Active Directory</strong> possédant des attributs de messagerie Exchange mais <strong>qui ne fait pas parti de l’organisation de l’entreprise</strong>. Chaque contact de messagerie dispose d'une <strong>adresse de messagerie externe</strong>. Tous les messages envoyés au contact de messagerie sont routés à cette adresse de messagerie externe.<br>La boite aux lettres n’est pas stockée dans les serveurs Exchange de l’entreprise.<br>Il ne sera pas possible à ce contact de se connecter au domaine Active Directory avec le compte AD.<br>Cela permet de référencer des personnes externe dans l’organisation Exchange.</p>
+<ul>
+  <li>Utilisateurs de messagerie (aussi appelé «&nbsp;utilisateur à extension de messagerie&nbsp;»)</li>
+</ul>
+<p><strong>Utilisateur Active Directory</strong> à extension de messagerie qui représente un <strong>utilisateur extérieur</strong> à l'organisation Exchange. Chaque utilisateur de messagerie dispose d'une <strong>adresse de messagerie externe</strong>. Tous les messages envoyés à l'utilisateur de messagerie sont routés à cette adresse de messagerie externe.<br>Un utilisateur de messagerie est semblable à un contact de messagerie, sauf qu'un utilisateur de messagerie dispose d'informations d'identification <strong>d'ouverture de session Active Directory</strong> et peut <strong>accéder aux ressources</strong>.</p>
+<ul>
+  <li>Boites aux lettres de ressources</li>
+</ul>
+<p>Il s’agit d’une <strong>boite aux lettres affectée à une ressource</strong> qui n’est pas propre à un emplacement, telle qu’un projecteur, un ordinateur portable, un microphone ou un véhicule de société, etc. Ces <strong>ressources peuvent alors être réservées</strong> par les utilisateurs de l’entreprise en les incluant comme ressources dans les demandes de réunions.</p>
+<ul>
+  <li>Boites aux lettres partagées</li>
+</ul>
+<p>Il s’agit d’une <strong>boite aux lettres commune et partagée pour différentes personnes</strong> comme par exemple un même service.<br>Ces personnes pourront se connecter à cette boite et également envoyer des messages électroniques s’ils en ont les droits.<br>Ce type de boite aux lettres ne nécessite pas une licence CAL.</p>
+<ul>
+  <li>Groupes de sécurité à extension de messagerie</li>
+</ul>
+<p>Un groupe de sécurité à extension messagerie est un <strong>objet de</strong> <strong>groupe universel de sécurité Active Directory</strong> qui peut être utilisé pour <strong>affecter des autorisations d'accès à des ressources dans Active Directory</strong> et qui peut également être utilisé pour <strong>distribuer des messages.</strong></p>
+<ul>
+  <li>Groupes de distribution</li>
+</ul>
+<p>Un groupe de distribution est un <strong>groupe Active Directory à extension messagerie</strong> qui peut être uniquement utilisé pour <strong>distribuer des messages à un groupe de destinataires.</strong></p>
+<ul>
+  <li>Groupes de distribution dynamiques</li>
+</ul>
+<p>Groupe de distribution qui <strong>utilise des filtres des destinataires</strong> <strong>et des conditions</strong> pour déterminer son appartenance lors de l'envoi des messages.</p>
+<ul>
+  <li>Boites aux lettres liées</li>
+</ul>
+<p>Boîte aux lettres affectée à un <strong>utilisateur individuel dans une forêt approuvée distincte</strong> (c’est-à-dire dans une autre forêt que cette de l’organisation de l’entreprise).</p>
+<figure class="image"><img src="/images/linked_mailbox.png"></figure>
+<ul>
+  <li>Boites aux lettres Office365 (standard ou hybride)</li>
+</ul>
+<p>Dans les déploiements hybrides, une boîte aux lettres Office 365 est composée d'un &nbsp;<strong>utilisateur de messagerie existant dans Active Directory version locale </strong>et <strong>une boîte aux lettres existant dans Exchange Online.</strong></p>
+<ul>
+  <li>Boites aux lettres de sites</li>
+</ul>
+<p>Boîte aux lettres constituée d'une <strong>boîte aux lettres Exchange&nbsp;</strong>pour stocker les messages électroniques et d'un <strong>site SharePoint&nbsp;</strong>pour stocker des documents. Les utilisateurs peuvent accéder aux messages électroniques et aux documents à l'aide d'une même interface client.</p>
+<figure class="image"><img src="/images/site_mailbox.png"></figure>
+<ul>
+  <li>Dossier public à extension messagerie</li>
+</ul>
+<p><strong>Dossier public</strong> Exchange configuré pour recevoir des messages.</p>
+<p><u>Le principe de fonctionnement pour un utilisateur est le suivant&nbsp;:&nbsp;</u></p>
+<p>Dans le domaine Active Directory, il y a des comptes utilisateurs permettant aux différentes personnes de se connecter et de s’authentifier aux différents postes de l’entreprise.&nbsp;<br>Pour leur rajouter une boite aux lettres, il va falloir la créer dans Exchange et elle sera stockées dans la base de données de boites aux lettres Exchange.<br>Lors de la création de cette boite aux lettres, une liaison avec le compte Active Directory de l’utilisateur sera faite, permettant alors à cet utilisateur de se connecter à la boite aux lettres lui étant destinée.</p>
+<figure class="image"><img src="/images/public_folder.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
