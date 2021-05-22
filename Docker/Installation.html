@@ -2,7 +2,7 @@
 title: Installation
 description: Installation de Docker sous Debian, Ubuntu, Arch, Manjaro, CentOS, Fedora, Redhat, MacOS et même Windows !
 published: true
-date: 2021-05-22T13:21:29.060Z
+date: 2021-05-22T13:22:31.780Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-28T15:17:42.761Z
@@ -12,19 +12,19 @@ dateCreated: 2021-04-28T15:17:42.761Z
 <p>&nbsp;<br>Le package d'installation Docker disponible dans le référentiel officiel Debian n'est peut-être pas la dernière version. Pour nous assurer de disposer de la dernière version, nous installerons Docker à partir du référentiel Docker officiel. Pour ce faire, nous allons ajouter une nouvelle source de package, ajouter la clé GPG de Docker pour nous assurer que les téléchargements sont valides, puis installer le package.</p>
 <h2>Debian &amp; Ubuntu</h2>
 <p>1 - Mettez à jour votre liste de packages existante :&nbsp;</p>
-<p>``` sudo apt update ```</p>
+<pre><code class="language-plaintext">sudo apt update</code></pre>
 <p>2 - Installez quelques packages prérequis qui permettent à `apt` d'utiliser des packages via HTTPS :</p>
-<p>``` sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common ```</p>
+<pre><code class="language-plaintext">sudo apt install apt-transport-https ca-certificates curl gnupg2 software-properties-common</code></pre>
 <p>3 - Ajoutez la clé GPG du référentiel Docker officiel à votre système :&nbsp;</p>
-<p>``` curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add - ```</p>
+<pre><code class="language-plaintext">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -</code></pre>
 <p>4 - Ajoutez le référentiel Docker aux sources APT :</p>
-<p>``` sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" ```</p>
+<pre><code class="language-plaintext">sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"</code></pre>
 <p>5 - Mettez à jour la base de données des packages avec les packages Docker du repo nouvellement ajouté :</p>
-<p>``` sudo apt update ```</p>
+<pre><code class="language-plaintext">sudo apt update</code></pre>
 <p>6 - Installez Docker :</p>
-<p>``` sudo apt install docker-ce ```</p>
+<pre><code class="language-plaintext">sudo apt install docker-ce</code></pre>
 <p>7 - Activez et lancer le daemon Docker :</p>
-<p>``` sudo systemctl enable docker sudo systemctl start docker ```</p>
+<pre><code class="language-plaintext">sudo systemctl enable docker sudo systemctl start docker</code></pre>
 <h2>Arch &amp; Manjaro</h2>
 <h2>CentOS &amp; Fedora&nbsp;</h2>
 <p>&nbsp;</p>
