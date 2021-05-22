@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-22T12:53:45.881Z
+date: 2021-05-22T12:54:24.821Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -166,6 +166,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 # VMware ESXi
 - [🌀 Installation 🚧 *Installation de l'hyperviseur ESXi (6.0 / 6.5 / 6.7 / 7.0)*](/ESXi/Installation)
+- [📜 Certificat Let's Encrypt ESXi *Comment importer un certificat Let's Encrypt dans ESXi*](/ESXi/Certificat-LetsEncrypt)
 - [✨ Création d'une VM 🚧 *Créer sa première machine virtuelle*](/ESXi/Création-VM)
 - [🔥 vCenter 🚧 *Installer l'Appliance vCenter Server*](/ESXi/vCenter)
 - [💿 VMware Tools 🚧 *Installer les VMware Tools*](/ESXi/VMware-Tools)
