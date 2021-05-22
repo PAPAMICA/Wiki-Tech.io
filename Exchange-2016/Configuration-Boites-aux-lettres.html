@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T19:44:29.173Z
+date: 2021-05-22T19:47:41.768Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -121,7 +121,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <figure class="image"><img src="/images/schema_bdd_mailbox.png"></figure>
 <p><strong>Attention</strong>&nbsp;: <i>Tant que la vérification via le «&nbsp;.chk&nbsp;» n’a pas été faite, l’utilisateur ne pourra pas voir le mail et ce même s’il a été positionné précédemment par le serveur dans sa boite aux lettres dans la BDD</i>&nbsp;</p>
-<h3>1 - La composition d’une base de données</h3>
+<h3>La composition d’une base de données</h3>
 <p>Une base de données de boite aux lettres est une base de données qui va stocker les boites aux lettres des utilisateurs, avec par exemple les mails, les contacts, le calendrier etc.<br>Une base de données de boite aux lettres est composée des éléments suivants&nbsp;:</p>
 <ul>
   <li>Fichier «&nbsp;tmp.edb&nbsp;»</li>
@@ -143,7 +143,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Fichiers «&nbsp;E##res0001.jrs – E##res000A.log&nbsp;»</li>
 </ul>
 <p>Fichiers de journaux de réserve&nbsp;</p>
-<h3>2 – personnalisation de la base de données</h3>
+<h3>Personnalisation de la base de données</h3>
 <p>Il existe de <strong>nombreux éléments</strong> des bases de données qui peuvent être <strong>personnalisés</strong>.<br>Voici un exemple des éléments principaux&nbsp;:</p>
 <ul>
   <li>Taille de la base de données</li>
@@ -174,7 +174,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>L’activation d’indexation</li>
 </ul>
 <p>Cette configuration permettra de créer un index pour chaque données dans les boites aux lettres facilitant et améliorant les recherches.</p>
-<h3>3 – Comment administrer les bases de données</h3>
+<h3>Comment administrer les bases de données</h3>
 <p><u>Via l’EAC</u></p>
 <p>La liste des bases de données se trouve dans la partie «&nbsp;<strong>serveur</strong>&nbsp;» puis «&nbsp;<strong>base de données</strong>&nbsp;».</p>
 <figure class="image"><img src="/images/eac-9.png"></figure>
@@ -222,9 +222,9 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <pre><code class="language-plaintext">New-Mailbox -PublicFolder -Name «nom_de_la_mailbox»</code></pre>
 <p><mark class="pen-red"><strong>Attention</strong>&nbsp;: </mark><i><mark class="pen-red">il faut laisser les guillemets dans la ligne de commande. De plus, après n’importe laquelle de ces commandes, penser à redémarrer le service Exchange Information Store (banque d’information). Nécessite un compte avec les droits adaptés</mark></i></p>
 <h2>Les destinataires de messagerie</h2>
-<h3>1 - Définition</h3>
+<h3>Définition</h3>
 <p>Les destinataires de messagerie électronique Exchange sont tous <strong>des objets de l’Active Directory</strong>, qu’il s’agisse de <strong>personnes physiques ou de ressources&nbsp;</strong>(salles, matériels ,etc.).<br>Tous ces objets ont une <strong>extension de messagerie</strong> <strong>permettant de délivrer ou de router des messages électroniques</strong>.</p>
-<h3>2 - Les types de destinataires</h3>
+<h3>Les types de destinataires</h3>
 <p><u>Il existe plusieurs types de destinataires&nbsp;:</u></p>
 <ul>
   <li>Boites aux lettres utilisateurs (aussi appelé «&nbsp;utilisateur à extension de boite aux lettres&nbsp;»)</li>
@@ -279,7 +279,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><u>Le principe de fonctionnement pour un utilisateur est le suivant&nbsp;:&nbsp;</u></p>
 <p>Dans le domaine Active Directory, il y a des comptes utilisateurs permettant aux différentes personnes de se connecter et de s’authentifier aux différents postes de l’entreprise.&nbsp;<br>Pour leur rajouter une boite aux lettres, il va falloir la créer dans Exchange et elle sera stockées dans la base de données de boites aux lettres Exchange.<br>Lors de la création de cette boite aux lettres, une liaison avec le compte Active Directory de l’utilisateur sera faite, permettant alors à cet utilisateur de se connecter à la boite aux lettres lui étant destinée.</p>
 <figure class="image"><img src="/images/public_folder.png"></figure>
-<h3>3 – Administration des destinataires de messagerie</h3>
+<h3>Administration des destinataires de messagerie</h3>
 <p>Encore une fois il est possible de faire l’administration des destinataires de messagerie de deux façon&nbsp;:&nbsp;</p>
 <p><u>Avec l’EAC</u></p>
 <p>Se connecter à l’EAC puis se rendre dans «&nbsp;<strong>destinataires</strong>&nbsp;» puis onglet «&nbsp;<strong>boites aux lettres</strong>&nbsp;»</p>
@@ -292,7 +292,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><i>New-Mailbox&nbsp;; Set-Mailbox&nbsp;; Enable-Mailbox&nbsp;; Disable-Mailbox&nbsp;; Remove-Mailbox</i><br><i>New-Contact&nbsp;; Set-Contact&nbsp;; Remove-Contact&nbsp;</i><br><i>New-MailUser&nbsp;-Identity «nom» -ExternalEmailAddress «adresse_du_user»&nbsp;; Set-MailUser ; Remove-MailUser&nbsp;</i><br><i>New-Mailbox -Room&nbsp;; New-Mailbox -Equipment</i><br><i>New-Mailbox -Shared</i></p>
 <p>Les boites aux lettres de site sont à <strong>activer dans SharePoint</strong></p>
 <h2>Personnalisation d’une boite aux lettres</h2>
-<h3>1 – Les éléments qui peuvent être personnalisés</h3>
+<h3>Les éléments qui peuvent être personnalisés</h3>
 <p>Il existe de nombreux éléments qui peuvent être personnalisés, voici quelques exemples des principaux éléments.</p>
 <ul>
   <li>Quota d’une la boite aux lettres utilisateur</li>
@@ -329,7 +329,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Le déplacement d’un boite aux lettres vers une autre base de données</li>
 </ul>
 <p>Dans le cadre d’un <strong>équilibrage de charge</strong> ou si l’on souhaite que les bases de données soient stockées sur <strong>des disques plus rapides que l’existant.</strong></p>
-<h3>2 – Comment réaliser ces personnalisations</h3>
+<h3>Comment réaliser ces personnalisations</h3>
 <p><u>En mode graphique avec l’EAC</u></p>
 <p>Pour modifier les éléments d’une boite mail utilisateur depuis l’EAC il suffit de cliquer sur <strong>destinataires</strong> puis sur <strong>boites aux lettres</strong> et enfin de faire un <strong>double clic</strong> sur la boite mail.</p>
 <figure class="image"><img src="/images/eac-15.png"></figure>
@@ -399,16 +399,16 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <pre><code class="language-plaintext">New-MoveMailbox -Identity «adresse_mail» -TargetDatabase «nom_de_la_BDD» -BatchName «nom_de_la_tâche»</code></pre>
 <h2>Activer la boite aux lettres d’archivage</h2>
 <p><i><mark class="pen-red"><strong>Attention&nbsp;:&nbsp;</strong>Cette fonction ne marche QUE pour les licences CAL de type ENTREPRISE</mark></i></p>
-<h3>1 - Les avantages d’une boite aux lettres d’archivage</h3>
+<h3>Les avantages d’une boite aux lettres d’archivage</h3>
 <ul>
-  <li>Etendre la boite aux lettres d’un utilisateur</li>
+  <li>Étendre la boite aux lettres d’un utilisateur</li>
   <li>Déplacer automatiquement les anciens messages électroniques vers la boite d’archivage pour faire de la place dans la boite aux lettres.</li>
   <li>Permet d’éviter l’utilisation des fichiers .PST locaux</li>
   <li>Permet de stocker et de sauvegarder les données archivées coté serveur</li>
   <li>Elle peut être montée et être visible dans Outlook</li>
 </ul>
 <p>La boite d’archivage n’est seulement disponible qu’en mode «&nbsp;Outlook Connecté&nbsp;»</p>
-<h3>2 – Activation</h3>
+<h3>Activation</h3>
 <p><u>Avec l’EAC</u></p>
 <p>Pour activer l’archivage depuis l’interface graphique, cliquer sur <strong>destinataires</strong> puis sur <strong>boites aux lettres.</strong><br>Cliquer sur la boite aux lettres d’un utilisateur puis faire défiler les informations de droite jusqu’à atteindre «&nbsp;<strong>archive locale</strong>&nbsp;» et cliquer sur «&nbsp;<strong>activer</strong>&nbsp;»</p>
 <figure class="image"><img src="/images/eac-18.png"></figure>
@@ -440,7 +440,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <pre><code class="language-plaintext">Get-Mailbox -Archive</code></pre>
 <h2>Délégation de droits de boite aux lettres</h2>
-<h3>1 - Pourquoi effectuer une délégation</h3>
+<h3>Pourquoi effectuer une délégation</h3>
 <ul>
   <li>Permettre à un ou plusieurs utilisateurs d’accéder à la boite aux lettres d’un autre utilisateur ou groupe.</li>
 </ul>
@@ -456,9 +456,8 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <ul>
   <li>Définir le propriétaire d’une boite de ressource</li>
 </ul>
-<p>Attention cela ne peut pas s’appliquer sur tous les objets de messagerie. Plus d’informations sur le TechNet.</p>
-<p>&nbsp;</p>
-<h3>2 – Comment effectuer la délégation</h3>
+<p>Attention cela ne peut pas s’appliquer sur tous les objets de messagerie. Plus d’informations sur le TechNet.<br>&nbsp;</p>
+<h3>Comment effectuer la délégation</h3>
 <p><u>A l’aide de l’EAC</u></p>
 <p>Se connecter puis cliquer sur «&nbsp;<strong>destinataires</strong>&nbsp;» puis «&nbsp;<strong>boites aux lettre partagée</strong>&nbsp;»<br>Faire un double clic sur la boite aux lettres sur laquelle des droits devront être positionnés puis cliquer sur «&nbsp;<strong>délégation de boite aux lettres</strong>&nbsp;»</p>
 <figure class="image"><img src="/images/eac-20.png"></figure>
@@ -484,10 +483,10 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <pre><code class="language-plaintext">Add-MailboxPermission -Identity «adresse_la_BAL_Ressource_sur_laquelle_on_va_mettre_des_droits» -Owner «nom_user»</code></pre>
 <h2>Listes d’adresses</h2>
-<h3>1 - Présentation</h3>
+<h3>Présentation</h3>
 <p>Les listes d’adresses <strong>regroupent des objets</strong> de messagerie <strong>de type de destinataires</strong> en fonctions de différents critères sélectionnés parmi les attributs des comptes Active Directory.<br>Elles permettent de <strong>structurer des utilisateurs</strong> et sont la plupart du temps <strong>utilisées pour représenter virtuellement la structure de l’entreprise</strong> dans ses différents services (par exemple des listes d’adresses par agences ou par site physique).<br>Les listes d’adresses sont <strong>liées à l’organisation Exchange</strong> et peuvent être segmentées logiquement en plusieurs organisations tout en étant visibles ou invisibles par tous les utilisateurs ou une certaine partie des utilisateurs.<br>Une organisation Exchange peut posséder <strong>plusieurs listes d’adresses globales&nbsp;</strong>(<strong>G</strong>lobal <strong>A</strong>ddress <strong>L</strong>ists) comme par exemple dans le cadre d’une mutualisation de l’organisation Exchange.<br>Toutefois un <strong>utilisateur</strong> de messagerie ne peut se voir assigner qu’à <strong>une seule liste</strong> d’adresse globale.</p>
 <p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;il ne faut pas confondre avec les groupes de diffusions.</mark></i></p>
-<h3>2 – Liste d’adresses par défaut</h3>
+<h3>Liste d’adresses par défaut</h3>
 <p>Il existe plusieurs types de liste d’adresses par défaut&nbsp;:&nbsp;</p>
 <ul>
   <li>Dossiers publics</li>
@@ -499,11 +498,11 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <p>Ces listes sont visibles depuis l’EAC dans «&nbsp;<strong>Organisation</strong>&nbsp;» puis «&nbsp;<strong>Listes d’adresses</strong>&nbsp;»</p>
 <figure class="image"><img src="/images/eac-21.png"></figure>
-<h3>3 – Carnet d’adresses en mode hors connexion</h3>
+<h3>Carnet d’adresses en mode hors connexion</h3>
 <p>Le nom du carnet d’adresse est <strong>Offline Address Book (OAB)</strong>. Il n’est présent uniquement pour Outlook et <strong>se télécharge en local</strong> sur le poste utilisateur et contient la liste d’adresse globale par défaut.<br>Son <strong>but</strong> est de permettre aux différents utilisateurs non connectés au serveur de <strong>pouvoir effectuer des recherches dans la liste d’adresse de l’OAB&nbsp;</strong>(qui est par défaut la liste d’adresse globale)<br>Ce carnet d’adresses est généré par une boite de type «&nbsp;<strong>arbitration</strong>&nbsp;» (boite mail qui est uniquement à l’administration de Exchange) dont l’attribut «&nbsp;<strong>OABGen</strong>&nbsp;» est positionné à <strong>$True</strong>. Il peut également y en avoir plusieurs dans une organisation Exchange.</p>
 <pre><code class="language-plaintext">Get-Mailbox -Arbitration | Where {$_.PersistedCapabilities -like «*oab*»</code></pre>
 <p>Il est <strong>copié sur tous les serveurs d’accès client</strong> de Exchange et est récupéré à l’aide du <strong>répertoire virtuel OAB</strong> depuis les services <strong>Web IIS</strong>.</p>
-<h3>4 – Les stratégies de carnet d’adresses</h3>
+<h3>Les stratégies de carnet d’adresses</h3>
 <p>L’organisation Exchange peut comporter plusieurs stratégies d’adresses mais il ne peut y en avoir qu’une seule attribuée par destinataire de messagerie.<br>Les stratégies de carnet d’adresses permettent de segmenter les vue des listes d’adresses qui sont regroupées dans la GAL.</p>
 <p><u>Une stratégie doit comporter les éléments suivants&nbsp;:</u></p>
 <ul>
@@ -528,7 +527,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p>Elles sont attribuées aux boites aux lettres utilisateurs via <u>EMS</u>&nbsp;:&nbsp;</p>
 <pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_du_user» -AddressBookPolicy «nom_de_la_stratégie»</code></pre>
 <h2>Haute disponibilité - D.A.G</h2>
-<h3>1 - Définition</h3>
+<h3>Définition</h3>
 <p>La haute disponibilité des bases de données dans Exchange s’effectue à l’aide d’un <strong>DAG</strong>.<br>Ce terme signifie «&nbsp;<strong>Database Availability Group</strong>&nbsp;» ou en français « <strong>Groupe de disponibilité de base de données</strong> ».<br>Il assure pour cela une <strong>redondance</strong> au niveau du «&nbsp;<strong>BACK-END</strong>&nbsp;».<br>Son principe de fonctionnement est simple : il réplique des bases de données sur un <strong>regroupement plusieurs serveurs Exchange</strong> ayant <strong>le rôle de boites aux lettres</strong> pour en effectuer la <strong>haute disponibilité</strong> pour de prévenir les pannes ou les coupures de service potentielles. Ce qui veut dire que les serveurs Exchange peuvent ainsi récupérer automatiquement des bases de données à la suite d’une panne d’un serveur ou lorsqu’une base de données n’est plus accessible.</p>
 <p>Un DAG se base sur le service de «&nbsp;<strong>Cluster</strong>&nbsp;» de Windows Serveur mais ne peut pas être géré par les outils de Cluster de basculement de Windows Server.<br>Lorsque la création d’un DAG est initiée, les rôles et fonctionnalités de cluster sont installés <strong>sur chaque nœud</strong> qui en fait partie.<br>Pour mettre en place un DAG, il faut tenir compte des points suivants&nbsp;:&nbsp;</p>
 <ul>
@@ -549,7 +548,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p><u>Schéma&nbsp;:&nbsp;</u></p>
 <figure class="image"><img src="/images/schema_dag.png"></figure>
 <p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;dans ce schéma une seule carte réseau n’est illustrée mais il est conseillé d’avoir 2 cartes réseau sur les serveurs du DAG afin de séparer les flux de réplications et flux normaux d’utilisations par les utilisateurs. </mark></i><mark class="pen-red">Lors de la mise en place de la haute disponibilité sur Exchange, les données des copies de bases de données seront stockées aux mêmes emplacements sur chacun des membres du DAG les détenant.</mark></p>
-<h3>2 – Les actions de la configuration</h3>
+<h3>Les actions de la configuration</h3>
 <p><u>Ce qui est obligatoire&nbsp;:</u></p>
 <ul>
   <li>Créer un DAG</li>
@@ -565,7 +564,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Configuration des copies de bases de données avec un retard de lecture</li>
   <li>Configuration d’un réseau dédié à la réplication (toutefois conseillé)</li>
 </ul>
-<h3>3 – La configuration du DAG</h3>
+<h3>La configuration du DAG</h3>
 <p>La configuration d’un DAG peut se faire soit via l’EAC soit via l’EMS</p>
 <p><u>Via l’EAC&nbsp;:</u></p>
 <p>Se connecter à l’EAC puis dans la partie «&nbsp;serveur&nbsp;» cliquer sur «&nbsp;Groupe de disponibilité de bases de données&nbsp;»</p>
