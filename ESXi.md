@@ -2,7 +2,7 @@
 title: ESXi
 description: 
 published: true
-date: 2021-05-20T14:33:24.604Z
+date: 2021-05-22T10:00:59.887Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-06T14:08:11.115Z
@@ -15,4 +15,5 @@ dateCreated: 2021-05-06T14:08:11.115Z
 - [💿 VMware Tools *Installer les VMware Tools*](/ESXi/VMware-Tools)
 - [💠 Routeur pfSense *Comment installer et utiliser pfSense avec ESxi*](/ESXi/pfSense)
 - [💿 Routeur pfSense *Comment installer et utiliser pfSense avec ESxi*](/ESXi/pfSense)
+- [📜 ESXI 7 *Comment importer un certificat Let's Encrypt dans ESXI*](/ESXi/Certificat-LetsEncrypt)
 {.links-list}
