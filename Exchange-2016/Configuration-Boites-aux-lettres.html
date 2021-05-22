@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T18:03:36.162Z
+date: 2021-05-22T18:05:49.855Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -282,8 +282,47 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <figure class="image"><img src="/images/eac-14.png"></figure>
 <p>Si l’on souhaite créer des boites aux lettres de groupes, de ressources ou autres, il suffira de reproduire la même chose mais en sélectionnant l’onglet correspondant&nbsp;</p>
 <figure class="image"><img src="/images/groups-1.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><u>Avec Exchange Management Shell (EMS), voici des exemples&nbsp;:</u></p>
+<p><i>New-Mailbox&nbsp;; Set-Mailbox&nbsp;; Enable-Mailbox&nbsp;; Disable-Mailbox&nbsp;; Remove-Mailbox</i><br><i>New-Contact&nbsp;; Set-Contact&nbsp;; Remove-Contact&nbsp;</i><br><i>New-MailUser&nbsp;-Identity «nom» -ExternalEmailAddress «adresse_du_user»&nbsp;; Set-MailUser ; Remove-MailUser&nbsp;</i><br><i>New-Mailbox -Room&nbsp;; New-Mailbox -Equipment</i><br><i>New-Mailbox -Shared</i></p>
+<p>Les boites aux lettres de site sont à <strong>activer dans SharePoint</strong></p>
+<h2>Personnalisation d’une boite aux lettres</h2>
+<h3>1 – Les éléments qui peuvent être personnalisés</h3>
+<p>Il existe de nombreux éléments qui peuvent être personnalisés, voici quelques exemples des principaux éléments.</p>
+<ul>
+  <li>Quota d’une la boite aux lettres utilisateur&nbsp;</li>
+</ul>
+<p><u>Il y a 3 types de quotas&nbsp;:&nbsp;</u></p>
+<p><strong>Avertissement</strong>, lorsque la boite est presque pleine<br><strong>Blocage des mails envoyés</strong>, si la taille de la boite a atteint ce quota l’utilisateur ne pourra plus envoyer de mails<br><strong>Blocage des mails reçus</strong>, si la taille de la boite a atteint ce quota l’utilisateur ne pourra plus recevoir de mails</p>
+<ul>
+  <li>Désactivation de l’anti-spam</li>
+</ul>
+<p>Permet de <strong>ne pas filtrer les mails</strong> pour la boite ciblée</p>
+<ul>
+  <li>Activer la super corbeille de récupération des éléments supprimés de TOUTES les boites aux lettres</li>
+</ul>
+<p>Permet à un <strong>utilisateur de récupérer lui-même des éléments qui ont été supprimés</strong> de sa boite aux lettres si le délai de rétention des informations n’est pas passé.</p>
+<ul>
+  <li>Désactiver l’accès mobile ActiveSync d’une groupe de boite aux lettres</li>
+</ul>
+<p>Permet de <strong>désactiver la possibilité d’accès</strong> à une boite par un utilisateur ou un groupe <strong>depuis un mobile</strong></p>
+<ul>
+  <li>Désactiver l’accès OWA mobile pour une boite aux lettres</li>
+</ul>
+<p>Permet de désactiver <strong>l’accès à OWA pour&nbsp; les périphériques mobiles</strong> (tel portable, tablettes, etc.)</p>
+<ul>
+  <li>Désactiver l’accès Web OWA pour une boite aux lettres</li>
+</ul>
+<p>Permet de <strong>désactiver la fonction Web</strong> mail pour les utilisateurs. Ils n’auront accès à leurs e-mails que via le lient lourd Outlook.</p>
+<ul>
+  <li>La taille maximale autorisée d’un e-mail en envoi et réception pour une boite aux lettres</li>
+  <li>Le nombre maximal de destinataires autorisés pour un message envoyé depuis une boite aux lettres</li>
+</ul>
+<p>Permet <strong>d’éviter les envois massifs de mail</strong>. Cette valeur s’applique uniquement à un seul message électronique à la fois.</p>
+<ul>
+  <li>Réinitialiser le mot de passe de toutes les boites aux lettres utilisateurs à la prochaine connexion&nbsp;</li>
+  <li>Le déplacement d’un boite aux lettres vers une autre base de données</li>
+</ul>
+<p>Dans le cadre d’un <strong>équilibrage de charge</strong> ou si l’on souhaite que les bases de données soient stockées sur <strong>des disques plus rapides que l’existant.</strong></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
