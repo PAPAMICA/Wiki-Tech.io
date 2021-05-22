@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T19:27:54.061Z
+date: 2021-05-22T19:40:55.303Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -520,21 +520,67 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <figure class="image"><img src="/images/eac-23.png"></figure>
 <p>Pour ajouter la liste qui a été créée à un utilisateur, il faut aller dans la section «&nbsp;destinataires&nbsp;» puis cliquer sur le nom de l’utilisateur ciblé.</p>
 <figure class="image"><img src="/images/eac-24.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Une nouvelle fenêtre s’ouvre. Cliquer sur «&nbsp;fonctionnalités de boite aux lettres&nbsp;» puis dans la section «&nbsp;stratégie du carnet d’adresses&nbsp;» sélectionner la stratégie à appliquer.</p>
+<figure class="image"><img src="/images/eac-25.png"></figure>
+<p>Cliquer sur «&nbsp;enregistrer&nbsp;» pour valider.</p>
+<p><u>Création à l’aide de EMS&nbsp;:</u></p>
+<pre><code class="language-plaintext">New-AddressBookPolicy -Name «nom_de_la_stratégie» -AddressLists «\nom_de_la_liste_d’adresses» -Roomlist «\nom_de_la_liste_de_salles» -OfflineAddressBook «\nom_carnet_OAB» -GlobalAddresslist «\nom_de_la_GAL»</code></pre>
+<p>Elles sont attribuées aux boites aux lettres utilisateurs via <u>EMS</u>&nbsp;:&nbsp;</p>
+<pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_du_user» -AddressBookPolicy «nom_de_la_stratégie»</code></pre>
+<h2>Haute disponibilité - D.A.G</h2>
+<h3>1 - Définition</h3>
+<p>La haute disponibilité des bases de données dans Exchange s’effectue à l’aide d’un <strong>DAG</strong>.<br>Ce terme signifie «&nbsp;<strong>Database Availability Group</strong>&nbsp;» ou en français « <strong>Groupe de disponibilité de base de données</strong> ».<br>Il assure pour cela une <strong>redondance</strong> au niveau du «&nbsp;<strong>BACK-END</strong>&nbsp;».<br>Son principe de fonctionnement est simple : il réplique des bases de données sur un <strong>regroupement plusieurs serveurs Exchange</strong> ayant <strong>le rôle de boites aux lettres</strong> pour en effectuer la <strong>haute disponibilité</strong> pour de prévenir les pannes ou les coupures de service potentielles. Ce qui veut dire que les serveurs Exchange peuvent ainsi récupérer automatiquement des bases de données à la suite d’une panne d’un serveur ou lorsqu’une base de données n’est plus accessible.</p>
+<p>Un DAG se base sur le service de «&nbsp;<strong>Cluster</strong>&nbsp;» de Windows Serveur mais ne peut pas être géré par les outils de Cluster de basculement de Windows Server.<br>Lorsque la création d’un DAG est initiée, les rôles et fonctionnalités de cluster sont installés <strong>sur chaque nœud</strong> qui en fait partie.<br>Pour mettre en place un DAG, il faut tenir compte des points suivants&nbsp;:&nbsp;</p>
+<ul>
+  <li>Les membres du DAG doivent avoir <strong>le même système d’exploitation</strong></li>
+  <li>La <strong>même version d’Exchange</strong> doit être utilisée sur chacun des nœuds du DAG</li>
+  <li>Le <strong>DAG se limite à 16 copies de base de données</strong>, en comptant la copie active (1 copie active et 15 copies passives)</li>
+  <li>Il n’est plus obligatoire depuis Exchange 2016 que le DAG possède une adresse IP et aucune configuration DNS n’est à prévoir</li>
+  <li>Le nom du DAG doit être <strong>unique</strong> au sein de l’organisation Exchange</li>
+  <li>Pour fonctionner un DAG, dont le nombre de nœuds dans le Cluster est pair, a besoin d’un <strong>serveur «&nbsp;témoin&nbsp;»</strong> (qui doit être <u>hors du DAG</u>) avec un partage de fichiers effectué depuis un répertoire précis</li>
+</ul>
+<p>Le «&nbsp;serveur témoin&nbsp;» (Witness Server en anglais) assure la cohérence, le départage et le temps de réponse du Cluster. Ce serveur doit être dans domaine que les serveurs Exchange.<br>Il se base sur le composant «&nbsp;<strong>Active Manager</strong>&nbsp;».</p>
+<p>Ce composant comprend&nbsp;:&nbsp;</p>
+<ul>
+  <li>Le gestionnaire <strong>Active Manager Principal (PAM)</strong> dont le rôle est de déterminer quelles copies de bases de données seront actives ou passives</li>
+  <li>Le gestionnaire <strong>Active Manager de secours (SAM)</strong> qui communique l’état des bases de données aux autres membres du DAG ainsi que le serveur témoin. Il établit également la santé de chaque base de données.</li>
+</ul>
+<p>Il est tout à fait <strong>possible que le&nbsp;«&nbsp;serveur témoin&nbsp;» fasse partie de plusieurs DAG</strong> mais il faudra dans ce cas utiliser différents répertoires de partage pour les différents DAG.<br>Le <strong>quorum</strong> (majorité) d’un cluster est déterminé par le <strong>nombre d’éléments votants</strong>. Ces éléments doivent faire partie des <strong>membres actifs</strong> du Cluster pour permettre à ce dernier de démarrer correctement ou de continuer à s’exécuter.<br>Par défaut, chaque nœud du Cluster dispose <strong>d’un seul vote</strong> de quorum. Toutefois, un «&nbsp;serveur témoin&nbsp;» dispose d’un vote de quorum supplémentaire.<br>Chaque élément peut donc « voter » pour déterminer si le Cluster peut s’exécuter. Pour atteindre le quorum et fonctionner correctement un Cluster doit recueillir <strong>la majoritédes votes</strong> parmi les membres actifs du Cluster, raison pour laquelle il est nécessaire d’avoir un «&nbsp;serveur témoin&nbsp;» si le nombre de serveurs membres est pair.</p>
+<p><u>Schéma&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/images/schema_dag.png"></figure>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;dans ce schéma une seule carte réseau n’est illustrée mais il est conseillé d’avoir 2 cartes réseau sur les serveurs du DAG afin de séparer les flux de réplications et flux normaux d’utilisations par les utilisateurs. </mark></i><mark class="pen-red">Lors de la mise en place de la haute disponibilité sur Exchange, les données des copies de bases de données seront stockées aux mêmes emplacements sur chacun des membres du DAG les détenant.</mark></p>
+<h3>2 – Les actions de la configuration</h3>
+<p><u>Ce qui est obligatoire&nbsp;:</u></p>
+<ul>
+  <li>Créer un DAG</li>
+  <li>Ajouter des membres au DAG</li>
+  <li>Ajouter des copies des bases de données sur les serveurs qui n’héberge pas ces boites de données.</li>
+</ul>
+<p>Il est possible de définir quels seront les serveurs qui auront les copies, il n’est pas obligatoire de mettre des copies sur TOUS LES serveurs.</p>
+<p><u>Ce qui est optionnel&nbsp;:</u></p>
+<ul>
+  <li>Utilisation d’un «&nbsp;serveur témoin&nbsp;» (selon le nombre de serveurs dans le DAG, pour pouvoir valider le quorum)</li>
+  <li>Configuration des préférences d’activation des copies de bases de données (quel serveurs auront quelles copies)</li>
+  <li>Configuration des copies de bases de données avec un délai d’attente de la troncation des fichiers de logs après l’écriture en base de données (permet d’avoir une version «&nbsp;décalée&nbsp;» à J-x des bases de données)</li>
+  <li>Configuration des copies de bases de données avec un retard de lecture</li>
+  <li>Configuration d’un réseau dédié à la réplication (toutefois conseillé)</li>
+</ul>
+<h3>3 – La configuration du DAG</h3>
+<p>La configuration d’un DAG peut se faire soit via l’EAC soit via l’EMS</p>
+<p><u>Via l’EAC&nbsp;:</u></p>
+<p>Se connecter à l’EAC puis dans la partie «&nbsp;serveur&nbsp;» cliquer sur «&nbsp;Groupe de disponibilité de bases de données&nbsp;»</p>
+<figure class="image"><img src="/images/eac-26.png"></figure>
+<p>Cliquer sur le bouton <span class="text-huge"><strong>+ </strong></span>et renseigner les informations demandées.</p>
+<figure class="image"><img src="/images/eac-27.png"></figure>
+<p>Le nom du serveur témoin doit être écrit en FQDN<br>Il n’est pas obligatoire d’utiliser une adresse IP pour le DAG si et seulement si les serveurs membres du DAG sont en version Windows Server 2012 R2 et supérieures.<br>Dans le cas contraire il faudra ajouter une adresse IP</p>
+<p>Cliquer sur «&nbsp;enregistrer&nbsp;» et le DAG sera créé. Pour l’instant il ne possède aucun membres.</p>
+<figure class="image"><img src="/images/eac-28.png"></figure>
+<p>Pour ajouter des membres, sélectionner le DAG puis cliquer sur l’icone<br>Cliquer sur le bouton <span class="text-huge"><strong>+ </strong></span>et sélectionner les serveurs qui deviendrons membres du DAG</p>
+<figure class="image"><img src="/images/eac-29.png"></figure>
+<p>Pour ajouter des copies de bases de données sur les serveurs du DAG, il faut se rendre toujours dans «&nbsp;serveurs&nbsp;» puis dans la section «&nbsp;base de données&nbsp;»</p>
+<figure class="image"><img src="/images/eac-30.png"></figure>
+<p>Sélectionner une base de données puis cliquer sur le symbole «&nbsp;…&nbsp;» puis cliquer sur «&nbsp;ajouter une copie de base de données</p>
+<figure class="image"><img src="/images/eac-31.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
