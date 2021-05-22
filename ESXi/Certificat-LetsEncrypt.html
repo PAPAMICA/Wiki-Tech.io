@@ -1,0 +1,33 @@
+<!--
+title: Certificat Let's Encrypt sur ESXI 7
+description: Importer un certificat Let's Encrypt pour ESXI 7
+published: true
+date: 2021-05-22T09:59:30.950Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-22T09:59:30.950Z
+-->
+
+<p>&nbsp;</p>
+<p>J'ai en ma possession un certificat Wildcard Let's Encrypt qui certifie <i>.home.khroners.fr, </i>.khroners.fr et khroners.fr, au format .PEM.</p>
+<h1>Conversion du certificat</h1>
+<p>Il est nécessaire de convertir le certificat au bon format.</p>
+<p>Pour cela, nous allons utiliser Openssl sur une machine Linux.</p>
+<pre><code class="language-plaintext">openssl pkey -in privkey.pem -out privkey.key
+openssl crl2pkcs7 -nocrl -certfile fullchain.pem | openssl pkcs7 -print_certs -out fullchain.crt</code></pre>
+<p>Ensuite, on récupère les fichiers fullchain.crt ainsi que privkey.key.</p>
+<h1>Activation de la console SSH</h1>
+<p>Via l'interface Web, on clique sur “hôte” puis “Services” et “Activer Secure Shell (SSH)”.</p>
+<figure class="image"><img src="/images/activer-ssh-esxi-7.png"></figure>
+<p>On se connecte ensuite en SSH.</p>
+<h1>Importation du certificat</h1>
+<p>On fait une sauvegarde de la clé ainsi que du certificat actuel de l'ESXI.</p>
+<pre><code class="language-plaintext">cp rui.crt old.rui.crt
+cp rui.key old.rui.key</code></pre>
+<p>On modifie rui.crt (avec vim par exemple), on efface son contenu et on colle le contenu du fichier fullchain.crt.</p>
+<p>On fait de même pour rui.key avec le contenu de privkey.key.</p>
+<p>On redémarre ensuite le serveur avec la commande reboot.</p>
+<pre><code class="language-plaintext">reboot</code></pre>
+<p>Sur l’interface web, on peut voir le certificat dans « Gérer », « Sécurité et utilisateurs » et « Certificats ».</p>
+<figure class="image"><img src="/images/esxi-certificat.png"></figure>
+<p>&nbsp;</p>
