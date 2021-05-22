@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-21T08:06:34.418Z
+date: 2021-05-22T20:23:23.450Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -48,15 +48,22 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <h2>L' aide</h2>
 <p>Sous PowerShell la commande <code>Get-Help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
 <pre><code class="language-plaintext">Get-Help  &lt;la commande&gt;</code></pre>
+<p>&nbsp;</p>
 <p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
 <pre><code class="language-plaintext"> Update-Help</code></pre>
+<p>&nbsp;</p>
 <p>Cette commande <code>Get-Help</code> permet d'avoir une aide de manière très générale si on souhaite obtenir plus d'information on peut ajouter l'option <code>-detailed</code></p>
 <pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -detailed</code></pre>
+<p>&nbsp;</p>
 <p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
 <pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -examples</code></pre>
+<p>&nbsp;</p>
+<p>Une dernière option de Get-help vous permet d'afficher l'aide complète de la commande <code>-Full</code></p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -Full</code></pre>
 <p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>Update-Help.</code></p>
 <p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option <code>-online</code>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -online</code></pre>
+<p>&nbsp;</p>
 <p>Si vous voulez de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
 <p>Par exemple si vous voulez de l'aide sur la syntaxe de commande <code>Get-ChildItem</code>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Help Get-ChildItem</code></pre>
