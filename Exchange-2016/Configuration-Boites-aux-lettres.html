@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T18:11:03.791Z
+date: 2021-05-22T18:19:58.914Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -381,16 +381,117 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Activer le déplacement d’une boite aux lettres vers une nouvelle base de données</li>
 </ul>
 <pre><code class="language-plaintext">New-MoveMailbox -Identity «adresse_mail» -TargetDatabase «nom_de_la_BDD» -BatchName «nom_de_la_tâche»</code></pre>
+<h2>Activer la boite aux lettres d’archivage</h2>
+<p><i><mark class="pen-red"><strong>Attention&nbsp;:&nbsp;</strong>Cette fonction ne marche QUE pour les licences CAL de type ENTREPRISE</mark></i></p>
+<h3>1 - Les avantages d’une boite aux lettres d’archivage</h3>
+<ul>
+  <li>Etendre la boite aux lettres d’un utilisateur</li>
+  <li>Déplacer automatiquement les anciens messages électroniques vers la boite d’archivage pour faire de la place dans la boite aux lettres.</li>
+  <li>Permet d’éviter l’utilisation des fichiers .PST locaux</li>
+  <li>Permet de stocker et de sauvegarder les données archivées coté serveur</li>
+  <li>Elle peut être montée et être visible dans Outlook</li>
+</ul>
+<p>La boite d’archivage n’est seulement disponible qu’en mode «&nbsp;Outlook Connecté&nbsp;»</p>
+<h3>2 – Activation</h3>
+<p><u>Avec l’EAC</u></p>
+<p>Pour activer l’archivage depuis l’interface graphique, cliquer sur <strong>destinataires</strong> puis sur <strong>boites aux lettres.</strong><br>Cliquer sur la boite aux lettres d’un utilisateur puis faire défiler les informations de droite jusqu’à atteindre «&nbsp;<strong>archive locale</strong>&nbsp;» et cliquer sur «&nbsp;<strong>activer</strong>&nbsp;»</p>
+<figure class="image"><img src="/images/eac-18.png"></figure>
+<p>Remplir les informations nécessaires à a configuration</p>
+<figure class="image"><img src="/images/eac-19.png"></figure>
+<p><u>Avec l’Exchange Management Shell (EMS)</u></p>
+<ul>
+  <li>Activation de l’archive en même temps que la création d’un compte&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">New-Mailbox -UserPrincipalName «adresse_mail_du_user» -Alias «alias_du_user» -Name «nom_du_user» -Database «nom_de_la_BDD» -Archive</code></pre>
+<ul>
+  <li>Activer la boite aux lettre d’archive pour une adresse de messagerie. La base de données pour l’archivage sera sélectionnée automatiquement par Exchange</li>
+</ul>
+<pre><code class="language-plaintext">Enable-Mailbox «adresse_mail_du_user» -Archive</code></pre>
+<ul>
+  <li>Activer la boite aux lettre d’archive pour une adresse de messagerie. La base de données pour l’archivage sera celle indiquée dans la commande</li>
+</ul>
+<pre><code class="language-plaintext">Enable-Mailbox «adresse_mail_du_user» - ArchiveDatabase «nom_de_la_BDD»</code></pre>
+<ul>
+  <li>Activer l’utilisation de la boite aux lettre d’archive sur un stockage distant</li>
+</ul>
+<pre><code class="language-plaintext">Enable-RemoteMailbox «nom_archive» -Archive</code></pre>
+<ul>
+  <li>Lister toutes les archives</li>
+</ul>
+<pre><code class="language-plaintext">Get-Mailbox -Archive</code></pre>
+<h2>Délégation de droits de boite aux lettres</h2>
+<h3>1 - Pourquoi effectuer une délégation</h3>
+<ul>
+  <li>Permettre à un ou plusieurs utilisateurs d’accéder à la boite aux lettres d’un autre utilisateur ou groupe.</li>
+</ul>
+<p>Il faudra ajouter le droit «&nbsp;<strong>FullAccess</strong>&nbsp;» sur la boite aux lettres pour l’utilisateur qui se verra déléguer l’accès.</p>
+<ul>
+  <li>Permettre à un ou plusieurs utilisateurs d’envoyer des messages électroniques «&nbsp;de la part&nbsp;» du propriétaire de la boite aux lettres.</li>
+</ul>
+<p>Il faudra ajouter le droit «&nbsp;<strong>SendOnBehalf</strong>&nbsp;» sur la boite aux lettres pour l’utilisateur qui se verra déléguer cette permission.<br>Le <strong>délégué peut envoyer des messages à partir de la boîte aux lettres de l’utilisateur ou du groupe</strong>. L’adresse de ces messages <strong>indique clairement que le message a été envoyé par le délégué</strong>.<br>Toutefois les <strong>réponses</strong> à ces messages sont <strong>envoyées à la boîte aux lettres utilisateur ou du groupe</strong> et non pas au délégué.<br>Cette configuration <strong>n’autorise pas le délégué à lire le contenu de la boîte aux lettres</strong>.</p>
+<ul>
+  <li>Permettre à un ou plusieurs utilisateurs d’écrire des messages électroniques «&nbsp;en tant que&nbsp;» le propriétaire de la boite aux lettres.</li>
+</ul>
+<p>Il faudra ajouter le droit «&nbsp;<strong>SendAs</strong>&nbsp;» sur la boite aux lettres pour l’utilisateur qui se verra déléguer cette permission.<br>Cela permet au délégué <strong>d'envoyer des messages comme s'ils provenaient directement de la boîte aux lettres utilisateurs ou du groupe et <u>en son nom</u></strong>. Aucun élément n'indique que le message a été envoyé par le délégué.<br>Cette configuration <strong>n’autorise pas le délégué à lire le contenu de la boîte aux lettres</strong>.</p>
+<ul>
+  <li>Définir le propriétaire d’une boite de ressource</li>
+</ul>
+<p>Attention cela ne peut pas s’appliquer sur tous les objets de messagerie. Plus d’informations sur le TechNet.</p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3>2 – Comment effectuer la délégation</h3>
+<p><u>A l’aide de l’EAC</u></p>
+<p>Se connecter puis cliquer sur «&nbsp;<strong>destinataires</strong>&nbsp;» puis «&nbsp;<strong>boites aux lettre partagée</strong>&nbsp;»<br>Faire un double clic sur la boite aux lettres sur laquelle des droits devront être positionnés puis cliquer sur «&nbsp;<strong>délégation de boite aux lettres</strong>&nbsp;»</p>
+<figure class="image"><img src="/images/eac-20.png"></figure>
+<p>Dans la liste des types d’accès cliquer sur le <span class="text-huge"><strong>+ </strong></span>et sélectionner le ou les utilisateurs qui ont le type de droit choisi sur cette boite aux lettres.</p>
+<p><u>A l’aide de Exchange Management Console (EMS)</u></p>
+<ul>
+  <li>Ajouter des permissions à une BAL pour des utilisateurs</li>
+</ul>
+<pre><code class="language-plaintext">Add-MailboxPermission -Identity «adresse_la_BAL_sur_laquelle_on_va_mettre_des_droits» -User «adresse_mail_user_qui_aura_accès» -AccessRights «type_de_droits» -InheritanceType «type_héritage_des_droits_pour_les_dossiers_de_la_BAL» -AutoMapping $True</code></pre>
+<p>-AccessRights FullAccess (par exemple)<br>-InheritanceType ALL&nbsp;: indique que TOUS les dossiers de la BAL hériterons des permissions données<br>-AutoMapping $True&nbsp;: map automatiquement la BAL pour le ou les users qui auront les droits</p>
+<ul>
+  <li>Pour mettre le droit «&nbsp;envoyé de la part de »</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_la_BAL_sur_laquelle_on_va_mettre_des_droits» -GrantSendOnBehalfTo «adresse_mail_user_qui_aura_accès»</code></pre>
+<ul>
+  <li>Pour mettre le droit «&nbsp;envoyé en tant que&nbsp;»</li>
+</ul>
+<pre><code class="language-plaintext">Get-Mailbox -Identity «adresse_la_BAL_sur_laquelle_on_va_mettre_des_droits» | Add-ADPermission -User «adresse_mail_user_qui_aura_accès» -ExtendedRights «Send AS»</code></pre>
+<ul>
+  <li>Pour qu’un utilisateur soit propriétaire d’une ressource</li>
+</ul>
+<pre><code class="language-plaintext">Add-MailboxPermission -Identity «adresse_la_BAL_Ressource_sur_laquelle_on_va_mettre_des_droits» -Owner «nom_user»</code></pre>
+<h2>Listes d’adresses</h2>
+<h3>1 - Présentation</h3>
+<p>Les listes d’adresses <strong>regroupent des objets</strong> de messagerie <strong>de type de destinataires</strong> en fonctions de différents critères sélectionnés parmi les attributs des comptes Active Directory.<br>Elles permettent de <strong>structurer des utilisateurs</strong> et sont la plupart du temps <strong>utilisées pour représenter virtuellement la structure de l’entreprise</strong> dans ses différents services (par exemple des listes d’adresses par agences ou par site physique).<br>Les listes d’adresses sont <strong>liées à l’organisation Exchange</strong> et peuvent être segmentées logiquement en plusieurs organisations tout en étant visibles ou invisibles par tous les utilisateurs ou une certaine partie des utilisateurs.<br>Une organisation Exchange peut posséder <strong>plusieurs listes d’adresses globales&nbsp;</strong>(<strong>G</strong>lobal <strong>A</strong>ddress <strong>L</strong>ists) comme par exemple dans le cadre d’une mutualisation de l’organisation Exchange.<br>Toutefois un <strong>utilisateur</strong> de messagerie ne peut se voir assigner qu’à <strong>une seule liste</strong> d’adresse globale.</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;il ne faut pas confondre avec les groupes de diffusions.</mark></i></p>
+<h3>2 – Liste d’adresses par défaut</h3>
+<p>Il existe plusieurs types de liste d’adresses par défaut&nbsp;:&nbsp;</p>
+<ul>
+  <li>Dossiers publics</li>
+  <li>Liste d’adresse globale (GAL)</li>
+  <li>Tous les contacts</li>
+  <li>Tous les groupes</li>
+  <li>Tous les utilisateurs</li>
+  <li>Toutes les salles</li>
+</ul>
+<p>Ces listes sont visibles depuis l’EAC dans «&nbsp;<strong>Organisation</strong>&nbsp;» puis «&nbsp;<strong>Listes d’adresses</strong>&nbsp;»</p>
+<figure class="image"><img src="/images/eac-21.png"></figure>
+<h3>3 – Carnet d’adresses en mode hors connexion</h3>
+<p>Le nom du carnet d’adresse est <strong>Offline Address Book (OAB)</strong>. Il n’est présent uniquement pour Outlook et <strong>se télécharge en local</strong> sur le poste utilisateur et contient la liste d’adresse globale par défaut.<br>Son <strong>but</strong> est de permettre aux différents utilisateurs non connectés au serveur de <strong>pouvoir effectuer des recherches dans la liste d’adresse de l’OAB&nbsp;</strong>(qui est par défaut la liste d’adresse globale)<br>Ce carnet d’adresses est généré par une boite de type «&nbsp;<strong>arbitration</strong>&nbsp;» (boite mail qui est uniquement à l’administration de Exchange) dont l’attribut «&nbsp;<strong>OABGen</strong>&nbsp;» est positionné à <strong>$True</strong>. Il peut également y en avoir plusieurs dans une organisation Exchange.</p>
+<pre><code class="language-plaintext">Get-Mailbox -Arbitration | Where {$_.PersistedCapabilities -like «*oab*»</code></pre>
+<p>Il est <strong>copié sur tous les serveurs d’accès client</strong> de Exchange et est récupéré à l’aide du <strong>répertoire virtuel OAB</strong> depuis les services <strong>Web IIS</strong>.</p>
+<h3>4 – Les stratégies de carnet d’adresses</h3>
+<p>L’organisation Exchange peut comporter plusieurs stratégies d’adresses mais il ne peut y en avoir qu’une seule attribuée par destinataire de messagerie.<br>Les stratégies de carnet d’adresses permettent de segmenter les vue des listes d’adresses qui sont regroupées dans la GAL.</p>
+<p><u>Une stratégie doit comporter les éléments suivants&nbsp;:</u></p>
+<ul>
+  <li>Une liste d’adresse globale</li>
+  <li>Un carnet d’adresse en mode hors connexion</li>
+  <li>Des listes d’adresses</li>
+  <li>Une liste d’adresses de salles</li>
+</ul>
+<p>Les listes d’adresses sont visibles dans l’EAC dans la section «&nbsp;organisation&nbsp;» puis «&nbsp;listes d’adresses&nbsp;»</p>
+<figure class="image"><img src="/images/eac-22.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
