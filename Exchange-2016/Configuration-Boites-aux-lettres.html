@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T18:19:58.914Z
+date: 2021-05-22T18:21:46.791Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -39,7 +39,6 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <p>Valider en cliquant sur enregistrer.</p>
 <p><u>Depuis PowerShell avec la commande suivante&nbsp;:</u></p>
 <pre><code class="language-plaintext">New-AcceptedDomain -Name «nom_FQDN_du_domaine» -DomainName «nom_FQDN_du_domaine» -DomainType «type_du_domaine» </code></pre>
-<p>&nbsp;</p>
 <h1>Les stratégies d’adresses de messagerie</h1>
 <ul>
   <li>Qu’est-ce qu’une stratégie d’adresse de messagerie</li>
@@ -105,9 +104,11 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <p>Pour vérifier si la stratégie a bien été créée il faut taper la commande suivante&nbsp;</p>
 <pre><code class="language-plaintext">Get-EmailAdresspolicy</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-5.png"></figure>
 <p>Il ne reste plus qu’à appliquer la stratégie&nbsp;</p>
 <pre><code class="language-plaintext">Update-EmailAddressPolicy -Identity «nom_de_la_stratégie»</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-6.png"></figure>
 <h2>Base de données de boites aux lettres</h2>
 <p><u>Bref rappel du fonctionnement de la réception d’un e-mail&nbsp;:</u></p>
@@ -194,22 +195,27 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Personnaliser la base de données</li>
 </ul>
 <pre><code class="language-plaintext">Set-MailboxDatabase</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Voir les informations de configuration de la base de données</li>
 </ul>
 <pre><code class="language-plaintext">Get-MailboxDatabase</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Démonter une base de données</li>
 </ul>
 <pre><code class="language-plaintext">Dismount-Database</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Monter une base de données</li>
 </ul>
 <pre><code class="language-plaintext">Mount-Database</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Modifier le chemin de stockage d’une base de données</li>
 </ul>
 <pre><code class="language-plaintext">Move-DatabasePath</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Création d’une base de données «&nbsp;dossier publique&nbsp;» (attention depuis Exchange 2013 il ne s’agit pas d’une NDD à part entière mais d’une boite aux lettres)</li>
 </ul>
@@ -289,7 +295,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <h3>1 – Les éléments qui peuvent être personnalisés</h3>
 <p>Il existe de nombreux éléments qui peuvent être personnalisés, voici quelques exemples des principaux éléments.</p>
 <ul>
-  <li>Quota d’une la boite aux lettres utilisateur&nbsp;</li>
+  <li>Quota d’une la boite aux lettres utilisateur</li>
 </ul>
 <p><u>Il y a 3 types de quotas&nbsp;:&nbsp;</u></p>
 <p><strong>Avertissement</strong>, lorsque la boite est presque pleine<br><strong>Blocage des mails envoyés</strong>, si la taille de la boite a atteint ce quota l’utilisateur ne pourra plus envoyer de mails<br><strong>Blocage des mails reçus</strong>, si la taille de la boite a atteint ce quota l’utilisateur ne pourra plus recevoir de mails</p>
@@ -319,7 +325,7 @@ dateCreated: 2021-05-20T21:50:22.530Z
 </ul>
 <p>Permet <strong>d’éviter les envois massifs de mail</strong>. Cette valeur s’applique uniquement à un seul message électronique à la fois.</p>
 <ul>
-  <li>Réinitialiser le mot de passe de toutes les boites aux lettres utilisateurs à la prochaine connexion&nbsp;</li>
+  <li>Réinitialiser le mot de passe de toutes les boites aux lettres utilisateurs à la prochaine connexion</li>
   <li>Le déplacement d’un boite aux lettres vers une autre base de données</li>
 </ul>
 <p>Dans le cadre d’un <strong>équilibrage de charge</strong> ou si l’on souhaite que les bases de données soient stockées sur <strong>des disques plus rapides que l’existant.</strong></p>
@@ -333,21 +339,25 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <figure class="image"><img src="/images/eac-17.png"></figure>
 <p><u>En lignes de commande avec EMS</u></p>
 <ul>
-  <li>Exemple de mise en place de quota&nbsp;:&nbsp;</li>
+  <li>Exemple de mise en place de quota&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail_du_user» -ProhibitSentQuota «taille_en_Gb» -ProhibitReceiveQuota «taille_en_Gb» -IssueWarningQuote «taille_en_Gb»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Exemple pour désactiver l’antispam&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail» -AntispamBypassEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer la super corbeille pour TOUS les utilisateurs (impossible en graphique)</li>
 </ul>
 <pre><code class="language-plaintext">Get-Mailbox | Set-Mailbox -SingleeltemRecoveryEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
-  <li>Activer la super corbeille pour un utilisateur&nbsp;</li>
+  <li>Activer la super corbeille pour un utilisateur</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail» -SingleeltemRecoveryEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Désactiver l’accès aux boites mails sur mobile pour un groupe d’utilisateurs</li>
 </ul>
@@ -357,26 +367,32 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Désactiver l’accès à la boite mail sur mobile pour un utilisateur</li>
 </ul>
 <pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -OWAforDevicesEnabled $False</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Désactiver l’accès Web mail pour un utilisateur</li>
 </ul>
 <pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -OWAEnabled $False</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Modifier la taille maximal d’un message reçu et envoyé pour un utilisateur</li>
 </ul>
 <pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -MaxReceiveSize «taille_en_Mb» -MaxSendSize «taille_en_Mb»</code></pre>
+<p>&nbsp;</p>
 <ul>
-  <li>Indiquer le nombre maximum de destinataires pour l’envoi d’un message&nbsp;</li>
+  <li>Indiquer le nombre maximum de destinataires pour l’envoi d’un message</li>
 </ul>
 <pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -RecipientsLimits «nombre»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer la réinitialisation du mot de passe de toutes les boites aux lettres utilisateurs à la prochaine connexion</li>
 </ul>
 <pre><code class="language-plaintext">Get-Mailbox | Set-Mailbox -ResetPasswordOnNextlogon $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer la réinitialisation du mot de passe d’une boite autre lettres utilisateur à la prochaine connexion</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_du_user» -ResetPasswordOnNextlogon $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer le déplacement d’une boite aux lettres vers une nouvelle base de données</li>
 </ul>
@@ -400,21 +416,25 @@ dateCreated: 2021-05-20T21:50:22.530Z
 <figure class="image"><img src="/images/eac-19.png"></figure>
 <p><u>Avec l’Exchange Management Shell (EMS)</u></p>
 <ul>
-  <li>Activation de l’archive en même temps que la création d’un compte&nbsp;</li>
+  <li>Activation de l’archive en même temps que la création d’un compte</li>
 </ul>
 <pre><code class="language-plaintext">New-Mailbox -UserPrincipalName «adresse_mail_du_user» -Alias «alias_du_user» -Name «nom_du_user» -Database «nom_de_la_BDD» -Archive</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer la boite aux lettre d’archive pour une adresse de messagerie. La base de données pour l’archivage sera sélectionnée automatiquement par Exchange</li>
 </ul>
 <pre><code class="language-plaintext">Enable-Mailbox «adresse_mail_du_user» -Archive</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer la boite aux lettre d’archive pour une adresse de messagerie. La base de données pour l’archivage sera celle indiquée dans la commande</li>
 </ul>
 <pre><code class="language-plaintext">Enable-Mailbox «adresse_mail_du_user» - ArchiveDatabase «nom_de_la_BDD»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Activer l’utilisation de la boite aux lettre d’archive sur un stockage distant</li>
 </ul>
 <pre><code class="language-plaintext">Enable-RemoteMailbox «nom_archive» -Archive</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Lister toutes les archives</li>
 </ul>
@@ -453,10 +473,12 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Pour mettre le droit «&nbsp;envoyé de la part de »</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_la_BAL_sur_laquelle_on_va_mettre_des_droits» -GrantSendOnBehalfTo «adresse_mail_user_qui_aura_accès»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour mettre le droit «&nbsp;envoyé en tant que&nbsp;»</li>
 </ul>
 <pre><code class="language-plaintext">Get-Mailbox -Identity «adresse_la_BAL_sur_laquelle_on_va_mettre_des_droits» | Add-ADPermission -User «adresse_mail_user_qui_aura_accès» -ExtendedRights «Send AS»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour qu’un utilisateur soit propriétaire d’une ressource</li>
 </ul>
