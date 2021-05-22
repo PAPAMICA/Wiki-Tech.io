@@ -2,7 +2,7 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-22T18:05:49.855Z
+date: 2021-05-22T18:11:03.791Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T21:50:22.530Z
@@ -323,6 +323,106 @@ dateCreated: 2021-05-20T21:50:22.530Z
   <li>Le déplacement d’un boite aux lettres vers une autre base de données</li>
 </ul>
 <p>Dans le cadre d’un <strong>équilibrage de charge</strong> ou si l’on souhaite que les bases de données soient stockées sur <strong>des disques plus rapides que l’existant.</strong></p>
+<h3>2 – Comment réaliser ces personnalisations</h3>
+<p><u>En mode graphique avec l’EAC</u></p>
+<p>Pour modifier les éléments d’une boite mail utilisateur depuis l’EAC il suffit de cliquer sur <strong>destinataires</strong> puis sur <strong>boites aux lettres</strong> et enfin de faire un <strong>double clic</strong> sur la boite mail.</p>
+<figure class="image"><img src="/images/eac-15.png"></figure>
+<p>Il ne restera plus qu’à <strong>modifier les éléments</strong> souhaités.</p>
+<figure class="image"><img src="/images/eac-16.png"></figure>
+<p>Faire la même chose avec les groupes, les ressources, les contacts, etc.</p>
+<figure class="image"><img src="/images/eac-17.png"></figure>
+<p><u>En lignes de commande avec EMS</u></p>
+<ul>
+  <li>Exemple de mise en place de quota&nbsp;:&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail_du_user» -ProhibitSentQuota «taille_en_Gb» -ProhibitReceiveQuota «taille_en_Gb» -IssueWarningQuote «taille_en_Gb»</code></pre>
+<ul>
+  <li>Exemple pour désactiver l’antispam&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail» -AntispamBypassEnabled $True</code></pre>
+<ul>
+  <li>Activer la super corbeille pour TOUS les utilisateurs (impossible en graphique)</li>
+</ul>
+<pre><code class="language-plaintext">Get-Mailbox | Set-Mailbox -SingleeltemRecoveryEnabled $True</code></pre>
+<ul>
+  <li>Activer la super corbeille pour un utilisateur&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox -identity «adresse_mail» -SingleeltemRecoveryEnabled $True</code></pre>
+<ul>
+  <li>Désactiver l’accès aux boites mails sur mobile pour un groupe d’utilisateurs</li>
+</ul>
+<pre><code class="language-plaintext">Get-User -Filter «Department -eq «nom_du_groupe_de_users»» | Set-CasMailbox -ActiveSyncEnabled $False</code></pre>
+<p><mark class="pen-red"><strong>Attention</strong>&nbsp;</mark><i><mark class="pen-red">les guillemets en jaune sont à laisser dans la commande</mark></i></p>
+<ul>
+  <li>Désactiver l’accès à la boite mail sur mobile pour un utilisateur</li>
+</ul>
+<pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -OWAforDevicesEnabled $False</code></pre>
+<ul>
+  <li>Désactiver l’accès Web mail pour un utilisateur</li>
+</ul>
+<pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -OWAEnabled $False</code></pre>
+<ul>
+  <li>Modifier la taille maximal d’un message reçu et envoyé pour un utilisateur</li>
+</ul>
+<pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -MaxReceiveSize «taille_en_Mb» -MaxSendSize «taille_en_Mb»</code></pre>
+<ul>
+  <li>Indiquer le nombre maximum de destinataires pour l’envoi d’un message&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-CasMailbox -Identity «adresse_mail_du_user» -RecipientsLimits «nombre»</code></pre>
+<ul>
+  <li>Activer la réinitialisation du mot de passe de toutes les boites aux lettres utilisateurs à la prochaine connexion</li>
+</ul>
+<pre><code class="language-plaintext">Get-Mailbox | Set-Mailbox -ResetPasswordOnNextlogon $True</code></pre>
+<ul>
+  <li>Activer la réinitialisation du mot de passe d’une boite autre lettres utilisateur à la prochaine connexion</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_du_user» -ResetPasswordOnNextlogon $True</code></pre>
+<ul>
+  <li>Activer le déplacement d’une boite aux lettres vers une nouvelle base de données</li>
+</ul>
+<pre><code class="language-plaintext">New-MoveMailbox -Identity «adresse_mail» -TargetDatabase «nom_de_la_BDD» -BatchName «nom_de_la_tâche»</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
