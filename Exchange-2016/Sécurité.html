@@ -1,0 +1,111 @@
+<!--
+title: La sécurité
+description: La sécurité dans Exchange 2016
+published: true
+date: 2021-05-23T13:12:30.902Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T13:12:30.902Z
+-->
+
+<p>&nbsp;</p>
+<h1>La sécurité dans Exchange 2016</h1>
+<h2>Anti-spam et anti-malware</h2>
+<h3>Présentation</h3>
+<p>Ces services nécessitent un accès Internet pour effectuer leurs mises à jour.</p>
+<ul>
+  <li>La protection Anti-Spam&nbsp;:&nbsp;</li>
+</ul>
+<p>Elle permet de se protéger contre les emails indésirables (comme de la pub par exemple)<br>C’est une fonctionnalité qui existe depuis Exchange 2010 sous forme d’agents et de valeurs de priorités.<br>La protection Anti-Spam est basée sur le service de transport et fonctionne comme les agents intégrés au transport.<br>Il s’agit d’un service qui est activé par défaut sur tous les serveurs ayant le rôle «&nbsp;EDGE&nbsp;».<br>Elle permet de rejeter ou de mettre en quarantaine les emails identifiés comme étant non légitimes.</p>
+<ul>
+  <li>La protection Anti-Malware :&nbsp;</li>
+</ul>
+<p>Il s’agit d’une protection activée par défaut qui permet de mettre en quarantaine les emails identifiés comme étant potentiellement infectés.<br>Cette fonction existe depuis Exchange 2013 et est disponible uniquement sur les serveurs ayant le rôle de boite aux lettres</p>
+<h3>L’agent Anti-Spam sur les serveurs EDGE</h3>
+<p>Cet agent permet d’effectuer un filtrage des connexions entrantes.<br>Il permet également de filtrer les destinataires ainsi que les pièces jointes.</p>
+<h3>L’agent Anti-Spam sur les serveurs ayant le rôle de boite aux lettres</h3>
+<p>Cet agent permet d’effectuer un filtrage sur les expéditeurs ainsi que de vérifier l’identité de l’expéditeur pour éviter l’usurpation d’identité.<br>Il permet également le filtrage du contenu du message (SCL) ainsi qu’une analyse de protocole pour la réputation de l’expéditeur (SRL)</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;:&nbsp;</mark></i></p>
+<p><i>SCL&nbsp;: seuil de probabilité de courrier indésirable. Les valeurs permettent de déterminer si l’email est un spam ou non.</i><br><i>SRL&nbsp;: seuil de probabilité que l’expéditeur soit catégorisé comme spammeur. Les valeurs permettent de déterminer s’il s’agit d’un spammeur ou non.</i></p>
+<h3>Configuration de l’Anti-Spam sur un serveur de boite aux lettres</h3>
+<p>L’activation se fait uniquement en PowerShell via l’EMS.<br>Il existe un script dans les sources d’exchange qu’il sera possible de lancer via la commande&nbsp;</p>
+<pre><code class="language-plaintext">&amp;$env:ExchangeInstallPath\Install-AntiSpamAgents.ps1</code></pre>
+<p>Ensuite on redémarre le service «&nbsp;transport&nbsp;»</p>
+<pre><code class="language-plaintext">Restart-Service MSExchangeTransport</code></pre>
+<p>Contrôle des agents de transport et que tout est bien redémarré</p>
+<pre><code class="language-plaintext">Get-TransportAgent</code></pre>
+<p>Autorisation de l’IP du serveur Exchange indiquant que ce serveur est légitime</p>
+<pre><code class="language-plaintext">Set-TransportConfig -InternalSMTPServers @{Add=«IP_du_serveur»}</code></pre>
+<p>Configuration d’un filtrage ou d’une exception</p>
+<pre><code class="language-plaintext">Set-ContentFilterConfig -Enabed $True -InternalMailEnabled $True -ExternalMailEnabled $True -BypassedRecipients «adresse_mail_destinatairer» -BypassSenders «adresse_mail_expéditeur» -BypassSenderDomains «*.domain.com»</code></pre>
+<p>Ajout d’une règle de filtrage de contenu indiquant que certains mots sont «&nbsp;légitimes&nbsp;»</p>
+<pre><code class="language-plaintext">Add-ContentFilterPhrase -Influence GoodWord -Phrase «mot_clé»</code></pre>
+<p>Ajout d’une règle de filtrage de contenu indiquant que certains mots sont «&nbsp;illégitimes&nbsp;»</p>
+<pre><code class="language-plaintext">Add-ContentFilterPhrase -Influence BadWord -Phrase «mot_clé»</code></pre>
+<p>Modification des comportements des «&nbsp;SCL&nbsp;». La valeur des numéros doit être au max à 9&nbsp;</p>
+<pre><code class="language-plaintext">Set-ContentFilterConfig -SCLDeleteEnabled $True -SCLDeleteThreshold «numéro» -SCLRejectEnabled $True -SCLRejectThreshold «numéro» -SCLQuarantineEnabled $True -SCLQuarantineThreshold «numéro»</code></pre>
+<p>Mise en place d’une validation à faire par l’expéditeur afin de vérifier son identité.</p>
+<pre><code class="language-plaintext">Set-ContentFilterConfig -OutlookEmailPostmarkValidationEnabled $True</code></pre>
+<p>Mettre en place un message indiquant les raison du rejet d’un email traité comme un spam</p>
+<pre><code class="language-plaintext">Set-ContentFilterConfig -RejectionResponse «message_de_rejet_en_cas_de_spam»</code></pre>
+<p>Activation de la vérification de la réputation de l’expéditeur</p>
+<pre><code class="language-plaintext">Set-SenderReputationConfig -Enabled $True -InternalMailEnabled $False -ExternalMailEnabled $True</code></pre>
+<h3>Configuration du filtrage Anti-Malware</h3>
+<p><u>Via l’EAC</u></p>
+<p>Dans la section «&nbsp;Protection&nbsp;», il sera possible de voir la liste des filtres anti-malware.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
