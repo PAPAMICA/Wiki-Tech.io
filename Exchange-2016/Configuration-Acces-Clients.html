@@ -2,7 +2,7 @@
 title: Configuration des accès clients
 description: Configuration CAS
 published: true
-date: 2021-05-23T08:21:47.106Z
+date: 2021-05-23T08:33:33.112Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:11:06.349Z
@@ -204,6 +204,123 @@ dateCreated: 2021-05-23T08:11:06.349Z
 <p>Lorsque les serveurs seront identifiés, le client effectuera après que la connexion soit établie, une récupération en local du fichier XML puis la lecture des informations du client de messagerie.</p>
 <h3>Schéma des différentes phases</h3>
 <figure class="image image_resized" style="width:49.47%;"><img src="/images/schema_phases.png"></figure>
+<h3>La configuration</h3>
+<p>Il y a plusieurs configurations à effectuer.<br>Dans un premier temps il faudra effectuer les enregistrements DNS de l’Autodiscover en interne ou en externe.<br>Dans un deuxième temps il faudra configurer les serveurs d’accès clients de Exchange avec les informations suivantes&nbsp;:</p>
+<ul>
+  <li>Les URLs l’Autodiscover (via l’EAC ou l’EMS)</li>
+  <li>Les types d’authentifications (via l’EAC ou l’EMS)</li>
+</ul>
+<p>Lorsque ces configurations sont effectuées il faut penser à vérifier la configuration</p>
+<ul>
+  <li>En interne via l’EMS avec la cmdlet «&nbsp;Test-OutlookConnecivity&nbsp;»</li>
+  <li>En externe via Microsoft Remote Connectivity Analyzer (<a href="https://testconnectivity.microsoft.com">https://testconnectivity.microsoft.com</a>)</li>
+</ul>
+<p>En fin, effectuer une vérification du fonctionnement à l’aide d’un client Interne et d’un client externe.</p>
+<h2>Configuration des accès clients</h2>
+<h3>Ce qu’il faut configurer</h3>
+<p>Il est impératif de configurer les différentes URLs des services qui sont obligatoires pour le bon fonctionnement des accès clients.<br>Ces URLs sont configurables sur des dossiers virtuels disponibles dans la section IIS à fois pour la partie Front-End et pour la partie Back-End.</p>
+<ul>
+  <li>OWA (Webmail)</li>
+  <li>MAPI (connexion des clients lourds Outlook)</li>
+  <li>AnyWhere (client lourds Outlook via RPC sur http)</li>
+  <li>ActiveSync (configuration pour les accès mobiles)</li>
+  <li>EWS (Exchange Web Services)</li>
+  <li>OAB (tout ce qui est listes d’adresses et carnet d’adresses)</li>
+  <li>ECP (tout ce qui concerne l’administration de Exchange via le Web et la console graphique)</li>
+  <li>Autodiscover</li>
+  <li>PowerShell (en cas d’utilisation de script PowerShell)</li>
+</ul>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;la modification de ces URLs peut avoir des impacts important sur les connexions clients.</mark></i></p>
+<h3>Comment faire la configuration</h3>
+<p><u>Via l’ECA&nbsp;</u></p>
+<p>Se connecter à l’ECA puis dans la section «&nbsp;serveurs&nbsp;» cliquer sur l’onglet «&nbsp;répertoires virtuels&nbsp;»</p>
+<figure class="image"><img src="/images/eac-35.png"></figure>
+<p>Pour effectuer la configuration, soit faire un double clic sur le répertoire virtuel et remplir les informations nécessaires.&nbsp;</p>
+<figure class="image"><img src="/images/eac-36.png"></figure>
+<p>Pour la partie «&nbsp;AnyWhere&nbsp;», il faut se rendre dans la partie «&nbsp;serveur&nbsp;» puis dans l’onglet «&nbsp;serveur&nbsp;»&nbsp;</p>
+<figure class="image"><img src="/images/eac-37.png"></figure>
+<p>Faire un double clic sur le serveur puis cliquer sur Outlook AnyWhere afin de remplir les champs nécessaires</p>
+<figure class="image"><img src="/images/eac-38.png"></figure>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: il n’est pas possible de configurer la partie Autodiscover via l’ECA et l’intégralité de ces configurations devra être effectuée sur TOUS les serveurs ayant le rôle de boite aux lettres.</mark></i></p>
+<p><u>Via l’EMS</u></p>
+<ul>
+  <li>Pour configurer la partie Webmail&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Set-OWAVirtualDirectory -Identity «nom_du_serveur\OWA» -InternalURL «URL_Interne_du_répertoire» -ExternalURL «URL_Externe_du_répertoire» -basicAuthentication $true -FormsAuthentication $True -WindowsAutentication $False</code></pre>
+<ul>
+  <li>Pour configurer la partir MAPI</li>
+</ul>
+<pre><code class="language-plaintext">Set-MapiVirtualDirectory -Identity «nom_du_serveur\MAPI» -InternalURL «URL_Interne_du_répertoire» -ExternalURL «URL_Externe_du_répertoire» -IISAuthenticationMethods NTLM</code></pre>
+<ul>
+  <li>Pour configurer la partie Anywhere</li>
+</ul>
+<pre><code class="language-plaintext">Set-OutlookAnywhere -Identity «nom_du_serveur\rpc» -SSLOffloading $False -InternalClientsRequireSSL $True&nbsp;-ExternalClientsRequireSSL $True -IISAuthenticationMethods NTLM -InternalClientAuthenticationMethod NTLM -ExternalClientAuthenticationMethod NTLM</code></pre>
+<ul>
+  <li>Pour configurer la partie ActiveSync</li>
+</ul>
+<pre><code class="language-plaintext">Set-ActiveSyncVirtualDirectory -Identity «nom_du_serveur\Microsoft-Server-ActiveSync» -InternalURL «URL_Interne_du_répertoire_Microsoft-Server-ActiveSync» -ExternalURL «URL_Externe_du_répertoire_Microsoft-Server-ActiveSync» -basicAuthEnabled $True -WindowsAuthEnabled $True -CompressionEnabled $True -ClientCertAuth ignore</code></pre>
+<ul>
+  <li>Pour configurer la partie EWS ( Exchange Web Services)</li>
+</ul>
+<pre><code class="language-plaintext">Set-WebServicesVirtualDirectory -Identity «nom_du_serveur\EWS» -ExternalURL «URL_Externe_du_répertoire_EWS/exchange.asmx» -BasiAuthentication $True -InternalURL «URL_Interne_du_répertoire_EWS/exchange.asmx» -MRSProxyEnabled $True -WindowsAuthentication $True</code></pre>
+<ul>
+  <li>Pour configurer la partie OAB</li>
+</ul>
+<pre><code class="language-plaintext">Set-OABVirtualDirectory -Identity «nom_du_serveur\OAB» -InternalURL «URL_Interne_du_répertoire_OAB» -ExternalURL «URL_Externe_du_répertoire_OAB» -basicAuthentication $True -WindowsAuthentication $True -RequireSSL $True</code></pre>
+<ul>
+  <li>Pour configurer la partie ECP</li>
+</ul>
+<pre><code class="language-plaintext">Set-ECPVirtualDirectory -Identity «nom_du_serveur\ECP» -InternalURL «URL_Interne_du_répertoire_ECP» -basicAuthentication $True -FormsAuthentication $True -WindowsAuthentication $False -AdminEnabled $True</code></pre>
+<ul>
+  <li>Pour configurer la partie Autodiscover</li>
+</ul>
+<pre><code class="language-plaintext">Set-ClientAccessService -Identity «nom_FQDN_du_serveur» -AutoDiscoverServiceInternalUri «https://autodiscover.nomdudomaine/Autodiscover/Autodiscover.xml»</code></pre>
+<ul>
+  <li>Pour configurer la partie PowerShell en cas d’utilisation de script</li>
+</ul>
+<pre><code class="language-plaintext">Set-PowerShellVirtualDirectory -Identity «nom_du_serveur\PowerShell» -internalUrl «https://mail.nomdedomaine/powershell» -basicAuthentication $False -WindowsAuthentication $True</code></pre>
+<h2>Configuration d’un client de messagerie Outlook 2016</h2>
+<ul>
+  <li>Vérification que le certificat racine est déployé dans le «&nbsp;magasin&nbsp;» des certificats du client</li>
+</ul>
+<p>Sur un poste client, ouvrir une console «&nbsp;mmc&nbsp;» en tant qu’administrateur.<br>Cliquer sur ajouter/supprimer un composant logiciel&nbsp;»</p>
+<figure class="image"><img src="/images/certif-1.png"></figure>
+<p>Cliquer sur «&nbsp;certificats&nbsp;» puis sur «&nbsp;ajouter&nbsp;» et choisir «&nbsp;un compte d’ordinateur local&nbsp;»</p>
+<figure class="image"><img src="/images/certif-2.png"></figure>
+<figure class="image"><img src="/images/certif-3.png"></figure>
+<p>Sélectionner l’ordinateur local puis cliquer sur «&nbsp;Terminer&nbsp;»</p>
+<figure class="image"><img src="/images/certif-4.png"></figure>
+<p>La console mmc est prête à afficher les certificats de l’ordinateur local.<br>Cliquer sur «&nbsp;certificats (ordinateur local) puis sur «&nbsp;autorités de certification racines de confiance&nbsp;»</p>
+<figure class="image"><img src="/images/certif-5.png"></figure>
+<p>Puis cliquer à nouveau sur certificat pour afficher la liste des certificats du poste local.</p>
+<figure class="image"><img src="/images/certif-6.png"></figure>
+<p>Le certificat de notre PKI interne (ici censuré) et celui du serveur Exchange sont bien présents dans la liste des certificats du poste.<br>Il n’y aura donc pas d’avertissement de certificat lors de la connexion via le client Outlook ou le Webmail (en interne)<br>Le certificat de la PKI Interne est automatiquement publié sur tous les poste joins au domaine.<br>Si un poste n’est pas joint au domaine il faudra importer ce certificat à ce même endroit pour que cela fonctionne.</p>
+<ul>
+  <li>Configuration du profile Outlook 2016 via le service de découverte automatique et ses différentes options</li>
+</ul>
+<p>Lancer Outlook et indiquer un email d’utilisateur.<br>L’Autodiscover se fera automatiquement et permettra de récupérer les informations de profile ainsi que les différentes boites aux lettres partagées si tel est le cas.</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;cela fonctionnera seulement si l’Autodiscover est correctement configuré</mark></i></p>
+<p>Si l’on souhaite télécharger le carnet d’adresses en mode hors connexion, il faut aller dans «&nbsp;information&nbsp;» puis «&nbsp;paramètres du compte&nbsp;» puis cliquer sur «&nbsp;télécharger le carnet d’adresses&nbsp;»</p>
+<figure class="image"><img src="/images/outlook-1.png"></figure>
+<p>Sur le prochain pop-up, si plusieurs carnets sont créés il sera possible de sélectionner celui qui sera téléchargé</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
