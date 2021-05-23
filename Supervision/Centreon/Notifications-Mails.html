@@ -2,7 +2,7 @@
 title: Notifications e-mails
 description: Configuration des notifications par e-mails
 published: true
-date: 2021-05-23T20:22:48.898Z
+date: 2021-05-23T20:25:08.500Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T20:22:48.898Z
@@ -19,10 +19,24 @@ dateCreated: 2021-05-23T20:22:48.898Z
   <li>Host Notification Commands&nbsp;: host-notify-by-email</li>
   <li>Service Notification Commands&nbsp;: service-notify-by-email</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/mail_centreon-1.png"></figure>
+<p>Cliquer sur «&nbsp;save&nbsp;»<br>Il sera également nécessaire d’effectuer la configuration suivante sur les Templates de service et Template d’hôtes.</p>
+<figure class="image"><img src="/images/mail_centreon-2.png"></figure>
+<p>Cliquer sur «&nbsp;Save&nbsp;»</p>
+<h2>Configuration du postfix</h2>
+<p>Attention SI postfix n’est pas installé sur le serveur il faudra l’installer au préalable&nbsp;</p>
+<pre><code class="language-plaintext">yum install postfix -y</code></pre>
+<p>Afin de permettre les différentes notifications par email, il va falloir modifier le fichier <i>/etc/postfix/mail.cf</i></p>
+<pre><code class="language-plaintext">vi /etc/postfix/main.cf</code></pre>
+<p>Une fois dans le fichier, il va falloir modifier les lignes suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>#myhostname = host.domain.tld -&gt; retirer le # et à la place de «&nbsp;host.domain.tld&nbsp;» mettre le nom du serveur centreon</li>
+  <li>#myorigin = $myhostname -&gt; retirer le #</li>
+  <li>#relayhost = [an.ip.add.ress] -&gt; retirer le # et mettre l’adresse IP du relay SMTP</li>
+</ul>
+<p>Sauvegarder le fichier puis relancer le service postfix à l’aide de la commande suivante</p>
+<pre><code class="language-plaintext">/etc/init.d/postfix restart</code></pre>
+<p>Les notifications par e-mail sont maintenant activées.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
