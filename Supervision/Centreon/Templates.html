@@ -2,7 +2,7 @@
 title: Les templates
 description: Fonctionnement des templates
 published: true
-date: 2021-05-23T16:06:01.242Z
+date: 2021-05-23T16:07:53.504Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:06:01.242Z
@@ -51,9 +51,12 @@ dateCreated: 2021-05-23T16:06:01.242Z
 <p>Lors de la création de la commande, la valeur des arguments n’avait pas été indiqué.<br>Il est possible de l’indiquer soit dans la partie «&nbsp;arg&nbsp;» du Template soit directement lors de la création d’un hôte.<br>Pour la création de cette procédure, les arguments ont été définis dans le Template.&nbsp;<br>Il est intéressant de constater que l’on peut également retrouver la description des arguments qui ont été ajoutés à la création de la commande directement dans le Template.</p>
 <figure class="image"><img src="/images/template_centreon-3.png"></figure>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Indiquer la période de supervision appliqué à ce Template.<br>Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p>
+<p>Quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>Si le statut de l'objet n'est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l'intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p>
+<figure class="image"><img src="/images/template_centreon-4.png"></figure>
+<h3>Onglet «&nbsp;Notifications&nbsp;»</h3>
+<p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>Indiquer le compte du contact qui recevra les notifications par email<br>Cocher les cases correspondantes aux notifications que l’on souhaite recevoir.<br>Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p>
+<figure class="image"><img src="/images/template_centreon-5.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
