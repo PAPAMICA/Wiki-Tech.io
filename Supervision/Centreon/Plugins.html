@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:27:15.493Z
+date: 2021-05-23T16:27:50.051Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -89,8 +89,8 @@ drwxr-xr-x 23 centreon centreon&nbsp;  305 16 juil. 12:47 storage</code></pre>
 </ul>
 <p>Précédemment nous avons vu que lorsque nous utilisions une commande, la variable «&nbsp;<i>$USER1$</i>&nbsp;» était utilisée.<br>Elle correspond au chemin suivant&nbsp;: <i>/usr/lib/nagios/plugins/</i> et permet de faire appel aux commandes se trouvant dans ce répertoire.<br>Par exemple&nbsp;: <i>/usr/lib/nagios/plugins/check_centreon_snmp_memory</i> en y associant les valeurs nécessaires au check permettra d’effectuer un check de la RAM sur le ou les appareils ciblés.</p>
 <pre><code class="language-plaintext">$USER1$/check_centreon_snmp_memory -H $HOSTADDRESS$ -C $ARG1$ -v $ARG2$ -w $ARG3$ -c $ARG4$</code></pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>L’exécutable «&nbsp;centreon_plugins.pl&nbsp;» s’utilise de la même façon cependant il se trouve dans <i>/usr/lib/nagios/plugins/centreon-plugins/</i><br>Afin d’utiliser ce plugin nous allons donc créer une nouvelle ressource.<br>Pour cela aller dans Configuration puis «&nbsp;pollers&nbsp;» puis «&nbsp;ressources&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/plugins_centreon-14.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
