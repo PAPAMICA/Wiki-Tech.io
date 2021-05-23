@@ -2,7 +2,7 @@
 title: Configuration de la gestion de la conformité
 description: Gestion de la conformité
 published: true
-date: 2021-05-23T12:53:23.983Z
+date: 2021-05-23T13:05:48.178Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T12:41:05.085Z
@@ -135,25 +135,155 @@ dateCreated: 2021-05-23T12:41:05.085Z
 <p><u>Via l’EAC</u></p>
 <p>Dans la partie «&nbsp;Gestion de la conformité&nbsp;» puis dans l’onglet «&nbsp;règles de journal&nbsp;»</p>
 <figure class="image"><img src="/images/eac-49.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Pour créer une règle, cliquer sur l’icône <span class="text-huge"><strong>+</strong></span> et remplir les informations nécessaires.</p>
+<figure class="image"><img src="/images/eac-50.png"></figure>
+<p><u>Via l’EMS</u></p>
+<pre><code class="language-plaintext">New-JournalRule -Name «nom_dela_règle» -JournalEmailAddress «adresse_email_du_journal» -Scope «type_de_scope» -Recipient «adresse_mail_qui_sera_journalisée» -Enabled $True</code></pre>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;:&nbsp;</mark></i><br><i><mark class="pen-red">Type de scope&nbsp;: Internal ou External.</mark></i><br><i><mark class="pen-red">JournalEmailAddress&nbsp;: il s’agit d’une adresse email créée pour le journal elle est indispensable pour la journalisation. Les emails seront journalisés dans cette boite</mark></i></p>
+<h2>Prévention des pertes de données «&nbsp;DLP&nbsp;»</h2>
+<h3>Présentation</h3>
+<p>Ces règles de conformités sont créées pour éviter la divulgation de données sensibles ou confidentielles.<br>Elles sont connues sout les nm de «&nbsp;DLP&nbsp;» pour «&nbsp;Data Lost Prevention&nbsp;» et se basent sur des règles de transport.<br>Leur but est d’analyser les messages et réagissent en fonction de différents critères tels que&nbsp;:</p>
+<ul>
+  <li>Des mots clés</li>
+  <li>Correspondance de dictionnaire</li>
+  <li>Evaluation d’expressions</li>
+  <li>Etc.</li>
+</ul>
+<p>Ces règles informent les utilisateurs AVANT l’envoi des messages et sont, depuis Exchange 2013 SP1, affichées via OWA et OWA Mobile. Elles intègrent également la création d’empreintes numériques de documents.</p>
+<h3>Création d’une règle</h3>
+<p><u>Via l’EAC</u></p>
+<p>Dans la partie «&nbsp;Gestion de la conformité&nbsp;» puis dans l’onglet «&nbsp;prévention de pertes de données&nbsp;».<br>Il est possible d’utiliser des templates de règles prédéfinies ou d’en créer manuellement.</p>
+<figure class="image"><img src="/images/eac-51.png"></figure>
+<p>Pour créer une règle, cliquer sur l’icône <span class="text-huge"><strong>+</strong></span> , choisir le type de règles puis remplir les informations nécessaires.</p>
+<figure class="image"><img src="/images/eac-52.png"></figure>
+<figure class="image"><img src="/images/eac-53.png"></figure>
+<p><u>Via l’EMS</u></p>
+<p>Exemple de commandes disponibles&nbsp;:</p>
+<ul>
+  <li>Get-ClassificationRuleCollection</li>
+  <li>New-ClassificationRuleCollection</li>
+  <li>Remove- ClassificationRuleCollection</li>
+  <li>Set- ClassificationRuleCollection</li>
+  <li>Get-DataClassification</li>
+  <li>New-DataClassification</li>
+  <li>Remove-DataClassification</li>
+  <li>Set-DataClassification</li>
+  <li>Get-DlpPolicy</li>
+  <li>New-DlpPolicy</li>
+  <li>Remove-DlpPolicy</li>
+  <li>Set-DlpPolicy</li>
+  <li>Export-DlpPolicyCollection</li>
+  <li>Import—DlpPolicyCollection</li>
+  <li>Get-DlpPolicyTemplate</li>
+  <li>Import-DlpPolicyTemplate</li>
+  <li>Remove-DlpPolicyTemplate</li>
+  <li>New-Fingerprint</li>
+  <li>Get-PolicyTipConfig</li>
+  <li>New-PolicyTipConfig</li>
+  <li>Remove-PolicyTipConfig</li>
+  <li>Set-PolicyTipConfig</li>
+</ul>
+<h2>L’audit</h2>
+<h3>Présentation</h3>
+<p>L’audit de Exchange est une fonction qui permet de générer des rapports.</p>
+<p>Il y a deux types d’audits&nbsp;:&nbsp;</p>
+<ul>
+  <li>Les journaux d’audit des administrateurs</li>
+</ul>
+<p>Ils permettent d’enregistrer et de rechercher les différentes cmdlets Exchange lancées sur toutes l’organisation Exchange.<br>Ils sont basés sur des droits Active Directory (RBAC) et leur configuration s’applique au niveau de l’organisation.</p>
+<ul>
+  <li>Les journaux d’audit de boites aux lettres</li>
+</ul>
+<p>Ils permettent d’enregistrer et de rechercher les différents accès aux boites aux lettres et sont également basés sur les droits Active Directory.<br>Leur configuration s’applique au niveau d’une boite aux lettres.</p>
+<h3>Les journaux d’audit administrateur</h3>
+<ul>
+  <li>Administration des journaux via EMS</li>
+</ul>
+<p>Pour la vérification de l’activation par défaut&nbsp;</p>
+<pre><code class="language-plaintext">Get-AdminAuditlogConfig | FL AdminAudotLogEnabled</code></pre>
+<p>Pour l’activation</p>
+<pre><code class="language-plaintext">Set-AdminAuditLogConfig -AdminAuditLogEnabled $True</code></pre>
+<ul>
+  <li>Consultation des journaux depuis l’EAC</li>
+</ul>
+<p>Dans la partie «&nbsp;Gestion de la conformité&nbsp;» puis dans «&nbsp;audit&nbsp;» cliquer sur «&nbsp;Exécuter le rapport du journal d’audit administrateur&nbsp;»</p>
+<figure class="image"><img src="/images/eac-54.png"></figure>
+<ul>
+  <li>Consultation des journaux depuis l’EMS</li>
+</ul>
+<pre><code class="language-plaintext">Search-AdminAuditLog </code></pre>
+<p>Permet d’afficher le résultat dans la console EMS</p>
+<figure class="image"><img src="/images/ems-13.png"></figure>
+<pre><code class="language-plaintext">New-SearchAdminAuditLog</code></pre>
+<p>Permet d’envoyer le résultat sous forme XML dans une boite aux lettres spécifique.</p>
+<h3>Les journaux d’audit de boites aux lettres</h3>
+<p>Dans un premier temps il est nécessaire de l’activer sur les boites aux lettres à surveiller et ceci uniquement en PowerShell via l’EMS</p>
+<pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_de_la_boite_auditée» -AuditEnabled $True</code></pre>
+<p>Par défaut, seuls les enregistrements ci-dessous sont journalisés&nbsp;:&nbsp;</p>
+<ul>
+  <li>Les actions des administrateurs</li>
+  <li>Les actions des délégués</li>
+  <li>Les actions des propriétaires spécifiés</li>
+</ul>
+<p>Pour activer plus d’enregistrements comme la suppression de message, la copie de messages, etc., il est possible d’utiliser ce type de commande&nbsp;:</p>
+<pre><code class="language-plaintext">Set-Mailbox -Identity «adresse_mail_de_la_boite_auditée» -AuditDelegate SendAs,SendOnBehalf,Move,SoftDelete,HardDelete -AuditAdmin MessageBind,FolderBind,copy,move -AuditOwner HardDelete -AuditEnabled $True</code></pre>
+<p>Pour consulter les journaux via l’EAC il faut se rendre dans la section «&nbsp;Gestion de la conformité&nbsp;» puis «&nbsp;audit&nbsp;» puis «&nbsp;Exécuter un rapport d’accès aux boites aux lettres par des non-propriétaires&nbsp;»</p>
+<figure class="image"><img src="/images/eac-55.png"></figure>
+<p>Pour consulter les journaux depuis l’EMS</p>
+<pre><code class="language-plaintext">Search-MailboxAuditlog </code></pre>
+<p>Permet d’effectuer une recherche synchrone dans les entrées du journal d’une seule boite aux lettres et affichera le résultat directement dans la console</p>
+<pre><code class="language-plaintext">New-MailboxAugitlogSearch</code></pre>
+<p>Permet d’effectuer une recherche asynchrone dans les entrées d’une ou plusieurs boites aux lettres et enverra le résultat sous forme XML dans une boite aux lettres spécifiée.</p>
+<h2>La découverte électronique et le blocage sur place</h2>
+<h3>Présentation</h3>
+<p>Ce sont des services Exchange qui apportent de l’aide aux administrateurs afin de maintenir la sécurité et afin de respecter la législation en cas de litige en prévenant par exemple la suppression définitive d’éléments de messagerie.</p>
+<ul>
+  <li>Qu’est-ce que le «&nbsp;blocage sur place&nbsp;» d’une boite aux lettres&nbsp;</li>
+</ul>
+<p>Le nom anglais est «&nbsp;InPlace Hold eDiscovery&nbsp;»<br>Il s’agit d’une recherche qui s’applique au niveau d’une boite aux lettres.<br>Cela permet d’effectuer une recherche d’éléments dans une boite aux lettres (utilisateurs ou dossiers publics), que ce soit des éléments supprimés ou non.<br>Il est également possible de retrouver les versions originales d’éléments qui ont été modifiés.<br>Par défaut, il est nécessaire d’être membre du groupe de sécurité RBAC «&nbsp;Gestion de l’organisation&nbsp;» et «&nbsp;Gestion de la détection&nbsp;» pour pouvoir effectuer ces recherches.<br>Cela permet également de conserver l’état du contenu d’une boite aux lettres ou de dossiers publics et de son archive.<br>Les éléments suivants sont conservés&nbsp;</p>
+<ol>
+  <li>Le contenu</li>
+  <li>Les éléments supprimés</li>
+  <li>Les versions originales des éléments modifiés</li>
+</ol>
+<ul>
+  <li>Qu’est-ce que la conservation d’une boite aux lettres</li>
+</ul>
+<p>Le nom anglais est «&nbsp;Litigation-Hold&nbsp;»<br>Cela permet de conserver l’état du contenu d’une boite aux lettres ou de dossiers publics (et de son archive) en conservant&nbsp;:</p>
+<ol>
+  <li>Le contenu</li>
+  <li>Les éléments supprimés</li>
+  <li>Les versions originales des éléments modifiés</li>
+</ol>
+<p>La configuration d’applique au niveau d’une boite aux lettres.<br>Par défaut il est nécessaire d’être membre du groupe de sécurité RBAC «&nbsp;Gestion de l’organisation&nbsp;» et il faut compter 60 minutes avant que la mise en place ne prenne effet.</p>
+<ul>
+  <li>Qu’est-ce que le blocage de rétention</li>
+</ul>
+<p>Le nom anglais est «&nbsp;Retention-Hold&nbsp;»<br>Il s’agit d’une configuration qui permet de suspendre le traitement des stratégies de rétention d’une boite aux lettres.<br>Ce blocage est principalement utilisé en cas d’absence momentanée d’un utilisateur<br>Par défaut il est nécessaire d’être membre du groupe de sécurité RBAC «&nbsp;Gestion des enregistrements&nbsp;».</p>
+<h3>La configuration</h3>
+<h4>Le blocage sur place (InPlace Hold eDiscovery)</h4>
+<p><u>Via l’EAC&nbsp;</u></p>
+<p>Dans la section «&nbsp;Gestion de la conformité&nbsp;» cliquer sur «&nbsp;découverte électronique et conservation&nbsp;».</p>
+<figure class="image"><img src="/images/eac-56.png"></figure>
+<p>Pour créer une règle de blocage, cliquer sur l’icône <span class="text-huge"><strong>+</strong></span> puis remplir les informations nécessaires.</p>
+<figure class="image"><img src="/images/eac-57.png"></figure>
+<p><u>Via l’EMS&nbsp;</u></p>
+<ul>
+  <li>Activation&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">New-MailboxSearch «mettre_un_nom_au_blocage» -SourceMailboxes «adresse_email_ciblée» -InplaceHoldEnabled $True</code></pre>
+<ul>
+  <li>Désactivation&nbsp;:&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-MailboxSearch «nom_du_blocage» -InplaceHoldEnabled $False</code></pre>
+<ul>
+  <li>Suppression&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Remove-MailboxSearch «nom_du_blocage»</code></pre>
+<h4>Conservation de boite aux lettres (Litigation-Hold)</h4>
+<p><u>Via l’EAC&nbsp;</u></p>
+<p>Dans la section «&nbsp;Destinataires&nbsp;» puis cliquer sur l’onglet «&nbsp;boite aux lettres&nbsp;».<br>Cliquer sur la boite aux lettres concernée pour la sélectionner</p>
+<figure class="image"><img src="/images/eac-58.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
