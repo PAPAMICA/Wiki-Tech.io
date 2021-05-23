@@ -2,7 +2,7 @@
 title: Mise à jour d'un hôte ESXi
 description: Procédure indiquant les étapes de mise à jour d'un hôte ESXi
 published: false
-date: 2021-05-23T14:56:47.617Z
+date: 2021-05-23T14:59:56.889Z
 tags: update, vmware, esxi, mise à jour
 editor: ckeditor
 dateCreated: 2021-05-23T14:40:26.672Z
@@ -29,3 +29,12 @@ dateCreated: 2021-05-23T14:40:26.672Z
 <figure class="image"><img src="/images/update_esxi_maintmode.png"></figure>
 <p style="text-align:center;">⚠ <i><mark class="marker-yellow">Lors de la mise en mode maintenance, l’ESXi va mettre en pause vos VM.</mark></i><br><i><mark class="marker-yellow">Néanmoins, je vous préconise de faire l’arrêt complet de vos différentes VM avant de passer en mode maintenance.</mark></i></p>
 <p style="text-align:center;">📌 <i><mark class="marker-green">Je ne l’aborde pas ici, car pour moi il s’agit d’une évidence, mais je le rappelle quand même par précaution : <strong>avant de faire la mise à jour de votre ESXi assurez-vous d’avoir une sauvegarde (fonctionnelle) de votre hyperviseur.</strong></mark></i></p>
+<h2><strong>Mise à jour de l'ESXi</strong></h2>
+<p>Il est maintenant temps de sortir votre client SSH favori <i>(Putty dans mon cas)</i> et de ce connecter à notre ESXi.<br>Une fois sur celui-ci, nous devons lui envoyer la commande suivante :</p>
+<p><code>esxcli software vib install -d /vmfs/volumes/Datastrore-3-HDD/patchs/VMware-ESXi-7.0U1d-17551050-depot.zip</code></p>
+<p>📌 <i><mark class="marker-green">Il vous faudra bien sûr adapter la commande selon l’emplacement de votre fichier.</mark></i></p>
+<p>Si la mise à jour se passe correctement, vous obtiendrez le message suivant :</p>
+<p><code>Message: The update completed successfully, but the system needs to be rebooted for the changes to be effective.</code><br><code>Reboot Required: true</code></p>
+<p>Comme nous l’indique l’ESXi, il a besoin d’un redémarrage afin d’appliquer la mise à jour.<br>Il nous suffira donc de faire la commande ci-dessous et d’attendre le redémarrage.</p>
+<p><code>reboot</code></p>
+<p>Une fois le redémarrage fait, vous pouvez désactiver le mode de maintenance de votre ESxi et faire la vérification de la bonne application de la mise à jour depuis le menu <i><strong>«&nbsp;À propos de&nbsp;»</strong></i> que nous avons vu au début de cet article.</p>
