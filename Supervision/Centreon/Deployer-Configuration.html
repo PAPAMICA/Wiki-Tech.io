@@ -1,0 +1,50 @@
+<!--
+title: Déployer la configuration
+description: Déploiement de la configuration de Centreon
+published: true
+date: 2021-05-23T20:36:38.705Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T20:36:38.705Z
+-->
+
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
+<h1>Déployer la configuration</h1>
+<h2>Démarrer la supervision</h2>
+<ul>
+  <li>Générer les fichiers de configuration : Génère les fichiers de configuration de l’ordonnanceur dans un répertoire temporaire. Cette configuration est générée à partir des objets configurés via l’interface web</li>
+  <li>Lancer le débogage du moteur de supervision (-v) : Permet à l’ordonnanceur de vérifier la configuration générée</li>
+  <li>Déplacer les fichiers générés : Déplace les fichiers de configuration du répertoire temporaire vers le répertoire de l’ordonnanceur</li>
+  <li>Redémarrer l’ordonnanceur : Redémarre l’ordonnanceur afin d’appliquer les nouveaux fichiers de configuration</li>
+  <li>Commande exécutée post-génération : Exécute la commande post-génération paramétrée au niveau de la configuration de l’ordonnanceur</li>
+</ul>
+<h2>Première étape</h2>
+<p>Pour démarrer la supervision il faut se rendre sur l‘interface graphique.<br>Dans le menu Configuration puis «&nbsp;pollers&nbsp;», tout laisser par défaut et cliquer sur exporter.</p>
+<figure class="image"><img src="/images/deploiement_centreon-1.png"></figure>
+<p>Une nouvelle page apparait.</p>
+<figure class="image"><img src="/images/deploiement_centreon-2.png"></figure>
+<p>Dans la partie «&nbsp;Collecteurs&nbsp;», sélectionner le serveur&nbsp;</p>
+<figure class="image"><img src="/images/deploiement_centreon-3.png"></figure>
+<p>Vérifier que les cases «&nbsp;Générer les fichiers de configuration&nbsp;» et «&nbsp;Lancer le débogage du moteur de supervision (-v)&nbsp;» soient bien cochées. Vérifier que les cases «&nbsp;Déplacer les fichiers générés&nbsp;» ainsi que «&nbsp;Redémarrer l’ordonnanceur&nbsp;» soient bien décochées.<br>Cliquer à nouveau sur «&nbsp;Exporter&nbsp;».</p>
+<p>Si tout s’est bien passé, les messages «&nbsp;ok&nbsp;» apparaissent. Dans le cas contraire il faudra corriger les erreurs</p>
+<figure class="image"><img src="/images/deploiement_centreon-4.png"></figure>
+<h2>Deuxième étape</h2>
+<p>Décochez les cases «&nbsp;Générer les fichiers de configuration&nbsp;» et «&nbsp;Lancer le débogage du moteur de supervision (-v)&nbsp;»<br>Cochez les cases «&nbsp;Déplacer les fichiers générés&nbsp;» ainsi que «&nbsp;Redémarrer l’ordonnanceur&nbsp;»</p>
+<figure class="image"><img src="/images/deploiement_centreon-5.png"></figure>
+<p>Cliquez sur «&nbsp;Exporter&nbsp;» à nouveau<br>Si tout s’est bien passé, les messages «&nbsp;ok&nbsp;» apparaissent à nouveau. Dans le cas contraire il faudra corriger les erreurs</p>
+<figure class="image"><img src="/images/deploiement_centreon-6.png"></figure>
+<p><mark class="pen-red">Chose importante, il est IMPÉRATIF d’effectuer la «&nbsp;première étape&nbsp;» ainsi que la «&nbsp;deuxième étape&nbsp;» après chaque modification faite à la configuration de Centreon pour que celle-ci soit prise en compte, sans quoi même si des modifications ont été apportées elles ne seront pas utilisées pour la supervision.</mark></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
