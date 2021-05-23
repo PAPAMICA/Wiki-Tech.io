@@ -2,7 +2,7 @@
 title: Mise à jour d'un hôte ESXi
 description: Procédure indiquant les étapes de mise à jour d'un hôte ESXi
 published: false
-date: 2021-05-23T14:48:07.301Z
+date: 2021-05-23T14:52:29.627Z
 tags: update, vmware, esxi, mise à jour
 editor: ckeditor
 dateCreated: 2021-05-23T14:40:26.672Z
@@ -16,4 +16,12 @@ dateCreated: 2021-05-23T14:40:26.672Z
 <p>Avant de mettre à jour notre ESXi, il nous faudra tout d’abord faire la vérification de la version que nous avons en production, puis aller consulter les mises à jour disponibles pour cette version. Pour ce faire, lorsque nous sommes connectés à notre ESXi, sur la page d’accueil nous avons le <i><strong>numéro de version ainsi que de build</strong></i> qui est indiqué dans le menu <i><strong>«&nbsp;Aide&nbsp;»</strong></i> puis <i><strong>«&nbsp;À propos de&nbsp;»</strong></i> situer en haut à droite.</p>
 <figure class="image"><img src="/images/check_maj.png"></figure>
 <p>Maintenant que nous avons cette information, nous devons nous rendre sur le site de VMware à <a href="https://my.vmware.com/group/vmware/patch#search"><i><strong>cette adresse</strong></i></a>.<br>Et faire la recherche de disponibilité de mise à jour et le téléchargement de cette dernière.</p>
-<p><i><mark class="marker-yellow">Il vous faudra obligatoirement un compte VMware afin d’avoir accès aux recherches et téléchargements des mises à jour.</mark></i></p>
+<p style="text-align:center;"><i><mark class="marker-yellow">Il vous faudra obligatoirement un compte VMware afin d’avoir accès aux recherches et téléchargements des mises à jour.</mark></i></p>
+<p style="text-align:center;">&nbsp;</p>
+<h4>Mise à disposition de la mise à jour sur ESXi</h4>
+<p>Plusieurs solutions sont possibles pour mettre à disposition la mise à jour sur l’ESXI, soit via un accès FTP ou également par le dépôt directement dans un datastore <i>(solution que nous utilisons ici)</i>.</p>
+<figure class="image"><img src="/images/add_update_datastore.png"></figure>
+<p>&nbsp;</p>
+<h4>Préparation de l’ESXi pour la mise à jour</h4>
+<p>Nous allons maintenant faire la dernière étape de préparation pour la réalisation de la mise à jour de notre hyperviseur.<br>La mise à jour se réalise via une ligne de commande par SSH. Nous devons donc faire l'activation de l'accès SSH sur notre ESxi.</p>
+<p>&nbsp;</p>
