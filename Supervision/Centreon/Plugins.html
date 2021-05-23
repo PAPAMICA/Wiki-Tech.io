@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:36:03.837Z
+date: 2021-05-23T16:36:15.145Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -200,7 +200,8 @@ OK: 2 CPU(s) average usage is: 42.00% | 'cpu0'=41.00%;;;0;100 'cpu1'=43.00%;;;0;
 <figure class="image"><img src="/images/macro_centreon-4.png"></figure>
 <p>Commencer par nommer la commande&nbsp;</p>
 <figure class="image"><img src="/images/macro_centreon-5.png"></figure>
-<p>&nbsp;</p>
+<p>Puis écrire la commande dans la section «&nbsp;command line&nbsp;»</p>
+<pre><code class="language-plaintext">$USER3$/centreon_plugins.pl --plugin=$_SERVICEPLUGIN$ --hostname=$HOSTADDRESS$ --snmp-community=$_HOSTSNMPCOMMUNITY$ --snmp-version=$_HOSTSNMPVERSION$ --mode=$_SERVICEMODE$ --interface=$_SERVICEINTERFACE$ --warning-in-traffic=$_SERVICEWARNINGIN$ --warning-out-traffic=$_SERVICEWARNINGOUT$ --critical-in-traffic=$_SERVICECRITICALIN$ --critical-out-traffic=$_SERVICECRITICALOUT$ $_SERVICEOPTION$ $_SERVICEOPTION$</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
