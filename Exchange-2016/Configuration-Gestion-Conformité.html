@@ -2,7 +2,7 @@
 title: Configuration de la gestion de la conformité
 description: Gestion de la conformité
 published: true
-date: 2021-05-23T13:06:25.216Z
+date: 2021-05-23T13:07:26.207Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T12:41:05.085Z
@@ -286,7 +286,30 @@ dateCreated: 2021-05-23T12:41:05.085Z
 <figure class="image"><img src="/images/eac-58.png"></figure>
 <p>Cliquer sur «&nbsp;modifier&nbsp;» ou faire un double clic dessus.<br>Puis dans «&nbsp;fonctionnalité de boites aux lettres&nbsp;» chercher l’option «&nbsp;conservation pour litige&nbsp;» puis cliquer sur «&nbsp;activer&nbsp;».</p>
 <figure class="image"><img src="/images/eac-59.png"></figure>
-<p>&nbsp;</p>
+<p><u>Via l’EMS&nbsp;</u></p>
+<ul>
+  <li>Activation&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Set-mailbox «adresse_email_dela_boite_ciblée» -LitigationHoldEnabled $True -LitigationHoldDuration 2555</code></pre>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: Le nombre après «&nbsp;LitigationHoldDuration&nbsp;» correspond à un nombre de jour.</mark></i></p>
+<ul>
+  <li>Désactivation&nbsp;:&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-mailbox «adresse_email_dela_boite_ciblée» -LitigationHoldEnabled $False</code></pre>
+<h4>Le blocage de rétention (Retention-Hold)</h4>
+<p>La configuration se fait UNIQUEMENT via l’EMS</p>
+<ul>
+  <li>Activation&nbsp;:&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox «adresse_email_ciblée» -RetentionHoldEnabled $True</code></pre>
+<ul>
+  <li>Désactivation&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Set-Mailbox «adresse_email_ciblée» -RetentionHoldEnabled $False</code></pre>
+<ul>
+  <li>Vérification&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Get-Mailbox «adresse_email_ciblée» | Select RetentionHoldEnabled</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
