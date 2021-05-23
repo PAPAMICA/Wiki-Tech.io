@@ -2,7 +2,7 @@
 title: Les commandes
 description: Les commandes dans Centreon
 published: true
-date: 2021-05-23T15:50:08.344Z
+date: 2021-05-23T15:51:54.683Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T15:50:08.344Z
@@ -25,10 +25,10 @@ dateCreated: 2021-05-23T15:50:08.344Z
   <li>Ligne de commande&nbsp;: indique l’application ou le script utilisé avec la commande.</li>
   <li>Activer le Shell&nbsp;: permet d’activer des fonctions propres à un Shell tel que le «&nbsp;pipe&nbsp;», etc.</li>
   <li>Exemple d’arguments et $HOSTADDRESS$&nbsp;: définissent des exemples d’arguments et une adresse IP pour faire un test.</li>
-  <li>Description des arguments&nbsp;: permet d’ajouter une description aux arguments de type “$ARGn$”.&nbsp;</li>
+  <li>Description des arguments&nbsp;: permet d’ajouter une description aux arguments de type “$ARGn$”.</li>
   <li>Effacer les arguments&nbsp;: efface la description des arguments définie</li>
   <li>Description des macros&nbsp;: permet d’ajouter une description aux macros personnalisées (arguments personnalisés).</li>
-  <li>Connecteurs&nbsp;: permet de lier un connecteur à la commande.&nbsp;</li>
+  <li>Connecteurs&nbsp;: permet de lier un connecteur à la commande.</li>
   <li>Modèle de graphique&nbsp;: permet de lier la commande à un modèle de graphique.</li>
   <li>Commentaire&nbsp;: permet de commenter la commande.</li>
 </ul>
@@ -36,7 +36,7 @@ dateCreated: 2021-05-23T15:50:08.344Z
 <p>Il existe de nombreuses commandes disponibles dans Centreon.<br>Il est toutefois possible de créer soit même des scripts mais également d’installer des plugins pour avoir de nouvelles commandes selon les différents besoin de vérification et de supervision à mettre en place.<br>Avant de commencer à installer des plugins, il est conseillé de commencer par certaines commandes «&nbsp;basiques&nbsp;». Elles permettront soit de se faire la main si on ne connaît pas Centreon soit de vérifier que tout fonctionne correctement.<br>Parmi ce type de commandes et à titre d’exemple, nous pouvons citer&nbsp;des checks sur :&nbsp;</p>
 <ul>
   <li>La RAM</li>
-  <li>Le ou les Disques dur (fonctionnement, accessibilité,&nbsp;espace disponible, etc.)&nbsp;</li>
+  <li>Le ou les Disques dur (fonctionnement, accessibilité,&nbsp;espace disponible, etc.)</li>
   <li>L’accès réseau</li>
   <li>Les températures</li>
   <li>Etc.</li>
@@ -49,10 +49,17 @@ dateCreated: 2021-05-23T15:50:08.344Z
 <figure class="image"><img src="/images/commandes_centreon-3.png"></figure>
 <p>La partie du milieu va elle permettre de choisir le «&nbsp;check&nbsp;» que l’on souhaite mettre en place. De la même façon, choisir celui qui va être utilisé et cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p>
 <figure class="image"><img src="/images/commandes_centreon-4.png"></figure>
+<p>Ensuite il faut définir l’hôte qui sera ciblé. Pour cela écrire -H puis dans la ligne du bas choisir la variable qui correspond à l’adresse IP de l’hôte&nbsp;: $HOSTADDRESS$<br>L’ajouter à la commande de la même manière que précédemment.<br>Attention il est important de bien respecter la nomenclature et de ne pas tout coller dans la commande.<br>A partir du moment où le check a été positionné il faudra mettre un espace entre chaque nouvel ajout.</p>
+<figure class="image"><img src="/images/commandes_centreon-5.png"></figure>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>A ce stade, la commande n’est pas complète. Pour l’instant, il a été déclaré&nbsp;à l’aide de différentes variables :&nbsp;</p>
+<ul>
+  <li>Le chemin où se trouve le fichier de configuration du check</li>
+  <li>Le check utilisé</li>
+  <li>L’hôte ciblé</li>
+</ul>
+<p>Il n’a pas été défini sur quels critères le check va s’appuyer pour remonter des informations.<br>Il manque donc les arguments à positionner afin de pouvoir définir un seuil à vérifier pour prévenir l’administrateur en cas de problème.<br>Pour rajouter des arguments à une commande, toujours dans la ligne du bas, sélectionner $ARGn$ et l’ajouter à la commande à l’aide de «&nbsp;&lt;&lt;&nbsp;». Répéter cette opération autant de fois qu’il y a d’arguments à la commande. Attention le «&nbsp;n&nbsp;» est à remplacer par un numéro pour définir le numéro de l’argument (ex&nbsp;: $ARG1$)<br>Pour la vérification du CPU, il est conseillé de définir deux types d’alertes&nbsp;:&nbsp; les «&nbsp;warning&nbsp;» et les «&nbsp;critical&nbsp;». Pour cela, tout comme l’ajout du -H dans la commande nous allons ajouter «&nbsp;-w&nbsp;» et «&nbsp;-c&nbsp;» afin de définir un seuil d’avertissement et critique.</p>
+<figure class="image"><img src="/images/commandes_centreon-6.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
