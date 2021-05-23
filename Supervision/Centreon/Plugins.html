@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:27:50.051Z
+date: 2021-05-23T16:32:53.373Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -91,10 +91,86 @@ drwxr-xr-x 23 centreon centreon&nbsp;  305 16 juil. 12:47 storage</code></pre>
 <pre><code class="language-plaintext">$USER1$/check_centreon_snmp_memory -H $HOSTADDRESS$ -C $ARG1$ -v $ARG2$ -w $ARG3$ -c $ARG4$</code></pre>
 <p>L’exécutable «&nbsp;centreon_plugins.pl&nbsp;» s’utilise de la même façon cependant il se trouve dans <i>/usr/lib/nagios/plugins/centreon-plugins/</i><br>Afin d’utiliser ce plugin nous allons donc créer une nouvelle ressource.<br>Pour cela aller dans Configuration puis «&nbsp;pollers&nbsp;» puis «&nbsp;ressources&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
 <figure class="image"><img src="/images/plugins_centreon-14.png"></figure>
+<p>Remplir les informations comme sur la capture d’écran et cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/plugins_centreon-15.png"></figure>
+<p>Les commandes qui seront enregistrées dans Centreon commenceront donc par <i>$USER3$/centreon_plugins.pl</i><br>Maintenant que tout est prêt, nous allons faire <u>AVANT TOUT</u> un test directement depuis la CLI de centreon.<br>Commencer par faire une recherche des différents plugins Windows à disposition.</p>
+<pre><code class="language-plaintext">cd /usr/lib/nagios/plugins/centreon-plugins
+./centreon_plugins.pl --list-plugin | grep os | grep windows
+PLUGIN: os::windows::snmp::plugin
+PLUGIN: os::windows::wsman::plugin
+PLUGIN: os::windows::local::plugin
+</code></pre>
+<p>Il est également possible d’effectuer des recherches dans chacun des différents répertoires précédemment cités&nbsp;: <i>apps, centreon, cloud, contrib, database, docs, Example, hardware, Network, notification, Os, snmp_standard, storage</i></p>
+<p>La marche à suivre sera la même&nbsp;:</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --list-plugin | grep database
+PLUGIN: database::informix::plugin
+PLUGIN: database::oracle::plugin
+PLUGIN: database::mysql::plugin
+PLUGIN: database::mssql::plugin
+PLUGIN: database::firebird::plugin
+            --database
+PLUGIN: database::sap::hana::plugin
+    --database
+PLUGIN: database::postgres::plugin
+            --database
+PLUGIN: database::sybase::plugin</code></pre>
+<p>Pour revenir à Windows, le plugin qui nous intéresse et qui permettra de faire des checks en snmp est le PLUGIN: <i>os::windows::snmp::plugin</i><br>Il s’agit en réalité d’une arborescence qui pourrait être vue de cette manière&nbsp;: <i>os/windows/snmp/plugin/</i><br>Chaque plugin comprend différents modes d’exécution qui peuvent être utilisés. Ces modes peuvent être vu comme des catégories.<br>Pour afficher la liste des modes de Windows, effectuer la commande suivante</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --plugin=os::windows::snmp::plugin --list-mode
+
+Plugin Description:
+    Check Windows operating systems in SNMP.
+
+Global Options:
+    --mode&nbsp; Choose a mode.
+
+    --dyn-mode
+            Specify a mode with the path (separated by '::').
+
+    --list-mode
+            List available modes.
+
+    --mode-version
+            Check minimal version of mode. If not, unknown error.
+
+    --version
+            Display plugin version.
+
+Modes Available:
+   cpu
+   interfaces
+   list-interfaces
+   list-storages
+   memory
+   processcount
+   service
+   storage
+   swap
+   time
+   uptime</code></pre>
+<p>La liste affichée en vert (ça ne sera pas le cas sur centreon) correspond aux modes disponibles pour superviser un hôte Windows.<br>A titre d’exemple pour cette procédure, le mode CPU sera utilisé.<br>Commencer par afficher l’aide pour voir les arguments à utiliser&nbsp;</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --plugin=os::windows::snmp::plugin --mode=cpu --help</code></pre>
+<p>Une liste détaillée comprenant 4 grandes parties va apparaitre&nbsp;(le détail ne sera pas repris ici) :</p>
+<ul>
+  <li><i>Global Options</i> : les options globales</li>
+  <li><i>Output Options</i> : les options de sortie</li>
+  <li><i>Snmp Options</i> : Les options SNMP (Communauté, version….)</li>
+  <li><i>Mode</i> : les arguments que l’on peut rajouter lors de la vérification</li>
+</ul>
+<p>Maintenant qu’on a vu les différentes options, passons à l’exécution de la commande</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --plugin=os::windows::snmp::plugin --mode=cpu --hostname=10.0.0.8 --snmp-community=public --snmp-version=2c
+OK: 2 CPU(s) average usage is: 40.00% | 'cpu0'=40.00%;;;0;100 'cpu1'=40.00%;;;0;100 'total_cpu_avg'=40.00%;;;0;100</code></pre>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p><i>--plugin=os::windows::snmp::plugin &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; Le chemin du plugin utilisé dans la commande</i><br><i>--mode=cpu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; le mode utilisé par le plugin</i><br><i>--hostname=10.0.0.8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; le nom FQDM ou l’ip du serveur à sonder (peut varier selon le mode choisi)</i><br><i>--snmp-community=public&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; la communauté SNMP configurée sur le serveur (peut varier selon le mode choisi)</i><br><i>--snmp-version=2c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; la version du protocole SNMP qui sera utilisé</i></p>
+<p>Il est possible d’ajouter des avertissements à la commande afin de définir un niveau d’alerte&nbsp;à l’aide de --<i>warning=X</i> et --<i>critical=Y</i> ( X et Y sont des pourcentages)</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --plugin=os::windows::snmp::plugin --mode=cpu --hostname=10.0.0.8 --snmp-community=public --snmp-version=2c --warning=75 --critical=90
+OK: 2 CPU(s) average usage is: 42.00% | 'cpu0'=41.00%;;;0;100 'cpu1'=43.00%;;;0;100 'total_cpu_avg'=42.00%;0:75;0:90;0;100</code></pre>
+<p>Les tests fait directement depuis la CLI de centreon étant concluant, passons à la création de commandes depuis l’interface graphique.<br>Si l’on souhaite vérifier l’utilisation des CPU il est tout à fait possible de reprendre la commande précédemment utilisée, ce qui donnera&nbsp;:&nbsp;</p>
+<pre><code class="language-plaintext">$USER3$/centreon_plugins.pl --plugin=os::windows::snmp::plugin --mode=cpu --hostname=$HOSTADDRESS$ --snmp-community=$ARG1$ --snmp-version=$ARG2$&nbsp;--warning=$ARG3$&nbsp;--critical=$ARG4$</code></pre>
+<p>Les variables seront à définir dans le Template de service&nbsp;:</p>
+<p><i>$HOSTADDRESS$ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; IP</i><br><i>$ARG1$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; la communauté SNMP</i><br><i>$ARG2$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; la version du protocole SNMP qui sera utilisée</i><br><i>$ARG3$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; valeur à définir pour une alerte de type «&nbsp;warning&nbsp;»</i><br><i>$ARG4$&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&gt; valeur à définir pour une alerte de type «&nbsp;critique&nbsp;»</i></p>
+<p>Cependant toujours à des fins d’exemple pour cette procédure, nous allons effectuer une commande utilisant des&nbsp;«&nbsp;macros&nbsp;personnalisées&nbsp;» afin de vérifier le trafic des interfaces réseau de nos serveurs.</p>
+<p>Les macros&nbsp;standards sont prédéfinies dans le code source des moteurs de supervision. Ces différentes macros permettent de récupérer la valeur de différents objets au sein des commandes.&nbsp;Une macro commence et se termine toujours par le signe «&nbsp;<strong>$</strong>&nbsp;».<br>Une liste complète des macros est disponible à <a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/macrolist.html"><strong>cette adresse</strong></a></p>
+<p>Commencer par se connecter à l’interface graphique de Centreon puis cliquer sur «&nbsp;pollers&nbsp;», «&nbsp;ressources&nbsp;» puis «&nbsp;add&nbsp;»&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
