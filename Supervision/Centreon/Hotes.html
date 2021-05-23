@@ -1,0 +1,120 @@
+<!--
+title: Les hôtes
+description: Les hôtes dans Centreon
+published: true
+date: 2021-05-23T16:47:22.697Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T16:47:22.697Z
+-->
+
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
+<h1>Les Hôtes</h1>
+<h2>Qu’est-ce qu’un hôte</h2>
+<p>Par définition, un hôte représente toute entité correspondant à une ressource du système d’information de l’entreprise et possédant une adresse IP.<br>A titre d’exemple, nous pouvons citer&nbsp;:&nbsp;</p>
+<ul>
+  <li>Les serveurs</li>
+  <li>Les ordinateurs</li>
+  <li>Les NAS</li>
+  <li>Une base de données</li>
+  <li>Etc.</li>
+</ul>
+<h2>Ajout d’un hôte</h2>
+<p>Pour ajouter un hôte il faut se connecter à l’interface graphique de Centreon avec un compte administrateur ou un compte qui possède des droits suffisant pour le faire.<br>Cliquer sur la partie «&nbsp;Configuration&nbsp;» puis «&nbsp;Hôtes&nbsp;».</p>
+<figure class="image"><img src="/images/hôtes_centreon-1.png"></figure>
+<p>Cliquer sur «&nbsp;Ajouter&nbsp;»&nbsp;</p>
+<figure class="image"><img src="/images/hôtes_centreon-2.png"></figure>
+<p>Une nouvelle fenêtre apparait.</p>
+<figure class="image"><img src="/images/hôtes_centreon-3.png"></figure>
+<h3>Les onglets</h3>
+<h4>Configuration de l’hôte</h4>
+<ul>
+  <li>Nom&nbsp;: indique le nom d’hôte qui sera utilisé par le moteur de supervision.</li>
+  <li>Alias&nbsp;: indique l’alias de l’hôte.</li>
+  <li>Adresse IP / DNS : Adresse IP ou nom DNS de l’hôte (FQDN).<ul>
+      <li>&nbsp;Le bouton Résoudre permet de tester la résolution du nom de domaine en interrogeant le serveur DNS configuré sur le serveur central.</li>
+    </ul>
+  </li>
+  <li>Communauté SNMP &amp; Version&nbsp;: indique le nom de la communauté et la version SNMP.</li>
+  <li>Surveillé depuis le collecteur&nbsp;: indique quel serveur supervisera cet hôte.</li>
+  <li>Modèles&nbsp;: Ajouter un ou plusieurs modèles d’hôte pour cet hôte.</li>
+  <li>Créer aussi les services liés au modèle&nbsp;: Si positionné sur «&nbsp;oui&nbsp;»,&nbsp;Centreon génèrera automatiquement les services en se basant sur les modèles de services liés aux modèles d’hôtes définis au-dessus.</li>
+  <li>Commande de vérification&nbsp;: indique la commande à utiliser pour vérifier si l’hôte est disponible.</li>
+  <li>Arguments&nbsp;: Indique les arguments fournis à la commande de vérification&nbsp;<ul>
+      <li>Chaque argument commence avec un «&nbsp;!&nbsp;».</li>
+    </ul>
+  </li>
+  <li>Macros&nbsp;: Ajout de macros personnalisées.<ul>
+      <li>Nom de la macro et Valeur de la macro&nbsp;: Définissent le nom et la valeur de la macro.</li>
+      <li>Mot de passe&nbsp;: Cache la valeur de la macro.</li>
+    </ul>
+  </li>
+  <li>Période de contrôle&nbsp;: indique la période de contrôle de l’hôte par l’ordonnanceur (ex&nbsp;: aucun, 24h/24, pendant les heures de travail, etc.)</li>
+  <li>Nombre de contrôles avant validation de l’état&nbsp;: indique le nombre de contrôle qui seront fait avant de valider le statut de l’hôte. Lorsque le statut est validé, le processus de notification est enclenché.</li>
+  <li>Intervalle normal de contrôle&nbsp;: Indique l’intervalle entre chaque nouvelle vérification quand le statut de l’hôte est positionné sur «&nbsp;OK&nbsp;» (exprimé en minutes).</li>
+  <li>Intervalle non-régulier de contrôle&nbsp;: indique l’intervalle de validation du statut non-OK de l’hôte (exprimé en minutes).</li>
+  <li>Contrôles actifs activés et Contrôles passifs activés&nbsp;: activer ou désactiver les contrôles actifs et passifs.&nbsp;</li>
+</ul>
+<h4>Notification</h4>
+<ul>
+  <li>Notification activée&nbsp;: Activer ou désactiver les notifications pour cet hôte.</li>
+  <li>Options de notifications&nbsp;: Indiquent les statuts pour lesquels une notification sera envoyée.</li>
+  <li>Intervalle de notification : Indique le temps en minute entre chaque envoi de notification si le statut est «&nbsp;non-OK&nbsp;». Lorsque la valeur est définie à 0, l’ordonnanceur enverra une seule notification par changement de statut.&nbsp;</li>
+  <li>Période de notification&nbsp;: Indique la période pendant laquelle les notifications seront activées.</li>
+  <li>Délai de première notification&nbsp;: Indique le délai en minute à respecter avant l’envoi d’une première notification si le statut non-OK est validé.</li>
+  <li>Contacts liés&nbsp;: Indique le ou les contacts qui recevront les notifications.</li>
+  <li>Groupe de contacts liés&nbsp;: Tous les contacts appartenant aux groupes de contacts définis recevront les notifications.</li>
+</ul>
+<h4>Relations</h4>
+<ul>
+  <li>Groupes d’hôtes parents&nbsp;: Indique les groupes d’hôtes auxquels l’hôte appartient.</li>
+  <li>Catégorie d’hôtes parents&nbsp;: Indique les catégories auxquelles l’hôte appartient.</li>
+  <li>Hôtes parents&nbsp;: Défini les relations physiques de parenté entre objet.</li>
+  <li>Hôtes enfants&nbsp;: Défini les relations physiques de parenté entre objet.</li>
+</ul>
+<h4>Traitement de données</h4>
+<ul>
+  <li>Contrôle de vérification de l’hôte&nbsp;: Si activé, la commande de remontée des contrôles de l’hôte sera activée.</li>
+  <li>Contrôler la fraîcheur du résultat&nbsp;: Activer ou désactiver le contrôle de fraîcheur du résultat.</li>
+  <li>Seuil de fraîcheur du résultat&nbsp;: Si durant une période exprimée en seconde aucune demande de changement de statut de l’hôte n’a été reçue alors la commande de vérification active est exécutée.</li>
+  <li>Détection de bagotage des statuts&nbsp;: Activer ou désactiver la détection du bagotage des statuts, c’est-à-dire les statuts changeant trop fréquemment de valeur sur une période donnée.</li>
+  <li>Seuil bas de détection de bagotage des statuts / Seuil haut de détection de bagotage des statuts&nbsp;: Indiquent les seuils hauts et bas pour la détection du bagotage en pourcentage de changement de statuts.</li>
+  <li>Traitement des données de performances&nbsp;: Activer ou désactiver le traitement des données de performances. Inutile si Centreon Broker est utilisé.</li>
+  <li>Rétention des informations de statut / Rétention des informations ne concernant pas le statut&nbsp;: Indiquent si les informations concernant ou non le statut sont sauvegardées après chaque relance de la commande de vérification.</li>
+  <li>Options à enregistrer&nbsp;: indique les options à enregistrer si la rétention est activée.</li>
+  <li>Gestionnaire d’évènements activé&nbsp;: Activer ou désactiver le gestionnaire d’évènements.</li>
+  <li>Gestionnaire d’évènements&nbsp;: Indique la commande à exécuter si le gestionnaire d’évènements est activé.</li>
+  <li>Arguments&nbsp;: Indique les arguments de la commande du gestionnaire d’évènements.</li>
+</ul>
+<h4>Informations détaillées de l’hôte</h4>
+<ul>
+  <li>URL&nbsp;: Indique l’URL qui peut être utilisée pour donner davantage d’informations sur l’hôte.</li>
+  <li>Notes&nbsp;: Ajouter des notes optionnelles concernant l’hôte.</li>
+  <li>URL d’action&nbsp;: Indique l’URL habituellement utilisée pour donner des informations d’actions sur l’hôte (ex&nbsp;: maintenance).</li>
+  <li>Icône&nbsp;: Permet d’indiquer l’icône à utiliser pour l’hôte.</li>
+  <li>Icône alternative&nbsp;: Texte utilisé si l’icône ne peut être affichée.</li>
+  <li>Niveau de criticité&nbsp;: Indique le niveau de criticité de l’hôte.</li>
+</ul>
+<p>Les champs présentés ci-dessous sont des champs utilisés uniquement par la CGI de l’ordonnanceur (habituellement Nagios). Par conséquent, ils présentent peu d’intérêt lorsqu’on utilise Centreon Engine et Centreon Broker.&nbsp;</p>
+<ul>
+  <li>Image de la carte des états&nbsp;: Indique le logo pour la CGI de l’ordonnanceur.</li>
+  <li>Coordonnées géographiques&nbsp;: Indique les coordonnées géographiques pour géolocaliser l’élément (utile dans Centreon Map).</li>
+  <li>Coordonnées 2D et 3D&nbsp;: Indiquent les coordonnées 2D et 3D utilisées par la CGI.</li>
+  <li><strong>ACL Resource Groups</strong>&nbsp;: Lier l’hôte à un groupe d’hôtes afin de pouvoir visualiser ce dernier (seulement visible pour les utilisateurs non administrateur)</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
