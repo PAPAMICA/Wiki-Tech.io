@@ -2,7 +2,7 @@
 title: La sécurité
 description: La sécurité dans Exchange 2016
 published: true
-date: 2021-05-23T13:20:00.570Z
+date: 2021-05-23T13:23:40.364Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T13:12:30.902Z
@@ -117,44 +117,58 @@ dateCreated: 2021-05-23T13:12:30.902Z
 <p><u>Via l’EAC&nbsp;</u></p>
 <p>Dans la section «&nbsp;mobile&nbsp;» puis dans l’onglet «&nbsp;Accès au périphérique mobile&nbsp;».</p>
 <figure class="image"><img src="/images/eac-65.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Pour ajouter de nouveaux contenus, cliquer sur l’icône &nbsp;puis suivre les informations demandées.</p>
+<p><u>Via l’EMS</u></p>
+<pre><code class="language-plaintext">New-ActiveSyncDeviceAccessRule -Characteristic «type_de_caractéristique» -QueryString «chaine_de_caractères» -AccessLevel «type_d’accès»</code></pre>
+<p><i>Characteristic&nbsp;: DeviceOS, UserAgent par exemple</i><br><i>QueryString&nbsp;: «&nbsp;IOS 6.1 10B145&nbsp;», «&nbsp;NokiaE521/2.00()MailforExchange&nbsp;» par exemple</i><br><i>AccessLevel&nbsp;: Block ou Allow par exemple</i></p>
+<h3>Stratégie d’accès mobile</h3>
+<p>La configuration peut se faire à la fois via l’EAC ou l’EMS</p>
+<p><u>Via l’EAC&nbsp;</u></p>
+<p>Dans la section «&nbsp;mobile&nbsp;» puis dans l’onglet «&nbsp;stratégie de boite aux lettres de périphériques mobiles&nbsp;».</p>
+<figure class="image"><img src="/images/eac-66.png"></figure>
+<p>Pour ajouter de nouveaux contenus, cliquer sur l’icône &nbsp;puis suivre les informations demandées.</p>
+<p><u>Via l’EMS</u></p>
+<ul>
+  <li>Exemple de stratégie pour un type d’utilisateur qui doit avoir un mot de passe activé, de type alphanumérique dont les pièces jointes sont activées ou désactivées.</li>
+</ul>
+<pre><code class="language-plaintext">New-MobileDeviceMailboxpolicy – Name «nom_de_la_stratégie» -PasswordEanbled «valeur» -AplhanumericPasswordRequired «valeur» -PasswordRecoveryEnabled «valeur» -IsDefault «valeur» -AttachementsEnabled «valeur» -AllowStorageCard «valeur» -PasswordHistory «numéro»</code></pre>
+<p><i>PasswordHistory&nbsp;: nombre à mettre pour interdire la réutilisation d’un password si celui-ci fait partie des X derniers.</i><br><i>Valeur&nbsp;: $True ou $False</i></p>
+<ul>
+  <li>Exemple de stratégie pour un type d’utilisateur pour lesquelles des actions seront faites pour le Bluetooth, la navigation web, les protocoles POP et IMAP, le wifi, etc.</li>
+</ul>
+<pre><code class="language-plaintext">New-MobileDeviceMailboxpolicy – Name «nom_de_la_stratégie» -AllowBluetooth «valeur» -AllowBrowser «valeur» -AllowCamera «valeur» -AllowPOPIMAPEmail «valeur» -PasswordEnabled «valeur» -AplhanumericPasswordRequired «valeur» -PasswordRecoveryEnabled «valeur» -MaxEmailAgeFilter «durée_en_anglais» -AllowWifi «valeur» -AllowStorageCard «valeur»</code></pre>
+<p><i>Valeur&nbsp;: $True ou $False</i><br>durée_en_anglais&nbsp;: «&nbsp;TwoWeeks&nbsp;» par exemple</p>
+<h2>Mettre à jour un serveur Exchange</h2>
+<h3>Présentation</h3>
+<p>Il ne s’agit pas ici de mise à jour de la version de Exchange mais de l’installation des mises à jour via Cumulative Updates.<br>L’utilisation de Cumulative Update (CU) permet de corriger des bugs ou des failles de sécurité, d’apporter des évolutions ou encore de rester éligible au support de Microsoft par exemple.<br>Depuis Exchange 2013 les différentes sources des CU sont également des sources complètes de Exchange.</p>
+<h3>Les bonnes pratiques</h3>
+<p>Il est impératif d’effectuer les actions suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>Lire les correctifs apporté par les mises à jour</li>
+  <li>Lire les prérequis nécessaires par la mise à jour (extension du schéma, domaine, etc.)</li>
+  <li>Rechercher d’éventuels bugs connu après l’application de la mise à jour pour ne pas avoir potentiellement de mauvaise surprise</li>
+  <li>Effectuer des tests dans un environnement de validation ou un lab AVANT l’application en production</li>
+  <li>Faire une sauvegarde de l’Active Directory</li>
+  <li>Faire une sauvegarde de Exchange</li>
+  <li>Mettre le serveur en maintenance</li>
+  <li>Effectuer la mise à jour en dehors des heures de travail</li>
+  <li>Reboot du serveur après installation de la mise à jour «&nbsp;CU&nbsp;»</li>
+  <li>Vérifier et valider l’installation et le fonctionnement de la mise à jour avant de remettre le serveur en production.</li>
+</ul>
+<figure class="image"><img src="/images/warning.png"></figure>
+<h3>Installation en mode sans assistance</h3>
+<ul>
+  <li>Vérifier si des prérequis sont à installer</li>
+  <li>Récupérer les sources de Exchange Server 2016</li>
+</ul>
+<p><a href="https://technet.microsoft.com/fr-fr/library/hh135098(v=exchg.150).aspx">https://technet.microsoft.com/fr-fr/library/hh135098(v=exchg.150).aspx</a></p>
+<ul>
+  <li>Monter l’ISO</li>
+  <li>Ouvrir une invite de commande en mode administrateur</li>
+  <li>Se rendre dans le chemin du lecteur contenant l’ISO</li>
+  <li>Exécuter la commande de mise à jour</li>
+</ul>
+<pre><code class="language-plaintext">.\Setup.exe /mode:update /IAcceptExchangeServerLicenseTerms</code></pre>
+<ul>
+  <li>Reconfigurer les configurations personnalisées (URLs accès clients, etc.)</li>
+</ul>
