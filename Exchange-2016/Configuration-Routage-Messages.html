@@ -1,0 +1,124 @@
+<!--
+title: Configuration du routage des messages
+description: routage des messages
+published: true
+date: 2021-05-23T08:36:59.190Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T08:36:59.190Z
+-->
+
+<p>&nbsp;</p>
+<h1>Configuration de la partie routage de messages</h1>
+<h2>Les principes du routage de messages dans Exchange 2016</h2>
+<h3>Les bases du routage</h3>
+<p>Le routage des messages dans Exchange 2016 est basé principalement sur les différents services et protocoles suivants :&nbsp;</p>
+<ul>
+  <li>Le protocole SMTP&nbsp;</li>
+</ul>
+<p>Sur le port 25 pour tout ce qui concerne le routage et la transmission de messages de serveurs à serveurs mais également entre le Front-End et le Back-End pour les messages des clients SMTP</p>
+<ul>
+  <li>DNS</li>
+</ul>
+<p>Sur le port 53, pour tout ce qui concerne principalement les enregistrements de type MX</p>
+<ul>
+  <li>Active Directory</li>
+</ul>
+<p>Pour tout ce qui concerne les différents sites Active Directory ainsi que l’authentification LDAP/Kerberos</p>
+<ul>
+  <li>Les services Exchange</li>
+</ul>
+<h3>Les services de transport de messages</h3>
+<p>Le service de transport de messages est composé de trois parties regroupées dans le rôle de boite aux lettres.</p>
+<ul>
+  <li>Le service de transport Frontal et de transport Edge</li>
+</ul>
+<p>Effectue la transmission par proxy</p>
+<ul>
+  <li>Le service de transport HUB</li>
+</ul>
+<p>Achemine les messages entre le service de transport frontal et le service de transport de boite aux lettres</p>
+<ul>
+  <li>Le service de transport de boite aux lettres</li>
+</ul>
+<p>Effectue le dépôt des messages en file d’attente<br>Effectue la remise des messages de la file d’attente dans la base de données à l’aide du «&nbsp;catégoriseur&nbsp;»<br>Gère la communication RPC avec la base de données de boite aux lettres pour la remise des messages<br>Un catégoriseur est composant qui sert à classer les messages par catégorie afin de décider de ce que Exchange fera de chacun des emails en fonction de leurs catégories.</p>
+<h3>Schéma du routage des messages</h3>
+<p><u>En réception&nbsp;:</u></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
