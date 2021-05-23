@@ -2,7 +2,7 @@
 title: Les hôtes
 description: Les hôtes dans Centreon
 published: true
-date: 2021-05-23T16:48:01.230Z
+date: 2021-05-23T20:17:04.748Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:47:22.697Z
@@ -102,13 +102,29 @@ dateCreated: 2021-05-23T16:47:22.697Z
   <li>Coordonnées 2D et 3D&nbsp;: Indiquent les coordonnées 2D et 3D utilisées par la CGI.</li>
   <li>ACL Resource Groups&nbsp;: Lier l’hôte à un groupe d’hôtes afin de pouvoir visualiser ce dernier (seulement visible pour les utilisateurs non administrateur)</li>
 </ul>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3>Ajouter un hôte</h3>
+<h4>Onglet «&nbsp;host configuration&nbsp;»</h4>
+<p>A l’aide des informations précédemment citées, dans un premier temps remplir et configurer les champs suivants&nbsp;:&nbsp;</p>
+<ul>
+  <li>Nom</li>
+  <li>Alias&nbsp;</li>
+  <li>Adresse IP / DNS&nbsp;</li>
+  <li>La communauté SNMP et la version du protocole SNMP à utiliser</li>
+  <li>A la ligne Template&nbsp;: cliquer sur «&nbsp;ajouter une nouvelle entrée&nbsp;»&nbsp;en cas d’ajout d’un Template à l’hôte</li>
+</ul>
+<figure class="image"><img src="/images/hôtes_centreon-4.png"></figure>
+<figure class="image"><img src="/images/hôtes_centreon-5.png"></figure>
+<ul>
+  <li>Positionner à OUI la partie «&nbsp;créer aussi les services liés aux modèles&nbsp;» pour que l’ajout du ou des Templates soit effectif</li>
+</ul>
+<figure class="image"><img src="/images/hôtes_centreon-6.png"></figure>
+<p>Choisir la période de check désirée (de préférence 24x7 pour une supervision 24h/24 et 7j/7)<br>Indiquer également&nbsp;le :&nbsp;</p>
+<ul>
+  <li>Max check attempts</li>
+  <li>Normal check Interval</li>
+  <li>Retry check interval</li>
+</ul>
+<figure class="image"><img src="/images/hôtes_centreon-7.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
