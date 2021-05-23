@@ -2,7 +2,7 @@
 title: Installation
 description: 
 published: true
-date: 2021-05-23T14:03:18.683Z
+date: 2021-05-23T14:12:17.464Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:15:47.901Z
@@ -116,16 +116,26 @@ innodb_file_per_table=1</code></pre>
 <figure class="image"><img src="/images/config_centreon-10.png"></figure>
 <p>Dans le champ des langues remplacer «&nbsp;en_US&nbsp;» par «&nbsp;fr_FR.UTF-8&nbsp;». Une fois la page rafraichie, l’interface sera passée en français.<br>Cliquer sur sauvegarder.</p>
 <figure class="image"><img src="/images/config_centreon-11.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h2>Démarrer la supervision</h2>
+<ul>
+  <li>Générer les fichiers de configuration : Génère les fichiers de configuration de l’ordonnanceur dans un répertoire temporaire. Cette configuration est générée à partir des objets configurés via l’interface web</li>
+  <li>Lancer le débogage du moteur de supervision (-v) : Permet à l’ordonnanceur de vérifier la configuration générée</li>
+  <li>Déplacer les fichiers générés : Déplace les fichiers de configuration du répertoire temporaire vers le répertoire de l’ordonnanceur</li>
+  <li>Redémarrer l’ordonnanceur : Redémarre l’ordonnanceur afin d’appliquer les nouveaux fichiers de configuration</li>
+  <li>Commande exécutée post-génération : Exécute la commande post-génération paramétrée au niveau de la configuration de l’ordonnanceur</li>
+</ul>
+<h3>Première étape</h3>
+<p>Pour démarrer la supervision il faut se rendre sur l‘interface graphique.<br>Dans le menu Configuration puis «&nbsp;collecteurs&nbsp;», tout laisser par défaut et cliquer sur exporter.</p>
+<figure class="image"><img src="/images/config_centreon-12.png"></figure>
+<p>Une nouvelle page apparait.</p>
+<figure class="image"><img src="/images/config_centreon-13.png"></figure>
+<p>Dans la partie «&nbsp;Collecteurs&nbsp;», sélectionner le serveur&nbsp;</p>
+<figure class="image"><img src="/images/config_centreon-14.png"></figure>
+<p>Vérifier que les cases «&nbsp;Générer les fichiers de configuration&nbsp;» et «&nbsp;Lancer le débogage du moteur de supervision (-v)&nbsp;» soient bien cochées. Vérifier que les cases «&nbsp;Déplacer les fichiers générés&nbsp;» ainsi que «&nbsp;Redémarrer l’ordonnanceur&nbsp;» soient bien décochées.<br>Cliquer à nouveau sur «&nbsp;Exporter&nbsp;».<br>Si tout s’est bien passé, les messages «&nbsp;ok&nbsp;» apparaissent. Dans le cas contraire il faudra corriger les erreurs</p>
+<figure class="image"><img src="/images/config_centreon-15.png"></figure>
+<h3>Deuxième étape</h3>
+<p>Décochez les cases «&nbsp;Générer les fichiers de configuration&nbsp;» et «&nbsp;Lancer le débogage du moteur de supervision (-v)&nbsp;»<br>Cochez les cases «&nbsp;Déplacer les fichiers générés&nbsp;» ainsi que «&nbsp;Redémarrer l’ordonnanceur&nbsp;»</p>
+<figure class="image"><img src="/images/config_centreon-16.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
