@@ -2,135 +2,75 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-05-20T14:34:30.272Z
+date: 2021-05-23T14:16:18.858Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-04-30T22:14:05.342Z
 -->
 
-![Linux server backup and replication services | Dogsbody Technology](https://www.dogsbody.com/wp-content/uploads/Server-backup.png)
-
-# Sauvegarder son poste
-
-## Dossier à sauvegarder
-
-## Timeshift
-
-## rsync
-
-# Sauvegarder le disque d'un serveur
-
-Depuis plusieurs années j’utilise des VPS chez différents hébergeurs, certains ont des systèmes de backups intéressants, d’autres non. C’est pour cela que je me suis mis en quête d’un système de sauvegarde qui fonctionnerais à chaque fois.
-
-## Prérequis :
-
--   Un VPS avec un mode Rescue sous Debian
--   Un serveur FTP
-
-## Lancer la sauvegarde :
-
-Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)
-
-Connectez vous en root.
-
-Identifier la partition (ou le disque) que vous aller sauvegarder avec :fdisk -l
-
-Installer ftp et dcfldd :
-
-```plaintext
-apt install ftp dcfldd
-```
-
-Connectez vous à votre serveur FTP :
-
-```plaintext
-ftp <IP_DU_SERVEUR>
-```
-
-Entrez votre identifiant et votre mot de passe.
-
-Rendez vous dans le dossier où vous souhaitez faire votre sauvegarde.
-
-Lancer la sauvegarde avec la commande suivante :put "|dcfldd if=/dev/MA\_PARTITION bs=32k sizeprobe=if statusinterval=5 | gzip" MON\_IMAGE.gz
-
-La sauvegarde est en cours, soyez patient !
-
-## Restaurer la sauvegarde :
-
-Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)
-
-Connectez vous en root.
-
-Identifier la partition (ou le disque) que vous aller restaurer avec :
-
-```plaintext
-fdisk -l
-```
-
-Installer ftp et dcfldd :
-
-```plaintext
-apt install ftp dcfldd
-```
-
-Connectez vous à votre serveur FTP :
-
-```plaintext
-ftp IP_DU_SERVEUR
-```
-
-Entrez votre identifiant et votre mot de passe.
-
-Rendez vous dans le dossier où vous avez stocké votre sauvegarde.
-
-Lancer la restauration avec la commande suivante :
-
-```plaintext
-get MON_IMAGE.gz "| gunzip | dcfldd of=/dev/MA_PARTITION sizeprobe=of statusinterval=5"
-```
-
-La restauration est en cours, soyez patient !
-
-Redémarrer votre VPS sur le disque principal.
-
-# Sauvegarder avec Tar
-
-## Utilisation Standard
-
-Pour sauvegarder son système on peut utiliser la commande `tar` avec les paramètres suivants :
-
-```bash
-tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /
-```
-
-> Cette commande est à lancer à la racine. {.is-warning}
-
-Ce la va créer à la racine un fichier backup.tar.gz avec la date d'aujourd'hui tout en excluant les dossiers temporaires et inutiles pour la restauration. 
-
-> Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre `--exclude`. En revanche, dans tout les cas il est inutile de prendre`/proc`, `/tmp`, `/dev` ,`/sys` et `/run` {.is-info}
-
-## Avec Nohup
-
-On peut aussi lancer la commander avec `nohup` pour éviter de perdre le processus une fois le terminal coupé (éviter l'envoi signal SIGHUP alias "*signal hang up*" qui clôture l'ensemble des processus enfants lancées par le terminal virtuel) :
-
-```bash
-nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &
-```
-
-> Remarquez la présence `&` à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande `jobs`). 
-{.is-info}
-
-
-> Vous pouvez suivre l'avancée de la sauvegarde listant le contenu de **nohup.out** :`tail -f nohup.out` {.is-info}
-
->  Faites attention à bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
-{.is-warning}
-
-
-# Sauvegarder avec Swiss Backup
-
-# Sauvegarder un serveur avec Active Backup de Synology
-
-## Présentation
-
-## Configuration de la sauvegarde
+<figure class="image image_resized" style="width:65.3%;"><img src="https://www.dogsbody.com/wp-content/uploads/Server-backup.png" alt="Linux server backup and replication services | Dogsbody Technology"></figure>
+<h1>Sauvegarder son poste</h1>
+<h2>Dossier à sauvegarder</h2>
+<h2>Timeshift</h2>
+<h2>rsync</h2>
+<h1>Sauvegarder le disque d’un serveur</h1>
+<p>Depuis plusieurs années j’utilise des VPS chez différents hébergeurs, certains ont des systèmes de backups intéressants, d’autres non. C’est pour cela que je me suis mis en quête d’un système de sauvegarde qui fonctionnerais à chaque fois.</p>
+<h2>Prérequis :</h2>
+<ul>
+  <li>Un VPS avec un mode Rescue sous Debian</li>
+  <li>Un serveur FTP</li>
+</ul>
+<h2>Lancer la sauvegarde :</h2>
+<p>Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)</p>
+<p>Connectez vous en root.</p>
+<p>Identifier la partition (ou le disque) que vous aller sauvegarder avec :fdisk -l</p>
+<p>Installer ftp et dcfldd :</p>
+<pre><code class="language-plaintext">apt install ftp dcfldd</code></pre>
+<p>Connectez vous à votre serveur FTP :</p>
+<pre><code class="language-plaintext">ftp &lt;IP_DU_SERVEUR&gt;</code></pre>
+<p>Entrez votre identifiant et votre mot de passe.</p>
+<p>Rendez vous dans le dossier où vous souhaitez faire votre sauvegarde.</p>
+<p>Lancer la sauvegarde avec la commande suivante :put «&nbsp;|dcfldd if=/dev/MA_PARTITION bs=32k sizeprobe=if statusinterval=5 | gzip&nbsp;» MON_IMAGE.gz</p>
+<p>La sauvegarde est en cours, soyez patient !</p>
+<h2>Restaurer la sauvegarde :</h2>
+<p>Redémarrez votre VPS sur le disque de rescue. (via le panel de votre hébergeur)</p>
+<p>Connectez vous en root.</p>
+<p>Identifier la partition (ou le disque) que vous aller restaurer avec :</p>
+<pre><code class="language-plaintext">fdisk -l</code></pre>
+<p>Installer ftp et dcfldd :</p>
+<pre><code class="language-plaintext">apt install ftp dcfldd</code></pre>
+<p>Connectez vous à votre serveur FTP :</p>
+<pre><code class="language-plaintext">ftp IP_DU_SERVEUR</code></pre>
+<p>Entrez votre identifiant et votre mot de passe.</p>
+<p>Rendez vous dans le dossier où vous avez stocké votre sauvegarde.</p>
+<p>Lancer la restauration avec la commande suivante :</p>
+<pre><code class="language-plaintext">get MON_IMAGE.gz "| gunzip | dcfldd of=/dev/MA_PARTITION sizeprobe=of statusinterval=5"</code></pre>
+<p>La restauration est en cours, soyez patient !</p>
+<p>Redémarrer votre VPS sur le disque principal.</p>
+<h1>Sauvegarder avec Tar</h1>
+<h2>Utilisation Standard</h2>
+<p>Pour sauvegarder son système on peut utiliser la commande&nbsp;<code>tar</code> avec les paramètres suivants :</p>
+<pre><code class="language-plaintext">tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /</code></pre>
+<blockquote>
+  <p><strong>Attention :</strong> Cette commande est à lancer à la racine.</p>
+</blockquote>
+<p>Ce la va créer à la racine un fichier backup.tar.gz avec la date d’aujourd’hui tout en excluant les dossiers temporaires et inutiles pour la restauration.</p>
+<blockquote>
+  <p>Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre <code>--exclude</code>. En revanche, dans tout les cas il est inutile de prendre<code>/proc</code>, <code>/tmp</code>, <code>/dev</code> ,<code>/sys</code> et <code>/run</code></p>
+</blockquote>
+<h2>Avec Nohup</h2>
+<p>On peut aussi lancer la commander avec&nbsp;<code>nohup</code> pour éviter de perdre le processus une fois le terminal coupé (éviter l’envoi signal SIGHUP alias «&nbsp;<i>signal hang up</i>&nbsp;» qui clôture l’ensemble des processus enfants lancées par le terminal virtuel) :</p>
+<pre><code class="language-plaintext">nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home --exclude=nohup.out / &amp;</code></pre>
+<blockquote>
+  <p>Remarquez la présence <code>&amp;</code> à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande <code>jobs</code>).&nbsp;</p>
+</blockquote>
+<blockquote>
+  <p>Vous pouvez suivre l’avancée de la sauvegarde listant le contenu de <strong>nohup.out</strong> :<code>tail -f nohup.out</code></p>
+</blockquote>
+<blockquote>
+  <p><strong>Attention : </strong>Bien exclure le fichier&nbsp;<strong>nohup.out</strong> de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable <strong>$PWD</strong>).</p>
+</blockquote>
+<h1>Sauvegarder avec Swiss Backup</h1>
+<h1>Sauvegarder un serveur avec Active Backup de Synology</h1>
+<h2>Présentation</h2>
+<h2>Configuration de la sauvegarde</h2>
