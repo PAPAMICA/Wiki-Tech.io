@@ -1,0 +1,80 @@
+<!--
+title: Les commandes
+description: Les commandes dans Centreon
+published: true
+date: 2021-05-23T15:50:08.344Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T15:50:08.344Z
+-->
+
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
+<h1>Les Commandes</h1>
+<h2>Qu’est-ce qu’une commande</h2>
+<p>Une commande est la définition d’une ligne de commande qui utilise un script ou une application afin de réaliser une action. Il est possible d’exécuter cette commande en précisant des arguments.</p>
+<p>Il existe trois types de commandes :</p>
+<ul>
+  <li>Les commandes de vérification sont utilisées par les ordonnanceurs afin de vérifier le statut d’un hôte ou d’un service.</li>
+  <li>Les commandes de notification sont utilisées par les ordonnanceurs pour alerter les contacts (via mail, SMS...).</li>
+  <li>Des commandes diverses sont utilisées par les modules complémentaires (pour effectuer certaines actions), par l’ordonnanceur pour le traitement des données...</li>
+</ul>
+<h2>Les différents champs</h2>
+<ul>
+  <li>Nom de la commande&nbsp;: définit le nom de la commande.</li>
+  <li>Type de commande&nbsp;: permet de choisir le type de commande.</li>
+  <li>Ligne de commande&nbsp;: indique l’application ou le script utilisé avec la commande.</li>
+  <li>Activer le Shell&nbsp;: permet d’activer des fonctions propres à un Shell tel que le «&nbsp;pipe&nbsp;», etc.</li>
+  <li>Exemple d’arguments et $HOSTADDRESS$&nbsp;: définissent des exemples d’arguments et une adresse IP pour faire un test.</li>
+  <li>Description des arguments&nbsp;: permet d’ajouter une description aux arguments de type “$ARGn$”.&nbsp;</li>
+  <li>Effacer les arguments&nbsp;: efface la description des arguments définie</li>
+  <li>Description des macros&nbsp;: permet d’ajouter une description aux macros personnalisées (arguments personnalisés).</li>
+  <li>Connecteurs&nbsp;: permet de lier un connecteur à la commande.&nbsp;</li>
+  <li>Modèle de graphique&nbsp;: permet de lier la commande à un modèle de graphique.</li>
+  <li>Commentaire&nbsp;: permet de commenter la commande.</li>
+</ul>
+<h2>Création d’une commande «&nbsp;basique&nbsp;» (Check)</h2>
+<p>Il existe de nombreuses commandes disponibles dans Centreon.<br>Il est toutefois possible de créer soit même des scripts mais également d’installer des plugins pour avoir de nouvelles commandes selon les différents besoin de vérification et de supervision à mettre en place.<br>Avant de commencer à installer des plugins, il est conseillé de commencer par certaines commandes «&nbsp;basiques&nbsp;». Elles permettront soit de se faire la main si on ne connaît pas Centreon soit de vérifier que tout fonctionne correctement.<br>Parmi ce type de commandes et à titre d’exemple, nous pouvons citer&nbsp;des checks sur :&nbsp;</p>
+<ul>
+  <li>La RAM</li>
+  <li>Le ou les Disques dur (fonctionnement, accessibilité,&nbsp;espace disponible, etc.)&nbsp;</li>
+  <li>L’accès réseau</li>
+  <li>Les températures</li>
+  <li>Etc.</li>
+</ul>
+<p>A titre d’exemple dans cette procédure, une commande sera créée pour vérifier l’utilisation en pourcentage du CPU.<br>Afin de créer une commande, il faut cliquer sur «&nbsp;configuration&nbsp;» puis sur «&nbsp;commandes&nbsp;»</p>
+<figure class="image"><img src="/images/commandes_centreon-1.png"></figure>
+<p>Sur la gauche, cliquer sur le type de commande à créer</p>
+<figure class="image"><img src="/images/commandes_centreon-2.png"></figure>
+<p>A titre d’exemple pour cette procédure, une commande de vérification de la charge CPU sera créé.<br>Cliquer sur «&nbsp;Ajouter&nbsp;»<br>Ecrire le nom de la commande.<br>La partie de droite va permettre de créer la commande à l’aide d’information préenregistrées. Il est également possible de créer ses propres commandes personnalisées.<br>Dans la partie de droite, commencer par cliquer sur la ligne du haut pour choisir $USER1$ puis cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-3.png"></figure>
+<p>La partie du milieu va elle permettre de choisir le «&nbsp;check&nbsp;» que l’on souhaite mettre en place. De la même façon, choisir celui qui va être utilisé et cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-4.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
