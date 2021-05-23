@@ -2,7 +2,7 @@
 title: Comptes et Groupes
 description: 
 published: true
-date: 2021-05-23T14:29:06.783Z
+date: 2021-05-23T14:34:18.966Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:18:13.895Z
@@ -30,6 +30,32 @@ dateCreated: 2021-05-20T15:18:13.895Z
 </ul>
 <p>Pour créer les groupes, cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Access Groups&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
 <figure class="image"><img src="/images/acl_centreon-4.png"></figure>
+<p>Remplir les champs «&nbsp;Group Name&nbsp;» et «&nbsp;Alias&nbsp;» puis cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-2.png"></figure>
+<h3>Gestion des droits des groupes d’accès</h3>
+<p>Maintenant que les groupes d’accès sont créés, il va falloir leur affecter des autorisations.</p>
+<h4>Les pages accessibles</h4>
+<p>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Menu Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-3.png"></figure>
+<p>Remplir les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;».<br>Mettre le statut sur «&nbsp;Enabled&nbsp;» puis dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe qui sera lié à ce «&nbsp;menu d’autorisations&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-5.png"></figure>
+<p>Dans la section «&nbsp;Accessibles pages&nbsp;» il est possible de choisir en détail ce qui pourra être consulté ou non.<br>Pour cet exemple, le groupe choisi étant «&nbsp;Admin Réseau&nbsp;» nous allons lui accorder un accès total.<br>Pour cela il suffit de cocher les cases de droite sans forcément dérouler les menus qui sont listés.<br>Penser également à mettre un commentaire afin de savoir à quoi correspond le menu</p>
+<figure class="image"><img src="/images/acl_centreon-6.png"></figure>
+<p>Autre exemple avec le groupe «&nbsp;Webmaster&nbsp;» qui n’aura pas un full access.<br>Contrairement au menu admin réseau, dans la section «&nbsp;Accessible Pages&nbsp;» nous n’allons pas tout cocher pour tout autoriser.<br>Il est conseillé pour des raisons de facilité de gestions en cas de changement d’autorisations, de créer un menu par catégorie permettant un accès (home, monitoring, etc.)<br>Procéder à la création du menu de la même manière que précédemment.<br>Remplir à nouveau les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p>
+<figure class="image"><img src="/images/acl_centreon-7.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
