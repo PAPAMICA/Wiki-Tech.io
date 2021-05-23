@@ -2,7 +2,7 @@
 title: Configuration des accès clients
 description: Configuration CAS
 published: true
-date: 2021-05-23T08:20:28.051Z
+date: 2021-05-23T08:21:47.106Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:11:06.349Z
@@ -180,8 +180,30 @@ dateCreated: 2021-05-23T08:11:06.349Z
 <h2>Le service de decouverte automatique (AutoDiscover).</h2>
 <h3>A quoi sert l’autodiscover&nbsp;</h3>
 <p>Cette fonction permet de configurer automatiquement les profils de comptes de boites aux lettres Outlook ou d’autres clients de messagerie des services Web Exchange (EWS) et permet un gain de temps pour les utilisateurs mais surtout pour les administrateurs.&nbsp;<br>L’Autodiscover peut fonctionner à la fois en interne et en externe selon la configuration et les autorisations effectuées.&nbsp;<br>Il est possible d’utiliser l’Autodiscover en mode hybrid, dans une forêt unique ou avec de multiples forêts.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3>Les principales phases de la découverte automatique</h3>
+<ul>
+  <li>Phase 1&nbsp;</li>
+</ul>
+<p>Le client Outlook va essayer d’identifier les serveurs de découverte automatique puis établir une liste à l’aide :&nbsp;</p>
+<ol>
+  <li>Des objets SCP dans l’Active Directory (en interne, dans la partition de configuration)</li>
+  <li>Du domaine extrait de l’adresse de messagerie à configurer</li>
+</ol>
+<ul>
+  <li>Phase 2</li>
+</ul>
+<p>Si cela ne fonctionne pas le client fera une tentative de connexion en suivant la liste établie des points de terminaison de découverte automatique en HTTPS</p>
+<ul>
+  <li>Phase 3</li>
+</ul>
+<p>Si la tentative de connexion ne fonctionne toujours pas, le client effectuera d’autres tentatives de connexions via&nbsp;</p>
+<ol>
+  <li>Une demande «&nbsp;Get&nbsp;» non authentifiée sur l’URL de type «&nbsp;http://autodiscover.nomdedomaine/autodiscover/autodiscover.xml&nbsp;»</li>
+  <li>Requête DNS sur l’enregistrement SRV de type _autodiscover._tcp.«nomdedomaine.com»</li>
+</ol>
+<p>Lorsque les serveurs seront identifiés, le client effectuera après que la connexion soit établie, une récupération en local du fichier XML puis la lecture des informations du client de messagerie.</p>
+<h3>Schéma des différentes phases</h3>
+<figure class="image image_resized" style="width:49.47%;"><img src="/images/schema_phases.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
