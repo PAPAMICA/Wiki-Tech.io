@@ -2,16 +2,17 @@
 title: Configuration du réseau
 description: Gestion du réseau avec ESXi
 published: true
-date: 2021-05-23T15:32:27.111Z
+date: 2021-05-23T15:35:23.014Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-22T15:27:10.964Z
 -->
 
-<p>En entreprise, il est courant d'avoir bien plus qu'une seule carte réseau pour un ESXi : deux pour le management et vMotion, deux autres pour le réseau des machines virtuelles, et/ou une autre pour le stockage.</p>
+<h1>Présentation</h1>
+<p><br>En entreprise, il est courant d'avoir bien plus qu'une seule carte réseau pour un ESXi : deux pour le management et vMotion, deux autres pour le réseau des machines virtuelles, et/ou une autre pour le stockage.</p>
 <p>De base, on a un commutateur virtuel, vSwitch0. Il utilise la carte de management que l'on a paramétré auparavant.</p>
 <figure class="image"><img src="/images/commutateurs-virtuels.png"></figure>
-<p>On peut voir qu'il y a un avertissement par rapport à ce vSwitch, car on n'a pas de redondance.</p>
+<p>On peut voir qu'il y a un avertissement par rapport à ce vSwitch, car nous n'avons aucune redondance.</p>
 <figure class="image"><img src="/images/warning-vswitch0.png"></figure>
 <h1>Création du réseau de machines virtuelles</h1>
 <p>On peut créer des commutateurs virtuels (vSwitch) pour isoler les machines virtuelles.&nbsp;</p>
