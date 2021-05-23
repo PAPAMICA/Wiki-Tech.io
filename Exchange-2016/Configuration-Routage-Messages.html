@@ -2,7 +2,7 @@
 title: Configuration du routage des messages
 description: routage des messages
 published: true
-date: 2021-05-23T08:43:17.373Z
+date: 2021-05-23T08:50:14.809Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:36:59.190Z
@@ -134,17 +134,62 @@ dateCreated: 2021-05-23T08:36:59.190Z
 <p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;Il est possible de modifier les paramètres de chacun de ces connecteurs mais il doit y en avoir qu’un seul par type.</mark></i></p>
 <p>Afin de configurer les connecteurs de réceptions, il faut se connecter à l’EAC puis cliquer sur «&nbsp;flux de messagerie&nbsp;» puis sur «&nbsp;connecteurs de réception&nbsp;». Les différents connecteurs seront visibles.</p>
 <figure class="image"><img src="/images/eac-39.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Pour modifier un connecteur, faire un double clique dessus ou cliquer sur l’icône &nbsp;</p>
+<figure class="image"><img src="/images/icone_edit.png"></figure>
+<figure class="image"><img src="/images/eac-40.png"></figure>
+<figure class="image"><img src="/images/eac-41.png"></figure>
+<p>Pour ajouter un connecteur cliquer sur l’icône <span class="text-huge"><strong>+</strong></span></p>
+<p>Il est également possible de créer un connecteur à l’aide de l’EMS</p>
+<pre><code class="language-plaintext">New-ReceiveConnector -Name «nom_du_connecteur» -Server «nom_FQDN_du_serveur_qui_aura_le_connecteur» -Usage «type_d’usage» -Bindings «adresse_IP_de_la_carte_réseau_d’écoute_du_serveur:numéro_du_port_d’écoute» -RemoteIPRange «adresses_IP_autorisées_à_remettre_des_messages_sur_ce_connecteur» -MaxMessageSize «taille_du_message_en_Mb»</code></pre>
+<figure class="image"><img src="/images/ems-7.png"></figure>
+<p>Pour mettre le droit «&nbsp;anonyme&nbsp;» sur le connecteur</p>
+<pre><code class="language-plaintext">Set- ReceiveConnector -Identity «nom_du_serveur\nom_du_connecteur» -PermissionGroups «AnonymousUsers»</code></pre>
+<h3>Les connecteurs d‘envoi</h3>
+<p>Par défaut, aucun connecteur d’envoi n’est configuré dans Exchange.<br>La portée des connecteurs d’envoi se fait au niveau organisation.<br>Il est possible de configurer plusieurs serveurs comme source d’envoi pour un seul connecteur, permettant de faire de la haute disponibilité.<br>Ces connecteurs se basent sur les enregistrements MX des DNS ou sur des «&nbsp;hôtes de destinations&nbsp;» comme des relais SMTP.</p>
+<h3>Les types de connecteurs d’envoi</h3>
+<p>Le type de connecteur d’envoi détermine les groupes d’autorisations par défaut attribués au connecteur. Il détermine également les mécanismes d’authentification disponibles.</p>
+<ul>
+  <li>Personnalisé</li>
+</ul>
+<p>Ils sont utilisés pour envoyer des messages SMTP selon des usages spécifiques</p>
+<ul>
+  <li>Interne</li>
+</ul>
+<p>Ils sont utilisés pour envoyer des messages SMTP en interne de l’organisation</p>
+<ul>
+  <li>Internet</li>
+</ul>
+<p>Ils sont utilisés pour envoyer des messages SMTP vers Internet</p>
+<ul>
+  <li>Partenaire</li>
+</ul>
+<p>Ils sont utilisés effectuer des communications sécurisées avec un partenaire.<br>Pour configurer les connecteurs d’envoi il faut se connecter à l’ECA, cliquer sur «&nbsp;flux de messagerie&nbsp;» puis sur «&nbsp;connecteurs d’envoi&nbsp;» et enfin cliquer sur l’icône <span class="text-huge"><strong>+</strong></span></p>
+<figure class="image"><img src="/images/eac-42.png"></figure>
+<figure class="image"><img src="/images/eac-43.png"></figure>
+<h2>Les rapports de remise pour administrateurs</h2>
+<h3>Présentation</h3>
+<p>Les rapports de remise permettent d’effectuer le suivi des messages et d’effectuer des recherches dans les logs de transport.<br>Ils sont indispensables pour un support technique<br>Seules les informations de transit des messages sont disponibles, le contenu ne l’est pas.<br>Ils sont basés sur des critères de recherche tels que&nbsp;:</p>
+<ul>
+  <li>L’adresse de messagerie de l’émetteur</li>
+  <li>L’adresse de messagerie du destinataire</li>
+  <li>Une date ou une heure pour une recherche depuis d’un moment précis et ciblé</li>
+  <li>Une date et une heure pour une recherche jusqu’à un moment précis et ciblé</li>
+  <li>Un sujet de message</li>
+</ul>
+<p>D’autres critères de recherches sont possibles, ceux-ci ne sont que des exemples.</p>
+<h3>Comment effectuer une recherche</h3>
+<p><u>A l’aide de l’EAC</u></p>
+<p>Se connecter à l’EAC puis cliquer sur «&nbsp;flux de messagerie&nbsp;» puis sur «&nbsp;rapports de remise&nbsp;». Remplir les différents champs afin d’effectuer la recherche.</p>
+<figure class="image"><img src="/images/eac-44.png"></figure>
+<p><u>A l’aide de l’EMS</u></p>
+<ul>
+  <li>Faire une recherche d’un expéditeur vers un destinataire</li>
+</ul>
+<pre><code class="language-plaintext">Get-MessageTrackinglog -resultSize Unlimited -sender:«email_de_l’expéditeur» -recipient:«email_du_destinataire» -subject «nom_du_sujet»</code></pre>
+<ul>
+  <li>Faire une recherche pour tous les suivis de messages d’un expéditeur vers un destinataire en filtrant certains éléments sur une période donnée. Le résultat sera sauvegardé dans un fichier csv.</li>
+</ul>
+<pre><code class="language-plaintext">Get-TransportService | Get-MessageTrackingLog -resultSize Unlimited -sender:«email_de_l’expéditeur» -recipient:«email_du_destinataire» -Start «date_en_anglais_et_heure» -End «date_en_anglais_et_heure» | Select-Object TimeStamp, Eventld, Source, Sender, ClientIP, ClientHostName, ServerHostname, SourceContext, ConnectorID, InternelMessageID, MessageID, {$_.Recipients}, MessageSubject, Directionality, returnpath, messageinfo, totalbytes | Export-Csv -Delimiter «;» -Notype «chemin_de_savegarde_du_fichier.csv»</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
