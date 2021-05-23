@@ -2,7 +2,7 @@
 title: Installation
 description: 
 published: true
-date: 2021-05-23T13:55:31.299Z
+date: 2021-05-23T13:59:26.963Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:15:47.901Z
@@ -89,6 +89,35 @@ dateCreated: 2021-05-20T15:15:47.901Z
 <figure class="image"><img src="/images/config_centreon-4.png"></figure>
 <p>Configuration des informations concertant l’utilisateur administrateur.<br>Cliquer sur suivant.</p>
 <figure class="image"><img src="/images/config_centreon-5.png"></figure>
+<p>Configuration du serveur de base de données.<br>Le serveur sur lequel Centreon est installé est défini comme étant le serveur sur lequel la base de données sera installée par défaut.<br>Son utilisateur est <strong>root </strong>et <strong>le mot de passe par défaut est vide.</strong><br><strong>Le laisser vide sans rien écrire.</strong><br>Si l’on souhaite utiliser un serveur de base de données déporté, il faudra dans ce cas indiquer les informations de connexion au serveur (adresse, utilisateur mot de passe, etc.)</p>
+<p>Cliquer sur suivant</p>
+<figure class="image"><img src="/images/config_centreon-6.png"></figure>
+<p><u>Attention, si le message d’erreur suivant apparaît :</u></p>
+<p><i><strong>Add innodb_file_per_table=1 in my.cnf file under the [mysqld] section and restart MySQL Server.&nbsp;</strong></i></p>
+<p>Faire cette manipulation pour le résoudre&nbsp;:&nbsp;<br>Se connecter en SSH avec l’utilisateur root sur le serveur.</p>
+<p>Editer le fichier /etc/my.cnf</p>
+<pre><code class="language-plaintext">vi /etc/my.cnf</code></pre>
+<p>Ajouter cette ligne au fichier</p>
+<pre><code class="language-plaintext">[mysqld]
+innodb_file_per_table=1</code></pre>
+<p>Redémarrez le service mysql</p>
+<pre><code class="language-plaintext">service mysql restart</code></pre>
+<p>Cliquez sur suivant.<br>L’assistant configure les bases de données.</p>
+<figure class="image"><img src="/images/config_centreon-7.png"></figure>
+<p>Une fenêtre d’information concernant les dernières nouveautés de Centreon va apparaître.<br>Cliquer sur terminer</p>
+<figure class="image"><img src="/images/config_centreon-8.png"></figure>
+<p>Il est maintenant possible de se connecter&nbsp;</p>
+<figure class="image"><img src="/images/login_centreon-1.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
