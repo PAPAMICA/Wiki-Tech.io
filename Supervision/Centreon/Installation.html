@@ -2,7 +2,7 @@
 title: Installation
 description: 
 published: true
-date: 2021-05-23T14:15:24.705Z
+date: 2021-05-23T14:20:17.599Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:15:47.901Z
@@ -148,23 +148,28 @@ innodb_file_per_table=1</code></pre>
 <p>La supervision est maintenant opérationnelle.</p>
 <figure class="image"><img src="/images/config_centreon-18.png"></figure>
 <p><i><mark class="pen-red"><strong>Attention</strong>, la supervision est active mais pour l’instant <u>RIEN n’est supervisé</u>. En effet, il reste à configurer les sondes selon ce que l’on souhaite superviser. Il est également possible d’installer des add-on et des plugins qu’il faudra les configurer également.</mark></i></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h1>Découverte de l’interface Web</h1>
+<p>L’interface graphique de Centreon par l’intermédiaire de l’adresse <strong>http://«IP_DU_SERVEUR»/centreo</strong>n propose plusieurs menus avec des fonctions bien précises. Chacun de ces menus possède des sous sections.</p>
+<figure class="image"><img src="/images/interface_centreon-1.png"></figure>
+<ul>
+  <li>Accueil&nbsp;: Premier écran d’accueil après connexion sur l’interface graphique. Résume l’état général de la supervision.</li>
+  <li>Supervision&nbsp;: Regroupe l’état de tous les éléments supervisés en temps réel et en différé.&nbsp;</li>
+  <li>Rapports&nbsp;: Permet de visualiser à l’aide de diagrammes et de graphiques l’évolution de la supervision sur une période ciblée.</li>
+  <li>Configuration&nbsp;: Configure l’ensemble des éléments supervisés et l’infrastructure de supervision.</li>
+  <li>Administration&nbsp;: Configure l’interface web de Centreon et permet de visualiser l’état général des serveurs.</li>
+  <li>Vues&nbsp;: Visualiser et configurer les graphiques de performances pour chaque élément du système d’informations.</li>
+</ul>
+<h1>Pack de Plugins – Facilitation de la supervision</h1>
+<p>Centreon est un excellent outil de supervision qui peut être configuré manuellement pour correspondre exactement aux différents besoins de l’entreprise. Toutefois, il existe des packs de plugins contenant des modèles de configuration.<br>Ces différents packs réduisent le temps nécessaire pour installer et superviser la plupart des services de l’entreprise.<br>Pour fonctionner, les composants techniques Centreon License Manager et Centreon Plugin Pack Manager sont nécessaires.<br>L’installation de ces deux paquets est très simple.<br>Il suffit de se connecter sur le serveur Centreon avec l’utilisateur root en SSH et de taper la commande suivante.</p>
+<pre><code class="language-plaintext">yum install centreon-pp-manager</code></pre>
+<p>Cette commande téléchargera Centreon Plugin Pack Manager et également Centreon License Manager en tant que dépendance.</p>
+<p>Une fois ces deux paquets téléchargés il faudra les installer et les activer dans l’interface graphique de Centreon<br>Section Administration puis Extensions et enfin Modules.</p>
+<figure class="image"><img src="/images/plugins_centreon-1.png"></figure>
+<p>Le premier module à installer et activer sera Centreon License Manager</p>
+<figure class="image"><img src="/images/plugins_centreon-2.png"></figure>
+<p>Puis il faudra installer et activer Centreon Plugin Pack Manager</p>
+<figure class="image"><img src="/images/plugins_centreon-3.png"></figure>
+<p>Il est désormais possible de se rendre dans la section «&nbsp;Configuration&nbsp;» puis «&nbsp;Plugin packs&nbsp;» pour trouver les 6 plugins gratuits proposés. Si on s’inscrit sur le site de Centreon, 5 autres plugins packs deviennent gratuits, les autres étant payant.</p>
+<p>Il existe plus de 150 plugins packs disponibles dans l’offre IMP.</p>
+<figure class="image"><img src="/images/plugins_centreon-4.png"></figure>
 <p>&nbsp;</p>
