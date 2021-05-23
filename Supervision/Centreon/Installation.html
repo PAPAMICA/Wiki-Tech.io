@@ -2,7 +2,7 @@
 title: Installation
 description: 
 published: true
-date: 2021-05-23T14:12:17.464Z
+date: 2021-05-23T14:15:24.705Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:15:47.901Z
@@ -136,6 +136,32 @@ innodb_file_per_table=1</code></pre>
 <h3>Deuxième étape</h3>
 <p>Décochez les cases «&nbsp;Générer les fichiers de configuration&nbsp;» et «&nbsp;Lancer le débogage du moteur de supervision (-v)&nbsp;»<br>Cochez les cases «&nbsp;Déplacer les fichiers générés&nbsp;» ainsi que «&nbsp;Redémarrer l’ordonnanceur&nbsp;»</p>
 <figure class="image"><img src="/images/config_centreon-16.png"></figure>
+<p>Cliquez sur «&nbsp;Exporter&nbsp;» à nouveau<br>Si tout s’est bien passé, les messages «&nbsp;ok&nbsp;» apparaissent à nouveau. Dans le cas contraire il faudra corriger les erreurs</p>
+<figure class="image"><img src="/images/config_centreon-17.png"></figure>
+<h3>Troisième étape</h3>
+<p>Se connecter avec l’utilisateur root au serveur par SSH.<br>Démarrer le composant Centreon Broker avec la commande suivante&nbsp;:</p>
+<pre><code class="language-plaintext">service cbd start</code></pre>
+<p>Démarrer Centreon Engine avec la commande suivante&nbsp;:</p>
+<pre><code class="language-plaintext">service centengine start</code></pre>
+<p>Démarrer centcore avec la commande suivante&nbsp;:</p>
+<pre><code class="language-plaintext">service centcore start</code></pre>
+<p>La supervision est maintenant opérationnelle.</p>
+<figure class="image"><img src="/images/config_centreon-18.png"></figure>
+<p><i><mark class="pen-red"><strong>Attention</strong>, la supervision est active mais pour l’instant <u>RIEN n’est supervisé</u>. En effet, il reste à configurer les sondes selon ce que l’on souhaite superviser. Il est également possible d’installer des add-on et des plugins qu’il faudra les configurer également.</mark></i></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
