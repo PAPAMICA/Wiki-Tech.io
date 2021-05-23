@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:32:53.373Z
+date: 2021-05-23T16:36:03.837Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -171,14 +171,35 @@ OK: 2 CPU(s) average usage is: 42.00% | 'cpu0'=41.00%;;;0;100 'cpu1'=43.00%;;;0;
 <p>Cependant toujours à des fins d’exemple pour cette procédure, nous allons effectuer une commande utilisant des&nbsp;«&nbsp;macros&nbsp;personnalisées&nbsp;» afin de vérifier le trafic des interfaces réseau de nos serveurs.</p>
 <p>Les macros&nbsp;standards sont prédéfinies dans le code source des moteurs de supervision. Ces différentes macros permettent de récupérer la valeur de différents objets au sein des commandes.&nbsp;Une macro commence et se termine toujours par le signe «&nbsp;<strong>$</strong>&nbsp;».<br>Une liste complète des macros est disponible à <a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/macrolist.html"><strong>cette adresse</strong></a></p>
 <p>Commencer par se connecter à l’interface graphique de Centreon puis cliquer sur «&nbsp;pollers&nbsp;», «&nbsp;ressources&nbsp;» puis «&nbsp;add&nbsp;»&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/macro_centreon-1.png"></figure>
+<p>Les macros personnalisées vont dépendre de ce qui sera à superviser mais voici une liste qui peut être utile de créer&nbsp;:</p>
+<ul>
+  <li>$_SERVICEMODE$</li>
+  <li>$_SERVICEDISK$</li>
+  <li>$_SERVICEHOST$</li>
+  <li>$_SERVICEINTERFACE$</li>
+  <li>$_SERVICEOPTION$</li>
+  <li>$_SERVICEUSERNAME$</li>
+  <li>$_SERVICEPASSWORD$</li>
+  <li>$_SERVICEPORT$</li>
+  <li>$_SERVICEPROCESS$</li>
+  <li>$_SERVICESID$</li>
+  <li>$_SERVICECOMMAND$</li>
+  <li>$_SERVICESUBCOMMAND$</li>
+  <li>$_SERVICETIMEOUT$</li>
+  <li>$_SERVICEWARNING$</li>
+  <li>$_SERVICEWARNINGIN$</li>
+  <li>$_SERVICEWARNINGOUT$</li>
+  <li>$_SERVICECRITICAL$</li>
+  <li>$_SERVICECRITICALIN$</li>
+  <li>$_SERVICECRITICALOUT$</li>
+</ul>
+<figure class="image"><img src="/images/macro_centreon-2.png"></figure>
+<p>Une fois les macros créées et sauvegardées, cliquer sur «&nbsp;configuration&nbsp;» puis sur «&nbsp;commands&nbsp;» puis sur «&nbsp;check&nbsp;» et enfin sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/macro_centreon-3.png"></figure>
+<figure class="image"><img src="/images/macro_centreon-4.png"></figure>
+<p>Commencer par nommer la commande&nbsp;</p>
+<figure class="image"><img src="/images/macro_centreon-5.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
