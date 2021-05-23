@@ -2,7 +2,7 @@
 title: Supervision
 description: 
 published: true
-date: 2021-05-23T20:38:16.175Z
+date: 2021-05-23T20:45:35.329Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T19:52:01.685Z
@@ -27,5 +27,5 @@ dateCreated: 2021-04-28T19:52:01.685Z
 - [📍 Les hôtes *Qu'est-ce qu'un hôte et comment les ajouter ?*](/Supervision/Centreon/Hotes)
 - [📧 Notifications mails *Configurer les notifications mails et les personnaliser*](/Supervision/Centreon/Notifications-Mails)
 - [💘 Déployer la configuration *Démarrer la supervision à l'aide de Centreon !*](/Supervision/Centreon/Deployer-Configuration)
-- [📊 Vues personnalisées 🚧 *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Notifications-Mails)
+- [📊 Vues personnalisées 🚧 *Personnaliser l'affichage avec des widgets et une vue personnalisée*][Vues personnalisées](/Supervision/Centreon/Vues personnalisées)
 {.links-list}
