@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-23T13:08:51.149Z
+date: 2021-05-23T13:24:23.946Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -34,5 +34,5 @@ dateCreated: 2021-04-29T06:38:46.149Z
 - [🌀 Configuration des accès clients *Configuration CAS*](/Exchange-2016/Configuration-Acces-Clients)
 - [🌀 Configuration du routage des messages *routage des messages*](/Exchange-2016/Configuration-Routage-Messages)
 - [🌀 Configuration de la gestion de la conformité *Gestion de la conformité*](/Exchange-2016/Configuration-Gestion-Conformité)
-- [🌀 La sécurité 🚧 *Gz*](/Exchange-2016/Sécurité)
+- [🌀 La sécurité *La sécurité dans Exchange 2016*](/Exchange-2016/Sécurité)
 {.links-list}
