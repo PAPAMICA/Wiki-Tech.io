@@ -2,7 +2,7 @@
 title: Powershell
 description: 
 published: true
-date: 2021-05-23T06:53:27.092Z
+date: 2021-05-23T06:58:16.358Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-08T14:42:07.092Z
@@ -24,8 +24,23 @@ dateCreated: 2021-05-08T14:42:07.092Z
 <h2>La console PowerShell</h2>
 <p>&nbsp;</p>
 <p>Pour lancer PowerShell il faut utiliser l'exécutable <code>PWSH</code>. Pour cela, appuyer simultanément sur la touche <strong>Windows + R, </strong>puis tapez PWSH.&nbsp;</p>
-<p>La console PowerShell peut être lancée en exécutant une commande en même temps PWSH &nbsp;-command <code>Get-Date</code>. On peut aussi lancer cette même commande sans que la console se referme avec <code>PWSH -noexit -command Get-Date</code>.</p>
-<p>On peut également connaitre sa version de PowerShell en le spécifiant avec le paramètre -version.</p>
+<p>La console PowerShell peut être lancée en exécutant une commande en même temps:</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext"> PWSH  -command Get-Date</code></pre>
+<p>&nbsp;</p>
+<p>On peut aussi lancer cette même commande sans que la console se referme avec&nbsp;</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">PWSH -noexit -command Get-Date</code></pre>
+<p>&nbsp;</p>
+<p>On peut également connaitre sa version de PowerShell en le spécifiant avec le paramètre <code>-version</code>.&nbsp;</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">PWSH -version</code></pre>
+<p>&nbsp;</p>
+<p>Pour terminer, on peut lancer la console en spécifiant directement à l'endroit ou l'on souhaite se positionner avec le paramètre <code>-Workingdirectory</code>.</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">PWSH -WorkingDirectory c:\windows</code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <h2>Les raccourcis clavier</h2>
 <p>Avant de se lancer tête baissée, dans PowerShell, deux raccourcis clavier sont indispensables dans le sens où il vont vous permettre d'obtenir de l'aide et de gagner du temps.</p>
 <ol>
