@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-23T13:24:23.946Z
+date: 2021-05-23T21:16:37.705Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -27,6 +27,7 @@ dateCreated: 2021-04-29T06:38:46.149Z
 {.links-list}
 
 # Exchange 2016
+## Installation et configuration
 - [🌀 Présentation et Prérequis *Présentation de Exchange 2016*](/Exchange-2016/Présentation)
 - [🌀 Installation *Comment installer Exchange 2016*](/Exchange-2016/Installation)
 - [🌀 Présentation de l'administration *Administration via EAC et EMS*](/Exchange-2016/Présentation-administration)
@@ -36,3 +37,4 @@ dateCreated: 2021-04-29T06:38:46.149Z
 - [🌀 Configuration de la gestion de la conformité *Gestion de la conformité*](/Exchange-2016/Configuration-Gestion-Conformité)
 - [🌀 La sécurité *La sécurité dans Exchange 2016*](/Exchange-2016/Sécurité)
 {.links-list}
+## Configuration avancée
