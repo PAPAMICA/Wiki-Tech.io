@@ -2,7 +2,7 @@
 title: Les commandes
 description: Les commandes dans Centreon
 published: true
-date: 2021-05-23T15:51:54.683Z
+date: 2021-05-23T15:55:04.977Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T15:50:08.344Z
@@ -60,12 +60,12 @@ dateCreated: 2021-05-23T15:50:08.344Z
 </ul>
 <p>Il n’a pas été défini sur quels critères le check va s’appuyer pour remonter des informations.<br>Il manque donc les arguments à positionner afin de pouvoir définir un seuil à vérifier pour prévenir l’administrateur en cas de problème.<br>Pour rajouter des arguments à une commande, toujours dans la ligne du bas, sélectionner $ARGn$ et l’ajouter à la commande à l’aide de «&nbsp;&lt;&lt;&nbsp;». Répéter cette opération autant de fois qu’il y a d’arguments à la commande. Attention le «&nbsp;n&nbsp;» est à remplacer par un numéro pour définir le numéro de l’argument (ex&nbsp;: $ARG1$)<br>Pour la vérification du CPU, il est conseillé de définir deux types d’alertes&nbsp;:&nbsp; les «&nbsp;warning&nbsp;» et les «&nbsp;critical&nbsp;». Pour cela, tout comme l’ajout du -H dans la commande nous allons ajouter «&nbsp;-w&nbsp;» et «&nbsp;-c&nbsp;» afin de définir un seuil d’avertissement et critique.</p>
 <figure class="image"><img src="/images/commandes_centreon-6.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Dans cet exemple, une alerte «&nbsp;warning&nbsp;» sera envoyée par email à l’administrateur si le charge du CPU dépasse X% et une alerte «&nbsp;critique&nbsp;» sera envoyée si la charge CPU dépasse Y%.<br>Les valeurs des arguments seront positionnées et abordées plus tard dans ce document.<br>Chaque check peut avoir des arguments différents, il est donc utile de préciser la définition des arguments pour chaque commande créée. Pour cela, cliquer sur «&nbsp;Describe arguments&nbsp;». Un pop-up va s’ouvrir et permettre d’écrire à quoi correspondent les arguments. Une fois indiqué, cliquer sur Save, la définition des arguments devient visible dans la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-7.png"></figure>
+<p>Cette description sera visible lors de l’utilisation de la commande dans un formulaire de création d’hôte ou de service.<br>Une fois la commande préparée et avant de la sauvegarder, il est possible de la tester.<br>Pour cela, remplir le champ «&nbsp;Arguments exemple&nbsp;» avec les informations souhaitées.</p>
+<figure class="image"><img src="/images/commandes_centreon-8.png"></figure>
+<p>Dans la partie de gauche, il va être indiqué le seuil du warning et celui du critical. Les informations devront commencer, être séparées et finir par «&nbsp;!&nbsp;»<br>Dans la partie de droite l’adresse IP du PC ou serveur ciblé.&nbsp;</p>
+<figure class="image"><img src="/images/commandes_centreon-9.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
