@@ -2,7 +2,7 @@
 title: Configuration des accès clients
 description: Configuration CAS
 published: true
-date: 2021-05-23T08:12:01.270Z
+date: 2021-05-23T08:20:28.051Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:11:06.349Z
@@ -21,15 +21,165 @@ dateCreated: 2021-05-23T08:11:06.349Z
 </ul>
 <h3>Schéma global</h3>
 <p>Le schéma suivant montre les différents types d’accès et de protocoles utilisés lors des connexions effectuées par les clients.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/schema_protocoles.png"></figure>
+<p>Service d’accès au client&nbsp;: Front-End<br>Services Principaux&nbsp;: Back-End</p>
+<h3>Les services liés à la partie accès client</h3>
+<ul>
+  <li>Gestion des connexions clientes</li>
+  <li>Gestion de l’accès au centre d’administration Exchange (EAC)</li>
+  <li>Gestion de la découverte automatique du profile utilisateur (Autodiscover)</li>
+  <li>Gestion des fonctions Outlook MAPI et Outlook AnyWhere (pour le client lourd de Outlook)</li>
+  <li>Gestion de la distribution du carnet d’adresses en mode hors ligne (OAB)</li>
+  <li>Gestion des accès à la vision des disponibilités du calendrier des boites aux lettres (via EWS)</li>
+  <li>Gestion des infos-Courrier (TIPS en anglais)</li>
+  <li>Gestion des services Web Exchange (EWS Exchange Web Services)</li>
+</ul>
+<h3>Les bases</h3>
+<p>La partie accès client de Exchange 2016 se base sur les éléments suivants&nbsp;:&nbsp;</p>
+<ul>
+  <li>Les sites Active Directory (namespaces) afin de gérer les connexion</li>
+  <li>Les DNS</li>
+  <li>Un certificat qui gère&nbsp;:<ul>
+      <li>Il doit correspondre aux noms DNS et URLs configurées par service (dans le certificat)</li>
+      <li>L’authentification et le chiffrement (SSL doit être activé).</li>
+    </ul>
+  </li>
+  <li>Sur l’authentification&nbsp;<ul>
+      <li>Authentification intégrée à Windows</li>
+      <li>Authentification «&nbsp;Digest&nbsp;»</li>
+      <li>Authentification de base (nom et mot de passe)</li>
+      <li>Authentification basée sur les formulaires</li>
+    </ul>
+  </li>
+</ul>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: il est important de penser à mettre en place une redondance des serveurs qui font office d’accès client, les protéger et avoir une communication avec Active Directory.</mark></i></p>
+<h3>Les services de disponibilité de calendrier</h3>
+<p>Ce service est disponible et utilisable pour les clients Outlook et OWA. Disponible via «&nbsp;l’assistant de planification&nbsp;»</p>
+<p>Il est déployé par défaut sur tous les serveurs et n’a besoin d’aucune configuration.</p>
+<p>Il permet au client de réaliser les actions suivantes&nbsp;:</p>
+<ul>
+  <li>Récupération des informations de disponibilité dans le calendrier des boites aux lettres</li>
+  <li>Affichage des heures de travail des boites aux lettres</li>
+  <li>Afficher des suggestions d’heures de réunion en proposant les taux de participation des utilisateurs en fonction du créneau horaire choisi.</li>
+</ul>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: Dans le cas d’une coexistence entre forêt Active Directory ou mode Hybride avec Office365, cela nécessite une configuration particulière avec des droits et des flux réseaux.</mark></i></p>
+<h3>Les infos-courrier</h3>
+<p>Il s’agit d’une fonction Exchange permettant de fournir des informations sur l’état de remise d’un email avant même que celui-ci ne soit envoyé au destinataire.</p>
+<p>Il existe deux types d’infos-courrier&nbsp;:</p>
+<ul>
+  <li>Des infos-courrier «&nbsp;par défaut&nbsp;» (par exemple un pop-up de message d’absence qui est visible lors d’une recherche d’utilisateur pour lui envoyer un e-mail)</li>
+  <li>Des infos-courrier «&nbsp;personnalisées&nbsp;»</li>
+</ul>
+<h2>Enregistrements DNS pour Exchange</h2>
+<h3>Présentation</h3>
+<p>Tout comme l’Active Directory, les enregistrements DNS sont essentiels au fonctionnement de Exchange notamment pour les parties suivantes&nbsp;:&nbsp;</p>
+<ul>
+  <li>Le service de découverte automatique (Autodiscover)</li>
+  <li>Le routage des messages via les MX</li>
+  <li>La connexion des clients (enregistrements SRV)</li>
+  <li>La sécurisation du nom de domaine externe (SPF)</li>
+</ul>
+<h3>Les différents types d’enregistrements DNS</h3>
+<ul>
+  <li>Type «&nbsp;A&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type A permettent de relier un nom d’hôte à l’adresse IPv4 d’un serveur, nom de domaine ou d’un périphérique.</p>
+<ul>
+  <li>Type «&nbsp;AAAA&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type AAAA permettent de relier un nom d’hôte à l’adresse IPv6 d’un serveur, nom de domaine ou d’un périphérique.</p>
+<ul>
+  <li>Type «&nbsp;SOA&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type SOA indiquent <strong>quels sont les serveurs qui vont héberger et gérer la zone DNS.</strong><br>Ils font autorité sur cette dernière et sont «&nbsp;maître du domaine&nbsp;».</p>
+<ul>
+  <li>Type «&nbsp;NS&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type NS indiquent <strong>quels sont les serveurs qui vont héberger et gérer la zone DNS.</strong><br>Ils ne font pas autorité sur cette dernière et ne sont pas «&nbsp;maître du domaine&nbsp;».</p>
+<ul>
+  <li>Type «&nbsp;CNAME&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type CNAME permet de relier un nom d’hôte vers l’enregistrement DNS d’un autre nom d’hôte.<br>Il fonctionne de la même manière qu’un Alias.</p>
+<ul>
+  <li>Type «&nbsp;MX&nbsp;»</li>
+</ul>
+<p>MX est l’abréviation de Mail Exchange. Ces enregistrements DNS sont différents des autres enregistrements.<br>Ils définissent quel est ou quels sont les serveurs qui gèrent les services e-mails reliés à un nom de domaine. La mise en place d’enregistrements MX sur un nom de domaine concerne les utilisateurs qui souhaitent utiliser un service e-mail dédié (sur serveur dédié ou encore sur un serveur de messagerie en interne )</p>
+<ul>
+  <li>Type «&nbsp;TXT&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type TXT permet d’intégrer une zone DNS en texte libre.</p>
+<ul>
+  <li>Type «&nbsp;SPF&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type permettent aux destinataires de vérifier que les e-mails envoyés sont légitimes</p>
+<ul>
+  <li>Type «&nbsp;SRV&nbsp;»</li>
+</ul>
+<p>Les enregistrements DNS de type SRV servent à indiquer quel est le serveur qui gère un service spécifique.</p>
+<h3>L’enregistrement de sécurité SPF</h3>
+<p>L’enregistrement SPF (Sender Policy Framework) va permettre de «&nbsp;sécuriser&nbsp;» un minimum le nom de domaine public.<br>Il définit la liste des serveurs de messagerie autorisés ou non à envoyer et recevoir des emails pour un nom de domaine spécifique.</p>
+<p>Il permet également à certaines organisations de messagerie d’accepter ou non la réception de mail en provenance d’un nom de domaine spécifique. Par exemple une organisation Exchange très restrictive utilisant SPF pourra refuser les emails d’une organisation moins restrictive n’utilisant pas SPF.</p>
+<h2>Configuration d'un certificat exchange</h2>
+<h3>Présentation</h3>
+<p>Le certificat Exchange est nécessaire pour authentifier et chiffrer les connexions clients.<br>Il doit obligatoirement comporter le ou les noms DNS et être configuré sur les serveurs.</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: un certificat peut avoir un réel impact sur les connexions clients</mark></i></p>
+<h3>Les types de certificats Exchange</h3>
+<p>Plusieurs types de certificats sont possibles dans Exchange&nbsp;:</p>
+<ul>
+  <li>Certificats auto-signés</li>
+</ul>
+<p>Ce type de certificat peut être utilisé dans le cadre d’une maquette en LAB. Il est configuré par défaut et ne doit pas être utilisé en production.<br>Il nécessite une configuration sur tous les clients et d’être validé (autorisé) par les clients pour éviter d’avoir des avertissements d’erreur de certificat de la part des navigateurs web ou des clients de messagerie.</p>
+<ul>
+  <li>Certificats délivrés par une autorité de certification PKI <u>Interne</u></li>
+</ul>
+<p>Ce type de certificat est utilisé par les entreprises et est généralement de type «&nbsp;SAN&nbsp;» pour permettre l’utilisation de noms DNS alternatifs. Il nécessite d’être validé (autorisé) par les clients pour éviter d’avoir des avertissements d’erreur de certificat de la part des navigateurs web ou des clients de messagerie.<br>Il s’agit d’un certificat INTERNE à l’organisation et émis par une autorité INTERNE (ADCS - Active Directory Certificate Services) non destiné à être utilisé sur Internet.<br>Il nécessite également une configuration sur les postes clients <strong>non joints au domaine</strong> pour ne pas non plus avoir d’avertissement lors de la connexion à l’environnement de l’entreprise.</p>
+<ul>
+  <li>Certificats délivrés par une autorité de certification PKI <u>Externe</u>&nbsp;</li>
+</ul>
+<p>Ce type de certificat est payant.<br>Il est généralement de type «&nbsp;Wildcard&nbsp;» c’est à dire qu’il est créé et validé pour un nom de domaine ET ses sous-domaines (ex&nbsp;: mondomaine.com et xxxxx.mondomaine.com)<br>Il aura l’avantage de ne pas émettre d’avertissements par les clients de messagerie et les navigateur web car il est généré par une <strong><u>autorité publique reconnue et de confiance</u></strong>. Il sera principalement utilisé pour les accès externe vers Internet.<br>Il ne nécessite aucune configuration des clients.</p>
+<h3>Les services Exchange utilisant un certificat</h3>
+<ul>
+  <li>SMTP</li>
+  <li>IMAP</li>
+  <li>POP</li>
+  <li>IIS</li>
+  <li>UM&nbsp;</li>
+  <li>UM Call Router</li>
+</ul>
+<h3>Les étapes de configuration</h3>
+<p>Afin d’obtenir un certificat il faut effectuer plusieurs étapes&nbsp;:</p>
+<ul>
+  <li>Création d’une demande de signature de certificat (CSR pour Certificate Signing Request) depuis un serveur Exchange par émission d’une clé publique (c’est-à-dire qu’une clé publique sera émise par le serveur et utilisée pour la demande de signature)</li>
+  <li>Signature et validation de la demande de certificat par l’autorité de certification interne ou externe. L’autorité de certification retournera un certificat d’identité signé par sa propre clé publique&nbsp;</li>
+  <li>Importation du certificat signé dans Exchange</li>
+  <li>Activation du certificat pour les serveur Exchange souhaités</li>
+  <li>Redémarrage des services Exchange précédemment configurés.</li>
+</ul>
+<h3>La réalisation depuis Exchange</h3>
+<p>Comme toujours il est possible de faire cette manipulation de deux manières&nbsp;:</p>
+<ul>
+  <li>Depuis l’EAC</li>
+</ul>
+<p>Se connecter sur le serveur puis aller dans la section «&nbsp;serveurs&nbsp;» puis cliquer sur «&nbsp;certificats&nbsp;»</p>
+<figure class="image"><img src="/images/eac-33.png"></figure>
+<p>Pour créer un&nbsp; nouveau certificat cliquer sur le bouton <span class="text-huge"><strong>+ </strong></span>et sélectionner le type de certificat souhaité</p>
+<figure class="image"><img src="/images/eac-34.png"></figure>
+<p>Remplir les informations demandées</p>
+<ul>
+  <li>Depuis l’EMS</li>
+</ul>
+<p><u>Création de la demande&nbsp;</u></p>
+<pre><code class="language-plaintext">New-ExchangeCertificate -GenerateRequest -RequestFile «\\chemin_réseau_du_fichier.req» -FriendlyName «nom_souhaité_du_certificat» -SubjectName «type_de_certificat»</code></pre>
+<p>Ex&nbsp;: SubjectName «C=FR,CN=*.nomdedomaine.com» Attention à laisser les « »</p>
+<p><u>Import du certificat&nbsp;</u></p>
+<pre><code class="language-plaintext">Import-ExchangeCertificate -Path «chemin_du_fichier.p7b ou .cer»</code></pre>
+<p>Récupérer les informations du certificat</p>
+<pre><code class="language-plaintext">Get-ExchangeCertificate -DomainName «nom de domaine» | fl</code></pre>
+<p>Activer le certificat pour les services voulus&nbsp;</p>
+<pre><code class="language-plaintext">Enable-ExchangeCertificate -Thumbprint «N°_du_certificat» -Services «POP,IMAP,SMTP,IIS»</code></pre>
+<h2>Le service de decouverte automatique (AutoDiscover).</h2>
+<h3>A quoi sert l’autodiscover&nbsp;</h3>
+<p>Cette fonction permet de configurer automatiquement les profils de comptes de boites aux lettres Outlook ou d’autres clients de messagerie des services Web Exchange (EWS) et permet un gain de temps pour les utilisateurs mais surtout pour les administrateurs.&nbsp;<br>L’Autodiscover peut fonctionner à la fois en interne et en externe selon la configuration et les autorisations effectuées.&nbsp;<br>Il est possible d’utiliser l’Autodiscover en mode hybrid, dans une forêt unique ou avec de multiples forêts.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
