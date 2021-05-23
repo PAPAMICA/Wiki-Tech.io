@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:36:15.145Z
+date: 2021-05-23T16:39:54.279Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -202,6 +202,42 @@ OK: 2 CPU(s) average usage is: 42.00% | 'cpu0'=41.00%;;;0;100 'cpu1'=43.00%;;;0;
 <figure class="image"><img src="/images/macro_centreon-5.png"></figure>
 <p>Puis écrire la commande dans la section «&nbsp;command line&nbsp;»</p>
 <pre><code class="language-plaintext">$USER3$/centreon_plugins.pl --plugin=$_SERVICEPLUGIN$ --hostname=$HOSTADDRESS$ --snmp-community=$_HOSTSNMPCOMMUNITY$ --snmp-version=$_HOSTSNMPVERSION$ --mode=$_SERVICEMODE$ --interface=$_SERVICEINTERFACE$ --warning-in-traffic=$_SERVICEWARNINGIN$ --warning-out-traffic=$_SERVICEWARNINGOUT$ --critical-in-traffic=$_SERVICECRITICALIN$ --critical-out-traffic=$_SERVICECRITICALOUT$ $_SERVICEOPTION$ $_SERVICEOPTION$</code></pre>
+<p>Cliquer sur le bouton «&nbsp;Describe macros&nbsp;» &nbsp;<br>Un pop-up va alors s’ouvrir permettant de décrire les différentes macros qui seront utilisées<br>Attention, les informations utilisées ici le sont à titre d’exemple afin d’avoir une bonne visibilité de la commande. Les valeurs qui seront réellement utilisées seront définies dans le Template de service qui sera créée par la suite.</p>
+<figure class="image"><img src="/images/macro_centreon-6.png"></figure>
+<p>Cliquer sur «&nbsp;save&nbsp;»<br>Les informations apparaissent alors dans la commande.</p>
+<figure class="image"><img src="/images/macro_centreon-7.png"></figure>
+<p>Valider la création de la commande en cliquant sur «&nbsp;save&nbsp;»</p>
+<p>Les serveurs ayant plusieurs interfaces, il nous faut dans un premier temps savoir quelle est l’ID de l’interface que l’on souhaite superviser. Pour cela effectuer la commande suivante&nbsp;directement dans la CLI de centreon :&nbsp;</p>
+<pre><code class="language-plaintext">./centreon_plugins.pl --plugin=os::windows::snmp::plugin --mode=list-interfaces --hostname=172.20.0.4 --snmp-community=**** --snmp-version=2c --interface= --name --oid-display=ifDesc --filter-status=up</code></pre>
+<p>La liste des interfaces apparait il ne reste plus qu’à choisir l’interface ciblée&nbsp;</p>
+<pre><code class="language-plaintext">List interfaces:
+'Software Loopback Interface 1' [speed = 1073, status = up, id = 1]
+Skipping interface 'WAN Miniport (IKEv2)': no matching filter status
+'Broadcom BCM5708C NetXtreme II GigE (NDIS VBD Client) #46' [speed = 1000, status = up, id = 7]</code></pre>
+<p>Dans notre exemple l’ID de l’interface est «7&nbsp;». C’est cette valeur qui sera utilisée afin de récolter des informations lors de l’utilisation du check</p>
+<p>Passons maintenant à la création du Template de service qui utilisera cette commande.</p>
+<p>Cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;Services&nbsp;» puis sur «&nbsp;Templates&nbsp;» et en fin sur «&nbsp;add&nbsp;»<br>De la même manière que vu précédemment lors de la création de Templates, nous allons remplir les informations mais cette fois-ci ce seront les «&nbsp;macros personnalisées&nbsp;» qui seront utilisées et définies</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
