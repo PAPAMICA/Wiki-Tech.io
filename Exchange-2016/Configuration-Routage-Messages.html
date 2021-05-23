@@ -2,7 +2,7 @@
 title: Configuration du routage des messages
 description: routage des messages
 published: true
-date: 2021-05-23T08:38:06.508Z
+date: 2021-05-23T08:42:34.599Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:36:59.190Z
@@ -44,12 +44,95 @@ dateCreated: 2021-05-23T08:36:59.190Z
 <p>Effectue le dépôt des messages en file d’attente<br>Effectue la remise des messages de la file d’attente dans la base de données à l’aide du «&nbsp;catégoriseur&nbsp;»<br>Gère la communication RPC avec la base de données de boite aux lettres pour la remise des messages<br>Un catégoriseur est composant qui sert à classer les messages par catégorie afin de décider de ce que Exchange fera de chacun des emails en fonction de leurs catégories.</p>
 <h3>Schéma du routage des messages</h3>
 <p><u>En réception&nbsp;:</u></p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/schema_reception.png"></figure>
+<p><u>En envoi&nbsp;:&nbsp;</u></p>
+<figure class="image"><img src="/images/schema_envoi.png"></figure>
+<h3>Les composants du transport des messages</h3>
+<ul>
+  <li>Réception SMTP</li>
+</ul>
+<p>Basé sur les services de transport frontal, transport HUB et transport de boite aux lettres</p>
+<ul>
+  <li>Envoi SMTP</li>
+</ul>
+<p>Basé sur le service de transport frontal et le service de transport HUB</p>
+<ul>
+  <li>Les répertoires de collecte et de relecture</li>
+</ul>
+<p>Ils permettent au service de transport HUB de traiter et de remettre un fichier texte au bon format</p>
+<ul>
+  <li>La file d’attente de soumission</li>
+</ul>
+<p>Stock tous les messages sur un disque en attendant que le catégoriseur ne les traite et ne les remette</p>
+<ul>
+  <li>Le catégoriseur</li>
+</ul>
+<p>Classe les messages par catégories.<br>Il identifie et vérifie les destinataires du message afin d’orienter les messages vers les destinataires de messagerie mais il traite également la partie de notification de l’état de remise du message. Il va aussi identifier le chemin pour router les messages et effectuer la conversion du mail afin qu’il soit déposé dans la base de données.</p>
+<ul>
+  <li>La file d’attente de remise</li>
+</ul>
+<p>Contient les messages que le serveur n’a pas encore remis</p>
+<ul>
+  <li>Le pilote de banque d’information</li>
+</ul>
+<p>Récupère des messages dans les boites d’envoi de l’expéditeur puis les envoi au composant sélecteur HUB</p>
+<h3>Schéma du routage interne des messages</h3>
+<figure class="image"><img src="/images/schema_routage_message.png"></figure>
+<h2>Les connecteurs</h2>
+<h3>Présentation</h3>
+<p>Les connecteurs sont les points d’entrées et de sorties des flux de messages.<br>Ils permettent l’envoi et la réception des messages en interne comme en externe.</p>
+<p>Il existe deux types distincts de connecteur&nbsp;:</p>
+<ul>
+  <li>Les connecteurs de réception</li>
+  <li>Les connecteurs d’envoi</li>
+</ul>
+<p>Ils sont basés sur le protocole SMTP et des droits Active Directory</p>
+<h3>Les connecteurs de réception</h3>
+<p>Par défaut, il y en a cinq. Trois sont dédiés à la partie frontale et deux sont dédiés à la partie dorsale.<br>Ces connecteur sont tous la forme du nom du serveur + un type.</p>
+<ul>
+  <li>Connecteur «&nbsp;nom_du_serveur + par défaut&nbsp;» :</li>
+</ul>
+<p>Il accepte les connexions des serveurs de boites aux lettres exécutant le service de transport et de serveur EDGE</p>
+<ul>
+  <li>Connecteur «&nbsp;nom_du_serveur + proxy client&nbsp;» :</li>
+</ul>
+<p>Il accepte les connexions provenant de serveur frontaux. Généralement les messages sont envoyés à un serveur frontal en SMTP</p>
+<ul>
+  <li>Connecteur «&nbsp;nom_du_serveur + frontal par défaut&nbsp;» :</li>
+</ul>
+<p>Accepte les connexions provenant d’expéditeurs SMTP sur le port 25. Il s’agit généralement du point d’entrée «&nbsp;habituel&nbsp;» des messages à destination de l’organisation.</p>
+<ul>
+  <li>Connecteur «&nbsp;nom_du_serveur + frontal proxy sortant&nbsp;» :</li>
+</ul>
+<p>Accepte les messages provenant d’un connecteur d’envoi sur un serveur principal, le proxy frontal étant activé</p>
+<ul>
+  <li>Connecteur «&nbsp;nom_du_serveur + frontal client&nbsp;» :</li>
+</ul>
+<p>Accepte les connexions sécurisées lorsque le protocole TLS est appliqué (Transport Layer Security)<br>La portée de ces connecteurs se fait au niveau serveur.<br>Si des modifications sont à faire sur ces connecteurs il faudra les refaire sur chacun des serveurs afin d’avoir une configuration identique.<br>Ils écoutent les connexions entrantes.</p>
+<h3>Les types de connecteurs de réception</h3>
+<p>Le type de connecteur de réception détermine les groupes d’autorisations par défaut attribués au connecteur.<br>Il détermine également les différents mécanismes d’authentification disponibles.</p>
+<ul>
+  <li>Client</li>
+</ul>
+<p>Ce type est généralement utilisé pour les connexions clients qui n’utilisent pas Outlook. L’authentification TLS peut être utilisée.</p>
+<ul>
+  <li>Personnalisé</li>
+</ul>
+<p>Utilisé dans un cadre d’inter-forêt ou si l’organisation reçoit des messages provenant d’agent de transfert de messages SMTP</p>
+<ul>
+  <li>Interne</li>
+</ul>
+<p>Utilisé pour les communications entre les serveurs qui exécutent le service de transport ou entre des serveurs de boite aux lettres qui exécutent le service de transport et des agents de transfert tiers.</p>
+<ul>
+  <li>Internet</li>
+</ul>
+<p>Utilisé afin de recevoir des messages SMTP depuis Internet</p>
+<ul>
+  <li>Partenaire</li>
+</ul>
+<p>Utilisé pour des communications sécurisées avec un partenaire</p>
+<p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;Il est possible de modifier les paramètres de chacun de ces connecteurs mais il doit y en avoir qu’un seul par type.</mark></i></p>
+<p>Afin de configurer les connecteurs de réceptions, il faut se connecter à l’EAC puis cliquer sur «&nbsp;flux de messagerie&nbsp;» puis sur «&nbsp;connecteurs de réception&nbsp;». Les différents connecteurs seront visibles.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
