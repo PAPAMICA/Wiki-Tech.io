@@ -2,7 +2,7 @@
 title: Les templates
 description: Fonctionnement des templates
 published: true
-date: 2021-05-23T16:10:48.289Z
+date: 2021-05-23T16:13:22.948Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:06:01.242Z
@@ -69,12 +69,15 @@ dateCreated: 2021-05-23T16:06:01.242Z
 <h2>Création d’un Template d’hôte</h2>
 <p>Pour créer un Template d’hôte, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;hôte&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p>
 <figure class="image"><img src="/images/template_centreon-8.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3>Onglet «&nbsp;Host Configuration&nbsp;»</h3>
+<p>Pour commencer, indiquer un Nom et un Alias pour ce nouveau Template.<br>En cas de check à l’aide du protocole SNMP, indiquer le nom de la communauté utilisée et la version du protocole.<br>La ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration, ajoutant des options supplémentaires à chacun des hôtes qui sera affilié à ce Template.</p>
+<figure class="image"><img src="/images/template_centreon-9.png"></figure>
+<p>La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir une commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon. Dans le cas de cette procédure, nous n’allons pas utiliser cette option mais plutôt lier des Templates de service à ce Template d’hôte. Permettant à l’hôte d’hériter des commandes de chaque Template de service associé.</p>
+<figure class="image"><img src="/images/template_centreon-10.png"></figure>
+<p>Indiquer la période de supervision appliqué à ce Template.<br>Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p>
+<p>Pour rappel, quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>Si le statut de l'objet n'est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l'intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p>
+<p>Ensuite mettre «&nbsp;Active check&nbsp;» sur oui et «&nbsp;Passive check&nbsp;» sur non.</p>
+<figure class="image"><img src="/images/template_centreon-11.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
