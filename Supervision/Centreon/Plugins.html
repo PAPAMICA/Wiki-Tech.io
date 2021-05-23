@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:24:32.733Z
+date: 2021-05-23T16:27:15.493Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -42,10 +42,53 @@ dateCreated: 2021-05-23T16:18:38.911Z
 <figure class="image"><img src="/images/plugins_centreon-12.png"></figure>
 <p>Ce Template va permettre d’effectuer la supervision de la connectivité réseau à l’aide du ping pour les hôtes liés à ce Template. Toutefois il est nécessaire de le configurer selon ses besoins, le nombre de paquets envoyés ou les valeurs pour le «&nbsp;warning&nbsp;» et «&nbsp;critical&nbsp;» ne sont pas forcément celles que l’on souhaite. Il est également important de positionner correctement l’ensemble des périodes de check, des intervalles de supervision ainsi que les notifications comme indiqué précédemment dans cette procédure.</p>
 <p>En effet par défaut, tout est vide.</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/plugins_centreon-13.png"></figure>
+<h3>Personnalisation des Checks à partir de ceux des plugins</h3>
+<p>Une fois les plugins installés, un certain nombre de commandes et de Templates sont disponibles.<br>Nous avons vu comment les utiliser mais il est également possible si on le souhaite de ne pas utiliser les Templates prédéfinies et de recréer ses propres Templates à partir des commandes (checks) disponibles.<br>Pour cela il faudra procéder de la même façon que précédemment dans cette procédure.</p>
+<h2>Configuration des checks à partir des packs de plugins fournis par la communauté</h2>
+<p>Il existe de nombreux sites proposant des listes de plugins mis à disposition gratuitement.<br>Par exemple, le site «&nbsp;exchange Nagios&nbsp;» est plutôt bien fourni&nbsp;: <a href="https://exchange.nagios.org">https://exchange.nagios.org</a><br>Toute fois pour les besoins de cette procédure, nous allons prendre en exemple le plugin «&nbsp;centreon_plugins.pl&nbsp;».<br>Il s’agit d’un plugin écrit en perl qui est très complet et qui permet de mettre en place un très grand nombre de checks différents.</p>
+<h3>Installation de «&nbsp;centreon_plugins.pl&nbsp;»</h3>
+<p>Avant toute chose, si ce n’est pas déjà fait il faut installer la commande «&nbsp;git&nbsp;»&nbsp;</p>
+<pre><code class="language-plaintext">yum install git</code></pre>
+<p>Une fois la commande installée, se déplacer dans le répertoire /tmp puis télécharger le plugin depuis <a href="https://github.com/centreon/centreon-plugins">Github</a>&nbsp;à l’aide des commandes ci-dessous :</p>
+<pre><code class="language-plaintext">cd /tmp
+git clone https://github.com/centreon/centreon-plugins</code></pre>
+<p>Le répertoire «&nbsp;centreon-plugins&nbsp;» devrait être visible dans /tmp</p>
+<pre><code class="language-plaintext">ll
+drwxr-xr-x 17 root root 309 27 août&nbsp; 16:24 centreon-plugins</code></pre>
+<p>Déplacer le dossier dans /usr/lib/nagios/plugins/ puis lui ajouter les droits nécessaires pour son exécution par centreon&nbsp;</p>
+<pre><code class="language-plaintext">cp centreon-plugins /usr/lib/nagios/plugins/
+cd /usr/lib/nagios/plugins
+chmod 755 -Rf centreon-plugins
+chown -Rf centreon:centreon centreon-plugins</code></pre>
+<h3>Utilisation du plugin «&nbsp;centreon_plugins.pl&nbsp;»</h3>
+<p>Avant de commencer, voici le contenu du dossier&nbsp;:</p>
+<pre><code class="language-plaintext">drwxr-xr-x 47 centreon centreon&nbsp; 4096 16 juil. 12:47 apps
+drwxrwxr-x&nbsp; 4 centreon centreon&nbsp;   35 16 juil. 12:47 centreon
+-rwxr-xr-x&nbsp; 1 centreon centreon&nbsp;  989 16 juil. 12:34 centreon_plugins.pl
+-rwxr-xr-x&nbsp; 1 centreon centreon 15135 16 juil. 12:34 changelog
+drwxr-xr-x&nbsp; 7 centreon centreon&nbsp;   77 16 juil. 12:47 cloud
+drwxr-xr-x&nbsp; 2 centreon centreon&nbsp;   46 16 juil. 12:47 contrib
+drwxr-xr-x 10 centreon centreon&nbsp;  119 16 juil. 12:47 database
+drwxr-xr-x&nbsp; 4 centreon centreon&nbsp;   26 16 juil. 12:47 docs
+drwxr-xr-x&nbsp; 4 centreon centreon&nbsp;  107 16 juil. 12:47 example
+drwxr-xr-x 10 centreon centreon&nbsp;  110 16 juil. 12:47 hardware
+-rwxrwxr-x&nbsp; 1 centreon centreon&nbsp; 2752 20 août&nbsp; 10:24 host-email.php
+-rwxr-xr-x&nbsp; 1 centreon centreon 11357 16 juil. 12:34 LICENSE.txt
+drwxr-xr-x 63 centreon centreon&nbsp; 4096 16 juil. 12:47 network
+drwxr-xr-x&nbsp; 5 centreon centreon&nbsp;   48 16 juil. 12:47 notification
+drwxr-xr-x&nbsp; 8 centreon centreon&nbsp;   87 16 juil. 12:47 os
+-rwxr-xr-x&nbsp; 1 centreon centreon&nbsp; 3194 16 juil. 12:34 README.md
+-rwxrwxr-x&nbsp; 1 centreon centreon&nbsp; 5180 20 août&nbsp; 10:24 service-email.php
+drwxr-xr-x&nbsp; 3 centreon centreon&nbsp;   18 16 juil. 12:47 snmp_standard
+drwxr-xr-x 23 centreon centreon&nbsp;  305 16 juil. 12:47 storage</code></pre>
+<p><u>A savoir&nbsp;:</u></p>
+<ul>
+  <li>Les parties en bleues sont des dossiers contenant les informations que le plugin va utiliser lors des différents checks.</li>
+  <li>Les parties en vert sont des exécutables. Celui qui nous intéresse et que nous utiliserons est «&nbsp;centreon_plugins.pl&nbsp;».</li>
+</ul>
+<p>Précédemment nous avons vu que lorsque nous utilisions une commande, la variable «&nbsp;<i>$USER1$</i>&nbsp;» était utilisée.<br>Elle correspond au chemin suivant&nbsp;: <i>/usr/lib/nagios/plugins/</i> et permet de faire appel aux commandes se trouvant dans ce répertoire.<br>Par exemple&nbsp;: <i>/usr/lib/nagios/plugins/check_centreon_snmp_memory</i> en y associant les valeurs nécessaires au check permettra d’effectuer un check de la RAM sur le ou les appareils ciblés.</p>
+<pre><code class="language-plaintext">$USER1$/check_centreon_snmp_memory -H $HOSTADDRESS$ -C $ARG1$ -v $ARG2$ -w $ARG3$ -c $ARG4$</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
