@@ -2,7 +2,7 @@
 title: Les templates
 description: Fonctionnement des templates
 published: true
-date: 2021-05-23T16:13:22.948Z
+date: 2021-05-23T16:15:28.748Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:06:01.242Z
@@ -78,12 +78,18 @@ dateCreated: 2021-05-23T16:06:01.242Z
 <p>Pour rappel, quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>Si le statut de l'objet n'est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l'intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p>
 <p>Ensuite mettre «&nbsp;Active check&nbsp;» sur oui et «&nbsp;Passive check&nbsp;» sur non.</p>
 <figure class="image"><img src="/images/template_centreon-11.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<h3>Onglet «&nbsp;Notifications&nbsp;»</h3>
+<p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>Indiquer le compte du contact qui recevra les notifications par email<br>Cocher les cases correspondantes aux notifications que l’on souhaite recevoir. Pour cette procédure, tout est coaché sur «&nbsp;aucune&nbsp;».<br>Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p>
+<figure class="image"><img src="/images/template_centreon-12.png"></figure>
+<h3>Onglet «&nbsp;Relations&nbsp;»</h3>
+<p>Cet onglet va permettre de lier ce Template directement avec un ou plusieurs Templates de service.</p>
+<figure class="image"><img src="/images/template_centreon-13.png"></figure>
+<figure class="image"><img src="/images/template_centreon-14.png"></figure>
+<p>Il est également possible de configurer la hiérarchie «&nbsp;Parent&nbsp;» depuis cet onglet.<br>Une fois les informations configurées, cliquer sur sauvegarder</p>
+<h3>Onglet «&nbsp;Data PROCESSING »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires au traitement des données.<br>Il ne sera pas détaillé dans cette procédure.</p>
+<h3>Onglet «&nbsp;Extended Info »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires à la création de graphiques.<br>Il ne sera pas détaillé dans cette procédure.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
