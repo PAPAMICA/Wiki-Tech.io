@@ -2,7 +2,7 @@
 title: Configuration du routage des messages
 description: routage des messages
 published: true
-date: 2021-05-23T08:50:14.809Z
+date: 2021-05-23T08:56:49.684Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T08:36:59.190Z
@@ -134,13 +134,13 @@ dateCreated: 2021-05-23T08:36:59.190Z
 <p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;Il est possible de modifier les paramètres de chacun de ces connecteurs mais il doit y en avoir qu’un seul par type.</mark></i></p>
 <p>Afin de configurer les connecteurs de réceptions, il faut se connecter à l’EAC puis cliquer sur «&nbsp;flux de messagerie&nbsp;» puis sur «&nbsp;connecteurs de réception&nbsp;». Les différents connecteurs seront visibles.</p>
 <figure class="image"><img src="/images/eac-39.png"></figure>
-<p>Pour modifier un connecteur, faire un double clique dessus ou cliquer sur l’icône &nbsp;</p>
-<figure class="image"><img src="/images/icone_edit.png"></figure>
+<p>Pour modifier un connecteur, faire un double clique dessus ou cliquer sur l’icône d'édition</p>
 <figure class="image"><img src="/images/eac-40.png"></figure>
 <figure class="image"><img src="/images/eac-41.png"></figure>
 <p>Pour ajouter un connecteur cliquer sur l’icône <span class="text-huge"><strong>+</strong></span></p>
 <p>Il est également possible de créer un connecteur à l’aide de l’EMS</p>
 <pre><code class="language-plaintext">New-ReceiveConnector -Name «nom_du_connecteur» -Server «nom_FQDN_du_serveur_qui_aura_le_connecteur» -Usage «type_d’usage» -Bindings «adresse_IP_de_la_carte_réseau_d’écoute_du_serveur:numéro_du_port_d’écoute» -RemoteIPRange «adresses_IP_autorisées_à_remettre_des_messages_sur_ce_connecteur» -MaxMessageSize «taille_du_message_en_Mb»</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-7.png"></figure>
 <p>Pour mettre le droit «&nbsp;anonyme&nbsp;» sur le connecteur</p>
 <pre><code class="language-plaintext">Set- ReceiveConnector -Identity «nom_du_serveur\nom_du_connecteur» -PermissionGroups «AnonymousUsers»</code></pre>
@@ -186,6 +186,7 @@ dateCreated: 2021-05-23T08:36:59.190Z
   <li>Faire une recherche d’un expéditeur vers un destinataire</li>
 </ul>
 <pre><code class="language-plaintext">Get-MessageTrackinglog -resultSize Unlimited -sender:«email_de_l’expéditeur» -recipient:«email_du_destinataire» -subject «nom_du_sujet»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Faire une recherche pour tous les suivis de messages d’un expéditeur vers un destinataire en filtrant certains éléments sur une période donnée. Le résultat sera sauvegardé dans un fichier csv.</li>
 </ul>
