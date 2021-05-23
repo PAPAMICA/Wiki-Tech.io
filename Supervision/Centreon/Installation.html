@@ -2,7 +2,7 @@
 title: Installation
 description: 
 published: true
-date: 2021-05-23T13:49:39.980Z
+date: 2021-05-23T13:51:33.733Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:15:47.901Z
@@ -67,10 +67,16 @@ dateCreated: 2021-05-20T15:15:47.901Z
 <figure class="image"><img src="/images/install_centreon-20.png"></figure>
 <h1>Mise à jour du système d’exploitation</h1>
 <p>Afin de mettre à jour le système d’exploitation il faut se connecter au serveur Centreon par SSH.</p>
-<figure class="image image_resized" style="width:25.28%;"><img src="/images/putty.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/putty.png"></figure>
+<p>Pour cela, utiliser le logiciel PuTTY, disponible à cette adresse&nbsp;</p>
+<p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a></p>
+<p>Une fois connecté taper la commande suivante&nbsp;:</p>
+<pre><code class="language-plaintext">yum update</code></pre>
+<figure class="image"><img src="/images/update_centreon-1.png"></figure>
+<p>Valider en tapant «&nbsp;y&nbsp;» (yes) à chaque fois que nécessaire</p>
+<figure class="image"><img src="/images/update_centreon-2.png"></figure>
+<p>Si ce n’est pas demandé après avoir effectué les mises à jour, il est recommandé de faire un redémarrage du serveur</p>
+<pre><code class="language-plaintext">reboot</code></pre>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
