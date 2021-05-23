@@ -2,7 +2,7 @@
 title: La sécurité
 description: La sécurité dans Exchange 2016
 published: true
-date: 2021-05-23T13:15:52.467Z
+date: 2021-05-23T13:20:00.570Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T13:12:30.902Z
@@ -75,15 +75,48 @@ dateCreated: 2021-05-23T13:12:30.902Z
 </ul>
 <p>Ce sont des groupes universels de sécurité personnalisables sur lesquels on applique des rôles Exchange.<br>Ils ont une portée dite «&nbsp;étendue&nbsp;» de type «&nbsp;normale&nbsp;» ou «&nbsp;exclusive&nbsp;».</p>
 <h3>Le principe de fonctionnement</h3>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<figure class="image"><img src="/images/schema_rbac.png"></figure>
+<p>On décide quels sont les droits à appliquer à un groupe (ou rôle) mais également qui va faire partie de ce groupe.<br>Toute personne étant intégré à un groupe se verra alors attribuer les droits choisis pour ce dernier.</p>
+<figure class="image"><img src="/images/schema_rbac-2.png"></figure>
+<h3>Configuration</h3>
+<p><u>Via l’EAC</u></p>
+<p>RBAC est configurable dans la section «&nbsp;autorisations&nbsp;»</p>
+<figure class="image"><img src="/images/eac-63.png"></figure>
+<p>Il est possible de créer de nouveaux rôles en cliquant sur l’icône <span class="text-huge"><strong>+</strong></span><br>Il est possible de faire un double clic sur un rôle pour y ajouter d’autres rôles ou utilisateurs&nbsp;</p>
+<figure class="image"><img src="/images/eac-64.png"></figure>
+<p>Il y a beaucoup de possibilité de configuration dans de nombreux paramètres.</p>
+<p><u>Via l’EMS</u></p>
+<ul>
+  <li>Création d’un rôle permettant d’avoir les droits sur un rôle déjà existant (permet de ne pas modifier les rôles par défaut)</li>
+</ul>
+<pre><code class="language-plaintext">New-ManagementRole «nom_du_rôle» -Parent «rôle_existant_par_défaut»</code></pre>
+<ul>
+  <li>Création d’un groupe de rôle et attribution à un utilisateur</li>
+</ul>
+<pre><code class="language-plaintext">New-RoleGroup -Name «nom_du_groupe» -Roles «nom_du_rôle_de_management» -Members «adresse_email_du_membre»</code></pre>
+<h2>Politiques d’accès mobile</h2>
+<h3>Présentation</h3>
+<p>La politique d’accès mobile peut s’appliquer sous plusieurs formes&nbsp;:</p>
+<ul>
+  <li>Activation ou désactivation de ActiveSync sur les boites aux lettres</li>
+  <li>Règles d’accès aux périphériques mobiles et quarantaine</li>
+</ul>
+<p>Cela permet d’appliquer un comportement en fonction du type de mobile.<br>Ce comportement peut être du type «&nbsp;accepter&nbsp;», «&nbsp;refuser&nbsp;» ou «&nbsp;mettre en quarantaine&nbsp;»</p>
+<ul>
+  <li>Stratégie de boite aux lettres de périphériques mobiles</li>
+</ul>
+<p>Cela permet de gérer différentes exigences pour autoriser l’accès mobile comme par exemple&nbsp;:</p>
+<ul>
+  <li>Un mot de passe et sa complexité</li>
+  <li>Le chiffrement du mobile</li>
+  <li>La réinitialisation du mobile en cas d’échec</li>
+  <li>Autoriser ou non des fonctionnalités ou services du téléphone (Bluetooth, partage de connexion&nbsp;, etc.)</li>
+</ul>
+<h3>Regles d’accès mobile et quarantaine</h3>
+<p>La configuration peut se faire à la fois via l’EAC ou l’EMS</p>
+<p><u>Via l’EAC&nbsp;</u></p>
+<p>Dans la section «&nbsp;mobile&nbsp;» puis dans l’onglet «&nbsp;Accès au périphérique mobile&nbsp;».</p>
+<figure class="image"><img src="/images/eac-65.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
