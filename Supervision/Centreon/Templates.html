@@ -1,0 +1,121 @@
+<!--
+title: Les templates
+description: Fonctionnement des templates
+published: true
+date: 2021-05-23T16:06:01.242Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-23T16:06:01.242Z
+-->
+
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
+<h1>Les Templates&nbsp;</h1>
+<h2>Qu’est-ce qu’un Template</h2>
+<p>Un «&nbsp;Template&nbsp;» ou «&nbsp;modèle&nbsp;» est une pré-configuration de paramètres d’un objet (hôte, service, etc.) qui pourra être utilisé pour le configurer. Le principal avantage est de pouvoir définir des valeurs par défaut pour certains objets afin d’accélérer la création d’objets similaires. Lors de la création d’un Template, le nom est le seul paramètre obligatoire, tous les autres sont optionnels.</p>
+<p>Les avantages&nbsp;:</p>
+<ul>
+  <li>Définition simplifiée des éléments</li>
+  <li>Pas de redondance d’information</li>
+  <li>Facilité d’ajout de nouvelles ressources</li>
+  <li>Configurations prédéfinies assimilées à un « catalogue d’indicateurs »</li>
+  <li>Les modèles peuvent hériter d’autres modèles</li>
+</ul>
+<p>Il existe trois types de modèles :</p>
+<ul>
+  <li>Les modèles d’hôtes</li>
+  <li>Les modèles de services</li>
+  <li>Les modèles de contacts</li>
+</ul>
+<p>Un hôte ou un Template d’hôte peut hériter une configuration depuis un ou plusieurs Template modèles d’hôtes.</p>
+<h3>Les Templates de services (pour les commandes)</h3>
+<p>Un service ou un Template de service ne peut hériter que d’un seul Template de service.<br>L’héritage dans ce cas est dit de type «&nbsp;Père-Fils&nbsp;».<br>Il s’agit d’une prédéfinition de paramètres à “n” niveaux. L’objet hérite de son modèle qui peut lui-même hériter de son modèle.<br>Si le fils redéfini un paramètre déjà existant dans un modèle «&nbsp;père&nbsp;» alors la modification écrase le paramètre défini dans les modèles de niveaux supérieurs.<br>Dans le cas contraire, les paramètres de l’objet viennent compléter le paramétrage «&nbsp;père&nbsp;».<br>Les paramètres au plus proche de l’objet sont prioritaires.</p>
+<p>Schéma explicatif&nbsp;:&nbsp;</p>
+<figure class="image"><img src="/images/schema_template.png"></figure>
+<h3>Les Templates d’hôtes</h3>
+<p>Un hôte ou un Template d’hôte peut hériter d’un ou plusieurs Template d’hôtes.&nbsp;<br>Cet héritage peut être :</p>
+<ul>
+  <li>De type associatif (addition de plusieurs modèles d’hôte)</li>
+  <li>De type père-fils</li>
+</ul>
+<p>Un héritage dit «&nbsp;associatif&nbsp;» consiste à additionner plusieurs modèles au sein d’un même objet afin d’additionner l’ensemble des paramètres disponibles.</p>
+<figure class="image"><img src="/images/schema_template-2.png"></figure>
+<p>Toutefois si un hôte hérite de plusieurs Template d’hôtes et qu’un même paramètre est défini sur plusieurs Template, alors le modèle d’hôte situé au-dessus des autres modèles est prioritaire par rapport à ses ascendants.</p>
+<p>Schéma explicatif&nbsp;:&nbsp;</p>
+<figure class="image"><img src="/images/schema_template-3.png"></figure>
+<h2>Création d’un Template de service (pour les commandes)</h2>
+<p>Pour créer un Template de service, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;Services&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p>
+<figure class="image"><img src="/images/template_centreon-1.png"></figure>
+<h3>Onglet «&nbsp;Informations générales&nbsp;»</h3>
+<p>Commencer par indiquer un Alias et un Nom pour ce nouveau Template.<br>Comme indiqué précédemment, la ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration.<br>La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir la commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon.</p>
+<figure class="image"><img src="/images/template_centreon-2.png"></figure>
+<p>Lors de la création de la commande, la valeur des arguments n’avait pas été indiqué.<br>Il est possible de l’indiquer soit dans la partie «&nbsp;arg&nbsp;» du Template soit directement lors de la création d’un hôte.<br>Pour la création de cette procédure, les arguments ont été définis dans le Template.&nbsp;<br>Il est intéressant de constater que l’on peut également retrouver la description des arguments qui ont été ajoutés à la création de la commande directement dans le Template.</p>
+<figure class="image"><img src="/images/template_centreon-3.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
