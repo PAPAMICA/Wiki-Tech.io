@@ -2,7 +2,7 @@
 title: Supervision
 description: 
 published: true
-date: 2021-05-23T14:22:10.202Z
+date: 2021-05-23T15:42:16.728Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T19:52:01.685Z
@@ -20,7 +20,7 @@ dateCreated: 2021-04-28T19:52:01.685Z
 ## Centreon
 - [👁️‍🗨️ Présentation *Qu'est ce qu'est Centreon ?*](/Supervision/Centreon/Présentation)
 - [🌀 Installation *Mise en place d'un serveur Centreon*](/Supervision/Centreon/Installation)
-- [👥 Comptes et Groupes 🚧 *Gestion des comptes et des groupes dans Centreon*](/Supervision/Centreon/Gestion-Comptes-Groupes)
+- [👥 Comptes et Groupes *Gestion des comptes et des groupes dans Centreon*](/Supervision/Centreon/Gestion-Comptes-Groupes)
 - [🕹️ Les commandes 🚧 *Contrôler son serveur de supervision en ligne de commande*](/Supervision/Centreon/Commandes)
 - [🛢️ Les templates 🚧 *Comprendre,  créer et utiliser les modèles*](/Supervision/Centreon/Templates)
 - [💎 Les plugins 🚧 *Comprendre et utiliser les plugins*](/Supervision/Centreon/Plugins)
