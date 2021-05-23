@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:18:38.911Z
+date: 2021-05-23T16:22:23.210Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -17,17 +17,22 @@ dateCreated: 2021-05-23T16:18:38.911Z
 <p>L’installation de ces deux paquets est très simple.<br>En fonction de la version de Centreon utilisée, il sera nécessaire soit d’installer en ligne de commande ces deux packages soit directement de les installer depuis l’interface graphique.</p>
 <p>Pour commencer se rendre dans la section «&nbsp;Administration&nbsp;» puis «&nbsp;Extensions&nbsp;» et enfin «&nbsp;Modules&nbsp;».<br>Vérifier si les deux modules sont présents.&nbsp;</p>
 <figure class="image"><img src="/images/plugins_centreon-5.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>S’ils n’y sont pas, il faudra installer les packages en ligne de commande avant de poursuivre.<br>Pour effectuer l’installation des packages en ligne de commande, se connecter sur le serveur Centreon avec l’utilisateur root en SSH et de taper la commande suivante.</p>
+<pre><code class="language-plaintext">yum install centreon-pp-manager</code></pre>
+<p>Cette commande téléchargera Centreon Plugin Pack Manager et également Centreon License Manager en tant que dépendance.<br>Une fois ces deux paquets téléchargés et présent dans «&nbsp;Modules&nbsp;», il suffira de les installer.<br>Le premier module à installer et activer sera Centreon License Manager&nbsp;: cliquer sur le nom du module puis sur «&nbsp;install moduel&nbsp;»</p>
+<figure class="image"><img src="/images/plugins_centreon-6.png"></figure>
+<p>Puis il faudra installer et activer Centreon Plugin Pack Manager&nbsp;: cliquer sur le nom du module puis sur «&nbsp;install moduel&nbsp;»</p>
+<figure class="image"><img src="/images/plugins_centreon-7.png"></figure>
+<p>Lorsque les deux modules seront installés, il sera désormais possible de se rendre dans la section «&nbsp;Configuration&nbsp;» puis «&nbsp;Plugin packs&nbsp;» pour trouver les 6 plugins gratuits proposés. Si on s’inscrit sur le site de Centreon, 5 autres plugins packs deviennent gratuits, les autres étant payant.</p>
+<p>Il existe plus de 150 plugins packs disponibles dans l’offre IMP.</p>
+<figure class="image"><img src="/images/plugins_centreon-8.png"></figure>
+<h3>Activation des modules selon les besoins</h3>
+<p>Comme indiqué précédemment, suite à l’installation des deux modules, des packs de plugins sont maintenant disponible.<br>Pour activer les plugins, se rendre dans «&nbsp;Configuration&nbsp;» puis «&nbsp;Plugin packs&nbsp;», puis cliquer sur le plugin à installer.<br>Dans le cadre de cette procédure, le plugin de check SNMP de Linux sera installé&nbsp;</p>
+<figure class="image"><img src="/images/plugins_centreon-9.png"></figure>
+<p>Cliquer sur le plugin pour afficher les détails&nbsp;</p>
+<figure class="image"><img src="/images/plugins_centreon-10.png"></figure>
+<p>Pour l’installer il suffit de cliquer sur l’icone <span class="text-huge"><strong>+</strong></span><br>Patienter pour que le plugin s’installe automatiquement.<br>Une fois installé l’icône du plugin affiche une marque, confirmant l’installation&nbsp;</p>
+<figure class="image"><img src="/images/plugins_centreon-11.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
