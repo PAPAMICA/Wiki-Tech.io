@@ -2,7 +2,7 @@
 title: Comptes et Groupes
 description: 
 published: true
-date: 2021-05-23T14:34:18.966Z
+date: 2021-05-23T14:36:13.411Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T15:18:13.895Z
@@ -43,10 +43,12 @@ dateCreated: 2021-05-20T15:18:13.895Z
 <figure class="image"><img src="/images/acl_centreon-6.png"></figure>
 <p>Autre exemple avec le groupe «&nbsp;Webmaster&nbsp;» qui n’aura pas un full access.<br>Contrairement au menu admin réseau, dans la section «&nbsp;Accessible Pages&nbsp;» nous n’allons pas tout cocher pour tout autoriser.<br>Il est conseillé pour des raisons de facilité de gestions en cas de changement d’autorisations, de créer un menu par catégorie permettant un accès (home, monitoring, etc.)<br>Procéder à la création du menu de la même manière que précédemment.<br>Remplir à nouveau les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p>
 <figure class="image"><img src="/images/acl_centreon-7.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Dans la section «&nbsp;Accessible Pages&nbsp;», dérouler la catégorie concernée par le menu et cocher les cases correspondantes aux différentes autorisations. Cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-8.png"></figure>
+<p>Reproduire cette configuration pour chacune des catégories souhaitées.</p>
+<figure class="image"><img src="/images/acl_centreon-9.png"></figure>
+<h4>Les ressources accessibles</h4>
+<p>La configuration des différentes pages accessibles étant faite, il reste maintenant la gestion des ressources accessibles.<br>Les groupes d'accès «&nbsp;DSI&nbsp;» et «&nbsp;admin réseau&nbsp;» ont accès à toutes les ressources.<br>Il est donc possible d'utiliser le groupe de ressource «&nbsp;All Resources&nbsp;» déjà existant pour y ajouter les deux groupes.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
