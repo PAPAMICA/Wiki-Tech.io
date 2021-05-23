@@ -2,7 +2,7 @@
 title: Configuration du réseau
 description: Gestion du réseau avec ESXi
 published: true
-date: 2021-05-23T15:37:41.986Z
+date: 2021-05-23T15:38:41.115Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-22T15:27:10.964Z
@@ -25,5 +25,8 @@ dateCreated: 2021-05-22T15:27:10.964Z
 <p>On crée ensuite un groupe de ports.</p>
 <figure class="image"><img src="/images/groupe-ports-esxi1.png"></figure>
 <figure class="image"><img src="/images/groupe-ports-esxi.png"></figure>
+<blockquote>
+  <p><strong>Attention :</strong> choisissez bien le vSwitch créé à l'étape précédente.</p>
+</blockquote>
 <p>On a désormais un vSwitch pour un réseau de machines virtuelles. Ce réseau isolera vos machines virtuelles de votre réseau local, mais n'auront pas d'accès Internet. Pour cela, vous pouvez mettre en place un pfSense et configurer des règles de pare-feu pour bloquer l'accès à votre réseau local.</p>
 <p>&nbsp;</p>
