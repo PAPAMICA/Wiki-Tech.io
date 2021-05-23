@@ -2,7 +2,7 @@
 title: Centreon - Présentation
 description: Qu’est ce qu’est Centreon ?
 published: true
-date: 2021-05-20T13:33:36.359Z
+date: 2021-05-23T13:31:55.799Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-20T13:33:33.735Z
@@ -10,54 +10,55 @@ dateCreated: 2021-05-20T13:33:33.735Z
 
 <figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
 <h1>Présentation</h1>
-<p>Centreon est un outil de supervision et de monitoring possédant de nombreuses fonctionnalités.&nbsp;</p>
-<p>C'est un programme modulaire qui se décompose en plusieurs parties :&nbsp;</p>
+<p>Centreon est un outil de supervision et de monitoring possédant de nombreuses fonctionnalités.<br>C'est un programme modulaire qui se décompose en plusieurs parties :</p>
 <ul>
-  <li>L'ordonnanceur qui se charge d'ordonnancer les tâches de supervision&nbsp;</li>
-  <li>Une interface Web&nbsp;</li>
+  <li>L'ordonnanceur qui se charge d'ordonnancer les tâches de supervision</li>
+  <li>Une interface Web</li>
   <li>Les plugins</li>
 </ul>
-<p>Il permet de connaître à l’aide de son interface web et en temps réel l’état des périphériques supervisés, comme par exemple :&nbsp;</p>
+<p>Il permet de connaître à l’aide de son interface web et en temps réel l’état des périphériques supervisés, comme par exemple&nbsp;:</p>
 <ul>
-  <li>Utilisation de la RAM - Utilisation du processeur&nbsp;</li>
-  <li>L’espace disque&nbsp;</li>
-  <li>La communication sur le réseau&nbsp;</li>
-  <li>Surveillance des services&nbsp;</li>
-  <li>Notification par email&nbsp;</li>
-  <li>Journalisation des évènements&nbsp;</li>
-  <li>Etc.&nbsp;</li>
+  <li>Utilisation de la RAM</li>
+  <li>Utilisation du processeur</li>
+  <li>L’espace disque</li>
+  <li>La communication sur le réseau</li>
+  <li>Surveillance des services</li>
+  <li>Notification par email</li>
+  <li>Journalisation des évènements</li>
+  <li>Etc.</li>
 </ul>
-<p>La liste des possibilités est longue.&nbsp;</p>
-<p>Centreon fonctionne sur un principe de « check » à l’aide du protocole SNMP ou encore de « check » à l’aide d’un agent installé sur l'hôte ciblé. L’agent Windows est « NSClient » et l’agent Linux est « Xinetd ».&nbsp;<br>Il est également possible de faire des checks par « rebond » via le protocole SSH.&nbsp;</p>
+<p>La liste des possibilités est longue.<br>Centreon fonctionne sur un principe de «&nbsp;check&nbsp;» à l’aide du protocole SNMP ou encore de «&nbsp;check&nbsp;» à l’aide d’un agent installé sur l'hôte ciblé. L’agent Windows est «&nbsp;NSClient&nbsp;» et l’agent Linux est «&nbsp;Xinetd&nbsp;».<br>Il est également possible de faire des checks par «&nbsp;rebond&nbsp;» via le protocole SSH.</p>
+<figure class="image"><img src="/images/centreon-1.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <h1>&nbsp;Architectures</h1>
 <h2>Architecture simple</h2>
-<p>Une architecture est appelée simple lorsqu’on associe tous les modules de Centreon dans un unique serveur.&nbsp;</p>
-<p>A noter toutefois que ce type d’architecture comporte de nombreux inconvénients :&nbsp;</p>
+<p>Une architecture est appelée simple lorsqu’on associe tous les modules de Centreon dans un unique serveur.<br>A noter toutefois que ce type d’architecture comporte de nombreux inconvénients&nbsp;:&nbsp;</p>
 <ul>
-  <li>En cas de perte du serveur, on perd toute vues de supervision possibles car tous les modules sont dans le même serveur.&nbsp;</li>
-  <li>Les agents envoyant les informations vers un point unique du réseau, la bande passante risque de saturer très rapidement en fonction du nombre d'hôtes supervisés dans l'infrastructure.&nbsp;</li>
+  <li>En cas de perte du serveur, on perd toute vues de supervision possibles car tous les modules sont dans le même serveur.</li>
+  <li>Les agents envoyant les informations vers un point unique du réseau, la bande passante risque de saturer très rapidement en fonction du nombre d'hôtes supervisés dans l'infrastructure.</li>
 </ul>
-<p>Exemple d’un schéma d’une architecture dite simple :</p>
+<p>Exemple d’un schéma d’une architecture dite simple&nbsp;</p>
+<figure class="image"><img src="/images/centreon-2.png"></figure>
 <h2>Architecture distribuée</h2>
-<p>Une architecture distribuée se compose en général d’un serveur de supervision et d’un ou plusieurs « poller ».&nbsp;</p>
-<p>Elle permet notamment :&nbsp;</p>
+<p>Une architecture distribuée se compose en général d’un serveur de supervision et d’un ou plusieurs « poller ».&nbsp;<br>Elle permet notamment :&nbsp;</p>
 <ul>
-  <li>De répartir la charge sur plusieurs serveurs de supervision&nbsp;</li>
+  <li>De répartir la charge sur plusieurs serveurs de supervision</li>
   <li>De limiter l’impact du flux de supervision sur les interconnexions de réseaux</li>
-  <li>L’isolation de réseau.&nbsp;</li>
+  <li>L’isolation de réseau.</li>
 </ul>
-<p>Une relation de master-slave peut être mis en place sur la base de données mais aussi sur le Central.</p>
-<p>&nbsp;Exemple d’un schéma d’une architecture dite distribuée :&nbsp;</p>
+<p>Une relation de master-slave peut être mis en place sur la base de données mais aussi sur le Central.<br>Exemple d’un schéma d’une architecture dite distribuée :&nbsp;</p>
+<figure class="image"><img src="/images/centreon-3.png"></figure>
 <h1>Prérequis</h1>
 <ul>
   <li>Des connaissances en système d’exploitation GNU/Linux</li>
-  <li>Des connaissances en système d’exploitation Windows&nbsp;</li>
+  <li>Des connaissances en système d’exploitation Windows</li>
   <li>Des connaissances en réseau, sur les protocoles réseau et leurs numéros de ports.</li>
-  <li>Des connaissances sur les services Windows et Linux.&nbsp;</li>
+  <li>Des connaissances sur les services Windows et Linux.</li>
   <li>Du matériel réseau compatible avec le protocole SNMP</li>
   <li>Des connaissances sur le protocole SNMP</li>
   <li>Un ou plusieurs serveurs remplissant les prérequis matériels disponibles sur le site de Centreon</li>
   <li>Un serveur mail fonctionnel pour recevoir des notifications</li>
-  <li>Des connaissances sur le fonctionnement des MIP&nbsp;</li>
-  <li>Une connexion Internet fonctionnelle pour les checks distant&nbsp;</li>
+  <li>Des connaissances sur le fonctionnement des MIP</li>
+  <li>Une connexion Internet fonctionnelle pour les checks distant</li>
 </ul>
