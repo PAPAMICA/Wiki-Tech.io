@@ -2,7 +2,7 @@
 title: Les plugins
 description: Les commandes à l'aide de plugins
 published: true
-date: 2021-05-23T16:23:47.107Z
+date: 2021-05-23T16:24:32.733Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T16:18:38.911Z
@@ -38,9 +38,10 @@ dateCreated: 2021-05-23T16:18:38.911Z
 <p>Pour utiliser les différents checks inclus dans les packs de modules il faut absolument garder en tête la notion d’héritage qui a été précédemment expliqué.<br>En effet, les commandes, Templates de services et Templates d’Hôtes sont déjà liés les uns aux autres lors de l’installation d’un pack.</p>
 <p><u>Petit rappel&nbsp;:&nbsp;</u></p>
 <figure class="image"><img src="/images/checks_centreon.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Généralement, lors de l’installation d’un pack, cette notion de hiérarchie et d’héritage ne sera pas retouchée mais plutôt utilisée.<br>Il sera toutefois nécessaire de customiser les valeurs des «&nbsp;warning&nbsp;», «&nbsp;critical&nbsp;» et autres valeurs à vérifier.<br>Pour les besoins de cette procédure voici un exemple.<br>Lors de l’’installation des packs «&nbsp;Linux SNMP&nbsp;» ou «&nbsp;Windows SNMP&nbsp;», le Template de service «&nbsp;Base-Ping-LAN&nbsp;» devient accessible.</p>
+<figure class="image"><img src="/images/plugins_centreon-12.png"></figure>
+<p>Ce Template va permettre d’effectuer la supervision de la connectivité réseau à l’aide du ping pour les hôtes liés à ce Template. Toutefois il est nécessaire de le configurer selon ses besoins, le nombre de paquets envoyés ou les valeurs pour le «&nbsp;warning&nbsp;» et «&nbsp;critical&nbsp;» ne sont pas forcément celles que l’on souhaite. Il est également important de positionner correctement l’ensemble des périodes de check, des intervalles de supervision ainsi que les notifications comme indiqué précédemment dans cette procédure.</p>
+<p>En effet par défaut, tout est vide.</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
