@@ -2,7 +2,7 @@
 title: Configuration de la gestion de la conformité
 description: Gestion de la conformité
 published: true
-date: 2021-05-23T12:51:51.898Z
+date: 2021-05-23T12:53:23.983Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-23T12:41:05.085Z
@@ -101,8 +101,40 @@ dateCreated: 2021-05-23T12:41:05.085Z
 <pre><code class="language-plaintext">New-TransportRule -Name «nom_de_la_règle» -SenderADAttributeContainWords «DisplayName:nom_du_groupe_de_users_AD» -SentToScope «nom_du_périmètre_d’action» -RejectMessageEnhancedSatusCode «N°_d’erreur» -RejectMessageReasonText «text_explicatif_du_rejet»</code></pre>
 <p>Exemple&nbsp;:</p>
 <figure class="image"><img src="/images/ems-12.png"></figure>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<ul>
+  <li>Pour afficher toutes les règles de transport&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">Get-TransportRule</code></pre>
+<ul>
+  <li>Pour toutes les désactiver&nbsp;</li>
+</ul>
+<pre><code class="language-plaintext">Get-TransportRule | Disable-TransportRule</code></pre>
+<ul>
+  <li>Pour toutes les activer</li>
+</ul>
+<pre><code class="language-plaintext">Get-TransportRule | Enable-TransportRule</code></pre>
+<h2>Les règles de journalisation</h2>
+<h3>Présentation</h3>
+<p>Les règles de journalisation existent depuis Exchange 2007.<br>Elles permettent d’enregistrer les échanges de messages et leurs contenus.<br>Elles ont été conçues afin de respecter un cadre légal et éventuellement faire des diagnostiques.<br>Ces règles se basent sur les règles de transport.</p>
+<h3>Le fonctionnement</h3>
+<p>Les règles de journalisation sont applicables à un ou plusieurs destinataires tels que&nbsp;:</p>
+<ul>
+  <li>Les boites aux lettres Exchange</li>
+  <li>Les groupes de distribution</li>
+  <li>Les utilisateurs de messagerie</li>
+  <li>Les contacts</li>
+</ul>
+<p>Elles s’appliquent à un ou plusieurs périmètres tels que&nbsp;:</p>
+<ul>
+  <li>Les messages internes seulement (Scope Interne – Internal Scope)</li>
+  <li>Les messages externes seulement (Scope Externe – External Scope)</li>
+  <li>Tous les messages (Scope Global – Global Scope)</li>
+</ul>
+<p>Le résultat d’une règle est toujours envoyé à un destinataire de messagerie</p>
+<h3>Configuration des règles</h3>
+<p><u>Via l’EAC</u></p>
+<p>Dans la partie «&nbsp;Gestion de la conformité&nbsp;» puis dans l’onglet «&nbsp;règles de journal&nbsp;»</p>
+<figure class="image"><img src="/images/eac-49.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
