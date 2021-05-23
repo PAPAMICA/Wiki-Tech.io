@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-23T14:20:37.166Z
+date: 2021-05-23T20:47:00.234Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-28T15:15:54.158Z
@@ -118,7 +118,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [📍 Les hôtes 🚧 *Qu'est-ce qu'un hôte et comment les ajouter ?*](/Supervision/Centreon/Hotes)
 - [📧 Notifications mails 🚧 *Configurer les notifications mails et les personnaliser*](/Supervision/Centreon/Notifications-Mails)
 - [💘 Déployer la configuration 🚧 *Démarrer la supervision à l'aide de Centreon !*](/Supervision/Centreon/Deployer-Configuration)
-- [📊 Vues personnalisées 🚧 *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Notifications-Mails)
+- [📊 Vues personnalisées 🚧 *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Vues-Personnalisees)
 {.links-list}
 # Grafana
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Grafana/Installation)
