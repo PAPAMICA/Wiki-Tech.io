@@ -1,0 +1,25 @@
+<!--
+title: Installation
+description: Mise en place de Grafana sous Docker !
+published: true
+date: 2021-05-20T14:34:24.294Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-02T08:23:06.971Z
+-->
+
+<h1>Présentation</h1>
+<h1>Installation</h1>
+<h1>Configuration</h1>
+<h2>Ajouter une base de données</h2>
+<h2>Connexion avec Keycloak</h2>
+<pre><code class="language-plaintext">- GF_AUTH_GENERIC_OAUTH_ENABLED=true
+- GF_AUTH_GENERIC_OAUTH_SCOPES=email
+- GF_AUTH_GENERIC_OAUTH_NAME=&lt;NAME&gt;
+- GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP=true
+- GF_AUTH_GENERIC_OAUTH_CLIENT_ID=grafana
+- GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET=&lt;CLIENT_SECRET&gt;
+- GF_AUTH_GENERIC_OAUTH_AUTH_URL=https://&lt;URL&gt;/auth/realms/&lt;REALMS&gt;/protocol/openid-connect/auth
+- GF_AUTH_GENERIC_OAUTH_TOKEN_URL=https://&lt;URL&gt;/auth/realms/&lt;REALMS&gt;/protocol/openid-connect/token
+- GF_AUTH_GENERIC_OAUTH_API_URL=https://&lt;URL&gt;/auth/realms/&lt;REALMS&gt;/protocol/openid-connect/userinfo
+- GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH=contains(roles[*], 'admin') &amp;&amp; 'Admin' || contains(roles[*], 'editor') &amp;&amp; 'Editor' || 'Viewer'</code></pre>
