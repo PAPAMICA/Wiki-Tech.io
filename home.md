@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-24T15:05:51.920Z
+date: 2021-05-24T15:32:48.912Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -100,7 +100,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 # Sécurité
-- [🔑 Chiffrement 🚧 *Du certificat SSL au chiffrement des données*](/Sécurité/home#chiffrement)
+- [🔑 Chiffrement *Du certificat SSL au chiffrement des données*](/Sécurité/home#chiffrement)
 - [💥 Pentest 🚧 *S'introduire dans des systèmes soit disant protégés*](/Sécurité/home#pentest)
 - [🛡️ Protection 🚧 *Se protéger des attaques informatiques*](/Sécurité/home#protection)
 {.links-list}
