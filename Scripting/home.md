@@ -2,13 +2,13 @@
 title: Scripting
 description: Les différents langage de scripts avec leurs tutoriels !
 published: true
-date: 2021-05-24T16:14:07.944Z
+date: 2021-05-24T16:29:07.602Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:30:53.085Z
 ---
 
-# Les bases
+# Les bases 
 
 # Bash
 - [🌀 Présentation *Découvrir Bash*](/Scripting/Bash/Présentation)
