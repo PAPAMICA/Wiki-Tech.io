@@ -2,24 +2,24 @@
 title: Certificat Wildcard - OVH
 description: Génération d'un certificat Wildcard pour tous vos sous-domaines d'OVH
 published: true
-date: 2021-05-23T16:11:47.814Z
+date: 2021-05-24T08:16:41.426Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-21T21:25:16.097Z
 -->
 
-<h1>Créer un certificat Wildcard avec Certbot et OVH</h1>
-<h1>Présentation</h1>
+<h1>Certificat Wildcard avec Certbot et OVH</h1>
+<h2>Présentation</h2>
 <p>La présence d'un certificat SSL sur vos sites web est essentiel pour la sécurisation des transferts de données. Celui-ci est nécessaire pour le bon fonctionnement du protocole HTTPS, remplaçant du protocole HTTP.</p>
 <p>Le protocole HTTPS (HyperText Transfer Protocol Secure) permet de sécuriser les échanges entre le serveur et le visiteur. On parle alors de communication chiffrée. Pour cela, HTTPS utilise un protocole de transport appelée SSL/TLS.</p>
 <p>Avec Let's Encrypt, il est possible de générer des certificats SSL pour un domaine ou sous-domaine, mais il est également possible de générer un certificat pour plusieurs sous-domaines. On appelle ces certificats des certificats Wildcard. Ils certifient des noms DNS du type *.exemple.fr.</p>
-<h1>Préparatifs</h1>
+<h2>Préparatifs</h2>
 <p>Dans mon cas, mon nom de domaine est enregistré sur OVH. Pour générer le Wildcard, nous allons utiliser un plugin de certbot, <a href="https://certbot-dns-ovh.readthedocs.io/en/stable/">dns-ovh</a>.</p>
-<h2>Installation des dépendances</h2>
+<h3>Installation des dépendances</h3>
 <pre><code class="language-plaintext">apt install python3-pip
 apt install certbot
 apt install python3-certbot-dns-ovh</code></pre>
-<h2>Création des accès à l'API d'OVH</h2>
+<h3>Création des accès à l'API d'OVH</h3>
 <p>On se rend sur <a href="https://api.ovh.com/createToken/">le site de l'API d'OVH</a> pour créer nos clés. Voici les droits à attribuer :</p>
 <ul>
   <li><code>GET /domain/zone/</code></li>
@@ -43,7 +43,7 @@ dns_ovh_application_secret = xxx
 dns_ovh_consumer_key = xxx</code></pre>
 <p>On attribue ensuite les droits sur ce fichier.</p>
 <pre><code class="language-plaintext">chmod 600 /root/.ovhapi</code></pre>
-<h1>Génération du certificat Wildcard</h1>
+<h2>Génération du certificat Wildcard</h2>
 <p>La génération du certificat s'effectue en une seule ligne de commande :</p>
 <pre><code class="language-plaintext">certbot certonly --dns-ovh --dns-ovh-credentials ~/.ovhapi -d exemple.fr -d *.exemple.fr</code></pre>
 <p>Pensez bien à remplacer “exemple.fr” par votre nom de domaine.</p>
