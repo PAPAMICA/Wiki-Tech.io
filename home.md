@@ -2,10 +2,10 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-24T07:50:07.269Z
+date: 2021-05-24T10:52:48.217Z
 tags: 
 editor: markdown
-dateCreated: 2021-04-28T15:15:54.158Z
+dateCreated: 2021-05-24T10:33:11.318Z
 ---
 
 ![wiki_-_tech_(2).gif](/wiki_-_tech_(2).gif =50%x)
@@ -20,11 +20,25 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 > Dernière mise à jours : 24/05/2021
 {.is-warning}
 
-> Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/Devenir-Contributeur) ❤️
+> Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/README) ❤️
 {.is-info}
 
  ---
  
+ # Apple
+- [📱 iOS / iPadOS 🚧 *Les astuces pour les OS Mobile de la pomme*](/Apple/iOS-iPadOS)
+- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple/MacOS)
+- [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple/Accessoires)
+{.links-list}
+ 
+ # Cloud
+- [☁️ OpenStack 🚧 *Un cloud opensource pouvant être autohébergé*](/Cloud/OpenStack)
+- [☁️ Jelastic 🚧 *Une technologie de cloud simple et efficace !*](/Cloud/Jelastic)
+- [☁️ AWS 🚧 *Comprendre et utiliser le cloud d'Amazon*](/Cloud/AWS)
+- [☁️ Azure 🚧 *Comprendre et utiliser le cloud de Microsoft*](/Cloud/Azure-Cloud)
+- [☁️ Google Cloud 🚧 *Comprendre et utiliser le cloud de Google*](/Cloud/Google-Cloud)
+{.links-list}
+
  # Docker
  ## Les outils de bases
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
