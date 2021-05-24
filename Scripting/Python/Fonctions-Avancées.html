@@ -1,0 +1,76 @@
+<!--
+title: Python - Fonctions avancées
+description: 
+published: true
+date: 2021-05-24T16:13:51.003Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-24T16:13:51.003Z
+-->
+
+<figure class="image image_resized" style="width:53.94%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png" alt="Fichier:Python logo and wordmark.svg — Wikipédia"></figure>
+<h1>Le constructeur</h1>
+<p>Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.</p>
+<p>Le nom de cette méthode est “ __init__ ” et prend en premier argument “ self ”, qui représente l'objet courant, qui est cours de création.</p>
+<p><i>Exemple : je crée un constructeur permettant de définir une personne&nbsp;</i></p>
+<pre><code class="language-python">class People:
+    def __init__(self,firstname,lastname,age):
+        self.firstname = firstname
+        self.lastname  = lastname
+        self.age       = age</code></pre>
+<p>Notre fonction init demande 3 paramètres, “ self ” étant un paramètre spécial.&nbsp;</p>
+<p>Grâce à ce constructeur il ne reste qu'à créer des objets :&nbsp;</p>
+<pre><code class="language-python">&gt;&gt;&gt; chuck = People("Chuck","Norris",81)</code></pre>
+<p>L'objet “chuck” a été créé, on peut désormais accéder à ses différents attributs, les lire et les modifier.</p>
+<pre><code class="language-python">&gt;&gt;&gt; chuck.firstname
+'Chuck'
+&gt;&gt;&gt; chuck.firstname = "Chucky"
+&gt;&gt;&gt; chuck.firstname
+'Chucky'</code></pre>
+<h1>Le représentateur</h1>
+<p>Reprenons l'exemple précédent. Lorsque l'on souhaite afficher notre objet, la valeur retournée n'est pas tout à fait celle attendue.</p>
+<pre><code class="language-python">&gt;&gt;&gt; chuck
+&lt;__main__.People object at 0x03C12820&gt;</code></pre>
+<p>Nous allons donc utiliser un représentateur pour mettre en forme l'objet.</p>
+<p>Cette méthode se définit “ __repr__ ”.</p>
+<pre><code class="language-python">class People:
+    def __init__(self,firstname,lastname,age):
+        self.firstname = firstname
+        self.lastname  = lastname
+        self.age       = age
+
+    def __repr__(self):
+        return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)</code></pre>
+<p>&nbsp;</p>
+<pre><code class="language-python">&gt;&gt;&gt; repr(chuck)
+'Nom : Norris , Prenom : Chuck , Age : 81'</code></pre>
+<h1>Le décorateur</h1>
+<p>Le décorateur est une fonction permettant de modifier le comportement d'autres fonctions, évitant la répétition de code. Il est appelé par “ @nom_décoraeur ”.</p>
+<pre><code class="language-python">def title_decorator(function):
+    def wrapper(*args, **kwargs):
+        print("*"*30)
+        print("-"*30)
+        function(*args, **kwargs)
+        print("-"*30)
+        print("*"*30)
+    return wrapper
+
+@title_decorator
+def title(titre):
+    print(titre)
+
+&gt;&gt;&gt; titre = "Ceci est mon texte décoré"
+&gt;&gt;&gt; title(titre)
+******************************
+------------------------------
+Ceci est mon texte décoré
+------------------------------
+******************************</code></pre>
+<p>Ce décorateur permet simplement de mettre en forme un titre. Mais le décorateur, critiqué pour son nom ne définissant pas assez clairement sa fonction, peut avoir bien d'autres usages.</p>
+<p>Par exemple, dans le cadre du <u>développement web</u>, les décorateurs sont très utilisés. Typiquement, pour les pages nécessitant une authentification, le décorateur “ @login_required ” du framework Django est très utile.</p>
+<pre><code class="language-python">from django.contrib.auth.decorators import login_required
+
+@login_required
+def my_page(request):
+    ...</code></pre>
+<p>Tout comme “ @login_required ”, beaucoup de décorateurs sont déjà développés, nécessitant un simple import.</p>
