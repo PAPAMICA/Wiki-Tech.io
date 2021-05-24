@@ -1,0 +1,178 @@
+<!--
+title: PowerShell - Les bases
+description: Les bases pour bien débuter dans PowerShell
+published: true
+date: 2021-05-24T16:22:45.768Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-05-24T16:22:45.768Z
+-->
+
+<figure class="image image_resized" style="width:35.82%;"><img src="https://www.seekpng.com/png/full/831-8318055_february-5-windows-powershell-logo.png" alt="February 5 @ - Windows Powershell Logo | Full Size PNG Download | SeekPNG"></figure>
+<h1>Les commandes ou applets de commande (cmdlet)</h1>
+<p>Elles sont composées d’une paire de la forme “verbe ”-“nom” destiné à en faciliter la mémorisation.</p>
+<p>exemple :</p>
+<pre><code class="language-plaintext">Get-Service</code></pre>
+<p>get = verbe</p>
+<p>service = nom</p>
+<p>elles peuvent être accompagnées dans certains cas de paramètres et de valeurs. Par exemple avec la commande:</p>
+<pre><code class="language-plaintext">New-Item -type file -Path c:\test.txt</code></pre>
+<p>New-Item = la commande</p>
+<p>-type = un paramètre</p>
+<p>file = une valeur</p>
+<p>-Path = un paramètre</p>
+<p>c:\test.txt = une valeur</p>
+<p>petite astuce, vous pouvez lister tout les verbes que PowerShell utilise avec la commande <code>Get-verb</code>. faites un essai…</p>
+<p>simple non?</p>
+<p>&nbsp;</p>
+<h1>Le pipeline</h1>
+<p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” (<strong>AltGr</strong> + <strong>6</strong>) permet d'exécuter plusieurs commandes à la suite.</p>
+<p>Exemple :&nbsp;</p>
+<pre><code class="language-plaintext">Get-Process | Sort-Object CPU</code></pre>
+<p>Dans ce cas précis, la commande <code>Sort-Object</code> tri les processus par utilisation de Cpu</p>
+<p>&nbsp;</p>
+<h1>L' aide</h1>
+<p>Sous PowerShell la commande <code>Get-Help</code> permet d'afficher la fonction et des exemples d'une commande.</p>
+<pre><code class="language-plaintext">Get-Help  &lt;la commande&gt;</code></pre>
+<p>&nbsp;</p>
+<p>Mais avant d'utiliser cette commande il faut faire une mise à jour de l'aide de PowerShell avec la commande</p>
+<pre><code class="language-plaintext"> Update-Help</code></pre>
+<p>&nbsp;</p>
+<p>Cette commande <code>Get-Help</code> permet d'avoir une aide de manière très générale si on souhaite obtenir plus d'informations on peut ajouter l'option <code>-detailed</code></p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -detailed</code></pre>
+<p>&nbsp;</p>
+<p>On peut aussi lister des exemples d'utilisation d'une commande avec l'option <code>-examples</code></p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -examples</code></pre>
+<p>&nbsp;</p>
+<p>Une dernière option de <code>Get-help</code> vous permet d'afficher l'aide complète de la commande <code>-Full</code></p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -Full</code></pre>
+<p>Il arrive parfois que l'aide renvoyée sous PowerShell ne soit pas complète malgré un <code>Update-Help.</code></p>
+<p>Pour cela il y a possibilité d'aller consulter directement l'aide en ligne avec l'option <code>-online</code>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help &lt;la commande&gt; -online</code></pre>
+<p>&nbsp;</p>
+<p>Si vous voulez de l'aide sur la syntaxe d'une commande, PowerShell indique par “<strong>[ ]</strong>” si le paramètre est obligatoire.</p>
+<p>Par exemple si vous voulez de l'aide sur la syntaxe de commande <code>Get-ChildItem</code>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help Get-ChildItem</code></pre>
+<p>On peut constater dans la capture que certains paramètres sont obligatoires. Vous pouvez également voir tout en bas les liens connexes à cette commande.</p>
+<figure class="image image_resized" style="width:88.82%;"><img src="/capture4.png"></figure>
+<p>&nbsp;</p>
+<p>La commande <code>Get-Help</code> permet également de rechercher une commande si, par exemple, vous souhaitez trouver une commande qui gère les services.</p>
+<pre><code class="language-plaintext">Get-Help service</code></pre>
+<p>Voici ce que renvoie la commande, on peut voir les commandes qui contiennent le mot service.</p>
+<figure class="image image_resized" style="width:86.32%;"><img src="/capture1.png"></figure>
+<p>&nbsp;</p>
+<p>Une autre fonction de l'aide permet d'avoir des informations sur un sujet précis.</p>
+<p>Pour lister ces sujets utilisez l'option <code>about_*</code>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help about_*</code></pre>
+<p>Par exemple, si vous voulez de l'aide au sujet de pipeline</p>
+<pre><code class="language-plaintext">Get-Help about_pipeline</code></pre>
+<p>Voici ce que renvoie la commande</p>
+<figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Lister les méthodes et les propriétés</h1>
+<p>Maintenant que nous avons vu, comment était composée une commande, le pipeline et l'aide, il est temps, comme je vous l'ai dis dans le premier chapitre, que tout était objet dans PowerShell et de découvrir plus en détail ce que sont les propriétés les méthodes. C'est à cet instant, que nous alors voir quelle commande va nous permettre de lister tout cela.</p>
+<p><code>Get-Member</code> est la commande qui nous dis quels sont les propriétés et les méthodes que nous pouvons appliquer à un objet.</p>
+<p>un exemple concret est plus parlant:</p>
+<figure class="image"><img src="/get-member.png"></figure>
+<p>(Vous remarquerez que j'utilise la commande <code>Get-Service</code>, que je récupère toutes les méthodes et propriétés en passant par une seconde commande <code>Get-Member</code> et pour enchainer ces commandes j'opte pour un pipeline)</p>
+<p>C'est à partir de ces éléments qu'à présent on peut savoir quelles sont les propriétés et les méthodes d'un service.&nbsp;</p>
+<p>Par exemple: Pause, Stop, Refresh sont des méthodes. Displayname, Servicename, ServiceType sont des propriétés.</p>
+<p>&nbsp;</p>
+<h1>Les providers</h1>
+<p>Dans PowerShell, &nbsp;les providers permettent d'accéder par exemple à la base de registre, aux fichiers système, à l'environnement etc…</p>
+<ul>
+  <li>Base de Registre {HKLM, HKCU}</li>
+  <li>Alias {alias}</li>
+  <li>Environnement {env}</li>
+  <li>FileSystem {C,D,E,F}</li>
+  <li>Function {Function}</li>
+  <li>variable {Variable}</li>
+</ul>
+<p>Pour lister l'ensemble des providers, on utilise la commande</p>
+<pre><code class="language-plaintext">Get-Psdrive</code></pre>
+<p>L'avantage c'est que vous pouvez parcourir ces éléments comme si c'était un système de fichiers.</p>
+<p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans votre arborescence Windows avec un <code>cd c:</code>.</p>
+<figure class="image"><img src="/capture9.png"></figure>
+<p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base.</p>
+<p>Exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
+<figure class="image image_resized" style="width:74.13%;"><img src="/capture6.png"></figure>
+<p>&nbsp;</p>
+<p>Pour modifier la valeur d'une clé de registre ou des propriétés d'un élément je vous laisse consulter la commande</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Set-ItemProperty </code></pre>
+<h1>Récupérer des informations WMI et CIM</h1>
+<p>Wmi (Windows Management instrumentation),implémenté dans Windows, permet d'obtenir des informations sur un système et même à distance tel que la version du bios, le nom de la machine, le fabricant, le modèle, la date d'installation etc. Cela permet en quelques sortes d'interroger l'inventaire matériel et logiciel de votre système.&nbsp;</p>
+<p>Il existe deux commandes pour obtenir ces informations, mais on peut également invoquer des méthodes et des propriétés avec celle-ci, par exemple redémarrer un service, demander des infos sur vos disques et je vais vous montrez les différences qu'il peut exister.&nbsp;</p>
+<p>Pour finir je vous montrerai une astuce pour “fouiner” dans la liste des requêtes WMI et Des instances CIM.</p>
+<ol>
+  <li><code><u>Get-WmiObject</u></code>: À partir de PowerShell 3.0, cette applet de commande a été remplacée par <code>Get-CimInstance</code>. Elle n'est plus mise à jour sous PowerShell. Elle se base sur des requêtes WMI et le protocole RPC (Remote Procedure Call).</li>
+  <li><code><u>Get-CimInstance</u></code>: cette commande, se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole WInRM (<i>Windows Remote Management), couplé au protocole SOAP (Simple Object Acces Protocol).</i></li>
+</ol>
+<p>Par conséquent, je vous conseille vivement d'utiliser le plus souvent possible <code>Get-CimInstance</code>, il y a encore tout un tas de raisons de l'utiliser mais je ne vais pas m'attarder la dessus, ce n'est pas le but.</p>
+<p>Voyons comment utiliser ces commandes et obtenir des infos sur un système.</p>
+<p>Récupérons les information sur la mémoire vive.</p>
+<figure class="image"><img src="/get-ciminstance.png"></figure>
+<p>&nbsp;</p>
+<p>Vous remarquez que j'utilise l'option <code>-classname</code> ? et oui, en effet, toutes les requêtes WMI et les instances CIM sont regroupées par classe. Et c'est maintenant, que je vous montre comment je fais pour m'y retrouver dans toutes ces classes.</p>
+<p>C'est alors que nous vient en aide la commande <code>Get-Cimclass</code>.</p>
+<p>Si on exécute cette commande on voit que la liste est longue et que cela peut paraitre un peu compliqué, à première vue, et par forcément facile à lire. De plus, la commande renvoie l'ensemble des classes Wmi et Cim.</p>
+<p>&nbsp;Pour cela 3 solutions pour s'y retrouver:</p>
+<ul>
+  <li><u>renvoyer le tout dans un fichier texte,</u> le sauvegarder pour l'avoir sous la main puis un petit “<strong>ctrl + F”</strong> pour rechercher dans la liste.</li>
+</ul>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Get-CimClass | Out-File -path c:\classcim.txt</code></pre>
+<p>&nbsp;</p>
+<ul>
+  <li><u>renvoyer le tout dans un fichier Excel</u> et faire sa petite recherche à l'aide d'outils incorporés.</li>
+</ul>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Cimclass | Select-Object CimClassName | Export-Csv -Path C:\classescim.csv</code></pre>
+<p>&nbsp;</p>
+<p>Petite remarque: <code>Select-Object</code> permet de filtrer les informations de la commande en récupérant uniquement la partie CimclassName de <code>Get-CimClass</code></p>
+<p>&nbsp;</p>
+<ul>
+  <li><u>renvoyer le tout dans un GridView</u>, un outil, bien utile, fourni dans PowerShell .</li>
+</ul>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Cimclass | Out-GridView</code></pre>
+<p>&nbsp;</p>
+<p>J'en profite pour vous montrer le Gridview. &nbsp;</p>
+<figure class="image"><img src="/gridview.png"></figure>
+<p>&nbsp;</p>
+<p>C'est une Fenêtre, bien pratique, qui permet dans ce cas, de mettre directement sous forme de tableau, de filtrer ou de rechercher des éléments renvoyés par une commande.</p>
+<p>Vous commencez certainement à vous dire POWAAA!! &nbsp;puissant le truc…</p>
+<p>Connaitre à quoi servent toutes les requêtes WMI et les instances CIM serait un peu fou. C'est pourquoi, je vous renvoie vers ce <a href="https://docs.microsoft.com/fr-fr/windows/win32/cimwin32prov/cimwin32-wmi-providers">lien</a> pour en connaitre leurs utilités et en savoir un peu plus sur ces classes.</p>
+<p>Allez à vous de jouer! Essayez de récupérer des infos, comme par exemple sur la version de votre bios, la date de l'installation du système, le ou les disque(s) dur etc…</p>
+<h1>Les variables</h1>
+<p>Une variable PowerShell est un emplacement de stockage provisoire en mémoire destiné à recueillir une valeur, un objet ou une collection d’objets.<br>Les variables sont généralement nommées, et leurs noms sont toujours précédés d’un symbole “$“<br>Les variables sont automatiquement “typées” lors de l’affectation de valeur (si elles ne sont pas déclarées au préalable.)</p>
+<p>Exemple :</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">$variable = une valeur </code></pre>
+<p>&nbsp;</p>
+<p>Avant de rentrer dans le vif de ce sujet, il faut savoir que sous PowerShell, il existe deux type de variables spécifiques générées automatiquement.</p>
+<h2>Les variables automatiques</h2>
+<p>Elles stockent l'état de votre système et sont gérées par PowerShell. Elles ne peuvent pas être modifiées.</p>
+<p>Pour lister ces variables automatiques vous pouvez utiliser la commande:</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help about_automatic_variable</code></pre>
+<p>Voici quelques exemples que peuvent renvoyer ces variables</p>
+<figure class="image"><img src="/variable_automatique.png"></figure>
+<p>La première variable indique par un booléen si la dernière commande à bien été exécutée.</p>
+<p>la seconde renvoie à quel emplacement vous vous situez.</p>
+<h2>Les variables de préférences</h2>
+<p>Elles stockent la configuration de votre système et peuvent être modifiées.</p>
+<p>Pour lister ces variables utilisez la commande:</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Get-Help about_preference_variable</code></pre>
+<p>&nbsp;</p>
+<p>voici une des variables de préférences les plus connues pour la gestion des erreurs que nous verrons un peu plus tard.</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">$ErrorActionPreference</code></pre>
+<p>&nbsp;</p>
+<p>Dans cette capture vous pouvez voir les valeurs que nous pouvons lui attribuer:</p>
+<figure class="image"><img src="/erroraction.png"></figure>
+<p>&nbsp;</p>
+<p>Je vous invite à consulter ces variables qui peuvent être utiles dans certaines situations.</p>
+<p>&nbsp;</p>
