@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2021-05-24T12:25:56.488Z
+date: 2021-05-24T12:26:19.576Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T12:25:56.488Z
@@ -14,7 +14,7 @@ dateCreated: 2021-05-24T12:25:56.488Z
 - [🌀 Installation *Debian, Manjaro, CentOS, etc...*](/Conteneurisation/Docker/Installation)
 - [🖼️ Créer une image *L'utilisation de Dockerfile pour sa propre image*](/Conteneurisation/Docker/Image)
 - [🌐 Gestion du réseau *Comprendre la gestion du réseau de Docker*](/Conteneurisation/Docker/Réseau)
-- [✅ L'instruction Healthcheck *S'assurer du bon fonctionnement de ses containers*](/Docker/Heathcheck)
+- [✅ L'instruction Healthcheck *S'assurer du bon fonctionnement de ses containers*](/Conteneurisation/Docker/Heathcheck)
 - [💠 Docker-Compose *Déployer bien plus facilement ses containers*](/Conteneurisation/Docker/Docker-Compose)
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Conteneurisation/Docker/Commandes)
 {.links-list}
