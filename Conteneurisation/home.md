@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2021-05-24T12:26:19.576Z
+date: 2021-05-24T14:13:36.687Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T12:25:56.488Z
