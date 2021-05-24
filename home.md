@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-24T10:52:48.217Z
+date: 2021-05-24T11:22:17.931Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -32,13 +32,52 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
  
  # Cloud
-- [☁️ OpenStack 🚧 *Un cloud opensource pouvant être autohébergé*](/Cloud/OpenStack)
+- [☁️ OpenStack *Un cloud opensource pouvant être autohébergé*](/Cloud/OpenStack)
 - [☁️ Jelastic 🚧 *Une technologie de cloud simple et efficace !*](/Cloud/Jelastic)
 - [☁️ AWS 🚧 *Comprendre et utiliser le cloud d'Amazon*](/Cloud/AWS)
 - [☁️ Azure 🚧 *Comprendre et utiliser le cloud de Microsoft*](/Cloud/Azure-Cloud)
 - [☁️ Google Cloud 🚧 *Comprendre et utiliser le cloud de Google*](/Cloud/Google-Cloud)
 {.links-list}
 
+ # Conteneurisation
+ - [🐳 Docker *Découvrir la conteneurisation avec Docker*](/Conteneurisation/Docker)
+ - [💠 Kubernetes 🚧 *Aller plus loins avec de la scalabilité et de la haute disponibilité*](/Conteneurisation/Kubernetes) 
+ - [💙 SelfHosted *Déployer des application et des services avec Docker*](/Conteneurisation/SelfHosted)
+{.links-list}
+
+# Domotique
+- [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique/Jeedom)
+- [🍎 Homebridge 🚧 *Ajouter la compatibilité avec HomeKit*](/Domotique/Homebridge)
+- [🏠 HomeAssistant 🚧 *Un serveur de domotique simple*](/Domotique/HomeAssistant)
+{.links-list}
+
+# Gestionnaire de configurations
+- [⚙️ Ansible 🚧 *Un gestionnaire de configuration via SSH*](/Configuration/Ansible)
+- [⚙️ Puppet 🚧 *Un gestionnaire de configuration avec agents*](/Configuration/Puppet)
+- [⚙️ DSC 🚧 *Un gestionnaire de configuration pour Powershell*](/Configuration/DSC)
+- [⚙️ Terraform 🚧 *De l'infrastructure as code*](/Configuration/Terraform)
+{.links-list}
+ 
+# Linux
+- [🧪 Débutant *L'utilisation et les commandes de base*](/Linux/Débutant)
+- [⚗️ Avancé *Gestion des disques, sauvegardes, etc...*](/Linux/Avancé)
+- [🧬 Expert 🚧 *Pour aller encore plus loin*](/Linux/Expert)
+{.links-list}
+
+# Micosoft
+- [🖥️ Windows 7/10 *Trucs et astuces pour Windows 7 et 10*](/Microsoft/Windows-7-10)
+- [📟 Windows Server *Installation et gestion de services sous Windows Server*](/Microsoft/Windows-Server)
+- [🗜️ Azure 🚧 *Gérer son parc infomatique avec le cloud*](/Microsoft/Azure)
+- [📧 Exchange 2016 *Installer et configurer un serveur Exchange*](/Microsoft/Exchange-2016)
+- [📌 Microsoft 365 🚧 *Comprendre et utiliser les services de Microsoft 365*](/Microsoft/Microsoft-365)
+{.links-list}
+
+# NAS
+- [❤️ Synology / XPEnology *Installation, configuration et astuces des sous DSM*](/NAS/Synology)
+- [📁 QNAP 🚧 *Trucs et astuces pour les NAS QNAP*](/NAS/QNAP)
+- [📂 TrueNAS 🚧 *Un système de stockage Opensource et complet*](/NAS/TrueNAS)
+- [📂 UNRAID 🚧 *DUu(/NAS/TrueNAS)
+{.links-list}
  # Docker
  ## Les outils de bases
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Docker/Présentation)
