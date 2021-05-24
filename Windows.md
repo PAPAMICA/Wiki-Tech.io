@@ -2,7 +2,7 @@
 title: Windows
 description: 
 published: true
-date: 2021-05-23T21:17:23.357Z
+date: 2021-05-24T07:49:16.876Z
 tags: 
 editor: markdown
 dateCreated: 2021-04-29T06:38:46.149Z
@@ -33,7 +33,7 @@ dateCreated: 2021-04-29T06:38:46.149Z
 - [🌀 Présentation de l'administration *Administration via EAC et EMS*](/Exchange-2016/Présentation-administration)
 - [🌀 Configuration des boîtes aux lettres *Configuration BAL*](/Exchange-2016/Configuration-Boites-aux-lettres)
 - [🌀 Configuration des accès clients *Configuration CAS*](/Exchange-2016/Configuration-Acces-Clients)
-- [🌀 Configuration du routage des messages *routage des messages*](/Exchange-2016/Configuration-Routage-Messages)
+- [🌀 Configuration du routage des messages *Routage des messages*](/Exchange-2016/Configuration-Routage-Messages)
 - [🌀 Configuration de la gestion de la conformité *Gestion de la conformité*](/Exchange-2016/Configuration-Gestion-Conformité)
 - [🌀 La sécurité *La sécurité dans Exchange 2016*](/Exchange-2016/Sécurité)
 {.links-list}
