@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-24T16:28:28.756Z
+date: 2021-05-24T17:29:38.249Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -64,7 +64,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [🧬 Expert 🚧 *Pour aller encore plus loin*](/Linux/home#expert)
 {.links-list}
 
-# Micosoft
+# Microsoft
 - [🖥️ Windows 7/10 *Trucs et astuces pour Windows 7 et 10*](/Microsoft/home#windows-7-10)
 - [📟 Windows Server *Installation et gestion de services sous Windows Server*](/Microsoft/home#windowsserver)
 - [🗜️ Azure 🚧 *Gérer son parc infomatique avec le cloud*](/Microsoft/home#azure)
