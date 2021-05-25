@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-24T17:29:38.249Z
+date: 2021-05-25T11:58:42.159Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -17,7 +17,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.is-success}
 
 > 🚧  Wiki-Tech est encore en cours de migration. Certaines documentations ne sont pas encore disponibles.
-> Dernière mise à jours : 24/05/2021
+> Dernière mise à jours : 25/05/2021
 {.is-warning}
 
 > Si vous souhaitez rédiger sur Wiki-Tech, c'est possible ! Jetez un oeil à [Devenir-Contributeur](/README) ❤️
