@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-25T15:53:20.717Z
+date: 2021-05-25T16:16:25.688Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -92,7 +92,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>Pour lister l'ensemble des providers, on utilise la commande</p>
 <pre><code class="language-plaintext">Get-Psdrive</code></pre>
 <p>L'avantage c'est que vous pouvez parcourir ces éléments comme si c'était un système de fichiers.</p>
-<p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm :</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans votre arborescence Windows avec un <code>cd c:</code>.</p>
+<p>Exemple, si vous voulez parcourir la base de registre machine &nbsp;il suffit de taper <code>cd hklm:</code> et vous vous retrouvez dans la base de registre et la parcourir comme si c'était un filesystem et revenir dans votre arborescence Windows avec un <code>cd c:</code>.</p>
 <figure class="image"><img src="/capture9.png"></figure>
 <p>Vous avez ensuite la possibilité de créer ou de consulter des entrées dans la base de registre comme si c'était un filesystem et utiliser les commandes de base.</p>
 <p>Exemple avec la commande <code>Get-ChildItem</code> ,vous pouvez consulter toute la base de registre de votre hkey local machine</p>
@@ -160,7 +160,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>La première variable indique par un booléen si la dernière commande à bien été exécutée.</p>
 <p>la seconde renvoie à quel emplacement vous vous situez.</p>
 <h2>Les variables de préférences</h2>
-<p>Elles stockent la configuration de votre système et peuvent être modifiées.</p>
+<p>Elles stockent la configuration de votre système et peuvent être modifiées. De manière très générale, elle permettent de définir le comportement de PowerShell dans certaines situations.</p>
 <p>Pour lister ces variables utilisez la commande:</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-Help about_preference_variable</code></pre>
@@ -172,7 +172,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>Dans cette capture vous pouvez voir les valeurs que nous pouvons lui attribuer:</p>
 <figure class="image"><img src="/erroraction.png"></figure>
 <p>&nbsp;</p>
-<p>Je vous invite à consulter ces variables qui peuvent être utiles dans certaines situations.</p>
+<p>Je vous invite à consulter ces variables automatiques et de préférences qui peuvent être utiles dans certaines situations.</p>
 <p>&nbsp;</p>
 <h2>Lister les variables</h2>
 <p>&nbsp;</p>
@@ -182,4 +182,5 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image"><img src="/get-variable.png"></figure>
 <p>&nbsp;</p>
 <p>Vous comprenez, à présent pourquoi je vous ai parlé des variables automatiques et de préférences avant. En effet, la commande <code>Get-Variable</code> vous les liste toutes par noms et indique quelle(s) valeur(s) est stockée(s).Je met volontairement un “(s)” car elles peuvent parfois en contenir plusieurs. Lorsque nous verrons comment créer nos propres variables, elles viendront s'ajouter à cette liste.</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
