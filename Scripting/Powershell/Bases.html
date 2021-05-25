@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-25T19:57:15.927Z
+date: 2021-05-25T19:58:29.094Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -127,11 +127,11 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <pre><code class="language-plaintext">Set-ItemProperty </code></pre>
 <h1>Récupérer des informations WMI et CIM</h1>
 <p>Wmi (Windows Management instrumentation),implémenté dans Windows, permet d'obtenir des informations sur un système et même à distance tel que la version du bios, le nom de la machine, le fabricant, le modèle, la date d'installation etc. Cela permet en quelques sortes d'interroger l'inventaire matériel et logiciel de votre système.&nbsp;</p>
-<p>Il existe une commande pour obtenir ces informations, mais on peut également invoquer des méthodes et des propriétés avec celle-ci, par exemple, redémarrer un service, demander des infos sur vos disques.</p>
+<p>Il existe une commande pour obtenir ces informations, mais on peut également invoquer des méthodes et des propriétés avec celle-ci, par exemple, redémarrer un service.</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Get-CimInstance</code></pre>
 <p>&nbsp;</p>
-<p><code><u>Get-CimInstance</u></code> est commande, qui se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole WInRM (<i>Windows Remote Management), couplé au protocole SOAP (Simple Object Acces Protocol).</i></p>
+<p><code><u>Get-CimInstance</u></code> est une commande, qui se base sur des instances CIM (Common Information Model ) , WS-MAN (WS-Management) et le protocole WInRM (<i>Windows Remote Management), couplé au protocole SOAP (Simple Object Acces Protocol).</i></p>
 <p>Voyons comment utiliser cette commande et obtenir des infos sur un système.</p>
 <p>Récupérons les information sur la mémoire vive.</p>
 <figure class="image"><img src="/get-ciminstance.png"></figure>
