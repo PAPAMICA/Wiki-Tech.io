@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-25T18:44:07.127Z
+date: 2021-05-25T19:55:59.823Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -24,9 +24,6 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>c:\test.txt = une valeur</p>
 <p>petite astuce, vous pouvez lister tout les verbes que PowerShell utilise avec la commande <code>Get-verb</code>. faites un essai…</p>
 <p>simple non?</p>
-<p>&nbsp;</p>
-<h1>Les Alias</h1>
-<p>&nbsp;</p>
 <h1>Le pipeline</h1>
 <p>Le pipeline, symbolisée par le caractère “<strong>|</strong>” (<strong>AltGr</strong> + <strong>6</strong>) permet d'exécuter plusieurs commandes à la suite.</p>
 <p>Exemple :&nbsp;</p>
@@ -72,6 +69,31 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image image_resized" style="width:84.46%;"><img src="/capture3.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<h1>Les Alias</h1>
+<p>Dans PowerShell, les alias permettent de créer des abréviations de commande. Je m'explique, vous connaissez certainement un alias que vous exécuter dans votre invite de commande. NON?</p>
+<p>et <code>cd</code> c'est &nbsp;un alias de <code>change-directory</code>.</p>
+<p>Et bien avec PowerShell vous avez la possibilité de les lister, les supprimer les modifier et même de les créer…</p>
+<p>&nbsp;</p>
+<p>Pour les lister :</p>
+<pre><code class="language-plaintext">Get-Alias</code></pre>
+<figure class="image"><img src="/get-alias.png"></figure>
+<p>&nbsp;</p>
+<p>modifier un alias:</p>
+<pre><code class="language-plaintext">Set-Alias </code></pre>
+<p>&nbsp;</p>
+<p>&nbsp;le créer :</p>
+<pre><code class="language-plaintext">new-alias &lt;des paramètres&gt;</code></pre>
+<p>&nbsp;</p>
+<p>le supprimer :</p>
+<pre><code class="language-plaintext">Remove-Alias</code></pre>
+<p>&nbsp;</p>
+<p>exporter des alias :</p>
+<pre><code class="language-plaintext">Export-Alias</code></pre>
+<p>&nbsp;</p>
+<p>et à contrario les importer:</p>
+<pre><code class="language-plaintext">Import-Alias</code></pre>
+<p>&nbsp;</p>
+<p>Pour paramétrer ces commandes, si vous le désirez, je vous invite à utiliser <code>Get-Help</code>.</p>
 <h1>Lister les méthodes et les propriétés</h1>
 <p>Maintenant que nous avons vu, comment était composée une commande, le pipeline et l'aide, il est temps, comme je vous l'ai dis dans le premier chapitre, que tout était objet dans PowerShell et de découvrir plus en détail ce que sont les propriétés les méthodes. C'est à cet instant, que nous alors voir quelle commande va nous permettre de lister tout cela.</p>
 <p><code>Get-Member</code> est la commande qui nous dis quels sont les propriétés et les méthodes que nous pouvons appliquer à un objet.</p>
