@@ -2,10 +2,10 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-05-20T14:34:17.187Z
+date: 2021-05-25T15:05:38.728Z
 tags: 
 editor: ckeditor
-dateCreated: 2021-05-01T18:33:26.866Z
+dateCreated: 2021-05-24T10:34:27.557Z
 -->
 
 <figure class="image image_resized" style="width:45.21%;"><img src="https://linuq.org/_media/projets/portainer_io.png" alt="Les couches logicielles utilisées [LinuQ: Logiciels libres à Québec]"></figure>
@@ -76,8 +76,7 @@ networks:
 <p>&nbsp;</p>
 <h2>Connexion à un serveur externe avec l'agent</h2>
 <p>Il est possible de contrôler un autre serveur sur lequel Docker est installé grâce à un agent Portainer qui se déploie lui aussi dans un container en une simple commande :</p>
-<pre><code class="language-plaintext">docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/v
-olumes:/var/lib/docker/volumes portainer/agent</code></pre>
+<pre><code class="language-plaintext">docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent</code></pre>
 <p>Pour ajouter le serveur à notre Portainer, rendez vous dans “<i><strong>Settings &gt; Endpoints &gt; + Add endpoint</strong></i>” :</p>
 <figure class="image image_resized" style="width:94.7%;"><img src="/image_2021-05-03_213224.png"></figure>
 <p>Et configurez votre serveur de la sorte :&nbsp;</p>
