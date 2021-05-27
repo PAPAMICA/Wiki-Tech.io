@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-27T19:35:34.907Z
+date: 2021-05-27T19:39:11.359Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -245,13 +245,13 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image"><img src="/read_conca.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>Vous remarquez que <code>$mot = read-host</code> attends et ensuite va stocker ce que vous écrivez dans le prompt. On peut ensuite le concaténer.</p>
+<p>Vous remarquez que <code>$mot = Read-Host</code> attends et ensuite va stocker ce que vous écrivez dans le prompt. On peut ensuite le concaténer.</p>
 <p>Je reviens un instant sur un cas particulier lorsque vous faites appel à une propriété ou une méthode de variable il y a une syntaxe un peux spécifique pour la concaténer.</p>
 <p>deux solutions, à vous de choisir il n'y a pas forcement de règle puisqu'il n'y pas une seule et unique façon de faire un script :</p>
 <figure class="image"><img src="/toupperr-1.png"></figure>
 <p>Ici je stocke ma variable demandée dans le prompt avec <code>Read-host</code> puis je vais appliquer une transformation à ma variable avec <code>$mot = $mot.ToUpper()</code> en la réaffectant</p>
-<p>il suffit de faire un simple concaténation pour finir</p>
+<p>il suffit de faire un simple concaténation pour obtenir le résultat voulu.&nbsp;</p>
 <p>l'autre méthode c'est :&nbsp;</p>
 <p>&nbsp;</p>
 <figure class="image"><img src="/toupperr-2.png"></figure>
-<p>Dans ce cas j'applique en même temps la transformation de ma chaine de caractère mais en stipulant de récupérer la valeur mot avec $ puis les parenthèses et d'appliquer la transformation à la variable <code>$mot</code></p>
+<p>Dans ce cas j'applique en même temps la transformation de ma chaine de caractère &nbsp;contenu dans ma variable <code>$mot,</code> en stipulant de récupérer la valeur dans $mot avec $ puis les parenthèses et d'appliquer la transformation avec $mot.ToUper() à la variable <code>$mot</code>.</p>
