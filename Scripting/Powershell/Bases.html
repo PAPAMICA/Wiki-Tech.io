@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-26T20:15:19.575Z
+date: 2021-05-27T04:30:17.072Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -213,15 +213,15 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>A partir de cet état, il est possible de lui apporter des modifications de manière automatique via PowerShell.</p>
 <p>Prenons, par exemple cette variable</p>
 <pre><code class="language-plaintext">$Unmot = papamica</code></pre>
-<p>Il y possibilité sous PowerShell d'appliquer une méthode à cette variable. Par exemple, je peut demander à PowerShell de stocker le mot <code>papamica</code> en majuscule. Pour ce faire je vais déclarer ma variable, puis faire appel a celle-ci par <strong>$nom et ajouter un point</strong> et lister l'ensemble des méthodes et propriétés de celle ci.</p>
+<p>Il y possibilité sous PowerShell d'appliquer une méthode à cette variable. Par exemple, je peux demander à PowerShell de stocker le mot <code>papamica</code> en majuscule. Pour ce faire, je vais déclarer ma variable, puis faire appel à celle-ci par <strong>$nom et ajouter un point</strong> et lister l'ensemble des méthodes et propriétés de celle-ci.</p>
 <p>Un exemple est plus parlant sous Visual Studio Code:</p>
 <figure class="image"><img src="/variable_manip.png"></figure>
 <p>&nbsp;</p>
-<p>on peut voir que Visual Studio Code me renvoie toute les méthodes et propriétés que je peux appliquer à une variable.</p>
-<p>Si je veux mettre la valeur de ma variable en majuscule il me suffit de choisir <code>.ToUpper()</code>.</p>
+<p>On peut voir que Visual Studio Code me renvoie toutes les méthodes et propriétés que je peux appliquer à une variable.</p>
+<p>Si vous voulez mettre la valeur de votre variable en majuscule il me suffit de choisir <code>.ToUpper()</code>.</p>
 <figure class="image"><img src="/variable_manip2.png"></figure>
 <p>&nbsp;</p>
-<p>Remarque: Sur la première ligne vous constaterai que j'utilise <strong>“ " </strong>pour que PowerShell considère les éléments qui se trouve à l'intérieur comme une chaine de caractères. Sur la seconde ligne j'écris <code>$unnom</code> pour que la valeur de ma variable s'affiche dans le prompt qui se trouve dans la fenêtre du bas.</p>
+<p>Remarque: Sur la première ligne, vous constaterez que j'utilise <strong>“ " </strong>pour que PowerShell considère les éléments qui se trouve à l'intérieur comme une chaine de caractères. Sur la seconde ligne, j'écris <code>$unnom</code> pour que la valeur de ma variable s'affiche dans le prompt qui se trouve dans la fenêtre du bas.</p>
 <p>Vous pouvez également utiliser <code>Get-Member</code> pour lister les méthodes et propriétés d'une variable avec:</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">$mavariable | Get-Member </code></pre>
