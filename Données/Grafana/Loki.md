@@ -2,7 +2,7 @@
 title: Loki
 description: 
 published: true
-date: 2021-05-28T11:26:11.038Z
+date: 2021-05-28T11:28:19.760Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:08.382Z
@@ -46,7 +46,7 @@ Evidemment, si vous ne l'aviez pas encore deviné, nous allons déployer Loki da
 
 Voici le docker-compose.yml en question : 
 
-```diff
+```yaml
 version: "2"
 
 networks:
@@ -87,13 +87,13 @@ Il est très simple d'envoyer les logs Docker directement à Loki : un plugin es
 
 ### Installer le plugin
 
-```plaintext
+```bash
 docker plugin install grafana/loki-docker-driver:latest --alias loki --grant-all-permissions
 ```
 
 Pour vérifier l'installation du plugin, vous pouvez utiliser la commande `docker plugin ls` :
 
-```plaintext
+```bash
 docker plugin ls
 ID                  NAME         DESCRIPTION           ENABLED
 ac720b8fcfdb        loki         Loki Logging Driver   true
@@ -101,7 +101,7 @@ ac720b8fcfdb        loki         Loki Logging Driver   true
 
 ### Mettre à jour le plugin
 
-```plaintext
+```bash
 docker plugin disable loki --force
 docker plugin upgrade loki grafana/loki-docker-driver:latest --grant-all-permissions
 docker plugin enable loki
@@ -114,7 +114,7 @@ Plusieurs options existent : 
 
 1.  A chaque lancement de container avec `docker run` :
 
-```plaintext
+```yaml
 docker run --log-driver=loki \
     --log-opt loki-url="<URL_LOKI>" \
     --log-opt loki-retries=5 \
@@ -124,7 +124,7 @@ docker run --log-driver=loki \
 
  2. En ajoutant dans vos docker-compose :
 
-```plaintext
+```yaml
     logging:
       driver: loki
       options:
@@ -136,7 +136,7 @@ docker run --log-driver=loki \
 
 Pour cela vous devez changer le fichier `daemon.json` de Docker (dans `/etc/docker` sur Linux) en ajoutant ceci : 
 
-```plaintext
+```json
 {
     "debug" : true,
     "log-driver": "loki",
@@ -149,7 +149,7 @@ Pour cela vous devez changer le fichier `daemon.json` de Docker (dans `/etc/dock
 
 Après avoir configurer édité le fichier daemon.json, veuillez relancer le service docker avec :
 
-```plaintext
+```bash
 sudo systemctl restart docker 
 ```
 
@@ -161,26 +161,26 @@ Depuis Debian ou tout autres distributions Linux c'est un peu plus compliqué : 
 
  1. Téléchargez le binaire de Promtail depuis le [Github](https://github.com/grafana/loki/releases/) :
 
-```plaintext
+```bash
 curl -s https://api.github.com/repos/grafana/loki/releases/latest | grep browser_download_url |  cut -d '"' -f 4 | grep promtail-linux-amd64.zip | wget -i -
 ```
 
  Une fois le téléchargement terminé, dézippez le dans `/usr/local/bin` :
 
-```plaintext
+```bash
 unzip promtail-linux-amd64.zip
 sudo mv promtail-linux-amd64 /usr/local/bin/promtail
 ```
 
  2. Créez un fichier de configuration YAML pour Promtail dans le dossier `/usr/local/bin` :
 
-```plaintext
+```bash
 sudo nano /etc/promtail-local-config.yaml
 ```
 
  3. Ajoutez le contenu suivant au fichier :
 
-```plaintext
+```yaml
 server:
   http_listen_port: 9080
   grpc_listen_port: 0
@@ -203,7 +203,7 @@ scrape_configs:
 
  4. Créez le service pour Promtail :
 
-```plaintext
+```bash
 sudo tee /etc/systemd/system/promtail.service<<EOF
 [Unit]
 Description=Promtail service
@@ -236,15 +236,15 @@ Pour voir les logs et leurs statistiques, il faut connecter Loki dans Grafana. 
 
 Dans Grafana, ajouter la source de donnée Loki :
 
-![](/image_2021-04-30_185059.png)
+![](/images/image_2021-04-30_185059.png)
 
-![](/loki2.png)
+![](/images/loki2.png)
 
 Et configurer la source de donnée de cette façon :
 
 Dans URL, mettez l'URL de votre Loki `http://serveur:3100` ou `nom-du-container:3100` si vous utilisez Loki sous docker sur le même réseau que Grafana.
 
-![](/loki3.png)
+![](/images/loki3.png)
 
 Vos logs sont maintenant accessible dans Grafana. Allons voir comment les consulter !
 
@@ -252,7 +252,7 @@ Vos logs sont maintenant accessible dans Grafana. Allons voir comment les consul
 
 Vous pouvez consulter vos logs brut directement depuis l'onglet Explorer de Grafana :
 
-![](/image_2021-04-30_193550.png)
+![](/images/image_2021-04-30_193550.png)
 
 A vous de jouer avec les requêtes pour remonter les logs que vous souhaitez.
 
@@ -262,12 +262,12 @@ Vu que je suis particulièrement gentil, je vous partage mes deux petits bébés
 
 ### La vue serveurs :
 
-![](/image_2021-04-30_195917.png)
+![](/images/image_2021-04-30_195917.png)
 
 Dashboard disponible ici : [Github](https://github.com/PAPAMICA/Templates/blob/master/Grafana/Loki-Logs-Serveurs.json)
 
 ### La vue services :
 
-![](/image_2021-04-30_194541.png)
+![](/images/image_2021-04-30_194541.png)
 
 Dashboard disponible ici : [Github](https://github.com/PAPAMICA/Templates/blob/master/Grafana/Loki-Logs-Services.json)
