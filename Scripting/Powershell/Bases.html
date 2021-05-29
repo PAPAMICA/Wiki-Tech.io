@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-29T12:52:38.847Z
+date: 2021-05-29T12:54:31.527Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -271,8 +271,8 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <p>Mettons en pratique pour analyser ce qu'il se passe.</p>
 <figure class="image"><img src="/portee.png"></figure>
-<p>Dans cette exemple, nous utilisons une fonction que nous verrons plus tard. Dans le bloc de script symbolisé par <strong>{}</strong> la variable $portee est bien lu par la fonction hors à la ligne 8 le <code>Write-Host</code> ne peut pas lire cette variable. La variable $portee se limite aux <strong>{} </strong>.</p>
-<p>Pour palier à ce soucis, on va indiquer à PowerShell que $portee est une variable dites globale par $global:portee</p>
+<p>Dans cette exemple, nous utilisons une fonction que nous verrons plus tard. Dans le bloc de script symbolisé par <strong>{}</strong> la variable $portee est bien lu par la fonction. Hors, à la ligne 8 le <code>Write-Host</code> ne peut pas lire cette variable. La variable $portee se limite aux <strong>{} </strong>.</p>
+<p>Pour palier à ce soucis, on va indiquer à PowerShell que <code>$portee</code> est une variable dites globale par $global:portee</p>
 <p>voici ce que cela donne:</p>
 <figure class="image"><img src="/global.png"></figure>
 <p>&nbsp;</p>
