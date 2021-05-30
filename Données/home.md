@@ -2,7 +2,7 @@
 title: Traitement des données
 description: Afficher et explorer vos données !
 published: true
-date: 2021-05-24T15:01:07.678Z
+date: 2021-05-30T18:50:12.138Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T15:01:07.678Z
