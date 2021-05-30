@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-25T11:58:42.159Z
+date: 2021-05-30T16:47:00.517Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -30,6 +30,13 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple/home#macos)
 - [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple/home#accessoires)
 {.links-list}
+
+# Applications & Logiciels
+- [💙 SelfHosted *Plein de solutions que vous pouvez héberger vous même !*](/SelfHosted)
+- [📱 iOS / Android 🚧 *Présentation et astuces pour des applications mobiles*](/Applications)
+- [💻 MacOS / Windows / Linux🚧 *Présentation et astuces pour des logiciels utiles*](/Logiciels)
+{.links-list}
+
  
  # Cloud
 - [☁️ OpenStack *Un cloud opensource pouvant être autohébergé*](/Cloud/home#openstack)
@@ -42,7 +49,6 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
  # Conteneurisation
  - [🐳 Docker *Découvrir la conteneurisation avec Docker*](/Conteneurisation/home#docker)
  - [💠 Kubernetes 🚧 *Aller plus loins avec de la scalabilité et de la haute disponibilité*](/Conteneurisation/home#kubernetes) 
- - [💙 SelfHosted *Déployer des application et des services avec Docker*](/Conteneurisation/home#selfhosted)
 {.links-list}
 
 # Domotique
