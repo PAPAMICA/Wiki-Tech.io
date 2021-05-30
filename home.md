@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-30T16:47:00.517Z
+date: 2021-05-30T17:10:58.871Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -33,8 +33,8 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 # Applications & Logiciels
 - [💙 SelfHosted *Plein de solutions que vous pouvez héberger vous même !*](/SelfHosted)
-- [📱 iOS / Android 🚧 *Présentation et astuces pour des applications mobiles*](/Applications)
-- [💻 MacOS / Windows / Linux🚧 *Présentation et astuces pour des logiciels utiles*](/Logiciels)
+- [📱 Applications 🚧 *Présentation et astuces pour des applications mobiles*](/Applications)
+- [💻 Logiciels 🚧 *Présentation et astuces pour des logiciels utiles*](/Logiciels)
 {.links-list}
 
  
