@@ -2,16 +2,16 @@
 title: Mise à jour d'un hôte ESXi
 description: Procédure indiquant les étapes de mise à jour d'un hôte ESXi
 published: true
-date: 2021-05-30T16:13:08.049Z
+date: 2021-05-30T16:24:21.424Z
 tags: update, vmware, esxi, mise à jour
 editor: markdown
 dateCreated: 2021-05-24T10:37:44.048Z
 ---
 
 
-# La préparation
+# Préparation
 
-## Vérification de la version d'ESXi et de la disponibilité d'une mise à jour
+## Disponibilité
 
 Avant de mettre à jour notre ESXi, il nous faudra tout d’abord faire la vérification de la version que nous avons en production, puis aller consulter les mises à jour disponibles pour cette version. Pour ce faire, lorsque nous sommes connectés à notre ESXi, sur la page d’accueil nous avons le ***numéro de version ainsi que de build*** qui est indiqué dans le menu ***« Aide »*** puis ***« À propos de »*** situer en haut à droite.
 
@@ -24,13 +24,13 @@ Et faire la recherche de disponibilité de mise à jour et le téléchargement d
 {.is-warning}
 
 
-## Mise à disposition de la mise à jour sur ESXi
+## Téléchargement
 
 Plusieurs solutions sont possibles pour mettre à disposition la mise à jour sur l’ESXI, soit via un accès FTP ou également par le dépôt directement dans un datastore *(solution que nous utilisons ici)*.
 
 ![](/images/add_update_datastore.png)
 
-## Préparation de l’ESXi pour la mise à jour
+## Préparation de l’ESXi
 
 Nous allons maintenant faire la dernière étape de préparation pour la réalisation de la mise à jour de notre hyperviseur.  
 La mise à jour se réalise via une ligne de commande par SSH. Nous devons donc faire l'activation de l'accès SSH sur notre ESxi.
