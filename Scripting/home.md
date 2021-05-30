@@ -2,7 +2,7 @@
 title: Scripting
 description: Les différents langage de scripts avec leurs tutoriels !
 published: true
-date: 2021-05-24T16:29:07.602Z
+date: 2021-05-30T18:49:20.968Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:30:53.085Z
