@@ -2,7 +2,7 @@
 title: Réseau
 description: Ce qu'il faut savoir sur le réseau !
 published: true
-date: 2021-05-30T18:39:25.173Z
+date: 2021-06-01T06:25:31.950Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:39:12.033Z
@@ -16,6 +16,7 @@ dateCreated: 2021-05-30T18:39:12.033Z
 - [⛓️ Serveur DNS *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseau/Protocoles/DNS)
 - [📌 Serveur DHCP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseau/Protocoles/DHCP)
 - [🧭 Protocole HSRP 🚧 *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseau/Protocoles/HSRP)
+- [📁 Protocole FTP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseau/Protocoles/FTP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseau/Protocoles/Masques)
 {.links-list}
 # Equipements
