@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-06-01T06:28:26.817Z
+date: 2021-06-01T06:31:16.443Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -26,9 +26,9 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
  ---
  
  # Apple
-- [📱 iOS / iPadOS 🚧 *Les astuces pour les OS Mobile de la pomme*](/Apple)
-- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple)
-- [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple/home#accessoires)
+- [📱 iOS / iPadOS 🚧 *Les astuces pour les OS Mobile de la pomme*](/Apple#ios-ipados)
+- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple#macos)
+- [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple#accessoires)
 {.links-list}
 
 # Applications & Logiciels
@@ -39,91 +39,91 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
  
  # Cloud
-- [☁️ OpenStack *Un cloud opensource pouvant être autohébergé*](/Cloud/home#openstack)
-- [☁️ Jelastic 🚧 *Une technologie de cloud simple et efficace !*](/Cloud/home#jelastic)
-- [☁️ AWS 🚧 *Comprendre et utiliser le cloud d'Amazon*](/Cloud/home#aws)
-- [☁️ Azure 🚧 *Comprendre et utiliser le cloud de Microsoft*](/Cloud/home#azure-cloud)
-- [☁️ Google Cloud 🚧 *Comprendre et utiliser le cloud de Google*](/Cloud/home#google-cloud)
+- [☁️ OpenStack *Un cloud opensource pouvant être autohébergé*](/Cloud#openstack)
+- [☁️ Jelastic 🚧 *Une technologie de cloud simple et efficace !*](/Cloud#jelastic)
+- [☁️ AWS 🚧 *Comprendre et utiliser le cloud d'Amazon*](/Cloud#aws)
+- [☁️ Azure 🚧 *Comprendre et utiliser le cloud de Microsoft*](/Cloud#azure-cloud)
+- [☁️ Google Cloud 🚧 *Comprendre et utiliser le cloud de Google*](/Cloud#google-cloud)
 {.links-list}
 
  # Conteneurisation
- - [🐳 Docker *Découvrir la conteneurisation avec Docker*](/Conteneurisation/home#docker)
- - [💠 Kubernetes 🚧 *Aller plus loins avec de la scalabilité et de la haute disponibilité*](/Conteneurisation/home#kubernetes) 
+ - [🐳 Docker *Découvrir la conteneurisation avec Docker*](/Conteneurisation#docker)
+ - [💠 Kubernetes 🚧 *Aller plus loins avec de la scalabilité et de la haute disponibilité*](/Conteneurisation#kubernetes) 
 {.links-list}
 
 # Domotique
-- [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique/home#jeedom)
-- [🍎 Homebridge 🚧 *Ajouter la compatibilité avec HomeKit*](/Domotique/home#homebridge)
-- [🏠 HomeAssistant 🚧 *Un serveur de domotique simple*](/Domotique/home#homeassistant)
+- [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique#jeedom)
+- [🍎 Homebridge 🚧 *Ajouter la compatibilité avec HomeKit*](/Domotique#homebridge)
+- [🏠 HomeAssistant 🚧 *Un serveur de domotique simple*](/Domotique#homeassistant)
 {.links-list}
 
 # Gestionnaire de configurations
-- [⚙️ Ansible 🚧 *Un gestionnaire de configuration via SSH*](/Configuration/home#ansible)
-- [⚙️ Puppet 🚧 *Un gestionnaire de configuration avec agents*](/Configuration/home#puppet)
-- [⚙️ DSC 🚧 *Un gestionnaire de configuration pour Powershell*](/Configuration/home#dsc)
-- [⚙️ Terraform 🚧 *De l'infrastructure as code*](/Configuration/home#terraform)
+- [⚙️ Ansible 🚧 *Un gestionnaire de configuration via SSH*](/Configuration#ansible)
+- [⚙️ Puppet 🚧 *Un gestionnaire de configuration avec agents*](/Configuration#puppet)
+- [⚙️ DSC 🚧 *Un gestionnaire de configuration pour Powershell*](/Configuration#dsc)
+- [⚙️ Terraform 🚧 *De l'infrastructure as code*](/Configuration#terraform)
 {.links-list}
  
 # Linux
-- [🧪 Débutant *L'utilisation et les commandes de base*](/Linux/home#débutant)
-- [⚗️ Avancé *Gestion des disques, sauvegardes, etc...*](/Linux/home#avancé)
-- [🧬 Expert 🚧 *Pour aller encore plus loin*](/Linux/home#expert)
+- [🧪 Débutant *L'utilisation et les commandes de base*](/Linux#débutant)
+- [⚗️ Avancé *Gestion des disques, sauvegardes, etc...*](/Linux#avancé)
+- [🧬 Expert 🚧 *Pour aller encore plus loin*](/Linux#expert)
 {.links-list}
 
 # Microsoft
-- [🖥️ Windows 7/10 *Trucs et astuces pour Windows 7 et 10*](/Microsoft/home#windows-7-10)
-- [📟 Windows Server *Installation et gestion de services sous Windows Server*](/Microsoft/home#windowsserver)
-- [🗜️ Azure 🚧 *Gérer son parc infomatique avec le cloud*](/Microsoft/home#azure)
-- [📧 Exchange 2016 *Installer et configurer un serveur Exchange*](/Microsoft/home#exchange-2016)
-- [📌 Microsoft 365 🚧 *Comprendre et utiliser les services de Microsoft 365*](/Microsoft/home#microsoft-365)
+- [🖥️ Windows 7/10 *Trucs et astuces pour Windows 7 et 10*](/Microsoft#windows-7-10)
+- [📟 Windows Server *Installation et gestion de services sous Windows Server*](/Microsoft#windowsserver)
+- [🗜️ Azure 🚧 *Gérer son parc infomatique avec le cloud*](/Microsoft#azure)
+- [📧 Exchange 2016 *Installer et configurer un serveur Exchange*](/Microsoft#exchange-2016)
+- [📌 Microsoft 365 🚧 *Comprendre et utiliser les services de Microsoft 365*](/Microsoft#microsoft-365)
 {.links-list}
 
 # NAS
-- [❤️ Synology / XPEnology *Installation, configuration et astuces des sous DSM*](/NAS/home#synology)
-- [📁 QNAP 🚧 *Trucs et astuces pour les NAS QNAP*](/NAS/home#qnap)
-- [📂 TrueNAS 🚧 *Un système de stockage Opensource et complet*](/NAS/home#truenas)
-- [🗂️ UNRAID 🚧 *Un NAS qui va tout de même plus loin*](/NAS/home#unraid)
+- [❤️ Synology / XPEnology *Installation, configuration et astuces des sous DSM*](/NAS#synology)
+- [📁 QNAP 🚧 *Trucs et astuces pour les NAS QNAP*](/NAS#qnap)
+- [📂 TrueNAS 🚧 *Un système de stockage Opensource et complet*](/NAS#truenas)
+- [🗂️ UNRAID 🚧 *Un NAS qui va tout de même plus loin*](/NAS#unraid)
 {.links-list}
 
 # Réseau
-- [🌐 Protocoles *Découvrir et comprendre les bases du réseau*](/Réseau/home#protocoles)
-- [🖲️ Equipements 🚧 *Les différents équipements d'un réseau*](/Réseau/home#equipements)
-- [⭐ Avancé *Les VPNs, Tor, etc...*](/Réseau/home#avancé)
+- [🌐 Protocoles *Découvrir et comprendre les bases du réseau*](/Réseau#protocoles)
+- [🖲️ Equipements 🚧 *Les différents équipements d'un réseau*](/Réseau#equipements)
+- [⭐ Avancé *Les VPNs, Tor, etc...*](/Réseau#avancé)
 {.links-list}
 
 # Sauvegarde
-- [📦 Altaro 🚧 *Sauvegarder Hyper-V ou ESXi*](/Sauvegarde/home#altaro)
-- [📦 Veeam 🚧 *Un système de sauvegarde complet*](/Sauvegarde/home#veeam)
-- [📦 UrBackup 🚧 *Un système de sauvegarde entièrement OpenSource*](/Sauvegarde/home#urbackup)
-- [📦 SwissBackup 🚧 *Pour des sauvegardes externalisées avec Swift*](/Sauvegarde/home#swissbackup)
+- [📦 Altaro 🚧 *Sauvegarder Hyper-V ou ESXi*](/Sauvegarde#altaro)
+- [📦 Veeam 🚧 *Un système de sauvegarde complet*](/Sauvegarde#veeam)
+- [📦 UrBackup 🚧 *Un système de sauvegarde entièrement OpenSource*](/Sauvegarde#urbackup)
+- [📦 SwissBackup 🚧 *Pour des sauvegardes externalisées avec Swift*](/Sauvegarde#swissbackup)
 {.links-list}
 
 # Scripting
-- [✨ Les bases 🚧 *Quel que soit le langage utilisé, il y a quelques notions à connaitre*](/Scripting/home#base)
-- [🐧 Bash *Le commencement d'une automatisation*](/Scripting/home#bash)
-- [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting/home#python)
-- [🪟 PowerShell *Un langage puissant dédié à Windows*](/Scripting/home#powershell)
+- [✨ Les bases 🚧 *Quel que soit le langage utilisé, il y a quelques notions à connaitre*](/Scripting#base)
+- [🐧 Bash *Le commencement d'une automatisation*](/Scripting#bash)
+- [🐍 Python *Un langage qui fonctionne sur tous les OS*](/Scripting#python)
+- [🪟 PowerShell *Un langage puissant dédié à Windows*](/Scripting#powershell)
 {.links-list}
 
 # Sécurité
-- [🔑 Chiffrement *Du certificat SSL au chiffrement des données*](/Sécurité/home#chiffrement)
-- [💥 Pentest 🚧 *S'introduire dans des systèmes soit disant protégés*](/Sécurité/home#pentest)
-- [🛡️ Protection 🚧 *Se protéger des attaques informatiques*](/Sécurité/home#protection)
+- [🔑 Chiffrement *Du certificat SSL au chiffrement des données*](/Sécurité#chiffrement)
+- [💥 Pentest 🚧 *S'introduire dans des systèmes soit disant protégés*](/Sécurité#pentest)
+- [🛡️ Protection 🚧 *Se protéger des attaques informatiques*](/Sécurité#protection)
 {.links-list}
 
 # Supervision
-- [💢 Zabbix *Un sytème Opensource complet basé sur Nagios*](/Supervision/home#zabbix)
-- [©️ Centreon *Un sytème Opensource clé en main*](/Supervision/home#centreon)
+- [💢 Zabbix *Un sytème Opensource complet basé sur Nagios*](/Supervision#zabbix)
+- [©️ Centreon *Un sytème Opensource clé en main*](/Supervision#centreon)
 {.links-list}
 
 # Traitement de données
-- [📊 Grafana *De l"affiche de données simple et efficace*](/Données/home#grafana)
-- [📊 Elastic *Une solution très complète pour la gestion de données*](/Données/home#elastic)
+- [📊 Grafana *De l"affiche de données simple et efficace*](/Données#grafana)
+- [📊 Elastic *Une solution très complète pour la gestion de données*](/Données#elastic)
 {.links-list}
 
 # Virtualisation
-- [➰ ESXi *Comprendre et utiliser l'hyperviseur de VMware*](/Virtualisation/home#vmware-esxi)
-- [➰ Hyper-V *Comprendre et utiliser l'hyperviseur de Microsoft*](/Virtualisation/home#hyper-v)
-- [➰ Proxmox *Un hyperviseur OpenSource*](/Virtualisation/home#proxmox)
-- [➰ VirtualBox *Trucs et astuces pour de la virtualisation locale*](/Virtualisation/home#virtualbox)
+- [➰ ESXi *Comprendre et utiliser l'hyperviseur de VMware*](/Virtualisation#vmware-esxi)
+- [➰ Hyper-V *Comprendre et utiliser l'hyperviseur de Microsoft*](/Virtualisation#hyper-v)
+- [➰ Proxmox *Un hyperviseur OpenSource*](/Virtualisation#proxmox)
+- [➰ VirtualBox *Trucs et astuces pour de la virtualisation locale*](/Virtualisation#virtualbox)
 {.links-list}
