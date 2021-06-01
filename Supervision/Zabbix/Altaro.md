@@ -2,7 +2,7 @@
 title: Script Altaro-Zabbix
 description: Remonter les informations Altaro dans Zabbix
 published: true
-date: 2021-06-01T14:10:20.820Z
+date: 2021-06-01T14:13:35.591Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:24.847Z
@@ -36,7 +36,7 @@ Afin d'interpréter les données que nous allons envoyer à notre serveur Zabbix
 
  5 - Un jolie message devrais s'afficher pour valider l'importation :
 
-![](/image_2021-05-03_120319.png)
+![](/images/image_2021-05-03_120319.png)
 
 ## Script Powershell
 
@@ -48,7 +48,7 @@ Le script Powershell doit être téléchargé et exécuté sur le même serveur 
 
  3 - Testez le fonctionnement du script avec la commande :
 
-```plaintext
+```powershell
 powershell.exe -NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "<CLIENT - HOST>" [Onsite/Offsite] <ZABBIX_IP>
 ```
 
@@ -60,21 +60,24 @@ Avec : 
 
 Par exemple :
 
-```plaintext
+```powershell
 powershell.exe -NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "CLIENT - HOST1>" Onsite 192.168.5.4
 ```
 
-> **Attention :** Si vous utilisez un proxy Zabbix, il faut mettre l'IP de ce proxy !
+> Si vous utilisez un proxy Zabbix, il faut mettre l'IP de ce proxy !
+{.is-warning}
 
-> **Attention :** Pensez à modifier l'URL du dossier de l'Agent Zabbix dans le script s'il n'est pas dans “*C:\\Program Files\\Zabbix Agent*” (Ligne 36 : $ZabbixFolder = “<chemin>”)
+> Pensez à modifier l'URL du dossier de l'Agent Zabbix dans le script s'il n'est pas dans “*C:\\Program Files\\Zabbix Agent*” (Ligne 36 : $ZabbixFolder = “<chemin>”)
+{.is-warning}
 
-## GPO
+## Créer une tache
 
-Si vous souhaitez que le script s’exécute tous les jours automatiquement, le plus simple est de passer par une GPO.
+Si vous souhaitez que le script s’exécute tous les jours automatiquement, le plus simple est de passer par une tâche automatique.
 
-1.  Créez une GPO avec en déclencheur une exécution tous les jours
+1.  Créez une tâche avec en déclencheur une exécution tous les jours
 2.  En action : Démarrer un programme avec “powershell.exe” dans Programme et "`-NoProfile -NoLogo - File "C:\Program Files\Zabbix Agent\Get-AltaroBackupStatus.ps1" "<CLIENT - HOST>" [Onsite/Offsite] <ZABBIX_IP>`" dans les arguments.
 
-![](/image_2021-05-03_121832.png)
+![](/images/image_2021-05-03_121832.png)
 
-> Vous pouvez créer 2 GPO si vous souhaitez superviser les sauvegardes Offsite et Onsite.
+> Vous pouvez créer 2 tâches si vous souhaitez superviser les sauvegardes Offsite et Onsite.
+{.is-info}
