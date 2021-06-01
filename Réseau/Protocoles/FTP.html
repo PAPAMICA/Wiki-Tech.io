@@ -1,0 +1,189 @@
+<!--
+title: Protocole FTP
+description: Qu’est-ce que c’est et à quoi ça sert ?
+published: true
+date: 2021-06-01T06:37:47.196Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-06-01T06:37:47.196Z
+-->
+
+<h1>Présentation</h1>
+<p><strong>FTP (File Transfert Protocol)</strong> est donc un protocole de <strong>transfert de fichiers</strong>.<br>FTP obéit à un <a href="https://www.malekal.com/le-modele-ou-architecture-client-serveur/">modèle client-serveur</a> :</p>
+<ul>
+  <li>Le serveur est un ordinateur sur lequel fonctionne un logiciel lui-même appelé serveur FTP rend publique une arborescence de fichiers similaire à un système de fichiers UNIX</li>
+  <li>Le client se connecte au serveur et établisse la connexion à travers des commandes FTP. Pour cela, on utilise <strong>un logiciel client FTP</strong> possédant une interface graphique ou en ligne de commande</li>
+</ul>
+<p>L'administrateur du serveur FTP créé <strong>des comptes FTP</strong>.<br>Ce sont des utilisateurs FTP avec un identifiant et mots de passe ou une clé publique de connexion.<br>Chaque utilisateur a accès à une arborescence spécifique et des autorisations sur celle-ci.<br>Une fois la connexion réussie, le client FTP accède à des dossiers autorisés par le compte FTP.<br>Ce dernier peut <strong>copier les fichiers en local ou distant :</strong></p>
+<ul>
+  <li><strong>Envoi (upload)</strong> : lorsque le client envoie un fichiers vers le serveur FTP distant</li>
+  <li><strong>Réception (download)</strong> : lorsque le client télécharge un fichier depuis le serveur FTP distant</li>
+</ul>
+<p>Typiquement un client FTP se présente avec deux fenêtre, à gauche les dossiers et fichiers locaux, à droite, les dossiers et fichiers distants du serveur FTP.<br>Vous pouvez faire glisser les fichiers de l'un à l'autre.</p>
+<figure class="image image_resized" style="width:55.35%;"><img src="https://www.malekal.com/wp-content/uploads/Tuto-fonctionnement-FTP.jpg" alt="Fonctionnement du FTP pour partager ses fichiers" srcset="https://www.malekal.com/wp-content/uploads/Tuto-fonctionnement-FTP.jpg 1164w, https://www.malekal.com/wp-content/uploads/Tuto-fonctionnement-FTP-300x169.jpg 300w, https://www.malekal.com/wp-content/uploads/Tuto-fonctionnement-FTP-623x350.jpg 623w, https://www.malekal.com/wp-content/uploads/Tuto-fonctionnement-FTP-768x432.jpg 768w" sizes="100vw" width="1164"></figure>
+<p>&nbsp;</p>
+<h2>Le serveur FTP</h2>
+<p>Il existe plusieurs serveurs FTP sur Windows comme <a href="https://www.malekal.com/fonctionnement-du-ftp-pour-partager-ses-fichiers/">FileZilla Server</a> ou <strong>TypSoft FTP</strong>, Windows possède aussi un serveur&nbsp;FTP.<br>Sur Linux, on trouve <strong>VsFTPd ou ProFTPD</strong> parmi les plus populaires.</p>
+<p>Le fonctionnement d'un serveur FTP est toujours le même, grosso modo :</p>
+<ul>
+  <li>Vous installez le programme qui fait office de serveur FTP</li>
+  <li>On créé les comptes (utilisateur / mot de passe)</li>
+  <li>On teste la connexion (il faut autoriser les connexions sur <a href="https://www.malekal.com/le-fonctionnement-dun-pare-feu-ou-firewall-sur-windows/">pare-feu</a> etc).</li>
+</ul>
+<p>Le serveur FTP fournit des journaux de connexions pour visualiser la négociation de connexion et les utilisateurs connectés.</p>
+<figure class="image image_resized" style="width:44.2%;"><img src="https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-5.jpg" alt="Fonctionnement du FTP pour partager ses fichiers" srcset="https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-5.jpg 1130w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-5-300x128.jpg 300w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-5-700x299.jpg 700w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-5-768x328.jpg 768w" sizes="100vw" width="1130"></figure>
+<p>&nbsp;</p>
+<h2><strong>Le client FTP</strong></h2>
+<p>Il existe aussi une multitude de clients FTP graphiques comme <a href="https://www.malekal.com/filezilla-client-ftp-windows-ubuntu/"><strong>FileZilla</strong></a>, <strong>WinScp</strong>, etc.</p>
+<p>Là aussi, le principe reste le même, vous créez vos comptes FTP sur le client et en double-cliquant sur ce dernier, vous pouvez vous connecter au serveur.<br>On trouve alors l'arborescence local et l'arborescence de fichiers distants.<br>On peut alors faire un glisser déposer pour lancer le transferts de fichiers.</p>
+<figure class="image image_resized" style="width:51.77%;"><img src="https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-7.jpg" alt="Le client FTP : fonctionnement du partage par FTP" srcset="https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-7.jpg 1170w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-7-300x204.jpg 300w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-7-516x350.jpg 516w, https://www.malekal.com/wp-content/uploads/Fonctionnement-FTP-partage-fichiers-FileZilla-7-768x521.jpg 768w" sizes="100vw" width="1170"></figure>
+<p>&nbsp;</p>
+<p>Sur Windows, on peut aussi se connecter en FTP par un lecteur réseau :</p>
+<p><a href="https://www.malekal.com/creer-et-se-connecter-en-ftp-avec-un-lecteur-reseau-sur-windows/">Créer et se connecter en FTP avec un lecteur réseau sur Windows</a><br>&nbsp;</p>
+<p>Mais il en existe aussi en ligne de commandes.<br>Windows et Linux possède par défaut la commande FTP qui propose le strict minimum.<br>Mais sur Linux, on trouve des clients FTP plus puissants comme <a href="https://www.malekal.com/fonctionnement-du-ftp-pour-partager-ses-fichiers/"><strong>ncftp</strong></a><strong> ou lftp</strong>.</p>
+<p>Enfin il est même possible de <strong>se connecter à un serveur FTP avec un navigateur WEB</strong>.</p>
+<h1><strong>Fonctionnement</strong></h1>
+<h2><strong>L'établissement de la connexion FTP</strong></h2>
+<p>Contrairement au <a href="https://www.malekal.com/le-protocole-http-hypertext-transfer-protocol-versions-et-fonctionnement/">protocole HTTP</a>, FTP fonctionne avec deux ports TCP : un port de contrôle (<strong>Control Channel</strong>) et un port pour les données (<strong>Data Channel</strong>).</p>
+<figure class="table" style="width:1340px;">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:2px solid;border-left:2px solid;border-right:2px solid;border-top:2px solid;">
+    <tbody>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;"><strong>Protocole</strong></td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;"><strong>Port de contrôle</strong></td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;"><strong>Port de données</strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">FTP</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">21</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">20</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">FTPS</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">990</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">989</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><i>Les ports par défaut du protocole FTP</i></p>
+<p>Le client FTP <strong>connecte au port de contrôle</strong> où les premiers <strong>échanges et négociations entre le client FTP et le serveur FTP</strong> s'effectuent.<br>Cette communication se fait sur le principe de commande / réponse.<br><strong>Le Control Channel</strong> perdure pour passer <strong>des commandes FTP</strong>.<br>Par exemple, les commandes MLSD et LIST listent le contenu du dossier courant, la commande CWD permet de changer de dossier, PWD indique l'emplacement du dossier courant.</p>
+<p><strong>Le Data Channel</strong> permet l'échange de données.<br>Lorsque le client demande à recevoir ou envoyer un fichier, une connexion <a href="https://www.malekal.com/le-protocole-tcp-ip-definition-architecture-et-couches/">TCP</a> se créé puis les données passent par celle-ci.</p>
+<p>Toutefois, il existe deux modes de connexion :<a href="https://www.malekal.com/le-mode-actif-et-passif-en-ftp-les-differences-et-fonctionnement/"> <strong>Le mode actif et le mode passif</strong></a>.</p>
+<h2><strong>Les principales commandes FTP</strong></h2>
+<p>Le client FTP utilise ces commandes FTP pour dialoguer avec le serveur FTP à travers le Control Channel.<br>Il existe environ 70 commandes FTP différentes.</p>
+<figure class="table" style="width:1340px;">
+  <table style="background-color:rgb(255, 255, 255);border-bottom:2px solid;border-left:2px solid;border-right:2px solid;border-top:2px solid;">
+    <tbody>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;"><strong>Principales commandes FTP</strong></td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;"><strong>Description</strong></td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">ABOR</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Annuler un transfert de fichier actif</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">CDUP</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Passez au répertoire parent</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">CWD</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Changer de répertoire de travail</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">DELE</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Supprimer un fichier</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">EPSV</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Entrer en mode passif étendu</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">LIST</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Renvoyer les informations d'un fichier ou d'un répertoire si spécifié, sinon les informations du répertoire de travail actuel sont renvoyées</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">MKD</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Créer un répertoire</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">MLSD</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Répertorier le contenu d'un répertoire si un répertoire est nommé</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">PASS</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Envoyer le mot de passe de connexion</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">PASV</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Entrer en mode passif</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">PORT</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Spécifier une adresse et un port auxquels le serveur doit se connecter</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">PWD</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Afficher le répertoire de travail. Renvoie le répertoire actuel de l'hôte.</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">REIN</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Réinitialiser la connexion</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">REST</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Redémarrez le transfert à partir du point spécifié</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">RETR</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Récupérer une copie du fichier</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">RMD</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Renommer un dossier</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">RMDA</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Supprimer une arborescence de répertoires</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">RNFR</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Renommer depuis</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">RNTO</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Renommer vers</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">QUIT</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Se déconnecter du serveur</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">SIZE</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Renvoyer la taille d'un fichier</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">TYPE</td>
+        <td style="background-color:rgb(254, 254, 254);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">Définir le mode de transfert (ASCII / Binaire)</td>
+      </tr>
+      <tr>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">USER</td>
+        <td style="background-color:rgb(241, 241, 241);border-bottom:1px solid transparent;border-left:1px solid transparent;border-right:1px solid transparent;border-top:1px solid transparent;padding:2px;text-align:center;">S'authentifier par un nom d'utilisateur</td>
+      </tr>
+    </tbody>
+  </table>
+</figure>
+<p><i>Liste des principales commandes FTP</i></p>
+<h2><strong>Le mode actif et passif</strong></h2>
+<p>FTP fonctionne sur deux modes de communications : le mode actif et passif.</p>
+<p>Pourquoi et comment fonctionnent ces modes de communication ?<br>Et surtout quelles sont les différences et lequel choisir ?</p>
+<p>Ce tutoriel vous dit tout :</p>
+<p><a href="https://www.malekal.com/le-mode-actif-et-passif-en-ftp-les-differences-et-fonctionnement/">Le mode actif et passif en FTP : les différences, fonctionnement, lequel choisir ?</a><br>&nbsp;</p>
+<h1><strong>LES AUTRES PROTOCOLES FTP</strong></h1>
+<h2><strong>TFTP</strong></h2>
+<p><strong>FTP</strong> (pour <i><strong>Trivial File Transfer Protocol</strong></i>) signifie <strong>protocole simplifié de transfert de fichiers</strong>.<br>En clair donc, c'est un FTP avec des commandes simplifiées.<br>Notamment, il n'est pas possible de lister les fichiers.<br>De plus, il fonctionne sur le port 69 en <a href="https://www.malekal.com/protocole-tcp-udp-icmp-fonctionnement-et-differences/">UDP</a>.</p>
+<p>Un serveur TFTP est parfois inclut dans les <a href="https://www.malekal.com/serveur-nas/">NAS</a>.</p>
+<h2><strong>FTPS : FTP Over TLS et attaque MiTM</strong></h2>
+<p>Par défaut, <strong>le protocole FTP n'est pas chiffrée</strong>, ainsi lors de la connexion les identifiants FTP (nom d'utilisateur / mot de passe) passent en claire sur le réseau.<br><a href="https://www.malekal.com/man-in-the-middle/">Une attaque de type Man in the Middle</a> peut permettre la récupération de ces identifiants FTP ou dérouter vers un faux serveur FTP.</p>
+<p><strong>Le FTP existe sous la forme chiffrée à travers FTP Over TLS ou FTPS.</strong><br>Ce dernier vise à sécuriser les connexions FTP et palier à aux manquements de FTP.</p>
