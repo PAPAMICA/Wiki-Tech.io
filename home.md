@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-05-30T17:18:45.637Z
+date: 2021-06-01T06:28:26.817Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -26,8 +26,8 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
  ---
  
  # Apple
-- [📱 iOS / iPadOS 🚧 *Les astuces pour les OS Mobile de la pomme*](/Apple/home#ios-ipados)
-- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple/home#macos)
+- [📱 iOS / iPadOS 🚧 *Les astuces pour les OS Mobile de la pomme*](/Apple)
+- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple)
 - [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple/home#accessoires)
 {.links-list}
 
