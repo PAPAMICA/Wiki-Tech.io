@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-06-02T09:31:18.359Z
+date: 2021-06-02T09:33:55.590Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:27.557Z
@@ -78,7 +78,9 @@ networks:
     external: true
 ```
 
-> **Attention :** Pensez à changer dans le docker-compose ou à définir les variables suivantes : ***$URL\_LOK*****I** et **$URL** en fonction de votre installation.
+> Pensez à changer dans le docker-compose ou à définir les variables suivantes : **URL_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
+
 
 Votre Portainer sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
 
@@ -98,11 +100,11 @@ docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/d
 
 Pour ajouter le serveur à notre Portainer, rendez vous dans “***Settings > Endpoints > + Add endpoint***” :
 
-![](/image_2021-05-03_213224.png)
+![](/images/image_2021-05-03_213224.png)
 
 Et configurez votre serveur de la sorte : 
 
-![](/image_2021-05-03_213454.png)
+![](/images/image_2021-05-03_213454.png)
 
 Et voilà ! Votre serveur sera maintenant disponible dans Portainer !
 
@@ -116,7 +118,7 @@ Il suffit simplement de mettre l'url de mon repo dans la configuration : `https:
 
 Et maintenant rendez-vous directement dans l'onglet “App Templates” pour découvrir la liste des applications disponibles :
 
-![](/image_2021-05-03_211850.png)
+![](/images/image_2021-05-03_211850.png)
 
 ## Connexion avec Keycloak
 
@@ -124,4 +126,4 @@ Vous retrouverez ici l'installation de Keycloak : [/SelfHosted/Keycloak](/SelfHo
 
 La configuration de l'authentification avec Keycloak se fait directement dans les paramètres comme ceci :
 
-![](/image_2021-05-03_212514.png)
+![](/images/image_2021-05-03_212514.png)
