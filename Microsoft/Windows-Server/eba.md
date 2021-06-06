@@ -2,7 +2,7 @@
 title: L'énumération basée sur l'accès
 description: 
 published: false
-date: 2021-06-06T06:34:53.839Z
+date: 2021-06-06T06:35:32.268Z
 tags: windows, eba, énumération, droits, sécurité
 editor: markdown
 dateCreated: 2021-06-06T06:34:53.839Z
@@ -26,5 +26,4 @@ Effectivement, un utilisateur qui ne voit pas les données qui ne le concernent 
 
 Nous allons prendre le cas suivant : nous avons un utilisateur du service technique qui utilise une session TSE sur laquelle il a accès à un lecteur réseau où est présent le dossier Documents de la société.
 
-![2020-12-07_14h43_13.png](/images/2020-12-07_14h43_13.png) 
-![2020-12-07_14h44_04.png](/images/2020-12-07_14h44_04.png)
+![2020-12-07_14h43_13.png](/images/2020-12-07_14h43_13.png) ![2020-12-07_14h44_04.png](/images/2020-12-07_14h44_04.png)
