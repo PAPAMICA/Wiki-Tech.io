@@ -2,7 +2,7 @@
 title: L'énumération basée sur l'accès
 description: 
 published: false
-date: 2021-06-06T06:41:43.375Z
+date: 2021-06-06T06:47:51.992Z
 tags: windows, eba, énumération, droits, sécurité
 editor: markdown
 dateCreated: 2021-06-06T06:34:53.839Z
@@ -38,3 +38,34 @@ Nous venons de voir ce qui se passe lorsque l’EBA n’est pas actif sur le ser
 
 > Il est impératif pour que l’énumération basée sur l’accès fonctionne correctement, les droits NTFS doivent correctement être configurés sur le dossier partagé. Il sera nécessaire de faire la désactivation de l’héritage et de faire également la suppression du groupe DOMAINE\Utilisateurs dans les droits du dossier.
 {.is-warning}
+
+## Activation de l'EBA
+
+Il faut se rendre sur le ***serveur où le dossier partagé est présent***. Puis depuis le gestionnaire de serveur se rendre dans : ***Services de fichiers et de stockage*** :
+
+![2020-12-07_14h47_16.png](/images/2020-12-07_14h47_16.png)
+
+Une fois dans ce menu, faites un ***clic droit sur le dossier partagé*** sur lequel vous souhaitez mettre l’EBA en place et sélectionnez ***Propriétés* **:
+
+![2020-12-07_14h47_46.png](/images/2020-12-07_14h47_46.png)
+
+Dans la nouvelle fenêtre qui s’ouvre, il faut se rendre dans ***Paramètres*** puis cocher la case ***Activer l’énumération basée sur l’accès***:
+
+![2020-12-07_14h48_26.png](/images/2020-12-07_14h48_26.png)
+
+Il vous suffira de valider par le bouton OK.
+
+Félicitations ! L’énumération basée sur l’accès est maintenant active sur votre dossier partagé ! Il vous faudra maintenant faire la configuration de vos droits sur les différents dossiers.
+
+## Droits NTFS
+
+Je ne vais pas vous expliquer comment faire la gestion des droits NTFS sur le dossier partagé et les sous-dossiers, car il ne s’agit pas de ce sujet dans cet article.
+
+Néanmoins, voici un aperçu des droits en place sur mon environnement où l’EBA est active :
+
+![2020-12-07_15h11_22.png](/images/2020-12-07_15h11_22.png)
+
+
+---
+
+[*Source d'origine de la procédure*](https://www.tech2tech.fr/windows-server-lenumeration-basee-sur-lacces/) | *Rédacteur Kevin ENGEL*
