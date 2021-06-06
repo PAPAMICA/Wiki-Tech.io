@@ -2,7 +2,7 @@
 title: Microsoft
 description: Plein de tutoriel sur les produits de Microsoft !
 published: true
-date: 2021-05-30T18:27:48.269Z
+date: 2021-06-06T06:52:02.089Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:27:48.269Z
@@ -24,6 +24,7 @@ dateCreated: 2021-05-30T18:27:48.269Z
 - [✨ GPO *Comprendre et créer des GPO*](/Microsoft/Windows-Server/GPO)
 - [✨ Serveur DHCP *Créer et gérer un serveur DHCP sous Windows Server*](/Microsoft/Windows-Server/DHCP)
 - [✨ Serveur Active Directory *Créer et gérer un serveur AD sous Windows Server*](/Microsoft/Windows-Server/Active-Directory)
+- [✨ L'énumération basée sur l'accès *Sécuriser les dossiers d'un partage réseau*](/Microsoft/Windows-Server/eba)
 {.links-list}
 # Azure
 
