@@ -2,7 +2,7 @@
 title: Mise à jour d'un hôte ESXi
 description: Procédure indiquant les étapes de mise à jour d'un hôte ESXi
 published: true
-date: 2021-05-30T16:24:21.424Z
+date: 2021-06-06T06:48:50.435Z
 tags: update, vmware, esxi, mise à jour
 editor: markdown
 dateCreated: 2021-05-24T10:37:44.048Z
@@ -79,4 +79,6 @@ reboot
 
 Une fois le redémarrage fait, vous pouvez désactiver le mode de maintenance de votre ESxi et faire la vérification de la bonne application de la mise à jour depuis le menu ***« À propos de »*** que nous avons vu au début de cet article.
 
+
+---
 [*Source d'origine de la procédure*](https://www.tech2tech.fr/vmware-comment-mettre-a-jour-esxi/) | *Rédacteur Kevin ENGEL*
