@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-07T13:22:37.414Z
+date: 2021-06-07T13:44:13.744Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -77,8 +77,10 @@ a, b = example()
 &gt;&gt;&gt; b
 2</code></pre>
 <h1>Les dictionnaires (+ json)</h1>
+<h2>Manipuler un dictionnaire</h2>
 <p>Les dictionnaires permettent eux aussi de rassembler des éléments mais sont identifiés par une <strong>clé</strong> au lieu d'un indice, et vont permettre de traiter beaucoup plus d'informations qu'une liste. Un dictionnaire se déclare avec des accolades.</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio = {"title": "Modèles de voitures", "SUV": ["CX-5","C-HR","Duster"], "4x4": ["Q5","Tucson","Macan"]}</code></pre>
+<p>&nbsp;</p>
 <blockquote>
   <p><strong>Note : </strong>Les éléments entre crochets sont des listes. Il est possible de déclarer des listes dans un dictionnaire, et même des dictionnaires dans un dictionnaire, un dictionnaire dans une liste, ...</p>
 </blockquote>
@@ -89,6 +91,30 @@ a, b = example()
 <p>Pour accéder à une valeur d'une liste, il suffit d'indiquer l'indice en fonction de la clé :</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio["SUV"][1]
 'C-HR'</code></pre>
+<h2>Importer un fichier json en un dictionnaire exploitable</h2>
+<p>Le format json n'est rien d'autre qu'un dictionnaire. Pour lire un fichier json il suffira alors de le charger et nous obtiendrons le même dictionnaire créé avant.</p>
+<pre><code class="language-plaintext">Contenu du fichier "voitures.json" :
+
+{
+	"title": "Modeles de voitures", 
+	"SUV":
+	 [
+		"CX-5","C-HR","Duster"
+	], 
+	"4x4": 
+	[
+		"Q5","Tucson","Macan"
+	]
+}</code></pre>
+<p>&nbsp;</p>
+<pre><code class="language-python">import json
+
+with open('voitures.json') as file:   #Fonctionne pour tout type de fichier.
+    data = json.load(file)     #On attribue le contenu du fichier au dictionnaire "data"
+
+&gt;&gt;&gt; data
+{'title': 'Modeles de voitures', 'SUV': ['CX-5', 'C-HR', 'Duster'], '4x4': ['Q5', 'Tucson', 'Macan']}</code></pre>
+<p>&nbsp;</p>
 <h1>CSV</h1>
 <p>&nbsp;</p>
 <h1>Lire un txt</h1>
