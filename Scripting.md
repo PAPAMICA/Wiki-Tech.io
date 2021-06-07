@@ -2,7 +2,7 @@
 title: Scripting
 description: Les différents langage de scripts avec leurs tutoriels !
 published: true
-date: 2021-06-07T07:57:45.125Z
+date: 2021-06-07T08:05:04.128Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:30:53.085Z
@@ -20,7 +20,7 @@ dateCreated: 2021-05-24T14:30:53.085Z
  - [💎 Les bases *Les bases pour bien débuter avec Python*](/Scripting/Python/Bases)
  - [💎 Conditions et boucles *IF, ELSE, ELIF, WHILE, Comparaisons, etc...*](/Scripting/Python/Conditions-Boucles)
  - [💎 Manipulation de données *.*](/Scripting/Python/Manip-donnees)
- - [💎 Fonctions avancées *.*](/Scripting/Python/Fonctions-Avancées)
+ - [💎 Fonctions avancées *Construire et manipuler un objet, décorateurs,...*](/Scripting/Python/Fonctions-Avancées)
 {.links-list}
 
 # Powershell
