@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-07T13:17:06.768Z
+date: 2021-06-07T13:22:37.414Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -80,8 +80,15 @@ a, b = example()
 <p>Les dictionnaires permettent eux aussi de rassembler des éléments mais sont identifiés par une <strong>clé</strong> au lieu d'un indice, et vont permettre de traiter beaucoup plus d'informations qu'une liste. Un dictionnaire se déclare avec des accolades.</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio = {"title": "Modèles de voitures", "SUV": ["CX-5","C-HR","Duster"], "4x4": ["Q5","Tucson","Macan"]}</code></pre>
 <blockquote>
-  <p><strong>Note : </strong>Les éléments entre crochets sont des listes. Il est possible de déclarer des listes dans un dictionnaire, et même des dictionnaires dans un dictionnaire.</p>
+  <p><strong>Note : </strong>Les éléments entre crochets sont des listes. Il est possible de déclarer des listes dans un dictionnaire, et même des dictionnaires dans un dictionnaire, un dictionnaire dans une liste, ...</p>
 </blockquote>
+<p>Dans cet exemple nous avons trois clés : “title”, “SUV” et “4x4”.</p>
+<p>Pour connaître le titre nous appelons le dictionnaire avec la clé entre crochets :</p>
+<pre><code class="language-python">&gt;&gt;&gt; dictio["title"]
+'Modèles de voitures'</code></pre>
+<p>Pour accéder à une valeur d'une liste, il suffit d'indiquer l'indice en fonction de la clé :</p>
+<pre><code class="language-python">&gt;&gt;&gt; dictio["SUV"][1]
+'C-HR'</code></pre>
 <h1>CSV</h1>
 <p>&nbsp;</p>
 <h1>Lire un txt</h1>
