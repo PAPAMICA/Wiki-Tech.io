@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-07T09:56:18.418Z
+date: 2021-06-07T12:19:06.461Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -38,7 +38,45 @@ C# est cool
 java est cool
 C++ est cool</code></pre>
 <h1>Les tuples</h1>
-<h1>Les dictionnaires (json)</h1>
+<p>Les tuples ressemblent à des listes mais ne sont pas modifiables après leur création. Ils sont définis avec des parenthèses :</p>
+<pre><code class="language-python">&gt;&gt;&gt; tup = (1,2,3)
+&gt;&gt;&gt; tup
+(1, 2, 3)</code></pre>
+<p>Comme pour les listes, on peut accéder à un élément par son indice :</p>
+<pre><code class="language-python">&gt;&gt;&gt; tup[1]
+2</code></pre>
+<p>Les tuples servent principalement à attribuer plusieurs valeurs :</p>
+<pre><code class="language-python">####METHODE 1#######
+&gt;&gt;&gt; tup = (1,2,3)
+&gt;&gt;&gt; a,b,c = tup
+&gt;&gt;&gt; a
+1
+&gt;&gt;&gt; b
+2
+&gt;&gt;&gt; c
+3
+
+####METHODE 2#######
+&gt;&gt;&gt; a, b = 1, 2 #dans ce cas, les parenthèses ne sont pas obligatoires
+&gt;&gt;&gt; a
+1
+&gt;&gt;&gt; b
+2
+
+####METHODE 3#######
+def example():
+   return 1,2 #ceci est un tuple
+    
+tup = example()
+a, b = example
+
+&gt;&gt;&gt; tup
+(1, 2)
+&gt;&gt;&gt; a
+1
+&gt;&gt;&gt; b
+2</code></pre>
+<h1>Les dictionnaires (+ json)</h1>
 <p>&nbsp;</p>
 <h1>CSV</h1>
 <p>&nbsp;</p>
