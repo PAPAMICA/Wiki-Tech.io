@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-05-24T16:12:00.664Z
+date: 2021-06-08T07:49:00.873Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-24T16:12:00.664Z
 Fin si</code></pre>
 <p>En python, cela donnerait :</p>
 <pre><code class="language-python">refrigerateur_vide = 1
-if refrigerateur_vide=1:
+if refrigerateur_vide == 1:
   print "Faire des courses"</code></pre>
 <p>&nbsp;</p>
 <blockquote>
@@ -25,7 +25,7 @@ if refrigerateur_vide=1:
 </blockquote>
 <p><i>Démonstration :</i></p>
 <pre><code class="language-python">refrigerateur_vide = 1
-if refrigerateur_vide=1: #Je débute le IF
+if refrigerateur_vide == 1: #Je débute le IF
   print "Aller faire des courses" # Je suis dans le IF
   print "Je suis encore de le IF"
   print "Ici aussi"
@@ -34,7 +34,7 @@ print "Ici non, mon IF est terminé"</code></pre>
 <h2>IF ELSE</h2>
 <p>Je peux également grâce au <strong>ELSE</strong> définir une action si ma condition est fausse.</p>
 <pre><code class="language-python">refrigerateur_vide = 1
-if refrigerateur_vide=1: # Si le frigo est vide, alors ...
+if refrigerateur_videv == 1: # Si le frigo est vide, alors ...
   print "Faire des courses"
 else: # Sinon ...
   print "Ne pas faire de courses"</code></pre>
@@ -42,9 +42,9 @@ else: # Sinon ...
 <h2>ELIF</h2>
 <p>Cette condition permet d'avoir <strong>plusieurs conditions</strong> dans une clause IF.</p>
 <pre><code class="language-python">refrigerateur_vide = 1
-if refrigerateur_vide=1: # Si le frigo est vide, alors ...
+if refrigerateur_vide == 1: # Si le frigo est vide, alors ...
   print "Faire des courses"
-elif refrigerateur_vide=0.5: # Si le frigo est presque vide, alors ...
+elif refrigerateur_vide == 0.5: # Si le frigo est presque vide, alors ...
   print "Faire de petites courses"
 else: # Sinon ...
   print "Ne pas faire de courses"</code></pre>
@@ -97,7 +97,7 @@ else: # Sinon ...
 <p>Si un test à besoin de plusieurs conditions pour être vrai, on peut combiner plusieurs conditions pour une seule clause IF.</p>
 <pre><code class="language-python">permis=False
 majeur=True
-if permis==True and majeur == True: # Pour que je puisse conduire, il faut que j'ai mon permis et que je sois majeur
+if permis == True and majeur == True: # Pour que je puisse conduire, il faut que j'ai mon permis et que je sois majeur
   print "Je peux conduire"
 else:
   print "Je ne peux pas conduire"</code></pre>
