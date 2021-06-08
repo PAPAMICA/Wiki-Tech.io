@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-08T09:16:36.896Z
+date: 2021-06-08T09:50:05.856Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -137,7 +137,7 @@ with open('voitures.json') as file:   #Fonctionne pour tout type de fichier.
 {'title': 'Modeles de voitures', 'SUV': ['CX-5', 'C-HR', 'Duster'], '4x4': ['Q5', 'Tucson', 'Macan']}</code></pre>
 <h1>Manipuler un fichier</h1>
 <h2>Ouvrir un fichier</h2>
-<p>Méthodes d'ouvertures de fichiers :</p>
+<p>Options d'ouvertures de fichiers :</p>
 <figure class="table">
   <table>
     <tbody>
@@ -157,21 +157,19 @@ with open('voitures.json') as file:   #Fonctionne pour tout type de fichier.
         <td>‘a’</td>
         <td>Ouvre en écriture, en ajoutant le contenu à la fin (append)</td>
       </tr>
-      <tr>
-        <td>‘b’</td>
-        <td>Mode binaire</td>
-      </tr>
-      <tr>
-        <td>‘t’</td>
-        <td>Mode texte (par défaut)</td>
-      </tr>
-      <tr>
-        <td>‘+’</td>
-        <td>Ouvre en modification (lecture écriture)</td>
-      </tr>
     </tbody>
   </table>
 </figure>
+<p>Pour ouvrir un fichier on utilise la méthode “open” et on spécifie l'option souhaitée.</p>
+<pre><code class="language-python">file = open('test.txt','r')
+
+[...]
+
+file.close()</code></pre>
+<p>Avec cette méthode il est nécessaire de fermer le fichier avec <i>close()</i>. En cas de problème pendant l’exécution du code, les modifications ne seront pas prises en compte et le fichier ne sera plus utilisable par la suite du script.&nbsp;</p>
+<p>Une méthode plus fiable, plus sécurisée sera donc d'utiliser <i>open() </i>avec <i>with. </i>Le fichier sera automatiquement fermé.</p>
+<pre><code class="language-python">with open('test.txt','r') as file:
+    [...]</code></pre>
 <h2>Fichier texte</h2>
 <h2>Fichier CSV</h2>
 <p>&nbsp;</p>
