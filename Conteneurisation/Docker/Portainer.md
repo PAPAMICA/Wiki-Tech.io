@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-06-02T09:33:55.590Z
+date: 2021-06-08T13:34:05.747Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:27.557Z
@@ -112,7 +112,7 @@ Et voilà ! Votre serveur sera maintenant disponible dans Portainer !
 
 Etant un gars super top génial (merci de ne pas me contredire.), j'ai fait un modèle de toutes les applications que j'utilise au quotidien… Et tout ça intégré directement dans Portainer pour déployer les applications en juste quelques clics. Vous ai-je dis que ces applications supportent Traefik et Loki ? Genial non ? Allez, allons y !
 
-Il suffit simplement de mettre l'url de mon repo dans la configuration : `https://github.com/PAPAMICA/docker-compose-collection/blob/master/templates-portainer.json`
+Il suffit simplement de mettre l'url de mon repo dans la configuration : `https://raw.githubusercontent.com/PAPAMICA/docker-compose-collection/master/templates-portainer.json`
 
 ![](https://camo.githubusercontent.com/576de2c1f125016f37a6ddfb36546e78cfb49cd8a61ce8c156e329c723c424f0/68747470733a2f2f692e696d6775722e636f6d2f4d34397373434e2e706e67)
 
