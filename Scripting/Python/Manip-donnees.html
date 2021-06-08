@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-08T08:14:05.099Z
+date: 2021-06-08T08:19:42.413Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -98,11 +98,21 @@ a, b = example()
 'C-HR'</code></pre>
 <p>Pour parcourir l'ensemble du dictionnaire on utilise la méthode items().</p>
 <pre><code class="language-python">for cars in dictio.items():
-    print(cars)</code></pre>
-<p>('title', 'Modèles de voitures')</p>
-<p>('SUV', ['CX-5', 'C-HR', 'Duster'])</p>
-<p>('4x4', ['Q5', 'Tucson', 'Macan'])</p>
-<p>('citadine', 'C3')</p>
+    print(cars)
+    
+('title', 'Modèles de voitures')
+('SUV', ['CX-5', 'C-HR', 'Duster'])
+('4x4', ['Q5', 'Tucson', 'Macan'])
+('citadine', 'C3')</code></pre>
+<p>On reconnait ici une forme de tuple ! On peut donc aussi attribuer 2 variables à la place de cars pour dissocier la clé et la valeur :</p>
+<pre><code class="language-python">for car_type, models in dictio.items():
+    if car_type != "title":  #Pour exclure l'élément "title"
+        print("Modeles de ",car_type," : ",models)
+
+Modeles de  SUV  :  ['CX-5', 'C-HR', 'Duster']
+Modeles de  4x4  :  ['Q5', 'Tucson', 'Macan']
+Modeles de  citadine  :  C3</code></pre>
+<p>&nbsp;</p>
 <h2>Importer un fichier json en un dictionnaire exploitable</h2>
 <p>Le format json n'est rien d'autre qu'un dictionnaire. Pour lire un fichier json il suffira alors de le charger et nous obtiendrons le même dictionnaire que nous avions créé.</p>
 <p><i>Contenu du fichier “voitures.json” :</i></p>
