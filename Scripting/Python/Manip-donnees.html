@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-08T10:24:17.579Z
+date: 2021-06-08T10:59:45.517Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -177,8 +177,41 @@ file.close()</code></pre>
 <blockquote>
   <p><strong>Info : </strong>Pour donner le chemin vers le fichier il faut des “ / “ et non des ” \ ". Ex : C:/mon<i>dossier/mon</i>fichier</p>
 </blockquote>
-<h2>Fichier texte</h2>
-<h2>Fichier CSV</h2>
+<h2>Manipuler un texte</h2>
+<p>Pour lire un fichier texte, on l'ouvre bien entendu avec l'option ‘r’, puis on peut :</p>
+<h3>1 - Lire le fichier en entier avec <i>read()</i></h3>
+<pre><code class="language-python">with open('test.txt','r') as file:
+    print(file.read())
+
+ligne 1
+ligne 2
+ligne 3</code></pre>
+<h3>2 - Lire le fichier ligne par ligne avec <i>readline()</i></h3>
+<p>Le premier <i>readline()</i> lira la première ligne, le deuxième la deuxième ligne, etc…</p>
+<pre><code class="language-python">with open('test.txt','r') as file:
+    print(file.readline())
+    print(file.readline())
+
+ligne 1
+ligne 2</code></pre>
+<p>Avec cette méthode, il faut répéter <i>readline() </i>autant de fois qu'il y a de lignes. La méthode la plus efficace sera d'utiliser une boucle <i>for :&nbsp;</i></p>
+<pre><code class="language-python">with open('test.txt','r') as file:
+    for ligne in file:
+        print(ligne)
+
+ligne 1
+ligne 2
+ligne 3</code></pre>
+<h3>3 - Mettre toute les lignes dans une liste avec <i>readlines()</i></h3>
+<pre><code class="language-python">with open('test.txt','r') as file:
+    print(file.readlines())
+
+['banane\n', 'fraise\n', 'chocolat'] #Les \n indiquent des retours à la ligne</code></pre>
+<p>&nbsp;</p>
+<p>Enfin, pour écrire dans un fichier texte, on utilise <i>write().</i></p>
+<pre><code class="language-python">with open('test.txt','a') as file:
+    file.write("\nligne 4")</code></pre>
+<h2>Manipuler un CSV</h2>
 <p>&nbsp;</p>
 <h1>Formater des chaines de caractères</h1>
 <p>&nbsp;</p>
