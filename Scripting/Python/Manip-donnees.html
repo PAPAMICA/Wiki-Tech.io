@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-07T13:47:41.080Z
+date: 2021-06-08T08:07:28.123Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -11,7 +11,7 @@ dateCreated: 2021-06-07T08:01:47.026Z
 <figure class="image image_resized" style="width:53.94%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png" alt="Fichier:Python logo and wordmark.svg — Wikipédia"></figure>
 <h1>Les listes</h1>
 <p>Une liste se déclare avec des crochets et on accède à une donnée par son indice.</p>
-<pre><code class="language-python">langages = ["python", "C#","java","C++"]
+<pre><code class="language-python">&gt;&gt;&gt; langages = ["python", "C#","java","C++"]
 
 &gt;&gt;&gt; print(langages[1])
 C#</code></pre>
@@ -77,20 +77,26 @@ a, b = example()
 &gt;&gt;&gt; b
 2</code></pre>
 <h1>Les dictionnaires (+ json)</h1>
-<h2>Manipuler un dictionnaire</h2>
+<h2>Créer un dictionnaire</h2>
 <p>Les dictionnaires permettent eux aussi de rassembler des éléments mais sont identifiés par une <strong>clé</strong> au lieu d'un indice, et vont permettre de traiter beaucoup plus d'informations qu'une liste. Un dictionnaire se déclare avec des accolades.</p>
-<pre><code class="language-python">&gt;&gt;&gt; dictio = {"title": "Modèles de voitures", "SUV": ["CX-5","C-HR","Duster"], "4x4": ["Q5","Tucson","Macan"]}</code></pre>
+<pre><code class="language-python">dictio = {"title": "Modèles de voitures", "SUV": ["CX-5","C-HR","Duster"], "4x4": ["Q5","Tucson","Macan"]}</code></pre>
 <p>&nbsp;</p>
 <blockquote>
   <p><strong>Note : </strong>Les éléments entre crochets sont des listes. Il est possible de déclarer des listes dans un dictionnaire, et même des dictionnaires dans un dictionnaire, un dictionnaire dans une liste, ...</p>
 </blockquote>
 <p>Dans cet exemple nous avons trois clés : “title”, “SUV” et “4x4”.</p>
+<p>Pour ajouter un élément au dictionnaire, on attribue une clé entre crochets puis une valeur.</p>
+<pre><code class="language-python">&gt;&gt;&gt; dictio["citadine"] = "C3"
+&gt;&gt;&gt; print(dictio)
+{'title': 'Modèles de voitures', 'SUV': ['CX-5', 'C-HR', 'Duster'], '4x4': ['Q5', 'Tucson', 'Macan'], 'citadine': 'C3'}</code></pre>
+<h2>Lire un dictionnaire</h2>
 <p>Pour connaître le titre nous appelons le dictionnaire avec la clé entre crochets :</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio["title"]
 'Modèles de voitures'</code></pre>
 <p>Pour accéder à une valeur d'une liste, il suffit d'indiquer l'indice en fonction de la clé :</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio["SUV"][1]
 'C-HR'</code></pre>
+<p>&nbsp;</p>
 <h2>Importer un fichier json en un dictionnaire exploitable</h2>
 <p>Le format json n'est rien d'autre qu'un dictionnaire. Pour lire un fichier json il suffira alors de le charger et nous obtiendrons le même dictionnaire que nous avions créé.</p>
 <p><i>Contenu du fichier “voitures.json” :</i></p>
