@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-06-08T07:49:00.873Z
+date: 2021-06-08T07:57:30.280Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -101,7 +101,12 @@ if permis == True and majeur == True: # Pour que je puisse conduire, il faut que
   print "Je peux conduire"
 else:
   print "Je ne peux pas conduire"</code></pre>
-<p>&nbsp;</p>
+<p>Si un test a besoin qu'une condition soit vraie parmi plusieurs, on peut utiliser un “or”.</p>
+<pre><code class="language-python">vote_gagne = False
+dictature = True
+
+if (vote_gagne or dictature) == True:
+    print("Je dirige le pays")</code></pre>
 <h1>Les boucles</h1>
 <h2>La boucle <strong>WHILE</strong></h2>
 <p>La boucle <strong>while</strong> (ou tant que) répète une série d'instructions tant qu'une condition n'est pas vraie.<br>Syntaxe :</p>
