@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-06-08T08:07:28.123Z
+date: 2021-06-08T08:14:05.099Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -31,7 +31,7 @@ C#</code></pre>
 <pre><code class="language-python">&gt;&gt;&gt; langages = ["python", "C#","java","C++"]
 
 &gt;&gt;&gt; for prog in langages:
-&gt;&gt;&gt;     print("{0} est cool".format(prog)) #voir chapitre "Formater des chaines de caractères"
+&gt;&gt;&gt;     print(prog, "est cool")
 
 python est cool
 C# est cool
@@ -96,7 +96,13 @@ a, b = example()
 <p>Pour accéder à une valeur d'une liste, il suffit d'indiquer l'indice en fonction de la clé :</p>
 <pre><code class="language-python">&gt;&gt;&gt; dictio["SUV"][1]
 'C-HR'</code></pre>
-<p>&nbsp;</p>
+<p>Pour parcourir l'ensemble du dictionnaire on utilise la méthode items().</p>
+<pre><code class="language-python">for cars in dictio.items():
+    print(cars)</code></pre>
+<p>('title', 'Modèles de voitures')</p>
+<p>('SUV', ['CX-5', 'C-HR', 'Duster'])</p>
+<p>('4x4', ['Q5', 'Tucson', 'Macan'])</p>
+<p>('citadine', 'C3')</p>
 <h2>Importer un fichier json en un dictionnaire exploitable</h2>
 <p>Le format json n'est rien d'autre qu'un dictionnaire. Pour lire un fichier json il suffira alors de le charger et nous obtiendrons le même dictionnaire que nous avions créé.</p>
 <p><i>Contenu du fichier “voitures.json” :</i></p>
