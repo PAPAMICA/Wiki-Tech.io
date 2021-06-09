@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-09T17:34:38.294Z
+date: 2021-06-09T18:11:25.235Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -294,16 +294,18 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Invoke-command  -Computername “nom de la machine cible” { vos instructions à la machine cible}</code></pre>
 <p>&nbsp;</p>
-<p>Pour que vos machines cibles puissent autoriser l'utilisation de commande à distance, vous devez au préalable donner une autorisation par la commande</p>
+<p>Pour que vos machines cibles puissent autoriser l'utilisation des commandes à distance, vous devez au préalable donner une autorisation par la commande</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Enable-PsRemoting</code></pre>
 <p>&nbsp;</p>
-<p>Si vos machines ne sont pas dans un domaine vous devrez en plus ajouter les machines maitres dans le fichier TrustedHosts par la commande :</p>
+<p>Si vos machines ne sont pas dans un domaine vous devrez en plus ajouter les machines &nbsp;dans le fichier TrustedHosts par la commande :</p>
 <p>&nbsp;</p>
-<pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines maitres" </code></pre>
+<pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines" </code></pre>
 <p>&nbsp;</p>
-<p>Puis vérifier que vos machines maitres ont bien accès à vos machines distantes avec :</p>
+<p>Puis vérifier que vos machines peuvent utiliser les commandes à distance :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Test-WsMan "ip ou nom machines cibles"</code></pre>
 <p>&nbsp;</p>
+<p>voici un exemple d'utilisation :</p>
+<figure class="image"><img src="/invoke_commande.png"></figure>
 <p>&nbsp;</p>
