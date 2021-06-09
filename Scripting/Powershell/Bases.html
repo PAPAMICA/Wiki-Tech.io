@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-09T15:26:05.494Z
+date: 2021-06-09T15:33:37.397Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -259,10 +259,10 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <pre><code class="language-plaintext">$texte=@"
 &lt;montexte&gt;
 "@</code></pre>
-<p>voici un exemple de ce que l'on peut faire avec:</p>
+<p>Voici un exemple de ce que l'on peut faire avec:</p>
 <figure class="image"><img src="/here-string.png"></figure>
 <p>&nbsp;</p>
-<p>on peut également utiliser la concaténation à l'intérieur du <code>Here-String</code></p>
+<p>On peut également utiliser la concaténation à l'intérieur du <code>Here-String</code></p>
 <figure class="image"><img src="/here-string2.png"></figure>
 <h2>La portée des variables</h2>
 <p>&nbsp;</p>
@@ -271,7 +271,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <p>Mettons en pratique pour analyser ce qu'il se passe.</p>
 <figure class="image"><img src="/portee.png"></figure>
-<p>Dans cette exemple, nous utilisons une fonction que nous verrons plus tard. Dans le bloc de script symbolisé par <strong>{}</strong> la variable $portee est bien lu par la fonction. Hors, à la ligne 8 le <code>Write-Host</code> ne peut pas lire cette variable. La variable $portee se limite aux <strong>{} </strong>.</p>
+<p>Dans cette exemple, nous utilisons une fonction que nous verrons plus tard. Dans le bloc de script symbolisé par <strong>{}</strong> la variable $portee est bien lu par la fonction. Hors, à la ligne 8 le <code>Write-Host</code> ne peut pas lire cette variable. La variable <code>$portee</code> se limite aux <strong>{} </strong>.</p>
 <p>Pour palier à ce soucis, on va indiquer à PowerShell que <code>$portee</code> est une variable dites globale par $global:portee</p>
 <p>voici ce que cela donne:</p>
 <figure class="image"><img src="/global.png"></figure>
@@ -282,6 +282,9 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>la variable <code>$_.</code> récupéré les méthodes et propriétés renvoyées par la commande <code>Get-Service</code> à travers le pipeline.</p>
 <p>remarque : nous avons utilisé <code>-eq</code> qui est un opérateur de comparaison qui signifie égal à.</p>
 <h1>Commande à distance</h1>
-<p>Avec PowerShell, il est tout à fait possible d'utiliser des commandes pour gérer le comportement ou de donner des instructions à machine à distance. C'est ce que nous allons voir de deux façon différentes. Ensuite nous verrons comment utiliser PowerShell Direct pour gérer vos machines virtuel depuis un hôtes.</p>
+<p>Avec PowerShell, vous aurez certainement remarquer que la majeur partie des commande comporte l'option <code>-computername</code>. Cette option a pour avantage de transmettre une instruction à une autre machine. Hors, il apparait dans certains cas que cette option n'existe pas. C'est pour cela, qu'il est tout à fait possible d'utiliser des commandes pour gérer le comportement ou de donner des instructions à une machine distante.&nbsp;</p>
+<p>C'est ce que nous allons voir de deux façon différentes de procéder. Ensuite nous verrons comment utiliser PowerShell Direct pour gérer vos machines virtuel depuis un hôtes.</p>
 <h2>Exécuter une commande à distance</h2>
 <p>&nbsp;</p>
+<p>Pour Exécuter une commande a distance, nous allons utiliser :</p>
+<p>Invoke-Commande</p>
