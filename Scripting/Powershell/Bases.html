@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-09T16:36:14.455Z
+date: 2021-06-09T16:37:04.576Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -294,13 +294,13 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Invoke-command  -Computername “nom de la machine cible” { vos instructions à la machine cible}</code></pre>
 <p>&nbsp;</p>
-<p>Pour que vos machines cibles puissent autorisées l'utilisation de commande à distante vous devez au préalable donner une autorisation par la commande</p>
+<p>Pour que vos machines cibles puissent autorisées l'utilisation de commande à distance, vous devez au préalable donner une autorisation par la commande</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Enable-PsRemoting</code></pre>
 <p>&nbsp;</p>
 <p>Si vos machines ne sont pas dans un domaine vous devrez en plus ajouter les machines autorisées dans le fichier TrustedHosts par la commande :</p>
 <p>&nbsp;</p>
-<pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts “l'ip de vos machines maitres” </code></pre>
+<pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts "ip de vos machines maitres" </code></pre>
 <p>&nbsp;</p>
 <p>Puis vérifier que vos machines maitres ont bien accès à votre machine distante avec :</p>
 <p>&nbsp;</p>
