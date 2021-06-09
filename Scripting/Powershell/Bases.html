@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-05-29T17:03:38.054Z
+date: 2021-06-09T15:26:05.494Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -210,11 +210,11 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>A partir de cet état, il est possible de lui apporter des modifications de manière automatique via PowerShell.</p>
 <p>Prenons, par exemple cette variable</p>
 <pre><code class="language-plaintext">$Unmot = papamica</code></pre>
-<p>Il y possibilité sous PowerShell d'appliquer une méthode à cette variable. Par exemple, je peux demander à PowerShell de stocker le mot <code>papamica</code> en majuscule. Pour ce faire, je vais déclarer ma variable, puis faire appel à celle-ci par <strong>$nom et ajouter un point</strong> et lister l'ensemble des méthodes et propriétés de celle-ci.</p>
+<p>Il y possibilité sous PowerShell d'appliquer une méthode à cette variable. Par exemple, je peux demander à PowerShell de stocker le mot <code>papamica</code> en majuscule. Pour ce faire, vous déclarez votre variable, puis faites appel à celle-ci par <strong>$nom et ajouter un point</strong> et lister l'ensemble des méthodes et propriétés de celle-ci.</p>
 <p>Un exemple est plus parlant sous Visual Studio Code:</p>
 <figure class="image"><img src="/variable_manip.png"></figure>
 <p>&nbsp;</p>
-<p>On peut voir que Visual Studio Code me renvoie toutes les méthodes et propriétés que je peux appliquer à une variable.</p>
+<p>On peut voir que Visual Studio Code nous renvoie toutes les méthodes et propriétés que je peux appliquer à une variable.</p>
 <p>Si vous voulez mettre la valeur de votre variable en majuscule il me suffit de choisir <code>.ToUpper()</code>.</p>
 <figure class="image"><img src="/variable_manip2.png"></figure>
 <p>&nbsp;</p>
@@ -231,7 +231,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image"><img src="/variable_gettype.png"></figure>
 <h2>La concaténation</h2>
 <p>On appelle la concaténation le fait de pouvoir associer ou grouper des caractères &nbsp;en une chaine. Par Exemple, si on souhaite intégrer la valeur d'une variable dans du texte.&nbsp;</p>
-<p>Déclarons une variable <strong>$mot</strong>, on lui ajoute une valeur, puis jouons avec avec les commandes <code>Write-Host</code> (qui permet de renvoyer une chaine de caractères dans le prompt) et &nbsp; &nbsp;<code>Read-Host</code>(qui attends que l'on entre une valeur dans le prompt) pour concaténer.&nbsp;</p>
+<p>Déclarons une variable <strong>$mot</strong>, on lui ajoute une valeur, puis jouons &nbsp;avec les commandes <code>Write-Host</code> (qui permet de renvoyer une chaine de caractères dans le prompt) et &nbsp;<code>Read-Host</code>(qui attends que l'on entre une valeur dans le prompt) pour concaténer.&nbsp;</p>
 <p>Voyons ce que cela donne avec <code>Write-Host</code></p>
 <p>&nbsp;</p>
 <figure class="image"><img src="/conca_write.png"></figure>
@@ -244,14 +244,14 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <p>Vous remarquez que <code>$mot = Read-Host</code> attends et ensuite va stocker ce que vous écrivez dans le prompt. On peut ensuite le concaténer.</p>
 <p>Je reviens un instant sur un cas particulier lorsque vous faites appel à une propriété ou une méthode de variable il y a une syntaxe un peux spécifique pour la concaténer.</p>
-<p>deux solutions, à vous de choisir il n'y a pas forcement de règle puisqu'il n'y pas une seule et unique façon de faire un script :</p>
+<p>deux solutions, à vous de choisir il n'y a pas forcement de règle puisqu'il n'y pas une seule et unique façon d'écrire un script :</p>
 <figure class="image"><img src="/read-host.png"></figure>
-<p>Ici je stocke ma variable demandée dans le prompt avec <code>Read-host</code> puis je vais appliquer une transformation à ma variable avec <code>$mot = $mot.ToUpper()</code> en la réaffectant</p>
+<p>Ici on stocke la variable demandée dans le prompt avec <code>Read-host</code> puis &nbsp;appliquer une transformation à la variable avec <code>$mot = $mot.ToUpper()</code> en la réaffectant</p>
 <p>il suffit de faire un simple concaténation pour obtenir le résultat voulu.&nbsp;</p>
 <p>l'autre méthode c'est :&nbsp;</p>
 <p>&nbsp;</p>
 <figure class="image"><img src="/toupperr-2.png"></figure>
-<p>Dans ce cas on applique en même temps la transformation de ma chaine de caractère &nbsp;contenu dans ma variable <code>$mot</code>, en stipulant de récupérer la valeur dans <code>$mot</code> avec <strong>$ puis les parenthèses</strong> et d'appliquer la transformation avec <code>$mot.ToUpper()</code> à la variable <code>$mot</code>.</p>
+<p>Dans ce cas, on applique en même temps la transformation de la chaine de caractère &nbsp;contenu dans la variable <code>$mot</code>, en stipulant de récupérer la valeur dans <code>$mot</code> avec <strong>$ puis les parenthèses</strong> et d'appliquer la transformation avec <code>$mot.ToUpper()</code> à la variable <code>$mot</code>.</p>
 <p>&nbsp;</p>
 <h2>Le Here-string</h2>
 <p>Le <code>Here-String</code> permet de mettre du texte en forme et de la conserver.</p>
