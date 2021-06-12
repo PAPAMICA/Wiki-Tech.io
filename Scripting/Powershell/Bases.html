@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-10T17:53:44.075Z
+date: 2021-06-12T06:36:04.258Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -272,18 +272,19 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>Mettons en pratique pour analyser ce qu'il se passe.</p>
 <figure class="image"><img src="/portee.png"></figure>
 <p>Dans cette exemple, nous utilisons une fonction que nous verrons plus tard. Dans le bloc de script symbolisé par <strong>{}</strong> la variable <code>$portee</code> est bien lu par la fonction. Hors, à la ligne 8 le <code>Write-Host</code> ne peut pas lire cette variable. La variable <code>$portee</code> se limite aux <strong>{} </strong>.</p>
-<p>Pour palier à ce soucis, on va indiquer à PowerShell que <code>$portee</code> est une variable dites globale par <code>$global:portee</code></p>
+<p>Pour palier à ce soucis, on va indiquer à PowerShell que <code>$portee</code> est une variable dite globale par <code>$global:portee</code></p>
 <p>voici ce que cela donne:</p>
 <figure class="image"><img src="/global.png"></figure>
 <p>&nbsp;</p>
 <h2>La variable de pipeline</h2>
+<p>&nbsp;</p>
 <p>La variable de pipeline <code>$_.</code> est une variable un peu spécifique puisque celle-ci s'utilise derrière un pipeline. Pour illustrer son utilisation, nous allons récupérer tout les services avec <code>Get-Service</code> et filtrer avec <code>Where-Object</code> uniquement ceux qui sont stoppés.&nbsp;</p>
 <figure class="image"><img src="/variable_pipeline.png"></figure>
-<p>la variable <code>$_.</code> récupéré les méthodes et propriétés renvoyées par la commande <code>Get-Service</code> à travers le pipeline.</p>
+<p>la variable <code>$_.</code> récupère les méthodes et propriétés renvoyées par la commande <code>Get-Service</code> à travers le pipeline.</p>
 <p>remarque : nous avons utilisé <code>-eq</code> qui est un opérateur de comparaison qui signifie égal à.</p>
 <h1>Commande à distance</h1>
 <p>Avec PowerShell, vous aurez certainement remarquer que la majeur partie des commande comporte l'option <code>-Computername</code>. Cette option a pour avantage de transmettre une instruction à une autre machine. Hors, il apparait dans certains cas que cette option n'existe pas. C'est pour cela, qu'il est tout à fait possible d'utiliser des commandes pour gérer le comportement ou de donner des instructions à une machine distante.&nbsp;</p>
-<p>C'est ce que nous allons voir dans plusieurs façons différentes de procéder. Par l'utilisation de la commande <code>Invoke-Commande</code>, par l'ouverture d'une session à distance et ensuite nous verrons comment utiliser PowerShell Direct pour gérer vos machines virtuelles depuis un hôtes.</p>
+<p>C'est ce que nous allons voir dans plusieurs façons différentes de procéder. Par l'utilisation de la commande <code>Invoke-Commande</code>, par l'ouverture d'une session à distance et ensuite nous verrons comment utiliser PowerShell Direct pour gérer vos machines virtuelles.</p>
 <h2>Exécuter une commande à distance</h2>
 <p>&nbsp;</p>
 <p>Pour exécuter une commande à distance, nous allons utiliser :</p>
@@ -298,6 +299,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Enable-PsRemoting</code></pre>
 <p>&nbsp;</p>
+<h3>Commande à distance hors domaine</h3>
 <p>Si vos machines ne sont pas dans un domaine ou de domaines différents vous devrez en plus ajouter les machines dans le fichier TrustedHosts par la commande :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines" </code></pre>
@@ -310,6 +312,8 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>voici un exemple d'utilisation hors domaine :</p>
 <figure class="image"><img src="/invoke_commande.png"></figure>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Commande à distance dans un domine</h3>
 <p>&nbsp;</p>
 <h2>Session à distance</h2>
 <p>&nbsp;</p>
