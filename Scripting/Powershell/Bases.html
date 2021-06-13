@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-13T08:14:01.425Z
+date: 2021-06-13T08:14:30.191Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -293,16 +293,16 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <p>Cette commande a la particularité d'utiliser le protocole Winrm et en https ou http sur les ports TCP 5986 et 5985 . La déclaration de vos instructions se font dans un bloc de scripts à l'intérieure d'accolades <strong>{}</strong>.</p>
 <p>&nbsp;</p>
-<pre><code class="language-plaintext">Invoke-command  -Computername “nom de la machine cible” { vos instructions à la machine cible}</code></pre>
+<pre><code class="language-plaintext">Invoke-Command  -Computername “nom de la machine cible” { vos instructions à la machine cible}</code></pre>
 <p>&nbsp;</p>
 <p>Pour que vos machines cibles puissent autoriser l'utilisation des commandes à distance, vous devez au préalable donner une autorisation par la commande</p>
 <p>&nbsp;</p>
-<pre><code class="language-plaintext">Enable-PsRemoting</code></pre>
+<pre><code class="language-plaintext">Enable-PSRemoting</code></pre>
 <p>&nbsp;</p>
 <h3>Commande à distance hors domaine</h3>
 <p>Si vos machines ne sont pas dans un domaine ou de domaines différents vous devrez en plus ajouter les machines dans le fichier TrustedHosts par la commande :</p>
 <p>&nbsp;</p>
-<pre><code class="language-plaintext">Set-item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines" </code></pre>
+<pre><code class="language-plaintext">Set-Item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines" </code></pre>
 <p>&nbsp;</p>
 <p>remarque : la valeur de l'option <code>-value</code> peut être un nom de machine, une IP ou * mais cela n'est pas recommandé.</p>
 <p>Puis vérifier que vos machines peuvent utiliser les commandes à distance :</p>
