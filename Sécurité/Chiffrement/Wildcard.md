@@ -2,7 +2,7 @@
 title: Certificat Wildcard - OVH
 description: Génération d'un certificat Wildcard pour tous vos sous-domaines d'OVH
 published: true
-date: 2021-06-14T08:16:30.629Z
+date: 2021-06-14T08:16:57.819Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:31.253Z
@@ -24,7 +24,7 @@ Dans mon cas, mon nom de domaine est enregistré sur OVH. Pour générer le Wild
 
 ### Installation des dépendances
 
-```plaintext
+```bash
 apt install python3-pip
 apt install certbot
 apt install python3-certbot-dns-ovh
@@ -51,13 +51,13 @@ On obtient ensuite une liste d'identifiants : Application Key, Application Secre
 
 Sur notre serveur, on crée un fichier ".ovhapi". A titre d'exemple, je le place dans /root/. 
 
-```plaintext
+```bash
 nano /root/.ovhapi
 ```
 
 On rentre les identifiants sous cette forme :
 
-```plaintext
+```bash
 dns_ovh_endpoint = ovh-eu
 dns_ovh_application_key = xxx
 dns_ovh_application_secret = xxx
@@ -66,7 +66,7 @@ dns_ovh_consumer_key = xxx
 
 On attribue ensuite les droits sur ce fichier.
 
-```plaintext
+```bash
 chmod 600 /root/.ovhapi
 ```
 
@@ -74,7 +74,7 @@ chmod 600 /root/.ovhapi
 
 La génération du certificat s'effectue en une seule ligne de commande :
 
-```plaintext
+```bash
 certbot certonly --dns-ovh --dns-ovh-credentials ~/.ovhapi -d exemple.fr -d *.exemple.fr
 ```
 
