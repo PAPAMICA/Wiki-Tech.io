@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-06-14T06:47:26.837Z
+date: 2021-06-14T07:01:03.235Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:07.034Z
@@ -81,7 +81,7 @@ Le paquet est soit disponible depuis Debian Sid / Buster, soit depuis les réfé
 
 La nouvelle (meilleure) façon d'utiliser les backports Debian Stable d'OpenStack est d'utiliser extrepo. Extrepo est disponible dans les buster-backports officiels. Voici comment installer OpenStack, par exemple (vous avez besoin du dépôt buster-backports dans votre `sources.list`) :
 
-```plaintext
+```bash
 apt-get install extrepo
 extrepo enable openstack_wallaby
 apt-get update
@@ -93,7 +93,7 @@ Consultez la documentation d'extrepo pour en savoir plus.
 
 Si vous souhaitez utiliser Buster avec OpenStack Train, les dépôts ci-dessous doivent être ajoutés au fichier `sources.list` :
 
-```plaintext
+```bash
 deb http://buster-train.debian.net/debian buster-train-backports main
 deb-src http://buster-train.debian.net/debian buster-train-backports main
 
@@ -105,7 +105,7 @@ Vous pouvez remplacer buster ci-dessus par n'importe quelle distribution stable 
 
 La clé du dépôt est disponible de cette façon :
 
-```plaintext
+```bash
 apt-get update
 apt-get install --allow-unauthenticated -y openstack-backports-archive-keyring
 apt-get update
@@ -117,7 +117,7 @@ Il existe également un miroir contenant TOUTES les versions d'OpenStack en un s
 
 Installez simplement `openstack-cluster-installer` avec :
 
-```plaintext
+```bash
 apt-get install openstack-cluster-installer
 ```
 
@@ -125,13 +125,13 @@ apt-get install openstack-cluster-installer
 
 Pour MariaDB :
 
-```plaintext
+```bash
 apt-get install mariadb-server dbconfig-common
 ```
 
 Il est possible de créer la base de données et les informations d'identification à la main, ou de laisser OCI le gérer automatiquement avec `dbconfig-common`. Si APT s'exécute en mode non interactif, ou si pendant l'installation, l'utilisateur ne demande pas la gestion automatique de la base de données par `dbconfig-common`, voici comment créer la base de données : 
 
-```plaintext
+```bash
 apt-get install openstack-pkg-tools
 . /usr/share/openstack-pkg-tools/pkgos_func
 PASSWORD=$(openssl rand -hex 16)
@@ -146,7 +146,7 @@ Il faut alors s'assurer que la directive "`connection`" dans `/etc/openstack-clu
 
 Assurez-vous que la base de données est synchronisée (si c'est le cas, vous verrez que'il y a des erreurs dans le tableau) :
 
-```plaintext
+```bash
 apt-get install -y php-cli
 cd /usr/share/openstack-cluster-installer ; php db_sync.php
 ```
@@ -157,7 +157,7 @@ Puis éditez `/etc/openstack-cluster-installer/openstack-cluster-installer.conf`
 
 Pour supporter TLS, OCI utilise sa propre autorité de certification racine. Le certificat d'autorité de certification racine est distribué sur tous les nœuds du cluster. Pour créer l'autorité de certification racine initiale, il existe un script pour tout faire :
 
-```plaintext
+```bash
 oci-root-ca-gen
 ```
 
@@ -165,7 +165,7 @@ oci-root-ca-gen
 
 Cependant, vous avez besoin d'un login / pass pour entrer. Il y a un utilitaire shell pour gérer vos noms d'utilisateur. Pour ajouter un nouvel utilisateur, procédez comme suit :
 
-```plaintext
+```bash
 oci-userdb -a mylogin mypassword
 ```
 
@@ -173,13 +173,15 @@ Les mots de passe sont hachés en utilisant la fonction PHP `password_hash ()` e
 
 De plus, OCI est capable d'utiliser un Radius externe pour son authentification. Cependant, vous devez toujours ajouter manuellement des connexions dans la base de données. Ce qui est ci-dessous insère un nouvel utilisateur qui a une entrée dans le serveur Radius :
 
-```plaintext
+```bash
 oci-userdb -r newuser@example.com
 ```
 
 >  Vous devez également configurer votre adresse de serveur Radius et votre secret partagé dans `openstack-cluster-installer.conf`.
+{.is-warning}
 
 > Même s'il existe un système d'authentification, il est fortement conseillé de ne pas exposer OCI à Internet. La meilleure configuration est si votre serveur d'approvisionnement n'est pas du tout accessible de l'extérieur.
+{.is-warning}
 
 ## Installation des services annexes
 
@@ -189,13 +191,13 @@ Configurez `isc-dhcp` pour qu'il corresponde à votre configuration réseau. Not
 
 Modifiez `/etc/default/isc-dhcpd` :
 
-```plaintext
+```bash
 sed -i 's/INTERFACESv4=.*/INTERFACESv4="eth0"/' /etc/default/isc-dhcp-server
 ```
 
 Puis éditez `/etc/dhcp/dhcpd.conf` :
 
-```plaintext
+```bash
 allow booting;
 allow bootp;
 default-lease-time 600;--
@@ -230,7 +232,7 @@ De plus, pour qu'OCI autorise les requêtes à partir de la plage DHCP, vous dev
 
 Configurez `tftp-hpa` pour servir les fichiers depuis OCI:
 
-```plaintext
+```bash
 sed -i 's#TFTP_DIRECTORY=.*#TFTP_DIRECTORY="/var/lib/openstack-cluster-installer/tftp"#' /etc/default/tftpd-hpa
 ```
 
@@ -242,13 +244,13 @@ Puis redémarrez `tftpd-hpa`.
 
 Lors de la configuration, OCI créera une paire de clés ssh publique / privée ici:
 
-```plaintext
+```bash
 /etc/openstack-cluster-installer/id_rsa
 ```
 
 Une fois cela fait, il copiera le contenu `id_rsa.pub` correspondant dans:
 
-```plaintext
+```bash
 /etc/openstack-cluster-installer/authorized_keys
 ```
 
@@ -256,7 +258,7 @@ et ajoutera également toutes les clés publiques qu'il trouve sous `/root/.ssh/
 
 ### Construire l'image en direct d'OCI
 
-```plaintext
+```bash
 mkdir -p /root/live-image
 cd /root/live-image
 openstack-cluster-installer-build-live-image --pxe-server-ip 192.168.100.2 --debian-mirror-addr http://deb.debian.org/debian --debian-security-mirror-addr http://security.debian.org/
@@ -271,7 +273,7 @@ Il est possible d'utiliser des serveurs proxy de paquets comme `approx`, ou des 
 
 Une fois le service master Puppet installé, ses directives de classificateur de nœud externe (ENC) doivent être définies, de sorte que OCI agisse comme ENC (ce qui signifie que OCI définira les rôles et les classes de puppet à appeler lors de l'installation d'un nouveau serveur avec puppet) :
 
-```plaintext
+```bash
 . /usr/share/openstack-pkg-tools/pkgos_func
 pkgos_add_directive /etc/puppet/puppet.conf master "external_nodes = /usr/bin/oci-puppet-external-node-classifier" "# Path to enc"
 pkgos_inifile set /etc/puppet/puppet.conf master external_nodes /usr/bin/oci-puppet-external-node-classifier
@@ -291,7 +293,7 @@ Pour accélérer le téléchargement du paquet, il est fortement recommandé d'i
 
 Démarrez plusieurs ordinateurs, en les bootant avec PXE. Si tout se passe bien, ils attraperont le DHCP de l'OCI et redémarreront l'image en direct Debian de l'OCI. Une fois le serveur en marche, un agent s'exécutera pour faire un rapport à l'interface Web d'OCI. Rafraîchissez simplement l'interface Web d'OCI et vous verrez des machines. Vous pouvez également utiliser l'outil CLI:
 
-```plaintext
+```bash
 apt-get install openstack-cluster-installer-cli
 ocicli machine-list
 	serial   ipaddr          memory  status     lastseen             cluster  hostname
@@ -315,14 +317,14 @@ Avant d'installer les systèmes sur vos serveurs, des clusters doivent être dé
 
 Sous OCI, vous devez d'abord définir les régions Swift. Pour ce faire, cliquez sur "Swift region" sur l'interface web, ou en utilisant ocicli, saisissez :
 
-```plaintext
+```bash
 ocicli swift-region-create datacenter-1
 ocicli swift-region-create datacenter-2
 ```
 
 Créez ensuite des emplacements associés à ces régions:
 
-```plaintext
+```bash
 ocicli dc1-zone1 datacenter-1
 ocicli dc1-zone2 datacenter-1
 ocicli dc2-zone1 datacenter-2
@@ -334,20 +336,20 @@ Une fois les emplacements définis, il est temps de définir les réseaux. Les r
 
 ### Créer des réseaux
 
-```plaintext
+```bash
 ocicli network-create dc1-net1 192.168.101.0 24 dc1-zone1 no
 ```
 
 La commande ci-dessus créera un sous-réseau `192.168.101.0/24,` situé dans `dc1-zone1`. Créons 2 réseaux supplémentaires:
 
-```plaintext
+```bash
 ocicli network-create dc1-net2 192.168.102.0 24 dc1-zone2 no
 ocicli network-create dc2-net1 192.168.103.0 24 dc2-zone1 no
 ```
 
 Ensuite, pour que le cluster soit accessible, créons un réseau public sur lequel les clients se connecteront:
 
-```plaintext
+```bash
 ocicli network-create pubnet1 203.0.113.0 28 public yes
 ```
 
@@ -357,13 +359,13 @@ Notez que si vous utilisez un /32, il sera configuré sur l'interface `lo` de vo
 
 Créons un nouveau cluster:
 
-```plaintext
+```bash
 ocicli cluster-create swift01 example.com
 ```
 
 Maintenant que nous avons un nouveau cluster, les réseaux que nous avons créés peuvent y être ajoutés:
 
-```plaintext
+```bash
 ocicli network-add dc1-net1 swift01 all eth0
 ocicli network-add dc1-net2 swift01 all eth0
 ocicli network-add dc2-net1 swift01 all eth0
@@ -378,13 +380,13 @@ Si vous sélectionnez 2 interfaces réseau (par exemple, eth0 et eth1), la liais
 
 Par défaut, OCI générera un certificat auto-signé pour tout. Bien que cela fonctionne bien à quelques exceptions près (cela ne fonctionne visiblement pas pour Heat, Magnum et si l'on veut activer le chiffrement sur disque Swift), il est préférable, en production, d'utiliser un vrai certificat API, afin que les clients puissent faites confiance à votre serveur. Pour ce faire, il faut d'abord choisir un nom d'hôte pour l'API. Ceci est défini de cette façon:
 
-```plaintext
+```bash
 ocicli cluster-set z --vip-hostname cloud-api.example.com
 ```
 
 Une fois cela fait, dans le serveur OCI, générez un certificat pour ce nom d'hôte:
 
-```plaintext
+```bash
 oci-gen-slave-node-cert cloud-api.example.com
 ```
 
@@ -392,7 +394,7 @@ Le `cd` vers `/var/lib/oci/ssl/slave-nodes/cloud-api.example.com`. Ensuite, vous
 
 Une fois cela fait, informez simplement OCI que nous utilisons un vrai certificat signé:
 
-```plaintext
+```bash
 ocicli cluster-set z --self-signed-api-cert no
 ```
 
@@ -400,7 +402,7 @@ Désormais, Puppet sera démarré sans utiliser la racine ca de l'OCI comme envi
 
 Si vous avez mis votre cluster en production avant de signer le certificat, il est possible d'utiliser, sur le serveur de Puppet, l'utilitaire `oci-update-cluster-certs` :
 
-```plaintext
+```bash
 oci-update-cluster-certs z
 ```
 
@@ -410,7 +412,7 @@ Cela remplacera le certificat `cloud-api.example.com` partout dans le cluster et
 
 Maintenant que nous avons des réseaux affectés au cluster, il est temps d'ajouter des serveurs d'attribution au cluster. Disons que nous avons la sortie ci-dessous:
 
-```plaintext
+```bash
 ocicli machine-list
 	serial  ipaddr          memory  status  lastseen             cluster  hostname
 	C1      192.168.100.20  8192    live    2018-09-19 20:31:57  null
@@ -435,7 +437,7 @@ ocicli machine-list
 
 Ensuite, nous pouvons inscrire des machines dans le cluster de cette manière:
 
-```plaintext
+```bash
 ocicli machine-add C1 swift01 controller dc1-zone1
 ocicli machine-add C2 swift01 controller dc1-zone2
 ocicli machine-add C3 swift01 controller dc2-zone1
@@ -452,7 +454,7 @@ ocicli machine-add CC swift01 swiftstore dc2-zone1
 
 En conséquence, il y aura 1 contrôleur, 1 proxy Swift et 2 nœuds de données Swift sur chaque zone de nos clusters. Les adresses IP seront automatiquement attribuées aux serveurs lorsque vous les ajoutez aux clusters. Ils ne sont pas affichés dans ocicli, mais vous pouvez les vérifier via l'interface Web. Le résultat devrait être comme ceci:
 
-```plaintext
+```bash
 ocicli machine-list
 	serial  ipaddr          memory  status  lastseen             cluster  hostname
 	C1      192.168.100.20  8192    live    2018-09-19 20:31:57  7        swift01-controller-1.example.com
@@ -481,7 +483,7 @@ Comme vous pouvez le voir, les noms d'hôte sont également calculés automatiqu
 
 Avant de commencer à installer les serveurs, le ring Swift doit être construit. Exécutez simplement cette commande:
 
-```plaintext
+```bash
 ocicli swift-calculate-ring swift01
 ```
 
@@ -491,7 +493,7 @@ Notez que cela peut prendre très longtemps, en fonction de la taille de votre c
 
 Il n'y a pas (encore) de gros bouton «installer le cluster» sur l'interface Web ou sur la CLI. Au lieu de cela, les serveurs doivent être installés un par un:
 
-```plaintext
+```bash
 ocicli machine-install-os C1
 ocicli machine-install-os C2
 ocicli machine-install-os C3
@@ -501,7 +503,7 @@ Il est conseillé d'installer d'abord les nœuds de contrôleur, de vérifier ma
 
 Il est également possible de voir les dernières lignes du journal d'installation d'un serveur à l'aide de l'interface de ligne de commande:
 
-```plaintext
+```bash
 ocicli machine-install-log C1
 ```
 
@@ -511,21 +513,21 @@ Cela affichera les journaux de l'installation du système à partir de `/var/log
 
 Connectez-vous sur un nœud de contrôleur. Pour ce faire, listez son IP:
 
-```plaintext
+```bash
 CONTROLLER_IP=$(ocicli machine-list | grep C1 | awk '{print $2}')
 ssh root@${CONTROLLER_IP}
 ```
 
 Une fois connecté au contrôleur, vous verrez les informations de connexion sous `/root/oci-openrc.sh`. Trouvez-le et essayez:
 
-```plaintext
+```bash
 . /root/oci-openrc.sh
 openstack user list
 ```
 
 Vous pouvez également essayer Swift:
 
-```plaintext
+```bash
 . /root/oci-openrc.sh
 openstack container create foo
 echo "test" >bar
@@ -540,7 +542,7 @@ Localement sur le store Swift, Swift stocke l'objet sous une forme claire. Cela 
 
 La façon dont cela est implémenté dans OCI consiste à utiliser Barbican. C'est la raison pour laquelle Barbican est provisionné par défaut sur les nœuds du contrôleur. Par défaut, le chiffrement n'est pas activé. Pour l'activer, vous devez d'abord stocker la clé de chiffrement d'objet dans le store Barbican. Cela peut être fait de cette façon:
 
-```plaintext
+```bash
 ENC_KEY=$(openssl rand -hex 32)
 openstack secret store --name swift-encryption-key \
   --payload-content-type=text/plain --algorithm aes \
@@ -565,7 +567,7 @@ openstack secret store --name swift-encryption-key \
 
 Une fois cela fait, l'ID de clé (ici: `6ba8dd62-d752-4144-b803-b32012d707d0`) doit être entré dans l'interface Web de l'OCI, dans la définition du cluster, sous "ID de clé de chiffrement Swift (vide: pas de chiffrement) :". Une fois que cela est fait, une autre exécution de Puppet est nécessaire sur les nœuds proxy Swift:
 
-```plaintext
+```bash
 OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug
 ```
 
@@ -575,7 +577,7 @@ Cela devrait activer le chiffrement. Notez que la clé de cryptage doit être st
 
 Parfois, "`node1`" apparaît lors de l'exécution de "`crm status`". Pour nettoyer cela, faites simplement:
 
-```plaintext
+```bash
 crm_node -R node1 --force
 ```
 
@@ -583,7 +585,7 @@ crm_node -R node1 --force
 
 Cela corrige tous les avertissements Ceph après une configuration:
 
-```plaintext
+```bash
 ceph osd pool application enable glance rbd
 ceph osd pool application enable nova rbd
 ceph osd pool application enable cinder rbd
@@ -604,13 +606,14 @@ Pour éviter de faire trop de choses lorsque le cluster est en production (comme
 
 A tout moment, il est possible de basculer la valeur sur `yes` ou `no` :
 
-```plaintext
+```bash
 ocicli cluster-set z --initial-cluster-setup no
 ```
 
 Cependant, il est fortement conseillé de définir la valeur sur no une fois que le cluster est en production.
 
 > Si les 3 contrôleurs de vos clusters exécutent avec succès puppet à la première startup, ils appelleront "`oci-report-puppet-success`". Une fois le troisième contrôleur fait, `initial-cluster-setup` sera automatiquement défini sur la valeur «`no`» dans la base de données OCI.
+{.is-info}
 
 ## Ajout d'autres types de nœuds
 
@@ -649,7 +652,7 @@ Les nœuds de réseau sont facultatifs. S'ils ne sont pas déployés, les contr�
 
 La première chose à faire est de définir un réseau IPMI, de le définir avec le rôle "`ipmi`", puis de le faire correspondre à l'adresse IP du réseau DHCP:
 
-```plaintext
+```bash
 ocicli network-create ipmi 192.168.200.0 24 zone-1 no
 ocicli network-set ipmi --role ipmi --ipmi-match-addr 192.168.100.0 --ipmi-match-cidr 24
 ```
@@ -662,7 +665,7 @@ Avec l'exemple ci-dessus, si un serveur PXE démarre sur le réseau 192.168.100.
 
 Si auparavant, certains serveurs avaient leur adresse IPMI déjà définie sur quelque chose qui correspond au réseau IPMI, mais que OCI ne l'a pas enregistrée, il est possible d'obtenir cette adresse IP enregistrée dans la base de données d'OCI. Il suffit de taper cette commande pour le faire :
 
-```plaintext
+```bash
 ocicli ipmi-assign-check
 ```
 
@@ -672,7 +675,7 @@ Cette commande demandera à OCI de parcourir chaque machine enregistrée dans la
 
 La mise à niveau du BIOS et du micrologiciel IPMI des serveurs peut prendre beaucoup de temps si vous gérez un grand nombre de serveurs. OCI offre donc la possibilité d'effectuer ces mises à niveau automatiquement. Ceci est contrôlé à l'aide d'un fichier de configuration qui peut être trouvé ici: `/etc/openstack-cluster-installer/oci-firmware-upgrade-config.json`. Voici un exemple de fichier de configuration valide:
 
-```plaintext
+```json
 {
 	"CL2800 Gen10": {
 		"BIOS": {
@@ -689,13 +692,13 @@ La mise à niveau du BIOS et du micrologiciel IPMI des serveurs peut prendre bea
 
 Avec ce qui précède, si OCI trouve un serveur `HP Cloud Line CL2800` dont le micrologiciel BIOS est inférieur à `2.1.0`, il tentera de le mettre à niveau en lançant le script `/root/hp-bios-upgrade-2.1.0`. Pour ajouter ledit script, l'image live doit être personnalisée. Pour ce faire, ajoutez simplement quelques fichiers dans le dossier `/etc/openstack-cluster-installer/live-image-additions`. Tous les fichiers qui s'y trouvent seront ajoutés à l'image live. Ensuite, l'image live doit être régénérée :
 
-```plaintext
+```bash
 openstack-cluster-installer-build-live-image
 ```
 
 Une fois que cela est fait, redémarrez les serveurs qui doivent être mis à jour. À mesure qu'ils démarrent sur l'image live, la mise à jour sera effectuée. Pour référence, voici un exemple de script `hp-bios-upgrade-2.1.0`, qui sera sauvegardé ici: `/etc/openstack-cluster-installer/live-image-additions/root/hp-bios-upgrade-2.1.0`.
 
-```plaintext
+```bash
 #!/bin/sh
 
 set -e
@@ -719,7 +722,7 @@ Il est possible d'ajouter des entrées sur tous les `/etc/hosts` des clusters, s
 
 Tout ce que génère OCI se trouve entre ces balises:
 
-```plaintext
+```bash
 # OCISTA_MAINTAINED: Do not touch between these lines, this is a generated content.
 ... some generated content ...
 # OCIFIN_MAINTAINED: Do not touch between these lines, this is a generated content.
@@ -731,7 +734,7 @@ Ensuite, il est possible d'ajouter manuellement des entrées à chaque `/etc/hos
 
 Dans `/etc/openstack-cluster-installer/hiera`, vous trouverez 2 dossiers et un fichier `all.yaml`. Celles-ci doivent permettre de personnaliser la sortie de l'ENC de l'OCI. Par exemple, si vous mettez:
 
-```plaintext
+```yaml
    ntp:
       servers:
          - 0.us.pool.ntp.org iburst
@@ -741,7 +744,7 @@ dans `/etc/openstack-cluster-installer/hiera/all.yaml`, alors tous les nœuds se
 
 Si nous avons un cluster swift01, la structure complète des dossiers est la suivante:
 
-```plaintext
+```bash
 /etc/openstack-cluster-installer/hiera/roles/controller.yaml
 /etc/openstack-cluster-installer/hiera/roles/swiftproxy.yaml
 /etc/openstack-cluster-installer/hiera/roles/swiftstore.yaml
@@ -760,7 +763,7 @@ Parfois, il est souhaitable de configurer un serveur au moment de l'installation
 
 Supposons que vous souhaitiez configurer swift01-controller-1 dans votre cluster swift01, y ajouter quagga et ajouter des fichiers de configuration. Créez simplement le dossier, remplissez-y le contenu et ajoutez un fichier `oci-packages-list` :
 
-```plaintext
+```bash
 mkdir -p /var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-in-target
 cd /var/lib/oci/clusters/swift01/swift01-controller-1.example.com
 echo -n "quagga,tmux" >oci-packages-list
@@ -774,7 +777,7 @@ Lorsque OCI provisionne le serveur baremetal, il vérifie si le fichier `oci-pac
 
 De la même manière, vous pouvez par exemple décider d'avoir le VIP de vos contrôleurs pour utiliser le routage BGP. Pour ce faire, écrivez dans `/etc/openstack-cluster-installer/roles/controller.yaml` :
 
-```plaintext
+```yaml
    quagga::bgpd:
       my_asn: 64496,
       router_id: 192.0.2.1
@@ -795,7 +798,7 @@ Pour tous les contrôleurs du cluster cloud1, utilisez : `/etc/openstack-cluster
 
 Si vous souhaitez tester un changement dans les fichiers de marionnettes de l'OCI, éditez-les dans `/usr/share/puppet/modules/oci`, puis sur le master run, par exemple :
 
-```plaintext
+```bash
 puppet master --compile swift01-controller-1.example.com
 /etc/init.d/puppet-master stop
 /etc/init.d/puppet-master start
@@ -803,7 +806,7 @@ puppet master --compile swift01-controller-1.example.com
 
 puis sur `swift01-controller-1.example.com` vous pouvez exécuter :
 
-```plaintext
+```bash
 OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug
 ```
 
@@ -811,7 +814,7 @@ OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug
 
 Si vous souhaitez personnaliser le contenu des fichiers de vos hôtes, écrivez simplement n'importe quel fichier, par exemple :
 
-```plaintext
+```bash
 /var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-in-target
 ```
 
@@ -819,13 +822,13 @@ et il sera copié sur le serveur que vous installerez.
 
 De la même manière, vous pouvez ajouter des packages supplémentaires à votre serveur en ajoutant leurs noms dans ce fichier :
 
-```plaintext
+```bash
 /var/lib/oci/clusters/swift01/swift01-controller-1.example.com/oci-packages-list
 ```
 
 Les packages doivent être répertoriés sur une seule ligne, séparés par des virgules. Par exemple :
 
-```plaintext
+```bash
 quagga,bind
 ```
 
@@ -833,7 +836,7 @@ quagga,bind
 
 Si vous devez activer Hiera, vous pouvez le faire de cette façon :
 
-```plaintext
+```bash
 mkdir -p /etc/puppet/code/environments/production/manifests/
 echo "hiera_include('classes')" > /etc/puppet/code/environments/production/manifests/site.pp
 cat /etc/puppet/code/hiera/common.yaml
@@ -851,7 +854,7 @@ Il y a actuellement quelques problèmes qui doivent être résolus manuellement.
 
 Malheureusement, parfois, il y a des problèmes de planification dans Puppet. Si cela se produit, on peut essayer de relancer Puppet :
 
-```plaintext
+```bash
 OS_CACERT=/etc/ssl/certs/oci-pki-oci-ca-chain.pem puppet agent --test --debug 2>&1 | tee /var/log/puppet-run-1
 ```
 
@@ -861,7 +864,7 @@ Faites-le d'abord sur le nœud du contrôleur 1, attendez qu'il se termine, puis
 
 OCI utilise `puppet-module-puppetlabs-firewall` et vide les iptables à chaque exécution. Par conséquent, si vous avez besoin de règles de pare-feu personnalisées, vous devez également le faire via Puppet. Si vous souhaitez appliquer les mêmes règles de pare-feu sur tous les nœuds, modifiez simplement `site.pp` comme ceci dans `/etc/puppet/code/environments/production/manifests/site.pp` :
 
-```plaintext
+```ruby
 hiera_include('classes')
 
 firewall { '000 allow monitoring network':
@@ -877,7 +880,7 @@ Ce que fait OCI, c'est : protéger le VIP du contrôleur (lui refuser l'accès d
 
 Si vous souhaitez appliquer ce qui précède uniquement à un nœud spécifique, il est possible de le faire en ne faisant correspondre que certains noms d'hôte. Voici un exemple simple, avec une adresse IP différente autorisée en fonction des rôles de la machine :
 
-```plaintext
+```bash
 hiera_include('classes')
 
 node /^z-controller.*/ {
@@ -903,7 +906,7 @@ Avec la dernière version d'OCI, ceci est effectué automatiquement : après qu'
 
 Pour ajouter le nœud de calcul au cluster et vérifier qu'il est là, sur le contrôleur, procédez comme suit:
 
-```plaintext
+```bash
  . oci-openrc
  su nova -s /bin/sh -c "nova-manage cell_v2 discover_hosts"
  openstack hypervisor list
@@ -920,14 +923,14 @@ Il n'y a rien de plus ... :)
 
 Actuellement, seuls les cartes Nvidia sont prises en charge. Tout d'abord, localisez votre GPU dans votre hôte de calcul. Voici un exemple avec une carte Nvidia T4 :
 
-```plaintext
+```bash
 lspci -nn | grep -i nvidia
 	5e:00.0 3D controller [0302]: NVIDIA Corporation TU104GL [Tesla T4] [10de:1eb8] (rev a1)
 ```
 
 Lorsque vous avez cela, entrez-le simplement avec ocicli :
 
-```plaintext
+```bash
 ocicli machine-set 1CJ9FV2 --use-gpu yes --gpu-vendor-id 10de --gpu-produc-id 1eb8 --gpu-name nvidia-t4 --gpu-device-type type-PF --vfio-ids 10de:1eb8+10de:0fb9
 ```
 
@@ -937,13 +940,13 @@ De plus, le type de périphérique `--gpu` dépend du type de carte GPU et du mi
 
 Cela remplira `/etc/modprobe.d/blacklist-nvidia.conf` pour mettre sur liste noire le pilote Nvidia et quelques autres, `/etc/modules-load.d/vfio.conf` pour charger le module `vfio-pci`, et `/etc/modprobe.d/vfio.conf` avec ce contenu (pour permettre d'exposer des appareils aux invités):
 
-```plaintext
+```bash
 options vfio-pci ids=10de:1eb8,10de:0fb9
 ```
 
 Le fichier `/etc/default/grub` doit ensuite être modifié à la main pour ajouter ceci (manuellement) :
 
-```plaintext
+```bash
 intel_iommu=on
 ```
 
@@ -951,7 +954,7 @@ Redémarrez la machine de calcul, appliquez Puppet à la fois sur le nœud de ca
 
 Maintenant, créons l'image Glance et Nova pour utiliser ce nouveau GPU et démarrer l'instance:
 
-```plaintext
+```bash
 openstack image set bionic-server-cloudimg-amd64_20190726_GPU --property img_hide_hypervisor_id='true'
 openstack flavor create --ram 6144 --disk 20 --vcpus 2 cpu2-ram6-disk20-gpu-nvidia-t4
 openstack flavor set cpu6-ram20-disk20-gpu-t4 --property pci_passthrough:alias=nvidia-t4:1
@@ -960,7 +963,7 @@ openstack server create --image bionic-server-cloudimg-amd64_20190726_GPU --nic 
 
 Dans l'instance, nous pouvons utiliser Cuda et le vérifier:
 
-```plaintext
+```bash
 wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.1.168-1_amd64.deb
 apt-get update
 apt-get install cuda cuda-toolkit-10-1  nvidia-cuda-toolkit
@@ -973,19 +976,19 @@ cat /proc/driver/nvidia/version
 
 Si vous utilisez plusieurs types de backend LVM (par exemple, SSD et HDD), il peut être utile de sélectionner le nom du backend lors de la configuration d'un nouveau nœud de volume. Ceci est fait de cette façon:
 
-```plaintext
+```bash
 ocicli machine-set 1CJ9FV2 --lvm-backend-name HDD_1
 ```
 
 Vous pouvez également avoir plusieurs backends sur un seul serveur. Dans ce cas, il est possible d'utiliser un seul backend par lecteur, au lieu de tous les utiliser sur un seul VG. Pour ce faire, faites quelque chose comme ceci:
 
-```plaintext
+```bash
 ocicli machine set 5KC2J63 --cinder-separate-volume-groups yes --cinder-enabled-backends LVM_SDA:LVM_SDB:LVM_SDC
 ```
 
 Cela configurera de nouveaux types de volume LVM\_SDA, LVM\_SDB et LVM\_SDC. Pour revenir à la manière normale (c'est-à-dire: un gros VG), il est possible de remettre la valeur de non-remplacement:
 
-```plaintext
+```bash
 ocicli machine-set 5KC2J63 no-override
 ```
 
@@ -1001,7 +1004,7 @@ Les nœuds matériels sont d'abord démarrés dans l'environnement Live, leur ma
 
 Si l'on souhaite automatiser entièrement le provisionnement, voici la liste des directives à définir dans `/etc/openstack-cluster-installer/openstack-cluster-installer.conf` :
 
-```plaintext
+```bash
 [megacli]
 megacli_auto_clear=yes
 megacli_auto_clear=yes
@@ -1052,7 +1055,7 @@ Notez que les valeurs par défaut de "n`um_of_discovery`" sont correctes, et il 
 
 Pour réinitialiser le nombre de compteur de découverte:
 
-```plaintext
+```bash
 ocicli machine-report-counter-reset SERIAL
 ```
 
@@ -1076,7 +1079,7 @@ OCI suppose également que chacun de vos switch utilisera LLDP pour publier les 
 
 Prenons un exemple. Disons que nous avons un switch numéro 5, dans le rack 3 de la ligne b, dans le Datacenter 2. Prenons le nom d'hôte `dc2-b3-5`. Nous définirons ensuite dans `/etc/openstack-cluster-installer/auto-racking.json` :
 
-```plaintext
+```json
 "switchhostnames": {
     "dc2-b3-5": {
         "dc": "2",
@@ -1091,19 +1094,19 @@ Ce qui précède indique que tout ce qui est connecté à ce switch sera provisi
 
 Pour pouvoir déboguer, quelques commandes sont disponibles:
 
-```plaintext
+```bash
 ocicli machine-guess-racking SERIAL
 ```
 
 Cela dira où la machine est en rack, étant donné les informations dans le fichier `auto-racking.json` et les informations LLDP publiées par le commutateur.
 
-```plaintext
+```bash
 ocicli machine-auto-rack SERIAL
 ```
 
 Sert à remplir les informations de mise en rack.
 
-```plaintext
+```bash
 ocicli machine-auto-add SERIAL
 ```
 
@@ -1115,7 +1118,7 @@ Pour pouvoir prendre des décisions, OCI doit détecter automatiquement le maté
 
 Voici un exemple:
 
-```plaintext
+```json
     "compute-with-var-lib-nova-instance": {
         "role": "compute",
         "product-name": [
@@ -1166,18 +1169,19 @@ Le contenu de la commande `after-puppet-controller-command` sera émis une fois 
 
 Pour vérifier quel profil matériel correspond à un serveur donné, on peut taper :
 
-```plaintext
+```bash
 ocicli machine-guessed-profile SERIAL
 ```
 
 Il est également possible d'appliquer manuellement un profil RAID avec :
 
-```plaintext
+```bash
 ocicli machine-megacli-reset-raid SERIAL
 ocicli machine-megacli-apply SERIAL
 ```
 
 > Attention à ne pas faire ce qui précède sur un serveur en production.
+{.is-warning}
 
 ## Plug-in DNS
 
@@ -1185,7 +1189,7 @@ OCI peut appeler votre propre script personnalisé pour publier les noms d'hôte
 
 Pour tester le plugin DNS, il est possible de l'appeler manuellement en utilisant :
 
-```plaintext
+```bash
 ocicli machine-to-dns HOSTNAME
 ```
 
@@ -1195,7 +1199,7 @@ Lorsqu'une machine est déclarée comme installée, il est possible de définir 
 
 Pour tester le plugin de mot de passe root, une fois qu'une machine est installée, il est possible de l'appeler manuellement en utilisant :
 
-```plaintext
+```bash
 ocicli machine-gen-root-pass HOSTNAME
 ```
 
@@ -1205,7 +1209,7 @@ OCI ne fournit pas de surveillance, mais si vous avez un tel service, par exempl
 
 Pour appeler manuellement le plugin d'enregistrement de surveillance, on peut taper :
 
-```plaintext
+```bash
 ocicli machine-to-monitoring HOSTHANE
 ```
 
@@ -1215,20 +1219,20 @@ ocicli machine-to-monitoring HOSTHANE
 
 Tout d'abord, ajoutez le rôle rating à l'utilisateur cloudkitty :
 
-```plaintext
+```bash
 openstack role add --user cloudkitty --project services rating
 ```
 
 Ensuite, activez le module hashmap :
 
-```plaintext
+```bash
 cloudkitty module enable hashmap
 cloudkitty module set priority hashmap 100
 ```
 
 Notez que l'erreur 503 peut être simplement ignorée, elle fonctionne toujours, comme le montre la liste des modules. Maintenant, ajoutons une note pour les instances :
 
-```plaintext
+```bash
 cloudkitty hashmap group create instance_uptime_flavor
 cloudkitty hashmap service create compute
 cloudkitty hashmap field create 96a34245-83ae-406b-9621-c4dcd627fb8e flavor
@@ -1236,7 +1240,7 @@ cloudkitty hashmap field create 96a34245-83ae-406b-9621-c4dcd627fb8e flavor
 
 L'ID ci-dessus est celui du service de `hashmap create`. Ensuite, nous réutilisons l'`ID du champ create` que nous venons d'avoir pour le paramètre `-f`, et l'`ID de groupe` pour le paramètre `-g` ci-dessous:
 
-```plaintext
+```bash
 cloudkitty hashmap mapping create --field-id ce85c041-00a9-4a6a-a25d-9ebf028692b6 --value demo-flavor -t flat -g 2a986ce8-60a3-4f09-911e-c9989d875187 0.03
 ```
 
@@ -1246,13 +1250,13 @@ Dans cet exemple, nous voulons facturer n'importe quel port sur un réseau spéc
 
 Donc, tout d'abord, nous devons concevoir notre sonde (c'est-à-dire: l'élément qui interrogera l'API). Disons que lorsque nous faisons cela :
 
-```plaintext
+```bash
 openstack port list --network ext-net1 --long --debug
 ```
 
 le mode de débogage montre que nous pouvons traduire cela en cette requête curl :
 
-```plaintext
+```bash
 curl -g -X GET "https://pub1-api.cloud.infomaniak.ch/network/v2.0/ports?network_id=5a7f5f53-627c-4d0e-be89-39efad5ac54d" \
 	-H "Accept: application/json" -H "User-Agent: openstacksdk/0.50.0 keystoneauth1/4.2.1 python-requests/2.23.0 CPython/3.7.3" \
 	-H "X-Auth-Token: "$(openstack token issue --format value -c id) | jq .
@@ -1260,7 +1264,7 @@ curl -g -X GET "https://pub1-api.cloud.infomaniak.ch/network/v2.0/ports?network_
 
 l'API OpenStack répondant de cette façon :
 
-```plaintext
+```json
 {
   "ports": [
     {
@@ -1318,7 +1322,7 @@ l'API OpenStack répondant de cette façon :
 
 Nous créons ensuite le type de ressource correspondant dans Gnocchi :
 
-```plaintext
+```bash
 gnocchi resource-type create -a status:string:true:max_length=3 -a device_id:uuid:false -a mac_address:string:true:max_length=20  network.ports.ext-net1
 gnocchi resource-type create -a status:string:false:max_length=3 -a mac_address:string:false:max_length=20 public_ip
 gnocchi resource-type create -a cidr:string:false:max_length=4 -a network_id:uuid:false -a description:string:false:max_length=64 public_subnet
@@ -1326,7 +1330,7 @@ gnocchi resource-type create -a cidr:string:false:max_length=4 -a network_id:uui
 
 Dans `/etc/openstack-cluster-installer/pollsters.d`, nous écrivons simplement un nouveau fichier qui ressemble à ceci :
 
-```plaintext
+```bash
 ---
 
 - name: "network.ports.ext-net1"
@@ -1355,7 +1359,7 @@ Le `url_path` ci-dessus correspond à ce que nous écrivons dans la requête cur
 
 ## Installer une première image OpenStack
 
-```plaintext
+```bash
 wget http://cdimage.debian.org/cdimage/openstack/current-9/debian-9-openstack-amd64.qcow2
 openstack image create \
 	--container-format bare --disk-format qcow2 \
@@ -1367,7 +1371,7 @@ openstack image create \
 
 Il existe de nombreuses façons de gérer la mise en réseau dans OpenStack. Cette documentation ne couvre que rapidement un seul moyen, vous pouvez retrouver une documentation plus complète ici : [/Openstack/Réseaux](/Openstack/Réseaux). Cependant, le lecteur doit savoir que OCI installe des nœuds de calcul à l'aide de DVR (Distributed Virtual Routers), ce qui signifie qu'un routeur Neutron est installé sur tous les nœuds de calcul. En outre, OpenVSwitch est utilisé, en utilisant VXLan entre les nœuds de calcul. Quoi qu'il en soit, voici une façon de configurer le réseau. Quelque chose comme ça peut le faire :
 
-```plaintext
+```bash
 # Create external network
 openstack network create --external --provider-physical-network external --provider-network-type flat ext-net
 openstack subnet create --network ext-net --allocation-pool start=192.168.105.100,end=192.168.105.199 --dns-nameserver 84.16.67.69 --gateway 192.168.105.1 --subnet-range 192.168.105.0/24 --no-dhcp ext-subnet
@@ -1396,13 +1400,13 @@ openstack security group rule create --protocol icmp --ingress ${SECURITY_GROUP}
 
 ## Ajouter une clé ssh
 
-```plaintext
+```bash
 openstack keypair create --public-key ~/.ssh/id_rsa.pub demo-keypair
 ```
 
 ## Créer un modèle
 
-```plaintext
+```bash
 openstack flavor create --ram 2048 --disk 5 --vcpus 1 demo-flavor
 openstack flavor create --ram 6144 --disk 20 --vcpus 2 cpu2-ram6-disk20
 openstack flavor create --ram 12288 --disk 40 --vcpus 4 cpu4-ram12-disk40
@@ -1410,7 +1414,7 @@ openstack flavor create --ram 12288 --disk 40 --vcpus 4 cpu4-ram12-disk40
 
 ## Démarrez une VM
 
-```plaintext
+```bash
 #!/bin/sh
 
 set -e
@@ -1428,7 +1432,7 @@ openstack server create --image ${IMAGE_ID} --flavor ${FLAVOR_ID} \
 
 Le script ci-dessous attribuera une note de 0,01 à "`demo-flavour`":
 
-```plaintext
+```bash
 cloudkitty module enable hashmap
 cloudkitty module set priority hashmap 100
 cloudkitty hashmap group create instance_uptime_flavor_id
@@ -1454,6 +1458,7 @@ openstack role add --user admin --project admin rating
 ```
 
 > Actuellement, après l'installation du cluster, tous les agents ceilometer doivent être redémarrés afin d'obtenir des métriques, même s'ils semblent bien configurés.
+{.is-info}
 
 ## Ajouter le service Octavia
 
@@ -1461,14 +1466,14 @@ openstack role add --user admin --project admin rating
 
 Tout ce qui est fait ci-dessous peut être fait avec 2 scripts d'aide :
 
-```plaintext
+```bash
 oci-octavia-amphora-secgroups-sshkey-lbrole-and-network 
 oci-octavia-certs
 ```
 
 Tout d'abord, modifiez l'en-tête `/usr/bin/oci-octavia-amphora-secgroups-sshkey-lbrole-and-network`. Vous y trouverez ces valeurs :
 
-```plaintext
+```bash
 # Set to either flat or vlan
 OCTAVIA_NETWORK_TYPE=flat
 # Set to the ID of the Octavia VLAN if the above is set to vlan
@@ -1489,7 +1494,7 @@ Modifiez-les à votre goût. Si vous utilisez vlan, la valeur de `OCTAVIA_NETWOR
 
 Une fois la modification terminée, exécutez le premier script, puis indiquez à OCI le groupe de sécurité et le démarrage réseau à utiliser comme ceci :
 
-```plaintext
+```bash
 ocicli cluster-set CLUSTER_NAME --amp-secgroup-list SECGROUP_ID_1,SECGROUP_ID_2d5681bb2-044c-4de2-9f81-c3ca7d91abb6
 ocicli cluster-set ver1 --amp-boot-network-list LOAD_BALANCER_NETWORK_ID
 ```
@@ -1498,7 +1503,7 @@ Ces identifiants peuvent être trouvés dans les journaux lors de l'exécution d
 
 Maintenant, exécutez `oci-octavia-certs` sur l'un des contrôleurs, puis copiez `/etc/octavia/.ssh` et `/etc/octavia/certs` sur les autres contrôleurs.
 
-```plaintext
+```bash
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/.ssh/ root@z-controller-2:/etc/octavia/.ssh/
@@ -1515,7 +1520,7 @@ Si vous souhaitez faire les choses manuellement, voici comment cela fonctionne.
 
 Créez l'image Amphora. Cela peut être fait avec DIB (Disk Image Builder) comme ceci :
 
-```plaintext
+```bash
 sudo apt-get install openstack-debianimages
 /usr/share/doc/openstack-debian-images/examples/octavia/amphora-build
 openstack image create --container-format bare --disk-format qcow2 --file debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2 --tag amphora debian-buster-octavia-amphora-2019.09.11-11.52-amd64.qcow2
@@ -1523,7 +1528,7 @@ openstack image create --container-format bare --disk-format qcow2 --file debian
 
 Créez le réseau Octavia. Si, comme dans le package PoC, vous exécutez avec un pont `br-lb` spécifique lié à un réseau externe appelé `external1`, quelque chose comme ceci fera l'affaire :
 
-```plaintext
+```bash
 openstack network create --external --provider-physical-network external1 --provider-network-type flat lb-mgmt-net
 openstack subnet create --network lb-mgmt-net --allocation-pool start=192.168.104.4,end=192.168.104.250 --dns-nameserver 84.16.67.69 --dns-nameserver 84.16.67.70 --gateway 192.168.104.1 --subnet-range 192.168.104.0/24 lb-mgmt-subnet
 ```
@@ -1534,7 +1539,7 @@ Ensuite, nous avons besoin de groupes de sécurité spécifiques pour Octavia :
 
 > Assurez-vous d'utiliser `/root/octavia-openrc` et pas celui de l'administrateur
 
-```plaintext
+```bash
 openstack security group create lb-mgmt-sec-grp
 openstack security group rule create --protocol icmp lb-mgmt-sec-grp
 openstack security group rule create --protocol tcp --dst-port 22 lb-mgmt-sec-grp
@@ -1550,7 +1555,7 @@ openstack security group rule create --protocol udp --dst-port 5555 --ethertype 
 
 Ensuite, nous créons une paire de clés ssh :
 
-```plaintext
+```bash
 mkdir /etc/octavia/.ssh
 ssh-keygen -t rsa -f /etc/octavia/.ssh/octavia_ssh_key
 chown -R octavia:octavia /etc/octavia/.ssh
@@ -1564,7 +1569,7 @@ Faites les certificats selon le tutoriel en amont à [https://docs.openstack.org
 
 Resynchronisez les certificats sur les 2 autres contrôleurs :
 
-```plaintext
+```bash
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-2:/etc/octavia/certs/
 rsync -e 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no' -avz --delete /etc/octavia/certs/ root@z-controller-3:/etc/octavia/certs/
 ```
@@ -1575,14 +1580,14 @@ Redémarrez ensuite tous les services Octavia sur tous les contrôleurs.
 
 Créez le rôle `load-balancer_admin` et attribuez-le :
 
-```plaintext
+```bash
 openstack role create load-balancer_admin
 openstack role add --project admin --user admin load-balancer_admin
 ```
 
 Maintenant, il faut définir, avec ocicli, le réseau de démarrage et la liste des groupes de sécurité pour l'amphore :
 
-```plaintext
+```bash
 ocicli cluster-set swift01 \
 	--amp-boot-network-list 0c50875f-368a-4f43-802a-8350b330c127 \
 	--amp-secgroup-list b94afddb-4fe1-4450-a1b8-25f36a354b7d,012584cd-ffde-483b-a55a-a1afba52bc20
@@ -1590,7 +1595,7 @@ ocicli cluster-set swift01 \
 
 Ensuite, nous pouvons commencer à utiliser Octavia :
 
-```plaintext
+```bash
 openstack loadbalancer create --name lb-test-1 --vip-subnet-id ext-subnet
 ```
 
@@ -1598,7 +1603,7 @@ Comment utiliser l'équilibreur de charge est décrit ici: [https://docs.opensta
 
 N'oubliez pas de créer le modèle :
 
-```plaintext
+```bash
 openstack flavor create --ram 2048 --disk 4 --vcpus 2 --id 65 --private --project services octavia_65
 ```
 
@@ -1610,7 +1615,7 @@ Cependant, voici un exemple de création d'un équilibreur de charge avec un cer
 
 Création de l'équilibreur de charge pour le service "`foo`" :
 
-```plaintext
+```bash
 openstack loadbalancer create \
     --name lb-foo \
     --vip-subnet-id pub01-subnet2
@@ -1618,19 +1623,19 @@ openstack loadbalancer create \
 
 Créez le certificat et stockez-le dans Barbican. Tout d'abord, créez un certificat `x509` normal, avec les fichiers `key`, `crt` et `ca-chain`. Puis convertissez-le en un certificat `pkcs12` à l'aide de cette commande :
 
-```plaintext
+```bash
 openssl pkcs12 -export -inkey server.key -in server.crt -certfile ca-chain.crt -passout pass: -out server.p12
 ```
 
 Ensuite, nous le stockons dans Barbican, et conservons son adresse :
 
-```plaintext
+```bash
 openstack secret store --name='tls_secret1' -t 'application/octet-stream' -e 'base64' --payload="$(base64 < server.p12)"
 ```
 
 Création du `listener` :
 
-```plaintext
+```bash
 openstack loadbalancer listener create \
     --name lb-foo-https \
     --protocol TERMINATED_HTTPS \
@@ -1641,7 +1646,7 @@ openstack loadbalancer listener create \
 
 Création du `pool` :
 
-```plaintext
+```bash
 openstack loadbalancer pool create \
     --name pool-foo-https \
     --protocol TERMINATED_HTTPS \
@@ -1651,7 +1656,7 @@ openstack loadbalancer pool create \
 
 Création des `membres du pool` :
 
-```plaintext
+```bash
 openstack loadbalancer member create \
     --name foo-member-1-https \
     --address 10.4.42.10 \
@@ -1670,7 +1675,7 @@ openstack loadbalancer member create \
 
 Comme certains services peuvent engendrer des instances, comme par exemple Octavia ou Magnum, il peut être souhaitable de ne définir aucune limite pour certaines ressources du projet de services :
 
-```plaintext
+```bash
 openstack quota set --secgroup-rules -1 --secgroups -1 --instances -1 --ram -1 --cores -1 --ports -1 services
 ```
 
@@ -1680,14 +1685,14 @@ Le quota s'appliquera aux ressources virtuelles que le projet de services créer
 
 Tout d'abord, téléchargez l'image coreos et définissez correctement les paramètres :
 
-```plaintext
+```bash
 openstack image create --file coreos_production_openstack_image.img coreos_production_openstack_image.img
 openstack image set --property os_distro=coreos coreos_production_openstack_image.img
 ```
 
 Créez ensuite le modèle COE:
 
-```plaintext
+```bash
 openstack coe cluster template create k8s-cluster-template \
     --image coreos_production_openstack_image.img --keypair demo-keypair \
     --external-network ext-net --dns-nameserver 84.16.67.69 --flavor demo-flavor \
@@ -1696,7 +1701,7 @@ openstack coe cluster template create k8s-cluster-template \
 
 Puis créez le cluster Magnum:
 
-```plaintext
+```bash
 openstack coe cluster create k8s-cluster \
                       --cluster-template k8s-cluster-template \
                       --master-count 1 \
@@ -1705,7 +1710,7 @@ openstack coe cluster create k8s-cluster \
 
 On dirait que les coreos ne fonctionneraient pas pour les k8. Au lieu :
 
-```plaintext
+```bash
 wget https://download.fedoraproject.org/pub/alt/atomic/stable/Fedora-Atomic-27-20180419.0/CloudImages/x86_64/images/Fedora-Atomic-27-20180419.0.x86_64.qcow2
 openstack image create \
                       --disk-format=qcow2 \
@@ -1766,7 +1771,7 @@ OCI peut installer automatiquement `hponcfg`, `ssacli` et `storcli`, directement
 
 Commencez par basculer `apt/sources.list` sur `buster` et supprimez les dépôts de `backport Ceph` en amont. Ensuite, supprimez toutes les traces de Ceph du flux amont :
 
-```plaintext
+```bash
 apt-get purge libcephfs2 librados2 librbd1 python3-rgw python3-rbd python3-rados python3-cephfs librgw2
 ```
 
@@ -1780,7 +1785,7 @@ Rien de spécial ici, il suffit de les mettre à niveau avec `apt`, de redémarr
 
 La mise à niveau des contrôleurs de Stretch vers Buster n'est pas une tâche facile, OCI inclut donc un script pour automatiser la tâche :
 
-```plaintext
+```bash
 oci-cluster-upgrade-stretch-to-buster CLUSTER_NAME
 ```
 
@@ -1790,19 +1795,19 @@ oci-cluster-upgrade-stretch-to-buster CLUSTER_NAME
 
 OCI est livré avec un script shell qui vous aide à effectuer les mises à niveau d'OpenStack de manière entièrement automatisée :
 
-```plaintext
+```bash
 oci-cluster-upgrade-openstack-release CLUSTER_NAME FROM TO
 ```
 
 Par exemple, si vous souhaitez mettre à niveau votre cluster nommé "`cl1`" de Rocky vers Stein, faites simplement :
 
-```plaintext
+```bash
 oci-cluster-upgrade-openstack-release cl1 rocky stein
 ```
 
 Notez que vous ne pouvez pas ignorer la version d'OpenStack. Si vous souhaitez passer de Rocky à Victoria, vous devez faire :
 
-```plaintext
+```bash
 oci-cluster-upgrade-openstack-release cl1 rocky stein
 oci-cluster-upgrade-openstack-release cl1 stein train
 oci-cluster-upgrade-openstack-release cl1 train ussuri
@@ -1811,6 +1816,6 @@ oci-cluster-upgrade-openstack-release cl1 ussuri victoria
 
 Notez qu'après la mise à niveau vers buster-victoria, vous devez ensuite mettre à niveau votre cluster vers Bullseye de la manière décrite ci-dessus (en gardant toujours Victoria), et j'espère que vous pourrez passer à Wallby :
 
-```plaintext
+```bash
 oci-cluster-upgrade-openstack-release cl1 victoria wallby
 ```
