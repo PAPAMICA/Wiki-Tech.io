@@ -2,7 +2,7 @@
 title: Modèle OSI
 description: Comprendre le modèle OSI
 published: true
-date: 2021-06-14T08:04:20.072Z
+date: 2021-06-14T08:04:51.496Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:43.215Z
@@ -19,6 +19,7 @@ Le principe du modèle OSI est de cadrer le protocole TCP/IP. Il est basé sur 7
 ![Image associée](https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg)
 
 > *Les couches ne peuvent communiquer qu’entre elles (réseau / réseau, liaison / liaison mais pas liaison / transport).*
+{.is-info}
 
 ## Implémentation des 7 couches sur les équipements
 
