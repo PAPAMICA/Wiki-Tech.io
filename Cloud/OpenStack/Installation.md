@@ -2,7 +2,7 @@
 title: Installation du client
 description: 
 published: true
-date: 2021-06-14T07:01:35.785Z
+date: 2021-06-14T07:02:39.658Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:58.495Z
@@ -18,25 +18,25 @@ Le client OpenStack unifié (openstack) est l'interface de ligne de commande rec
 
 **Red Hat / Cent OS**
 
-```plaintext
+```bash
 sudo yum install python3-openstackclient
 ```
 
 **Debian / Ubuntu**
 
-```plaintext
+```bash
 sudo apt install python3-openstackclient
 ```
 
 **Using pip**
 
-```plaintext
+```bash
 pip3 install python3-openstackclient
 ```
 
 or for older OS
 
-```plaintext
+```bash
 pip install python-openstackclient
 ```
 
@@ -46,25 +46,25 @@ pip install python-openstackclient
 
 (Facultatif) Si vous n’avez pas encore installé Homebrew sur votre système (cela peut prendre quelques minutes) :
 
-```plaintext
+```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
 (Facultatif) En utilisant brew, nous allons installer Python 3 : 
 
-```plaintext
+```bash
 brew install python
 ```
 
 Maintenant que Python 3 est installé, nous pouvons enfin installer les outils de ligne de commande OpenStack :
 
-```plaintext
+```bash
 sudo pip3 install python-openstackclient
 ```
 
 ## Vérifier l'installation
 
-```plaintext
+```bash
 openstack --version
 ```
 
