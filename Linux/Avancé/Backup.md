@@ -2,7 +2,7 @@
 title: Backup
 description: Faire ses sauvegardes sous Linux
 published: true
-date: 2021-06-14T07:47:25.423Z
+date: 2021-06-14T07:52:39.774Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:12.754Z
@@ -103,12 +103,13 @@ Pour sauvegarder son système on peut utiliser la commande `tar` avec les param
 tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-%Y).tar.gz --exclude=/proc --exclude=/tmp --exclude=/mnt --exclude=/dev --exclude=/sys --exclude=/run --exclude=/media --exclude=/var/log --exclude=/usr/src/linux-headers\* --exclude=/home /
 ```
 
-> **Attention :** Cette commande est à lancer à la racine.
+> Cette commande est à lancer à la racine.
+{.is-warning}
 
 Ce la va créer à la racine un fichier backup.tar.gz avec la date d’aujourd’hui tout en excluant les dossiers temporaires et inutiles pour la restauration.
 
 > Vous pouvez ajouter autant de répertoires à exclure de la sauvegarde que vous voulez avec le paramètre `--exclude`. En revanche, dans tout les cas il est inutile de prendre`/proc`, `/tmp`, `/dev` ,`/sys` et `/run`
-
+{.is-info}
 ## Avec Nohup
 
 On peut aussi lancer la commander avec `nohup` pour éviter de perdre le processus une fois le terminal coupé (éviter l’envoi signal SIGHUP alias « *signal hang up* » qui clôture l’ensemble des processus enfants lancées par le terminal virtuel) :
@@ -118,10 +119,13 @@ nohup tar cvpzf backup-$(date +%d-%m-%Y).tar.gz --exclude=/backup-$(date +%d-%m-
 ```
 
 > Remarquez la présence `&` à la fin de la commande. Cela mets le processus en arrière plan (Que vous pouvez retrouver avec la commande `jobs`). 
+{.is-info}
 
 > Vous pouvez suivre l’avancée de la sauvegarde listant le contenu de **nohup.out** :`tail -f nohup.out`
+{.is-info}
 
-> **Attention :** Bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
+> Bien exclure le fichier **nohup.out** de la sauvegarde. Celui-ci est crée dans le répertoire où vous travaillez (En utilisant la variable **$PWD**).
+{.is-warning}
 
 # Sauvegarder avec Swiss Backup
 
