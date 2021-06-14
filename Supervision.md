@@ -2,7 +2,7 @@
 title: Supervision
 description: Quelques solutions de supervisions avec leurs tutoriels !
 published: true
-date: 2021-05-30T18:49:42.254Z
+date: 2021-06-14T08:10:49.137Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:42:55.255Z
@@ -27,4 +27,4 @@ dateCreated: 2021-05-24T14:42:55.255Z
 - [📧 Notifications mails *Configurer les notifications mails et les personnaliser*](/Supervision/Centreon/Notifications-Mails)
 - [💘 Déployer la configuration *Démarrer la supervision à l'aide de Centreon !*](/Supervision/Centreon/Deployer-Configuration)
 - [📊 Vues personnalisées *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Vues-Personnalisees)
-{.links-list}
+{.links-list} 
