@@ -2,7 +2,7 @@
 title: Images
 description: 
 published: true
-date: 2021-06-14T07:08:58.241Z
+date: 2021-06-14T07:09:20.788Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:56.342Z
@@ -12,7 +12,9 @@ dateCreated: 2021-05-24T10:33:56.342Z
 
 Les images sont les systèmes d'exploitations que vous utilisez lors de la création de la machine virtuelle. 
 
-> **Attention :** Elles sont comparables aux ISO mais dois forcément être au format `qcow` et `raw`.
+> Elles sont comparables aux ISO mais dois forcément être au format `qcow` et `raw`.
+{.is-warning}
+
 
 ## Lister les images
 
