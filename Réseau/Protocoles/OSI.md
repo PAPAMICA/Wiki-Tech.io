@@ -2,7 +2,7 @@
 title: Modèle OSI
 description: Comprendre le modèle OSI
 published: true
-date: 2021-06-14T08:03:03.529Z
+date: 2021-06-14T08:04:20.072Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:43.215Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-24T10:36:43.215Z
 
 ![smart building Protocol | smart home Karen Make Smart Engineers Co.](https://bmskaren.ir/wp-content/uploads/2020/11/bmskaren-85-1.png)
 
-# Le modèle OSI (Open System Interconnection)
+# Présentation
 
 C’est un modèle de communications entre ordinateurs proposé par l’ISO (Organisation Internationale de Normalisation) qui décrit les fonctionnalités nécessaires à la communication et l’organisation de ces fonctions.
 
@@ -32,9 +32,9 @@ En revanche, le switch n’a besoin **que des couches 1 et 2** du modèles OSI
 
 Le routeur a lui besoin **des couches 1, 2 et 3**. La couche 3 (réseau) lui permet de faire communiquer des réseaux entre eux. Par exemple, quand je surf sur Internet, c’est le routeur qui fait le lien entre mon réseau LAN et le réseau Internet, et ce lien est établit au niveau 3.
 
-## Détail de chaque couche
+# Les couches
 
-### couche 1 – physique
+## 1 – Physique
 
 Cette couche se charge de la transmission et la réception des données informatique au format binaire (0 et 1).
 
@@ -43,7 +43,7 @@ Cette couche se charge de la transmission et la réception des données informat
 -   sur du sans-fil, c’est la modulation
 -   …
 
-### couche 2 – liaison de données
+## 2 – Liaison de données
 
 Cette couche définit comment la transmission des données est effectuée entre 2 machines adjacentes. Par exemple, un PC connecté à un switch, une imprimante connecté à un switch, deux routeurs connectés entre eux…
 
@@ -53,7 +53,7 @@ Cette couche gère aussi la détection d’erreur de transmission. Par exemple, 
 
 Pour ethernet, la séquence de données envoyée par l’émetteur est appelé une trame (ou frame en anglais)
 
-### couche 3 – réseau
+## 3 – Réseau
 
 On a vu que la couche 2 gère la communication entre machines adjacente uniquement, il faut bien qu’une couche se charge de la communication entre machines qui sont physiquement pas connectés entre elles; c’est la couche 3 qui s’en charge. Avec cet adressage logique, on peut délivrer les données à l’autre bout de la planète.
 
@@ -63,7 +63,7 @@ La couche 3 va aussi se charger de trouver le meilleur chemin pour acheminer les
 
 Aujoud’hui, l’adressage logique utilisée est le protocole IP et la sélection du meilleur chemin s’effectue par les routeurs avec l’aide des protocoles de routage (RIP, OSPF, BGP…)
 
-### couche 4 – transport
+## 4 – Transport
 
 Cette couche se charge de plusieurs fonctionnalités essentielles:
 
@@ -72,18 +72,18 @@ Cette couche se charge de plusieurs fonctionnalités essentielles:
 -   gère le contrôle de flux (vous téléchargez plus vite quand vous êtes sur du 100Mb/s que sur 2Mb/s… merci à cette couche)
 -   fait le lien entre les communications réseaux et les applicatifs (je peux avoir mon browser ouvert en même temps que ma messagerie et mon téléchargement de fichier)
 
-### couche 5 – session
+## 5 – Session
 
 Cette couche gère l’ouverture et la fermeture des sessions entre inter-applicatif et intra-applicatif (avec mon browser, je peux ouvrir plusieurs onglets).
 
-### couche 6 – présentation
+## 6 – Présentation
 
 Cette couche formate les données pour qu’elles deviennent compréhensibles par l’application qui les a demandées.
 
-### couche 7 – application
+## 7 – Application
 
 Cette couche fait l’interface entre l’homme et la machine. Votre browser (firefox, safari,chrome…), votre logiciel de messsagerie (outlook, thunderbird…) sont des applications.
 
-## Résumé en vidéo
+# Résumé en vidéo
 
 Voici une petite vidéo qui résume tout ça : [Youtube](https://youtu.be/w1QcbAJ9RcY)
