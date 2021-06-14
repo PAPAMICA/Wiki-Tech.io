@@ -1,0 +1,126 @@
+---
+title: Guide rapide
+description: 
+published: true
+date: 2021-06-14T07:07:21.685Z
+tags: 
+editor: markdown
+dateCreated: 2021-05-24T10:34:11.101Z
+---
+
+# Guide rapide
+
+## Créer une keypair
+
+Une keypair est essentiellement une clé ssh vous permettant de vous connecter à votre machine virtuelle.
+
+Vous pouvez soit importer votre clé ssh existante, soit en créer une nouvelle. Vous pouvez vous référer à ce guide.
+
+## Lister les flavors
+
+```plaintext
+openstack flavor list
++--------------------------------------+------------------+------+------+-----------+-------+-----------+
+| ID                                   | Name             |  RAM | Disk | Ephemeral | VCPUs | Is Public |
++--------------------------------------+------------------+------+------+-----------+-------+-----------+
+| 23c60b2b-6a1a-4870-ba41-ab1d6ce0c516 | cpu1-ram2-disk10 | 2048 |   10 |         0 |     1 | True      |
+| 2655c1e3-a43a-4dea-a957-650517e8fa72 | cpu2-ram6-disk20 | 6144 |   20 |         0 |     2 | True      |
+| 450314a4-3575-45d5-88c2-41ca78201ebe | cpu2-ram6-disk60 | 6144 |   60 |         0 |     2 | True      |
+| ef91c4c8-c28f-44b0-b7a0-3115652b52d1 | cpu2-ram6-disk40 | 6144 |   40 |         0 |     2 | True      |
+| f2c62dc0-4b83-4208-868a-fbc4dbc2ff3a | cpu1-ram2-disk20 | 2048 |   20 |         0 |     1 | True      |
++--------------------------------------+------------------+------+------+-----------+-------+-----------+
+```
+
+## Lister les images (Système d'exploitation)
+
+```plaintext
+openstack image list
++--------------------------------------+-----------------------------------------------+--------+
+| ID                                   | Name                                          | Status |
++--------------------------------------+-----------------------------------------------+--------+
+| 097480e6-16bc-4a50-a7af-e34399d039ac | cirros-0.3.4                                  | active |
+| 77ce9a1a-4c03-43d7-9f87-b447a39103bb | debian-10-genericcloud-amd64-20210208-542.raw | active |
+| 735a5c16-56f0-4c15-80e7-49056dbc4f71 | debian-10.7.4-20210108-openstack-amd64.raw    | active |
+| 49f425ed-bf79-46ab-8cf3-44935d9d831e | debian-10.8.0-openstack-amd64.raw             | active |
+| daf43e02-f59e-45bb-8d63-436094d3f360 | debian-buster-202102191137-amd64.raw          | active |
++--------------------------------------+-----------------------------------------------+--------+
+```
+
+## Créer une machine virtuelle
+
+```plaintext
+openstack server create --image debian-10.8-openstack-amd64.raw --flavor cpu2-ram6-disk20 --key-name mykeypair --network ext-net1 infomaniak-vm-1
++-----------------------------+------------------------------------------------------------------------+
+| Field                       | Value                                                                  |
++-----------------------------+------------------------------------------------------------------------+
+| OS-DCF:diskConfig           | MANUAL                                                                 |
+| OS-EXT-AZ:availability_zone |                                                                        |
+| OS-EXT-STS:power_state      | NOSTATE                                                                |
+| OS-EXT-STS:task_state       | scheduling                                                             |
+| OS-EXT-STS:vm_state         | building                                                               |
+| OS-SRV-USG:launched_at      | None                                                                   |
+| OS-SRV-USG:terminated_at    | None                                                                   |
+| accessIPv4                  |                                                                        |
+| accessIPv6                  |                                                                        |
+| addresses                   |                                                                        |
+| adminPass                   | mii5bBNRGRF6                                                           |
+| config_drive                |                                                                        |
+| created                     | 2021-02-24T15:51:17Z                                                   |
+| flavor                      | cpu2-ram6-disk20 (2655c1e3-a43a-4dea-a957-650517e8fa72)                |
+| hostId                      |                                                                        |
+| id                          | 5bf0ebf6-825d-4879-b4b8-90245ec4dc19                                   |
+| image                       | debian-10.8-openstack-amd64.raw (0c857837-f852-44dc-b986-bcc488bf7b70) |
+| key_name                    | mykeypair                                                              |
+| name                        | infomaniak-vm-1                                                        |
+| progress                    | 0                                                                      |
+| project_id                  | ac4fafd60021431585bbb23470119557                                       |
+| properties                  |                                                                        |
+| security_groups             | name='default'                                                         |
+| status                      | BUILD                                                                  |
+| updated                     | 2021-02-24T15:51:17Z                                                   |
+| user_id                     | b1580497f51e4d10b9110c60c154562c                                       |
+| volumes_attached            |                                                                        |
++-----------------------------+------------------------------------------------------------------------+
+```
+
+## Vérifier l'état de la machine virtuelle
+
+```plaintext
+openstack server show infomaniak-vm-1
++-----------------------------+------------------------------------------------------------------------+
+| Field                       | Value                                                                  |
++-----------------------------+------------------------------------------------------------------------+
+| OS-DCF:diskConfig           | MANUAL                                                                 |
+| OS-EXT-AZ:availability_zone | b10                                                                    |
+| OS-EXT-STS:power_state      | Running                                                                |
+| OS-EXT-STS:task_state       | None                                                                   |
+| OS-EXT-STS:vm_state         | active                                                                 |
+| OS-SRV-USG:launched_at      | 2021-02-24T15:51:27.000000                                             |
+| OS-SRV-USG:terminated_at    | None                                                                   |
+| accessIPv4                  |                                                                        |
+| accessIPv6                  |                                                                        |
+| addresses                   | ext-net1=2001:1600:115:1::3d8, 195.15.241.27                           |
+| config_drive                |                                                                        |
+| created                     | 2021-02-24T15:51:17Z                                                   |
+| flavor                      | cpu2-ram6-disk20 (2655c1e3-a43a-4dea-a957-650517e8fa72)                |
+| hostId                      | 1baedae8de146b81f259cfec3cf33fcae980bb274f8fef46a5f49ba9               |
+| id                          | 5bf0ebf6-825d-4879-b4b8-90245ec4dc19                                   |
+| image                       | debian-10.8-openstack-amd64.raw (0c857837-f852-44dc-b986-bcc488bf7b70) |
+| key_name                    | mykeypair                                                              |
+| name                        | infomaniak-vm-1                                                        |
+| progress                    | 0                                                                      |
+| project_id                  | ac4fafd60021431585bbb23470119557                                       |
+| properties                  |                                                                        |
+| security_groups             | name='default'                                                         |
+| status                      | ACTIVE                                                                 |
+| updated                     | 2021-02-24T15:51:27Z                                                   |
+| user_id                     | b1580497f51e4d10b9110c60c154562c                                       |
+| volumes_attached            |                                                                        |
++-----------------------------+------------------------------------------------------------------------+
+```
+
+## Se connecter en SSH à la machine virtuelle
+
+```plaintext
+ssh debian@195.15.241.27
+```
