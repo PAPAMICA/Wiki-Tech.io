@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-06-14T08:19:38.364Z
+date: 2021-06-14T08:21:02.249Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-24T16:12:00.664Z
 La structure conditionnelle **IF** permet de faire un **choix**. Cela permet de rendre le code *intelligent*.  
 Dans un langage courant, cela donnerait ceci :
 
-```plaintext
+```python
 Si <réfrigérateur_vide = 1>
   Alors Afficher "Faire des courses"
 Fin si
@@ -32,8 +32,8 @@ if refrigerateur_vide == 1:
 ```
 
 > **Attention :** Dans d'autres langages de programmation tel que le **C#**, la fonction est délimitée par **{}**. En python, la fonction commence par **:** et c'est l'indentation qui délimite.
-> 
 > Pour éviter les erreurs, les indentations (généralement faites automatiquement) doivent être 4 espaces et non une tabulation.
+{.is-warning}
 
 *Démonstration :*
 
@@ -83,9 +83,11 @@ else: # Sinon ...
 | \== | Égal à |
 | !=  | Différent de |
 
-> **Attention :** Pour tester l'égalité de deux valeurs, on utilise **\==** et non **\=** qui lui sert à l'affectation de valeurs
+> Pour tester l'égalité de deux valeurs, on utilise **\==** et non **\=** qui lui sert à l'affectation de valeurs
+{.is-warning}
 
-> **Info :** Une condition renvoie uniquement deux valeurs : **True** ou **False** (vrai ou faux). Si le test est correcte, il renverra **True**, sinon **False**.
+> Une condition renvoie uniquement deux valeurs : **True** ou **False** (vrai ou faux). Si le test est correcte, il renverra **True**, sinon **False**.
+{.is-info}
 
 ## Plusieurs conditions pour une clause IF
 
@@ -133,4 +135,4 @@ while 1 != 10:
   i+=1
 ```
 
-> **Attention** : Il ne faut pas oublier d'incrémenter le compteur, sinon la boucle sera infinie !
+> Il ne faut pas oublier d'incrémenter le compteur, sinon la boucle sera infinie !{.is-warning}
