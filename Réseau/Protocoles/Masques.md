@@ -2,7 +2,7 @@
 title: Calculer les masques IP
 description: Comment calculer ces sal*peries sans internet ?
 published: true
-date: 2021-06-14T08:09:26.788Z
+date: 2021-06-14T08:09:48.895Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:40.985Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-24T10:36:40.985Z
 
 # Calcule de masques
 
-Pour savoir ce qu’est un masque et un adresse ip, voir [cet article](https://wiki-tech.io/Réseaux/Bases).
+Pour savoir ce qu’est un masque et un adresse ip, voir [cet article](https://wiki-tech.io/Réseau/Protocoles/Bases).
 
 ## Qu’est-ce que la méthode magique ?
 
