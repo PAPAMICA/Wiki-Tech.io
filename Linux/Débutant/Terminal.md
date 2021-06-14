@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-06-14T07:40:58.718Z
+date: 2021-06-14T07:42:01.262Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
@@ -83,13 +83,13 @@ Zsh est en général installer par défaut sur les distribution Linux récentes,
 
 Pour Oh-My-Zsh c'est très simple avec une simple commande `curl` :
 
-```plaintext
+```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
 Ou si vous préférez, avec `get` :
 
-```plaintext
+```bash
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -107,7 +107,7 @@ J'ai personnellement une petite préférence pour le thème `agnoster` :
 
 Pour configurer le thème il suffit de modifier la ligne `ZSH_THEME` dans le fichier `~/.zshrc` avec le thème souhaité :
 
-```plaintext
+```bash
 ZSH_THEME="agnoster"
 ```
 
@@ -117,7 +117,7 @@ Comme pour les thèmes, une grande force de Oh-My-Zsh est sa looooongue liste de
 
 Pour les utiliser, vous devez les renseigner dans le fichier de configuration `~/.zshrc` :
 
-```plaintext
+```bash
 plugins=(
   git
   ansible
@@ -140,7 +140,7 @@ Screen ou GNU Screen est un multiplexeur terminal. En d'autres termes, cela sign
 
 Le package `screen` est pré-installé sur la plupart des distributions Linux de nos jours. Vous pouvez vérifier s'il est installé sur votre système avec la commande : `screen --version`
 
-```plaintext
+```bash
 screen --version
 Screen version 4.08.00 (GNU) 05-Feb-20
 ```
@@ -149,19 +149,19 @@ Si `screen` n'est pas installé, vous pouvez l'installer facilement avec le gest
 
 ### Debian & Ubuntu family
 
-```plaintext
+```bash
 sudo apt install screen
 ```
 
 ### Fedora & CentOS family
 
-```plaintext
+```bash
 sudo dnf install screen
 ```
 
 ### Arch & Manjaro family
 
-```plaintext
+```bash
 sudo pacman -S screen
 ```
 
@@ -169,31 +169,31 @@ sudo pacman -S screen
 
 Pour démarrer une session, il suffit simplement d'utiliser la commande :
 
-```plaintext
+```bash
 screen
 ```
 
 Mais je vous conseille plutôt de démarrer vos sessions avec un nom à chaque fois :
 
-```plaintext
+```bash
  screen -S <nom_session>
 ```
 
 Vous pouvez lister toutes les sessions screen en cours avec :
 
-```plaintext
+```bash
 screen -ls
 ```
 
 Pour reprendre une session déjà ouverte :
 
-```plaintext
+```bash
 screen -r <id_session>
 ```
 
 Pour rejoindre une session déjà utilisée :
 
-```plaintext
+```bash
 screen -x <id_session>
 ```
 
