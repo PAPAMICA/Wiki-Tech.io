@@ -2,13 +2,13 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-05-20T14:35:04.106Z
+date: 2021-06-14T06:47:26.837Z
 tags: 
 editor: markdown
-dateCreated: 2021-05-10T11:53:45.764Z
+dateCreated: 2021-05-24T10:34:07.034Z
 ---
 
-![OpenStack — Wikipédia](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/OpenStack%C2%AE_Logo_2016.svg/1200px-OpenStack%C2%AE_Logo_2016.svg.png =50%x)
+![OpenStack — Wikipédia](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/OpenStack%C2%AE_Logo_2016.svg/1200px-OpenStack%C2%AE_Logo_2016.svg.png)
 
 # Présentation
 
@@ -18,7 +18,6 @@ OCI (OpenStack Cluster Installer) est un logiciel permettant de provisionner aut
 -   un serveur de démarrage PXE (tftp-hpa)
 -   un serveur web (apache2)
 -   un serveur Puppet
-{.grid-list}
 
 Lors du premier des machines du cluster, un système Debian live est proposé en PXE par OCI, pour agir comme une image de découverte. Ce système remonte directement les caractéristiques matérielles à OCI. Les machines peuvent alors être installés avec Debian à partir de ce système, configurés avec un agent Puppet  qui se connectera au master Puppet de OCI. Une fois Debian installé, le serveur redémarre et les services OpenStack sont provisionnés, en fonction du rôle du serveur dans le cluster.
 
@@ -40,13 +39,11 @@ Actuellement, OCI peut installer:
 -   Octavia
 -   Telemetry (Ceilometer, Gnocchi, Panko, Aodh)
 -   Cloudkitty
-{.grid-list}
 
 Des efforts sont actuellement en cours pour intégrer:
 
 -   Magnum
 -   Designate
-{.grid-list}
 
 De plus, OCI prend désormais en charge l'exécution de CephOSD sur les nœuds de calcul (ce que l'on appelle «hyper-converged») en tant qu'option pour chaque nœud de calcul. (compute nodes) 
 
@@ -181,10 +178,8 @@ oci-userdb -r newuser@example.com
 ```
 
 >  Vous devez également configurer votre adresse de serveur Radius et votre secret partagé dans `openstack-cluster-installer.conf`.
-{.is-info}
 
 > Même s'il existe un système d'authentification, il est fortement conseillé de ne pas exposer OCI à Internet. La meilleure configuration est si votre serveur d'approvisionnement n'est pas du tout accessible de l'extérieur.
-{.is-warning}
 
 ## Installation des services annexes
 
@@ -616,7 +611,6 @@ ocicli cluster-set z --initial-cluster-setup no
 Cependant, il est fortement conseillé de définir la valeur sur no une fois que le cluster est en production.
 
 > Si les 3 contrôleurs de vos clusters exécutent avec succès puppet à la première startup, ils appelleront "`oci-report-puppet-success`". Une fois le troisième contrôleur fait, `initial-cluster-setup` sera automatiquement défini sur la valeur «`no`» dans la base de données OCI.
-{.is-info}
 
 ## Ajout d'autres types de nœuds
 
@@ -1183,8 +1177,7 @@ ocicli machine-megacli-reset-raid SERIAL
 ocicli machine-megacli-apply SERIAL
 ```
 
-> Ne pas faire ce qui précède sur un serveur en production.
-{.is-danger}
+> Attention à ne pas faire ce qui précède sur un serveur en production.
 
 ## Plug-in DNS
 
@@ -1461,7 +1454,6 @@ openstack role add --user admin --project admin rating
 ```
 
 > Actuellement, après l'installation du cluster, tous les agents ceilometer doivent être redémarrés afin d'obtenir des métriques, même s'ils semblent bien configurés.
-{.is-info}
 
 ## Ajouter le service Octavia
 
@@ -1541,7 +1533,6 @@ L'exemple ci-dessus est lorsque vous n'utilisez pas `vlan`, mais que vous avez u
 Ensuite, nous avons besoin de groupes de sécurité spécifiques pour Octavia :
 
 > Assurez-vous d'utiliser `/root/octavia-openrc` et pas celui de l'administrateur
-{.is-warning}
 
 ```plaintext
 openstack security group create lb-mgmt-sec-grp
@@ -1748,7 +1739,6 @@ OCI a été testé avec ces types de serveurs PowerEdge:
 -   PowerEdge R720xd
 -   PowerEdge R740xd
 -   PowerEdge R6525 (processeurs AMD)
-{.grid-list}
 
 La prise en charge de racadm de Dell est incluse et OCI en fait un usage intensif.
 
@@ -1758,7 +1748,6 @@ OCI a été testé avec ces types de serveurs Cloud Line (utilisés comme swifts
 
 -   CL2600 Gen10
 -   CL2800 Gen10
-{.grid-list}
 
 Malheureusement, nous n'avons trouvé aucun moyen de configurer le BIOS de ces serveurs, donc un travail manuel doit être effectué pour configurer le BIOS manuellement, par exemple pour définir l'indicateur de connexion à chaud du disque dur. Cela peut être très ennuyeux lors de la configuration d'un grand nombre de serveurs.
 
@@ -1766,7 +1755,6 @@ OCI a également été testé avec ces serveurs (utilisés comme swiftstores):
 
 -   ProLiant DL385 Gen10
 -   ProLiant DL385 Gen10 Plus
-{.grid-list}
 
 OCI peut installer automatiquement `hponcfg`, `ssacli` et `storcli`, directement à partir du référentiel HP Debian. OCI utilise `hponcfg` pour activer automatiquement IPMI sur LAN (qui est désactivé par défaut sur ces serveurs).
 
@@ -1826,56 +1814,3 @@ Notez qu'après la mise à niveau vers buster-victoria, vous devez ensuite mettr
 ```plaintext
 oci-cluster-upgrade-openstack-release cl1 victoria wallby
 ```
-
----
-
-# Réinstallation d'un cluster
-## Préparation
-
-### Mise à jour du serveur
-```bash
-apt update
-apt dist-upgrade
-```
-> Verifier `openstack-cluster-installer.conf` pour ses mises à jours
-{.is-warning}
-
-### Vérifier les clés SSH
-Mettez à jours le fichier `/etc/openstack-cluster-installer/authorized_keys` avec les clés SSH des utilisateurs de votre cluster.
-
-### Création de l'image Live Debian
-```bash
-cd live-image
-openstack-cluster-installer-build-live-image
-```
-> Le processus peut mettre quelques minutes en fonction de votre connection
-{.is-info}
-
-
-## Installation
-
-### Démarrage des serveurs sur l'image Live
-```bash
-ocicli cluster-reset <CLUSTER-NAME>
-ocicli machine-list
-```
-Vous devriez voir l'ensemble de vos serveur avec le status `live` ou `bootinglive`. Attendez que tous les serveurs aient le statut `live`.
-
-Mettre la variable `initial-cluster-setup` à `yes` :
-```bash
-ocicli cluster-set <CLUSTER-NAME> --initial-cluster-setup yes 
-```
-> Voir [Ocicli : Variable "initial-cluster-setup"](#variable-de-configuration-initiale-du-cluster)
-{.is-info}
-
-### Effacer les disques 
-```bash
-for i in $(ocicli -csv machine-list | q -H -d, "SELECT serial FROM -"); do ocicli machine-wipe $i; done
-```
-
-### Lancer le déploiement
-```bash
-ocicli cluster-install <CLUSTER-NAME> 
-```
-> Après quelques heures de déploiement, votre cluster est réinstallé ! 😃 
-{.is-success}
