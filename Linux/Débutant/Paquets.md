@@ -2,7 +2,7 @@
 title: Linux - Paquets utiles
 description: 
 published: true
-date: 2021-06-14T07:37:26.575Z
+date: 2021-06-14T07:38:49.576Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:30.288Z
@@ -50,8 +50,6 @@ Site officiel : [the.exa.website](https://the.exa.website/)
 
 ## Extraterm
 
-![Extraterm by sedwards2009](https://extraterm.org/extraterm_main_logo_tight.svg)
-
 Il existe plusieurs terminaux pour exécuter les commandes sur votre machine. J'ai une préférence pour Extraterm qui, en plus d'avoir une jolie interface, intègre une grande personnalisation et des fonctionnalités innovantes.
 
 Pour profiter de l'ensemble des fonctionnalités, il est essentiels de passer par l'installation des dépendances : [Shell integration](https://extraterm.org/guide.html#shell-integration)
@@ -63,8 +61,6 @@ Site officiel : [extraterm.org](https://extraterm.org/index.html)
 ## Filezilla
 
 ## Flameshot
-
-![Flameshot](https://github.com/flameshot-org/flameshot/raw/master/data/img/app/org.flameshot.Flameshot.svg)
 
 Il m'arrive fréquemment de devoir montrer quelque chose que je vois sur mon écran, le plus simple pour cela est de prendre une capture d'écran. Flamshot intègre des options complètes pour la capture, l'édition et la mise à disposition de la capture d'écran.
 
@@ -98,8 +94,6 @@ Site officiel : [htop.dev](https://htop.dev/)
 
 ## Oh My Zsh
 
-![GitHub - bpassos/bullet-train-oh-my-zsh-theme: A oh-my-zsh shell theme  based on the Powerline Vim plugin](https://camo.githubusercontent.com/b0b308a8322cb296deb5d281eb8d142251d8272a524a258f9e51cca06e7ce27f/687474703a2f2f7261772e6769746875622e636f6d2f6361696f676f6e64696d2f62756c6c65742d747261696e2d6f682d6d792d7a73682d7468656d652f6d61737465722f696d672f69636f6e2e706e67)
-
 Zsh est mon shell préféré car il intègre une autocomplétion très poussée et permet une grande personnalisation de son shell.
 
 Oh-My-Zsh apporte tout le côté personnalisation à ZSH, il permet d'utiliser des thèmes assez complet.
@@ -110,7 +104,7 @@ Site officiel : [ohmyz.sh](https://ohmyz.sh/)
 
 Installation : 
 
-```plaintext
+```bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 
@@ -140,7 +134,6 @@ Plus d'information ici : [/Linux/Terminal](/Linux/Terminal#screen) 
 
 ## Termius
 
-![Meet Termius. Serverauditor has gone through a… | by Termius | Termius Blog](https://miro.medium.com/max/1200/0*VnQufQloXjs5H3zC.png)
 
 Pour me connecter en SSH à mes différents serveurs, je préfère utiliser un client dédié. Mon principal besoin étant la synchro cloud de ma configuration entre mes différents devices (iPhone compris). Après pas mal de recherches j'ai découvert Termius qui intègre toutes les fonctionnalités dont j'ai besoin en plus d'avoir une jolie interface et une application mobile.
 
@@ -153,8 +146,6 @@ Site officiel : [termius.com](https://termius.com/) (payant)
 ## VirtualBox
 
 ## VS-Code
-
-![Visual Studio Code Logo PNG Transparent & SVG Vector - Freebie Supply](https://cdn.freebiesupply.com/logos/large/2x/visual-studio-code-logo-png-transparent.png)
 
 Pour l'édition de fichier de configuration ou pour du scripting, un éditeur de texte est quasiment essentiel. Et pour une fois que Microsoft propose un produit OpenSource de qualité.. VSCode intègre le support de plusieurs centaines de plugins parfois très utiles.
 
