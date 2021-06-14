@@ -2,7 +2,7 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-06-14T06:35:57.526Z
+date: 2021-06-14T06:37:10.054Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:40.448Z
@@ -24,7 +24,7 @@ Le projet FileBrowser met à disposition une [image Docker](https://hub.docker.c
 
 Dans un fichier [Dockerfile](https://hastebin.papamica.com/ukukomelut), nous commençons par utiliser l'image alpine complète et en copiant le binaire de FileBrowser à partir de l'image docker `filebrowser/filebrowser` :
 
-```plaintext
+```DockerFile
 FROM filebrowser/filebrowser as fb
 FROM alpine:latest
 COPY --from=fb /filebrowser /opt/app/filebrowser
@@ -32,14 +32,14 @@ COPY --from=fb /filebrowser /opt/app/filebrowser
 
 Nous ne voulons pas que le processus s'exécute en tant que root, nous créons donc un nouvel utilisateur et mettons à jour les certificats SSL :
 
-```plaintext
+```DockerFile
 RUN apk --update add ca-certificates bash \
     && adduser -h /opt/app -D app
 ```
 
 Maintenant, pour le script entrypoint : nous avons besoin de lancer FileBrowser avec la configuration souhaitée mais aussi de créer un utilisateur pour l'option `--auth.method='noauth'` (voir l'[issue #700](https://github.com/filebrowser/filebrowser/issues/700))
 
-```plaintext
+```bash
 #!/bin/bash
 ./filebrowser config init --port 4000 --address "" --baseurl "" --log "stdout" --root="/srv" --auth.method='noauth' --commands "" --lockPassword --perm.admin=false --perm.create=false --perm.delete=false --perm.execute=false --perm.modify=false --perm.rename=false --signup=false
 ./filebrowser users add anonymous "anonymous"
@@ -48,7 +48,7 @@ exec ./filebrowser
 
 Nous pouvons désormais finir notre [Dockerfile](https://hastebin.papamica.com/ukukomelut) :
 
-```plaintext
+```DockerFile
 COPY entrypoint /opt/app/entrypoint
 RUN chmod a+x /opt/app/entrypoint
 
@@ -67,14 +67,14 @@ Vous retrouverez le Dockerfile complet ici : [Dockerfile](https://hastebin.papam
 
 Maintenant que nous avons notre Dockerfile, nous pourrions démarrer notre container avec ces commandes Docker :
 
-```plaintext
+```bash
 docker build --tag hostfiles .
 docker run --detach -p 80:4000 --restart=always --volume /apps/files:/srv:ro hostfiles
 ```
 
 Mais je préfère toujours avoir un Docker-Compose, voici donc ce fameux sésame :
 
-```plaintext
+```yaml
 version: '2'
 
 services:
@@ -90,7 +90,7 @@ services:
 
 Pour lancer le container :
 
-```plaintext
+```bash
 docker-compose up -d
 ```
 
@@ -100,7 +100,7 @@ Vous pouvez maintenant y accéder à l'adresse : `http://<IP_SERVER>:80`
 
 Vous devez avoir cette arborescence de fichiers :
 
-```plaintext
+```bash
 .
 ├── docker-compose.yml
 ├── dockerfile
