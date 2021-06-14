@@ -2,7 +2,7 @@
 title: Matomo
 description: Enfin une alternative viable à Google Analytics !
 published: true
-date: 2021-06-14T06:40:32.338Z
+date: 2021-06-14T06:42:39.389Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:53.359Z
@@ -30,7 +30,7 @@ Site officiel : [matomo.org](https://matomo.org)
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [leur site](https://fr.matomo.org/docs/installation/), le déployer directement depuis mon template d'application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :
 
-```plaintext
+```yaml
 version: "2"
 services:
   # Base de données    
@@ -106,7 +106,9 @@ networks:
       name: proxy
 ```
 
-> **Attention :** Pensez à changer dans le docker-compose ou à définir les variables suivantes : ***$URL\_LOK*****I** et **$URL** en fonction de votre installation.
+> Pensez à changer dans le docker-compose ou à définir les variables suivantes : **URL_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
+
 
 Votre Matomo sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.  
  
@@ -121,7 +123,7 @@ Le plus simple reste de passer par une extension :
 
  2 - Connectez vous en administrateur sur votre Wordpress
 
- 3 - Ajoutez et activez l'extension “[`**Tracking code for Matomo, by Sergio Santos**`](https://wordpress.org/plugins/piwik-tracking-by-mente-binaria/)**”** 
+ 3 - Ajoutez et activez l'extension “[**`Tracking code for Matomo, by Sergio Santos`**](https://wordpress.org/plugins/piwik-tracking-by-mente-binaria/)”
 
  4 - Allez dans les réglages de l'extension
 
