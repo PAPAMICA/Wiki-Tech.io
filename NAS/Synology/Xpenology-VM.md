@@ -2,7 +2,7 @@
 title: Xpenology sur ESXi
 description: Virtualiser DSM simplement !
 published: true
-date: 2021-06-14T08:00:01.715Z
+date: 2021-06-14T08:00:17.758Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:23.512Z
@@ -98,3 +98,4 @@ Et vous voilà avec un NAS tournant sous DSM 6.2 avec presque toutes les fonctio
 Forum Xpenology : [https://xpenology.com/forum/](https://xpenology.com/forum/) 
 
 > Attention : N’oubliez pas que vous utilisez un “hack” de DSM de Synology, le système peut être instable et surtout ce dernier n’est pas mise à jour automatiquement. (avant de vous lancer dans une mise à jour, renseignez vous sur le forum de Xpenology)
+{.is-warning}
