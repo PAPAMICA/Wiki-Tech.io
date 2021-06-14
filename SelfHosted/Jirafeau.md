@@ -2,7 +2,7 @@
 title: Jirafeau
 description: Alternative opensource et self hosted de Wetransfert.
 published: true
-date: 2021-06-14T06:39:06.483Z
+date: 2021-06-14T06:39:20.340Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:49.087Z
@@ -30,7 +30,7 @@ Je me à disposition ce service aussi de mon coté, accessible à cette adresse 
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [Gitlab](https://gitlab.com/mojo42/Jirafeau), le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :
 
-```plaintext
+```yaml
 version: '2'
 
 services:
