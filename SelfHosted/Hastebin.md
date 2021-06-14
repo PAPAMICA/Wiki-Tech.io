@@ -2,7 +2,7 @@
 title: Hastebin
 description: Alternative opensource et self hosted de Pastebin.
 published: true
-date: 2021-06-14T06:38:30.310Z
+date: 2021-06-14T06:38:41.868Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:46.926Z
@@ -22,7 +22,7 @@ Je me à disposition ce service aussi de mon coté, accessible à cette adresse 
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [Github](https://github.com/seejohnrun/haste-server), le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :
 
-```plaintext
+```yaml
 version: "2"
 services:
 	
