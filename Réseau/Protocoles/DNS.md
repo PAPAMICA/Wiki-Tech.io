@@ -2,13 +2,13 @@
 title: Serveur DNS
 description: Qu’est ce qu’un serveur DNS et à quoi sert-il ?
 published: true
-date: 2021-06-14T08:06:36.427Z
+date: 2021-06-14T08:07:47.827Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:36.627Z
 ---
 
-![Why Use Azure DNS? | Aidan Finn, IT Pro](https://aidanfinn.com/wp-content/uploads/2017/12/Azure-DNS-1024x1024.png)
+![Why Use Azure DNS? | Aidan Finn, IT Pro](https://aidanfinn.com/wp-content/uploads/2017/12/Azure-DNS-1024x1024.png =15%x)
 
 # Le serveur DNS
 
