@@ -2,10 +2,10 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-05-08T10:18:16.486Z
+date: 2021-06-14T07:36:43.101Z
 tags: 
 editor: markdown
-dateCreated: 2021-04-28T18:24:13.228Z
+dateCreated: 2021-05-24T10:35:22.227Z
 ---
 
 # Système
@@ -23,8 +23,9 @@ dateCreated: 2021-04-28T18:24:13.228Z
 | `last reboot` | Afficher l'historique des redémarrages |
 | `date` | Afficher la date et l'heure du système |
 | `cal` | Affiche le calendrier du mois |
-| `w` | Affiche qui est en ligne |
+| `w` | Affiche les utilisateurs actuellement connectés en SSH (date/heure/IP) |
 | `whoami` | Affiche où nous sommes connecté en tant que qui |
+| `screenfetch` | Affiche les informations systèmes (nécessite le paquet *screenfetch*) |
 
 # Matériel
 
@@ -40,6 +41,8 @@ dateCreated: 2021-04-28T18:24:13.228Z
 | `hdparm -i /dev/sda` | Affiche les informations du disque /dev/sda |
 | `hdparm -rT /dev/sda` | Faire un test de vitesse de lecture sur le disque /dev/sda |
 | `badblocks -s /dev/sda` | Test le disque /dev/sda pour d'éventuels blocks défectueux |
+| `smartctl -a /dev/sda` | Affiche toute les informations SMART du disque /dev/sda |
+| `smartctl -t short /dev/sda` | Démarre un test SMART sur le disque /dev/sda (short/long/conveyance sont disponible) |
 
 # Réseau
 
@@ -66,6 +69,87 @@ dateCreated: 2021-04-28T18:24:13.228Z
 
 # Fichiers et répertoires
 
+## cat - Afficher le contenu d'un fichier
+
+**Permet d'ouvrir un fichier et d'afficher son contenu.**
+
+```plaintext
+cat <option> fichier
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-b` | Numéroter toutes les lignes non vides |
+| `-n` | Numéroter toutes les lignes |
+
+## cd - Changer de répertoire
+
+**Permet de se déplacer dans l'arborescence**
+
+```plaintext
+cd /répertoire/de/destination
+```
+
+## df - Afficher la taille d'un répertoire
+
+**Permet d'afficher la taille d'un répertoire.**
+
+```plaintext
+df <option> répertoire
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-h` | Permet d'obtenir un résultat plus lisible pour un humain (*ex Mo, Ko,...*) |
+| `-i` | Affiche les inodes |
+| `-k` | Affiche le résultat en kilobytes |
+| `-m` | Affiche le résultat en megabytes |
+| `-d **n**.` | Affiche la taille des sous-répertoires jusqu'au **n**ème |
+
+## find - Chercher un fichier
+
+Permet de trouver un fichier précis ou une liste de fichier
+
+```plaintext
+find <DOSSIER> <OPTIONS> -iname "<FICHIER>"
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-iname <FICHIER>` | Cherche par nom de fichier |
+| `-name <FICHIER>` | Cherche par nom de fichier (sensible à la casse) |
+| `-type f/d` | Cherche un certain type (`f` = fichier - `d` = dossier) |
+| `-size +/- <TAILLE>` | Cherche en fonction de la taille |
+| `-user <UTILISATEUR>` | Cherche en fonction de l'utilisateur |
+| `-group <GROUPE>` | Cherche en fonction du groupe |
+| `-perm <PERMISSION>` | Cherche en fonction de la permission |
+
+Exemple : Chercher des fichier de plus de 200ko qui ne contienne pas le dans le nom “2015” dans le dossier “/photosdevacances”
+
+```plaintext
+find /photosdevacances -type f -size +200k -not -iname "*2015*"
+```
+
+## **head - A**fficher l'en-tête d'un fichier
+
+**Affiche l'en-tête d'un fichier**
+
+```plaintext
+head <option> fichier
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-n` | Spécifie le nombre de ligne à afficher |
+
+## less - Afficher un fichier page par page
+
+ **Affiche le fichier page par page. C'est donc pratique pour les longs fichiers.**
+
+```plaintext
+less fichier
+```
+
 ## ls - Lister le contenu d'un répertoire
 
 **Permet de lister le contenu d'un répertoire**
@@ -82,14 +166,6 @@ ls <option> répertoire
 | `-h` | Affiche la taille dans un format lisible par l'homme (Mo par exemple) |
 | `-R` | Liste également les sous-répertoires |
 | `-s` | Affiche la taille des répertoires |
-
-## pwd - Afficher le répertoire courant
-
-**Affiche le répertoire dans lequel on se situe.**
-
-```plaintext
-pwd
-```
 
 ## mkdir - Créer un répertoire
 
@@ -109,43 +185,6 @@ mkdir -p /chemin/répertoire/à/créer
 mkdir -p /home/user1/test1/truc
 ```
 
-## cd - Changer de répertoire
-
-**Permet de se déplacer dans l'arborescence**
-
-```plaintext
-cd /répertoire/de/destination
-```
-
-## cat - Afficher le contenu d'un fichier
-
-**Permet d'ouvrir un fichier et d'afficher son contenu.**
-
-```plaintext
-cat <option> fichier
-```
-
-| Option | Commentaire |
-| --- | --- |
-| `-b` | Numéroter toutes les lignes non vides |
-| `-n` | Numéroter toutes les lignes |
-
-## df - Afficher la taille d'un répertoire
-
-**Permet d'afficher la taille d'un répertoire.**
-
-```plaintext
-df <option> répertoire
-```
-
-| Option | Commentaire |
-| --- | --- |
-| `-h` | Permet d'obtenir un résultat plus lisible pour un humain (*ex Mo, Ko,...*) |
-| `-i` | Affiche les inodes |
-| `-k` | Affiche le résultat en kilobytes |
-| `-m` | Affiche le résultat en megabytes |
-| `-d **n**.` | Affiche la taille des sous-répertoires jusqu'au **n**ème |
-
 ## mv - Déplacer un fichier ou dossier
 
 **Permet de déplacer un fichier ou un répertoire.**
@@ -158,6 +197,14 @@ mv <option> /chemin/source /chemin/destination
 | --- | --- |
 | `-f` | Forcer le déplacement |
 | `-i` | Demander la confirmation de l'utilisateur |
+
+## pwd - Afficher le répertoire courant
+
+**Affiche le répertoire dans lequel on se situe.**
+
+```plaintext
+pwd
+```
 
 ## rm - Supprimer un fichier ou dossier
 
@@ -173,6 +220,32 @@ rm <option> /chemin/truc/a/supprimer
 | `-f` | Force la suppression |
 | `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
 | `-r` | Récursif |
+
+## sftp - Récupérer un fichier sur un serveur
+
+**Permet de se connecter en SFTP à un serveur**
+
+```plaintext
+sftp -P <PORT> <UTILISATEUR>@<SERVEUR>
+```
+
+**Permet de récupérer simplement un fichier**
+
+```plaintext
+get <CHEMIN>/<FICHIER>
+```
+
+## tail - Afficher la fin d'un fichier
+
+**Affiche la fin d'un fichier**
+
+```plaintext
+tail <option> fichier
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-f` | permet de mettre à jour en temps réel l'affichage de la fin du fichier |
 
 ## tar - Compression et décompression
 
@@ -255,4 +328,4 @@ Lien : [Gitlab](https://gitlab.infomaniak.ch/mickaelasseline/python-tipee)
 | `git commit -am “message”` | Met à jour le commit avec un message défini. |
 | `git fetch` | Récupère les informations d'un repository sans télécharger sur la machine. |
 | `git push` | Envoi la mise à jour au git distant (dit “remote”). Prends en compte le dossier dans lequel on se situe. |
-| `git pull` | Récupère les dernières mises à jours du répertoire distant |
+| `git pull` | Récupère les dernières mises à jours du répertoire distant. |
