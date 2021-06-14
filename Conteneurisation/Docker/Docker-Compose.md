@@ -2,7 +2,7 @@
 title: Docker-Compose
 description: 
 published: true
-date: 2021-06-14T07:30:42.980Z
+date: 2021-06-14T07:34:38.270Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:17.625Z
@@ -20,7 +20,7 @@ Docker Compose n'est pas installé par défaut et s'appuie sur le moteur Docker 
 
 Voici la procédure à suivre pour **télécharger Docker Compose sous un environnement Linux** :
 
-```plaintext
+```bash
 sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
@@ -28,7 +28,7 @@ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 Vérifiez ensuite votre installation :
 
-```plaintext
+```bash
 docker-compose --version
 docker-compose version 1.24.0, build 0aa59064
 ```
@@ -41,11 +41,12 @@ Le but de cet article est d'améliorer notre ancienne application LAMP. Par la s
 
 Au préalable, commencez par télécharger les sources du projet en cliquant [ici](https://devopssec.fr/documents/docker/docker-compose/sources.zip) et désarchivez ensuite le projet.
 
-## _Amélioration du Dockerfile_
+## Amélioration du Dockerfile
 
 Profitons de cet article pour améliorer le Dockerfile de notre stack LAMP en réduisant son nombre d'instructions. Pour cela, on se basera sur une nouvelle image.
 
 > Si vous souhaitez conteneuriser une application assez connue, alors je vous conseille de toujours fouiller dans le [_Hub Docker_](https://hub.docker.com/), afin de savoir si une image officielle de l'application existe déjà.
+{.is-info}
 
 En cherchant dans le Hub Docker, j'ai pu dénicher les images adéquates, notamment :
 
@@ -58,7 +59,7 @@ Pour le moment, nous utiliserons ce Dockerfile seulement pour construire une ima
 
 Dans le même dossier que vous avez désarchivé, créez un fichier Dockerfile et mettez dedans le contenu suivant :
 
-```plaintext
+```Docker
 FROM php:7-apache
 
 LABEL version="1.0" maintainer="AJDAINI Hatim &tl;ajdaini.hatim@gmail.com>"
@@ -71,15 +72,15 @@ WORKDIR  /var/www/html
 
 Buildez ensuite votre image avec la commande suivante :
 
-```plaintext
+```bash
 docker build -t myapp .
 ```
 
-## _Les besoins pour notre Docker Compose_
+## Les besoins pour notre Docker Compose
 
 Avant de créer notre fichier docker-compose.yml, il faut auparavant **définir les comportements de nos conteneurs**.
 
-### _Nos besoins pour le conteneur de la base de données_
+### Nos besoins pour le conteneur de la base de données
 
 On va débuter par la récolte des besoins du conteneur de la base de données. Pour celle-ci, il nous faudra :
 
@@ -91,12 +92,13 @@ Avant de foncer tête baissée dans la création/modification de notre fichier s
 -   `**MYSQL_ROOT_PASSWORD**`: spécifie le mot de passe qui sera défini pour le compte MySQL root (**c'est une variable obligatoire**).
 -   `**MYSQL_DATABASE**`: spécifie le nom de la base de données à créer au démarrage de l'image.
 -   `**MYSQL_USER**` et `**MYSQL_PASSWORD**` : utilisées conjointement pour créer un nouvel utilisateur avec son mot de passe. Cet utilisateur se verra accorder des autorisations de super-utilisateur pour la base de données `**MYSQL_DATABASE**`.
+{.grid-list}
 
 Ces variables d'environnements vont nous aider à créer une partie de l'architecture de notre base de données.
 
 Dans la description de l'image mysql, il existe une autre information très utile. Lorsqu'un conteneur mysql est démarré, il exécutera des fichiers avec des extensions *.sh*, *.sql* et *.sql.gz* qui se trouvent dans */docker-entrypoint-initdb.d*. Nous allons profiter de cette information pour déposer le fichier *articles.sql* (disponible dans les sources téléchargées) dans le dossier */docker-entrypoint-initdb.d* afin de créer automatiquement notre table SQL.
 
-### _Nos besoins pour le conteneur de l'application web_
+### Nos besoins pour le conteneur de l'application web
 
 Concernant le conteneur de l'application web, nous aurons besoin de :
 
@@ -105,7 +107,7 @@ Concernant le conteneur de l'application web, nous aurons besoin de :
 
 Me concernant la seule information utile dans la description de [la page Docker Hub de l'image php](https://hub.docker.com/_/php), est qu'il est possible d'installer et d'activer les modules php dans le conteneur php avec la commande docker-php-ext-install (C'est la commande utilisée dans notre Dockerfile afin d'activer le module pdo et pdo\_mysql).
 
-### _Lancer les conteneurs sans le docker-compose_
+### Lancer les conteneurs sans le docker-compose
 
 Histoire de vous donner une idée sur la longueur de la commande docker run sans utiliser le fichier docker-compose.yml. Je vais alors l'utiliser pour démarrer les différents conteneurs de notre application.
 
@@ -113,10 +115,11 @@ Premièrement je vais vous dévoiler, deux nouvelles options de la commande dock
 
 -   `**-e**` : définit/surcharge des variables d'environnement
 -   `**--link**` : ajoute un lien à un autre conteneur afin de les faire communiquer entre eux.
+{.grid-list}
 
 Voici à quoi va ressembler la commande `docker run` pour la **création du conteneur de la base de données** :
 
-```plaintext
+```bash
 docker run -d -e MYSQL_ROOT_PASSWORD='test' \
 -e MYSQL_DATABASE='test' \
 -e MYSQL_USER='test' \
@@ -128,7 +131,7 @@ docker run -d -e MYSQL_ROOT_PASSWORD='test' \
 
 Voici à quoi va ressembler la commande `docker run` pour la **création du conteneur de l'application web** :
 
-```plaintext
+```bash
 docker run -d --volume $PWD/app:/var/www/html -p 8080:80 --link mysql_c --name myapp_c myapp
 ```
 
@@ -136,11 +139,11 @@ Dans cet exemple, on peut vite remarquer que les commandes docker run sont assez
 
 # **Création du docker-compose**
 
-## _Contenu du docker-compose_
+## Contenu du docker-compose
 
 Commencez d'abord par créer un fichier et nommez le *docker-compose.yml*, ensuite copiez collez le contenu ci-dessous. Par la suite, plus bas dans l'article, je vais vous fournir les explications des différentes lignes de ce fichier :
 
-```plaintext
+```yaml
 version: '3.7'
 
 services:
@@ -172,9 +175,9 @@ volumes:
     db-volume:
 ```
 
-## _Explication du fichier docker-compose.yml_
+## Explication du fichier docker-compose.yml
 
-```plaintext
+```yaml
 version: '3.7'
 ```
 
@@ -182,7 +185,7 @@ Il existe plusieurs versions rétrocompatibles pour le format du fichier Compose
 
 ---
 
-```plaintext
+```yaml
 services:
 ```
 
@@ -190,7 +193,7 @@ Dans une application Docker distribuée, différentes parties de l'application s
 
 ---
 
-```plaintext
+```yaml
 db:
     image: mysql:5.7
     container_name: mysql_c
@@ -215,7 +218,7 @@ Dans cette partie, on crée un service nommé `**db**`. Ce service indique au mo
 
 ---
 
-```plaintext
+```yaml
 app:
     image: myapp
     container_name: myapp_c
@@ -241,18 +244,18 @@ Ici, on crée un service nommé `**app**`. Ce service indique au moteur Docker d
 
 ---
 
-```plaintext
+```yaml
 volumes:
     db-volume:
 ```
 
 Enfin, je demande au moteur Docker de me créer un volume nommé `**db-volume**`, c'est le volume pour stocker les données de notre base de données.
 
-## _Lancer l'application depuis docker-compose.yml_
+## Lancer l'application depuis docker-compose.yml
 
 Pour être sur le même pied d'estale, voici à quoi doit ressembler votre arborescence :
 
-```plaintext
+```python
 ├── app
 │   ├── db-config.php 
 │   ├── index.php 
@@ -264,7 +267,7 @@ Pour être sur le même pied d'estale, voici à quoi doit ressembler votre arbor
 
 Placez vous au niveau du dossier qui contient le fichier docker-compose.yml. Ensuite lancez la commande suivante pour **exécuter les services du docker-compose.yml** :
 
-```plaintext
+```bash
 docker-compose up -d
 ```
 
@@ -272,7 +275,7 @@ Ici l'option `**-d**` permet d'**exécuter les conteneur du Docker compose en ar
 
 Si vous le souhaitez, vous pouvez **vérifier le démarrage des conteneurs issus du docker-compose.yml** :
 
-```plaintext
+```bash
 docker ps
 ```
 
@@ -286,13 +289,13 @@ b5ee22310ebc        mysql:5.7           "docker-entrypoint.s…"   35 seconds ag
 
 Pour seulement **lister les conteneurs du docker-compose.yml**, il suffit d'exécuter la commande suivante :
 
-```plaintext
+```bash
 docker-compose ps
 ```
 
 **Résultat :**
 
-```plaintext
+```bash
 Name                Command               State          Ports        
 -----------------------------------------------------------------------
 myapp_c   docker-php-entrypoint apac ...   Up      0.0.0.0:8080->80/tcp
@@ -301,7 +304,7 @@ mysql_c   docker-entrypoint.sh mysqld      Up      3306/tcp, 33060/tcp
 
 Si jamais vos conteneurs ne sont pas dans l'état `**UP**`, alors **vérifiez les logs des services de votre Docker Compose** en tapant la commande suivante :
 
-```plaintext
+```bash
 docker-compose logs
 ```
 
@@ -311,25 +314,25 @@ Si tout c'est bien passé, alors visitez la page suivante [http://localhost:8080
 
 Remplissez le formulaire de l'application, et **tuez les conteneurs du docker-compose.yml**, avec la commande suivante :
 
-```plaintext
+```bash
 docker-compose kill
 ```
 
 Relancez ensuite vos services, et vous verrez que vos données sont bel et bien sauvegardées.
 
-## _Communication inter-conteneurs dans les sources de l'application_
+## Communication inter-conteneurs dans les sources de l'application
 
 Je ne vais pas trop rentrer dans les détails sur la partie réseau, car je vais rédiger un article qui sera dédié à cette partie. Mais sachez juste qu'un réseau bridge est créé par défaut, plus précisément c'est l'interface docker0 (`ip addr show docker0`), c'est un **réseau qui permet une communication entre les différents conteneurs**.
 
 Donc **les conteneurs possèdent par défaut une adresse ip**. Vous pouvez récolter cette information grâce à la commande suivante :
 
-```plaintext
+```bash
 docker inspect -f '{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)
 ```
 
 **Résultat :**
 
-```plaintext
+```bash
 /myapp_c - 172.18.0.2
 /mysql_c - 172.18.0.3
 ```
@@ -356,7 +359,7 @@ Je pense que vous l'aurez compris, le Docker Compose est un outil permettant de 
 
 Comme pour chaque fin de chapitre, je vous liste ci-dessous un récapitulatif de quelques commandes intéressantes du Docker Compose:
 
-```plaintext
+```bash
 ## Exécuter les services du docker-compose.yml
 docker-compose up
     -d : Exécuter les conteneurs en arrière-plan
