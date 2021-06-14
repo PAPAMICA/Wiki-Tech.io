@@ -2,7 +2,7 @@
 title: FileBrowser
 description: 
 published: true
-date: 2021-06-14T06:37:10.054Z
+date: 2021-06-14T06:37:50.585Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:40.448Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-24T10:34:40.448Z
 
 ![](https://raw.githubusercontent.com/filebrowser/logo/master/banner.png)
 
-# Héberger des fichiers en lecture seule avec l'interface Web FileBrowser
+# Présentation
 
 Si vous souhaitez partager des fichiers de manière permanente, une interface Web est probablement le plus simple à utiliser pour vos utilisateurs. 
 
@@ -18,7 +18,7 @@ Si vous souhaitez partager des fichiers de manière permanente, une interface We
 
 Nous allons voir les étapes consistant à n'autoriser aucune de ces options et à autoriser uniquement l'accès anonyme en lecture seule à un répertoire à l'aide de l'interface Web de FileBrowser.
 
-## Création du Dockerfile
+# Création du Dockerfile
 
 Le projet FileBrowser met à disposition une [image Docker](https://hub.docker.com/r/filebrowser/filebrowser) avec leur [binaire intégré](https://github.com/filebrowser/filebrowser/blob/master/Dockerfile) directement. Nous devons faire presque la même chose, mais le faire fonctionner sans authentification et fonctionner en tant qu'utilisateur normal au lieu de root (mauvaise pratique).
 
@@ -63,7 +63,7 @@ ENTRYPOINT [ "/opt/app/entrypoint" ]
 
 Vous retrouverez le Dockerfile complet ici : [Dockerfile](https://hastebin.papamica.com/ukukomelut)
 
-## Création du Docker-Compose
+# Création du Docker-Compose
 
 Maintenant que nous avons notre Dockerfile, nous pourrions démarrer notre container avec ces commandes Docker :
 
@@ -96,7 +96,7 @@ docker-compose up -d
 
 Vous pouvez maintenant y accéder à l'adresse : `http://<IP_SERVER>:80`
 
-## Résumé
+# Résumé
 
 Vous devez avoir cette arborescence de fichiers :
 
