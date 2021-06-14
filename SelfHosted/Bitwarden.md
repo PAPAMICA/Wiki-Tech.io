@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-06-14T06:32:22.021Z
+date: 2021-06-14T06:35:31.320Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:38.332Z
@@ -35,7 +35,7 @@ Vous pouvez retrouver le Github du projet [ici](https://github.com/dani-garcia/v
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [Github](https://github.com/dani-garcia/vaultwarden), le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :
 
-```plaintext
+```yaml
 version: "2"
 services:
   vaultwarden:
@@ -83,7 +83,8 @@ networks:
       name: proxy
 ```
 
-> **Attention :** Pensez à changer dans le docker-compose ou à définir les variables suivantes : **$TOKEN**, ***$URL\_LOK*****I**, **$URL** en fonction de votre installation.
+> Pensez à changer dans le docker-compose ou à définir les variables suivantes : **TOKEN**, **URL_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
 
 Votre Vaultwarden sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
 
@@ -91,8 +92,8 @@ L'interface administrateur est disponible ici : `<URL>/admin`
 
 L'API est disponible ici : `<URL>/api`
 
-> **Attention :** Pensez à régler l'heure du serveur hôte pour le 2FA 
-
+> Pensez à régler l'heure du serveur hôte pour le 2FA 
+{.is-warning}
 ## Configuration
 
 ### L'URL du site
@@ -122,10 +123,10 @@ Une fois installé, vous devez configurer votre serveur avant de vous connecter 
 
  1. Cliquez sur l'engrenage en haut à gauche
 
-![](/image_2021-05-01_153210.png)
+![](/images/image_2021-05-01_153210.png)
 
  2. Entrez l'URL de votre serveur et cliquez sur “Enregistrer”
 
-![](/image_2021-05-01_153407.png)
+![](/images/image_2021-05-01_153407.png)
 
  3. Vous pouvez maintenant vous connecter avec vos identifiants dans l'application !
