@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-06-14T07:39:43.098Z
+date: 2021-06-14T07:40:31.359Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:32.558Z
@@ -26,19 +26,19 @@ Si sudo n'est pas installé, vous pouvez facilement l'installer à l'aide du ges
 
 ## **Ubuntu et Debian**
 
-```plaintext
+```bash
 apt install sudo
 ```
 
 ## **CentOS et Fedora**
 
-```plaintext
+```bash
 yum install sudo
 ```
 
 ## Arch et Manjaro
 
-```plaintext
+```bash
 pacman -S sudo
 ```
 
@@ -50,13 +50,13 @@ Par défaut, sur la plupart des distributions Linux, l'octroi d'un accès sudo e
 
 Sur Debian, Ubuntu et leurs dérivés, c'est le groupe `sudo`  :
 
-```plaintext
+```bash
 usermod -aG sudo username
 ```
 
 Sur la plupart des autres distributions Linux (incluant Red-Hat et ses dérivés comme CentOS), sur BSD ou Unix c'est le groupe `wheel`  :
 
-```plaintext
+```bash
 usermod -aG wheel username
 ```
 
@@ -64,25 +64,25 @@ usermod -aG wheel username
 
 Par défaut, sudo vous demandera de saisir à nouveau votre mot de passe après cinq minutes d'inactivité sudo. Vous pouvez modifier le délai d'expiration par défaut en modifiant le fichier `/etc/sudoers`. **La modification directe du fichier sudoers est déconseillée**, il vaut mieux éditer le fichier à l'aide de `visudo` (commande installée avec le paquet sudo) qui vérifiera qu'aucune erreur de syntaxe n'a été effectuée avant enregistrement des modifications et bloquera l'édition concurrente du fichier :
 
-```plaintext
+```bash
 visudo
 ```
 
 Si vous souhaitez éditer la configuration de sudo sans être logué à root il vous faudra utiliser la commande suivante (si autorisé par les permissions sudo de votre utilisateur) :
 
-```plaintext
+```bash
 sudo visudo
 ```
 
 Définissez le délai par défaut en ajoutant la ligne ci-dessous, où `10` est le délai spécifié en minutes, 0 permettra de demander le mot de passe de l'utilisateur à chaque lancement d'une commande avec sudo :
 
-```plaintext
+```bash
 Defaults timestamp_timeout=10
 ```
 
 Si vous souhaitez modifier l'horodatage uniquement pour un utilisateur spécifique, ajoutez la ligne suivante, où `NOM_UTILISATEUR` est l'utilisateur en question.
 
-```plaintext
+```bash
 Defaults:<NOM_UTILISATEUR> timestamp_timeout=10
 ```
 
@@ -90,7 +90,7 @@ Defaults:<NOM_UTILISATEUR> timestamp_timeout=10
 
 La syntaxe de la commande `sudo` est la suivante:
 
-```plaintext
+```bash
 sudo <OPTIONS> <COMMANDE>
 ```
 
@@ -98,7 +98,7 @@ La commande `sudo` a de [_nombreuses options_](https://www.sudo.ws/man/1.8.3/sud
 
 Pour utiliser sudo, préfixez simplement la commande avec `sudo`:
 
-```plaintext
+```bash
 sudo <COMMANDE>
 ```
 
@@ -108,7 +108,7 @@ La première fois que vous utilisez sudo dans une session, vous serez invité à
 
 Exemple : lister les fichiers du dossier root :
 
-```plaintext
+```bash
 sudo ls /root
 ```
 
@@ -120,13 +120,13 @@ L'option `-u` vous permet d'exécuter une commande en tant qu'un utilisateur sp�
 
 Dans l'exemple suivant, nous utilisons `sudo` pour exécuter la commande `whoami` en tant qu'utilisateur «richard» :
 
-```plaintext
+```bash
 sudo -u richard whoami
 ```
 
 La commande `whoami` imprimera le nom de l'utilisateur exécutant la commande :
 
-```plaintext
+```bash
 richard
 ```
 
@@ -138,7 +138,7 @@ Cela se produit car la redirection « `>`» de la sortie est effectuée sous l'u
 
 Une solution consiste à appeler un nouveau shell en tant que root en utilisant `sudo sh -c`:
 
-```plaintext
+```bash
 sudo sh -c 'echo "test" > /root/file.txt'
 ```
 
@@ -146,7 +146,7 @@ sudo sh -c 'echo "test" > /root/file.txt'
 
 Sur des environnements où la configuration de sudo n'est pas celle par défaut, permettant l'utilisation de toutes les commandes avec tous les utilisateurs, il est utile de connaître les droits que l'on peut avoir avec `sudo`. Il suffit d'exécuter la commande suivante pour avoir la liste des permissions de son utilisateur :
 
-```plaintext
+```bash
 sudo -l
 ```
 
@@ -158,7 +158,7 @@ Sudo nous permet de spécifier des alias d'utilisateurs pour les regrouper sous 
 
 Les `User_Alias` permettent de regrouper sous un alias différents utilisateurs ou groupes utilisateurs qui pourront exécuter certaines commandes. Leur création est de cette forme :
 
-```plaintext
+```bash
 User_Alias <NOM_USER_ALIAS> = <LISTE_USER>
 ```
 
@@ -174,7 +174,7 @@ Où `LISTE_USER` est la liste des utilisateurs séparés par des `,`. Les diffé
 
 Les `Runas_Alias` permettent de regrouper sous un alias différents utilisateurs ou groupes utilisateurs qui seront les utilisateurs ou groupes utilisateurs disponibles pour l'exécution des commandes. Leur création est de cette forme :
 
-```plaintext
+```bash
 Runas_Alias <NOM_RUNAS_ALIAS> = <LISTE_RUNAS_USER>
 ```
 
@@ -192,7 +192,7 @@ Où `LISTE_RUNAS_USER` est la liste des utilisateurs séparés par des `,`. Les 
 
 Sudo peut permettre l'application de droits suivant l'hôte sur lequel la commande sudo est exécutée. C'est une fonctionnalité intéressante à partir du moment que la configuration sudoers est reportée sur différentes machines qui ont des rôles différents (serveur Web, serveur de BDD, serveur DNS, etc.). Pour créer un alias `Host_Alias` il faudra l'ajouter à l'aide de `visudo` :
 
-```plaintext
+```bash
 Host_Alias <NOM_HOTE_ALIAS> = <LISTE_HOTE>
 ```
 
@@ -211,7 +211,7 @@ Où `LISTE_HOTE` est la liste des hôtes séparés par des `,`. Les différentes
 
 Les alias de commandes permettent de regrouper sous un alias plusieurs commandes qui pourront être ajoutées à des permissions. Ces alias sont à créer sous cette forme :
 
-```plaintext
+```bash
 Cmnd_Alias <NOM_CMND_ALIAS> = <LISTE_CMND>
 ```
 
@@ -226,7 +226,7 @@ Où `LISTE_CNMD` est la liste des commandes séparées par des `,`. Les différe
 
 Pour plus de sécurité il est aussi possible de spécifier le hash SHA-2 (sha224, sha256, sha384 ou sha512) du fichier de commande pour que son exécution ne soit possible que si le hash, calculé dynamiquement à l'exécution de sudo, correspond à celui présent dans sudoers. Le hash devant être au format hexadécimale ou base64. Pour réaliser une telle configuration il suffit de renseigner l'alias sous cette forme :
 
-```plaintext
+```bash
 Cmnd_Alias <NOM_CMND_ALIAS> = <HASH_TYPE>:<HASH> <LISTE_CMND>
 ```
 
@@ -238,7 +238,7 @@ Où `HASH` est le résultat du hash calculé sur le fichier de commande.
 
 Les permissions dans sudoers ont toutes cette forme :
 
-```plaintext
+```bash
 <USER> <HOTE>=(<RUNAS_USER>:<RUNAS_GROUP>) <COMMANDE>
 ```
 
@@ -258,7 +258,7 @@ A noter que chacun des éléments précédents peuvent être remplacés par `ALL
 
 Il est aussi possible de rajouter des `TAG` qui s'appliqueront à toutes les commandes suivantes. La forme passe donc à ceci :
 
-```plaintext
+```bash
 <USER> <HOTE>=(<RUNAS_USER>:<RUNAS_GROUP>) <TAG>: <COMMANDE>
 ```
 
@@ -275,19 +275,19 @@ Bien que sudo est avantageux et permet d'augmenter la sécurité des machines, d
 
 En exemple un administrateur souhaite donner l'accès à un utilisateur à la gestion du service sshd pour vérifier son statut et éventuellement le redémarrer :
 
-```plaintext
+```bash
 techos ALL=(root) /usr/bin/systemctl * sshd
 ```
 
 L'utilisateur pourra bien vérifier le statut du daemon sshd et le redémarrer mais l'utilisation du wildcard fait que cet utilisateur pourra aussi l'arrêter, le désactiver (disable) et même agir sur d'autres daemon tant que sa commande termine par “sshd”. Pour restreindre l'utilisateur au maximum nous sommes obligés de préciser les deux commandes autorisées sans utiliser de wildcard :
 
-```plaintext
+```bash
 techos ALL=(root) /usr/bin/systemctl status sshd, /usr/bin/systemctl restart sshd
 ```
 
 Tout semble cette fois-ci parfait et pourtant le résultat de la commande `sudo systemctl status sshd` peut être réalisée au sein d'un pager, qui utilise `less` (suivant la configuration du système), et qui permet d'ouvrir un shell en tant que root. Avec ce cas  précis l'utilisation du tag `NOEXEC` n'est pas possible car systemctl retournera une erreur lors de son exécution. La documentation de systemctl (obtenable avec `man systemctl` si man a été installé) nous renseigne sur l'existence d'un paramètre pouvant être défini pour ne pas avoir de pager, c'est `--no-pager`. Nous pouvons modifier le sudoers comme ceci :
 
-```plaintext
+```bash
  techos ALL=(root) /usr/bin/systemctl --no-pager status sshd, /usr/bin/systemctl restart sshd
 ```
 
@@ -301,6 +301,6 @@ Si l'utilisation de sudo semble inévitable alors au lieu de lui fournir un acc�
 
 Du côté de l'administrateur, s'il souhaite donner l'accès en édition du fichier /etc/resolv.conf, il devra inscrire une permission de ce type :
 
-```plaintext
+```bash
 techos ALL=(root) /usr/bin/sudoedit /etc/resolv.conf
 ```
