@@ -2,13 +2,13 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-06-14T07:42:01.262Z
+date: 2021-06-14T07:43:12.607Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
 ---
 
-![How to beautify or enhance the appearance linux terminal - Ahan-Ganteng](https://2.bp.blogspot.com/-K6OX_DJBHl0/Vms2vUM7PII/AAAAAAAAA4M/QCNAHS_RLeY/s1600/Terminal-icon.png)
+![How to beautify or enhance the appearance linux terminal - Ahan-Ganteng](https://2.bp.blogspot.com/-K6OX_DJBHl0/Vms2vUM7PII/AAAAAAAAA4M/QCNAHS_RLeY/s1600/Terminal-icon.png =20%x)
 
 # Choix du terminal
 
