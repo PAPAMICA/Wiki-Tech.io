@@ -2,7 +2,7 @@
 title: Vault
 description: Un gestionnaire de secrets avec API !
 published: true
-date: 2021-06-14T06:43:35.080Z
+date: 2021-06-14T06:46:02.118Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:59.737Z
@@ -40,7 +40,7 @@ Comme tous les outils complets, la première prise en main et sa découverte peu
 
 Il faut commencer par créer le fichier de configuration `vault.json` dans `/apps/vault/config/` :
 
-```xml
+```json
 {
   "backend": {
     "file": {
@@ -59,7 +59,7 @@ Il faut commencer par créer le fichier de configuration `vault.json` dans `/app
 
 Puis créer le `docker-compose.yml` et lancer Vault avec la commande `docker-compose up -d` :
 
-```plaintext
+```yaml
 version: '2'
 services:
   vault:
@@ -107,7 +107,8 @@ networks:
       name: proxy
 ```
 
-> **Attention :** Pensez à changer dans le docker-compose ou à définir les variables suivantes : ***URL\_LOK*****I** et **$URL** en fonction de votre installation.
+> Pensez à changer dans le docker-compose ou à définir les variables suivantes : **URL_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
 
 Votre Vault sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
 
@@ -127,19 +128,19 @@ Il va nous falloir plusieurs données pour récupérer un mot de passe :
 
 Récupération du VAULT\_TOKEN pour accéder aux secrets :
 
-```plaintext
+```bash
 VAULT_TOKEN=$(curl -sSf --data "{\"role_id\":\"<ROLE_ID>\",\"secret_id\":\"$VAULT_SECRET_ID\"}" $VAULT_URL/v1/auth/approle/login | jq -r '.["auth"]["client_token"]')
 ```
 
 Récupération des secrets dans le dossier en Json ;
 
-```plaintext
+```bash
 curl -sSf -X GET -H "Accept: */*" -H "X-Vault-Token: $VAULT_TOKEN" "$VAULT_URL/v1/$VAULT_ENGINE/data/approle/$VAULT_ROLE"
 ```
 
 Récupération du secret recherché avec jq :
 
-```plaintext
+```bash
  | jq -r '.["data"]["data"]["$VAULT_SECRET_NAME"]'
 ```
 
@@ -149,7 +150,7 @@ Récupération du secret recherché avec jq :
 
 Afin de ne pas dévoiler les informations ou les tokens utilisés, on les met en variable d'environnement :
 
-```python
+```bash
 export VAULT_URL='' # Vault URL with "https://"
 export VAULT_ENGINE='' # Wallet name (ex : VPS)
 export VAULT_ROLE='' # Role name (folder)
@@ -159,7 +160,7 @@ export VAULT_SECRET_NAME='' # Secret name
 
 #### Fonction Bash
 
-```python
+```bash
 #!/bin/bash
 
 function Get-Secret {
