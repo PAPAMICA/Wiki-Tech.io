@@ -2,7 +2,7 @@
 title: Windows-Server - Spooler bloqué
 description: Résoudre les problème de spooler d’impression
 published: true
-date: 2021-06-14T07:57:32.041Z
+date: 2021-06-14T07:57:59.132Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:19.208Z
@@ -28,7 +28,7 @@ Machinalement, j’ai redémarré le spooler d’impression de Windows, dans le 
 Pour aller plus loin, j’ai décidé de créer un tout petit script .bat facile d’accès pour tous les utilisateurs, si le problème revenait.  
 Voici le contenu du « .bat » :
 
-```plaintext
+```powershell
 del /F /S /Q C:\Windows\System32\spool\PRINTERS\*.*
 NET STOP SPOOLER && NET START SPOOLER
 exit
