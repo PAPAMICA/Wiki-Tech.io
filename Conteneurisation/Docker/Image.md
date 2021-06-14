@@ -2,13 +2,13 @@
 title: Créer une image Docker
 description: Créer et upload sur Docker-Hub sa propre image Docker.
 published: true
-date: 2021-06-14T07:19:18.325Z
+date: 2021-06-14T07:24:10.860Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:21.861Z
 ---
 
-# **Introduction**
+# Introduction
 
 Il est temps de **créer vos propres images Docker** à l'aide du fichier Dockerfile. Petit rappel, une image est un modèle composé de plusieurs couches, ces couches contiennent notre application ainsi que les fichiers binaires et les bibliothèques requises.
 
@@ -23,7 +23,7 @@ Voici le schéma de notre image :
 
 ![Les différentes couches d'une image LAMP au moyen de Docker](https://devopssec.fr/images/articles/docker/dockerfile/stack-lamp-docker.jpg)
 
-# **Les différentes instructions du Dockerfile**
+# Les différentes instructions du Dockerfile
 
 Avant de créer notre propre image, je vais d'abord vous décrire les **instructions Dockerfile** les plus communément utilisées.
 
@@ -40,14 +40,15 @@ Avant de créer notre propre image, je vais d'abord vous décrire les **instruct
 -   `**EXPOSE**` : Expose un port.
 -   `**VOLUMES**` : Crée un point de montage qui permettra de persister les données.
 -   `**USER**` : Désigne quel est l'utilisateur qui lancera les prochaines instructions **RUN**, **CMD** ou **ENTRYPOINT** (par défaut c'est l'utilisateur root).
+{.grid-list}
 
 Je pense, que vous avez sûrement quelques interrogations pour savoir quand est-ce qu'il faut utiliser telle ou telle instruction. Ne vous inquiétez car à la fin de ce chapitre, je vais rédiger une FAQ, pour répondre à quelques une de vos interrogations.
 
-# **Création de notre image**
+# Création de notre image
 
 Normalement pour faire les choses dans les règles de l'art, il faut séparer l'image de l'application web par rapport à l'image de la base de données. Mais je vais faire une exception et je vais mettre toute notre stack dans une seule image.
 
-## _Création des sources et du Dockerfile_
+## Création des sources et du Dockerfile
 
 Commencez par créer un dossier et téléchargez les sources de l'image, en cliquant [ici](https://devopssec.fr/documents/docker/dockerfile/sources.zip).
 
@@ -56,11 +57,11 @@ Désarchivez le fichier zip, et mettez les dossiers suivants dans votre nouveau 
 -   *db* : contient un fichier *articles.sql*, qui renferme toute l'architecture de la base de données.
 -   *app* : comporte les sources php de notre l'application web.
 
-## _Création des sources et du Dockerfile_
+## Création des sources et du Dockerfile
 
 Ensuite dans la racine du dossier que vous venez de créer, créez un fichier et nommez le *Dockerfile*, puis rajoutez le contenu suivant :
 
-```plaintext
+```Docker
 # --------------- DÉBUT COUCHE OS -------------------
 FROM debian:stable-slim
 # --------------- FIN COUCHE OS ---------------------
@@ -125,52 +126,47 @@ Voici l'architecture que vous êtes censé avoir :
 └── Dockerfile
 ```
 
-## _Explication du Dockerfile_
+## Explication du Dockerfile
 
-```plaintext
+```Docker
 FROM debian:stable-slim
 ```
 
 Pour créer ma couche OS, je me suis basée sur l'image [debian-slim](https://hub.docker.com/_/debian/). Vous pouvez, choisir une autre image si vous le souhaitez (il existe par exemple une image avec une couche OS nommée [alpine](https://hub.docker.com/_/alpine), qui ne pèse que 5 MB !), sachez juste qu'il faut adapter les autres instructions si jamais vous choisissez une autre image de base.
 
----
 
-```plaintext
+```Docker
 LABEL version="1.0" maintainer="AJDAINI Hatim <ajdaini.hatim@gmail.com>"
 ```
 
 Ensuite, j'ai rajouté les métadonnées de mon image. Comme ça, si un jour je décide de partager mon image avec d'autres personnes, alors ils pourront facilement récolter des métadonnées sur l'image (ex: l'auteur de l'image) depuis la commande `docker inspect <IMAGE_NAME>`.
 
----
 
-```plaintext
+```Docker
 ARG APT_FLAGS="-q -y"
 ARG DOCUMENTROOT="/var/www/html"
 ```
 
 Ici, j'ai créé deux variables temporaires qui ne me serviront qu'au sein de mon Dockerfile, d'où l'utilisation de l'instruction **ARG**. La première variable me sert comme arguments pour la commande apt, et la seconde est le répertoire de travail de mon apache.
 
----
 
-```plaintext
+```Docker
 RUN apt-get update -y && \
 apt-get install ${APT_FLAGS} apache2
 ```
 
 Par la suite, j'ai construit ma couche Apache. Pour cela j'ai d'abord commencé par récupérer la liste de paquets et ensuite j'ai installé mon Apache.
 
----
 
-```plaintext
+```Docker
 RUN apt-get install ${APT_FLAGS} mariadb-server
 COPY db/articles.sql /
 ```
 
 Ici, je commence d'abord par télécharger le service mysql et ensuite je rajoute mon fichier *articles.sql* pour mon futur nouveau conteneur.
 
----
 
-```plaintext
+```Docker
 RUN apt-get install ${APT_FLAGS} \
     php-mysql \
     php && \
@@ -182,23 +178,18 @@ COPY app ${DOCUMENTROOT}
 
 Ici j'installe l'interpréteur php ainsi que le module php-mysql. j'ai ensuite vidé le cache d'apt-get afin de gagner en espace de stockage. J'ai aussi supprimé le fichier *index.html* du DocumentRoot d'Apache (par défaut */var/www/html*), car je vais le remplacer par mes propres sources.
 
----
 
 ```plaintext
 EXPOSE 80
 ```
-
 J'ouvre le port HTTP.
 
----
 
 ```plaintext
 WORKDIR  /var/www/html
 ```
-
 Comme je suis un bon flemmard d'informaticien 😄, j'ai mis le dossier */var/www/html* en tant que répertoire de travail, comme ça, quand je démarrerai mon conteneur, alors je serai directement sur ce dossier.
 
----
 
 ```plaintext
 ENTRYPOINT service mysql start && mysql < /articles.sql && apache2ctl -D FOREGROUND
@@ -206,23 +197,23 @@ ENTRYPOINT service mysql start && mysql < /articles.sql && apache2ctl -D FOREGRO
 
 Ici, lors du lancement de mon conteneur, le service mysql démarrera et construira l'architecture de la base de données grâce à mon fichier *articles.sql* . Maintenant, il faut savoir qu'un **conteneur se ferme automatiquement à la fin de son processus principal**. Il faut donc un processus qui tourne en premier plan pour que le conteneur soit toujours à l'état running, d'où le lancement du service Apache en premier plan à l'aide de la commande `apache2 -D FOREGROUND`.
 
-## _Construction et Execution de notre image_
+## Construction et Execution de notre image
 
 Voici la commande pour qui nous permet de construire une image docker depuis un Dockerfile :
 
-```plaintext
+```bash
 docker build -t <IMAGE_NAME> .
 ```
 
 Ce qui nous donnera :
 
-```plaintext
+```bash
 docker build -t my_lamp .
 ```
 
 Ensuite, exécutez votre image personnalisée :
 
-```plaintext
+```bash
 docker run -d --name my_lamp_c -p 8080:80 my_lamp
 ```
 
@@ -232,19 +223,19 @@ Visitez ensuite la page suivante [http://localhost:8080/](http://localhost:8080/
 
 Bravo ! vous venez de créer votre propre image Docker 👏!
 
-# **FAQ Dockerfile**
+# FAQ Dockerfile
 
 Promesse faite, promesse tenue. Je vais tenter de répondre à quelques questions concernant certaines instructions du Dockerfile.
 
-## **Quelle est la différence entre ENV et ARG dans un Dockerfile ?**
+## Quelle est la différence entre ENV et ARG dans un Dockerfile ?
 
 Ils permettent tous les deux de stocker une valeur. La seule différence, est que vous pouvez utiliser l'instruction **ARG** en tant que variable temporaire, utilisable qu'au niveau de votre Dockerfile, à l'inverse de l'instruction **ENV**, qui est une variable d'environnements accessible depuis le Dockerfile et votre conteneur. Donc privilégiez **ARG**, si vous avez besoin d'une variable temporaire et **ENV** pour les variables persistantes.
 
-## **Quelle est la différence entre COPY et ADD dans un Dockerfile ?**
+## Quelle est la différence entre COPY et ADD dans un Dockerfile ?
 
 Ils permettent tous les deux de copier un fichier/dossier local vers un conteneur. La différence, c'est que **ADD** autorise les sources sous forme d'url et si jamais la source est une archive dans un format de compression reconnu (ex : zip, tar.gz, etc ...), alors elle sera décompressée automatiquement vers votre cible. Notez que dans les [best-practices de docker](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy), ils recommandent d’utiliser l'instruction **COPY** quand les fonctionnalités du **ADD** ne sont pas requises.
 
-## **Quelle est la différence entre RUN, ENTRYPOINT et CMD dans un Dockerfile ?**
+## Quelle est la différence entre RUN, ENTRYPOINT et CMD dans un Dockerfile ?
 
 -   L'instruction **RUN** est **exécutée pendant la construction de votre image**, elle est souvent utilisée pour installer des packages logiciels qui formeront les différentes couches de votre image.
 -   L'instruction **ENTRYPOINT** est **exécutée pendant le lancement de votre conteneur** et permet de configurer un conteneur qui s'exécutera en tant qu'exécutable. Par exemple pour notre stack LAMP, nous l'avions utilisée, pour démarrer le service Apache avec son contenu par défaut et en écoutant sur le port 80.
@@ -256,7 +247,7 @@ Je pense qu'un exemple sera plus explicite. Imaginons qu'on souhaite proposer à
 
 On va commencer par créer notre image Dockerfile, en utilisant l'instruction **ENTRYPOINT** :
 
-```plaintext
+```Docker
 FROM alpine:latest
 
 ENTRYPOINT ls -l /
@@ -264,17 +255,17 @@ ENTRYPOINT ls -l /
 
 Ensuite on construit et on exécute notre image :
 
-```plaintext
+```bash
 docker build -t test .
 ```
 
-```plaintext
+```bash
 docker run test
 ```
 
 **Résultat :**
 
-```plaintext
+```bash
 drwxr-xr-x    2 root     root          4096 Jun 19 17:14 bin
 ...
 drwxr-xr-x   11 root     root          4096 Jun 19 17:14 var
@@ -282,13 +273,13 @@ drwxr-xr-x   11 root     root          4096 Jun 19 17:14 var
 
 Par contre si je tente de surcharger mon paramètre, j'obtiendrai toujours le même résultat :
 
-```plaintext
+```bash
 docker run test /etc
 ```
 
 Pour pouvoir régler ce problème, nous allons utiliser l'instruction **CMD**. Pour rappel l' instruction **CMD** combinée avec **ENTRYPOINT** doivent être spécifiées au format de tableau JSON. Ce qui nous donnera :
 
-```plaintext
+```Docker
 FROM alpine:latest
 
 ENTRYPOINT ["ls", "-l"]
@@ -297,17 +288,17 @@ CMD  ["/"]
 
 On va reconstruire maintenant notre image et relancer notre image avec le paramètre personnalisé.
 
-```plaintext
+```bash
 docker build -t test .
 ```
 
-```plaintext
+```bash
 docker run test /etc
 ```
 
 **Résultat :**
 
-```plaintext
+```bash
 -rw-r--r--    1 root     root             7 Jun 19 17:14 alpine-release
 ...
 -rw-r--r--    1 root     root          4169 Jun 12 17:52 udhcpd.conf
@@ -317,7 +308,7 @@ Voilà l'objectif est atteint 😋.
 
 J'espère, que vous avez bien compris la différence entre les différentes instructions, si ce n'est pas le cas alors n'hésitez pas à me poser des questions dans l'espace commentaire, il est prévu pour ça 😉.
 
-# **Publier son image dans le Hub Docker**
+# Publier son image dans le Hub Docker
 
 Si vous souhaitez partager votre image avec d'autres utilisateurs, une des possibilités est d'utiliser le [Hub Docker](https://hub.docker.com/).
 
@@ -329,25 +320,25 @@ Une fois que vous aurez choisi le nom et la description de votre repository, cli
 
 L'étape suivante est de se connecter au hub Docker à partir de la ligne de commande
 
-```plaintext
+```bash
 docker login
 ```
 
 Il va vous demander, votre nom d'utilisateur et votre mot de passe, et si tout se passe bien vous devez avoir le message suivant :
 
-```plaintext
+```bash
 Login Succeeded
 ```
 
 Récupérer ensuite l'id ou le nom de votre image :
 
-```plaintext
+```bash
 docker images
 ```
 
 **Résultat :**
 
-```plaintext
+```bash
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 my_lamp             latest              898661ad8fb2        35 seconds ago      497MB
 alpine              latest              4d90542f0623        12 days ago         5.58MB
@@ -356,13 +347,13 @@ debian              stable-slim         7279351ce73b        3 weeks ago         
 
 Ensuite il faut rajouter un tag à l'id ou le nom de l'image récupérée. Il existe une commande pour ça, je vous passe d'abord son prototype et ensuite la commande que j'ai utilisée.
 
-```plaintext
+```bash
 docker tag <IMAGENAME OU ID> <HUB-USER>/<REPONAME>[:<TAG>]
 ```
 
 soit :
 
-```plaintext
+```bash
 docker tag my_lamp hajdaini/lamp:first
 ```
 
@@ -370,13 +361,13 @@ Si vous relancez la commande docker images, vous verrez alors votre image avec l
 
 Maintenant envoyez la sauce 🚀, en pushant votre image vers le Hub Docker grâce à la commande suivante :
 
-```plaintext
+```bash
 docker push <HUB-USER>/<REPONAME>[:<TAG>]
 ```
 
 soit :
 
-```plaintext
+```bash
 docker push hajdaini/lamp:first
 ```
 
