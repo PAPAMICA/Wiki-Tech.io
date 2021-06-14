@@ -2,7 +2,7 @@
 title: Xpenology sur du hardware dédié
 description: Profiter de DSM sur son propre serveur !
 published: true
-date: 2021-06-14T07:59:27.036Z
+date: 2021-06-14T07:59:47.611Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:25.643Z
@@ -86,3 +86,4 @@ Et vous voilà avec un NAS tournant sous DSM 6.2 avec presque toutes les fonctio
 Forum Xpenology : [https://xpenology.com/forum/](https://xpenology.com/forum/) 
 
 > **Attention :** N’oubliez pas que vous utilisez un “hack” de DSM de Synology, le système peut être instable et surtout ce dernier n’est pas mise à jour automatiquement. (avant de vous lancer dans une mise à jour, renseignez vous sur le forum de Xpenology)
+{.is-warning}
