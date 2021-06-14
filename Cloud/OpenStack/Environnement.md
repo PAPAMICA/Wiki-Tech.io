@@ -2,7 +2,7 @@
 title: Configurer son environnement
 description: 
 published: true
-date: 2021-06-14T07:02:53.175Z
+date: 2021-06-14T07:05:04.096Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:51.945Z
@@ -26,21 +26,22 @@ Cela téléchargera un fichier .sh via votre navigateur qui peut être utilisé 
 
 Avec Bash :
 
-```plaintext
+```bash
 . openrc.sh
 ```
 
 Avec Zsh :
 
-```plaintext
+```bash
 source openrc.sh
 ```
 
-> **Remarque :** Si vous souhaitez télécharger un fichier openrc pour un autre projet, vous devez basculer le projet de la liste déroulante juste à droite vers le logo "openstack" afin de "l'activer" dans l'interface Web et ainsi télécharger le bon fichier pour le projet souhaité.
+> Si vous souhaitez télécharger un fichier openrc pour un autre projet, vous devez basculer le projet de la liste déroulante juste à droite vers le logo "openstack" afin de "l'activer" dans l'interface Web et ainsi télécharger le bon fichier pour le projet souhaité.
+{.is-info}
 
 Pour “décharger” ces variables d'environnements, vous pouvez soit fermer votre invite de commande, soit les “décharger” avec cette commande :
 
-```plaintext
+```bash
  unset OS_PASSWORD
 ```
 
@@ -52,7 +53,7 @@ Un projet est un groupe de zéro ou plusieurs utilisateurs. Dans Compute, un pro
 
 Lister tous les projets avec leur ID, leur nom et s'ils sont activés ou désactivés avec `openstack project list` :
 
-```plaintext
+```bash
 openstack project list
 +----------------------------------+--------------------+
 | ID                               | Name               |
@@ -70,7 +71,7 @@ openstack project list
 
 Créer un projet “new-project” avec `openstack project create` :
 
-```plaintext
+```bash
 openstack project create --description 'mon nouveau projet' new-project --domain default
 +-------------+----------------------------------+
 | Field       | Value                            |
@@ -91,19 +92,19 @@ Spécifiez l'ID de projet pour mettre à jour un projet. Vous pouvez mettre à j
 
 -   Désactiver temporairement un projet :
 
-```plaintext
+```bash
 openstack project set PROJECT_ID --disable
 ```
 
 -   Activé un projet désactivé :
 
-```plaintext
+```bash
 openstack project set PROJECT_ID --enable
 ```
 
 -   Changer le nom d'un projet :
 
-```plaintext
+```bash
 openstack project set PROJECT_ID --name project-new
 ```
 
@@ -111,7 +112,7 @@ openstack project set PROJECT_ID --name project-new
 
 Pour lister les informations ou voir les changements effectués avec `openstack project show` :
 
-```plaintext
+```bash
 openstack project show PROJECT_ID
 +-------------+----------------------------------+
 | Field       | Value                            |
@@ -128,7 +129,7 @@ openstack project show PROJECT_ID
 
 Il faut utiliser l'ID avec la commande `openstack project delete` :
 
-```plaintext
+```bash
 openstack project delete PROJECT_ID
 ```
 
@@ -138,7 +139,7 @@ openstack project delete PROJECT_ID
 
 La commande pour lister les utilisateurs est simplement : `openstack user list`
 
-```plaintext
+```bash
 openstack user list
 +----------------------------------+----------+
 | ID                               | Name     |
@@ -156,7 +157,7 @@ Pour créer un utilisateur, vous devez spécifier un nom avec la commande `opens
 
 > **Attention :** Il est recommandé d'inclure l'ID de projet et le mot de passe car l'utilisateur ne peut pas se connecter au tableau de bord sans ces informations.
 
-```plaintext
+```bash
 openstack user create --project new-project --password PASSWORD papamica
 +------------+----------------------------------+
 | Field      | Value                            |
@@ -176,7 +177,7 @@ Vous pouvez mettre à jour le nom, l'adresse e-mail et l'état d'activation d'un
 
 -   Pour désactiver temporairement un utilisateur :
 
-```plaintext
+```bash
 openstack user set USER_NAME --disable
 ```
 
@@ -184,13 +185,13 @@ openstack user set USER_NAME --disable
 
 -   Pour réactiver un utilisateur :
 
-```plaintext
+```bash
 openstack user set USER_NAME --enable
 ```
 
 -   Pour changer le nom, la description ou encore l'email d'un utilisateur :
 
-```plaintext
+```bash
 openstack user set USER_NAME --name user-new --email new-user@example.com
 User has been updated.
 ```
@@ -199,7 +200,7 @@ User has been updated.
 
 Rien de plus compliqué et toujours avec la même logique de commande : `openstack user delete`
 
-```plaintext
+```bash
 openstack user delete USER_NAME
 ```
 
@@ -209,7 +210,7 @@ openstack user delete USER_NAME
 
 `openstack role list` permet de lister les rôles déjà disponibles :
 
-```plaintext
+```bash
 openstack role list
 +----------------------------------+---------------+
 | ID                               | Name          |
@@ -224,11 +225,12 @@ openstack role list
 
 ### Créer un rôle
 
-> **Remarque :** Les utilisateurs peuvent être membres de plusieurs projets. Pour affecter des utilisateurs à plusieurs projets, définissez un rôle et attribuez ce rôle à des projets.
+> Les utilisateurs peuvent être membres de plusieurs projets. Pour affecter des utilisateurs à plusieurs projets, définissez un rôle et attribuez ce rôle à des projets.
+{.is-info}
 
 Pour créer un nouveau rôle “test” avec `openstack role create` :
 
-```plaintext
+```bash
 openstack role create test
 +-----------+----------------------------------+
 | Field     | Value                            |
@@ -241,7 +243,8 @@ openstack role create test
 
 ### Assigner un rôle
 
-> **Remarque :** Pour affecter un utilisateur à un projet, vous devez attribuer le rôle à une paire utilisateur-projet. Pour ce faire, vous avez besoin des ID d'utilisateur, de rôle et de projet.
+> Pour affecter un utilisateur à un projet, vous devez attribuer le rôle à une paire utilisateur-projet. Pour ce faire, vous avez besoin des ID d'utilisateur, de rôle et de projet.
+{.is-info}
 
 Il va donc falloir récupérer les info suivante :
 
@@ -251,13 +254,13 @@ Il va donc falloir récupérer les info suivante :
 
 Ajouter le rôle *admin* à l'utilisateur *papamica* et son projet *new-project* avec `openstack role add` :
 
-```plaintext
+```bash
 openstack role add --user papamica --project new-project admin
 ```
 
 Pour vérifier que le rôle a bien été affecté :
 
-```plaintext
+```bash
 openstack role assignment list --user papamica --project new-project --names
 +----------------------------------+-------------+----------------+----------+
 | ID                               | Name        | Project        | User     |
@@ -272,7 +275,7 @@ openstack role assignment list --user papamica --project new-project --names
 
 Vous pouvez lister tous les détails d'un rôle spécifique avec `openstack role show` :
 
-```plaintext
+```bash
 openstack role show test
 +-----------+----------------------------------+
 | Field     | Value                            |
@@ -287,7 +290,7 @@ openstack role show test
 
 La commande reste `openstack role remove` avec l'utilisateur et le projet :
 
-```plaintext
+```bash
 openstack role remove --user papamica --project new-project test
 ```
 
