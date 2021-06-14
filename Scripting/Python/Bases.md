@@ -2,7 +2,7 @@
 title: Python - Présentation et Installation
 description: Découvrir Python et l’installer !
 published: true
-date: 2021-06-14T08:17:53.313Z
+date: 2021-06-14T08:19:21.806Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:10:06.281Z
@@ -42,7 +42,8 @@ nom_variable = valeur
 
 > 1.  Le nom de la variable ne peut être composé que de lettres, majuscules ou minuscules, de chiffres et du symbole souligné « \_ » (appelé underscore en anglais).
 > 2.  Le nom de la variable ne peut pas commencer par un chiffre.  
->     3.Le langage Python est sensible à la casse, ce qui signifie que des lettres majuscules et minuscules ne constituent pas la même variable (la variable AGE est différente de aGe, elle-même différente de age).
+> 3.  Le langage Python est sensible à la casse, ce qui signifie que des lettres majuscules et minuscules ne constituent pas la même variable (la variable AGE est différente de aGe, elle-même différente de age).
+{.is-info}
 
 Il existe 2 conventions principales pour nommer une variable :
 
