@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2021-06-14T07:28:12.803Z
+date: 2021-06-14T07:30:18.280Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -24,7 +24,7 @@ Nous avions déjà pu voir comment relancer automatiquement un container dont le
 
 Mais voilà, dans votre malheur le `PID 1` de votre instance est toujours actif mais pourtant il ne remplit plus son rôle :
 
-> Par exemple `nginx` est toujours *UP* mais il ne dessert plus vos pages correctement et/ou vous remonte une erreur ***404/503*** !
+Par exemple `nginx` est toujours *UP* mais il ne dessert plus vos pages correctement et/ou vous remonte une erreur ***404/503*** !
 
   
 Dans ce moment là, plusieurs solutions :
@@ -32,7 +32,7 @@ Dans ce moment là, plusieurs solutions :
 -   La supervision finit par vous remonter l'information et vous intervenez ( de façon automatique ou non ),
 -   On intègre un healthcheck à notre service pour vérifier sa bonne santé et ainsi avoir l'information en temps réel.
 
-# **Healthcheck**
+# Healthcheck
 
 Il est possible de déclarer un `HEALTHCHECK` de deux façons :
 
@@ -45,7 +45,7 @@ Plutôt que de long discours, voyons par l'exemple la différence entre ces deux
 
 Voici un exemple de fichier `Dockerfile` qui va construire une image custom du CMS `Ghost`:
 
-```plaintext
+```Docker
 FROM ghost:3
 
 RUN apt update && apt install curl -y \
@@ -58,7 +58,7 @@ HEALTHCHECK --interval=1m --timeout=30s --retries=3 CMD curl --fail http://local
 
 Voici la liste des options qu'il est possible d'ajouter avant `*CMD*` :
 
-```plaintext
+```bash
 --interval=DUREE (default: 30s)
 --timeout=DUREE (default: 30s)
 --start-period=DUREE (default: 0s)
@@ -71,27 +71,27 @@ Ici on vérifie qu'une page web est présente et renvoie un code de retour `200`
 
 On va pouvoir construire notre image :
 
-```plaintext
-$ docker build -t ghost:healthcheck .
+```bash
+docker build -t ghost:healthcheck .
 ```
 
 Et lancer notre container :
 
-```plaintext
-$ docker run -d --name some-ghost -p 2368:2368 ghost:healthcheck
+```bash
+docker run -d --name some-ghost -p 2368:2368 ghost:healthcheck
 ```
 
 On peut vérifier l'état de notre avec la commande `docker ps` :
 
-```plaintext
-$ docker ps
+```bash
+docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                           PORTS                    NAMES
 a3435a4d95fd        ghost:healthcheck   "docker-entrypoint.s…"   3 seconds ago       Up 1 second (health: starting)   0.0.0.0:2368->2368/tcp   some-ghost
 ```
 
 L'instruction `HEALTHCHECK` peut renvoyer 3 codes de retour :
 
-```plaintext
+```bash
 0: success - the container is healthy and ready for use
 1: unhealthy - the container is not working correctly
 2: reserved - do not use this exit code
@@ -107,8 +107,8 @@ On peut constater lors de mon `docker ps` que notre container est toujours en co
 
 Vérifions de nouveau quelques secondes plus tard :
 
-```plaintext
-$ docker ps
+```bash
+docker ps
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS                        PORTS                    NAMES
 a3435a4d95fd        ghost:healthcheck   "docker-entrypoint.s…"   About a minute ago   Up About a minute (healthy)   0.0.0.0:2368->2368/tcp   some-ghost
 ```
@@ -125,7 +125,7 @@ Dans ce cas, vous pouvez réaliser la même vérification dans le fichier `docke
 
 🚩 Pour cet exemple, je vais tout de même construire une image. Sans `HEALTHCHECK`, mais avec l'installation de `curl` 🚩 :
 
-```plaintext
+```Docker
 FROM ghost:3
 
 RUN apt update && apt install curl -y \
@@ -134,13 +134,13 @@ RUN apt update && apt install curl -y \
 
 et donc construire cette image :
 
-```plaintext
-$ docker build -t ghost:curl .
+```bash
+docker build -t ghost:curl .
 ```
 
 Les instructions sont similaires à la méthode vu précédemment :
 
-```plaintext
+```yaml
 version: '3.8'
 services:
     ghost:
@@ -158,7 +158,7 @@ Le fonctionnement est identique à celui que nous venons de voir lors d'une util
 
 Enfin sachez qu'il est tout simplement possible de désactiver dans votre `docker-compose` un healthcheck créé dans une image à l'aide de l'instruction suivante :
 
-```plaintext
+```yaml
 healthcheck:
   disable: true
 ```
