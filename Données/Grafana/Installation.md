@@ -2,7 +2,7 @@
 title: Installation
 description: Mise en place de Grafana sous Docker !
 published: true
-date: 2021-06-14T08:14:37.853Z
+date: 2021-06-14T08:14:47.356Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:06.214Z
@@ -18,7 +18,7 @@ dateCreated: 2021-05-24T10:35:06.214Z
 
 ## Connexion avec Keycloak
 
-```plaintext
+```yaml
 - GF_AUTH_GENERIC_OAUTH_ENABLED=true
 - GF_AUTH_GENERIC_OAUTH_SCOPES=email
 - GF_AUTH_GENERIC_OAUTH_NAME=<NAME>
