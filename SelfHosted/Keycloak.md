@@ -2,7 +2,7 @@
 title: Keycloak
 description: Centralisation de l’authentification
 published: true
-date: 2021-06-14T06:39:46.218Z
+date: 2021-06-14T06:40:14.126Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:51.230Z
@@ -16,11 +16,11 @@ dateCreated: 2021-05-24T10:34:51.230Z
 
 ## Portainer
 
-![](https://wiki-tech.io/image_2021-05-03_212514.png)
+![](/images/image_2021-05-03_212514.png)
 
 ## Grafana
 
-```plaintext
+```yaml
       - GF_AUTH_GENERIC_OAUTH_ENABLED=true
       - GF_AUTH_GENERIC_OAUTH_SCOPES=email
       - GF_AUTH_GENERIC_OAUTH_NAME=<NAME>
