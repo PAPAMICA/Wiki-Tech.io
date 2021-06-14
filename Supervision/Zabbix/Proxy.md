@@ -2,7 +2,7 @@
 title: Proxy Zabbix
 description: 
 published: true
-date: 2021-06-14T08:11:30.744Z
+date: 2021-06-14T08:11:46.825Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:26.969Z
@@ -16,19 +16,19 @@ Pour l’installation, prévoyez un Debian 9 ou 10 en 64Bits ou Raspbian.
 
 Installation de Git
 
-```plaintext
+```bash
 apt install -y git
 ```
 
 Récupération des scripts
 
-```plaintext
+```bash
 git clone https://github.com/PAPAMICA/scripts
 ```
 
 Exécuter le script
 
-```plaintext
+```bash
 cd scripts/debian/zabbix-proxy
 chmod +x debian_install_zabbix_proxy.sh
 ./debian_install_zabbix_proxy.sh
