@@ -2,7 +2,7 @@
 title: Certificat Let's Encrypt sur ESXI 7
 description: Importer un certificat Let's Encrypt pour ESXI 7
 published: true
-date: 2021-06-14T08:15:24.198Z
+date: 2021-06-14T08:15:44.819Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:35.560Z
@@ -16,7 +16,7 @@ Il est nécessaire de convertir le certificat au bon format.
 
 Pour cela, nous allons utiliser Openssl sur une machine Linux.
 
-```plaintext
+```bash
 openssl pkey -in privkey.pem -out privkey.key
 openssl crl2pkcs7 -nocrl -certfile fullchain.pem | openssl pkcs7 -print_certs -out fullchain.crt
 ```
@@ -35,7 +35,7 @@ On se connecte ensuite en SSH.
 
 On fait une sauvegarde de la clé ainsi que du certificat actuel de l'ESXI.
 
-```plaintext
+```bash
 cp rui.crt old.rui.crt
 cp rui.key old.rui.key
 ```
@@ -46,7 +46,7 @@ On fait de même pour rui.key avec le contenu de privkey.key.
 
 On redémarre ensuite le serveur avec la commande reboot.
 
-```plaintext
+```bash
 reboot
 ```
 
