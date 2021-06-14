@@ -2,7 +2,7 @@
 title: Portainer
 description: Une interface web pour gérer Docker !
 published: true
-date: 2021-06-08T13:34:05.747Z
+date: 2021-06-14T07:35:44.137Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:27.557Z
@@ -20,7 +20,7 @@ Docker est un outil utilisable en ligne de commande, pour le coup c’est pas hy
 
 Une simple commande permet de lancer un container avec Portainer : 
 
-```plaintext
+```bash
 docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v /apps/portainer:/data portainer/portainer
 ```
 
@@ -28,7 +28,7 @@ docker run -d -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock -v /apps
 
 Dans mon cas je préfère toujours avoir un docker-compose, je trouve cela bien plus pratique !
 
-```plaintext
+```yaml
 version: '2'
   
 services:
@@ -94,7 +94,7 @@ Une fois installer, il faut créer le compte administrateur et connecter Portain
 
 Il est possible de contrôler un autre serveur sur lequel Docker est installé grâce à un agent Portainer qui se déploie lui aussi dans un container en une simple commande :
 
-```plaintext
+```bash
 docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent
 ```
 
