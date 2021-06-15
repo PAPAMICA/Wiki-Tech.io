@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-06-14T06:35:31.320Z
+date: 2021-06-15T09:09:18.178Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:38.332Z
@@ -30,8 +30,6 @@ Vaultwarden est un gestionnaire de mot de passe gratuit, OpenSource et SelfHoste
 Vous pouvez retrouver le Github du projet [ici](https://github.com/dani-garcia/vaultwarden).
 
 # Installation
-
-## Le serveur
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [Github](https://github.com/dani-garcia/vaultwarden), le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :
 
@@ -94,9 +92,9 @@ L'API est disponible ici : `<URL>/api`
 
 > Pensez à régler l'heure du serveur hôte pour le 2FA 
 {.is-warning}
-## Configuration
+# Configuration
 
-### L'URL du site
+## L'URL du site
 
 Pour le bon fonctionnement de Vaultwarden, il est indispensable de configurer l'URL du site dans sa configuration :
 
@@ -105,7 +103,7 @@ Pour le bon fonctionnement de Vaultwarden, il est indispensable de configurer l'
 3.  Cliquez sur l'onglet “Général” dans l'onglet “*Settings*”
 4.  Rentrez l'URL de votre site dans le champs “*Domain URL*”
 
-### Le serveur SMTP
+## Le serveur SMTP
 
 Si vous souhaitez utiliser toutes les fonctionnalité de Vaulwarden, vous devez configurer le serveur SMTP :
 
@@ -115,7 +113,7 @@ Si vous souhaitez utiliser toutes les fonctionnalité de Vaulwarden, vous devez 
 4.  Rentrez les informations de votre serveur SMTP
 5.  Testez avec l'envoi d'un mail
 
-## Configurer les applications
+# Configurer les applications
 
 Les différentes applications sont disponibles au téléchargement [ici](https://bitwarden.com/download/).
 
