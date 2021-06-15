@@ -2,14 +2,14 @@
 title: WordPress
 description: Installation et astuces autour du CMS WordPress !
 published: true
-date: 2021-06-15T07:16:38.106Z
+date: 2021-06-15T11:04:52.197Z
 tags: wordpress, web, site
 editor: markdown
 dateCreated: 2021-06-15T07:16:38.106Z
 ---
 
 # WordPress
-- [🌀 Installation 🚧 *Installer le CMS WordPress avec Docker*](/Web/WordPress/Installation)
+- [🌀 Installation *Installer le CMS WordPress avec Docker*](/Web/WordPress/Installation)
 - [🌀 Sauvegarde 🚧 *Configurer les sauvegardes d'un site WordPress*](/Web/WordPress/Sauvegarde)
 - [🌀 Activer le SSL 🚧 *Configurer le SSL pour avoir le site en HTTPS*](/Web/WordPress/SSL)
 - [🌀 SSL - HTTPS 🚧 *Configurer le SSL pour avoir le site en HTTPS*](/Web/WordPress/SSL)
