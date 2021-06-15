@@ -2,7 +2,7 @@
 title: PrivateBin
 description: Le meilleur moyen de partager vos secrets de façon sécurisé et avec une API !
 published: true
-date: 2021-06-15T08:36:30.052Z
+date: 2021-06-15T08:37:48.805Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:57.623Z
@@ -24,7 +24,7 @@ Démo : [privatebin.papamica.com](https://privatebin.papamica.com)
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [leur site](https://github.com/PrivateBin/PrivateBin/blob/master/INSTALL.md#installation), le déployer directement depuis mon template d’application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant : 
 
-```plaintext
+```yaml
 version: "2"
 services:
   # PrivateBin : https://privatebin.info
@@ -70,6 +70,7 @@ networks:
 ```
 
 > Pensez à changer dans le docker-compose ou à définir les variables suivantes : **URL\_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
 
 Votre Privatebin sera accessible directement depuis l’URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
 
@@ -93,13 +94,13 @@ import privatebinapi
 
 ## Envoyer un Paste
 
-```plaintext
+```python
 response = privatebinapi.send("https://sitedupaste.com", text="Hello, world!")
 ```
 
 Réponse :
 
-```plaintext
+```json
 {
     "deletetoken": "< paste delete token >",
     "full_url": "< direct link to paste> ",
@@ -170,13 +171,13 @@ response = privatebinapi.send(
 
 Obtenir un Paste à partir d'une instance de PrivateBin est très simple :
 
-```plaintext
+```python
 response = privatebinapi.get("https://sitedupaste.com/?fakePasteLink#1234567890")
 ```
 
 Réponse :
 
-```plaintext
+```json
 {
     "attachment": {
         "content": b"< attachment content in bytes >",
@@ -209,7 +210,7 @@ response = privatebinapi.get(
 
 Pour supprimer un Paste, vous avez besoin de son URL et de son token de suppression.
 
-```plaintext
+```python
 response = privatebinapi.delete(
      "https://sitedupaste.com/?fakePasteLink#1234567890",
      "fake1delete2token3"
