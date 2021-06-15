@@ -1,0 +1,78 @@
+<!--
+title: Activer le SSL sur un site WordPress
+description: Mettre en place le petit cadenas du HTTPS sous WordPress !
+published: true
+date: 2021-06-15T11:59:37.230Z
+tags: wordpress, site, ssl, https
+editor: ckeditor
+dateCreated: 2021-06-15T11:59:37.230Z
+-->
+
+<figure class="image image_resized" style="width:39.65%;"><img src="https://searchmeowmarketing.com/wp-content/uploads/2019/04/ssl-encryption.png" alt="How to set-up free SSL Let&amp;#39;s Encrypt using WHM | Search Meow Marketing"></figure>
+<h1>Présentation</h1>
+<p>HTTPS signifie <strong>Hyper Text Transfer Protocol Secure</strong>. Autrement dit, un site HTTPS est un site internet comme les autres (il fonctionne à l’aide du protocole client – serveur HTTP), à la différence près qu’il est considéré comme sûr. Le «&nbsp;S&nbsp;» de Secure indique que le site a été sécurisé au moyen d’un <strong>certificat SSL</strong>.</p>
+<p>Développé par l’entreprise américaine Netscape dans les années 1990, SSL signifie quant à lui <strong>Secure Socket Layer</strong>. Traduisez par Couches de Prises Sécurisées.</p>
+<p>Ça ne veut pas dire grand-chose comme ça mais pour faire simple, un certificat SSL établit une <strong>connexion sécurisée entre deux machines</strong> (ici entre votre ordinateur et un serveur distant) à l’aide d’une <strong>clé chiffrée</strong>.</p>
+<figure class="image image_resized" style="width:37.16%;"><img src="https://www.digitom.fr/wp-content/uploads/2019/01/SSL-Schema.png" alt="http https"></figure>
+<p>Les informations qui circulaient avant librement dans les «&nbsp;tuyaux&nbsp;» d’internet (votre nom, votre adresse, votre numéro de carte bancaire…) sont désormais chiffrées donc illisibles pour les pirates informatiques avec le certificat SSL.</p>
+<blockquote>
+  <p><i>Par exemple&nbsp;:</i></p>
+  <p><i><strong>Sans SSL</strong>&nbsp;: n° de carte bancaire&nbsp;: 1568 4554 7878 9652</i></p>
+  <p><i><strong>Avec SSL</strong>&nbsp;: n° de carte bancaire&nbsp;: efe564fef$fef*fùvr$rvz86zfe</i></p>
+</blockquote>
+<p>Un certificat SSL <strong>s’installe sur le serveur</strong> comme vous pouvez le voir dans la petite infographie ci-dessus.</p>
+<p>Notez également qu’un <strong>nouveau type de certificat SSL</strong>, plus perfectionné, a fait son apparition ces dernières années&nbsp;: le <strong>TLS</strong> (Transport Layer Security).</p>
+<p>Pour aller encore plus loin, on peut différencier <strong>3 types de certificats SSL</strong>, du moins sécurisé au plus sécurisé (et donc du moins cher au plus cher)</p>
+<ol>
+  <li>Le premier type est un certificat de <strong>validation de nom de domaine.</strong> Outre le principe de base de chiffrement des informations, le certificat valide que tel nom de domaine (par ex wiki-tech.io) appartient à telle personne (par exemple Mickael Asseline). Cependant, aucune preuve de l’existence de la personne n’est demandée (par exemple enregistrement, ou SIRET)</li>
+  <li>Le second type est un certificat de <strong>validation de l’organisation</strong>. Il est semblable au premier, sauf qu’il s’assure de l’existence de l’entreprise qui possède le nom de domaine.</li>
+  <li>Le dernier type de certificat est dit «&nbsp;de <strong>validation étendue</strong>». Ici, de nombreux facteurs vont être analysés afin d’assurer à 100% que le site est bien celui de son entreprise. Ce type de certificat se traduit par la présence du nom de l’entreprise après le cadenas du HTTPS comme vous pouvez le voir ci-dessous avec l’exemple de la FNAC</li>
+</ol>
+<figure class="image image_resized" style="width:35.59%;"><img src="https://www.digitom.fr/wp-content/uploads/2019/01/FNAC.png" alt="SSL FNAC" srcset="https://www.digitom.fr/wp-content/uploads/2019/01/FNAC.png 477w, https://www.digitom.fr/wp-content/uploads/2019/01/FNAC-300x26.png 300w, https://www.digitom.fr/wp-content/uploads/2019/01/FNAC-463x41.png 463w" sizes="100vw" width="477"></figure>
+<h1>Installation</h1>
+<h2>WordPress sous Docker avec Traefik</h2>
+<p>Traefik se charge de générer le certificat SSL avec Let's Encrypt pour votre site WordPress, ce qui veux dire que le certificat est déjà présent sur le site. Il ne reste plus qu'à faire les redirections HTTP vers HTTPS et faire quelques petites modifications.</p>
+<p>Pour cela, nous allons utiliser une extension qui va s'occuper de tout ça à notre place : <strong>Really Simple SSL</strong></p>
+<figure class="image image_resized" style="width:40.64%;"><img src="/images/wordpress/ssl/wordpress_ssl_1.png"></figure>
+<p>Pour installer l'extension, allez dans : <code>Extensions</code> &gt; <code>Ajouter</code> &gt; <code>Chercher</code> &gt; <code>Really Simple SSL</code> &gt; <code>Installer Maintenant</code> &gt; <code>Activer</code></p>
+<p>Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce message :&nbsp;</p>
+<figure class="image image_resized" style="width:96.73%;"><img src="/images/wordpress/ssl/wordpress_ssl_2.png"></figure>
+<p>Cliquez simplement sur “<code>Allez-y, activez SSL !</code>” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !</p>
+<blockquote>
+  <p>Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.</p>
+</blockquote>
+<h2>WordPress sans Traefik</h2>
+<p>Tu sais faire ? N'hésite pas à nous partager la procédure ici !</p>
+<h2>WordPress chez Infomaniak</h2>
+<p>Infomaniak peux vous fournir directement des certificats SSL, pour cela rendez vous dans votre manager Infomaniak et dans la gestion de vos Hébergements Web. Puis cliquez sur "“Changer de certificat” :&nbsp;</p>
+<figure class="image image_resized" style="width:97.09%;"><img src="/images/wordpress/ssl/wordpress_ssl_2.0.png"></figure>
+<p>Vous pourrez choisir ici entre différents certificats SSL :</p>
+<figure class="image image_resized" style="width:97.18%;"><img src="/images/wordpress/ssl/wordpress_ssl_2.1.png"></figure>
+<p>Une fois le certificat sur l'hébergement, il ne vous reste plus qu'à l'activer sur WordPress.</p>
+<p>Pour cela, nous allons utiliser une extension qui va s'occuper de tout ça à notre place : <strong>Really Simple SSL</strong></p>
+<figure class="image image_resized" style="width:40.64%;"><img src="/images/wordpress/ssl/wordpress_ssl_1.png"></figure>
+<p>Pour installer l'extension, allez dans : <code>Extensions</code> &gt; <code>Ajouter</code> &gt; <code>Chercher</code> &gt; <code>Really Simple SSL</code> &gt; <code>Installer Maintenant</code> &gt; <code>Activer</code></p>
+<p>Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce message :&nbsp;</p>
+<figure class="image image_resized" style="width:96.73%;"><img src="/images/wordpress/ssl/wordpress_ssl_2.png"></figure>
+<p>Cliquez simplement sur “<code>Allez-y, activez SSL !</code>” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !</p>
+<blockquote>
+  <p>Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.</p>
+</blockquote>
+<h2>WordPress chez OVH</h2>
+<p>Alors déjà, le mieux à faire : passer chez <a href="https://www.infomaniak.com/fr">Infomaniak</a> !</p>
+<p>Bon … Vous êtes vraiment ici pour le faire chez OVH ? Allons y …</p>
+<p>Rendez-vous sur le panel OVH afin de commander ou générer un certificat SSL :</p>
+<figure class="image image_resized" style="width:97.69%;"><img src="/images/wordpress/ssl/wordpress_ssl_3.0.png"></figure>
+<p>Une fois le certificat sur l'hébergement, il ne vous reste plus qu'à l'activer sur WordPress.</p>
+<p>Pour cela, nous allons utiliser une extension qui va s'occuper de tout ça à notre place : <strong>Really Simple SSL</strong></p>
+<figure class="image image_resized" style="width:40.64%;"><img src="/images/wordpress/ssl/wordpress_ssl_1.png"></figure>
+<p>Pour installer l'extension, allez dans : <code>Extensions</code> &gt; <code>Ajouter</code> &gt; <code>Chercher</code> &gt; <code>Really Simple SSL</code> &gt; <code>Installer Maintenant</code> &gt; <code>Activer</code></p>
+<p>Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce message :&nbsp;</p>
+<figure class="image image_resized" style="width:96.73%;"><img src="/images/wordpress/ssl/wordpress_ssl_2.png"></figure>
+<p>Cliquez simplement sur “<code>Allez-y, activez SSL !</code>” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !</p>
+<blockquote>
+  <p>Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.</p>
+</blockquote>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
