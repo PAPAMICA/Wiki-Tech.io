@@ -2,7 +2,7 @@
 title: PrivateBin
 description: Le meilleur moyen de partager vos secrets de façon sécurisé et avec une API !
 published: true
-date: 2021-06-15T08:37:48.805Z
+date: 2021-06-15T10:03:06.114Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:57.623Z
@@ -12,7 +12,7 @@ dateCreated: 2021-05-24T10:34:57.623Z
 
 # Présentation
 
-PrivateBin est un pastebin en ligne minimaliste et open source où le serveur n'a aucune connaissance des données collées. Les données sont cryptées et décryptées dans le navigateur à l'aide de l'AES 256 bits en mode compteur Galois. Il s'agit d'un fork de ZeroBin, développé à l'origine par Sébastien Sauvage. ZeroBin a été remanié pour permettre des extensions plus faciles et plus propres. 
+PrivateBin est un pastebin en ligne minimaliste et open source où le serveur n'a aucune connaissance des données collées. Les données sont chiffrées et déchiffrées dans le navigateur à l'aide de l'AES 256 bits en mode compteur Galois. Il s'agit d'un fork de ZeroBin, développé à l'origine par Sébastien Sauvage. ZeroBin a été remanié pour permettre des extensions plus faciles et plus propres. 
 
 PrivateBin a beaucoup plus de fonctionnalités que le ZeroBin original. Il est cependant toujours entièrement compatible avec le schéma de stockage de données ZeroBin. Par conséquent, de telles installations peuvent être mises à niveau vers PrivateBin sans perte de données.
 
