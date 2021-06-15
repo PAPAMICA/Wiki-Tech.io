@@ -2,7 +2,7 @@
 title: PrivateBin
 description: Le meilleur moyen de partager vos secrets de façon sécurisé et avec une API !
 published: true
-date: 2021-05-30T17:28:25.751Z
+date: 2021-06-15T08:36:13.885Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:34:57.623Z
@@ -10,8 +10,139 @@ dateCreated: 2021-05-24T10:34:57.623Z
 
 <figure class="image image_resized" style="width:37.71%;"><img src="https://camo.githubusercontent.com/35eb22889fe1705b5a7c3834683b64fbbb191ce4a0735b07cb292c6f0b1bca2c/68747470733a2f2f63646e2e7261776769742e636f6d2f5072697661746542696e2f6173736574732f6d61737465722f696d616765732f707265766965772f6c6f676f536d616c6c2e706e67" alt="GitHub - PrivateBin/PrivateBin: A minimalist, open source online pastebin  where the server has zero knowledge of pasted data. Data is  encrypted/decrypted in the browser using 256 bits AES."></figure>
 <h1>Présentation</h1>
+<p>PrivateBin est un pastebin en ligne minimaliste et open source où le serveur n'a aucune connaissance des données collées.
+
+  Les données sont cryptées et décryptées dans le navigateur à l'aide de l'AES 256 bits en mode compteur Galois.
+
+  Il s'agit d'un fork de ZeroBin, développé à l'origine par Sébastien Sauvage. ZeroBin a été remanié pour permettre des extensions plus faciles et plus propres.&nbsp;</p>
+<p>PrivateBin a beaucoup plus de fonctionnalités que le ZeroBin original. Il est cependant toujours entièrement compatible avec le schéma de stockage de données ZeroBin. Par conséquent, de telles installations peuvent être mises à niveau vers PrivateBin sans perte de données.</p>
+<p>Site : <a href="https://privatebin.info">privatebin.info</a></p>
+<p>Démo : <a href="https://privatebin.papamica.com">privatebin.papamica.com</a></p>
 <h1>Installation</h1>
-<h1>API</h1>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://github.com/PrivateBin/PrivateBin/blob/master/INSTALL.md#installation">leur site</a>, le déployer directement depuis mon template d’application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :&nbsp;</p>
+<pre><code class="language-plaintext">version: "2"
+services:
+  # PrivateBin : https://privatebin.info
+  privatebin:
+    image: jgeusebroek/privatebin
+    container_name: privatebin
+    restart: always
+    volumes:
+      - /apps/privatebin/data:/privatebin/data
+      - /apps/privatebin/cfg:/privatebin/cfg
+    environment:
+      hostname: 'privatebin'
+      name: 'privatebin'
+      
+    # Facultatif avec Traefik
+    #ports:
+      #- 8080:80
+
+    # Facultatif  
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.privatebin.entrypoints=http"
+      - "traefik.http.routers.privatebin.rule=Host(`$URL`)"
+      - "traefik.http.middlewares.privatebin-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.privatebin.middlewares=$SERVICE-https-redirect"
+      - "traefik.http.routers.privatebin-secure.entrypoints=https"
+      - "traefik.http.routers.privatebin-secure.rule=Host(`$URL`)"
+      - "traefik.http.routers.privatebin-secure.tls=true"
+      - "traefik.http.routers.privatebin-secure.tls.certresolver=http"
+      - "traefik.docker.network=proxy"
+  
+networks:
+  proxy:
+    external:
+      name: proxy</code></pre>
+<blockquote>
+  <p>Pensez à changer dans le docker-compose ou à définir les variables suivantes : <strong>URL_LOKI</strong> et <strong>URL</strong> en fonction de votre installation.</p>
+</blockquote>
+<p>Votre Privatebin sera accessible directement depuis l’URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
+<h1>API Python</h1>
+<p>Privatebin met à disposition une API bien utile pour l'intégrer dans vos scripts. La documentation est disponible ici : <a href="https://github.com/PrivateBin/PrivateBin/wiki/API">Github.com</a></p>
+<h2>Installation</h2>
+<p>Installez PrivateBinAPI avec la commande suivante :&nbsp;</p>
+<pre><code class="language-python">pip install PrivateBinAPI</code></pre>
+<p>Importez la librairie dans vos scripts :</p>
+<pre><code class="language-python">import privatebinapi</code></pre>
+<h2>Envoyer un Paste</h2>
+<pre><code class="language-plaintext">response = privatebinapi.send("https://sitedupaste.com", text="Hello, world!")</code></pre>
+<p>Réponse :</p>
+<pre><code class="language-plaintext">{
+    "deletetoken": "&lt; paste delete token &gt;",
+    "full_url": "&lt; direct link to paste&gt; ",
+    "id": "&lt; paste ID &gt;",
+    "passcode": "&lt; paste passcode &gt;",
+    "status": 0,
+    "url": "/?&lt; paste ID &gt;"
+}</code></pre>
+<h2>Ajouter une expiration</h2>
+<p>Il existe un nombre limité de délais d'expiration valides. Vous devez sélectionner l'un des éléments suivants&nbsp;:</p>
+<pre><code class="language-python">("5min", "10min", "1hour", "1day", "1week", "1month", "1year", "never")</code></pre>
+<p>Par défaut, “<code>1day</code>” est sélectionné.</p>
+<pre><code class="language-python">response = privatebinapi.send(
+     "https://sitedupaste.com",
+     text="Hello, world!",
+     expiration="5min"
+ )</code></pre>
+<h2>Ajouter un mot de passe</h2>
+<p>Configurer un mot de passe à votre Paste est simple :</p>
+<pre><code class="language-python">response = privatebinapi.send(
+     "https://sitedupaste.com",
+     text="Hello, world!",
+     password="Secure123!"
+ )</code></pre>
+<h2>Choisir un format</h2>
+<p>Il n'y a que trois options valides pour ce paramètre&nbsp;: <code>"plaintext"</code>, <code>"syntaxhighlighting"</code>, and <code>"markdown"</code>.</p>
+<p>Par défaut, <code>"plaintext"</code> est sélectionné.</p>
+<pre><code class="language-python">response = privatebinapi.send(
+     "https://sitedupaste.com",
+     text="Hello, world!",
+     formatting="markdown"
+ )</code></pre>
+<h2>Supprimer après lecture</h2>
+<p>Si vous souhaitez qu'un Paste soit supprimé immédiatement après avoir été lu, passez à <code>True</code> le paramètre <code>burn_after_reading</code>.</p>
+<pre><code class="language-python">response = privatebinapi.send(
+     "https://sitedupaste.com",
+     text="Hello, world!",
+     burn_after_reading=True
+ )</code></pre>
+<h2>Récupérer un Paste</h2>
+<p>Obtenir un Paste à partir d'une instance de PrivateBin est très simple&nbsp;:</p>
+<pre><code class="language-plaintext">response = privatebinapi.get("https://sitedupaste.com/?fakePasteLink#1234567890")</code></pre>
+<p>Réponse :</p>
+<pre><code class="language-plaintext">{
+    "attachment": {
+        "content": b"&lt; attachment content in bytes &gt;",
+        "filename": "&lt; name of attachment &gt;"
+    },
+    "id": '&lt; paste ID &gt;",
+    "meta": {
+        "created": &lt; UNIX timestamp &gt;,
+        "time_to_live": &lt; seconds until deletion &gt;
+    },
+    "status": 0,
+    "text": "&lt; text content of the paste &gt;",
+    "url": "/?&lt; paste ID &gt;",
+    "v": &lt; encryption version 1 or 2 &gt;}
+}</code></pre>
+<h2>Récupérer un Paste protégé par un mot de passe</h2>
+<p>Si le Paste est protégé par un mot de passe, utilisez le paramètre <code>password</code>.</p>
+<pre><code class="language-python">response = privatebinapi.get(
+     "https://sitedupaste.com/?fakePasteLink#1234567890",
+     password="PAPAMICA123!"
+ )</code></pre>
+<h2>Supprimer un Paste</h2>
+<p>Pour supprimer un Paste, vous avez besoin de son URL et de son token de suppression.</p>
+<pre><code class="language-plaintext">response = privatebinapi.delete(
+     "https://sitedupaste.com/?fakePasteLink#1234567890",
+     "fake1delete2token3"
+ )</code></pre>
