@@ -2,7 +2,7 @@
 title: Installation de WordPress avec Docker
 description: Installer une instance WordPress avec Docker !
 published: true
-date: 2021-06-15T10:59:41.683Z
+date: 2021-06-15T11:00:26.002Z
 tags: wordpress, site, docker
 editor: markdown
 dateCreated: 2021-06-15T10:58:36.489Z
@@ -22,7 +22,7 @@ Site officiel : [wordpress.org](https://wordpress.org)
 
 Vous pouvez passer par une installation standard via la documentation disponible sur [leur site](https://wordpress.org/support/article/how-to-install-wordpress/), le déployer directement depuis mon template d’application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :
 
-```plaintext
+```yaml
 version: "2"
 
 services:
@@ -93,8 +93,12 @@ networks:
 ```
 
 > Pensez à changer dans le docker-compose ou à définir les variables suivantes :  **DB\_ROOT**, **DB\_USER**, **DB\_PASSWORD**, **URL\_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
+
 
 > Votre site WordPress sera accessible directement depuis l’URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
+{.is-success}
+
 
 # Configuration
 
