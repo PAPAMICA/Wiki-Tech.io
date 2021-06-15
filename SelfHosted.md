@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-06-15T11:04:17.569Z
+date: 2021-06-15T11:04:27.364Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
@@ -23,7 +23,7 @@ dateCreated: 2021-05-30T16:49:09.893Z
 - [💬 Mattermost 🚧 *Serveur de discution orienté entreprise. Alternative à Slack*](/SelfHosted/Mattermost)
 - [🎧 Mumble 🚧 *Serveur de discution vocal opensource*](/SelfHosted/Mumble)
 - [🌀 Nextcloud 🚧 *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
-- [🤐 Privatebin 🚧 *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
+- [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔐 Serveur OpenVPN 🚧 *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
 - [🔏 Serveur WireGuard 🚧 *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
 - [🌐 Site web 🚧 *Un hébergement pour vos sites HTML/CSS/JS/PHP*](/SelfHosted/Site-web)
