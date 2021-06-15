@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-06-14T08:24:40.302Z
+date: 2021-06-15T06:56:02.679Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -123,4 +123,9 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [➰ Hyper-V *Comprendre et utiliser l'hyperviseur de Microsoft*](/Virtualisation#hyper-v)
 - [➰ Proxmox *Un hyperviseur OpenSource*](/Virtualisation#proxmox)
 - [➰ VirtualBox *Trucs et astuces pour de la virtualisation locale*](/Virtualisation#virtualbox)
+{.links-list}
+
+# Web
+- [🗺️ HTML / CSS / JS *Les bases du développement web*](/Web#html-css-js)
+- [💎 Wordpress *Les bonnes pratiques et astuces pour la gestion d'un site Wordpress*](/Web#wordpress)
 {.links-list}
