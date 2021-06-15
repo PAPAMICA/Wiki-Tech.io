@@ -1,0 +1,103 @@
+<!--
+title: Installation de WordPress avec Docker
+description: Installer une instance WordPress avec Docker !
+published: true
+date: 2021-06-15T10:58:36.489Z
+tags: wordpress, site, docker
+editor: ckeditor
+dateCreated: 2021-06-15T10:58:36.489Z
+-->
+
+<figure class="image image_resized" style="width:60.08%;"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/WordPress_logo.svg/1200px-WordPress_logo.svg.png" alt="Fichier:WordPress logo.svg — Wikipédia"></figure>
+<h1>Présentation</h1>
+<p><strong>WordPress</strong> est un système de gestion de contenu (SGC ou <i>content management system</i> (CMS) en anglais) gratuit, libre et <i>open-source</i>. Ce logiciel écrit en PHP repose sur une base de données MySQL et est distribué par la fondation WordPress.org. Les fonctionnalités de WordPress lui permettent de créer et gérer différents types de sites Web&nbsp;: site vitrine, site de vente en ligne, site applicatif, blog, portfolio, site institutionnel, site d'enseignement…</p>
+<p>Il est distribué selon les termes de la licence GNU GPL version 2. Le logiciel est aussi utilisé comme socle du service multi-site WordPress.com, celui-ci supporte plusieurs millions de sites</p>
+<p>Site officiel : <a href="https://wordpress.org">wordpress.org</a></p>
+<h1>Installation</h1>
+<p>Vous pouvez passer par une installation standard via la documentation disponible sur <a href="https://wordpress.org/support/article/how-to-install-wordpress/">leur site</a>, le déployer directement depuis mon template d’application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :</p>
+<pre><code class="language-plaintext">version: "2"
+
+services:
+   # Base de données
+   wordpress-db:
+     container_name: wordpress-db
+     image: mysql:5.7
+     volumes:
+       - /apps/wordpress/db:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: $DB_ROOT
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: $DB_USER
+       MYSQL_PASSWORD: $DB_PASSWORD
+
+     #Facultatif  
+     networks:
+       - proxy
+     logging:
+       driver: loki
+       options:
+         loki-url: "$URL_LOKI"
+         loki-external-labels: service={{.Name}}
+
+   wordpress:
+     container_name: wordpress
+     depends_on:
+       - wordpress-db
+     image: wordpress:latest
+     restart: always
+     volumes:
+       - /apps/wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+       - /apps/wordpress/html:/var/www/html
+     environment:
+       WORDPRESS_DB_HOST: wordpress-db:3306
+       WORDPRESS_DB_USER: $DB_USER
+       WORDPRESS_DB_PASSWORD: $DB_PASSWORD
+       WORDPRESS_DB_NAME: wordpress
+    #Facultatif avec Traefik
+#    ports:
+#     - 8080:80
+
+     # Facultatif
+     networks:
+       - proxy
+     logging:
+       driver: loki
+       options:
+         loki-url: "$URL_LOKI"
+         loki-external-labels: service={{.Name}}
+     labels:
+       - "traefik.enable=true"
+       - "traefik.http.routers.wordpress.entrypoints=http"
+       - "traefik.http.routers.wordpress.rule=Host(`$URL_WEBSITE`)"
+       - "traefik.http.middlewares.wordpress-https-redirect.redirectscheme.scheme=https"
+       - "traefik.http.routers.wordpress.middlewares=wordpress-https-redirect"
+       - "traefik.http.routers.wordpress-secure.entrypoints=https"
+       - "traefik.http.routers.wordpress-secure.rule=Host(`$URL_WEBSITE`)"
+       - "traefik.http.routers.wordpress-secure.tls=true"
+       - "traefik.http.routers.wordpress-secure.tls.certresolver=http"
+       - "traefik.docker.network=proxy"
+  
+networks:
+  proxy:
+    external:
+      name: proxy</code></pre>
+<blockquote>
+  <p>Pensez à changer dans le docker-compose ou à définir les variables suivantes : &nbsp;<strong>DB_ROOT</strong>, <strong>DB_USER</strong>, <strong>DB_PASSWORD</strong>, <strong>URL_LOKI</strong> et <strong>URL</strong> en fonction de votre installation.</p>
+</blockquote>
+<blockquote>
+  <p>Votre site WordPress sera accessible directement depuis l’URL que vous lui aurais attribué avec Traefik ou depuis <code>http://&lt;server&gt;:&lt;port&gt;</code>.</p>
+</blockquote>
+<h1>Configuration</h1>
+<p>Rendez-vous sur l'URL de votre site, vous devriez tomber sur l'écran suivant :&nbsp;</p>
+<p>Sélectionnez la langue :</p>
+<figure class="image image_resized" style="width:96.18%;"><img src="/images/wordpress/installation/wordpress_install_1.png"></figure>
+<p>Configurez le titre, l'utilisateur et le mail du site :</p>
+<figure class="image image_resized" style="width:97.09%;"><img src="/images/wordpress/installation/wordpress_install_2.png"></figure>
+<p>Connectez vous avec le compte précédemment créé :</p>
+<figure class="image image_resized" style="width:82.71%;"><img src="/images/wordpress/installation/wordpress_install_3.png"></figure>
+<p>Vous arrivez directement sur le tableau de bord : <code>http://URL-DU-SITE/wp-admin</code></p>
+<figure class="image image_resized" style="width:96.76%;"><img src="/images/wordpress/installation/wordpress_install_4.png"></figure>
+<p>Et votre site est lui aussi accessible à l'adresse : <code>http://URL-DU-SITE/</code></p>
+<figure class="image image_resized" style="width:96.63%;"><img src="/images/wordpress/installation/wordpress_install_5.png"></figure>
+<p>&nbsp;</p>
