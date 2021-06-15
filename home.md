@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-06-15T06:56:02.679Z
+date: 2021-06-15T07:17:04.806Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -127,5 +127,5 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
 # Web
 - [🗺️ HTML / CSS / JS *Les bases du développement web*](/Web#html-css-js)
-- [💎 Wordpress *Les bonnes pratiques et astuces pour la gestion d'un site Wordpress*](/Web#wordpress)
+- [💎 WordPress *Les bonnes pratiques et astuces pour la gestion d'un site Wordpress*](/Web#wordpress)
 {.links-list}
