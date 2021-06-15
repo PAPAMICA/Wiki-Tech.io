@@ -2,7 +2,7 @@
 title: Activer le SSL sur un site WordPress
 description: Mettre en place le petit cadenas du HTTPS sous WordPress !
 published: true
-date: 2021-06-15T11:59:58.071Z
+date: 2021-06-15T12:02:23.767Z
 tags: wordpress, site, ssl, https
 editor: markdown
 dateCreated: 2021-06-15T11:59:37.230Z
@@ -59,18 +59,20 @@ Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce messag
 Cliquez simplement sur “`Allez-y, activez SSL !`” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !
 
 > Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.
+{.is-info}
+
 
 ## WordPress sans Traefik
 
-Tu sais faire ? N'hésite pas à nous partager la procédure ici !
+Tu sais faire ? N'hésite pas à nous partager la procédure 😃
 
 ## WordPress chez Infomaniak
 
-Infomaniak peux vous fournir directement des certificats SSL, pour cela rendez vous dans votre manager Infomaniak et dans la gestion de vos Hébergements Web. Puis cliquez sur "“Changer de certificat” : 
+Infomaniak peux vous fournir directement des certificats SSL, pour cela rendez vous dans votre manager Infomaniak et dans la gestion de vos Hébergements Web. Puis cliquez sur “**Changer de certificat**” : 
 
 ![](/images/wordpress/ssl/wordpress_ssl_2.0.png)
 
-Vous pourrez choisir ici entre différents certificats SSL :
+Vous pourrez choisir entre différents certificats SSL :
 
 ![](/images/wordpress/ssl/wordpress_ssl_2.1.png)
 
@@ -89,10 +91,12 @@ Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce messag
 Cliquez simplement sur “`Allez-y, activez SSL !`” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !
 
 > Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.
+{.is-info}
+
 
 ## WordPress chez OVH
 
-Alors déjà, le mieux à faire : passer chez [Infomaniak](https://www.infomaniak.com/fr) !
+Alors déjà, le mieux à faire : passer chez [Infomaniak](https://www.infomaniak.com/fr) ! 😉
 
 Bon … Vous êtes vraiment ici pour le faire chez OVH ? Allons y …
 
@@ -115,3 +119,4 @@ Une fois l'extension activée, vous devriez apercevoir un bandeau avec ce messag
 Cliquez simplement sur “`Allez-y, activez SSL !`” , ouvrez votre site dans un nouvel onglet et admirer ce si jolie petit cadenas 🔒 !
 
 > Une fois le SSL activé sur votre site, vous pouvez désinstaller l'extension si vous le souhaitez.
+{.is-info}
