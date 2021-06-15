@@ -2,7 +2,7 @@
 title: PrivateBin
 description: Le meilleur moyen de partager vos secrets de façon sécurisé et avec une API !
 published: true
-date: 2021-06-15T10:03:06.114Z
+date: 2021-06-15T10:37:11.654Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:57.623Z
@@ -56,7 +56,7 @@ services:
       - "traefik.http.routers.privatebin.entrypoints=http"
       - "traefik.http.routers.privatebin.rule=Host(`$URL`)"
       - "traefik.http.middlewares.privatebin-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.privatebin.middlewares=$SERVICE-https-redirect"
+      - "traefik.http.routers.privatebin.middlewares=privatebin-https-redirect"
       - "traefik.http.routers.privatebin-secure.entrypoints=https"
       - "traefik.http.routers.privatebin-secure.rule=Host(`$URL`)"
       - "traefik.http.routers.privatebin-secure.tls=true"
