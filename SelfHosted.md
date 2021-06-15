@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-05-30T17:30:59.899Z
+date: 2021-06-15T11:04:11.309Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
@@ -31,6 +31,6 @@ dateCreated: 2021-05-30T16:49:09.893Z
 - [👔 Taiga 🚧 *Gestion de projets. Alternative à Trello*](/SelfHosted/Taiga)
 - [🔒 Vault *Gestion de vos secrets centralisés avec API*](/SelfHosted/Vault)
 - [📖 WikiJS 🚧 *Une documentation en ligne*](/SelfHosted/WikiJS)
-- [🌐 Wordpress 🚧 *CMS pour la création de site*](/SelfHosted/Wordpress)
+- [🌐 Wordpress 🚧 *CMS pour la création de site*](/Web/WordPress/Installation)
 - [🔗 YourLS 🚧 *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
 {.links-list}
