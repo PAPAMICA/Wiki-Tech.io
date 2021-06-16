@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T07:34:15.081Z
+date: 2021-06-16T07:35:15.308Z
 tags: wordpress, backup, sauvegarde
 editor: markdown
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -56,6 +56,7 @@ Rendez-vous dans les paramètres de UpdraftPlus pour configurer les sauvegardes.
 ![](/images/wordpress/sauvegarde/wordpress_sauvegarde_4.png)
 
 > N'hésitez pas à vérifier de temps en temps que les sauvegardes se font correctement, c'est important de garder un œil dessus !
+{.is-info}
 
 # Sauvegarde de l'arborescence
 
@@ -71,7 +72,7 @@ Si vous avez installé WordPress avec Docker à l'aide de cette procédure, vous
 
 Connectez vous à votre serveur en SSH et rendez vous dans le dossier précédemment cité et nous allons faire une sauvegarde en créant une archive :
 
-```plaintext
+```bash
 # Se connecter en SSH et se rendre dans le dossier :
 ssh <USER>@<IP> -p <PORT>
 cd /apps/wordpress
@@ -99,13 +100,13 @@ Connectez vous avec les informations de connexion sur FileZilla pour créer une 
 
 2 - Installez le client mariadb si vous ne l'avez pas : 
 
-```plaintext
+```bash
 apt install mariadb-client
 ```
 
 3 - Lancez la sauvegarde de la base de données avec la commande :
 
-```plaintext
+```bash
 docker exec <CONTAINER-NAME> /usr/bin/mysqldump -u root --password=<PASSWORD-ROOT> <DATABASE-NAME> > backup.sql
 ```
 
@@ -113,7 +114,7 @@ Vous devriez trouver dans votre dossier actuel un nouveau fichier `backup.sql` c
 
 Pour restaurer la base de données :
 
-```plaintext
+```bash
 cat backup.sql | docker exec -i <CONTAINER-NAME> /usr/bin/mysql -u root --password=<PASSWORD-ROOT> <DATABASE-NAME>
 ```
 
