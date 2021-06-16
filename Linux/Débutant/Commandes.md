@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-06-16T06:59:17.169Z
+date: 2021-06-16T07:10:04.877Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -223,17 +223,33 @@ rm <option> /chemin/truc/a/supprimer
 
 ## scp - Télécharger ou envoyer un fichier à distance via SSH
 
-**Permet de supprimer un fichier ou un dossier**
+**Permet de télécharger un fichier depuis un serveur distant vers sa machine**
 
 ```bash
-rm <option> /chemin/truc/a/supprimer
+scp -P <PORT> <USER>@<IP>:/chemin/du/fichier/sur/le/serveur /local/dossier
 ```
+**Permet de télécharger un fichier depuis sa machine vers un serveur distant**
 
+```bash
+scp fichier.txt -P <PORT> <USER>@<IP>:/chemin/sur/le/serveur
+```
+**Permet de télécharger un dossier depuis sa machine vers un serveur distant**
+
+```bash
+scp -r /local/dossier/ -P <PORT> <USER>@<IP>:/chemin/sur/le/serveur
+```
+**Permet de télécharger un fichier depuis un serveur distant vers un autre serveur distant**
+
+```bash
+scp -P <PORT> <USER>@<IP>:/chemin/du/fichier/sur/le/serveur -P <PORT> <USER>@<IP>:/chemin/du/fichier/sur/le/serveur
+```
 | Option | Commentaire |
 | --- | --- |
-| `-d` | Efface un répertoire |
-| `-f` | Force la suppression |
-| `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
+| `-P` | Configure le port SSH |
+| `-C` | Active la compression |
+| `-v` | Active le mode verbose |
+| `-q` | Active le mode silencieux |
+| `-p` | Préserve les attributs des fichiers et dossiers |
 | `-r` | Récursif |
 
 
