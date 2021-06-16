@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T05:53:53.963Z
+date: 2021-06-16T06:36:12.029Z
 tags: wordpress, backup, sauvegarde
 editor: ckeditor
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -29,19 +29,34 @@ dateCreated: 2021-06-15T14:46:16.525Z
 <p><span style="font-family:Arial, Helvetica, sans-serif;">2 - Choisissez votre stockage externalisé pour la sauvegarde (5) (Dans mon cas : sur mon stockage Swiss Backup chez Infomaniak)</span></p>
 <p><span style="font-family:Arial, Helvetica, sans-serif;">3 - Configurez le stockage correctement et testez le (6)</span></p>
 <figure class="image image_resized" style="width:97.46%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_2.png"></figure>
-<p>&nbsp;</p>
 <p>4 - Laissez tout coché pour les éléments à inclure dans la sauvegarde</p>
-<p>5 - Pensez à coché la case Courriel afin d'être averti par mail de l'état des sauvegardes</p>
+<p>5 - Pensez à coché la case <code>Courriel</code> afin d'être averti par mail de l'état des sauvegardes</p>
 <figure class="image image_resized" style="width:97.48%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_3.png"></figure>
-<p>&nbsp;</p>
-<p>6 - Vérifier que tout fonctionne en lançant une sauvegarde depuis l'onglet “Sauvegarder/restaurer”</p>
+<p>6 - Vérifier que tout fonctionne en lançant une sauvegarde depuis l'onglet “<code>Sauvegarder/restaurer</code>”</p>
 <figure class="image image_resized" style="width:97.69%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_4.png"></figure>
 <blockquote>
   <p>N'hésitez pas à vérifier de temps en temps que les sauvegardes se font correctement, c'est important de garder un œil dessus !</p>
 </blockquote>
 <h1>Sauvegarde de l'arborescence</h1>
+<p>J'effectue cette sauvegarde en général une fois par mois, cela permet d'avoir une sauvegarde complète de tous les fichiers du site dans une archive stockée chez soit, dans mon cas sur un de mes NAS. Le but étant ici de sauvegarder tous les fichiers dans <code>/var/www/html</code>.</p>
 <h2>Installé avec Docker</h2>
+<p>Si vous avez installé WordPress avec Docker à l'aide de cette procédure, vous devriez localiser les fichiers du site au chemin que vous avez rentré dans votre Docker-Compose ici :</p>
+<p><code><strong>/apps/wordpress/html</strong>:/var/www/html</code></p>
+<h3>Sauvegarde mannuelle</h3>
+<p>Connectez vous à votre serveur en SSH et rendez vous dans le dossier précédemment cité et nous allons faire une sauvegarde en créant une archive :</p>
+<pre><code class="language-plaintext"># Se connecter en SSH et se rendre dans le dossier :
+ssh &lt;USER&gt;@&lt;IP&gt; -p &lt;PORT&gt;
+cd /apps/wordpress
+
+# Créer une archive du dossier html :
+tar -cvf backup-site-date.tar html
+
+# Copier la sauvegarde sur votre poste :
+scp -P &lt;PORT&gt; &lt;USER&gt;@&lt;IP&gt;:/apps/wordpress/backup-site-date.tar /home/&lt;USER&gt;/Téléchargements</code></pre>
+<p>Il ne vous reste plus qu'a stocker cette archive là ou vous le souhaitez.</p>
 <h2>Hébergé chez un fournisseur</h2>
+<p>Normalement votre hébergeur vous fournit un accès FTP ou SFTP au stockage de votre site.</p>
+<p>Connectez vous avec les informations de connexion sur FileZilla pour créer une archive et la télécharger.&nbsp;</p>
 <h1>Sauvegarde Base de données</h1>
 <h2>Installé avec Docker</h2>
 <h2>Hébergé chez un fournisseur</h2>
