@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T06:53:40.883Z
+date: 2021-06-16T06:56:39.312Z
 tags: wordpress, backup, sauvegarde
 editor: ckeditor
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -14,7 +14,7 @@ dateCreated: 2021-06-15T14:46:16.525Z
 <p>Il existe plusieurs méthodes et procédures pour faire la sauvegarde votre site WordPress. Je vais aborder ici mes habitudes de sauvegardes en commençant par mon planning :</p>
 <ul>
   <li>Une sauvegarde par jour ou par semaine avec l'extension UpdraftPlus</li>
-  <li>Une sauvegarde mensuel du FTP et de la base de données</li>
+  <li>Une sauvegarde mensuel des fichiers et de la base de données manuellement</li>
 </ul>
 <h1>UpdraftPlus</h1>
 <h2>Présentation</h2>
@@ -42,7 +42,7 @@ dateCreated: 2021-06-15T14:46:16.525Z
 <h2>Installé avec Docker</h2>
 <p>Si vous avez installé WordPress avec Docker à l'aide de cette procédure, vous devriez localiser les fichiers du site au chemin que vous avez rentré dans votre Docker-Compose ici :</p>
 <p><code><strong>/apps/wordpress/html</strong>:/var/www/html</code></p>
-<h3>Sauvegarde mannuelle</h3>
+<h3>Sauvegarde manuelle</h3>
 <p>Connectez vous à votre serveur en SSH et rendez vous dans le dossier précédemment cité et nous allons faire une sauvegarde en créant une archive :</p>
 <pre><code class="language-plaintext"># Se connecter en SSH et se rendre dans le dossier :
 ssh &lt;USER&gt;@&lt;IP&gt; -p &lt;PORT&gt;
@@ -59,6 +59,7 @@ scp -P &lt;PORT&gt; &lt;USER&gt;@&lt;IP&gt;:/apps/wordpress/backup-site-date.tar
 <p>Connectez vous avec les informations de connexion sur FileZilla pour créer une archive et la télécharger.&nbsp;</p>
 <h1>Sauvegarde Base de données</h1>
 <h2>Installé avec Docker</h2>
+<p>&nbsp;</p>
 <h2>Hébergé chez un fournisseur</h2>
 <p>Si vous avez un bon hébergeur, ce dernier vous donnera la possibilité de télécharger l'une des précédentes sauvegardes de la base de données de votre site directement depuis le panel d'administration :</p>
 <h3>Infomaniak</h3>
