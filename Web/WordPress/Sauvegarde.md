@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T07:35:15.308Z
+date: 2021-06-16T08:30:14.349Z
 tags: wordpress, backup, sauvegarde
 editor: markdown
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -17,7 +17,7 @@ Comme pour tous systèmes, la sauvegarde est essentielle en cas d'erreurs, de fa
 Il existe plusieurs méthodes et procédures pour faire la sauvegarde votre site WordPress. Je vais aborder ici mes habitudes de sauvegardes en commençant par mon planning :
 
 -   Une sauvegarde par jour ou par semaine avec l'extension UpdraftPlus
--   Une sauvegarde mensuel des fichiers et de la base de données manuellement
+-   Une sauvegarde mensuelle des fichiers et de la base de données manuellement
 
 # UpdraftPlus
 
@@ -47,7 +47,7 @@ Rendez-vous dans les paramètres de UpdraftPlus pour configurer les sauvegardes.
 
 4 - Laissez tout coché pour les éléments à inclure dans la sauvegarde
 
-5 - Pensez à coché la case `Courriel` afin d'être averti par mail de l'état des sauvegardes
+5 - Pensez à cocher la case `Courriel` afin d'être averti par mail de l'état des sauvegardes
 
 ![](/images/wordpress/sauvegarde/wordpress_sauvegarde_3.png)
 
@@ -60,7 +60,7 @@ Rendez-vous dans les paramètres de UpdraftPlus pour configurer les sauvegardes.
 
 # Sauvegarde de l'arborescence
 
-J'effectue cette sauvegarde en général une fois par mois, cela permet d'avoir une sauvegarde complète de tous les fichiers du site dans une archive stockée chez soit, dans mon cas sur un de mes NAS. Le but étant ici de sauvegarder tous les fichiers dans `/var/www/html`.
+J'effectue cette sauvegarde en général une fois par mois, cela permet d'avoir une sauvegarde complète de tous les fichiers du site dans une archive stockée chez soi, dans mon cas sur un de mes NAS. Le but étant ici de sauvegarder tous les fichiers dans `/var/www/html`.
 
 ## Installé avec Docker
 
@@ -84,7 +84,7 @@ tar -cvf backup-site-date.tar html
 scp -P <PORT> <USER>@<IP>:/apps/wordpress/backup-site-date.tar /home/<USER>/Téléchargements
 ```
 
-Il ne vous reste plus qu'a stocker cette archive là ou vous le souhaitez.
+Il ne vous reste plus qu'a stocker cette archive là où vous le souhaitez.
 
 ## Hébergé chez un fournisseur
 
