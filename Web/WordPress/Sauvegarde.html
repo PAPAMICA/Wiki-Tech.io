@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-15T14:46:16.525Z
+date: 2021-06-16T05:53:53.963Z
 tags: wordpress, backup, sauvegarde
 editor: ckeditor
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -22,12 +22,23 @@ dateCreated: 2021-06-15T14:46:16.525Z
 <h2><span style="font-family:Arial, Helvetica, sans-serif;">Installation</span></h2>
 <p>Comme pour toutes les extensions, le processus est assez simple :&nbsp;</p>
 <figure class="image image_resized" style="width:96.78%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_1.png"></figure>
-<p><code>Extensions</code> &gt; <code>Ajouter</code> &gt; <code>Chercher</code> &gt; <code>UpdraftPlus</code> &gt; <code>Installer Maintenant</code> &gt; <code>Activer</code></p>
+<p>C'est par ici que ça se passe : <code>Extensions</code> &gt; <code>Ajouter</code> &gt; <code>Chercher</code> &gt; <code>UpdraftPlus</code> &gt; <code>Installer Maintenant</code> &gt; <code>Activer</code></p>
 <h2><span style="font-family:Arial, Helvetica, sans-serif;">Configuration des sauvegardes</span></h2>
+<p><span style="font-family:Arial, Helvetica, sans-serif;">Rendez-vous dans les paramètres de UpdraftPlus pour configurer les sauvegardes.&nbsp;</span></p>
+<p><span style="font-family:Arial, Helvetica, sans-serif;">1 - Commencez par régler la régularité et la rétention des sauvegardes automatiques (4)</span></p>
+<p><span style="font-family:Arial, Helvetica, sans-serif;">2 - Choisissez votre stockage externalisé pour la sauvegarde (5) (Dans mon cas : sur mon stockage Swiss Backup chez Infomaniak)</span></p>
+<p><span style="font-family:Arial, Helvetica, sans-serif;">3 - Configurez le stockage correctement et testez le (6)</span></p>
 <figure class="image image_resized" style="width:97.46%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_2.png"></figure>
-<figure class="image image_resized" style="width:97.48%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_3.png"></figure>
-<figure class="image image_resized" style="width:97.69%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_4.png"></figure>
 <p>&nbsp;</p>
+<p>4 - Laissez tout coché pour les éléments à inclure dans la sauvegarde</p>
+<p>5 - Pensez à coché la case Courriel afin d'être averti par mail de l'état des sauvegardes</p>
+<figure class="image image_resized" style="width:97.48%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_3.png"></figure>
+<p>&nbsp;</p>
+<p>6 - Vérifier que tout fonctionne en lançant une sauvegarde depuis l'onglet “Sauvegarder/restaurer”</p>
+<figure class="image image_resized" style="width:97.69%;"><img src="/images/wordpress/sauvegarde/wordpress_sauvegarde_4.png"></figure>
+<blockquote>
+  <p>N'hésitez pas à vérifier de temps en temps que les sauvegardes se font correctement, c'est important de garder un œil dessus !</p>
+</blockquote>
 <h1>Sauvegarde de l'arborescence</h1>
 <h2>Installé avec Docker</h2>
 <h2>Hébergé chez un fournisseur</h2>
