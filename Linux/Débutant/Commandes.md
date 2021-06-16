@@ -1,9 +1,9 @@
 ---
 title: Commandes utiles
-description: 
+description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-06-16T07:10:04.877Z
-tags: 
+date: 2021-06-16T07:11:56.961Z
+tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
 ---
