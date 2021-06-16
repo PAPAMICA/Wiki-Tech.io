@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T06:56:39.312Z
+date: 2021-06-16T07:33:50.455Z
 tags: wordpress, backup, sauvegarde
 editor: ckeditor
 dateCreated: 2021-06-15T14:46:16.525Z
@@ -59,7 +59,14 @@ scp -P &lt;PORT&gt; &lt;USER&gt;@&lt;IP&gt;:/apps/wordpress/backup-site-date.tar
 <p>Connectez vous avec les informations de connexion sur FileZilla pour créer une archive et la télécharger.&nbsp;</p>
 <h1>Sauvegarde Base de données</h1>
 <h2>Installé avec Docker</h2>
-<p>&nbsp;</p>
+<p>1 - Connectez vous en SSH à votre serveur</p>
+<p>2 - Installez le client mariadb si vous ne l'avez pas :&nbsp;</p>
+<pre><code class="language-plaintext">apt install mariadb-client</code></pre>
+<p>3 - Lancez la sauvegarde de la base de données avec la commande :</p>
+<pre><code class="language-plaintext">docker exec &lt;CONTAINER-NAME&gt; /usr/bin/mysqldump -u root --password=&lt;PASSWORD-ROOT&gt; &lt;DATABASE-NAME&gt; &gt; backup.sql</code></pre>
+<p>Vous devriez trouver dans votre dossier actuel un nouveau fichier <code>backup.sql</code> contenant le dump de votre base de données.&nbsp;</p>
+<p>Pour restaurer la base de données :</p>
+<pre><code class="language-plaintext">cat backup.sql | docker exec -i &lt;CONTAINER-NAME&gt; /usr/bin/mysql -u root --password=&lt;PASSWORD-ROOT&gt; &lt;DATABASE-NAME&gt;</code></pre>
 <h2>Hébergé chez un fournisseur</h2>
 <p>Si vous avez un bon hébergeur, ce dernier vous donnera la possibilité de télécharger l'une des précédentes sauvegardes de la base de données de votre site directement depuis le panel d'administration :</p>
 <h3>Infomaniak</h3>
