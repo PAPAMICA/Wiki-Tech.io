@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: 
 published: true
-date: 2021-06-14T07:36:43.101Z
+date: 2021-06-16T06:59:17.169Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -73,7 +73,7 @@ dateCreated: 2021-05-24T10:35:22.227Z
 
 **Permet d'ouvrir un fichier et d'afficher son contenu.**
 
-```plaintext
+```bash
 cat <option> fichier
 ```
 
@@ -86,7 +86,7 @@ cat <option> fichier
 
 **Permet de se déplacer dans l'arborescence**
 
-```plaintext
+```bash
 cd /répertoire/de/destination
 ```
 
@@ -94,7 +94,7 @@ cd /répertoire/de/destination
 
 **Permet d'afficher la taille d'un répertoire.**
 
-```plaintext
+```bash
 df <option> répertoire
 ```
 
@@ -110,7 +110,7 @@ df <option> répertoire
 
 Permet de trouver un fichier précis ou une liste de fichier
 
-```plaintext
+```bash
 find <DOSSIER> <OPTIONS> -iname "<FICHIER>"
 ```
 
@@ -126,7 +126,7 @@ find <DOSSIER> <OPTIONS> -iname "<FICHIER>"
 
 Exemple : Chercher des fichier de plus de 200ko qui ne contienne pas le dans le nom “2015” dans le dossier “/photosdevacances”
 
-```plaintext
+```bash
 find /photosdevacances -type f -size +200k -not -iname "*2015*"
 ```
 
@@ -134,7 +134,7 @@ find /photosdevacances -type f -size +200k -not -iname "*2015*"
 
 **Affiche l'en-tête d'un fichier**
 
-```plaintext
+```bash
 head <option> fichier
 ```
 
@@ -146,7 +146,7 @@ head <option> fichier
 
  **Affiche le fichier page par page. C'est donc pratique pour les longs fichiers.**
 
-```plaintext
+```bash
 less fichier
 ```
 
@@ -154,7 +154,7 @@ less fichier
 
 **Permet de lister le contenu d'un répertoire**
 
-```plaintext
+```bash
 ls <option> répertoire
 ```
 
@@ -171,7 +171,7 @@ ls <option> répertoire
 
 **Créer un répertoire.**
 
-```plaintext
+```bash
 mkdir -p /chemin/répertoire/à/créer
 ```
 
@@ -181,7 +181,7 @@ mkdir -p /chemin/répertoire/à/créer
 
 *Exemple : Je souhaite créer un répertoire **truc** dans /home/user1/test1, mais le fichier test1 n'existe pas.*
 
-```plaintext
+```bash
 mkdir -p /home/user1/test1/truc
 ```
 
@@ -189,7 +189,7 @@ mkdir -p /home/user1/test1/truc
 
 **Permet de déplacer un fichier ou un répertoire.**
 
-```plaintext
+```bash
 mv <option> /chemin/source /chemin/destination
 ```
 
@@ -202,7 +202,7 @@ mv <option> /chemin/source /chemin/destination
 
 **Affiche le répertoire dans lequel on se situe.**
 
-```plaintext
+```bash
 pwd
 ```
 
@@ -210,7 +210,7 @@ pwd
 
 **Permet de supprimer un fichier ou un dossier**
 
-```plaintext
+```bash
 rm <option> /chemin/truc/a/supprimer
 ```
 
@@ -221,17 +221,33 @@ rm <option> /chemin/truc/a/supprimer
 | `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
 | `-r` | Récursif |
 
+## scp - Télécharger ou envoyer un fichier à distance via SSH
+
+**Permet de supprimer un fichier ou un dossier**
+
+```bash
+rm <option> /chemin/truc/a/supprimer
+```
+
+| Option | Commentaire |
+| --- | --- |
+| `-d` | Efface un répertoire |
+| `-f` | Force la suppression |
+| `-i` | Demande confirmation à l'utilisateur (*Inutile avec* `*-f*`) |
+| `-r` | Récursif |
+
+
 ## sftp - Récupérer un fichier sur un serveur
 
 **Permet de se connecter en SFTP à un serveur**
 
-```plaintext
+```bash
 sftp -P <PORT> <UTILISATEUR>@<SERVEUR>
 ```
 
 **Permet de récupérer simplement un fichier**
 
-```plaintext
+```bash
 get <CHEMIN>/<FICHIER>
 ```
 
@@ -239,7 +255,7 @@ get <CHEMIN>/<FICHIER>
 
 **Affiche la fin d'un fichier**
 
-```plaintext
+```bash
 tail <option> fichier
 ```
 
@@ -251,7 +267,7 @@ tail <option> fichier
 
 **Permet de compresser ou décompresser en fonction des options**
 
-```plaintext
+```bash
 tar -[options] <nom_fichier_destination> <fichier_ou_dossier_source>
 ```
 
@@ -268,13 +284,13 @@ tar -[options] <nom_fichier_destination> <fichier_ou_dossier_source>
 
 *Exemple : Archiver un dossier.*
 
-```plaintext
+```bash
 tar -cvf test.tar /chemin/dossier/a/compresser
 ```
 
 Exemple : Désarchiver un dossier.
 
-```plaintext
+```bash
 tar -xvf test.tar /chemin/dossier/destination
 ```
 
@@ -284,7 +300,7 @@ tar -xvf test.tar /chemin/dossier/destination
 
 **Permet d'afficher dans quels groupes se trouve l'utilisateur**
 
-```plaintext
+```bash
 groups utilisateur
 ```
 
@@ -292,7 +308,7 @@ groups utilisateur
 
 **Permet de changer le mot de passe d'un utilisateur**
 
-```plaintext
+```bash
 passwd <option> utilisateur
 ```
 
