@@ -2,7 +2,7 @@
 title: Réseau
 description: Ce qu'il faut savoir sur le réseau !
 published: true
-date: 2021-06-14T08:01:46.115Z
+date: 2021-06-25T09:41:36.220Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:39:12.033Z
@@ -19,9 +19,12 @@ dateCreated: 2021-05-30T18:39:12.033Z
 - [📁 Protocole FTP *Qu'est-ce que c'est et à quoi ça sert ?*](/Réseau/Protocoles/FTP)
 - [🎭 Calculer les masques *Comment calculer ces sal\*peries sans internet ?*](/Réseau/Protocoles/Masques)
 {.links-list}
+
 # Equipements
+- [📫 Routeur *A quoi sert-il et comment fonctionne-il ?*](/Réseau/Equipements/Routeur)
 - [🦝 Switch (commutateur) *Comment fonctionne-il ?*](/Réseau/Equipements/Switch)
 {.links-list}
+
 # Avancé
 - [💠 OpenVPN sur pfSense *Comment installer et utiliser un serveur OpenVPN sur pfSense*](/Réseau/Avancé/pfSense-OpenVPN)
 - [🧅 Tor 🚧*Comprendre et utiliser le réseau Tor*](/Réseau/Avancé/Tor)
