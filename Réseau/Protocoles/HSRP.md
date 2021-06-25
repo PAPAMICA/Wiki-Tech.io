@@ -2,7 +2,7 @@
 title: Réseau - HSRP
 description: Qu'est-ce que c'est et à quoi ça sert ?
 published: true
-date: 2021-06-25T21:58:30.121Z
+date: 2021-06-25T22:00:05.459Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:38.820Z
@@ -42,13 +42,13 @@ Le protocole HSRP (Hot Standby Routing Protocol) est un protocole propriétaire 
 
 ###### Définition du mot de passe : 
 
-Il est conseillé de personnaliser un mot de passe pour les échanges et de ne pas utiliser celui par défaut. Ainsi, cela diminu le nombre de chance qu’un pirate casse l’HSRP. Pour changer le mot de passe, il faut utiliser la commande suivante :
+Il est conseillé de personnaliser un mot de passe pour les échanges et de ne pas utiliser celui par défaut. Ainsi, cela diminue le nombre de chances qu’un pirate casse l’HSRP. Pour changer le mot de passe, il faut utiliser la commande suivante :
 
 **standby 10 authentication wikitech**
 
 ###### Hashage MD5 :
 
-Cisco permet l'utilisation de l’algorithme MD5 afin de hasher les échanges. Dans ce cas, le mot de passe n’est plus tramsis dans le champs « Authentification data » celui-ci devient égale à 0. Pour cela, il faut rajouter la commande suivante dans tous les routeurs membre du groupe HSRP :
+Cisco permet l'utilisation de l’algorithme MD5 afin de hasher les échanges. Dans ce cas, le mot de passe n’est plus tramis dans le champ « Authentification data » celui-ci devient égale à 0. Pour cela, il faut rajouter la commande suivante dans tous les routeurs membre du groupe HSRP :
 
 **standby 10 authentication md5 hsrp**
 
