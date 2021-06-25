@@ -2,12 +2,13 @@
 title: Les protocoles de routage LAN
 description: Tout comprendre sur le routage LAN.
 published: false
-date: 2021-06-25T14:58:53.497Z
+date: 2021-06-25T15:21:02.359Z
 tags: routage, lan, vecteur de distance, état de liens, rip, ospf, igrp, is-is
 editor: ckeditor
 dateCreated: 2021-06-25T14:49:58.493Z
 -->
 
+<h1>Introduction</h1>
 <p>L’objectif d’un <a href="https://wiki-tech.io/R%C3%A9seau/Equipements/Routeur">routeur </a>est de toujours disposer de la route optimale pour aller d’un endroit à l’autre. Pour cela il y a deux solutions&nbsp;:</p>
 <ul>
   <li><strong>Route statique&nbsp;</strong>: un routeur avec des routes statiques utilise une route avec son protocole telle qu’elle a été configurée par l’administrateur réseau.</li>
@@ -40,6 +41,7 @@ dateCreated: 2021-06-25T14:49:58.493Z
 <p>Le forwarding consiste à déterminer le prochain saut pour un datagramme vers la destination indiquée dans son adresse de destination et à commuter le datagramme d’une interface d’entrée vers une interface de sortie.</p>
 <p>Le routing consiste à échanger le contenu de sa table de routage avec ses voisins pour déterminer les chemins dans une architecture multi-réseaux. Pour ce faire, un protocole de routage est utilisé.</p>
 <p>📌 <i>Sous Linux, le forwarding est réalisé par le noyau alors que le routing est réalisé par un programme (daemon).</i></p>
+<p>&nbsp;</p>
 <h1>Le routage par vecteur de distance</h1>
 <p>Ce type de protocole détermine la direction (le prochain saut) et la distance (le nombre de sauts) vers n’importe quel réseau de l’inter-réseau. Il envoie périodiquement tout ou partie de sa table de routage aux routeurs voisins. À la réception d’une mise à jour de routage, une vérification de tous les chemins connus est faite et des modifications sont apportées si nécessaire.&nbsp;</p>
 <h2>RIP v1 (RFC 1058)</h2>
@@ -72,6 +74,7 @@ dateCreated: 2021-06-25T14:49:58.493Z
   <li><strong>Maximum 15 sauts</strong></li>
   <li>Type <strong>classless </strong>ce qui veut dire que le masque est associé aux destinations.</li>
 </ul>
+<p>&nbsp;</p>
 <h2>IGRP</h2>
 <p>Le protocole IGRP (Interior Gateway Routing Protocol) a été développé par Cisco en partie pour remédier aux limitations de RIP. Les mises à jour sont transmises immédiatement à chaque changement. Contrairement à RIP qui transmet la table de routage complète, IGRP n’envoie que la ligne qui subit une modification.</p>
 <p>Voici les caractéristiques principales d’IGRP&nbsp;:</p>
@@ -81,13 +84,13 @@ dateCreated: 2021-06-25T14:49:58.493Z
   <li><strong>Maximum 255 sauts</strong></li>
   <li>Type <strong>classful </strong>ce qui veut dire qu’il n’y a pas d’information de masque réseau associé aux destinations. En d’autres termes, il ne prend pas en charge les masques de sous-réseau de longueur variable.</li>
 </ul>
+<p>&nbsp;</p>
 <h2>Optimisation</h2>
 <p>Deux fonctions permettent d’empêcher ou de réduire pour certains cas les boucles de routage et d’optimiser le reroutage des flux en cas de tombé d’un lien. Les voici&nbsp;:</p>
 <ul>
   <li><strong>Split-Horizon</strong>&nbsp;: ne pas réannoncer à un routeur une route qu'on a apprise par lui. En effet, même si la route ainsi renvoyée ne peut être immédiatement celle de plus court chemin (+2 à la métrique à cause de l'aller-retour sur le lien), il se peut qu'en cas de rupture d'un lien amont sur le routeur d'origine, celui-ci puisse croire que la route optimale passe par le routeur qui lui a réannoncé sa propre route.</li>
   <li><strong>Poison-Reverse</strong>&nbsp;: perfectionnement de Split-Horizon en réannonçant la route apprise par un routeur à celui-ci, mais en lui affectant une métrique infinie (= 16) afin de signifier à celui-ci que le chemin n'est pas à utiliser. Cette méthode permet de casser immédiatement les boucles de routage alors que le simple split-horizon implique d'attendre la prochaine mise à jour des tables de routage.</li>
 </ul>
-<p>&nbsp;</p>
 <p>&nbsp;</p>
 <h1>Le routage par état de liens</h1>
 <p>Les protocoles de routage par état de liens ont été conçu principalement pour pallier les limitations des protocoles de routage à vecteur de distance (notamment en terme de taille). Ils gèrent une base de données d'informations topologiques sur laquelle ils appliquent un algorithme de calcul du plus court chemin d'abord (Shortest Path First (SPF) ou algorithme de Dijkstra).</p>
