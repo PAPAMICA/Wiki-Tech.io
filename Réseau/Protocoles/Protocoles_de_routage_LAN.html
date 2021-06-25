@@ -1,0 +1,43 @@
+<!--
+title: Les protocoles de routage LAN
+description: Tout comprendre sur le routage LAN.
+published: false
+date: 2021-06-25T14:49:58.493Z
+tags: routage, lan, vecteur de distance, état de liens, rip, ospf, igrp, is-is
+editor: ckeditor
+dateCreated: 2021-06-25T14:49:58.493Z
+-->
+
+<p>L’objectif d’un <a href="https://wiki-tech.io/R%C3%A9seau/Equipements/Routeur">routeur </a>est de toujours disposer de la route optimale pour aller d’un endroit à l’autre. Pour cela il y a deux solutions&nbsp;:</p>
+<ul>
+  <li><strong>Route statique&nbsp;</strong>: un routeur avec des routes statiques utilise une route avec son protocole telle qu’elle a été configurée par l’administrateur réseau.</li>
+  <li><strong>Route dynamique&nbsp;</strong>: un routeur configuré avec des routes dynamiques utilise un protocole de routage réseau qui ajuste automatiquement les routes à emprunter en fonction des modifications de topologie ou de trafic.</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Caractéristiques</h1>
+<p>Pour rappel, le routage consiste en la signalisation des directions pour aiguiller les datagrammes de réseau en réseau. Tous les protocole de routage ont un seul objectif&nbsp;: chercher à minimiser une métrique. Cette métrique représente le «&nbsp;coût&nbsp;» pour aller d’un endroit à un autre du réseau.</p>
+<p>Vous trouverez ci-dessous la liste des composants d’une métrique&nbsp;:</p>
+<ul>
+  <li><strong>Bande passante </strong>(en fonction du type de liaison)&nbsp;: Eth 10Mb/s, série 64kb/s, etc…</li>
+  <li><strong>Délai </strong>(en fonction de la bande passante des liaisons intermédiaires, de la taille du stockage temporaire du routeur, de la congestion du réseau, de la distance physique)</li>
+  <li><strong>Charge </strong>(en fonction de la quantité de trafic d’une ressource réseau)</li>
+  <li><strong>Fiabilité </strong>(en fonction du taux d’erreur)</li>
+  <li><strong>Nombre de sauts </strong>(en fonction du nombre de routeurs jusqu’à la destination)</li>
+  <li><strong>Coût </strong>(en fonction de la bande passante, de la dépense monétaire ou d’une autre mesure attribuée par un administrateur réseau)</li>
+</ul>
+<p>&nbsp;</p>
+<p>Les protocoles de routage doivent converger le plus rapidement possible, ce qui explique leurs propriétés&nbsp;:</p>
+<ul>
+  <li><strong>Algorithme simple&nbsp;</strong>: gain en mémoire et en temps processeur</li>
+  <li><strong>Optimisation&nbsp;</strong>: prise en compte de plusieurs métriques et pondération entre elles</li>
+  <li><strong>Efficacité et stabilité</strong></li>
+  <li><strong>Adaptation rapide à des évènements du réseau </strong>(modification topologique, panne, …)</li>
+</ul>
+<p>&nbsp;</p>
+<p>Dans les LAN, les protocoles de routages sont regroupés en deux familles&nbsp;: vecteurs de distance (RIP et IGRP) et à états de liens (OSPF). Nous allons étudier ces deux familles dans la suite de cet article.</p>
+<p>&nbsp;</p>
+<h1>La différence entre forwarding et routing</h1>
+<p>Le forwarding consiste à déterminer le prochain saut pour un datagramme vers la destination indiquée dans son adresse de destination et à commuter le datagramme d’une interface d’entrée vers une interface de sortie.</p>
+<p>Le routing consiste à échanger le contenu de sa table de routage avec ses voisins pour déterminer les chemins dans une architecture multi-réseaux. Pour ce faire, un protocole de routage est utilisé.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
