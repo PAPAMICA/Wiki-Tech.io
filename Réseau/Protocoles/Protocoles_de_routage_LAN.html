@@ -2,7 +2,7 @@
 title: Les protocoles de routage LAN
 description: Tout comprendre sur le routage LAN.
 published: false
-date: 2021-06-25T14:49:58.493Z
+date: 2021-06-25T14:56:56.836Z
 tags: routage, lan, vecteur de distance, état de liens, rip, ospf, igrp, is-is
 editor: ckeditor
 dateCreated: 2021-06-25T14:49:58.493Z
@@ -40,4 +40,57 @@ dateCreated: 2021-06-25T14:49:58.493Z
 <p>Le forwarding consiste à déterminer le prochain saut pour un datagramme vers la destination indiquée dans son adresse de destination et à commuter le datagramme d’une interface d’entrée vers une interface de sortie.</p>
 <p>Le routing consiste à échanger le contenu de sa table de routage avec ses voisins pour déterminer les chemins dans une architecture multi-réseaux. Pour ce faire, un protocole de routage est utilisé.</p>
 <p>&nbsp;</p>
+<h1>Le routage par vecteur de distance</h1>
+<p>Ce type de protocole détermine la direction (le prochain saut) et la distance (le nombre de sauts) vers n’importe quel réseau de l’inter-réseau. Il envoie périodiquement tout ou partie de sa table de routage aux routeurs voisins. À la réception d’une mise à jour de routage, une vérification de tous les chemins connus est faite et des modifications sont apportées si nécessaire.&nbsp;</p>
+<h2>RIP v1 (RFC 1058)</h2>
+<p>Le protocole RIP v1 (Routing Information Protocol) a été conçu en 1988.&nbsp;</p>
+<p>Il utilise le protocole UDP en broadcast (255.255.255.255) pour échanger les informations de routage. La gestion des routes se fait via l’utilisation de timer&nbsp;:</p>
+<ul>
+  <li><strong>Update timer&nbsp;</strong>: intervalle de transmission des paquets de mise à jour (30 secondes)</li>
+  <li><strong>Invalid timer&nbsp;</strong>: temps de non mise à jour d’une entrée pour une route avant qu’elle ne soit marquée comme invalide dans la table de routage (180 secondes)</li>
+  <li><strong>Holddown timer&nbsp;</strong>: temps après lequel l’entrée non mise à jour n’est plus examiné durant le processus de recherche du meilleur chemin (180 secondes)</li>
+  <li><strong>Flush timer&nbsp;</strong>: temps après lequel l’entrée non mise à jour est supprimée de la table de routage (240 secondes)</li>
+</ul>
 <p>&nbsp;</p>
+<p>Voici les caractéristiques principales de RIP v1&nbsp;:</p>
+<ul>
+  <li><strong>Métrique&nbsp;</strong>: nombre de sauts</li>
+  <li><strong>Algorithme&nbsp;</strong>: Bellman-Ford</li>
+  <li>Il n’y a <strong>pas de prise en compte du débit des liaisons</strong></li>
+  <li><strong>Maximum 15 sauts</strong></li>
+  <li>Type <strong>classful </strong>ce qui veut dire qu’il n’y a pas d’information de masque réseau associé aux destinations. En d’autres termes, il ne prend pas en charge les masques de sous-réseau de longueur variable.</li>
+</ul>
+<p>&nbsp;</p>
+<h2>RIP v2 (RFC 2453)</h2>
+<p>Des faiblesses de RIP v1 (coût de la diffusion par broadcast, pas adapté aux masques à longueur variable) est né RIP v2 en 1993. Contrairement à la première version, RIP v2 utilise le multicast (224.0.0.9) pour envoyer les informations de routage.</p>
+<p>&nbsp;</p>
+<p>Voici les caractéristiques principales de RIP v2&nbsp;:</p>
+<ul>
+  <li><strong>Métrique&nbsp;</strong>: nombre de sauts</li>
+  <li><strong>Algorithme&nbsp;</strong>: Bellman-Ford</li>
+  <li>Il n’y a <strong>pas de prise en compte du débit des liaisons</strong></li>
+  <li><strong>Maximum 15 sauts</strong></li>
+  <li>Type <strong>classless </strong>ce qui veut dire que le masque est associé aux destinations.</li>
+</ul>
+<h2>IGRP</h2>
+<p>Le protocole IGRP (Interior Gateway Routing Protocol) a été développé par Cisco en partie pour remédier aux limitations de RIP. Les mises à jour sont transmises immédiatement à chaque changement. Contrairement à RIP qui transmet la table de routage complète, IGRP n’envoie que la ligne qui subit une modification.</p>
+<p>Voici les caractéristiques principales d’IGRP&nbsp;:</p>
+<ul>
+  <li><strong>Métrique&nbsp;</strong>: nombre de sauts, délai, bande passante, charge et fiabilité</li>
+  <li><strong>Algorithme </strong>: Dijkstra</li>
+  <li><strong>Maximum 255 sauts</strong></li>
+  <li>Type <strong>classful </strong>ce qui veut dire qu’il n’y a pas d’information de masque réseau associé aux destinations. En d’autres termes, il ne prend pas en charge les masques de sous-réseau de longueur variable.</li>
+</ul>
+<h2>Optimisation</h2>
+<p>Deux fonctions permettent d’empêcher ou de réduire pour certains cas les boucles de routage et d’optimiser le reroutage des flux en cas de tombé d’un lien. Les voici&nbsp;:</p>
+<ul>
+  <li><strong>Split-Horizon</strong>&nbsp;: ne pas réannoncer à un routeur une route qu'on a apprise par lui. En effet, même si la route ainsi renvoyée ne peut être immédiatement celle de plus court chemin (+2 à la métrique à cause de l'aller-retour sur le lien), il se peut qu'en cas de rupture d'un lien amont sur le routeur d'origine, celui-ci puisse croire que la route optimale passe par le routeur qui lui a réannoncé sa propre route.</li>
+  <li><strong>Poison-Reverse</strong>&nbsp;: perfectionnement de Split-Horizon en réannonçant la route apprise par un routeur à celui-ci, mais en lui affectant une métrique infinie (= 16) afin de signifier à celui-ci que le chemin n'est pas à utiliser. Cette méthode permet de casser immédiatement les boucles de routage alors que le simple split-horizon implique d'attendre la prochaine mise à jour des tables de routage.</li>
+</ul>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Le routage par état de liens</h1>
+<p>Les protocoles de routage par état de liens ont été conçu principalement pour pallier les limitations des protocoles de routage à vecteur de distance (notamment en terme de taille). Ils gèrent une base de données d'informations topologiques sur laquelle ils appliquent un algorithme de calcul du plus court chemin d'abord (Shortest Path First (SPF) ou algorithme de Dijkstra).</p>
+<p>Le fonctionnement du routage par état de liens est le suivant&nbsp;: 1️⃣ Echange de paquets LSA (Link State Advertisement) qui permettent 2️⃣ de construire la base de données topologique sur laquelle 3️⃣ nous appliquons l’algorithme SPF qui permet de 4️⃣ construire l’arbre de plus court chemin dont la racine est le routeur. De cet arbre 5️⃣, la table de routage est tirée.</p>
+<p>L’envoie des mises à jour est réalisé à des intervalles moins fréquents que pour le routage&nbsp; par vecteur de distance (toutes les 30 minutes par exemple). Le plus important est d'avoir une base de données topologique à jour et identique sur tous les routeurs.</p>
+<p>Les principaux protocoles à états de liens sont OSPF et IS-IS.</p>
