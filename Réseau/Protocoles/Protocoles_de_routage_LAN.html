@@ -2,7 +2,7 @@
 title: Les protocoles de routage LAN
 description: Tout comprendre sur le routage LAN.
 published: false
-date: 2021-06-25T15:21:02.359Z
+date: 2021-06-25T15:30:03.661Z
 tags: routage, lan, vecteur de distance, état de liens, rip, ospf, igrp, is-is
 editor: ckeditor
 dateCreated: 2021-06-25T14:49:58.493Z
@@ -43,10 +43,14 @@ dateCreated: 2021-06-25T14:49:58.493Z
 <p>📌 <i>Sous Linux, le forwarding est réalisé par le noyau alors que le routing est réalisé par un programme (daemon).</i></p>
 <p>&nbsp;</p>
 <h1>Le routage par vecteur de distance</h1>
-<p>Ce type de protocole détermine la direction (le prochain saut) et la distance (le nombre de sauts) vers n’importe quel réseau de l’inter-réseau. Il envoie périodiquement tout ou partie de sa table de routage aux routeurs voisins. À la réception d’une mise à jour de routage, une vérification de tous les chemins connus est faite et des modifications sont apportées si nécessaire.&nbsp;</p>
+<p>Ce type de protocole détermine la direction (le prochain saut) et la distance (le nombre de sauts) vers n’importe quel réseau de l’inter-réseau. Il envoie périodiquement tout ou partie de sa table de routage aux routeurs voisins. À la réception d’une mise à jour de routage, une vérification de tous les chemins connus est faite et des modifications sont apportées si nécessaire.</p>
+<figure class="image image_resized" style="width:36.22%;"><img src="/images/routage_vecteur_distance.png">
+  <figcaption>Schéma routage par vecteur de distance.</figcaption>
+</figure>
+<p>&nbsp;</p>
 <h2>RIP v1 (RFC 1058)</h2>
 <p>Le protocole RIP v1 (Routing Information Protocol) a été conçu en 1988.&nbsp;</p>
-<p>Il utilise le protocole UDP en broadcast (255.255.255.255) pour échanger les informations de routage. La gestion des routes se fait via l’utilisation de timer&nbsp;:</p>
+<p>Il utilise le protocole UDP en broadcast (<code>255.255.255.255</code>) pour échanger les informations de routage. La gestion des routes se fait via l’utilisation de timer&nbsp;:</p>
 <ul>
   <li><strong>Update timer&nbsp;</strong>: intervalle de transmission des paquets de mise à jour (30 secondes)</li>
   <li><strong>Invalid timer&nbsp;</strong>: temps de non mise à jour d’une entrée pour une route avant qu’elle ne soit marquée comme invalide dans la table de routage (180 secondes)</li>
@@ -64,7 +68,7 @@ dateCreated: 2021-06-25T14:49:58.493Z
 </ul>
 <p>&nbsp;</p>
 <h2>RIP v2 (RFC 2453)</h2>
-<p>Des faiblesses de RIP v1 (coût de la diffusion par broadcast, pas adapté aux masques à longueur variable) est né RIP v2 en 1993. Contrairement à la première version, RIP v2 utilise le multicast (224.0.0.9) pour envoyer les informations de routage.</p>
+<p>Des faiblesses de RIP v1 (coût de la diffusion par broadcast, pas adapté aux masques à longueur variable) est né RIP v2 en 1993. Contrairement à la première version, RIP v2 utilise le multicast (<code>224.0.0.9</code>) pour envoyer les informations de routage.</p>
 <p>&nbsp;</p>
 <p>Voici les caractéristiques principales de RIP v2&nbsp;:</p>
 <ul>
@@ -93,6 +97,9 @@ dateCreated: 2021-06-25T14:49:58.493Z
 </ul>
 <p>&nbsp;</p>
 <h1>Le routage par état de liens</h1>
+<figure class="image image_resized" style="width:29.25%;"><img src="/images/routage_etat_liens.png">
+  <figcaption>Schéma routage par état de liens.</figcaption>
+</figure>
 <p>Les protocoles de routage par état de liens ont été conçu principalement pour pallier les limitations des protocoles de routage à vecteur de distance (notamment en terme de taille). Ils gèrent une base de données d'informations topologiques sur laquelle ils appliquent un algorithme de calcul du plus court chemin d'abord (Shortest Path First (SPF) ou algorithme de Dijkstra).</p>
 <p>Le fonctionnement du routage par état de liens est le suivant&nbsp;: 1️⃣ Echange de paquets LSA (Link State Advertisement) qui permettent 2️⃣ de construire la base de données topologique sur laquelle 3️⃣ nous appliquons l’algorithme SPF qui permet de 4️⃣ construire l’arbre de plus court chemin dont la racine est le routeur. De cet arbre 5️⃣, la table de routage est tirée.</p>
 <p>L’envoie des mises à jour est réalisé à des intervalles moins fréquents que pour le routage&nbsp; par vecteur de distance (toutes les 30 minutes par exemple). Le plus important est d'avoir une base de données topologique à jour et identique sur tous les routeurs.</p>
