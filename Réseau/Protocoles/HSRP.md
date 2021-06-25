@@ -2,7 +2,7 @@
 title: Réseau - HSRP
 description: Qu'est-ce que c'est et à quoi ça sert ?
 published: true
-date: 2021-06-14T08:08:36.544Z
+date: 2021-06-25T21:57:53.055Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:38.820Z
@@ -36,6 +36,22 @@ Il n'y a pas de partage de charge entre les routeurs.
 
 L'utilisation de l'adresse multicast 224.0.0.2, permet à tous les routeurs du réseau de recevoir les messages.
 
+# Authentification
+
+Le protocole HSRP (Hot Standby Routing Protocol) est un protocole propriétaire Cisco celui-ci permet d’obtenir une continuité de service sur nos routeurs.
+
+###### Définition du mot de passe : 
+
+Il est conseillé de personnaliser un mot de passe pour les échanges et de ne pas utiliser celui par défaut. Ainsi, cela diminu le nombre de chance qu’un pirate casse l’HSRP. Pour changer le mot de passe, il faut utiliser la commande suivante :
+
+**standby 10 authentication wikitech**
+
+###### Hashage MD5 :
+
+Cisco permet l'utilisation de l’algorithme MD5 afin de hasher les échanges. Dans ce cas, le mot de passe n’est plus tramsis dans le champs « Authentification data » celui-ci devient égale à 0. Pour cela, il faut rajouter la commande suivante dans tous les routeurs membre du groupe HSRP :
+
+**standby 10 authentication md5 hsrp**
+
 # **Exemple de configuration** 
 
 Il nous faut à minima deux routeurs de marque Cisco (A et B) utilisant le protocole HSRP pour produire une tolérance de panne. Le routeur A utilisera l'adresse IP 192.168.1.252 avec un masque de sous-réseau de 255.255.255.0, tandis que le routeur B utilisera l'adresse IP 192.168.1.253 avec le même masque de sous-réseau.
@@ -54,6 +70,10 @@ L'adresse IP virtuelle est 192.168.1.254. Cela correspond à l’IP que l’on d
 
 *standby 10 preempt*
 
+*standby 10 authentication wikitech*
+
+*standby 10 authentication md5 hsrp*
+
 **Routeur B**
 
 *interface fastethernet 0/0*
@@ -65,3 +85,7 @@ L'adresse IP virtuelle est 192.168.1.254. Cela correspond à l’IP que l’on d
 *standby 10 priority 100*
 
 *standby 10 preempt*
+
+*standby 10 authentication wikitech*
+
+*standby 10 authentication md5 hsrp*
