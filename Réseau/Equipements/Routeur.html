@@ -2,7 +2,7 @@
 title: Routeur
 description: Qu'est-ce que c'est et comment fonctionne-t-il ?
 published: true
-date: 2021-06-25T09:18:27.946Z
+date: 2021-06-25T12:50:43.388Z
 tags: réseau, routeur, équipements
 editor: ckeditor
 dateCreated: 2021-06-25T09:09:49.041Z
@@ -17,14 +17,14 @@ dateCreated: 2021-06-25T09:09:49.041Z
   <figcaption>Le routeur interconnecte des réseaux.</figcaption>
 </figure>
 <h1 style="text-align:justify;">Le fonctionnement du routage</h1>
-<p style="text-align:justify;">Comme vu juste au-dessus, le routeur &nbsp;fonctionne au niveau de la couche réseau. Cette couche achemine de bout en bout des paquets à travers des réseaux interconnectés.</p>
-<p style="text-align:justify;">Le principe de base du routage suit les étapes suivantes&nbsp;:</p>
+<p style="text-align:justify;">Le routeur, qui est l'élément d'interconnexion, utilise les informations des datagrammes transportés par les trames pour déterminer le chemin des données. Ce chemin déterminé au niveau 3 est ensuite mise en œuvre au niveau 2 via le protocole ARP. Le routage IP se fait ainsi saut par saut.&nbsp;</p>
+<p style="text-align:justify;">De ce fait, il est possible de présenter le principe de base du routage en deux étapes :</p>
 <ul>
   <li style="text-align:justify;"><strong>Détermination du chemin&nbsp;</strong>: la couche réseau utilise une table de routage pour déterminer quel est le meilleur chemin à emprunter pour atteindre le réseau de destination. La métrique qui permet de mesurer la qualité d’un chemin est calculée en fonction de la configuration du routeur et du protocole de routage utilisé.</li>
   <li style="text-align:justify;"><strong>Commutation&nbsp;</strong>: La fonction de commutation permet à un routeur d'accepter un paquet d'une interface et de le transmettre par le biais d'une autre interface. Le paquet pris en charge à une interface est retransmis via une autre interface via le chemin calculé à l’étage précédente.</li>
 </ul>
 <p style="text-align:justify;">&nbsp;</p>
-<h1 style="text-align:justify;">Critère de choix d'un routeur</h1>
+<h1 style="text-align:justify;">Critères de choix d'un routeur</h1>
 <p style="text-align:justify;">Maintenant que nous comprenons ce qu’est un routeur et comment il fonctionne globalement, il faut savoir comment bien choisir son équipement. Ce choix dépendra de l’architecture réseau visée et des évolutions envisagées.</p>
 <p style="text-align:justify;">Les critères ci-dessous permettent de se faire une première idée (la liste n’est pas exhaustive)&nbsp;:</p>
 <ul>
