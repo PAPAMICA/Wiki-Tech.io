@@ -2,7 +2,7 @@
 title: Réseau - HSRP
 description: Qu'est-ce que c'est et à quoi ça sert ?
 published: true
-date: 2021-06-25T21:57:53.055Z
+date: 2021-06-25T21:58:30.121Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:38.820Z
@@ -38,7 +38,7 @@ L'utilisation de l'adresse multicast 224.0.0.2, permet à tous les routeurs du r
 
 # Authentification
 
-Le protocole HSRP (Hot Standby Routing Protocol) est un protocole propriétaire Cisco celui-ci permet d’obtenir une continuité de service sur nos routeurs.
+Le protocole HSRP (Hot Standby Routing Protocol) est un protocole propriétaire Cisco celui-ci permet d’obtenir une continuité de service de nos routeurs.
 
 ###### Définition du mot de passe : 
 
