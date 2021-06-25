@@ -1,0 +1,34 @@
+<!--
+title: 📨 Routeur 🚧
+description: Qu'est-ce que c'est et comment fonctionne-t-il ?
+published: false
+date: 2021-06-25T09:09:49.041Z
+tags: 
+editor: ckeditor
+dateCreated: 2021-06-25T09:09:49.041Z
+-->
+
+<h1>Son rôle</h1>
+<p style="text-align:justify;">Les routeurs sont des équipements d'interconnexion qui fonctionnent au niveau de la couche 3 (couche réseau du <a href="https://wiki-tech.io/R%C3%A9seau/Protocoles/OSI">modèle OSI</a>). Ils interconnectent des différents sous réseaux d’une entreprise ou le réseau de l’entreprise et le reste du monde via Internet notamment.</p>
+<p style="text-align:justify;">Leur rôle consiste à acheminer les paquets de données entre les réseaux, en fonction des informations de la couche 3, en empruntant le chemin le plus court possible. Au-delà des fonctions traditionnelles de routage, d’autres fonctions sont aujourd’hui implémentées dans les routeurs&nbsp;: le filtrage, la translation d’adresse, le relais de messagerie, etc…&nbsp;</p>
+<p style="text-align:justify;">Le besoin de consolidation des équipements réseau a conduit au développement de <a href="https://wiki-tech.io/R%C3%A9seau/Equipements/Switch">commutateurs</a> de niveau 3 qui intègrent donc les fonctions de routage. L’usage de ce type d’équipements permet de réduire la complexité et le coût du réseau au détriment parfois de la richesse des fonctions disponibles et des performances.</p>
+<figure class="image image_resized" style="width:42.68%;"><img src="/images/routeur.png">
+  <figcaption>Le routeur interconnecte des réseaux.</figcaption>
+</figure>
+<h1 style="text-align:justify;">Le fonctionnement du routage</h1>
+<p style="text-align:justify;">Comme vu juste au-dessus, le routeur &nbsp;fonctionne au niveau de la couche réseau. Cette couche achemine de bout en bout des paquets à travers des réseaux interconnectés.</p>
+<p style="text-align:justify;">Le principe de base du routage suit les étapes suivantes&nbsp;:</p>
+<ul>
+  <li style="text-align:justify;"><strong>Détermination du chemin&nbsp;</strong>: la couche réseau utilise une table de routage pour déterminer quel est le meilleur chemin à emprunter pour atteindre le réseau de destination. La métrique qui permet de mesurer la qualité d’un chemin est calculée en fonction de la configuration du routeur et du protocole de routage utilisé.</li>
+  <li style="text-align:justify;"><strong>Commutation&nbsp;</strong>: La fonction de commutation permet à un routeur d'accepter un paquet d'une interface et de le transmettre par le biais d'une autre interface. Le paquet pris en charge à une interface est retransmis via une autre interface via le chemin calculé à l’étage précédente.</li>
+</ul>
+<p style="text-align:justify;">&nbsp;</p>
+<h1 style="text-align:justify;">Critère de choix d'un routeur</h1>
+<p style="text-align:justify;">Maintenant que nous comprenons ce qu’est un routeur et comment il fonctionne globalement, il faut savoir comment bien choisir son équipement. Ce choix dépendra de l’architecture réseau visée et des évolutions envisagées.</p>
+<p style="text-align:justify;">Les critères ci-dessous permettent de se faire une première idée (la liste n’est pas exhaustive)&nbsp;:</p>
+<ul>
+  <li style="text-align:justify;">Nombre, vitesse et type d’interfaces</li>
+  <li style="text-align:justify;">Capacité de routage (nombre de paquet routés par seconde)</li>
+  <li style="text-align:justify;">Evolutivité</li>
+  <li style="text-align:justify;">Fonctions / services intégrés</li>
+</ul>
