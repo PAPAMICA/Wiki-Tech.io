@@ -2,7 +2,7 @@
 title: Routeur
 description: Qu'est-ce que c'est et comment fonctionne-t-il ?
 published: true
-date: 2021-06-27T14:28:48.810Z
+date: 2021-06-27T14:29:13.227Z
 tags: réseau, routeur, équipements
 editor: markdown
 dateCreated: 2021-06-25T09:09:49.041Z
@@ -18,7 +18,7 @@ Le besoin de consolidation des équipements réseau a conduit au développement 
 
 ![](/images/routeur.png)
 
-Le routeur interconnecte des réseaux.
+
 
 # Le fonctionnement du routage
 
