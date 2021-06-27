@@ -2,7 +2,7 @@
 title: Les protocoles de routage LAN
 description: Tout comprendre sur le routage LAN.
 published: true
-date: 2021-06-27T14:26:20.167Z
+date: 2021-06-27T14:27:44.859Z
 tags: routage, lan, vecteur de distance, état de liens, rip, ospf, igrp, is-is
 editor: markdown
 dateCreated: 2021-06-25T14:49:58.493Z
@@ -43,7 +43,9 @@ Le forwarding consiste à déterminer le prochain saut pour un datagramme vers l
 
 Le routing consiste à échanger le contenu de sa table de routage avec ses voisins pour déterminer les chemins dans une architecture multi-réseaux. Pour ce faire, un protocole de routage est utilisé.
 
-📌 *Sous Linux, le forwarding est réalisé par le noyau alors que le routing est réalisé par un programme (daemon).*
+> Sous Linux, le forwarding est réalisé par le noyau alors que le routing est réalisé par un programme (daemon).
+{.is-info}
+
 
 # Le routage par vecteur de distance
 
@@ -51,7 +53,7 @@ Ce type de protocole détermine la direction (le prochain saut) et la distance (
 
 ![](/images/routage_vecteur_distance.png)
 
-Schéma routage par vecteur de distance.
+
 
 ## RIP v1 (RFC 1058)
 
@@ -106,7 +108,7 @@ Deux fonctions permettent d’empêcher ou de réduire pour certains cas les bou
 
 ![](/images/routage_etat_liens.png)
 
-Schéma routage par état de liens.
+
 
 Les protocoles de routage par état de liens ont été conçu principalement pour pallier les limitations des protocoles de routage à vecteur de distance (notamment en terme de taille). Ils gèrent une base de données d'informations topologiques sur laquelle ils appliquent un algorithme de calcul du plus court chemin d'abord (Shortest Path First (SPF) ou algorithme de Dijkstra).
 
