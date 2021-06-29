@@ -2,7 +2,7 @@
 title: 🔐 WireGuard
 description: Comprendre et installer ce VPN nouvelle génération
 published: false
-date: 2021-06-28T20:43:52.648Z
+date: 2021-06-29T21:33:26.255Z
 tags: linux, réseau, routage, vpn, wireguard
 editor: markdown
 dateCreated: 2021-06-27T21:09:12.144Z
@@ -15,9 +15,9 @@ dateCreated: 2021-06-27T21:09:12.144Z
 WireGuard est un protocole VPN de nouvelle génération sous licence GPLv2 (ou MIT, BSD, Apache 2.0 ou GPL suivant le contexte) créé par Jason A. Donenfeld. Le site officiel étant accessible via ce lien : https://www.wireguard.com/.
 
 WireGuard se veut être plus **simple**, **rapide** et **sécurisé** que les protocoles VPN communs que sont OpenVPN et IPsec. 
-- La **simplicité** de configuration se passe en une seule phase standardisée contrairement à IPsec fonctionnant avec deux phases souvent difficiles à appréhender pour des novices. De plus la non utilisation de certificats, comme on la retrouve avec OpenVPN, simplifie la gestion à plus long terme et ne nécessite pas la création d'une PKI.
+- La **simplicité** de configuration qui se passe en une seule phase standardisée contrairement à IPsec fonctionnant avec deux phases souvent difficiles à appréhender pour des novices. De plus la non utilisation de certificats, comme on la retrouve avec OpenVPN, simplifie la gestion à plus long terme et ne nécessite pas la création d'une PKI.
 - La **sécurité** est assurée avec l'utilisation de primitives cryptographiques modernes mais aussi par la mise à disposition d'une seule combinaison de méthode de chiffrement. De plus le code complet de WireGuard tient sur environ 4 000 lignes ce qui facilite les audits de sécurité et réduit sa surface d'attaque.
-- La **rapidité** tient en grande partie des points précédents mais aussi parce que WireGuard fonctionne au niveau du noyau (seulement sous Linux). Les tests présents sur le site officiel (https://www.wireguard.com/performance/) démontrent un très fort avantage de WireGuard sur OpenVPN et un avantage un peu plus ténu sur IPsec, à la fois en débit maximal atteint et en temps de réponse. A savoir que d'autres tests sont disponibles sur Internet et tendent à placer WireGuard comme le plus performant même si l'écart n'est pas toujours aussi important.
+- La **rapidité** tient en grande partie des points précédents mais aussi parce que WireGuard fonctionne au niveau du noyau (seulement sous Linux). Les tests présents sur le site officiel (https://www.wireguard.com/performance/) démontrent un très fort avantage de WireGuard sur OpenVPN et un avantage un peu plus ténu sur IPsec, à la fois en débit maximal atteint et en temps de latence. A savoir que d'autres tests sont disponibles sur Internet et tendent à placer WireGuard comme le plus performant même si l'écart n'est pas toujours aussi important.
 
 > C'est un **VPN de niveau 3** du modèle OSI. C'est-à-dire que c'est la couche *Réseau* (IP, ICMP, ARP et DHCP principalement) qui est redirigée dans le tunnel VPN. Le client VPN pourra atteindre le réseau distant mais ne sera pas vu comme appartenant directement à ce réseau comme on l'aurait avec un VPN de niveau 2 (par exemple avec OpenVPN et l'utilisation de sa carte TAP).
 {.is-info}
@@ -27,8 +27,8 @@ WireGuard se veut être plus **simple**, **rapide** et **sécurisé** que les pr
 
 ## Quels sont les prérequis ?
 
-WireGuard est intégré au noyau Linux à partir de la **version 5.6 du noyau Linux**. Toutes distribitions ayant une version égale ou supérieur est donc compatible pour l'utilisation de WireGuard. 
-Une recherche sur Internet pour vérifier que sa distribution favorite est compatible avec WireGuard est tout de même conseillée.
+WireGuard est intégré au noyau Linux à partir de la **version 5.6 du noyau Linux**. Toutes distributions ayant une version égale ou supérieur est donc compatible pour l'utilisation de WireGuard. Si ce n'est pas le cas, à partir du noyau en version 3.10, il est possible de compiler WireGuard avec les informations disponibles ici : https://www.wireguard.com/compilation/.
+Une recherche sur Internet pour vérifier que sa distribution favorite est compatible avec WireGuard est tout de même conseillée. 
 
 Pour les autres environnements il est possible d'aller vérifier sur le site WireGuard qu'un portage existe : https://www.wireguard.com/install/. A titre informatif les autres OS principaux sont compatibles à partir de :
 - Windows 7 / Windows Server 2012 
@@ -69,19 +69,200 @@ Du côté du serveur une association entre l'IP WireGuard du client, *10.0.0.1/2
 
 # Installation et configuration 
 
+> Cette section installation et configuration va globalement se focaliser sur Linux car WireGuard a été conçu pour ce dernier. Les compatibilités avec les autres OS étant des portages du code de base il vous faudra chercher les spécificités liées à votre OS si les indications suivantes ne sont pas suffisantes.
+> Les projets créés pour piloter un WireGuard avec des outils et interfaces plus conviviales et abstractives seront aussi omises de cet article.
+{.is-warning}
+
+
 ## Serveur
 
+### Installer WireGuard
+
+Comme indiqué dans la section [*Quels sont les prérequis ?*](#quels-sont-les-pr%C3%A9requis) il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
+
+Les installations les plus communes sont listées sur le site de WireGuard : https://www.wireguard.com/install/.
+Par exemple pour un Ubuntu l'installation se réalisera avec la simple commande suivante :
+``` bash
+sudo apt install wireguard
+```
+
+
+### Créer une paire de clefs
+
+Les mécanismes d'authentification de WireGuard se basant sur l'usage de clefs publique et privé il vous faut les générer avant de passer à la configuration du serveur. Les outils WireGuard proposent de se charger de leur génération, la clef privée peut être générée avec la commande suivante :
+
+``` bash
+wg genkey
+```
+
+Il est préférable d'enregistrer le résultat directement dans un fichier avec une redirection de ce type :
+``` bash
+wg genkey > privatekey
+```
+
+> La clef privée ne devant pas être accessible par d'autres utilisateurs il est fortement recommandé d'appliquer un droit de lecture/écriture seulement pour l'utilisateur propriétaire (`chmod 0600 privatekey`).  
+{.is-warning}
+
+La clef publique est générée à l'aide de la clef privée avec la commande suivante (attention à la double redirection à modifier si le nom des fichiers est différent de votre côté) :
+``` bash
+wg pubkey < privatekey > publickey
+```
+
+Nous pouvons raccourcir ces générations de clefs via la seule commande suivante : 
+``` bash
+wg genkey | tee privatekey | wg pubkey > publickey && chmod 0600 privatekey
+```
+
+
 ### Configuration simplifiée avec wg-quick
+
+`wg-quick` est un utilitaire fourni avec WireGuard qui permet de rapidement configurer une interface WireGuard en se basant sur le contenu d'un fichier de configuration. Les fichiers de configurations sont d'abord recherchés dans **/etc/wireguard/** et sont nommés **\<INTERFACE>.conf**. Habituellement nous retrouvons comme nom *wg0* avec son fichier de configuration */etc/wireguard/wg0.conf*, la suite des commandes se basera sur cette configuration.
+
+> L'utilisation de la commande `wg-quick` ne nécessite pas forcément de placer les fichiers de configurations dans /etc/wireguard/.
+{.is-info}
+
+> Le nom des interfaces sous Linux ne doivent pas dépasser 15 caractères. Le nom de l'interface sera valide avec la forme suivante **\[a-zA-Z0-9_=+.-]{1,15}**.
+{.is-warning}
+
+
+Voici un exemple de fichier de configuration annoté pour expliquer les différents champs :
+``` bash
+# Configuration de l'interface WireGuard du serveur.
+[Interface]
+# Définition de l'adresse IP (IPv4 ou IPv6) d'écoute pour l'interface WireGuard.
+# L'adresse doit être de la forme IP/MASQUE (exemple : 172.18.10.254/24).
+# Il est possible d'ajouter plus d'une adresse sur l'interface WireGuard.
+Address = ADDRESS1
+#Address = ADDRESS2
+
+# (Optionnel) Ajouter les serveurs DNS affectés à l'interface WireGuard.
+# Plusieurs DNS peuvent être définis en les séparant par des virgules.
+#DNS = DNS1, DNS2
+
+# (Optionnel) Lors de l'arrêt de l'interface WireGuard sa configuration sera enregistrée en écrasant le fichier de configuration.
+#SaveConfig = true
+
+# (Optionnel) Commandes à exécuter avant/après le démarrage ou l'arrêt de l'interface WireGuard.
+# %i sera remplacé par le nom de l'interface WireGuard.
+# Ces options sont en générales utilisées pour définir des options particulières de DNS, pare-feu ou NAT.
+#PreUp =
+#PostUp = 
+#PreDown =
+#PostDown =
+
+# (Optionnel) Si l'ajout des routes de l'interface WireGuard doit être réalisée dans une table particulière il est possible de la définir ici.
+# Le paramètre "off" désactive la création des routes, par défaut c'est "auto" qui est utilisé.
+#Table = auto
+
+# (Optionnel) Ajoute un marquage des paquets sortant.
+# Si défini à 0 ou "off" ce mécanisme sera désactivé.
+# Il est possible de définir la valeur en hexadécimale en la préposant de "0x".
+#FwMark = off
+
+# (Optionnel) Port d'écoute du serveur WireGuard.
+# Si non défini ce sera un port aléatoire disponible qui sera utilisé.
+#ListenPort = 51820
+
+# Clef privée de l'interface WireGuard.
+# Exemple : yAnz5TF+lXXJte14tji3zlMNq+hd2rYUIgJBgB3fBmk=
+PrivateKey = PRIVATE_KEY
+
+# Configuration des paires pouvant se connecter au serveur.
+# Création d'autant de [Peer] qu'il y a de paires identifié avec une clef publique à connecter.
+[Peer]
+# Clef publique du paire.
+# Exemple : xTIBA5rboUvnH4htodjb6e697QjLERt1NAB4mZqp8Dg=
+PublicKey = PUBLIC_KEY_PEER_1
+
+# (Optionnel) Clef partagée entre le serveur et le paire, cette clef doit être issue de wg genpsk.
+# Cette option a pour but d'ajouter une couche supplémentaire de chiffrement symétrique pour une résistance théorique post-quantique.  
+#PresharedKey = PRESHAREDKEY_PEER_1
+
+# Liste des IPs ou réseaux associés au paire séparés par des virgules.
+# Doit être de la forme IP/MASQUE (172.18.10.254/24) ou RESEAU/MASQUE (172.18.10.0/24).
+# L'utilisation du réseau 0.0.0.0/0 ou ::/0 indique que tout le trafic doit être redirigé vers le paire. Dans ce cas un seul paire peut être défini.
+AllowedIPs = ALLOWED_IP_1_PEER_1, ALLOWED_IP_2_PEER_1
+
+# (Optionnel) Permet d'envoyer des paquets vides à l'hôte au bout de x secondes (entre 1 et 65535).
+# Cette option est à activer si les pare-feu ou les NAT ne maintiennent pas la session UDP pour cause d'inactivité trop longue.
+#PersistentKeepalive = off
+
+# (Optionnel) Défini l'adresse IP source de la provenance des paquets WireGuard de l'hôte.
+# Ce paramètre sera automatiquement mis à jour par WireGuard dans tous les cas.
+# Le paramètre est de la forme IP:PORT ou NOM:PORT.
+#Endpoint = ENDPOINT_PEER_1
+
+#[Peer]
+#PublicKey = PUBLIC_KEY_PEER_2
+#PresharedKey = PRESHAREDKEY_PEER_2
+#AllowedIPs = ALLOWED_IP_1_PEER_2, ALLOWED_IP_2_PEER_2
+#PersistentKeepalive = off
+#Endpoint = ENDPOINT_PEER_2
+```
+
+Une fois la configuration prête il ne reste plus qu'à démarrer WireGuard avec la commande suivante s'il faut préciser un fichier de configuration :
+``` bash
+wg-quick up /etc/wireguard/wg0.conf
+```
+
+Il est aussi possible de préciser simplement le nom de l'interface à démarrer (sous-entend qu'un fichier *.conf* soit présent dans */etc/wireguard/*) :
+``` bash
+wg-quick up wg0
+```
+
+Pour arrêter l'interface WireGuard il suffit de remplacer `wg-quick up` par `wg-quick down` :
+``` bash
+wg-quick down wg0
+```
+
+
+#### Utiliser wg-quick avec systemd
 
 ### Configuration manuelle
 
 ### Informations sur les clients connectés
 
-### Générer le QR code de configuration
-
 ## Client
 
 ### Configuration du client sous Linux
+
+#### Installer WireGuard
+
+L'installation du client est identique à celle du serveur, par conséquent les prérequis de la section [*Quels sont les prérequis ?*](#quels-sont-les-pr%C3%A9requis) s'appliquent aussi. Il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
+
+Les installations les plus communes sont listées sur le site de WireGuard : https://www.wireguard.com/install/.
+Par exemple pour un Ubuntu l'installation se réalisera avec la simple commande suivante :
+``` bash
+sudo apt install wireguard
+```
+
+
+#### Créer une paire de clefs
+
+Les mécanismes d'authentification de WireGuard se basant sur l'usage de clefs publique et privé il vous faut les générer avant de passer à la configuration du serveur. Les outils WireGuard proposent de se charger de leur génération, la clef privée peut être générée avec la commande suivante :
+
+``` bash
+wg genkey
+```
+
+Il est préférable d'enregistrer le résultat directement dans un fichier avec une redirection de ce type :
+``` bash
+wg genkey > privatekey
+```
+
+> La clef privée ne devant pas être accessible par d'autres utilisateurs il est fortement recommandé d'appliquer un droit de lecture/écriture seulement pour l'utilisateur propriétaire (`chmod 0600 privatekey`).  
+{.is-warning}
+
+La clef publique est générée à l'aide de la clef privée avec la commande suivante (attention à la double redirection à modifier si le nom des fichiers est différent de votre côté) :
+``` bash
+wg pubkey < privatekey > publickey
+```
+
+Nous pouvons raccourcir ces générations de clefs via la seule commande suivante : 
+``` bash
+wg genkey | tee privatekey | wg pubkey > publickey && chmod 0600 privatekey
+```
+
 
 #### Utilisation de wg-quick
 
@@ -90,6 +271,8 @@ Du côté du serveur une association entre l'IP WireGuard du client, *10.0.0.1/2
 #### Configuration avancée : utilisation des espaces de noms réseaux
 
 ### Configuration du client sur les autres plateformes
+
+#### Générer le QR code de configuration
 
 
 
