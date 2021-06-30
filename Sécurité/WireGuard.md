@@ -2,7 +2,7 @@
 title: 🔐 WireGuard
 description: Comprendre et installer ce VPN nouvelle génération
 published: false
-date: 2021-06-30T21:15:16.183Z
+date: 2021-06-30T21:17:33.726Z
 tags: linux, réseau, routage, vpn, wireguard
 editor: markdown
 dateCreated: 2021-06-27T21:09:12.144Z
@@ -78,7 +78,7 @@ Du côté du serveur une association entre l'IP WireGuard du client, *10.0.0.1/2
 
 ### Installer WireGuard
 
-Comme indiqué dans la section [*Quels sont les prérequis ?*](#quels-sont-les-pr%C3%A9requis) il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
+Comme indiqué dans la section [*Quels sont les prérequis ?*](https://wiki-tech.io/fr/S%C3%A9curit%C3%A9/WireGuard#quels-sont-les-pr%C3%A9requis) il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
 
 Les installations les plus communes sont listées sur le site de WireGuard : https://www.wireguard.com/install/.
 Par exemple pour un Ubuntu l'installation se réalisera avec la simple commande suivante :
