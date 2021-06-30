@@ -2,7 +2,7 @@
 title: 🔐 WireGuard
 description: Comprendre et installer ce VPN nouvelle génération
 published: false
-date: 2021-06-30T21:17:33.726Z
+date: 2021-06-30T21:19:47.549Z
 tags: linux, réseau, routage, vpn, wireguard
 editor: markdown
 dateCreated: 2021-06-27T21:09:12.144Z
@@ -257,7 +257,7 @@ systemctl disable wg-quick@wg0
 
 ### Configuration manuelle
 
-La configuration manuelle d'une interface WireGuard est parfaitement possible et les étapes suivantes seront à réaliser (en plus de l'[installation](#installer-wireguard) et [génération des clefs](#cr%C3%A9er-une-paire-de-clefs)) :
+La configuration manuelle d'une interface WireGuard est parfaitement possible et les étapes suivantes seront à réaliser (en plus de l'[installation](https://wiki-tech.io/fr/S%C3%A9curit%C3%A9/WireGuard#installer-wireguard) et [génération des clefs](https://wiki-tech.io/fr/S%C3%A9curit%C3%A9/WireGuard#cr%C3%A9er-une-paire-de-clefs)) :
 1. Création d'un fichier de configuration WireGuard
 1. Création d'une nouvelle interface 
 1. Assignation d'une adresse IP à l'interface
@@ -374,7 +374,7 @@ wg show wg0
 > WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur.
 {.is-info}
 
-L'installation du client est identique à celle du serveur, par conséquent les prérequis de la section [*Quels sont les prérequis ?*](#quels-sont-les-pr%C3%A9requis) s'appliquent aussi. Il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
+L'installation du client est identique à celle du serveur, par conséquent les prérequis de la section [*Quels sont les prérequis ?*](https://wiki-tech.io/fr/S%C3%A9curit%C3%A9/WireGuard#quels-sont-les-pr%C3%A9requis) s'appliquent aussi. Il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
 
 Les installations les plus communes sont listées sur le site de WireGuard : https://www.wireguard.com/install/.
 Par exemple pour un Ubuntu l'installation se réalisera avec la simple commande suivante :
