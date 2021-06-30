@@ -2,7 +2,7 @@
 title: 🔐 WireGuard
 description: Comprendre et installer ce VPN nouvelle génération
 published: false
-date: 2021-06-30T21:12:40.639Z
+date: 2021-06-30T21:15:16.183Z
 tags: linux, réseau, routage, vpn, wireguard
 editor: markdown
 dateCreated: 2021-06-27T21:09:12.144Z
@@ -371,6 +371,9 @@ wg show wg0
 
 #### Installer WireGuard
 
+> WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur.
+{.is-info}
+
 L'installation du client est identique à celle du serveur, par conséquent les prérequis de la section [*Quels sont les prérequis ?*](#quels-sont-les-pr%C3%A9requis) s'appliquent aussi. Il vous faudra un OS Linux avec un noyau de version supérieure ou égale à 5.6.
 
 Les installations les plus communes sont listées sur le site de WireGuard : https://www.wireguard.com/install/.
@@ -381,6 +384,9 @@ sudo apt install wireguard
 
 
 #### Créer une paire de clefs
+
+> WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur.
+{.is-info}
 
 Les mécanismes d'authentification de WireGuard se basant sur l'usage de clefs publique et privé il vous faut les générer avant de passer à la configuration du serveur. Les outils WireGuard proposent de se charger de leur génération, la clef privée peut être générée avec la commande suivante :
 
@@ -522,7 +528,7 @@ wg-quick down wg0
 
 ##### Utiliser wg-quick avec systemd
 
-> WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur
+> WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur.
 {.is-info}
 
 `wg-quick` déploie aussi le nécessaire afin de l'utiliser via systemd et la commande `systemctl`. Il est donc possible de démarrer, arrêter ainsi que de démarrer automatiquement un tunnel WireGuard.
@@ -557,6 +563,9 @@ systemctl disable wg-quick@wg0
 
 
 #### Configuration manuelle
+
+> WireGuard ne différenciant pas un client d'un serveur cette section est identique à celle de la configuration du serveur.
+{.is-info}
 
 ##### Configuration avancée : utilisation des espaces de noms réseaux
 
