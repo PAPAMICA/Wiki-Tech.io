@@ -1,8 +1,8 @@
 ---
 title: 🔐 WireGuard
 description: Comprendre et installer ce VPN nouvelle génération
-published: false
-date: 2021-07-01T22:13:03.147Z
+published: true
+date: 2021-07-01T22:13:42.111Z
 tags: linux, réseau, routage, vpn, wireguard
 editor: markdown
 dateCreated: 2021-06-27T21:09:12.144Z
