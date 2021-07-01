@@ -2,7 +2,7 @@
 title: Sécurité
 description: Les bases et quelques astuces de sécurité IT !
 published: true
-date: 2021-05-30T18:56:05.855Z
+date: 2021-07-01T22:16:27.756Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:33:36.396Z
@@ -10,6 +10,7 @@ dateCreated: 2021-05-24T14:33:36.396Z
 
 
 - [✨ Les bases 🚧 *Avant de commencer...*](/Sécurité/Bases)
+- [🔐 WireGuard *Comprendre et installer ce VPN nouvelle génération*](/Sécurité/WireGuard)
 {.links-list}
 # Chiffrement
 - [📜 Certificat Wildcard *Comment générer un certificat SSL pour tous vos sous-domaines ?*](/Sécurité/Chiffrement/Wildcard)
