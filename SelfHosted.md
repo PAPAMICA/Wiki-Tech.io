@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-06-15T11:04:27.364Z
+date: 2021-07-02T08:47:01.332Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
@@ -25,7 +25,7 @@ dateCreated: 2021-05-30T16:49:09.893Z
 - [🌀 Nextcloud 🚧 *Alternative à Drive, iCloud, etc...*](/SelfHosted/Nextcloud)
 - [🤐 Privatebin *Partage de secrets. Alternative à Pastebin*](/SelfHosted/Privatebin)
 - [🔐 Serveur OpenVPN 🚧 *Serveur VPN compatible sur tous les devices*](/SelfHosted/OpenVPN)
-- [🔏 Serveur WireGuard 🚧 *Serveur VPN de nouvelle génération*](/SelfHosted/OpenVPN)
+- [🔏 Serveur WireGuard 🚧 *Serveur VPN de nouvelle génération*](/Sécurité/WireGuard)
 - [🌐 Site web 🚧 *Un hébergement pour vos sites HTML/CSS/JS/PHP*](/SelfHosted/Site-web)
 - [🔉 Stack Teamspeak 🚧 *Serveur vocal accompagné de son bot et de ses statistiques*](/SelfHosted/Teamspeak)
 - [👔 Taiga 🚧 *Gestion de projets. Alternative à Trello*](/SelfHosted/Taiga)
