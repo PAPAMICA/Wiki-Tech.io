@@ -2,7 +2,7 @@
 title: 💽 Ajouter ou étendre un disque à chaud
 description: Comment s'y prendre sans impact sur la production
 published: true
-date: 2021-07-05T17:45:12.913Z
+date: 2021-07-05T17:56:45.773Z
 tags: linux, partition, disque, virtualisation
 editor: markdown
 dateCreated: 2021-07-05T17:41:40.628Z
@@ -235,7 +235,7 @@ L'extension de la partition étant gérée il ne reste plus qu'à étendre le sy
 #### Extension du système de fichier ext 
 
 > Cette section ne sera valable que pour des systèmes de fichiers **ext 2, 3 ou 4**, celles-ci étant encore largement utilisées par défaut sur les machines Linux.
-{.is-infos}
+{.is-info}
 
 Si la partition est bien formatée en ext alors la commande suivante pourra étendre le système de fichier jusqu'à occuper l'entièreté de la partition :
 ```
