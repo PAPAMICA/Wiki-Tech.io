@@ -1,8 +1,8 @@
 ---
-title: :minidisc: Ajouter ou étendre un disque à chaud
+title: 💽 Ajouter ou étendre un disque à chaud
 description: Comment s'y prendre sans impact sur la production
 published: true
-date: 2021-07-05T17:42:54.884Z
+date: 2021-07-05T17:45:12.913Z
 tags: linux, partition, disque, virtualisation
 editor: markdown
 dateCreated: 2021-07-05T17:41:40.628Z
