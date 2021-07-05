@@ -2,7 +2,7 @@
 title: Linux
 description: Les bases et bien plus encore sur Linux !
 published: true
-date: 2021-05-30T18:14:24.685Z
+date: 2021-07-05T17:46:52.092Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:14:24.685Z
@@ -20,6 +20,7 @@ dateCreated: 2021-05-30T18:14:24.685Z
 
 # Avancé
 - [⚠️ Faire ses backups *Mettre en place les sauvegardes de ses serveurs et ordinateurs*](/Linux/Avancé/Backup)
+- [💽 Ajouter ou étendre un disque à chaud *Comment s'y prendre sans impact sur la production*](/Linux/Avanc%C3%A9/AjouterEtEtendreUnDisqueAChaud)
 - [💽 LVM *Gestion de disques logiques*](/Linux/Avancé/LVM)
 {.links-list}
 
