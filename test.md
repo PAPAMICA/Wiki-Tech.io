@@ -2,7 +2,7 @@
 title: test
 description: 
 published: true
-date: 2021-07-08T15:34:51.953Z
+date: 2021-07-08T15:35:25.886Z
 tags: 
 editor: markdown
 dateCreated: 2021-07-08T15:31:25.220Z
@@ -12,6 +12,6 @@ dateCreated: 2021-07-08T15:31:25.220Z
 
 Your content here
 
-var obj = {"video": { "value": "" }} document.write(obj.video.value);
+<video>https://www.youtube.com/watch?v=Cisg9bLhLkk</video>
 
 test
