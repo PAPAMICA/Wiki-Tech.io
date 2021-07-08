@@ -2,7 +2,7 @@
 title: Ansible - Introduction
 description: Présentation et définitions de cette solution
 published: true
-date: 2021-07-08T16:47:45.499Z
+date: 2021-07-08T16:48:12.037Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-08T16:16:25.971Z
@@ -15,20 +15,17 @@ dateCreated: 2021-07-08T16:16:25.971Z
 </div>
 
 ## Informations utiles
-
 - Créé en 2012 (2015 repris par Redhat) par Michael DeHaan (Cobler, outil de provisionnement)
 - Ansible = Infrastructure as code + déploiement de configurations + installations
 - à base de python
 - Documentation : https://docs.ansible.com/
 - orchestrateur basé sur du push > pas d'agent = serveur distant pousse les informations à la différence des outils à base d'agents > pull (puppet etc..)
 
-
-## Concurrents :
+## Concurrents
 * puppet
 * chef
 * saltstack
 * capistrano
-
 
 ## Avantages
 - simplicité lié à l'utilisation de SSH
@@ -39,16 +36,13 @@ dateCreated: 2021-07-08T16:16:25.971Z
 - système de templating = jinja2 (python) (équivalent à erb pour puppet (ruby))
 - également utilisable pour récupérer les données de vos serveurs
 
-
-
-## Outils :
+## Outils
 * ansible vault
 * ansible playbook
 * ansible galaxy
 * ansible doc
 
-
-## Types d'installation :
+## Types d'installation
 * via les sources
 * via les paquets
 * via librairie python (pip)
@@ -63,7 +57,3 @@ dateCreated: 2021-07-08T16:16:25.971Z
 * postgresql
 * mysql
 ...
-
-
-
-également utilisable pour récupérer les données de vos serveurs
