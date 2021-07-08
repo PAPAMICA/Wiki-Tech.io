@@ -2,11 +2,13 @@
 title: Ansible - Introduction
 description: Présentation et définitions de cette solution
 published: true
-date: 2021-07-08T16:54:02.644Z
+date: 2021-07-08T16:55:48.018Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-08T16:16:25.971Z
 ---
+
+![](https://blog.dbi-services.com/wp-insides/uploads/sites/2/2021/03/ansible-logo.png)
 
 # Introduction et présentation
 
@@ -123,7 +125,7 @@ dateCreated: 2021-07-08T16:16:25.971Z
 * peut contenir des tasks (à éviter)
 * peut contenir des conditions (à éviter)
 
-##Plugins
+## Plugins
 * modifie ou augmente les capacités de ansible
 * de différentes manières : output, inventory dynamique, strategy, tests...
 
