@@ -2,7 +2,7 @@
 title: test
 description: 
 published: true
-date: 2021-07-08T15:33:05.080Z
+date: 2021-07-08T15:33:31.650Z
 tags: 
 editor: code
 dateCreated: 2021-07-08T15:31:25.220Z
@@ -11,7 +11,8 @@ dateCreated: 2021-07-08T15:31:25.220Z
 <h1>Header</h1>
 <p>Your content here</p>
 <p>&nbsp;</p>
-<figure class="media">
-  <oembed url="https://www.youtube.com/watch?v=Cisg9bLhLkk"></oembed>
-</figure>
+var obj = {"video": {
+  "value": "<iframe title='YouTube video player' type=\"text/html\" width='640' height='390' src='http://www.youtube.com/embed/W-Q7RMpINVo' frameborder='0' allowFullScreen></iframe>"
+}}
+document.write(obj.video.value);
 <p>test</p>
