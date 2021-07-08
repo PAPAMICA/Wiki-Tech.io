@@ -2,7 +2,7 @@
 title: Ansible - Installation et configuration
 description: Mettre en place Ansible dans son environnement
 published: true
-date: 2021-07-08T17:36:05.922Z
+date: 2021-07-08T17:46:26.598Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-08T17:18:58.350Z
@@ -170,3 +170,70 @@ Astuce pour bypasser la conf
 ```bash
 ssh -F /dev/null xavki@monhost
 ```
+
+# Configuration et tuning
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8Hb-i9lXdXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+## Configuration
+
+Configuration de différentes manières :
+- ansible.cfg
+- cli
+
+Et à différents endroits pour ansible.cfg (ordre inverse de prise en compte)
+
+- éventuellement en définissant ANSIBLE_CONFIG
+- à l'endroit de votre playbook ansible.cfg
+- ~/.ansible/ansible.cfg
+- /etc/ansible/ansible.cfg
+
+
+
+
+
+Exemple :
+```bash
+inventory       = /etc/ansible/hosts
+forks           = 5
+sudo_user       = root
+ask_sudo_pass   = True
+ask_pass        = True
+gathering       = implicit
+gather_subset   = all
+roles_path      = /etc/ansible/roles
+log_path        = /var/log/ansible.log
+vault_password_file = /path/to/vault_password_file
+fact_caching_connection =/tmp
+pipelining = False
+```
+Doc : https://docs.ansible.com/ansible/2.3/intro_configuration.html
+
+Commande :
+
+ansible-config
+ansible-config view  # voir le ansible.cfg pris en compte
+ansible-config list  # toute les variables et leurs valeurs
+cf : https://docs.ansible.com/ansible/latest/reference_appendices/config.html
+
+ansible-config dump  # liste toutes les variables ansible
+ansible-config dump --only-changed #valeurs par défaut modifiée
+
+exemple
+
+
+ANSIBLE_SSH_ARGS:
+  default: -C -o ControlMaster=auto -o ControlPersist=60s
+  description:
+  - If set, this will override the Ansible default ssh arguments.
+  - In particular, users may wish to raise the ControlPersist time to encourage performance.  A
+    value of 30 minutes may be appropriate.
+  - Be aware that if `-o ControlPath` is set in ssh_args, the control path setting
+    is not used.
+  env:
+  - name: ANSIBLE_SSH_ARGS
+  ini:
+  - key: ssh_args
+    section: ssh_connection
+  yaml:
+    key: ssh_connection.ssh_args
