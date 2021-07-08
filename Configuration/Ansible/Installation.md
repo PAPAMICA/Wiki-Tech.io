@@ -2,7 +2,7 @@
 title: Ansible - Installation et configuration
 description: Mettre en place Ansible dans son environnement
 published: true
-date: 2021-07-08T17:46:26.598Z
+date: 2021-07-08T17:52:10.797Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-08T17:18:58.350Z
@@ -175,6 +175,7 @@ ssh -F /dev/null xavki@monhost
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8Hb-i9lXdXA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
 ## Configuration
 
 Configuration de différentes manières :
@@ -187,10 +188,6 @@ Et à différents endroits pour ansible.cfg (ordre inverse de prise en compte)
 - à l'endroit de votre playbook ansible.cfg
 - ~/.ansible/ansible.cfg
 - /etc/ansible/ansible.cfg
-
-
-
-
 
 Exemple :
 ```bash
@@ -210,18 +207,17 @@ pipelining = False
 Doc : https://docs.ansible.com/ansible/2.3/intro_configuration.html
 
 Commande :
-
+```bash
 ansible-config
 ansible-config view  # voir le ansible.cfg pris en compte
 ansible-config list  # toute les variables et leurs valeurs
-cf : https://docs.ansible.com/ansible/latest/reference_appendices/config.html
-
 ansible-config dump  # liste toutes les variables ansible
 ansible-config dump --only-changed #valeurs par défaut modifiée
+```
+cf : https://docs.ansible.com/ansible/latest/reference_appendices/config.html
 
-exemple
-
-
+Exemple :
+```bash
 ANSIBLE_SSH_ARGS:
   default: -C -o ControlMaster=auto -o ControlPersist=60s
   description:
@@ -237,3 +233,91 @@ ANSIBLE_SSH_ARGS:
     section: ssh_connection
   yaml:
     key: ssh_connection.ssh_args
+```
+
+## Tuning
+Host key checking = fingerprint
+```bash
+[defaults]
+host_key_checking = False
+```
+
+Callback temps par action
+```bash
+[defaults]
+callback_whitelist = profile_tasks
+```
+
+Pipelining
+```bash
+[ssh_connection]
+pipelining = True
+```
+
+Principe par défaut :
+- création fichier python
+- création directory
+- envoi fichier python via sftp
+- run python
+- récupération résultat
+
+Avec pipelining :
+- génération du fichier python
+- envoi sur le python interpreter distant via stdin
+- récupération du stdout
+
+Rq: travailler sans fichier distant
+
+Partage de plusieurs sessions et augmentation de la persistence (connexion...)
+```bash
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=60s
+```
+Doc : https://www.blog-libre.org/2019/05/11/loption-controlmaster-de-ssh_config/
+
+
+Spécifier le mode d'identification
+```bash
+[ssh_connection]
+ssh_args = -o ControlMaster=auto -o ControlPersist=60s -o PreferredAuthentications=publickey
+```
+
+fork = parallélisation
+```bash
+[defaults]
+forks = 30
+```
+
+gather facts avec précaution
+```bash
+gather_facts: no
+```
+
+gather facts caching par fichier
+```bash
+fact_caching = jsonfile
+fact_caching_timeout = 3600
+fact_caching_connection = /tmp/mycachedir
+```
+
+gather facts caching par redis
+```bash
+fact_caching = redis
+fact_caching_timeout = 3600
+fact_caching_connection = localhost:6379:0
+```
+
+Mitogen
+
+Doc : https://mitogen.networkgenomics.com/ansible_detailed.html
+
+
+cas ultime > ansible localhost  >> ansible-pull (commande)
+
+chargement du code ansible sur le serveur distant
+
+cloud init > cron > ansible-pull
+
+
+exécution en localhost
+problème récupération des informations
