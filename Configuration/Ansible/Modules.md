@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-09T15:21:01.418Z
+date: 2021-07-09T15:21:40.124Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -142,7 +142,7 @@ Suppression de répertoire récursive
       state: absent
 ```
 
-# USER : COMMENT CREER, SUPPRIMER, GERER DES UTILISATEURS
+# USER : CREER, SUPPRIMER, GERER DES UTILISATEURS
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O9KOT2jxBu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
