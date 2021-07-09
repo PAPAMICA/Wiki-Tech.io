@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-07-09T07:05:36.695Z
+date: 2021-07-09T07:12:39.181Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -55,7 +55,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 # Gestionnaire de configurations
-- [⚙️ Ansible 🚧 *Un gestionnaire de configuration via SSH*](/Configuration#ansible)
+- [⚙️ Ansible *Un gestionnaire de configuration via SSH*](/Configuration#ansible)
 - [⚙️ Puppet 🚧 *Un gestionnaire de configuration avec agents*](/Configuration#puppet)
 - [⚙️ DSC 🚧 *Un gestionnaire de configuration pour Powershell*](/Configuration#dsc)
 - [⚙️ Terraform 🚧 *De l'infrastructure as code*](/Configuration#terraform)
