@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-09T15:21:40.124Z
+date: 2021-07-09T15:29:26.525Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -24,26 +24,16 @@ Objectif : gestion des fichiers et répertoires
 
 Périmètre : fichiers, répertoires, liens symboliques
 
-Options courantes :
-
-* `attribute` : paramètres particuliers d'un fichier : immutabilité etc...
-							(https://fr.wikipedia.org/wiki/Chattr)
-
-* `force` : pour les liens symboliques (si le fichier source existe pas, la destination existe)
-
-* `group/owner` : propriétaire et groupe de l'élément
-
-* `mode` : sous les deux formats : "0755" ou "u=rwx,g=rx,o=rx"
-
-* `path` : localisation
-
-* `recurse` : création du chemin intermédiaire si n'existe pas (yes/no) > pour directory uniquement
-
-* `src` : pour les liens (hard ou symbolique)
-
-* `state` : type (absent / directory / file / hard / link / touch)
-	touch > créé le fichier vide
-		file > vérifie l'existence et les caractéristiques
+## Paramètres
+|--|--|
+| `attribute` | Paramètres particuliers d'un fichier : immutabilité etc... (https://fr.wikipedia.org/wiki/Chattr)|
+| `force` | Pour les liens symboliques (si le fichier source existe pas, la destination existe)|
+| `group/owner` | Propriétaire et groupe de l'élément|
+| `mode` | Sous les deux formats : "0755" ou "u=rwx,g=rx,o=rx"|
+| `path` | Localisation|
+| `recurse` | Création du chemin intermédiaire si n'existe pas (yes/no) > pour directory uniquement|
+| `src` | Pour les liens (hard ou symbolique)|
+| `state` | Type (absent / directory / file / hard / link / touch)|
     
 ## Commandes
 Créer un répertoire
@@ -146,3 +136,55 @@ Suppression de répertoire récursive
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O9KOT2jxBu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
+  
+## Description
+Doc : https://docs.ansible.com/ansible/latest/modules/user_module.html
+Commande : `ansible-doc user`
+Equivalence : `useradd/adduser/userdel/deluser/luseradd`
+
+## Paramètres
+|--|--|
+
+append : yes/no > en lien avec groups / ajout aux groupes ou changement
+
+
+
+comment : commentaire associé au user
+
+
+
+create_home : yes/no > création de la home ou pas
+
+
+
+expires : format epoch > date d'expiration
+
+date "+%s" -d "10/06/2040 10:00:00"
+
+
+force : permet de forcer la suppression des fichier d'un user
+
+
+
+generate_ssh_key : génère en même temps une clef ssh à l'utilisateur
+
+
+
+group : définit le groupe principal de l'utilisateur
+
+
+
+groups : définit les groupes secondaires qui seront ajoutés
+
+
+
+home : définition de la home du user
+
+
+
+local : dans le cas d'une décentralisation de la gestion des users (forcer localement)
+
+
+
+move_home : pour déplacer une home existante
+## Commandes
