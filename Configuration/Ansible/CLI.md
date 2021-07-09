@@ -2,12 +2,13 @@
 title: Ansible - CLI
 description: Comprendre et utiliser les commandes Ansibles
 published: true
-date: 2021-07-09T07:37:09.124Z
+date: 2021-07-09T07:41:17.415Z
 tags: commande, ansible, configuration
 editor: markdown
 dateCreated: 2021-07-09T07:37:09.124Z
 ---
 
+![](https://blog.dbi-services.com/wp-insides/uploads/sites/2/2021/03/ansible-logo.png)
 # La commande ansible
 
 <div class="video-responsive">
@@ -68,3 +69,44 @@ ansible -i "node2," all -b -e "var1=xavki" -m debug -a 'msg={{ var1 }}'
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/blOKHSEs6IY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+## Commandes utiles
+Module command
+```bash
+ansible -i "node2," all -u vagrant -m command -a uptime
+```
+
+Module shell
+```bash
+ansible -i "node2," all -u vagrant -m shell -a "ps aux | grep vagrant | wc -l" --one-line
+```
+
+Exemple raw (sans python)
+```bash
+sudo apt autoremove --purge git
+ansible -i "node2," all -u vagrant -b -K -m raw -a "apt install -y git"
+```
+
+Module apt
+```bash
+ansible -i "node2," all -b -m apt -a 'name=nginx state=latest'
+```
+
+Arrêt d'un service
+```bash
+ansible -i "node2," all -b -m service -a 'name=nginx state=stopped'
+```
+Faire un scp
+```bash
+ansible -i "node2," all -m copy -a 'src=toto.txt dest=/tmp/titi.txt'
+```
+
+Récupérer un fichier
+```bash
+ansible -i "node2," all -m fetch -a 'src=/tmp/titi.txt dest=xavki.txt flat=yes'
+```
+
+Lister les gathers facts
+```bash
+ansible -i "node2," all -m setup -a "filter=ansible_distribution*"
+```
