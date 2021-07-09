@@ -2,7 +2,7 @@
 title: Ansible - Les inventaires
 description: Créer et gérer les inventaires Ansible
 published: true
-date: 2021-07-09T08:01:35.009Z
+date: 2021-07-09T08:04:50.183Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-09T08:01:35.009Z
@@ -175,3 +175,13 @@ all:
 
 ## Format Json
 https://linuxhint.com/ansible_inventory_json_format/
+
+# Les variables d'inventaires
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/UuiRDRIJ-sM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+# La commande et le graph
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/D6Ru-M04G4M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
