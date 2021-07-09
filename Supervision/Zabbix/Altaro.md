@@ -2,7 +2,7 @@
 title: Script Altaro-Zabbix
 description: Remonter les informations Altaro dans Zabbix
 published: true
-date: 2021-06-01T14:13:35.591Z
+date: 2021-07-09T14:02:27.991Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:24.847Z
@@ -12,7 +12,7 @@ dateCreated: 2021-05-24T10:37:24.847Z
 
 # Présentation
 
-Altaro est un logiciel ce sauvegarde de VM pour Hyper-V et pour VMWare ESXi. Il fonctionne sous Windows et peux sauvegarder les disques des machines virtuelles directement en local ou à distance.
+Altaro est un logiciel de sauvegarde de VM pour Hyper-V et pour VMWare ESXi. Il fonctionne sous Windows et peux sauvegarder les disques des machines virtuelles directement en local ou à distance.
 
 Notre but aujourd'hui est de remonter le statut des dernières sauvegardes dans notre serveur Zabbix.
 
