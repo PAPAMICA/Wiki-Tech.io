@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:40:59.091Z
+date: 2021-07-10T18:41:44.372Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -17,7 +17,7 @@ dateCreated: 2021-07-09T15:18:02.744Z
   
 ## Description
 
-Doc : https://docs.ansible.com/ansible/latest/modules/file_module.html
+Documentation : https://docs.ansible.com/ansible/latest/modules/file_module.html
 Commande : `ansible-doc file`
 
 Objectif : gestion des fichiers et répertoires
@@ -138,7 +138,7 @@ Suppression de répertoire récursive
   </div>
   
 ## Description
-Doc : https://docs.ansible.com/ansible/latest/modules/user_module.html
+Documentation : https://docs.ansible.com/ansible/latest/modules/user_module.html
 Commande : `ansible-doc user`
 Equivalence : `useradd/adduser/userdel/deluser/luseradd`
 
@@ -263,7 +263,7 @@ Suppression d'un user
   
 ## Description
 
-Doc : Documentation : https://docs.ansible.com/ansible/latest/modules/stat_module.html
+Documentation : https://docs.ansible.com/ansible/latest/modules/stat_module.html
 
 
 ## Paramètres
