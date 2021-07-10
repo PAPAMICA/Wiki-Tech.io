@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-09T15:29:26.525Z
+date: 2021-07-10T18:14:29.001Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -144,47 +144,16 @@ Equivalence : `useradd/adduser/userdel/deluser/luseradd`
 
 ## Paramètres
 |--|--|
+| `append yes/no` | En lien avec groups / ajout aux groupes ou changement |
+| `comment` | Commentaire associé au user |
+| `create_home yes/no` | Création de la home ou pas |
+| `expires format epoch` | Date d'expiration |
+| `force` | Permet de forcer la suppression des fichier d'un user |
+| `generate_ssh_key` | Génère en même temps une clef ssh à l'utilisateur |
+| `group` | Définit le groupe principal de l'utilisateur |
+| `groups` | Définit les groupes secondaires qui seront ajoutés |
+| `home` | Définition de la home du user |
+| `local` | Dans le cas d'une décentralisation de la gestion des users (forcer localement) |
+| `move_home` | Pour déplacer une home existante |
 
-append : yes/no > en lien avec groups / ajout aux groupes ou changement
-
-
-
-comment : commentaire associé au user
-
-
-
-create_home : yes/no > création de la home ou pas
-
-
-
-expires : format epoch > date d'expiration
-
-date "+%s" -d "10/06/2040 10:00:00"
-
-
-force : permet de forcer la suppression des fichier d'un user
-
-
-
-generate_ssh_key : génère en même temps une clef ssh à l'utilisateur
-
-
-
-group : définit le groupe principal de l'utilisateur
-
-
-
-groups : définit les groupes secondaires qui seront ajoutés
-
-
-
-home : définition de la home du user
-
-
-
-local : dans le cas d'une décentralisation de la gestion des users (forcer localement)
-
-
-
-move_home : pour déplacer une home existante
 ## Commandes
