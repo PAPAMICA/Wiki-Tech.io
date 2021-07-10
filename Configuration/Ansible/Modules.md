@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T19:36:57.479Z
+date: 2021-07-10T19:44:18.350Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -12,8 +12,11 @@ dateCreated: 2021-07-09T15:18:02.744Z
 
 # LISTES DES MODULES
 - [1 - FILE *Gestion des fichiers et répertoires*](#h-1-file-directory-softlink-droits-touch)
-- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple#macos)
-- [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple#accessoires)
+- [2 - USER *Gestion des utilisateurs*](#h-2-user-creer-supprimer-gerer-des-utilisateurs)
+- [3 - REGISTER & STAT ](#h-3-register-stat)
+- [4 - APT *Gestion des paquets*](#h-4-apt-installation-gestion-suppression-de-paquets)
+- [5 - REBOOT *Redémarrer un serveur*](#h-5-reboot-redemarrer-un-serveur-apres-upgrade)
+- [6 - SSH *Création et déploiement de clefs*](#h-6-ssh-creation-et-deploiement-de-clefs)
 {.links-list}
 
 # 1 - FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
