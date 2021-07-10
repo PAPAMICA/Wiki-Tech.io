@@ -2,13 +2,19 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T19:32:05.008Z
+date: 2021-07-10T19:36:57.479Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
 ---
 
 ![](https://blog.dbi-services.com/wp-insides/uploads/sites/2/2021/03/ansible-logo.png)
+
+# LISTES DES MODULES
+- [1 - FILE *Gestion des fichiers et répertoires*](#h-1-file-directory-softlink-droits-touch)
+- [💻 MacOS 🚧 *De l'installation aux différentes astuces*](/Apple#macos)
+- [⌚ Accessoires 🚧 *Les accessoires utiles pour l'écosystème Apple*](/Apple#accessoires)
+{.links-list}
 
 # 1 - FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
 <div class="video-responsive">
