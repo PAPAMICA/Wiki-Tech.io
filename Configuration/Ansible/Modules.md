@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:30:36.797Z
+date: 2021-07-10T18:40:59.091Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -254,4 +254,89 @@ Suppression d'un user
     user:
       name: xavki
       state: absent
+```
+
+# REGISTER & STAT
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yI8duHq9HMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+## Description
+
+Doc : Documentation : https://docs.ansible.com/ansible/latest/modules/stat_module.html
+
+
+## Paramètres
+|--|--|
+| `path` | Chemin du fichier ou répertoire |
+| `follow` | Suivre les liens symboliques |
+| `get_checksum` | Récupérer la checksum |
+| `checksum_algorithm` | Type de checksum (md5, etc) |
+| `get_mime` | Récupération du type de données |
+
+## Commandes
+Création d'un fichier
+```yaml
+  - name: création d'un fichier
+    file:
+      path: /tmp/xavki.txt
+      state: touch
+      owner: xavki
+```
+
+Utilisation de stat
+```yaml
+  - name: check avec stat
+    stat:
+      path: /tmp/xavki.txt
+```
+
+Récupération de la variable
+```yaml
+  - name: check avec stat
+    stat:
+      path: /tmp/xavki.txt
+    register: __fichier_xavki_exist
+  - name: debug
+    debug:
+      var: __fichier_xavki
+```
+
+Récupération d'une clef
+```yaml
+  - name: debug
+    debug:
+      var: __fichier_xavki.stat.exists
+```
+
+Utilisation conditionnnel
+```yaml
+  - name: création répertoire xavki
+    file:
+      path: /tmp/xavki
+      state: directory
+    when: __fichier_xavki.stat.exists
+```
+
+## Exemple
+```yaml
+  tasks:
+  - name: création d'un fichier
+    file:
+      path: /tmp/xavki.txt
+      state: touch
+      owner: root
+    when: xavki_file is defined
+  - name: check avec stat
+    stat:
+      path: /tmp/xavki.txt
+    register: __fichier_xavki
+  - name: debug
+    debug:
+      var: __fichier_xavki.stat.exists
+  - name: création répertoire xavki
+    file:
+      path: /tmp/xavki
+      state: directory
+    when: __fichier_xavki.stat.exists and xavki_file is defined
 ```
