@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:41:44.372Z
+date: 2021-07-10T18:51:18.345Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -339,4 +339,91 @@ Utilisation conditionnnel
       path: /tmp/xavki
       state: directory
     when: __fichier_xavki.stat.exists and xavki_file is defined
+```
+
+# APT : INSTALLATION, GESTION, SUPPRESSION DE PAQUETS
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0Capz3Z6Fds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+## Description
+Documentation : https://docs.ansible.com/ansible/latest/collections/ansible/builtin/apt_module.html
+Commande : `apt`
+
+## Paramètres
+|--|--|
+| `allow_unauthenticated` | Autoriser l'installation de paquets non authentifiés |
+| `autoclean` | Effacement des anciennes versions des paquets |
+| `cache_valid_time` | Durée durant laquelle ne pas remettre à jour le cache apt |
+| `deb` | Lien vers une source de paquet .deb |
+| `default_release` | Version par défaut |
+| `dpkg_options` | Option d'installation dpkg |
+| `force` | Equivaut à --force-yes, désactive la signature et certificats de paquets |
+| `force_apt_get` | Force l'utilisation de apt-get |
+| `install_recommends` | Activer ou désactiver les paquets recommandés (dépend des OS) |
+| `name` | Nom du paquet |
+| `only_upgrade` | Met à jour uniquement les paquets installés |
+| `policy_rc_d` | Règle de déclenchement automatique à l'installation d'un paquet |
+| `purge` | Purge les fichiers de configurations (--purge) |
+| `state present / absent / latest / fixed / build-dep` | Permet de choisir le status voulu |
+| `update_cache` | Réaliser un update avant l'installation |
+| `update_cache_retries` | Nombre de tentatives de l'update |
+| `update_cache_retry_max_delay` | Délai de chaque retry |
+| `upgrade : yes / no / safe / dist / full` | |
+
+## Commandes
+Mise à jour du cache
+```yaml
+  - name:
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+```
+
+Délai de validité du cache
+```yaml
+  - name:
+    apt:
+      name: haproxy
+      update_cache: yes
+      cache_valid_time: 60
+```
+
+Utiliser la version backport
+```yaml
+  - name:
+    apt:
+      name: haproxy
+      default_release: stretch-backports
+      update_cache: yes
+      cache_valid_time: 60
+```
+> Requière : `apt list -a haproxy` et `apt list -i haproxy`
+{.is-warning}
+Mise à jour
+```yaml
+  - name:
+    apt:
+      name: haproxy
+      update_cache: yes
+      cache_valid_time: 60
+      state: latest
+```
+
+Suppression
+```yaml
+  - name:
+    apt:
+      name: haproxy
+      state: absent
+```
+
+Suppression complète
+```yaml
+  - name:
+    apt:
+      name: haproxy
+      state: absent
+      purge: yes
+      autoremove: yes
 ```
