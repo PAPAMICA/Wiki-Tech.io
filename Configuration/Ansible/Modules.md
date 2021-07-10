@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:51:18.345Z
+date: 2021-07-10T18:51:28.703Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -400,6 +400,7 @@ Utiliser la version backport
 ```
 > Requière : `apt list -a haproxy` et `apt list -i haproxy`
 {.is-warning}
+
 Mise à jour
 ```yaml
   - name:
