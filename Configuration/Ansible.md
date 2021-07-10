@@ -2,7 +2,7 @@
 title: Ansible
 description: 
 published: true
-date: 2021-07-09T14:43:00.036Z
+date: 2021-07-10T19:46:16.955Z
 tags: 
 editor: markdown
 dateCreated: 2021-07-08T17:56:42.422Z
@@ -21,5 +21,5 @@ dateCreated: 2021-07-08T17:56:42.422Z
 - [💎 CLI *Comprendre et utiliser les commandes Ansibles*](/Configuration/Ansible/CLI)
 - [📜 Les inventaires *Créer et gérer les inventaires*](/Configuration/Ansible/Inventaires)
 - [🕹️ Les playbooks *Découverte des playbooks Ansible*](/Configuration/Ansible/Playbook)
-- [📦 Les modules 🚧 *Utilisation de différents modules Ansible*](/Configuration/Ansible/Modules)
+- [📦 Les modules *Utilisation de différents modules Ansible*](/Configuration/Ansible/Modules)
 {.links-list}
