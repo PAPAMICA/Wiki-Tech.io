@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T19:28:39.424Z
+date: 2021-07-10T19:32:05.008Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -10,7 +10,7 @@ dateCreated: 2021-07-09T15:18:02.744Z
 
 ![](https://blog.dbi-services.com/wp-insides/uploads/sites/2/2021/03/ansible-logo.png)
 
-# FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
+# 1 - FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EmivDVqBqHw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -131,8 +131,8 @@ Suppression de répertoire récursive
       path: /tmp/xavki/
       state: absent
 ```
-
-# USER : CREER, SUPPRIMER, GERER DES UTILISATEURS
+---
+# 2 - USER : CREER, SUPPRIMER, GERER DES UTILISATEURS
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/O9KOT2jxBu4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -255,8 +255,8 @@ Suppression d'un user
       name: xavki
       state: absent
 ```
-
-# REGISTER & STAT
+---
+# 3 - REGISTER & STAT
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yI8duHq9HMY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -340,8 +340,8 @@ Utilisation conditionnnel
       state: directory
     when: __fichier_xavki.stat.exists and xavki_file is defined
 ```
-
-# APT : INSTALLATION, GESTION, SUPPRESSION DE PAQUETS
+---
+# 4 - APT : INSTALLATION, GESTION, SUPPRESSION DE PAQUETS
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0Capz3Z6Fds" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -428,8 +428,8 @@ Suppression complète
       purge: yes
       autoremove: yes
 ```
-
-# REBOOT : REDEMARRER UN SERVEUR APRES UPGRADE
+---
+# 5 - REBOOT : REDEMARRER UN SERVEUR APRES UPGRADE
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/SRD2h5Fh4fA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
@@ -518,8 +518,8 @@ Mise à jours
         test_command: uptime
       when: reboot_required_file.stat.exists
 ``` 
-
-# SSH : CREATION ET DEPLOIEMENT DE CLEFS
+---
+# 6 - SSH : CREATION ET DEPLOIEMENT DE CLEFS
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/NZX80E0Uyao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
