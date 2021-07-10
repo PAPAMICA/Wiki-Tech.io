@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:14:29.001Z
+date: 2021-07-10T18:30:36.797Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -155,5 +155,103 @@ Equivalence : `useradd/adduser/userdel/deluser/luseradd`
 | `home` | Définition de la home du user |
 | `local` | Dans le cas d'une décentralisation de la gestion des users (forcer localement) |
 | `move_home` | Pour déplacer une home existante |
+| `name` | nom utilisateur |
+| `password` | Hash du password |
+| `password_lock` | Vérouiller le password du user |
+| `remove` | En cas de state absent, suppression en même des répertoires du user |
+| `shell` | Définition sur shell attribué au user |
+| `skeleton` | Avec create_home, pour définir le squelette à appliquer |
+| `ssh_key_bits` | Taille de la clef ssh générée |
+| `ssh_key_comment` | Commentaire de la clef ssh |
+| `ssh_key_file` | Spécifie le chemin de la clef ssh |
+| `ssh_key_passphrase`| Définir la passphrase de la clef ssh sinon pas de passphrase |
+| `ssh_key_type` | rsa par défaut, type de clef ssh |
+| `state` | Création ou suppression |
+| `system` | A la création définir ou non un compte system |
+| `uid` | Fixer l'uid |
+| `update_password always/on_create` | Soit mettre à jour sur changement ou juste création
 
 ## Commandes
+Création d'un user avec password
+```yaml
+- name: création de xavki
+  user:
+    name: xavki
+    state: present
+    password: "{{ 'password' | password_hash('sha512') }}"   
+```
+
+Ajout au groupe sudo
+```yaml
+- name: création de xavki
+  user:
+    name: xavki
+    state: present
+    groups: sudo
+    append: yes
+    password: "{{ 'password' | password_hash('sha512') }}"   
+```
+
+Fixer l'uid
+```yaml
+- name: création de xavki
+  user:
+    name: xavki
+    state: present
+    uid: 1200
+    groups: sudo
+    append: yes
+    password: "{{ 'password' | password_hash('sha512') }}" 
+```
+Génération de la clef ssh
+```yaml
+- name: création de xavki
+  user:
+    name: xavki
+    state: present
+    uid: 1200
+    groups: sudo
+    append: yes
+    generate_ssh_key: yes
+    password: "{{ 'password' | password_hash('sha512') }}"   
+```
+
+Ajout d'un register et découvrir les outputs
+```yaml
+  - name: création du user xavki
+    user:
+      name: xavki
+      state: present
+      generate_ssh_key: yes
+      uid: 1200
+      groups: sudo
+      append: yes
+      password: "{{ 'password' | password_hash('sha512') }}"
+    register: mavar
+  - name: debug
+    debug:
+      msg: "{{ mavar }}"
+```
+
+nologin avec le shell
+```yaml
+  - name: création du user xavki
+    user:
+      name: xavki
+      state: present
+      shell: /sbin/nologin
+      generate_ssh_key: yes
+      uid: 1200
+      groups: sudo
+      append: yes
+      password: "{{ 'password' | password_hash('sha512') }}"
+      password_lock: yes
+```
+
+Suppression d'un user
+```yaml
+  - name: création du user xavki
+    user:
+      name: xavki
+      state: absent
+```
