@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T18:51:28.703Z
+date: 2021-07-10T19:08:16.559Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -428,3 +428,95 @@ Suppression complète
       purge: yes
       autoremove: yes
 ```
+
+# REBOOT : REDEMARRER UN SERVEUR APRES UPGRADE
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SRD2h5Fh4fA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+## Description
+Documentation : https://docs.ansible.com/ansible/latest/collections/ansible/builtin/reboot_module.html
+Objectifs : rebooter des machines sous conditions et reprendre après
+
+## Paramètres
+|--|--|
+| `boot_time_command` | Command qui génère l'id de reboot |
+| `connect_timeout` | Timeout de la connexion en seconde |
+| `msg` | Message délivré avant le reboot |
+| `post_reboot_delay` | Temps d'attente en secondes après le reboot pour continuer |
+| `pre_reboot_delay` | Délai avant de lancer le reboot |
+| `reboot_timeout` | Timeout du reboot lui-même |
+| `search_paths` | Path pour la commande shutdown |
+| `test_command` | Commande de test pour confirmer le succés du reboot |
+
+## Commandes
+
+Démonstration avec de simples fichiers
+
+```yaml
+- name: mon premier playbook
+  hosts: all
+  remote_user: vagrant
+  become: yes
+  tasks:
+  - name: create file
+    file:
+      path: /tmp/xavki.txt
+      state: touch
+```
+
+```yaml
+  - name: test
+    stat:
+      path: /tmp/xavki.txt
+    register: __file_exist
+```
+
+```yaml
+  - name: lancement du reboot avec reboot
+    reboot:
+      msg: "Reboot via ansible"
+      connect_timeout: 5
+      reboot_timeout: 300
+      pre_reboot_delay: 0
+      post_reboot_delay: 30
+      test_command: uptime
+    when: __file_exist.stat.exists
+
+  - name: file2
+    file:
+      path: /tmp/xavki2.txt
+      state: touch
+```
+
+## Exemple
+Mise à jours
+```yaml
+    - name: update cache
+      apt:
+        update_cache: yes
+        force_apt_get: yes
+        cache_valid_time: 3600
+
+    - name: upgrade général
+      apt:
+        upgrade: dist
+        force_apt_get: yes
+
+    - name: vérification à partir du fichier reboot_required
+      register: reboot_required_file
+      stat:
+        path: /var/run/reboot-required
+
+    - name: lancement du reboot avec reboot
+      reboot:
+        msg: "Reboot via ansible"
+        connect_timeout: 5
+        reboot_timeout: 300
+        pre_reboot_delay: 0
+        post_reboot_delay: 30
+        test_command: uptime
+      when: reboot_required_file.stat.exists
+``` 
+
+
