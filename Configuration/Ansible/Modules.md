@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T19:08:16.559Z
+date: 2021-07-10T19:28:39.424Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -518,5 +518,102 @@ Mise à jours
         test_command: uptime
       when: reboot_required_file.stat.exists
 ``` 
+
+# SSH : CREATION ET DEPLOIEMENT DE CLEFS
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NZX80E0Uyao" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  
+## Description
+Documentation : 
+ - https://docs.ansible.com/ansible/latest/collections/ansible/posix/authorized_key_module.html
+ - https://docs.ansible.com/ansible/latest/collections/community/crypto/openssh_keypair_module.html
+
+Objectifs : générer une clef ssh et la déployer
+Attention : où suis-je ? qui suis-je ?
+
+## Paramètres openssh_keypair
+|--|--|
+| `attibutes` | Attributs des fichiers (non supprimable etc) |
+| `comment` | Commentaire de la clef |
+| `force` | Regénère la clef si elle existe déjà |
+| `group` | Groupe propriétaire des fichiers |
+| `mode` | Permisssions (cf file, 0600, u+rw) |
+| `owner` | Propirétaire |
+| `path` | Localisation des clefs (attention sécurité de la clef privée) |
+| `regenerate` | never / fail / partial_idempotence (si non conforme) / full_idempotence (et si non lisible) / always |
+| `size` | Taille de la clef |
+| `state` | present/absent |
+| `type` | rsa / dsa / rsa1 / ecdsa / ed25519 |
+| `unsafe_writes` | Prévenir les corruptions de fichiers |
+
+## Paramètres authorized_key
+|--|--|
+| `comment` | Commentaire (écrase le commentaire d'origine) |
+| `exclusive` | Permet de supprimer les clefs non mentionnée (plusieurs clefs possibles) |
+| `follow` | Suivre les liens symboliques |
+| `key` | Contenu de la clef (cf lookup) |
+| `key_options` | Options de la clef ssh (from=<ip>...) |
+| `manage_dir` | Gère lui-même le répertoire (création etc...) - default yes |
+| `path` | Chemin alternatif vers la clef (default .ssh...) |
+| `state` | present / absent |
+| `user` | Utilisateur de la machine cible où sera installé la clef |
+
+
+## Exemple 
+Génération de clef
+
+``` yaml
+- name: mon premier playbook
+  hosts: all
+  remote_user: vagrant
+  tasks:
+  - name: generate SSH key"
+    openssh_keypair:
+      path: /tmp/xavki
+      type: rsa
+      size: 4096
+      state: present
+      force: no
+    run_once: yes
+    delegate_to: localhost
+```
+Création d'un utilisateur et déploiement de sa clé   
+```yaml
+  - name: création du user devops
+    user:
+      name: devops
+      shell: /bin/bash
+      groups: sudo
+      append: yes
+      password: "{{ 'password' | password_hash('sha512') }}"
+    become: yes
+
+  - name: Add devops user to the sudoers
+    copy:
+      dest: "/etc/sudoers.d/devops"
+      content: "devops  ALL=(ALL)  NOPASSWD: ALL"
+    become: yes
+
+  - name: Deploy SSH Key
+    authorized_key: 
+      user: devops
+      key: "{{ lookup('file', '/tmp/xavki.pub') }}"
+      state: present
+    become: yes
+```
+
+Mode exclusif
+
+```yaml
+- name: Set authorized key, removing all the authorized keys already set
+  authorized_key:
+    user: root
+    key: '{{ item }}'
+    state: present
+    exclusive: True
+  with_file:
+    - public_keys/doe-jane
+```
 
 
