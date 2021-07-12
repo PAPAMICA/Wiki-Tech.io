@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T08:00:13.645Z
+date: 2021-07-12T08:00:32.533Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -984,7 +984,7 @@ Parcourir une liste > un fichier par itération
 
 Template :
 
-```yaml
+```json
 #{{ template_run_date }} - "{{ ansible_managed }}" via {{ template_uid }}@{{ template_host }}
 Hello {{ var1 }}
 je suis {{ item.nom }}
