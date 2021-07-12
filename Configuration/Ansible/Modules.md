@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T07:46:56.643Z
+date: 2021-07-12T08:00:13.645Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -866,5 +866,156 @@ Configuration nginx :
   autoindex_exact_size off;
 ```
 
+---
+# TEMPLATE : LES BASES, VARIABLES, LISTES, BOUCLES, ASTUCES...
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bprLiIL0BA4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+  
+## Description
+Documentation: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/template_module.html
+Objectifs : génération de fichier à partir de modèles intégrant des variables
+format jinja2 (python)
+  
+## Paramètres
+|--|--|
+| `attributes` | Attributs de fichiers |
+| `backup` | Créé une sauvegarde avant la modification (idem copy) |
+| `block_end_string` | Fin de block dans les templates ( %}) |
+| `block_start_string` | Début de block ({%) |
+| `dest` | Fichier cible ou généré |
+| `follow` | Suivre les liens symboliques |
+| `force` | Ecraser si le fichier de destination existe (défaut : yes) |
+| `group` | Groupe propriétaire du fichier |
+| `lstrip_blocks` | Respect stricte ou non des tabulations et blancs |
+| `mode` | Permissions du fichier (0755 ou r+rwx,g+rx,o+rx) |
+| `newline_sequence` | Quel élément est utilisé pour les nouvelles lignes |
+| `output_encoding` | Encodage du fichier généré (defaut : utf8) |
+| `owner` | Propriétaire du fichier |
+| `src` | Fichier source (template), attention localisation |
+| `trim_blocks` | Supprimer les retours à la ligne des blocks |
+| `unsafe_writes` | Eviter la corruption des fichiers |
+| `validate` | Commande de validation avant modification (idem copy) |
+| `variable_end_string` | Caractères des fins des variables |
+| `variable_start_string` | Caractères de début des variables  |
+  
+## Commandes
+Le plus simplte : 
+```yaml
+- name: preparation local
+  hosts: all
+  vars:
+    var1: "Xavier !!!"
+  tasks:
+  - name: template
+    template:
+      src: montemplate.txt.j2
+      dest: /tmp/hello.txt
+```
+
+Avec comme template :
+
+```json
+Hello {{ var1 }}
+````
+  
+Quelques variables utiles
+
+```yaml
+    ansible_managed : pour afficher en début de chaque template (prévenir)
+    template_host : machine qui a joué le template
+    template_uid : user à l'origine de la modification via le template
+    template_path : localisation du fichier
+    template_fullpath : chemin complet
+    template_run_date : date de modification
+
+```
+
+Exemple au début du fichier
+
+```json
+#{{ template_run_date }} - "{{ ansible_managed }}" via {{ template_uid }}@{{ template_host }}
+
+```
+
+Permissions, user et group
+
+```yaml
+  - name: template
+    template:
+      src: montemplate.txt.j2
+      dest: /tmp/hello.txt
+      owner: oki
+      group: oki
+      mode: 0755
+```
+
+Le backup avant modification
+
+
+```yaml
+  - name: template
+    template:
+      src: montemplate.txt.j2
+      dest: /tmp/hello.txt
+      owner: oki
+      group: oki
+      mode: 0755
+      backup: yes
+```
+
+Parcourir une liste > un fichier par itération
+
+```yaml
+  vars:
+    var1: "Xavier !!!"
+    var2:
+      - { nom: "xavier", age: "40" }
+      - { nom: "paul", age: "22" }
+      - { nom: "pierre", age: "25" }
+  tasks:
+  - name: template
+    template:
+      src: montemplate.txt.j2
+      dest: "/tmp/hello_{{ item.nom }}.txt"
+    with_items:
+    - "{{ var2 }}"
+```
+
+Template :
+
+```yaml
+#{{ template_run_date }} - "{{ ansible_managed }}" via {{ template_uid }}@{{ template_host }}
+Hello {{ var1 }}
+je suis {{ item.nom }}
+j'ai {{ item.age }}
+```
+
+Itération dans le template
+
+```yaml
+  vars:
+    var1: "Xavier !!!"
+    var2:
+      - { nom: "xavier", age: "40" }
+      - { nom: "paul", age: "22" }
+      - { nom: "pierre", age: "25" }
+  tasks:
+  - name: template
+    template:
+      src: montemplate.txt.j2
+      dest: "/tmp/hello_all.txt"
+```
+
+Template :
+
+```json
+#{{ template_run_date }} - "{{ ansible_managed }}" via {{ template_uid }}@{{ template_host }}
+Hello {{ var1 }}
+{% for personne in var2 %}
+    je suis {{ personne.nom }}
+    j'ai {{ personne.age }}
+{% endfor %}
+```
 
 
