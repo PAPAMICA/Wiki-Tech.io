@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T07:34:20.834Z
+date: 2021-07-12T07:43:53.000Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -625,7 +625,7 @@ Mode exclusif
   with_file:
     - public_keys/doe-jane
 ```
-
+---
 # 7 - COPY : VALIDATE, BACKUP, RECURSE...
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oIxoRcccnZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -786,3 +786,84 @@ Test
     become: yes
 ```
 ---
+# 8 - FETCH : RECUPERER DES FICHIERS
+  <div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/hYsI7_259kQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+  
+## Description
+Documentation: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/fetch_module.html
+Objectifs : récupération de fichiers des machines target
+Equivalent : scp
+  
+## Paramètres
+|--|--|
+| `dest` | Destination du fichier récupérer (sur la machine ansible) |
+| `fail_on_missing` | Erreur si le fichier manque (défaut yes) |
+| `flat` | Ecraser/force la destination (attention si plusieurs hosts) |
+| `src` | Fichier récupéré de la machine target |
+| `validate_checksum` | Validation de la récupération via la checksum |
+  
+## Commandes
+Exemple simple si copie vers \/
+```yaml
+  - name: fetch
+    fetch:
+      src: /etc/hosts
+      dest: tmp/
+```
+Avec une destination précise (attention sans flat)
+```yaml
+  - name: fetch
+    fetch:
+      src: /etc/hosts
+      dest: tmp/hosts_{{ ansible_hostname }}.txt
+```
+
+Avec le flat
+```yaml
+  - name: fetch
+    fetch:
+      src: /etc/hosts
+      dest: tmp/hosts_{{ ansible_hostname }}.txt
+      flat: yes
+```
+  
+## Exemples
+Collecter les fichiers et les mettre à dispo avec nginx
+
+```yaml
+- name: preparation local
+  connection: local
+  hosts: localhost
+  become: yes
+  tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+  - name: clean
+    file:
+      path: "{{ item }}"
+      state: absent
+    with_fileglob:
+    - /var/www/html/*.html
+- name: on découvre copy
+  hosts: all
+  tasks:
+  - name: fetch
+    fetch:
+      src: /etc/hosts
+      dest: /var/www/html/hosts_{{ ansible_hostname }}.txt
+      flat: yes
+```
+
+Configuration nginx :
+
+```bash
+  autoindex on;
+  autoindex_exact_size off;
+```
+
+
+
