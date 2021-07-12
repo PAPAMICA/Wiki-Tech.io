@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T08:00:32.533Z
+date: 2021-07-12T08:05:25.511Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -19,6 +19,7 @@ dateCreated: 2021-07-09T15:18:02.744Z
 - [🌀 6 - SSH *Création et déploiement de clefs*](#h-6-ssh-creation-et-deploiement-de-clefs)
 - [🌀 7 - COPY *Gestion des copies, des backups avec vérifications, etc..*](#h-7-copy-validate-backup-recurse)
 - [🌀 8 - FETCH *Récupération de données*](#h-8-fetch-recuperer-des-fichiers)
+- [🌀 9 - TEMPLATE *génération de fichier à partir de modèles intégrant des variables*](#h-9-template-les-bases-variables-listes-boucles-astuces)
 {.links-list}
 
 # 1 - FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
