@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T08:05:25.511Z
+date: 2021-07-12T08:06:08.701Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -868,7 +868,7 @@ Configuration nginx :
 ```
 
 ---
-# TEMPLATE : LES BASES, VARIABLES, LISTES, BOUCLES, ASTUCES...
+# 9 - TEMPLATE : LES BASES, VARIABLES, LISTES, BOUCLES, ASTUCES...
 <div class="video-responsive">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bprLiIL0BA4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
