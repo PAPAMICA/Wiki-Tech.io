@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-12T07:45:40.739Z
+date: 2021-07-12T07:46:56.643Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -11,14 +11,14 @@ dateCreated: 2021-07-09T15:18:02.744Z
 ![](https://blog.dbi-services.com/wp-insides/uploads/sites/2/2021/03/ansible-logo.png)
 
 # LISTES DES MODULES
-- [1 - FILE *Gestion des fichiers et répertoires*](#h-1-file-directory-softlink-droits-touch)
-- [2 - USER *Gestion des utilisateurs*](#h-2-user-creer-supprimer-gerer-des-utilisateurs)
-- [3 - REGISTER & STAT ](#h-3-register-stat)
-- [4 - APT *Gestion des paquets*](#h-4-apt-installation-gestion-suppression-de-paquets)
-- [5 - REBOOT *Redémarrer un serveur*](#h-5-reboot-redemarrer-un-serveur-apres-upgrade)
-- [6 - SSH *Création et déploiement de clefs*](#h-6-ssh-creation-et-deploiement-de-clefs)
-- [7 - COPY *Gestion des copies, des backups avec vérifications, etc..*](#h-7-copy-validate-backup-recurse)
-- [8 - FETCH *Récupération de données*](#h-8-fetch-recuperer-des-fichiers)
+- [🌀 1 - FILE *Gestion des fichiers et répertoires*](#h-1-file-directory-softlink-droits-touch)
+- [🌀 2 - USER *Gestion des utilisateurs*](#h-2-user-creer-supprimer-gerer-des-utilisateurs)
+- [🌀 3 - REGISTER & STAT ](#h-3-register-stat)
+- [🌀 4 - APT *Gestion des paquets*](#h-4-apt-installation-gestion-suppression-de-paquets)
+- [🌀 5 - REBOOT *Redémarrer un serveur*](#h-5-reboot-redemarrer-un-serveur-apres-upgrade)
+- [🌀 6 - SSH *Création et déploiement de clefs*](#h-6-ssh-creation-et-deploiement-de-clefs)
+- [🌀 7 - COPY *Gestion des copies, des backups avec vérifications, etc..*](#h-7-copy-validate-backup-recurse)
+- [🌀 8 - FETCH *Récupération de données*](#h-8-fetch-recuperer-des-fichiers)
 {.links-list}
 
 # 1 - FILE : DIRECTORY, SOFTLINK, DROITS, TOUCH...
