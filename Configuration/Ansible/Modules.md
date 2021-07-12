@@ -2,7 +2,7 @@
 title: Ansible - Les modules
 description: Utilisation de différents modules Ansible
 published: true
-date: 2021-07-10T19:44:18.350Z
+date: 2021-07-12T07:31:37.320Z
 tags: ansible, configuration, module
 editor: markdown
 dateCreated: 2021-07-09T15:18:02.744Z
@@ -625,4 +625,163 @@ Mode exclusif
     - public_keys/doe-jane
 ```
 
+# 7 - COPY : VALIDATE, BACKUP, RECURSE...
+<div class="video-responsive">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oIxoRcccnZ8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+  
+## Description
+Documentation: https://docs.ansible.com/ansible/2.5/modules/copy_module.html
+Objectifs : copier des fichiers ou du contenu
+Equivalent : scp
+  
+## Paramètres
+|--|--|
+| `attributes` | Attributs du fichier |
+| `backup` | Réalise une copie datée avant la copie |
+| `checksum` | Vérification du ficheir via un hash |
+| `content` | Dans le cas ou la source n'est pas un fichier mais une variable ou un string |
+| `decrypt` | Déchiffre les fichiers si ils sont vaultés (défaut : yes) |
+| `dest` | Localisation du fichier sur les serveurs target |
+| `directory_mode` | Dans le cas d'une recopie en mode récursif |
+| `follow` | Indiquer le filesytème dans la destination |
+| `force` | Remplace le fichier si il est différent de la source |
+| `group` | Group propriétaire |
+| `local_follow` | Indique le filesystème dans la source |
+| `mode` | Permissions du fichier ou du répertoire (0755, u+rwx,g+rx,o+rx) |
+| `owner` | User propriétiare |
+| `remote_src` | Copie du master vers la target, yes > copie de la target vers la target |
+| `src` | Localisation de la source |
+| `unsafe_writes` | Eviter la corruption de fichier |
+| `validate` | Commande jouée pour valider le fichier avant de le copier (le fichier se situe %s) |
 
+  ## Commandes
+Simple
+```yaml
+  tasks:
+  - name: copy
+    copy:
+      src: test.txt
+      dest: /tmp/xavki.txt
+```
+
+> Attention à la localisation de la source (cf les rôles)
+{.is-warning}
+
+
+
+Si changement > de base reupload
+```yaml
+  tasks:
+  - name: copy
+    copy:
+      src: test.txt
+      dest: /tmp/xavki.txt
+      force: no
+```
+
+En mode récursif
+```bash
+mkdir -p tmp/xavki/{1,2,3}
+```
+
+```yaml
+  - name: copy
+    copy:
+      src: tmp/
+      dest: /tmp/
+```
+
+Déplacer les fichiers ou répertoires sur la cible
+```yaml
+  - name: copy
+    copy:
+      src: /home/oki
+      dest: tmp/
+      remote_src: yes
+```
+
+Combinaison avec with_items
+```yaml
+  vars:
+    mesfichiers:
+      - { source: "xavki1.txt", destination: "/tmp/{{ ansible_hostname }}_xavki1.txt", permission: "0755" }
+      - { source: "xavki2.txt", destination: "/home/oki/{{ ansible_hostname }}_xavki2.txt", permission: "0644" }
+  tasks:
+  - name: copy
+    copy:
+      src: "{{ item.source }}"
+      dest: "{{ item.destination }}"
+      mode: "{{ item.permission }}"
+    with_items: "{{ mesfichiers }}"
+```
+
+Utilisation de pattern
+```yaml
+  - name: copy
+    copy:
+      src: "{{ item }}"
+      dest: /tmp/
+    with_fileglob:
+    - xavk*
+```
+
+Avec backup
+```yaml
+  - name: copy
+    copy:
+      src: "{{ item }}"
+      dest: /tmp/
+      backup: yes
+    with_fileglob:
+    - xavk*
+```
+
+Recopier du contenu à partir d'une variale ou/et un string
+```yaml
+  - name: copy
+    copy:
+      content: |
+         Salut
+         la team !!
+         on est sur {{ ansible_hostname }}
+      dest: /tmp/hello.txt
+```
+
+Avec validation
+```yaml
+- name: copie du fichier nginx.conf avec check
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: 0644
+    validate: /usr/bin/nginx -t -c %s
+```
+
+Ou encore
+```yaml
+  - name: Add devops user to the sudoers
+    copy:
+      dest: "/etc/sudoers.d/devops"
+      content: "oki ALL=(ALL)  NOPASSWD: ALL"
+      owner: root
+      group: root
+      mode: 0400
+      validate: /usr/sbin/visudo -cf %s
+```
+
+Test
+```yaml
+  - name: Add devops user to the sudoers
+    copy:
+      dest: "/etc/sudoers.d/devops"
+      content: "oki ALL=(ALL)  AAAAA: ALL"
+      owner: root
+      group: root
+      mode: 0400
+      validate: /usr/sbin/visudo -cf %s
+    become: yes
+```
+---
