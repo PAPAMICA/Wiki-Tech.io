@@ -2,11 +2,13 @@
 title: Linux - Installer un Raspberry Pi
 description: Toute l'insallation sans écran ni clavier !
 published: true
-date: 2021-07-16T08:40:22.022Z
+date: 2021-07-16T08:41:17.641Z
 tags: linux, raspberry-pi
 editor: markdown
 dateCreated: 2021-07-16T07:58:24.695Z
 ---
+
+![](https://www.kubii.fr/img/cms/Autres/RPi-Logo-Landscape-Reg-SCREEN.png)
 
 # Préparation
 Avant même de commencer l'installation, il faut savoir ce dont vous avez besoin ! 
