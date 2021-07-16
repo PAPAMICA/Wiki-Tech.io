@@ -1,8 +1,8 @@
 ---
 title: Linux - Installer un Raspberry Pi
-description: Toute l'insallation sans écran ni clavier !
+description: Toute l'installation sans écran ni clavier !
 published: true
-date: 2021-07-16T08:41:17.641Z
+date: 2021-07-16T08:43:32.992Z
 tags: linux, raspberry-pi
 editor: markdown
 dateCreated: 2021-07-16T07:58:24.695Z
