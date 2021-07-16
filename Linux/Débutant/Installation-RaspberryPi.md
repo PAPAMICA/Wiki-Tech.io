@@ -2,7 +2,7 @@
 title: Linux - Installer un Raspberry Pi
 description: Toute l'insallation sans écran ni clavier !
 published: true
-date: 2021-07-16T08:24:49.797Z
+date: 2021-07-16T08:40:22.022Z
 tags: linux, raspberry-pi
 editor: markdown
 dateCreated: 2021-07-16T07:58:24.695Z
@@ -12,17 +12,17 @@ dateCreated: 2021-07-16T07:58:24.695Z
 Avant même de commencer l'installation, il faut savoir ce dont vous avez besoin ! 
 
 ## Matériels essentiels
-- Un Raspberry Pi
-- Une carte micro SD de 16 Go minimum
-- Une alimentation
-- Un câble ethernet (si pas de Wi-Fi)
-- Un lecteur de carte micro SD
+- Un [Raspberry Pi](https://amzn.to/3rfci9X)
+- Une [carte micro SD de 16 Go minimum](https://amzn.to/3B98knL)
+- Une [alimentation](https://amzn.to/3hIEE9t)
+- Un [câble ethernet](https://amzn.to/3klQ0C4) (si pas de Wi-Fi)
+- Un [lecteur de carte micro SD](https://amzn.to/3xK2WW1)
 
 ## Matériels optionnels
-- Un boitier pour le Raspberry Pi
-- Un système de refroidissement (dissipateur ou venilateur)
-- Un adaptateur POE
-- Un rack pour baie ou un rack pour boitier electrique
+- Un [boitier pour le Raspberry Pi](https://amzn.to/3B8mo0U)
+- Un [système de refroidissement](https://amzn.to/3B8mo0U) (dissipateur ou venilateur)
+- Un [adaptateur POE](https://amzn.to/3yYVV3S)
+- Un [rack pour baie](https://amzn.to/2Ug0wQF) ou un [rack pour boitier electrique](https://amzn.to/3hGo0r6)
 
 ## Téléchargements
 Il vous faudra aussi un ordinateur sous Linux ou Windows avec un editeur de texte de votre choix et le logiciel [BalenaEtcher](https://www.balena.io/etcher/).
