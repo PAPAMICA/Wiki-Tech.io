@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-08-02T09:09:13.684Z
+date: 2021-08-02T09:10:45.044Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -92,7 +92,7 @@ cd /répertoire/de/destination
 
 ## diff - Comparer deux fichiers
 
-**Permet comparer deux fichiers**
+**Permet de comparer deux fichiers**
 
 ```bash
 diff -u <premier_fichier> <second_fichier>
