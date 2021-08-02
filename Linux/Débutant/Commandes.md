@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-06-16T07:11:56.961Z
+date: 2021-08-02T09:09:13.684Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -88,6 +88,18 @@ cat <option> fichier
 
 ```bash
 cd /répertoire/de/destination
+```
+
+## diff - Comparer deux fichiers
+
+**Permet comparer deux fichiers**
+
+```bash
+diff -u <premier_fichier> <second_fichier>
+```
+**Permet de comparer deux fichiers sur deux serveurs distants**
+```bash
+diff <(ssh <user@server1> 'cat /path/to/file1') <(ssh <user@server2> 'cat /path/to/file2')
 ```
 
 ## df - Afficher la taille d'un répertoire
