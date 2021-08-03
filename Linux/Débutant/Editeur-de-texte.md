@@ -2,7 +2,7 @@
 title: Linux - Les éditeurs de textes
 description: Comprendre et utiliser les éditeurs de textes comme VIM, Nano, Joe, etc..
 published: true
-date: 2021-06-14T07:39:18.261Z
+date: 2021-08-03T06:40:19.823Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:25.944Z
@@ -125,6 +125,21 @@ Ce petit éditeur est un clone libre de “pico” qui était inclus dans le log
 | `CTRL + T` | Met en route le correcteur orthographique si disponible. |
 | `CTRL + _` | Va au numéro de ligne et de colonne spécifié. |
 | `ALT + A` | Pour sélectionner un texte. Vous pouvez combiner cette commande avec **CTRL + K** pour couper une partie spécifique du texte. |
+
+## Activer la coloration syntaxique
+L'éditeur nano fournit lui-même la mise en évidence de la syntaxe pour quelques langages et scripts. Vous pouvez les retrouver dans `/usr/share/nano/` :
+```bash
+asm.nanorc     fortran.nanorc   man.nanorc     ocaml.nanorc   ruby.nanorc
+awk.nanorc     gentoo.nanorc    mgp.nanorc     patch.nanorc   sh.nanorc
+c.nanorc       groff.nanorc     mutt.nanorc    perl.nanorc    tcl.nanorc
+cmake.nanorc   html.nanorc      nano-menu.xpm  php.nanorc     tex.nanorc
+css.nanorc     java.nanorc      nanorc.nanorc  pov.nanorc     xml.nanorc
+debian.nanorc  makefile.nanorc  objc.nanorc    python.nanorc
+```
+Afin d'avoir un peu de couleurs dans vos fichiers textes, vous pouvez activer la coloration syntaxique directement dans nano en ajouter cette ligne dans le fichier `~/.nanorc` :
+```bash
+include /usr/share/nano/sh.nanorc
+```
 
 ---
 
