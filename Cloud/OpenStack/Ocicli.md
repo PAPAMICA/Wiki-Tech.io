@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-06-14T07:01:03.235Z
+date: 2021-08-05T09:37:35.952Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:07.034Z
@@ -135,7 +135,7 @@ Il est possible de créer la base de données et les informations d'identificati
 apt-get install openstack-pkg-tools
 . /usr/share/openstack-pkg-tools/pkgos_func
 PASSWORD=$(openssl rand -hex 16)
-pkgos_inifile set /etc/openstack-cluster-installer/openstack-cluster-installer.conf database connection mysql+pymysql://oci:${PASSWORD}@localhost:3306/oci"
+pkgos_inifile set /etc/openstack-cluster-installer/openstack-cluster-installer.conf database connection "mysql+pymysql://oci:${PASSWORD}@localhost:3306/oci"
 mysql --execute 'CREATE DATABASE oci;'
 mysql --execute "GRANT ALL PRIVILEGES ON oci.* TO 'oci'@'localhost' IDENTIFIED BY '${PASSWORD}';"
 ```
