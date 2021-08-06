@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-06-13T08:14:30.191Z
+date: 2021-08-06T16:14:05.731Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -304,8 +304,8 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Set-Item WsMan:\Localhost\client\TrustedHosts -value "ip ou noms des machines" </code></pre>
 <p>&nbsp;</p>
-<p>remarque : la valeur de l'option <code>-value</code> peut être un nom de machine, une IP ou * mais cela n'est pas recommandé.</p>
-<p>Puis vérifier que vos machines peuvent utiliser les commandes à distance :</p>
+<p>remarque : la valeur de l'option <code>-value</code> peut être un nom de machine, une IP ou * mais cela n'est pas recommandé pour des raisons de sécurité.</p>
+<p>Puis vérifiez que vos machines peuvent utiliser les commandes à distance :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Test-WsMan "ip ou nom des machines "</code></pre>
 <p>&nbsp;</p>
@@ -313,7 +313,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image"><img src="/invoke_commande.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>Commande à distance dans un domine</h3>
+<h3>Commande à distance dans un domaine</h3>
 <p>&nbsp;</p>
 <h2>Session à distance</h2>
 <p>&nbsp;</p>
