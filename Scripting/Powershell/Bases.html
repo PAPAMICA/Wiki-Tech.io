@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-08-07T19:59:10.854Z
+date: 2021-08-07T20:06:48.743Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -309,23 +309,21 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Test-WsMan "ip ou nom des machines "</code></pre>
 <p>&nbsp;</p>
-<p>voici un exemple d'utilisation hors domaine :</p>
+<p>voici un exemple d'utilisation hors domaine où on stocke les valeurs dans une variable les éléments d'un <code>Invoke-Command </code>:</p>
 <figure class="image"><img src="/invoke_commande.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3>Commande à distance dans un domaine</h3>
-<p>Dans un domaine, la procédure est un peu plus simple, puisque vous êtes dans un environnement un peu plus “sécurisé ”,si vous souhaitez exécuter des commandes sur une machine ou plusieurs machines distantes, vous devez uniquement activer le service winrm par la commande :</p>
+<p>Dans un domaine, la procédure est un peu plus simple, puisque vous êtes dans un environnement un peu plus “sécurisé ”.Si vous souhaitez exécuter des commandes sur une machine ou plusieurs machines distantes, vous devez uniquement activer le service winrm sur chacune d'elles par la commande :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Enable-PSRemoting</code></pre>
 <p>&nbsp;</p>
 <p>Ensuite depuis la machine maitre vous pouvez exécuter des commande à distance via un <code>Invoke-Command</code> que nous avons vu précédemment.</p>
-<p>Voici un exemple ou je demande à un serveur AD, les services qui sont dans l'état démarré :</p>
+<p>Voici un exemple où je demande à un serveur AD, les services qui sont dans l'état démarré :</p>
 <figure class="image"><img src="/invokead.png"></figure>
 <h2>Session à distance</h2>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>L'autre possibilité sous PowerShell est d'utiliser des sessions à distance. Vous allez, en quelques sortes, vous connecter dans le prompt d'une machine distante. L'avantage c'est que vous allez établir une connexion persistante…. cela est pratique quand vous avez besoin de passer d'une machine à l'autre , d'avoir à utiliser des commandes spécifiques à une situation bien déterminée ou lorsque vous avez besoins de faire appel à cette machine de façon séquencée.&nbsp;</p>
-<p>auparavant, vous aurez autorisé le service winrm avec un <code>Enable-PSRemoting</code> sur votre machine distante.</p>
+<p>L'autre possibilité sous PowerShell est d'utiliser des sessions à distance. Vous allez, en quelques sortes, vous connecter dans le prompt d'une machine distante. L'avantage c'est que vous allez établir une connexion persistante…. cela est pratique quand vous avez besoin de passer d'une machine à l'autre , d'avoir à utiliser des commandes spécifiques à une situation bien déterminée ou lorsque vous avez besoins de faire appel à cette machine de façon aléatoire.&nbsp;</p>
+<p>Auparavant, vous aurez autorisé le service winrm avec un <code>Enable-PSRemoting</code> sur votre machine distante.</p>
 <p>Ensuite nous allons ouvrir une session via la commande:</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">New-PSSession</code></pre>
@@ -335,14 +333,14 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <figure class="image"><img src="/enter-psession.png"></figure>
 <p>&nbsp;</p>
-<p>Vous remarquerez dans le prompt que je suis bien connecté à la machine distance ici "AD" et que je peux taper les commandes que je souhaites comme si j'étais directement son prompt.</p>
+<p>Vous remarquerez dans le prompt que je suis bien connecté à la machine distante ici "AD" et que je peux taper les commandes que je souhaites comme si j'étais directement dans son prompt.</p>
 <p>Pour sortir cette pseudo connexion, tapez exit pour en sortir.</p>
 <p>Cependant, gardez à l'esprit que la session reste active, et que pour des soucis de sécurité, il faudra bien évidement fermer toutes ces sessions actives.</p>
 <p>avec la commande <code>Get-PSSession</code>, vous pouvez consulter les sessions toujours actives.</p>
 <figure class="image"><img src="/get-psession.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<p>Pour revenir à un état sécurisé, vous devez désactiver ces sessions ainsi que le service winrm.</p>
-<p>pour désactiver ces session, vous pouvez utilisez les id de session ou via les arguments que vous souhaitez, à vous de les consulter dans la commande, <code>Remove-PSSession</code>&nbsp;</p>
+<p>Pour revenir à un état dit sécurisé, vous devez désactiver ces sessions ainsi que le service winrm.</p>
+<p>pour désactiver ces sessions, vous pouvez utilisez les id de sessions ou via les arguments que vous souhaitez, à vous de les consulter dans la commande <code>Remove-PSSession</code>&nbsp;</p>
 <figure class="image"><img src="/remove-psession.png"></figure>
 <p>&nbsp;Pour terminer, vous pouvez aussi désactiver le service winrm avec <code>Disable-PSRemoting</code></p>
