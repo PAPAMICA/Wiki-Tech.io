@@ -2,7 +2,7 @@
 title: Serveur Active Directory
 description: 
 published: true
-date: 2021-06-14T07:58:40.878Z
+date: 2021-08-09T19:52:38.799Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:10.569Z
@@ -14,7 +14,7 @@ dateCreated: 2021-05-24T10:36:10.569Z
 
 ![](/images/ad1.png)
 
--   Cliquez sur **Ajouter des rôles et fonctionnalités**
+-   Cliquez sur **Ajouter des rôles et fonctionnalités**.
 
 ![](/images/3.png)
 
