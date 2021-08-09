@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-08-05T09:37:35.952Z
+date: 2021-08-09T12:25:50.955Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:07.034Z
@@ -325,9 +325,9 @@ ocicli swift-region-create datacenter-2
 Créez ensuite des emplacements associés à ces régions:
 
 ```bash
-ocicli dc1-zone1 datacenter-1
-ocicli dc1-zone2 datacenter-1
-ocicli dc2-zone1 datacenter-2
+ocicli location-create dc1-zone1 datacenter-1
+ocicli location-create dc1-zone2 datacenter-1
+ocicli location-create dc2-zone1 datacenter-2
 ```
 
 Plus tard, lors de l'ajout d'un nœud de données Swift à un cluster (les nœuds de données sont les serveurs qui effectueront réellement le stockage Swift), un emplacement doit être sélectionné.
