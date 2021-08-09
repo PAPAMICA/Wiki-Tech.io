@@ -2,7 +2,7 @@
 title: Installation de Windows serveur
 description: 
 published: true
-date: 2021-08-09T19:51:41.067Z
+date: 2021-08-09T19:51:47.742Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:17.006Z
@@ -13,7 +13,7 @@ dateCreated: 2021-05-24T10:36:17.006Z
 # Prérequis
 
 -   Un logiciel de virtualisation : [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
--   L'ISO de Windows Serveur : [https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server](https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server).
+-   L'ISO de Windows Serveur : [https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server](https://www.microsoft.com/fr-fr/evalcenter/evaluate-windows-server)
 
 # Création de la machine virtuelle
 
