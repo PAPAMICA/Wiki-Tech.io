@@ -2,7 +2,7 @@
 title: Ocicli
 description: Installer un cluster Openstack avec ocicli sous Debian
 published: true
-date: 2021-08-09T12:25:50.955Z
+date: 2021-08-09T12:49:40.206Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:07.034Z
@@ -208,7 +208,7 @@ ignore-client-uids On;
 
 subnet 192.168.100.0 netmask 255.255.255.0 {
         range 192.168.100.20 192.168.100.80;
-        option domain-name example.com;
+        option domain-name "example.com";
         option domain-name-servers 9.9.9.9;
         option routers 192.168.100.1;
         option subnet-mask 255.255.255.0;
