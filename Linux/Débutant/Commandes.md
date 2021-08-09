@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-08-02T09:10:45.044Z
+date: 2021-08-09T06:58:17.470Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -321,6 +321,9 @@ Exemple : Désarchiver un dossier.
 ```bash
 tar -xvf test.tar /chemin/dossier/destination
 ```
+
+
+## watch (coucou kevin)
 
 # Sessions, Utilisateurs et Permissions
 
