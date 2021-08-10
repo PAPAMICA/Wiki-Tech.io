@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-08-09T06:58:17.470Z
+date: 2021-08-10T08:36:30.551Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -323,7 +323,25 @@ tar -xvf test.tar /chemin/dossier/destination
 ```
 
 
-## watch (coucou kevin)
+## watch
+**Permet de rafraichir une commande à interval régulier**
+
+```bash
+watch <option> <commande>
+```
+
+|Option | Commentaire |
+| --- | --- |
+| `-b` | Émet un bip si la commande sort avec un code non nul |
+| `-c` | Interprète les séquences de couleurs et de styles ANSI |
+| `-d` | Met en évidence les changements entre mises à jours |
+| `-e` | Termine si la commande sort avec un code non nul |
+| `-g` | Termine quand la sortie de la commande change |
+| `-n` | Secondes de délai entre mises à jours |
+| `-p` | Essaie d'exécuter la commande à intervalles réguliers |
+| `-t` | Masque l'en-tête |
+| `-w` | Désactive le retour à la ligne |
+| `-x` | Passe la commande à exec au lieu de « sh -c » |
 
 # Sessions, Utilisateurs et Permissions
 
