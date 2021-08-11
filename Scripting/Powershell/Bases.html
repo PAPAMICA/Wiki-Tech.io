@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-08-09T18:15:37.887Z
+date: 2021-08-11T05:46:23.677Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -313,7 +313,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <figure class="image"><img src="/invoke_commande.png"></figure>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<h3>Commande à distance dans un domaine</h3>
+<h2>Commande à distance dans un domaine</h2>
 <p>Dans un domaine, la procédure est un peu plus simple, puisque vous êtes dans un environnement un peu plus “sécurisé ”.Si vous souhaitez exécuter des commandes sur une machine ou plusieurs machines distantes, vous devez uniquement activer le service winrm sur chacune d'elles par la commande :</p>
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Enable-PSRemoting</code></pre>
@@ -344,3 +344,32 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>pour désactiver ces sessions, vous pouvez utilisez les id de sessions ou via les arguments que vous souhaitez, à vous de les consulter dans la commande <code>Remove-PSSession</code>&nbsp;</p>
 <figure class="image"><img src="/remove-psession.png"></figure>
 <p>&nbsp;Pour terminer, vous pouvez aussi désactiver le service winrm avec <code>Disable-PSRemoting</code></p>
+<p>&nbsp;</p>
+<h1>PowerShell Direct</h1>
+<p>&nbsp;</p>
+<p>Si vous souhaitez travailler sur un environnement virtualisé, vous avez la possibilité, à partir de Windows 10 et Hyper-v 2016, de pouvoir gérer vos VMs depuis votre hôte dans PowerShell.</p>
+<p>Pour cela, vos VMs devront être dans l'état démarré et vous devrez être connecté avec le compte administrateur Hyper-v ou avoir les autorisations.</p>
+<p>Pour réaliser cette manipulation vous pouvez utiliser les commande à distance que nous avons vu dans le chapitre précédent.</p>
+<p>Au préalable, vous aurez besoin soit des noms de VMs , soit leurs numéros ID.</p>
+<p>Pour obtenir ces informations, vous aurez besoin d'utiliser <code>Get-VM</code> et de filtrer le résultat.</p>
+<figure class="image"><img src="/get-vm.png"></figure>
+<p>A présent voici un exemple, où nous allons rechercher des logs dans une VM avec<code>Invoke-Command</code>.</p>
+<figure class="image"><img src="/directevent.png"></figure>
+<p>&nbsp;</p>
+<p>Autre exemple, avec l'ouverture d'une session avec <code>New-PSSession</code> et interagir dans le prompt de votre VM.</p>
+<figure class="image"><img src="/sessionvm.png"></figure>
+<p>&nbsp;</p>
+<p>On peut constater dans les deux cas que le login est demandé à chaque connexion.</p>
+<p>Un autre avantage de PowerShell direct est que vous avez la possibilité de copier un fichier de l'hôte vers une VM. Pour cela on utilise&nbsp;</p>
+<p>&nbsp;</p>
+<pre><code class="language-plaintext">Copy-VMFile</code></pre>
+<p>&nbsp;</p>
+<p>Vous devez vous assurer, avant que les service d'invité soit activé sur votre VM.</p>
+<figure class="image"><img src="/hyper-v.png"></figure>
+<p>&nbsp;</p>
+<p>Voici la commande PowerShell, pour contrôler celle-ci.</p>
+<figure class="image"><img src="/get-vmintegration.png"></figure>
+<p>Pour l'activer,&nbsp;</p>
+<figure class="image"><img src="/enable-vmintegration.png"></figure>
+<p>A présent nous pouvons copier un fichier de l'hôte vers une VM.</p>
+<figure class="image"><img src="/copy-vmfile.png"></figure>
