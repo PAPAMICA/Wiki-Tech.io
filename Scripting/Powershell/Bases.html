@@ -2,7 +2,7 @@
 title: PowerShell - Les bases
 description: Les bases pour bien débuter dans PowerShell
 published: true
-date: 2021-08-11T05:47:17.794Z
+date: 2021-08-11T05:50:48.964Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T16:22:45.768Z
@@ -349,11 +349,11 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <p>Si vous souhaitez travailler sur un environnement virtualisé, vous avez la possibilité, à partir de Windows 10 et Hyper-v 2016, de pouvoir gérer vos VMs depuis votre hôte dans PowerShell.</p>
 <p>Pour cela, vos VMs devront être dans l'état démarré et vous devrez être connecté avec le compte administrateur Hyper-v ou avoir les autorisations.</p>
-<p>Pour réaliser cette manipulation vous pouvez utiliser les commande à distance que nous avons vu dans le chapitre précédent.</p>
+<p>Pour réaliser cette manipulation vous pouvez utiliser les commandes à distance que nous avons vu dans le chapitre précédent.</p>
 <p>Au préalable, vous aurez besoin soit des noms de VMs , soit leurs numéros ID.</p>
 <p>Pour obtenir ces informations, vous aurez besoin d'utiliser <code>Get-VM</code> et de filtrer le résultat.</p>
 <figure class="image"><img src="/get-vm.png"></figure>
-<p>A présent voici un exemple, où nous allons rechercher des logs dans une VM avec<code>Invoke-Command</code>.</p>
+<p>A présent voici un exemple où nous allons rechercher des logs dans une VM avec <code>Invoke-Command</code>.</p>
 <figure class="image"><img src="/directevent.png"></figure>
 <p>&nbsp;</p>
 <p>Autre exemple, avec l'ouverture d'une session avec <code>New-PSSession</code> et interagir dans le prompt de votre VM.</p>
@@ -364,7 +364,7 @@ dateCreated: 2021-05-24T16:22:45.768Z
 <p>&nbsp;</p>
 <pre><code class="language-plaintext">Copy-VMFile</code></pre>
 <p>&nbsp;</p>
-<p>Vous devez vous assurer, avant que les service d'invité soit activé sur votre VM dans les paramètre de votre VM.</p>
+<p>Vous devez vous assurer, avant que “les service d'invité” soit activé sur votre VM dans les paramètre de votre VM.</p>
 <figure class="image"><img src="/hyper-v.png"></figure>
 <p>&nbsp;</p>
 <p>Voici la commande PowerShell, pour contrôler celle-ci.</p>
