@@ -2,7 +2,7 @@
 title: Switch Cisco
 description: Commandes de base
 published: true
-date: 2021-08-14T10:23:48.446Z
+date: 2021-08-14T10:24:38.096Z
 tags: commandes, cisco, switch
 editor: markdown
 dateCreated: 2021-08-14T10:09:16.927Z
@@ -81,3 +81,5 @@ dateCreated: 2021-08-14T10:09:16.927Z
 | `show vlan` | Affiche tous les VLAN |
 | `show vlan [id_vlan]` | Affiche des informations sur un VLAN identifié par son ID |
 | `show vlan name [nom_vlan]` | Affiche des informations sur un VLAN identifié par son nom |
+
+*Rédacteur Kevin ENGEL*
