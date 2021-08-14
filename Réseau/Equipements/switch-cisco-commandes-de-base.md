@@ -2,7 +2,7 @@
 title: Switch Cisco
 description: Commandes de base
 published: true
-date: 2021-08-14T10:24:38.096Z
+date: 2021-08-14T10:25:22.384Z
 tags: commandes, cisco, switch
 editor: markdown
 dateCreated: 2021-08-14T10:09:16.927Z
