@@ -2,7 +2,7 @@
 title: Console VMRC
 description: Comment activer le copier/coller
 published: true
-date: 2021-08-14T09:25:52.049Z
+date: 2021-08-14T09:26:55.817Z
 tags: vmrc, copier coller
 editor: markdown
 dateCreated: 2021-08-14T09:24:37.354Z
@@ -59,3 +59,5 @@ Enregistrer votre fichier pour que les modifications soient prises en compte. Le
 
 > Le copier/coller entre votre poste et les VM fonctionnera, toutefois, il ne s’agira que de pouvoir faire ***du partage de presse-papier contenant seulement du texte**.* Il n’est pas possible de faire du copier/coller de fichier entre un client et une VM.
 {.is-info}
+
+[*Source d'origine de la procédure*](https://www.tech2tech.fr/vmware-esxi-comment-activer-le-copier-coller-dans-la-console-vmrc/) | *Rédacteur Kevin ENGEL*
