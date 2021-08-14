@@ -2,7 +2,7 @@
 title: Réseau
 description: Ce qu'il faut savoir sur le réseau !
 published: true
-date: 2021-06-25T15:34:52.766Z
+date: 2021-08-14T10:30:48.065Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:39:12.033Z
@@ -24,6 +24,7 @@ dateCreated: 2021-05-30T18:39:12.033Z
 # Equipements
 - [📫 Routeur *Qu’est-ce que c’est et comment cela fonctionne ?*](/Réseau/Equipements/Routeur)
 - [🦝 Switch (commutateur) *Comment fonctionne-t-il ?*](/Réseau/Equipements/Switch)
+- [🦝 Switch (commutateur) Cisco *Commandes de base*](/Réseau/Equipements/switch-cisco-commandes-de-base)
 {.links-list}
 
 # Avancé
