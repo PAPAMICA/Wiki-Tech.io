@@ -2,7 +2,7 @@
 title: Switch Cisco
 description: Commandes de base
 published: true
-date: 2021-08-14T10:14:18.457Z
+date: 2021-08-14T10:23:48.446Z
 tags: commandes, cisco, switch
 editor: markdown
 dateCreated: 2021-08-14T10:09:16.927Z
@@ -54,3 +54,30 @@ dateCreated: 2021-08-14T10:09:16.927Z
 | --- | --- |
 | `copy running-config startup-config` | Permet d’enregistrer la configuration de la mémoire RAM sur la mémoire flash. |
 | `copy startup-config running-config` | Permet d’importer la configuration de démarrage sur la mémoire RAM. |
+
+# Configuration VLAN
+
+> Être en mode de configuration globale
+{.is-info}
+
+### Création VLAN
+
+|     |     |
+| --- | --- |
+| `vlan <id_vlan>` | Crée un VLAN, <id_vlan> est le numéro du VLAN à crée ou permet de passer en mode de configuration pour le VLAN <id_vlan> |
+| `name <nom_vlan> ` | Permet de donner un nom au VLAN |
+
+### Affectation de port à un VLAN
+
+|     |     |
+| --- | --- |
+| `switchport access vlan <id_vlan>` | Affecte l’interface du commutateur au VLAN <id_vlan> |
+| `no switchport access vlan <id_vlan>` | Supprime l’affectation de l’interface au VLAN <id_vlan> |
+
+### Information sur les VLAN
+
+|     |     |
+| --- | --- |
+| `show vlan` | Affiche tous les VLAN |
+| `show vlan [id_vlan]` | Affiche des informations sur un VLAN identifié par son ID |
+| `show vlan name [nom_vlan]` | Affiche des informations sur un VLAN identifié par son nom |
