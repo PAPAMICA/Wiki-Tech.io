@@ -2,7 +2,7 @@
 title: Switch Cisco
 description: Commandes de base
 published: true
-date: 2021-08-14T10:09:16.927Z
+date: 2021-08-14T10:14:18.457Z
 tags: commandes, cisco, switch
 editor: markdown
 dateCreated: 2021-08-14T10:09:16.927Z
@@ -32,9 +32,25 @@ dateCreated: 2021-08-14T10:09:16.927Z
 > Être en mode de configuration globale
 {.is-info}
 
+### Mot de passe console
+
 |     |     |
 | --- | --- |
 | `line con <n°console> ` | Passer en mode de configuration de ligne pour la console n° |
 | `password <mot-de-passe> ` | Définir le mot de passe pour la console n° |
 | `login` | Permet d’exiger la saisie du mot de passe avant d’avoir l’accès à la console |
 | `end` | Quitter le mode de configuration de ligne et revenir en mode privilégié |
+
+### Mot de passe privilégié
+
+|     |     |
+| --- | --- |
+| `enable secret <mot_de_passe> ` | Définir le mot de passe pour l’exécution du mode privilégié |
+| `end` | Quitter le mode de configuration de ligne et revenir en mode privilégié |
+
+# Enregistrement de la configuration
+
+|     |     |
+| --- | --- |
+| `copy running-config startup-config` | Permet d’enregistrer la configuration de la mémoire RAM sur la mémoire flash. |
+| `copy startup-config running-config` | Permet d’importer la configuration de démarrage sur la mémoire RAM. |
