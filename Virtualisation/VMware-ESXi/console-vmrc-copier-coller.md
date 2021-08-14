@@ -1,8 +1,8 @@
 ---
 title: Console VMRC
 description: Comment activer le copier/coller
-published: false
-date: 2021-08-14T09:24:37.354Z
+published: true
+date: 2021-08-14T09:25:52.049Z
 tags: vmrc, copier coller
 editor: markdown
 dateCreated: 2021-08-14T09:24:37.354Z
