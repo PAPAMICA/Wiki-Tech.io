@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-07-09T07:12:39.181Z
+date: 2021-08-15T06:36:06.581Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -89,6 +89,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 {.links-list}
 
 # Sauvegarde
+- [📦 Présentation de la sauvegarde *Qu'est-ce qu'une sauvegarde ?*](/Sauvegarde#Presentation)
 - [📦 Altaro 🚧 *Sauvegarder Hyper-V ou ESXi*](/Sauvegarde#altaro)
 - [📦 Veeam 🚧 *Un système de sauvegarde complet*](/Sauvegarde#veeam)
 - [📦 UrBackup 🚧 *Un système de sauvegarde entièrement OpenSource*](/Sauvegarde#urbackup)
