@@ -2,7 +2,7 @@
 title: Sécurité
 description: Les bases et quelques astuces de sécurité IT !
 published: true
-date: 2021-07-01T22:16:27.756Z
+date: 2021-08-18T09:57:10.830Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:33:36.396Z
@@ -19,6 +19,7 @@ dateCreated: 2021-05-24T14:33:36.396Z
 # Pentest
 - [🧨 Nessus 🚧 *Lancer et utiliser Nessus sur son poste*](/Sécurité/Pentest/Nessus)
 - [🔴 Red Team 🚧 *Fatty trouve un nom stp*](/Sécurité/Pentest/Red-Team)
+[🔴 Process-Hollowing *On mets Kaspersky en PLS*](/Sécurité/Pentest/Process-Hollowing)
 {.links-list}
 
 # Protection
