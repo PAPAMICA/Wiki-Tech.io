@@ -2,7 +2,7 @@
 title: Linux
 description: Les bases et bien plus encore sur Linux !
 published: true
-date: 2021-07-16T07:39:17.090Z
+date: 2021-07-16T07:58:27.319Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:14:24.685Z

@@ -2,7 +2,7 @@
 title: Web
 description: Différentes astuces autours du développement web !
 published: true
-date: 2021-06-16T07:43:27.138Z
+date: 2021-06-16T07:43:28.645Z
 tags: wordpress, html, css, js, web
 editor: markdown
 dateCreated: 2021-06-15T07:12:56.280Z

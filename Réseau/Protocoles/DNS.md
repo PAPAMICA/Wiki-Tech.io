@@ -2,7 +2,7 @@
 title: Serveur DNS
 description: Qu’est ce qu’un serveur DNS et à quoi sert-il ?
 published: true
-date: 2021-06-14T08:07:47.827Z
+date: 2021-06-14T08:07:49.361Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:36.627Z

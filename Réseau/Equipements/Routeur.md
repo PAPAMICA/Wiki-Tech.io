@@ -2,7 +2,7 @@
 title: Routeur
 description: Qu'est-ce que c'est et comment fonctionne-t-il ?
 published: true
-date: 2021-06-27T14:29:13.227Z
+date: 2021-06-27T14:29:14.888Z
 tags: réseau, routeur, équipements
 editor: markdown
 dateCreated: 2021-06-25T09:09:49.041Z

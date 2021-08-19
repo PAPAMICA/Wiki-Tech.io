@@ -2,10 +2,10 @@
 title: README
 description: 
 published: true
-date: 2021-05-20T14:33:34.012Z
+date: 2021-05-24T10:33:10.490Z
 tags: 
 editor: markdown
-dateCreated: 2021-05-11T11:43:49.583Z
+dateCreated: 2021-05-24T10:33:08.929Z
 ---
 
 ![wiki_-_tech_(2).gif](https://wiki-tech.io/wiki_-_tech_(2).gif)

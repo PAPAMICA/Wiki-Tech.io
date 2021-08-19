@@ -2,7 +2,7 @@
 title: 💽 Ajouter ou étendre un disque à chaud
 description: Comment s'y prendre sans impact sur la production
 published: true
-date: 2021-07-05T17:56:45.773Z
+date: 2021-07-05T17:56:47.378Z
 tags: linux, partition, disque, virtualisation
 editor: markdown
 dateCreated: 2021-07-05T17:41:40.628Z

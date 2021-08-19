@@ -2,7 +2,7 @@
 title: Linux - LVM
 description: Comprendre et utiliser la gestion des disques logiques.
 published: true
-date: 2021-06-14T07:56:06.392Z
+date: 2021-06-14T07:56:07.914Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:20.029Z

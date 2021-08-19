@@ -2,17 +2,16 @@
 title: Supervision
 description: Quelques solutions de supervisions avec leurs tutoriels !
 published: true
-date: 2021-06-15T12:07:26.425Z
+date: 2021-05-30T18:49:50.104Z
 tags: 
 editor: markdown
-dateCreated: 2021-05-24T14:42:55.255Z
+dateCreated: 2021-05-30T18:49:46.372Z
 ---
 
 # Zabbix
 - [🌀 Installation 🚧 *Mise en place sous Docker*](/Supervision/Zabbix/Installation)
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Supervision/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Supervision/Zabbix/SNMP)
-- [🌐 Superviser un site internet 🚧*Ajouter la supervision d'un site*](/Supervision/Zabbix/Website)
 - [🔴 Zabbix Proxy *Installation et configuration d'un proxy Zabbix*](/Supervision/Zabbix/Proxy)
 - [📜 Script Altaro *Remonter les informations des backups Altaro dans Zabbix*](/Supervision/Zabbix/Altaro)
 {.links-list}
@@ -28,4 +27,4 @@ dateCreated: 2021-05-24T14:42:55.255Z
 - [📧 Notifications mails *Configurer les notifications mails et les personnaliser*](/Supervision/Centreon/Notifications-Mails)
 - [💘 Déployer la configuration *Démarrer la supervision à l'aide de Centreon !*](/Supervision/Centreon/Deployer-Configuration)
 - [📊 Vues personnalisées *Personnaliser l'affichage avec des widgets et une vue personnalisée*](/Supervision/Centreon/Vues-Personnalisees)
-{.links-list} 
+{.links-list}

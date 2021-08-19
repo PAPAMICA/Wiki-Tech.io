@@ -2,7 +2,7 @@
 title: Script Altaro-Zabbix
 description: Remonter les informations Altaro dans Zabbix
 published: true
-date: 2021-07-09T14:02:27.991Z
+date: 2021-07-09T14:02:30.190Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:24.847Z

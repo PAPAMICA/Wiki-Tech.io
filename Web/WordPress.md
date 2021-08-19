@@ -2,7 +2,7 @@
 title: WordPress
 description: Installation et astuces autour du CMS WordPress !
 published: true
-date: 2021-06-16T07:42:56.954Z
+date: 2021-06-16T07:42:58.588Z
 tags: wordpress, web, site
 editor: markdown
 dateCreated: 2021-06-15T07:16:38.106Z

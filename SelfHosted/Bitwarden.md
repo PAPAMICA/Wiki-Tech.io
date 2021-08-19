@@ -2,7 +2,7 @@
 title: Bitwarden (Vaultwarden)
 description: Gestionnaire de mot de passe. Alternative opensource et self hosted de Dashlane.
 published: true
-date: 2021-06-15T09:09:18.178Z
+date: 2021-06-15T09:09:19.826Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:38.332Z

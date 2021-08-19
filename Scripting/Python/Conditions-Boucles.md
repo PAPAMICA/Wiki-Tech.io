@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-06-14T08:21:02.249Z
+date: 2021-06-14T08:21:03.960Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z

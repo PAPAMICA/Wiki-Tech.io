@@ -2,7 +2,7 @@
 title: Les templates
 description: Fonctionnement des templates
 published: true
-date: 2021-06-14T08:13:13.539Z
+date: 2021-06-14T08:13:17.092Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:20.485Z

@@ -2,7 +2,7 @@
 title: Gestionnaire de configuration
 description: Comprendre et utiliser un gestionnaire de configuration !
 published: true
-date: 2021-07-10T19:35:32.607Z
+date: 2021-07-10T19:35:34.412Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:04:01.740Z

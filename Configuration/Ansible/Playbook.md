@@ -2,7 +2,7 @@
 title: Ansible - Les playbooks
 description: Découverte des playbooks Ansible
 published: true
-date: 2021-07-09T14:38:53.380Z
+date: 2021-07-09T14:38:55.362Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-09T14:38:53.380Z

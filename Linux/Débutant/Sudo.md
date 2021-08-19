@@ -2,7 +2,7 @@
 title: Linux - Sudo
 description: Comprendre et utiliser sudo !
 published: true
-date: 2021-06-14T07:40:31.359Z
+date: 2021-06-14T07:40:32.894Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:32.558Z

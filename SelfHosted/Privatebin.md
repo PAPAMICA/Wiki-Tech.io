@@ -2,7 +2,7 @@
 title: PrivateBin
 description: Le meilleur moyen de partager vos secrets de façon sécurisé et avec une API !
 published: true
-date: 2021-06-15T10:37:11.654Z
+date: 2021-06-15T10:37:14.769Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:57.623Z

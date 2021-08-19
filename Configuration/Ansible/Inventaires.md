@@ -2,7 +2,7 @@
 title: Ansible - Les inventaires
 description: Créer et gérer les inventaires Ansible
 published: true
-date: 2021-07-09T14:09:59.676Z
+date: 2021-07-09T14:10:01.810Z
 tags: ansible, configuration
 editor: markdown
 dateCreated: 2021-07-09T08:01:35.009Z

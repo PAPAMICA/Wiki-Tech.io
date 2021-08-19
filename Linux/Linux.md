@@ -2,10 +2,10 @@
 title: Linux
 description: 
 published: true
-date: 2021-05-20T14:33:27.672Z
+date: 2021-05-24T10:33:29.250Z
 tags: 
 editor: markdown
-dateCreated: 2021-04-28T17:50:34.318Z
+dateCreated: 2021-05-24T10:33:27.745Z
 ---
 
 # Linux

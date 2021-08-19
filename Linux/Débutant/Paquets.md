@@ -2,7 +2,7 @@
 title: Linux - Paquets utiles
 description: 
 published: true
-date: 2021-06-14T07:38:49.576Z
+date: 2021-06-14T07:38:51.098Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:30.288Z

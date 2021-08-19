@@ -2,10 +2,10 @@
 title: Configurations
 description: 
 published: true
-date: 2021-05-20T14:33:14.144Z
+date: 2021-05-24T10:33:17.770Z
 tags: 
 editor: markdown
-dateCreated: 2021-05-12T12:23:33.099Z
+dateCreated: 2021-05-24T10:33:16.256Z
 ---
 
 - [🔥 Présentation et comparaison *Comparaison des principaux gestionnaires de configurations*](/Configurations/Comparaison)

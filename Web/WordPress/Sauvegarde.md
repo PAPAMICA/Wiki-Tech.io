@@ -2,7 +2,7 @@
 title: Sauvegarder son site WordPress
 description: Les différentes méthodes de sauvegardes de votre WordPress
 published: true
-date: 2021-06-16T08:30:14.349Z
+date: 2021-06-16T08:30:16.060Z
 tags: wordpress, backup, sauvegarde
 editor: markdown
 dateCreated: 2021-06-15T14:46:16.525Z

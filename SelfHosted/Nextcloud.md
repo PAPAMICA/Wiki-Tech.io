@@ -2,7 +2,7 @@
 title: NextCloud
 description: Un cloud selfhosted avec énormément de fonctionnalités !
 published: true
-date: 2021-07-19T08:47:03.939Z
+date: 2021-07-19T08:47:08.057Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:55.512Z

@@ -2,7 +2,7 @@
 title: Microsoft
 description: Plein de tutoriel sur les produits de Microsoft !
 published: true
-date: 2021-06-06T06:52:02.089Z
+date: 2021-06-06T06:52:03.662Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:27:48.269Z

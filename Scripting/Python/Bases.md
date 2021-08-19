@@ -2,7 +2,7 @@
 title: Python - Présentation et Installation
 description: Découvrir Python et l’installer !
 published: true
-date: 2021-06-14T08:19:21.806Z
+date: 2021-06-14T08:19:23.471Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:10:06.281Z

@@ -2,10 +2,10 @@
 title: Python
 description: 
 published: true
-date: 2021-05-20T14:33:32.391Z
+date: 2021-05-24T10:33:38.383Z
 tags: 
 editor: markdown
-dateCreated: 2021-05-09T09:17:12.102Z
+dateCreated: 2021-05-24T10:33:36.876Z
 ---
 
 # Python

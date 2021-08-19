@@ -2,7 +2,7 @@
 title: Jirafeau
 description: Alternative opensource et self hosted de Wetransfert.
 published: true
-date: 2021-06-14T06:39:20.340Z
+date: 2021-06-14T06:39:22.176Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:49.087Z

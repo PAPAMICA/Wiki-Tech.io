@@ -2,7 +2,7 @@
 title: Modèle OSI
 description: Comprendre le modèle OSI
 published: true
-date: 2021-06-14T08:04:51.496Z
+date: 2021-06-14T08:04:53.002Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:36:43.215Z
