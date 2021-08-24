@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T09:31:12.953Z
+date: 2021-08-24T12:24:24.140Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
@@ -29,20 +29,25 @@ Télécharger les mises du dode upstream :
 ./debian/rules fetch-upstream-remote
 ```
 
+Repérez le dernier tag du paquets (`git tag`) et créez la variable `$TAG`
+```bash
+export TAG=<tag>
+```
+
 Vérifier que le paquet à été mis à jours pour la nouvelle version d'OpenStack (`meta:series: xena`)
 ```bash
-git show <tag>
+git show $TAG
 ```
 
 Faire un merge avec le dernier tag :
 ```bash
-git merge -X theirs <tag>
+git merge -X theirs $TAG
 ```
 
 Mettre à jour le changelog de Debian et faire un commit :
 ```bash
-dch --newversion <tag>-1 -D experimental -m "New upstream release."
-git commit -a -m "Now packaging <tag> (xena)"
+dch --newversion $TAG-1 -D experimental -m "New upstream release."
+git commit -a -m "Now packaging $TAG (xena)"
 ```
 
 Mettre à jours les fichiers `copyrigt` et `control`, `changelog` et faire un commit :
