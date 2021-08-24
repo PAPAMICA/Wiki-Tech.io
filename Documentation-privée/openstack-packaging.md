@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T08:12:45.744Z
+date: 2021-08-24T08:23:39.067Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
@@ -47,7 +47,6 @@ git commit -a -m "Now packaging <tag> (xena)"
 
 Mettre à jours les fichiers `copyrigt` et `control`, `changelog` et faire un commit :
 ```bash
-git commit -a -m "Now packaging <tag> (xena)"
 nano debian/copyright >>> (c) 2021 Mickael Asseline <mickael@papamica.com>
 nano debian/control >>> Mickael Asseline <mickael@papamica.com>,
 dch -r >>>   * Added myself in copyright and uploaders.
