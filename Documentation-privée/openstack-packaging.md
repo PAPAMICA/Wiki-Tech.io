@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T08:41:54.852Z
+date: 2021-08-24T08:43:16.360Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
@@ -58,7 +58,7 @@ Vérifier s'il y a eu des changements dans les dépendances :
 diff -u ../test-requirements.txt test-requirements.txt
 diff -u ../requirements.txt requirements.txt
 ```
-> S'il n'y a aucun changement, passer à 
+> S'il n'y a aucun changement, passer à [Constuire le paquet](/Documentation-privée/openstack-packaging#constuire-le-paquet)
 {.is-info}
 
 # Mettre à jour le paquet 
