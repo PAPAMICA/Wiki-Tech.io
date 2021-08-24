@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T08:43:44.886Z
+date: 2021-08-24T09:23:51.167Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
@@ -82,6 +82,23 @@ Mettre à jour le `changelog` et faire un commit :
 dch -r >>>   * Added <paquet> to build-depends.
 git commit -a -m "Added <paquet> to build-depends."
 ```
+
+# Mettre à jour les fichiers avec upstream
+Si vous rencontrez l'erreur suivante :
+> **error**: aborting due to unexpected upstream changes
+{.is-danger}
+
+Récupérer le nom du fichier dans le log info juste au dessus :
+> **info**: local changes detected, the modified files are: `python-sushy-3.11.1/tox.ini`
+{.is-info}
+
+Utiliser `mc` (`sudo apt install mc`) dans le dossier parent pour copier le fichier en question dans votre branche :
+```
+bash
+cd ..
+mc
+```
+
 
 # Constuire le paquet
 ```bash
