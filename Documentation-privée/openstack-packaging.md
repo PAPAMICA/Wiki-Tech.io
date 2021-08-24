@@ -2,36 +2,98 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T07:45:17.852Z
+date: 2021-08-24T08:12:45.744Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
 ---
 
 # Procédure
-cd ~/stuff/salsa-scripts/paquet
+Se rendre dans le dossier `salsa-scripts` :
+```bash
+cd ~/stuff/salsa-scripts/
+```
+
+Se rendre dans le dossier du paquet :
+```bash
+cd <paquet>/<paquet>
+```
+
+Copier les fichiers `test-requirements.txt` et `requirements.txt` :
+```bash
 cp test-requirements.txt ../ && cp requirements.txt ../
+```
+
+Télécharger les mises du dode upstream :
+```bash
 ./debian/rules fetch-upstream-remote
-git show <tag> >>> meta:series: xena
+```
+
+Vérifier que le paquet à été mis à jours pour la nouvelle version d'OpenStack (`meta:series: xena`)
+```bash
+git show <tag>
+```
+
+Faire un merge avec le dernier tag :
+```bash
 git merge -X theirs <tag>
+```
+
+Mettre à jour le changelog de Debian et faire un commit :
+```bash
 dch --newversion <tag>-1 -D experimental -m "New upstream release."
+git commit -a -m "Now packaging <tag> (xena)"
+```
+
+Mettre à jours les fichiers `copyrigt` et `control`, `changelog` et faire un commit :
+```bash
 git commit -a -m "Now packaging <tag> (xena)"
 nano debian/copyright >>> (c) 2021 Mickael Asseline <mickael@papamica.com>
 nano debian/control >>> Mickael Asseline <mickael@papamica.com>,
 dch -r >>>   * Added myself in copyright and uploaders.
 git commit -a -m "Added myself in copyright and uploaders."
+```
+
+Vérifier s'il y a eu des changements dans les dépendances :
+```bash
 diff -u ../test-requirements.txt test-requirements.txt
 diff -u ../requirements.txt requirements.txt
+```
+
+Constuire le paquet :
+```bash
 ./debian/rules gen-orig-xz
 gbp buildpackage
+```
+
+Uploader le paquet :
+```bash
 git push
 git push --tags
+```
+
+Construire le paquet avec Jenkins :
 https://bullseye-xena.debian.net >>> paquet >>> build
   
 
 # TEST REQUIREMENTS
-Vérifier si la version existe avec rmadison <paquet>
-Ajouter dans nano debian/control >>> après Build-Depends-Indep:
+
+Vérifier si la version existe avec :
+```bash
+rmadison <paquet>
+```
+
+Ajouter dans nano `debian/control` >>> après `Build-Depends-Indep:` :
+```bash
+nano debian/control
+```
+Faire le tri alphabétique dans les fichiers :
+```bash
 wrap-and-sort -bastk
+```
+
+Mettre à jour le `changelog` et faire un commit : 
+```bash
 dch -r >>>   * Added <paquet> to build-depends.
 git commit -a -m "Added <paquet> to build-depends."
+```
