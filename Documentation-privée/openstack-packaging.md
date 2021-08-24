@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T09:23:51.167Z
+date: 2021-08-24T09:31:12.953Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
@@ -93,11 +93,11 @@ Récupérer le nom du fichier dans le log info juste au dessus :
 {.is-info}
 
 Utiliser `mc` (`sudo apt install mc`) dans le dossier parent pour copier le fichier en question dans votre branche :
-```
-bash
+```bash
 cd ..
 mc
 ```
+Dans la fenêtre de gauche, rentrez dans l'archive du paquet et allez chercher le fichier en question, dans la fenêtre de droite, rendez vous dans le dossier de votre paquet à l'emplacement du fichier. Pour le copier, cliquez sur `F5`.
 
 
 # Constuire le paquet
