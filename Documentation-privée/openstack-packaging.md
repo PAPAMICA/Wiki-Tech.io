@@ -2,13 +2,13 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T08:23:39.067Z
+date: 2021-08-24T08:41:54.852Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z
 ---
 
-# Procédure
+# Télécharger le paquet
 Se rendre dans le dossier `salsa-scripts` :
 ```bash
 cd ~/stuff/salsa-scripts/
@@ -58,24 +58,10 @@ Vérifier s'il y a eu des changements dans les dépendances :
 diff -u ../test-requirements.txt test-requirements.txt
 diff -u ../requirements.txt requirements.txt
 ```
+> S'il n'y a aucun changement, passer à 
+{.is-info}
 
-Constuire le paquet :
-```bash
-./debian/rules gen-orig-xz
-gbp buildpackage
-```
-
-Uploader le paquet :
-```bash
-git push
-git push --tags
-```
-
-Construire le paquet avec Jenkins :
-https://bullseye-xena.debian.net >>> paquet >>> build
-  
-
-# TEST REQUIREMENTS
+# Mettre à jour le paquet 
 
 Vérifier si la version existe avec :
 ```bash
@@ -96,3 +82,20 @@ Mettre à jour le `changelog` et faire un commit :
 dch -r >>>   * Added <paquet> to build-depends.
 git commit -a -m "Added <paquet> to build-depends."
 ```
+
+# Constuire le paquet
+```bash
+./debian/rules gen-orig-xz
+gbp buildpackage
+```
+
+Uploader le paquet :
+```bash
+git push
+git push --tags
+```
+
+Construire le paquet avec Jenkins :
+https://bullseye-xena.debian.net >>> paquet >>> build
+  
+
