@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-06-14T07:43:14.198Z
+date: 2021-08-26T08:25:00.604Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
@@ -235,3 +235,11 @@ Lien officiel : [Github](https://github.com/athityakumar/colorls)
 Ajoute une personnalisation bien plus poussée du terminal. Compatible avec Oh-My-Zsh.
 
 Lien officiel : [Github](https://github.com/romkatv/powerlevel10k)
+
+## Bash-completion
+Comme son nom l'indique, améliore l'autocompletion de bash
+
+## Atuin
+Une meilleure gestion de l'historique bash.
+
+Lien officiel : [Github](https://github.com/ellie/atuin)
