@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2021-08-27T08:24:15.487Z
+date: 2021-08-27T08:26:08.012Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:08.929Z
@@ -45,7 +45,7 @@ Partagez vos connaissances ! (sans oublier de respecter les règles 😉)
 -   Ne supprimer pas du contenu, modifier le uniquement si cela vous semble essentiel.
 -   Respectez le travail des autres contributeurs.
 -   Respecter la mise en page du site en général.
--   Support du Markdown et du HTML. (préférez le Visual Editor si possible)
+-   Support du Markdown et du HTML. (préférez le Markdown si possible)
 -   Si vous souhaitez créer une page ou aborder un sujet qui ne rentre pas dans une catégories existantes, n’hésitez pas à m'en parler (Discord : PAPAMICA #0001)
 
 # Mode d'emploi du site
