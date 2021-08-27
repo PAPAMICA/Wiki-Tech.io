@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2021-05-24T10:33:10.490Z
+date: 2021-08-27T08:24:15.487Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:08.929Z
@@ -13,9 +13,9 @@ dateCreated: 2021-05-24T10:33:08.929Z
 # Pourquoi ?
 
 Wiki-Tech se veux être un endroit pour partager nos connaissances ensemble. Nous sommes plusieurs professionnels de l’IT, étudiants ou passionnés à rédiger des notes ou des documentations sur différents sujets et les garder sur nos postes. Alors pourquoi ne pas les partager entre nous ? Cela nous permettrais de monter en compétences, de découvrir des solutions et de s’instruire mutuellement.  
-Ce projet repose sur  [Wikijs](https://js.wiki/)  et est entièrement disponible sur  [Github](https://github.com/PAPAMICA/Documentation)  directement.
+Ce projet repose sur  [Wikijs](https://js.wiki/)  et est entièrement disponible sur  [Github](https://github.com/PAPAMICA/Wiki-Tech.io)  directement.
 
-Chaque participant est visible directement sur  [les contributeurs du projet](https://github.com/PAPAMICA/Documentation/graphs/contributors)  et alimente ses statistiques sur Github.
+Chaque participant est visible directement sur  [les contributeurs du projet](https://github.com/PAPAMICA/Wiki-Tech.io/graphs/contributors)  et alimente ses statistiques sur Github.
 
 Il n'y a de publication minimum, vous êtes libre d’apporter vos connaissances au rythme que vous le souhaitez.
 
