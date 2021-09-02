@@ -2,7 +2,7 @@
 title: Python - Gérer les erreurs
 description: 
 published: true
-date: 2021-09-02T13:50:16.962Z
+date: 2021-09-02T14:02:13.789Z
 tags: 
 editor: markdown
 dateCreated: 2021-09-02T13:38:45.304Z
@@ -18,9 +18,31 @@ Par chance, python est très bavard !
 Prenons l'exemple suivant :
 Vous écrivez un script qui réalise une série de calculs avec des nombres donnés. Une division par 0 peut alors arriver. Vous le savez et vous souhaitez simplement être prévenus.
 
-``a = 1
+```python
+a = 1
 a/0
-Traceback (most recent call last):
+```
+Nous obtenons l'erreur :
+>Traceback (most recent call last):
   File "<pyshell#1>", line 1, in <module>
     a/0
-ZeroDivisionError: division by zero``
+ZeroDivisionError: division by zero
+{.is-danger}
+  
+Maintenant nous savons que l'erreur corresponsant à une division par zéro s'appelle "ZeroDivisionError". Il est alors possible de l'anticiper grâce à la structure "try: except:"
+```python
+  a = 0
+b = 2
+numbers = [a,b]
+
+for nb in numbers:
+    try:
+        result = 1/nb
+        print("nombre = ", nb, "resultat = ", result)
+    except ZeroDivisionError:
+        print("ca ne fonctionne pas avec ", nb)
+  ```
+>   ca ne fonctionne pas avec  0
+nombre =  2 resultat =  0.5
+{.is-success}
+
