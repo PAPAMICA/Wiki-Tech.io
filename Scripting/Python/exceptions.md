@@ -2,7 +2,7 @@
 title: Python - Gérer les erreurs
 description: 
 published: true
-date: 2021-09-02T14:02:13.789Z
+date: 2021-09-02T14:26:08.731Z
 tags: 
 editor: markdown
 dateCreated: 2021-09-02T13:38:45.304Z
@@ -45,4 +45,31 @@ for nb in numbers:
 >   ca ne fonctionne pas avec  0
 nombre =  2 resultat =  0.5
 {.is-success}
+  
+  Nous constatons que pour le nombre "a" le script n'a pas cessé de fonctionner, et à éxecuté les actions demandées dans le "except"
+  
+##   Exceptions créées par le développeur
+```python
+  a = 0
+b = 2
+numbers = [a,b]
+
+for nb in numbers:
+    try:
+        result = 1/nb
+        if(result < 1):
+            raise Exception('LowerOne')
+        else:
+            print("nombre = ", nb, "resultat = ", result)
+        
+    except ZeroDivisionError:
+        print("ca ne fonctionne pas avec ", nb)
+        
+    except Exception as error:
+        if(str(error) == "LowerOne"):
+            print("résultat inférieur à 1")
+```
+              
+
+                       
 
