@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-05-30T17:41:58.876Z
+date: 2021-09-07T12:28:08.861Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -27,7 +27,8 @@ dateCreated: 2021-05-30T17:41:57.218Z
 # Jelastic
 
 # AWS
-
+ - [📑 Certification *Apprendre en partant des bases*](/Cloud/AWS)
+{.links-list}
 # Azure
 
 # Google Cloud
