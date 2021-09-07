@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-09-07T14:17:09.475Z
+date: 2021-09-07T14:46:57.673Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z
@@ -21,3 +21,6 @@ Rapidement d'autres services ont été ajoutés et nous sommes maintenant aux al
 Aujourd'hui il ne fait aucun doute qu'AWS est leader en matière d'infrastructure Cloud et de plateforme de services.
 
 ## Qu'est-ce que le Cloud Computing ?
+Le Cloud Computing correspond à l'accès à des ressources, des services informatiques à la demande via Internet.
+
+A suivre...
