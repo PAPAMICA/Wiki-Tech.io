@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-09-10T08:59:32.063Z
+date: 2021-09-10T09:06:39.796Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
@@ -238,6 +238,12 @@ Lien officiel : [Github](https://github.com/romkatv/powerlevel10k)
 
 ### Ajout des informations OpenStack
 ![p10k-openstack.png](/images/linux/terminal/p10k-openstack.png)
+
+Ajoutez la variable `OS_CLOUD` à votre `openrc` :
+```bash
+echo "export OS_CLOUD=<cloud>" >> <fichier_openrc> 
+```
+
 Ajoutez dans le fichiers `~/.p10k.zsh ` la fonction suivante :
 ```bash
   function prompt_openstack() {
