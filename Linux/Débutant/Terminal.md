@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-08-26T08:25:00.604Z
+date: 2021-09-10T08:59:32.063Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
@@ -235,6 +235,26 @@ Lien officiel : [Github](https://github.com/athityakumar/colorls)
 Ajoute une personnalisation bien plus poussée du terminal. Compatible avec Oh-My-Zsh.
 
 Lien officiel : [Github](https://github.com/romkatv/powerlevel10k)
+
+### Ajout des informations OpenStack
+![p10k-openstack.png](/images/linux/terminal/p10k-openstack.png)
+Ajoutez dans le fichiers `~/.p10k.zsh ` la fonction suivante :
+```bash
+  function prompt_openstack() {
+    if [[ -n $OS_PASSWORD ]]; then
+      p10k segment -b blue -f '#ffffff' -i '' -t "$OS_CLOUD |  $OS_PROJECT_NAME |  $OS_USERNAME"
+    fi
+  }
+```
+Et modifiez cette ligne `typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS` en ajoutant `openstack` :
+```bash
+  typeset -g POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+    os_icon                 # os identifier
+    dir                     # current directory
+    vcs                     # git status
+    openstack               # display current openstack config
+  )
+```
 
 ## Bash-completion
 Comme son nom l'indique, améliore l'autocompletion de bash
