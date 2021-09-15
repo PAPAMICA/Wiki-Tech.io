@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-09-08T14:47:25.726Z
+date: 2021-09-15T14:36:22.880Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z
@@ -31,8 +31,10 @@ Le modèle du Cloud Computing se différencie par les cinq caractéristiques sui
 *Déployer rapidement à l'échelle mondiale, si vous avez un client à l'étranger, il devrait y accéder avec une très faible latence.* 
 **- Mise en commun des ressources (ressource pooling)**
 *En créant une infrastructure partagée avec d'autres clients vous pouvez réaliser des économies d'échelles plus importantes*
-**- Elasticité rapide**
+**- Elasticité rapide (Rapid elasticity)**
 *L'élisticité représente la capacité du système à s'adapter aux demandes en approvisionnant et en désapprovisionnant des ressources de manière automatique.*
-**- Service mesuré**
-A suivre...
+**- Service mesuré (Measured service)**
+*Sécuriser le service par une détection immédiate d'une surcharge ou inversement, si l'une de ces conditions est vérifié, c'est à l'elasticité de prendre en charge cela.*
+
+
 {.grid-list}
