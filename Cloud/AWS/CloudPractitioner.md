@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-09-15T14:36:22.880Z
+date: 2021-09-15T14:36:39.510Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z
@@ -36,5 +36,6 @@ Le modèle du Cloud Computing se différencie par les cinq caractéristiques sui
 **- Service mesuré (Measured service)**
 *Sécuriser le service par une détection immédiate d'une surcharge ou inversement, si l'une de ces conditions est vérifié, c'est à l'elasticité de prendre en charge cela.*
 
+A SUIVRE...
 
 {.grid-list}
