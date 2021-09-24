@@ -2,22 +2,24 @@
 title: Centreon - Présentation
 description: Qu’est ce qu’est Centreon ?
 published: true
-date: 2021-09-24T21:05:10.487Z
+date: 2021-09-24T21:05:17.482Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:37:18.321Z
 -->
 
-<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure><div>
-</div><h1 id="présentation" class="toc-header"> Présentation</h1><div>
-</div><p>Centreon est un outil de supervision et de monitoring possédant de nombreuses fonctionnalités.<br>C'est un programme modulaire qui se décompose en plusieurs parties :</p><div>
-</div><ul>
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
+<h1>Présentation</h1>
+<p>Centreon est un outil de supervision et de monitoring possédant de nombreuses fonctionnalités.<br>C'est un programme modulaire qui se décompose en plusieurs parties :</p>
+<ul>
   <li>L'ordonnanceur qui se charge d'ordonnancer les tâches de supervision</li>
   <li>Une interface Web</li>
   <li>Les plugins</li>
-</ul><div>
-</div><p>Il permet de connaître à l’aide de son interface web et en temps réel l’état des périphériques supervisés, comme par exemple&nbsp;:</p><div>
-</div><ul>
+</ul>
+<p>Il permet de connaître à l’aide de son interface web et en temps réel l’état des périphériques supervisés, comme par exemple&nbsp;:</p>
+<ul>
   <li>Utilisation de la RAM</li>
   <li>Utilisation du processeur</li>
   <li>L’espace disque</li>
@@ -26,31 +28,31 @@ dateCreated: 2021-05-24T10:37:18.321Z
   <li>Notification par email</li>
   <li>Journalisation des évènements</li>
   <li>Etc.</li>
-</ul><div>
-</div><p>La liste des possibilités est longue.<br>Centreon fonctionne sur un principe de «&nbsp;check&nbsp;» à l’aide du protocole SNMP ou encore de «&nbsp;check&nbsp;» à l’aide d’un agent installé sur l'hôte ciblé. L’agent Windows est «&nbsp;NSClient&nbsp;» et l’agent Linux est «&nbsp;Xinetd&nbsp;».<br>Il est également possible de faire des checks par «&nbsp;rebond&nbsp;» via le protocole SSH.</p><div>
-</div><figure class="image"><img src="/images/centreon-1.png"></figure><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><h1 id="architectures" class="toc-header"> &nbsp;Architectures</h1><div>
-</div><h2 id="architecture-simple" class="toc-header"> Architecture simple</h2><div>
-</div><p>Une architecture est appelée simple lorsqu’on associe tous les modules de Centreon dans un unique serveur.<br>A noter toutefois que ce type d’architecture comporte de nombreux inconvénients&nbsp;:&nbsp;</p><div>
-</div><ul>
+</ul>
+<p>La liste des possibilités est longue.<br>Centreon fonctionne sur un principe de «&nbsp;check&nbsp;» à l’aide du protocole SNMP ou encore de «&nbsp;check&nbsp;» à l’aide d’un agent installé sur l'hôte ciblé. L’agent Windows est «&nbsp;NSClient&nbsp;» et l’agent Linux est «&nbsp;Xinetd&nbsp;».<br>Il est également possible de faire des checks par «&nbsp;rebond&nbsp;» via le protocole SSH.</p>
+<figure class="image"><img src="/images/centreon-1.png"></figure>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>&nbsp;Architectures</h1>
+<h2>Architecture simple</h2>
+<p>Une architecture est appelée simple lorsqu’on associe tous les modules de Centreon dans un unique serveur.<br>A noter toutefois que ce type d’architecture comporte de nombreux inconvénients&nbsp;:&nbsp;</p>
+<ul>
   <li>En cas de perte du serveur, on perd toute vues de supervision possibles car tous les modules sont dans le même serveur.</li>
   <li>Les agents envoyant les informations vers un point unique du réseau, la bande passante risque de saturer très rapidement en fonction du nombre d'hôtes supervisés dans l'infrastructure.</li>
-</ul><div>
-</div><p>Exemple d’un schéma d’une architecture dite simple&nbsp;</p><div>
-</div><figure class="image"><img src="/images/centreon-2.png"></figure><div>
-</div><h2 id="architecture-distribuée" class="toc-header"> Architecture distribuée</h2><div>
-</div><p>Une architecture distribuée se compose en général d’un serveur de supervision et d’un ou plusieurs « poller ».&nbsp;<br>Elle permet notamment :&nbsp;</p><div>
-</div><ul>
+</ul>
+<p>Exemple d’un schéma d’une architecture dite simple&nbsp;</p>
+<figure class="image"><img src="/images/centreon-2.png"></figure>
+<h2>Architecture distribuée</h2>
+<p>Une architecture distribuée se compose en général d’un serveur de supervision et d’un ou plusieurs « poller ».&nbsp;<br>Elle permet notamment :&nbsp;</p>
+<ul>
   <li>De répartir la charge sur plusieurs serveurs de supervision</li>
   <li>De limiter l’impact du flux de supervision sur les interconnexions de réseaux</li>
   <li>L’isolation de réseau.</li>
-</ul><div>
-</div><p>Une relation de master-slave peut être mis en place sur la base de données mais aussi sur le Central.<br>Exemple d’un schéma d’une architecture dite distribuée :&nbsp;</p><div>
-</div><figure class="image"><img src="/images/centreon-3.png"></figure><div>
-</div><h1 id="prérequis" class="toc-header"> Prérequis</h1><div>
-</div><ul>
+</ul>
+<p>Une relation de master-slave peut être mis en place sur la base de données mais aussi sur le Central.<br>Exemple d’un schéma d’une architecture dite distribuée :&nbsp;</p>
+<figure class="image"><img src="/images/centreon-3.png"></figure>
+<h1>Prérequis</h1>
+<ul>
   <li>Des connaissances en système d’exploitation GNU/Linux</li>
   <li>Des connaissances en système d’exploitation Windows</li>
   <li>Des connaissances en réseau, sur les protocoles réseau et leurs numéros de ports.</li>
@@ -61,5 +63,4 @@ dateCreated: 2021-05-24T10:37:18.321Z
   <li>Un serveur mail fonctionnel pour recevoir des notifications</li>
   <li>Des connaissances sur le fonctionnement des MIP</li>
   <li>Une connexion Internet fonctionnelle pour les checks distant</li>
-</ul><div>
-</div>
+</ul>
