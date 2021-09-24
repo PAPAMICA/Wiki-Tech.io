@@ -2,52 +2,52 @@
 title: Notifications e-mails
 description: Configuration des notifications par e-mails
 published: true
-date: 2021-05-23T21:10:14.094Z
+date: 2021-09-24T21:08:18.573Z
 tags: 
 editor: ckeditor
-dateCreated: 2021-05-23T20:22:48.898Z
+dateCreated: 2021-05-24T10:37:13.809Z
 -->
 
-<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
-<h1>Configuration des notifications par email</h1>
-<h2>Configuration des comptes utilisateur</h2>
-<p>Pour permettre la notification des différentes alertes créées dans centreon il va falloir effectuer une configuration dans le profil du ou des utilisateurs qui les recevront.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis sur «&nbsp;Users&nbsp;», sur «&nbsp;Contacts&nbsp;» et en fin sur «&nbsp;Users&nbsp;».<br>Choisir l’utilisateur concerné et effectuer les modifications suivantes dans les section «&nbsp;notification&nbsp;», «&nbsp;hosts&nbsp;» et «&nbsp;services&nbsp;» :</p>
-<ul>
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure><div>
+</div><h1 id="configuration-des-notifications-par-email" class="toc-header"> Configuration des notifications par email</h1><div>
+</div><h2 id="configuration-des-comptes-utilisateur" class="toc-header"> Configuration des comptes utilisateur</h2><div>
+</div><p>Pour permettre la notification des différentes alertes créées dans centreon il va falloir effectuer une configuration dans le profil du ou des utilisateurs qui les recevront.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis sur «&nbsp;Users&nbsp;», sur «&nbsp;Contacts&nbsp;» et en fin sur «&nbsp;Users&nbsp;».<br>Choisir l’utilisateur concerné et effectuer les modifications suivantes dans les section «&nbsp;notification&nbsp;», «&nbsp;hosts&nbsp;» et «&nbsp;services&nbsp;» :</p><div>
+</div><ul>
   <li>Enable notifications&nbsp;: yes</li>
   <li>Host /Service Notification Options&nbsp;: cocher les cases pour lesquelles on veut recevoir des notifications</li>
   <li>Host / Service Notification Period&nbsp;: 24x7 pour une notification 24h/24 et 7j/7</li>
   <li>Host Notification Commands&nbsp;: host-notify-by-email</li>
   <li>Service Notification Commands&nbsp;: service-notify-by-email</li>
-</ul>
-<figure class="image"><img src="/images/mail_centreon-1.png"></figure>
-<p>Cliquer sur «&nbsp;save&nbsp;»<br>Il sera également nécessaire d’effectuer la configuration suivante sur les Templates de service et Template d’hôtes.</p>
-<figure class="image"><img src="/images/mail_centreon-2.png"></figure>
-<p>Cliquer sur «&nbsp;Save&nbsp;»</p>
-<h2>Configuration du postfix</h2>
-<p>Attention SI postfix n’est pas installé sur le serveur il faudra l’installer au préalable&nbsp;</p>
-<pre><code class="language-plaintext">yum install postfix -y</code></pre>
-<p>Afin de permettre les différentes notifications par email, il va falloir modifier le fichier <i>/etc/postfix/mail.cf</i></p>
-<pre><code class="language-plaintext">vi /etc/postfix/main.cf</code></pre>
-<p>Une fois dans le fichier, il va falloir modifier les lignes suivantes&nbsp;:&nbsp;</p>
-<ul>
+</ul><div>
+</div><figure class="image"><img src="/images/mail_centreon-1.png"></figure><div>
+</div><p>Cliquer sur «&nbsp;save&nbsp;»<br>Il sera également nécessaire d’effectuer la configuration suivante sur les Templates de service et Template d’hôtes.</p><div>
+</div><figure class="image"><img src="/images/mail_centreon-2.png"></figure><div>
+</div><p>Cliquer sur «&nbsp;Save&nbsp;»</p><div>
+</div><h2 id="configuration-du-postfix" class="toc-header"> Configuration du postfix</h2><div>
+</div><p>Attention SI postfix n’est pas installé sur le serveur il faudra l’installer au préalable&nbsp;</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">yum install postfix -y</code></pre><div>
+</div><p>Afin de permettre les différentes notifications par email, il va falloir modifier le fichier <i>/etc/postfix/mail.cf</i></p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">vi /etc/postfix/main.cf</code></pre><div>
+</div><p>Une fois dans le fichier, il va falloir modifier les lignes suivantes&nbsp;:&nbsp;</p><div>
+</div><ul>
   <li>#myhostname = host.domain.tld -&gt; retirer le # et à la place de «&nbsp;host.domain.tld&nbsp;» mettre le nom du serveur centreon</li>
   <li>#myorigin = $myhostname -&gt; retirer le #</li>
   <li>#relayhost = [an.ip.add.ress] -&gt; retirer le # et mettre l’adresse IP du relay SMTP</li>
-</ul>
-<p>Sauvegarder le fichier puis relancer le service postfix à l’aide de la commande suivante</p>
-<pre><code class="language-plaintext">/etc/init.d/postfix restart</code></pre>
-<p>Les notifications par e-mail sont maintenant activées.</p>
-<h2>BONUS : Modification du visuel des notifications par email</h2>
-<p>Les notifications par email qui sont envoyées par centreon sont relativement sommaires et pas forcément très lisible cependant il est possible de les modifier.<br>A titre d’exemple, cette procédure détaillera comment passer de ce type de notification (exemple trouvé sur Internet)</p>
-<figure class="image"><img src="/images/mail_centreon-3.png"></figure>
-<p>A ce type ci&nbsp;</p>
-<figure class="image"><img src="/images/mail_centreon-4.png"></figure>
-<p>Merci à <a href="https://github.com/Shini31"><strong>Shini31</strong></a> pour le partage de son travail.</p>
-<h3>Cloner le dépot git depuis git-hub</h3>
-<p>Si la commande GIT n’est pas installée il faudra avant tout effectuer cette commande&nbsp;</p>
-<pre><code class="language-plaintext">yum install git</code></pre>
-<p>Ensuite, il va falloir cloner le dépôt git permettant de modifier les notifications.</p>
-<pre><code class="language-plaintext">cd /tmp
+</ul><div>
+</div><p>Sauvegarder le fichier puis relancer le service postfix à l’aide de la commande suivante</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">/etc/init.d/postfix restart</code></pre><div>
+</div><p>Les notifications par e-mail sont maintenant activées.</p><div>
+</div><h2 id="bonus-modification-du-visuel-des-notifications-par-email" class="toc-header"> BONUS : Modification du visuel des notifications par email</h2><div>
+</div><p>Les notifications par email qui sont envoyées par centreon sont relativement sommaires et pas forcément très lisible cependant il est possible de les modifier.<br>A titre d’exemple, cette procédure détaillera comment passer de ce type de notification (exemple trouvé sur Internet)</p><div>
+</div><figure class="image"><img src="/images/mail_centreon-3.png"></figure><div>
+</div><p>A ce type ci&nbsp;</p><div>
+</div><figure class="image"><img src="/images/mail_centreon-4.png"></figure><div>
+</div><p>Merci à <a href="https://github.com/Shini31" class="is-external-link" target="_blank" rel="noreferrer"><strong>Shini31</strong></a> pour le partage de son travail.</p><div>
+</div><h3 id="cloner-le-dépot-git-depuis-git-hub" class="toc-header"> Cloner le dépot git depuis git-hub</h3><div>
+</div><p>Si la commande GIT n’est pas installée il faudra avant tout effectuer cette commande&nbsp;</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">yum install git</code></pre><div>
+</div><p>Ensuite, il va falloir cloner le dépôt git permettant de modifier les notifications.</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">cd /tmp
 Mkdir notif
 cd notif/
 git clone https://github.com/Shini31/centreon-notifications.git
@@ -55,58 +55,59 @@ git clone https://github.com/Shini31/centreon-notifications.git
  remote: Counting objects: 101, done.
  remote: Total 101 (delta 0), reused 0 (delta 0), pack-reused 101
  Receiving objects: 100% (101/101), 107.24 KiB | 0 bytes/s, done.
- Resolving deltas: 100% (40/40), done.</code></pre>
-<p>Se déplacer dans le dossier «&nbsp;centreon-notifications&nbsp;» qui vient d’être téléchargé depuis GitHub</p>
-<pre><code class="language-plaintext">cd centreon-notifications/mail/</code></pre>
-<p>A l’aide de la commande «&nbsp;ls -l&nbsp;» nous pouvons vérifier la présence des fichiers suivant&nbsp;</p>
-<ul>
+ Resolving deltas: 100% (40/40), done.</code></pre><div>
+</div><p>Se déplacer dans le dossier «&nbsp;centreon-notifications&nbsp;» qui vient d’être téléchargé depuis GitHub</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">cd centreon-notifications/mail/</code></pre><div>
+</div><p>A l’aide de la commande «&nbsp;ls -l&nbsp;» nous pouvons vérifier la présence des fichiers suivant&nbsp;</p><div>
+</div><ul>
   <li>host-email.php</li>
   <li>host_email.png</li>
   <li>service-email.php</li>
   <li>service_email.png</li>
-</ul>
-<pre><code class="language-plaintext">ls -l
+</ul><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">ls -l
 total 68
 -rw-r--r-- 1 root root&nbsp; 2757 31 août&nbsp; 16:20 host-email.php
 -rw-r--r-- 1 root root 22334 31 août&nbsp; 16:20 host_email.png
 -rw-r--r-- 1 root root&nbsp; 5178 31 août&nbsp; 16:20 service-email.php
--rw-r--r-- 1 root root 32747 31 août&nbsp; 16:20 service_email.png</code></pre>
-<h3>Configuration des fichiers</h3>
-<p>Déplacer les fichiers «&nbsp;host-email.php&nbsp;» et «&nbsp;service-email.php&nbsp;» dans <i>/usr/lib/nagios/plugins/</i></p>
-<pre><code class="language-plaintext">mv host-email.php /usr/lib/nagios/plugins/
-mv service-email.php /usr/lib/nagios/plugins/</code></pre>
-<p>Se placer dans le même répertoire</p>
-<pre><code class="language-plaintext">cd /usr/lib/nagios/plugins/</code></pre>
-<p>Effectuer les commandes suivantes&nbsp;:</p>
-<pre><code class="language-plaintext">chown centreon:centreon host-email.php
+-rw-r--r-- 1 root root 32747 31 août&nbsp; 16:20 service_email.png</code></pre><div>
+</div><h3 id="configuration-des-fichiers" class="toc-header"> Configuration des fichiers</h3><div>
+</div><p>Déplacer les fichiers «&nbsp;host-email.php&nbsp;» et «&nbsp;service-email.php&nbsp;» dans <i>/usr/lib/nagios/plugins/</i></p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">mv host-email.php /usr/lib/nagios/plugins/
+mv service-email.php /usr/lib/nagios/plugins/</code></pre><div>
+</div><p>Se placer dans le même répertoire</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">cd /usr/lib/nagios/plugins/</code></pre><div>
+</div><p>Effectuer les commandes suivantes&nbsp;:</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">chown centreon:centreon host-email.php
 chown centreon:centreon service-email.php
 chmod 775 host-email.php
-chmod 775 service-email.php</code></pre>
-<p>Il va falloir modifier les deux fichiers.</p>
-<pre><code class="language-plaintext">vi host-email.php</code></pre>
-<p>Rechercher à l’aide de «&nbsp;/&nbsp;» les lignes contenant&nbsp;:</p>
-<ul>
+chmod 775 service-email.php</code></pre><div>
+</div><p>Il va falloir modifier les deux fichiers.</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">vi host-email.php</code></pre><div>
+</div><p>Rechercher à l’aide de «&nbsp;/&nbsp;» les lignes contenant&nbsp;:</p><div>
+</div><ul>
   <li><i>$subjects</i> puis supprimer [CENTREON]. Cela permettra une meilleure visibilité dans la lecture des emails.</li>
   <li><i>$url</i> mettre l’adresse web du Centreon en FQDN</li>
   <li>$from mettre l’adresse mail que centreon utilisera pour envoyer des mails (ex&nbsp;: centreon-engine@server.localdomain)</li>
-</ul>
-<p>Sauvegarder avec «&nbsp;:wq&nbsp;»</p>
-<p>Ensuite il faudra faire exactement les mêmes modifications dans le fichier «&nbsp;service-email.php&nbsp;»</p>
-<pre><code class="language-plaintext">vi service-email.php</code></pre>
-<p>Sauvegarder avec «&nbsp;:wq&nbsp;»</p>
-<h3>Configuration des notifications dans centreon</h3>
-<p>Se connecter à l’interface web du serveur centreon puis cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;Commands&nbsp;» puis sur «&nbsp;Notifications&nbsp;»<br>Sur cette page, les différentes notifications préconfigurées de Centreon sont disponibles.</p>
-<p>Avant de les modifier il est conseillé de dupliquer les commandes «&nbsp;host-notify-by-email&nbsp;» et «&nbsp;service-notify-by-email&nbsp;» pour les sauvegarder. En cas de problème on pourra toujours récupérer les notifications d’origine.</p>
-<figure class="image"><img src="/images/mail_centreon-5.png"></figure>
-<p>Une fois les deux sauvegardes sont effectuées, il va falloir modifier «&nbsp;host-notify-by-email&nbsp;» et «&nbsp;service-notify-by-email&nbsp;»<br>Pour cela cliquer dessus et supprimer l’intégralité de la case «&nbsp;command line&nbsp;» pour y ajouter respectivement&nbsp;:&nbsp;</p>
-<ul>
+</ul><div>
+</div><p>Sauvegarder avec «&nbsp;:wq&nbsp;»</p><div>
+</div><p>Ensuite il faudra faire exactement les mêmes modifications dans le fichier «&nbsp;service-email.php&nbsp;»</p><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">vi service-email.php</code></pre><div>
+</div><p>Sauvegarder avec «&nbsp;:wq&nbsp;»</p><div>
+</div><h3 id="configuration-des-notifications-dans-centreon" class="toc-header"> Configuration des notifications dans centreon</h3><div>
+</div><p>Se connecter à l’interface web du serveur centreon puis cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;Commands&nbsp;» puis sur «&nbsp;Notifications&nbsp;»<br>Sur cette page, les différentes notifications préconfigurées de Centreon sont disponibles.</p><div>
+</div><p>Avant de les modifier il est conseillé de dupliquer les commandes «&nbsp;host-notify-by-email&nbsp;» et «&nbsp;service-notify-by-email&nbsp;» pour les sauvegarder. En cas de problème on pourra toujours récupérer les notifications d’origine.</p><div>
+</div><figure class="image"><img src="/images/mail_centreon-5.png"></figure><div>
+</div><p>Une fois les deux sauvegardes sont effectuées, il va falloir modifier «&nbsp;host-notify-by-email&nbsp;» et «&nbsp;service-notify-by-email&nbsp;»<br>Pour cela cliquer dessus et supprimer l’intégralité de la case «&nbsp;command line&nbsp;» pour y ajouter respectivement&nbsp;:&nbsp;</p><div>
+</div><ul>
   <li>host-notify-by-email</li>
-</ul>
-<pre><code class="language-plaintext">$USER1$/host-email.php "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$TOTALHOSTSUP$" "$TOTALHOSTSDOWN$" "$HOSTACKAUTHOR$" "$HOSTACKCOMMENT$"</code></pre>
-<p>Cliquer sur «&nbsp;save&nbsp;»</p>
-<ul>
+</ul><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">$USER1$/host-email.php "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$HOSTOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$TOTALHOSTSUP$" "$TOTALHOSTSDOWN$" "$HOSTACKAUTHOR$" "$HOSTACKCOMMENT$"</code></pre><div>
+</div><p>Cliquer sur «&nbsp;save&nbsp;»</p><div>
+</div><ul>
   <li>service-notify-by-email</li>
-</ul>
-<pre><code class="language-plaintext">$USER1$/service-email.php "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$SERVICEDURATIONSEC$" "$SERVICEEXECUTIONTIME$" "$TOTALSERVICESWARNING$" "$TOTALSERVICESCRITICAL$" "$TOTALSERVICESUNKNOWN$" "$LASTSERVICEOK$" "$LASTSERVICEWARNING$" "$SERVICENOTIFICATIONNUMBER$" "$SERVICEACKAUTHOR$" "$SERVICEACKCOMMENT$"</code></pre>
-<p>Cliquer sur «&nbsp;save&nbsp;»</p>
-<p>Une fois les deux notifications modifiées, il ne reste plus qu’à exporter la configuration du poller comme indiqué dans le prochain chapitre «&nbsp;<strong>DEPLOYER LA CONFIGURATION</strong>&nbsp;»</p>
+</ul><div>
+</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">$USER1$/service-email.php "$NOTIFICATIONTYPE$" "$HOSTNAME$" "$HOSTALIAS$" "$HOSTSTATE$" "$HOSTADDRESS$" "$SERVICEOUTPUT$" "$LONGDATETIME$" "$SERVICEDESC$" "$SERVICESTATE$" "$CONTACTEMAIL$" "$SERVICEDURATIONSEC$" "$SERVICEEXECUTIONTIME$" "$TOTALSERVICESWARNING$" "$TOTALSERVICESCRITICAL$" "$TOTALSERVICESUNKNOWN$" "$LASTSERVICEOK$" "$LASTSERVICEWARNING$" "$SERVICENOTIFICATIONNUMBER$" "$SERVICEACKAUTHOR$" "$SERVICEACKCOMMENT$"</code></pre><div>
+</div><p>Cliquer sur «&nbsp;save&nbsp;»</p><div>
+</div><p>Une fois les deux notifications modifiées, il ne reste plus qu’à exporter la configuration du poller comme indiqué dans le prochain chapitre «&nbsp;<strong>DEPLOYER LA CONFIGURATION</strong>&nbsp;»</p><div>
+</div>
