@@ -2,19 +2,19 @@
 title: Vues personnalisées
 description: Les vues personnalisées
 published: true
-date: 2021-05-23T21:01:30.162Z
+date: 2021-09-24T21:09:05.329Z
 tags: 
 editor: ckeditor
-dateCreated: 2021-05-23T20:49:57.425Z
+dateCreated: 2021-05-24T10:37:22.673Z
 -->
 
-<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure>
-<h1>Configuration des vues personnalisées</h1>
-<p>Lors que la configuration de Centreon est effectuée et que le serveur est prêt à l’emploi, il est possible d’effectuer certaines configurations afin de le personnaliser.<br>Par exemple il est possible d’ajouter des vues personnalisées et précises directement dans la section «&nbsp;Home&nbsp;» puis «&nbsp;Custom Views&nbsp;»</p>
-<h2>Installation des «&nbsp;Widgets&nbsp;»</h2>
-<p>&nbsp;</p>
-<p>Avant de commencer la première chose à faire est d’installer les différents «&nbsp;Widgets&nbsp;» dont nous aurons besoin.<br>Ils sont disponibles dans «&nbsp;Administration&nbsp;» puis «&nbsp;Extensions&nbsp;» et en fin dans «&nbsp;Widgets&nbsp;».<br>Une liste sera visible avec le titre, la description, la version l’auteur et action (qui correspond en réalité au statut activé ou désactivé).&nbsp;<br>Les «&nbsp;Widgets&nbsp;» ayant pour icône ce symbole un écrou ne sont pas installés tandis que ceux ayant pour icône une croix rouge sont installés.<br>Dans cette procédure, nous allons installer les «&nbsp;Widgets&nbsp;» suivant&nbsp;:&nbsp;</p>
-<ul>
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure><div>
+</div><h1 id="configuration-des-vues-personnalisées" class="toc-header"> Configuration des vues personnalisées</h1><div>
+</div><p>Lors que la configuration de Centreon est effectuée et que le serveur est prêt à l’emploi, il est possible d’effectuer certaines configurations afin de le personnaliser.<br>Par exemple il est possible d’ajouter des vues personnalisées et précises directement dans la section «&nbsp;Home&nbsp;» puis «&nbsp;Custom Views&nbsp;»</p><div>
+</div><h2 id="installation-des-widgets" class="toc-header"> Installation des «&nbsp;Widgets&nbsp;»</h2><div>
+</div><p>&nbsp;</p><div>
+</div><p>Avant de commencer la première chose à faire est d’installer les différents «&nbsp;Widgets&nbsp;» dont nous aurons besoin.<br>Ils sont disponibles dans «&nbsp;Administration&nbsp;» puis «&nbsp;Extensions&nbsp;» et en fin dans «&nbsp;Widgets&nbsp;».<br>Une liste sera visible avec le titre, la description, la version l’auteur et action (qui correspond en réalité au statut activé ou désactivé).&nbsp;<br>Les «&nbsp;Widgets&nbsp;» ayant pour icône ce symbole un écrou ne sont pas installés tandis que ceux ayant pour icône une croix rouge sont installés.<br>Dans cette procédure, nous allons installer les «&nbsp;Widgets&nbsp;» suivant&nbsp;:&nbsp;</p><div>
+</div><ul>
   <li>Graph Monitoring</li>
   <li>Grid-map</li>
   <li>Host Monitoring</li>
@@ -22,29 +22,30 @@ dateCreated: 2021-05-23T20:49:57.425Z
   <li>Service Monitoring</li>
   <li>Servicegroup Monitoring</li>
   <li>Tactical Overview</li>
-</ul>
-<p>Pour ce faire il suffit de cliquer sur l’icône en forme d'écrou.<br>Un message de confirmation va apparaitre et il suffira de valider par «&nbsp;OK&nbsp;»</p>
-<figure class="image"><img src="/images/vue_perso_centreon-3.png"></figure>
-<p>Les «&nbsp;Widgets&nbsp;» sont maintenant installés</p>
-<figure class="image"><img src="/images/vue_perso_centreon-4.png"></figure>
-<h3>Création d’une vue personnalisée</h3>
-<p>Maintenant que les «&nbsp;Widgets&nbsp;» sont installés nous allons pouvoir créer des vues personnalisées afin d’avoir un bref aperçu de la supervision directement depuis l’interface graphique de Centreon.&nbsp;<br>Il est possible d’avoir plusieurs informations réunies dans une seule vue ou alors une seule information par vue. Tout va dépendre de la configuration de la vue.<br>Cliquer sur «&nbsp;Home&nbsp;» puis sur «&nbsp;Custom Views&nbsp;» et en fin sur «&nbsp;+ Add view&nbsp;»</p>
-<figure class="image"><img src="/images/vue_perso_centreon-5.png"></figure>
-<p>Un pop-up va apparaitre afin de donner des critères à cette nouvelle vue.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-6.png"></figure>
-<p>La section «&nbsp;Layout&nbsp;» permet de définir le nombre de colonnes qui seront configurées dans la vue.<br>Par exemple SI 1 colonne est choisie, toute la largeur de la page web sera utilisée pour afficher une information. Si on souhaite ajouter d’autres informations à cette vue, elles seront dans ce cas les unes en dessous des autres.<br>Dans le cas où 2 ou 3 colonnes seraient configurées, les informations seront alors les unes à côté des autres pour une meilleure visibilité.</p>
-<p>A titre d’exemple pour cette procédure, 2 colonnes seront choisies.<br>Remplir les informations comme ceci&nbsp;:&nbsp;</p>
-<figure class="image"><img src="/images/vue_perso_centreon-7.png"></figure>
-<p>Cocher la case «&nbsp;public&nbsp;» si les utilisateurs qui ne sont pas administrateur ont besoin d’avoir accès à cette vue.<br>Cliquer sur «&nbsp;submit&nbsp;»<br>La vue est alors créée mais ne contient pour l’instant aucune information.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-8.png"></figure>
-<p>Pour ajouter des informations, cliquer sur «&nbsp;+ Add widget&nbsp;». Un nouveau pop-up va alors apparaitre.<br>Indiquer un nom et sélectionner le «&nbsp;widget&nbsp;» à utiliser. Pour cet exemple, «&nbsp;host monitoring&nbsp;» sera utilisé.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-9.png"></figure>
-<p>Cliquer sur «&nbsp;submit&nbsp;»<br>Une vue va alors apparaitre mais n’est pour l’instant pas personnalisée.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-10.png"></figure>
-<p>Cliquer sur la clé en haut à droite pour faire apparaitre la page de configuration.<br>Sélectionner le «&nbsp;hostgroup&nbsp;» qui sera utilisé. Dans notre cas nous allons afficher tous les serveurs Windows donc le groupe choisi sera «&nbsp;Serveurs_Win&nbsp;».&nbsp;<br>Modifier le nombre dans la section «&nbsp;results&nbsp;» afin d’afficher autant d’hôtes que souhaité.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-11.png"></figure>
-<p>Dans la partie basse du pop-up, indiquer l’intervalle de temps en seconde pour le rafraichissement automatique de la vue.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-12.png"></figure>
-<p>Cliquer sur «&nbsp;apply&nbsp;»<br>La vue est maintenant configurée et le «&nbsp;widget&nbsp;» est visible.<br>Répéter l’opération afin d’ajouter un autre «&nbsp;widget&nbsp;» à cette vue. Il sera visible dans la deuxième colonne.</p>
-<figure class="image"><img src="/images/vue_perso_centreon-13.png"></figure>
-<p>&nbsp;</p>
+</ul><div>
+</div><p>Pour ce faire il suffit de cliquer sur l’icône en forme d'écrou.<br>Un message de confirmation va apparaitre et il suffira de valider par «&nbsp;OK&nbsp;»</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-3.png"></figure><div>
+</div><p>Les «&nbsp;Widgets&nbsp;» sont maintenant installés</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-4.png"></figure><div>
+</div><h3 id="création-dune-vue-personnalisée" class="toc-header"> Création d’une vue personnalisée</h3><div>
+</div><p>Maintenant que les «&nbsp;Widgets&nbsp;» sont installés nous allons pouvoir créer des vues personnalisées afin d’avoir un bref aperçu de la supervision directement depuis l’interface graphique de Centreon.&nbsp;<br>Il est possible d’avoir plusieurs informations réunies dans une seule vue ou alors une seule information par vue. Tout va dépendre de la configuration de la vue.<br>Cliquer sur «&nbsp;Home&nbsp;» puis sur «&nbsp;Custom Views&nbsp;» et en fin sur «&nbsp;+ Add view&nbsp;»</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-5.png"></figure><div>
+</div><p>Un pop-up va apparaitre afin de donner des critères à cette nouvelle vue.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-6.png"></figure><div>
+</div><p>La section «&nbsp;Layout&nbsp;» permet de définir le nombre de colonnes qui seront configurées dans la vue.<br>Par exemple SI 1 colonne est choisie, toute la largeur de la page web sera utilisée pour afficher une information. Si on souhaite ajouter d’autres informations à cette vue, elles seront dans ce cas les unes en dessous des autres.<br>Dans le cas où 2 ou 3 colonnes seraient configurées, les informations seront alors les unes à côté des autres pour une meilleure visibilité.</p><div>
+</div><p>A titre d’exemple pour cette procédure, 2 colonnes seront choisies.<br>Remplir les informations comme ceci&nbsp;:&nbsp;</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-7.png"></figure><div>
+</div><p>Cocher la case «&nbsp;public&nbsp;» si les utilisateurs qui ne sont pas administrateur ont besoin d’avoir accès à cette vue.<br>Cliquer sur «&nbsp;submit&nbsp;»<br>La vue est alors créée mais ne contient pour l’instant aucune information.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-8.png"></figure><div>
+</div><p>Pour ajouter des informations, cliquer sur «&nbsp;+ Add widget&nbsp;». Un nouveau pop-up va alors apparaitre.<br>Indiquer un nom et sélectionner le «&nbsp;widget&nbsp;» à utiliser. Pour cet exemple, «&nbsp;host monitoring&nbsp;» sera utilisé.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-9.png"></figure><div>
+</div><p>Cliquer sur «&nbsp;submit&nbsp;»<br>Une vue va alors apparaitre mais n’est pour l’instant pas personnalisée.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-10.png"></figure><div>
+</div><p>Cliquer sur la clé en haut à droite pour faire apparaitre la page de configuration.<br>Sélectionner le «&nbsp;hostgroup&nbsp;» qui sera utilisé. Dans notre cas nous allons afficher tous les serveurs Windows donc le groupe choisi sera «&nbsp;Serveurs_Win&nbsp;».&nbsp;<br>Modifier le nombre dans la section «&nbsp;results&nbsp;» afin d’afficher autant d’hôtes que souhaité.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-11.png"></figure><div>
+</div><p>Dans la partie basse du pop-up, indiquer l’intervalle de temps en seconde pour le rafraichissement automatique de la vue.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-12.png"></figure><div>
+</div><p>Cliquer sur «&nbsp;apply&nbsp;»<br>La vue est maintenant configurée et le «&nbsp;widget&nbsp;» est visible.<br>Répéter l’opération afin d’ajouter un autre «&nbsp;widget&nbsp;» à cette vue. Il sera visible dans la deuxième colonne.</p><div>
+</div><figure class="image"><img src="/images/vue_perso_centreon-13.png"></figure><div>
+</div><p>&nbsp;</p><div>
+</div>
