@@ -2,24 +2,26 @@
 title: Les commandes
 description: Les commandes dans Centreon
 published: true
-date: 2021-09-24T21:06:10.989Z
+date: 2021-09-24T21:06:37.733Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:37:02.821Z
 -->
 
-<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure><div>
-</div><h1 id="les-commandes" class="toc-header"> Les Commandes</h1><div>
-</div><h2 id="quest-ce-quune-commande" class="toc-header"> Qu’est-ce qu’une commande</h2><div>
-</div><p>Une commande est la définition d’une ligne de commande qui utilise un script ou une application afin de réaliser une action. Il est possible d’exécuter cette commande en précisant des arguments.</p><div>
-</div><p>Il existe trois types de commandes :</p><div>
-</div><ul>
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
+<h1>Les Commandes</h1>
+<h2>Qu’est-ce qu’une commande</h2>
+<p>Une commande est la définition d’une ligne de commande qui utilise un script ou une application afin de réaliser une action. Il est possible d’exécuter cette commande en précisant des arguments.</p>
+<p>Il existe trois types de commandes :</p>
+<ul>
   <li>Les commandes de vérification sont utilisées par les ordonnanceurs afin de vérifier le statut d’un hôte ou d’un service.</li>
   <li>Les commandes de notification sont utilisées par les ordonnanceurs pour alerter les contacts (via mail, SMS...).</li>
   <li>Des commandes diverses sont utilisées par les modules complémentaires (pour effectuer certaines actions), par l’ordonnanceur pour le traitement des données...</li>
-</ul><div>
-</div><h2 id="les-différents-champs" class="toc-header"> Les différents champs</h2><div>
-</div><ul>
+</ul>
+<h2>Les différents champs</h2>
+<ul>
   <li>Nom de la commande&nbsp;: définit le nom de la commande.</li>
   <li>Type de commande&nbsp;: permet de choisir le type de commande.</li>
   <li>Ligne de commande&nbsp;: indique l’application ou le script utilisé avec la commande.</li>
@@ -31,69 +33,68 @@ dateCreated: 2021-05-24T10:37:02.821Z
   <li>Connecteurs&nbsp;: permet de lier un connecteur à la commande.</li>
   <li>Modèle de graphique&nbsp;: permet de lier la commande à un modèle de graphique.</li>
   <li>Commentaire&nbsp;: permet de commenter la commande.</li>
-</ul><div>
-</div><h2 id="création-dune-commande-basique-check" class="toc-header"> Création d’une commande «&nbsp;basique&nbsp;» (Check)</h2><div>
-</div><p>Il existe de nombreuses commandes disponibles dans Centreon.<br>Il est toutefois possible de créer soit même des scripts mais également d’installer des plugins pour avoir de nouvelles commandes selon les différents besoin de vérification et de supervision à mettre en place.<br>Avant de commencer à installer des plugins, il est conseillé de commencer par certaines commandes «&nbsp;basiques&nbsp;». Elles permettront soit de se faire la main si on ne connaît pas Centreon soit de vérifier que tout fonctionne correctement.<br>Parmi ce type de commandes et à titre d’exemple, nous pouvons citer&nbsp;des checks sur :&nbsp;</p><div>
-</div><ul>
+</ul>
+<h2>Création d’une commande «&nbsp;basique&nbsp;» (Check)</h2>
+<p>Il existe de nombreuses commandes disponibles dans Centreon.<br>Il est toutefois possible de créer soit même des scripts mais également d’installer des plugins pour avoir de nouvelles commandes selon les différents besoin de vérification et de supervision à mettre en place.<br>Avant de commencer à installer des plugins, il est conseillé de commencer par certaines commandes «&nbsp;basiques&nbsp;». Elles permettront soit de se faire la main si on ne connaît pas Centreon soit de vérifier que tout fonctionne correctement.<br>Parmi ce type de commandes et à titre d’exemple, nous pouvons citer&nbsp;des checks sur :&nbsp;</p>
+<ul>
   <li>La RAM</li>
   <li>Le ou les Disques dur (fonctionnement, accessibilité,&nbsp;espace disponible, etc.)</li>
   <li>L’accès réseau</li>
   <li>Les températures</li>
   <li>Etc.</li>
-</ul><div>
-</div><p>A titre d’exemple dans cette procédure, une commande sera créée pour vérifier l’utilisation en pourcentage du CPU.<br>Afin de créer une commande, il faut cliquer sur «&nbsp;configuration&nbsp;» puis sur «&nbsp;commandes&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-1.png"></figure><div>
-</div><p>Sur la gauche, cliquer sur le type de commande à créer</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-2.png"></figure><div>
-</div><p>A titre d’exemple pour cette procédure, une commande de vérification de la charge CPU sera créé.<br>Cliquer sur «&nbsp;Ajouter&nbsp;»<br>Ecrire le nom de la commande.<br>La partie de droite va permettre de créer la commande à l’aide d’information préenregistrées. Il est également possible de créer ses propres commandes personnalisées.<br>Dans la partie de droite, commencer par cliquer sur la ligne du haut pour choisir $USER1$ puis cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-3.png"></figure><div>
-</div><p>La partie du milieu va elle permettre de choisir le «&nbsp;check&nbsp;» que l’on souhaite mettre en place. De la même façon, choisir celui qui va être utilisé et cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-4.png"></figure><div>
-</div><p>Ensuite il faut définir l’hôte qui sera ciblé. Pour cela écrire -H puis dans la ligne du bas choisir la variable qui correspond à l’adresse IP de l’hôte&nbsp;: $HOSTADDRESS$<br>L’ajouter à la commande de la même manière que précédemment.<br>Attention il est important de bien respecter la nomenclature et de ne pas tout coller dans la commande.<br>A partir du moment où le check a été positionné il faudra mettre un espace entre chaque nouvel ajout.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-5.png"></figure><div>
-</div><p>&nbsp;</p><div>
-</div><p>A ce stade, la commande n’est pas complète. Pour l’instant, il a été déclaré&nbsp;à l’aide de différentes variables :&nbsp;</p><div>
-</div><ul>
+</ul>
+<p>A titre d’exemple dans cette procédure, une commande sera créée pour vérifier l’utilisation en pourcentage du CPU.<br>Afin de créer une commande, il faut cliquer sur «&nbsp;configuration&nbsp;» puis sur «&nbsp;commandes&nbsp;»</p>
+<figure class="image"><img src="/images/commandes_centreon-1.png"></figure>
+<p>Sur la gauche, cliquer sur le type de commande à créer</p>
+<figure class="image"><img src="/images/commandes_centreon-2.png"></figure>
+<p>A titre d’exemple pour cette procédure, une commande de vérification de la charge CPU sera créé.<br>Cliquer sur «&nbsp;Ajouter&nbsp;»<br>Ecrire le nom de la commande.<br>La partie de droite va permettre de créer la commande à l’aide d’information préenregistrées. Il est également possible de créer ses propres commandes personnalisées.<br>Dans la partie de droite, commencer par cliquer sur la ligne du haut pour choisir $USER1$ puis cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-3.png"></figure>
+<p>La partie du milieu va elle permettre de choisir le «&nbsp;check&nbsp;» que l’on souhaite mettre en place. De la même façon, choisir celui qui va être utilisé et cliquer sur «&nbsp;&lt;&lt;&nbsp;» pour l’ajouter à la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-4.png"></figure>
+<p>Ensuite il faut définir l’hôte qui sera ciblé. Pour cela écrire -H puis dans la ligne du bas choisir la variable qui correspond à l’adresse IP de l’hôte&nbsp;: $HOSTADDRESS$<br>L’ajouter à la commande de la même manière que précédemment.<br>Attention il est important de bien respecter la nomenclature et de ne pas tout coller dans la commande.<br>A partir du moment où le check a été positionné il faudra mettre un espace entre chaque nouvel ajout.</p>
+<figure class="image"><img src="/images/commandes_centreon-5.png"></figure>
+<p>&nbsp;</p>
+<p>A ce stade, la commande n’est pas complète. Pour l’instant, il a été déclaré&nbsp;à l’aide de différentes variables :&nbsp;</p>
+<ul>
   <li>Le chemin où se trouve le fichier de configuration du check</li>
   <li>Le check utilisé</li>
   <li>L’hôte ciblé</li>
-</ul><div>
-</div><p>Il n’a pas été défini sur quels critères le check va s’appuyer pour remonter des informations.<br>Il manque donc les arguments à positionner afin de pouvoir définir un seuil à vérifier pour prévenir l’administrateur en cas de problème.<br>Pour rajouter des arguments à une commande, toujours dans la ligne du bas, sélectionner $ARGn$ et l’ajouter à la commande à l’aide de «&nbsp;&lt;&lt;&nbsp;». Répéter cette opération autant de fois qu’il y a d’arguments à la commande. Attention le «&nbsp;n&nbsp;» est à remplacer par un numéro pour définir le numéro de l’argument (ex&nbsp;: $ARG1$)<br>Pour la vérification du CPU, il est conseillé de définir deux types d’alertes&nbsp;:&nbsp; les «&nbsp;warning&nbsp;» et les «&nbsp;critical&nbsp;». Pour cela, tout comme l’ajout du -H dans la commande nous allons ajouter «&nbsp;-w&nbsp;» et «&nbsp;-c&nbsp;» afin de définir un seuil d’avertissement et critique.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-6.png"></figure><div>
-</div><p>Dans cet exemple, une alerte «&nbsp;warning&nbsp;» sera envoyée par email à l’administrateur si le charge du CPU dépasse X% et une alerte «&nbsp;critique&nbsp;» sera envoyée si la charge CPU dépasse Y%.<br>Les valeurs des arguments seront positionnées et abordées plus tard dans ce document.<br>Chaque check peut avoir des arguments différents, il est donc utile de préciser la définition des arguments pour chaque commande créée. Pour cela, cliquer sur «&nbsp;Describe arguments&nbsp;». Un pop-up va s’ouvrir et permettre d’écrire à quoi correspondent les arguments. Une fois indiqué, cliquer sur Save, la définition des arguments devient visible dans la commande.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-7.png"></figure><div>
-</div><p>Cette description sera visible lors de l’utilisation de la commande dans un formulaire de création d’hôte ou de service.<br>Une fois la commande préparée et avant de la sauvegarder, il est possible de la tester.<br>Pour cela, remplir le champ «&nbsp;Arguments exemple&nbsp;» avec les informations souhaitées.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-8.png"></figure><div>
-</div><p>Dans la partie de gauche, il va être indiqué le seuil du warning et celui du critical. Les informations devront commencer, être séparées et finir par «&nbsp;!&nbsp;»<br>Dans la partie de droite l’adresse IP du PC ou serveur ciblé.&nbsp;</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-9.png"></figure><div>
-</div><p>Cliquer sur la flèche bleue pour lancer le test. Un pop-up avec le résultat du test va apparaitre.<br>Si tout s’est déroulé correctement le status OK sera visible</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-10.png"></figure><div>
-</div><p>Cliquer sur Save pour enregistrer la commande et sa configuration.<br>Elle sera visible dans la liste des commandes depuis le serveur Centreon.</p><div>
-</div><figure class="image"><img src="/images/commandes_centreon-11.png"></figure><div>
-</div><p>Pour créer d’autres commandes «&nbsp;basiques&nbsp;», recommencer cette partie de la procédure et choisir un autre check à mettre en place. Autres exemples de commandes.</p><div>
-</div><ul>
-  <li>Pour vérifier l’accès réseau d’un périphérique il sera possible d’utiliser la commande suivante&nbsp;:&nbsp;</li>
-</ul><div>
-</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">$USER1$/check_centreon_ping -H $HOSTADDRESS$ -w $ARG1$ -c $ARG2$ -n $ARG3$</code></pre><div>
-</div><p>Dans cette commande, les arguments 1 et 2 seront les indicateurs «&nbsp;warning&nbsp;» et «&nbsp;critical&nbsp;». Toutefois, contrairement à la supervision du CPU, le contenu de ces arguments devra être écrit de cette façon par exemple&nbsp;: «&nbsp;300,50%&nbsp;».<br>Ici on indique que si le temps dépasse 300ms OU si on perd 50% des paquets alors l’alerte se déclenchera (les chiffres sont à titre informatifs et à configurer selon les besoins).<br>La partie «&nbsp;<i>-n $ARG3$</i>&nbsp;», quant à elle servira à indiquer le nombre de paquets envoyé pour effectuer le ping.</p><div>
-</div><ul>
-  <li>Pour vérifier l’utilisation de la RAM en pourcentage d’un périphérique il sera possible d’utiliser la commande suivante&nbsp;:&nbsp;</li>
-</ul><div>
-</div><pre class="prismjs line-numbers" v-pre="true"><code class="language-plaintext">$USER1$/check_centreon_snmp_memory -H $HOSTADDRESS$ -w $ARG1$ -c $ARG2$ -C $ARG3$ -v2c</code></pre><div>
-</div><p>Dans cette commande, les arguments 1 et 2 seront les indicateurs «&nbsp;warning&nbsp;» et «&nbsp;critical. Ils seront utilisés afin de déterminer à partir de quel pourcentage d’utilisation de la RAM les alertes se déclencheront.&nbsp;<br>La partie «&nbsp;<i>-C $ARG3$ -v2c&nbsp;»</i>, quant à elle servira à indiquer le nom de la «&nbsp;communauté&nbsp;SNMP » ainsi que la version du protocole SNMP qui seront utilisés pour la supervision.</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div><p>&nbsp;</p><div>
-</div>
+</ul>
+<p>Il n’a pas été défini sur quels critères le check va s’appuyer pour remonter des informations.<br>Il manque donc les arguments à positionner afin de pouvoir définir un seuil à vérifier pour prévenir l’administrateur en cas de problème.<br>Pour rajouter des arguments à une commande, toujours dans la ligne du bas, sélectionner $ARGn$ et l’ajouter à la commande à l’aide de «&nbsp;&lt;&lt;&nbsp;». Répéter cette opération autant de fois qu’il y a d’arguments à la commande. Attention le «&nbsp;n&nbsp;» est à remplacer par un numéro pour définir le numéro de l’argument (ex&nbsp;: $ARG1$)<br>Pour la vérification du CPU, il est conseillé de définir deux types d’alertes&nbsp;:&nbsp; les «&nbsp;warning&nbsp;» et les «&nbsp;critical&nbsp;». Pour cela, tout comme l’ajout du -H dans la commande nous allons ajouter «&nbsp;-w&nbsp;» et «&nbsp;-c&nbsp;» afin de définir un seuil d’avertissement et critique.</p>
+<figure class="image"><img src="/images/commandes_centreon-6.png"></figure>
+<p>Dans cet exemple, une alerte «&nbsp;warning&nbsp;» sera envoyée par email à l’administrateur si le charge du CPU dépasse X% et une alerte «&nbsp;critique&nbsp;» sera envoyée si la charge CPU dépasse Y%.<br>Les valeurs des arguments seront positionnées et abordées plus tard dans ce document.<br>Chaque check peut avoir des arguments différents, il est donc utile de préciser la définition des arguments pour chaque commande créée. Pour cela, cliquer sur «&nbsp;Describe arguments&nbsp;». Un pop-up va s’ouvrir et permettre d’écrire à quoi correspondent les arguments. Une fois indiqué, cliquer sur Save, la définition des arguments devient visible dans la commande.</p>
+<figure class="image"><img src="/images/commandes_centreon-7.png"></figure>
+<p>Cette description sera visible lors de l’utilisation de la commande dans un formulaire de création d’hôte ou de service.<br>Une fois la commande préparée et avant de la sauvegarder, il est possible de la tester.<br>Pour cela, remplir le champ «&nbsp;Arguments exemple&nbsp;» avec les informations souhaitées.</p>
+<figure class="image"><img src="/images/commandes_centreon-8.png"></figure>
+<p>Dans la partie de gauche, il va être indiqué le seuil du warning et celui du critical. Les informations devront commencer, être séparées et finir par «&nbsp;!&nbsp;»<br>Dans la partie de droite l’adresse IP du PC ou serveur ciblé.&nbsp;</p>
+<figure class="image"><img src="/images/commandes_centreon-9.png"></figure>
+<p>Cliquer sur la flèche bleue pour lancer le test. Un pop-up avec le résultat du test va apparaitre.<br>Si tout s’est déroulé correctement le status OK sera visible</p>
+<figure class="image"><img src="/images/commandes_centreon-10.png"></figure>
+<p>Cliquer sur Save pour enregistrer la commande et sa configuration.<br>Elle sera visible dans la liste des commandes depuis le serveur Centreon.</p>
+<figure class="image"><img src="/images/commandes_centreon-11.png"></figure>
+<p>Pour créer d’autres commandes «&nbsp;basiques&nbsp;», recommencer cette partie de la procédure et choisir un autre check à mettre en place. Autres exemples de commandes.</p>
+<ul>
+  <li>Pour vérifier l’accès réseau d’un périphérique il sera possible d’utiliser la commande suivante&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">$USER1$/check_centreon_ping -H $HOSTADDRESS$ -w $ARG1$ -c $ARG2$ -n $ARG3$</code></pre>
+<p>Dans cette commande, les arguments 1 et 2 seront les indicateurs «&nbsp;warning&nbsp;» et «&nbsp;critical&nbsp;». Toutefois, contrairement à la supervision du CPU, le contenu de ces arguments devra être écrit de cette façon par exemple&nbsp;: «&nbsp;300,50%&nbsp;».<br>Ici on indique que si le temps dépasse 300ms OU si on perd 50% des paquets alors l’alerte se déclenchera (les chiffres sont à titre informatifs et à configurer selon les besoins).<br>La partie «&nbsp;<i>-n $ARG3$</i>&nbsp;», quant à elle servira à indiquer le nombre de paquets envoyé pour effectuer le ping.</p>
+<ul>
+  <li>Pour vérifier l’utilisation de la RAM en pourcentage d’un périphérique il sera possible d’utiliser la commande suivante&nbsp;:</li>
+</ul>
+<pre><code class="language-plaintext">$USER1$/check_centreon_snmp_memory -H $HOSTADDRESS$ -w $ARG1$ -c $ARG2$ -C $ARG3$ -v2c</code></pre>
+<p>Dans cette commande, les arguments 1 et 2 seront les indicateurs «&nbsp;warning&nbsp;» et «&nbsp;critical. Ils seront utilisés afin de déterminer à partir de quel pourcentage d’utilisation de la RAM les alertes se déclencheront.&nbsp;<br>La partie «&nbsp;<i>-C $ARG3$ -v2c&nbsp;»</i>, quant à elle servira à indiquer le nom de la «&nbsp;communauté&nbsp;SNMP » ainsi que la version du protocole SNMP qui seront utilisés pour la supervision.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
