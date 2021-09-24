@@ -2,13 +2,15 @@
 title: Configuration des accès clients
 description: Configuration CAS
 published: true
-date: 2021-05-24T10:35:38.638Z
+date: 2021-09-24T21:01:07.911Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:35:37.123Z
 -->
 
-<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png"></figure>
+<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
 <h1>Configuration de la partie accès clients Exchange 2016&nbsp;</h1>
 <h2>Vue d’ensemble</h2>
 <h3>&nbsp;Les méthodes d’accès</h3>
@@ -44,7 +46,7 @@ dateCreated: 2021-05-24T10:35:37.123Z
       <li>L’authentification et le chiffrement (SSL doit être activé).</li>
     </ul>
   </li>
-  <li>Sur l’authentification&nbsp;<ul>
+  <li>Sur l’authentification<ul>
       <li>Authentification intégrée à Windows</li>
       <li>Authentification «&nbsp;Digest&nbsp;»</li>
       <li>Authentification de base (nom et mot de passe)</li>
@@ -134,7 +136,7 @@ dateCreated: 2021-05-24T10:35:37.123Z
 </ul>
 <p>Ce type de certificat est utilisé par les entreprises et est généralement de type «&nbsp;SAN&nbsp;» pour permettre l’utilisation de noms DNS alternatifs. Il nécessite d’être validé (autorisé) par les clients pour éviter d’avoir des avertissements d’erreur de certificat de la part des navigateurs web ou des clients de messagerie.<br>Il s’agit d’un certificat INTERNE à l’organisation et émis par une autorité INTERNE (ADCS - Active Directory Certificate Services) non destiné à être utilisé sur Internet.<br>Il nécessite également une configuration sur les postes clients <strong>non joints au domaine</strong> pour ne pas non plus avoir d’avertissement lors de la connexion à l’environnement de l’entreprise.</p>
 <ul>
-  <li>Certificats délivrés par une autorité de certification PKI <u>Externe</u>&nbsp;</li>
+  <li>Certificats délivrés par une autorité de certification PKI <u>Externe</u></li>
 </ul>
 <p>Ce type de certificat est payant.<br>Il est généralement de type «&nbsp;Wildcard&nbsp;» c’est à dire qu’il est créé et validé pour un nom de domaine ET ses sous-domaines (ex&nbsp;: mondomaine.com et xxxxx.mondomaine.com)<br>Il aura l’avantage de ne pas émettre d’avertissements par les clients de messagerie et les navigateur web car il est généré par une <strong><u>autorité publique reconnue et de confiance</u></strong>. Il sera principalement utilisé pour les accès externe vers Internet.<br>Il ne nécessite aucune configuration des clients.</p>
 <h3>Les services Exchange utilisant un certificat</h3>
@@ -143,14 +145,14 @@ dateCreated: 2021-05-24T10:35:37.123Z
   <li>IMAP</li>
   <li>POP</li>
   <li>IIS</li>
-  <li>UM&nbsp;</li>
+  <li>UM</li>
   <li>UM Call Router</li>
 </ul>
 <h3>Les étapes de configuration</h3>
 <p>Afin d’obtenir un certificat il faut effectuer plusieurs étapes&nbsp;:</p>
 <ul>
   <li>Création d’une demande de signature de certificat (CSR pour Certificate Signing Request) depuis un serveur Exchange par émission d’une clé publique (c’est-à-dire qu’une clé publique sera émise par le serveur et utilisée pour la demande de signature)</li>
-  <li>Signature et validation de la demande de certificat par l’autorité de certification interne ou externe. L’autorité de certification retournera un certificat d’identité signé par sa propre clé publique&nbsp;</li>
+  <li>Signature et validation de la demande de certificat par l’autorité de certification interne ou externe. L’autorité de certification retournera un certificat d’identité signé par sa propre clé publique</li>
   <li>Importation du certificat signé dans Exchange</li>
   <li>Activation du certificat pour les serveur Exchange souhaités</li>
   <li>Redémarrage des services Exchange précédemment configurés.</li>
@@ -182,7 +184,7 @@ dateCreated: 2021-05-24T10:35:37.123Z
 <p>Cette fonction permet de configurer automatiquement les profils de comptes de boites aux lettres Outlook ou d’autres clients de messagerie des services Web Exchange (EWS) et permet un gain de temps pour les utilisateurs mais surtout pour les administrateurs.&nbsp;<br>L’Autodiscover peut fonctionner à la fois en interne et en externe selon la configuration et les autorisations effectuées.&nbsp;<br>Il est possible d’utiliser l’Autodiscover en mode hybrid, dans une forêt unique ou avec de multiples forêts.</p>
 <h3>Les principales phases de la découverte automatique</h3>
 <ul>
-  <li>Phase 1&nbsp;</li>
+  <li>Phase 1</li>
 </ul>
 <p>Le client Outlook va essayer d’identifier les serveurs de découverte automatique puis établir une liste à l’aide :&nbsp;</p>
 <ol>
@@ -247,34 +249,42 @@ dateCreated: 2021-05-24T10:35:37.123Z
   <li>Pour configurer la partie Webmail&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-OWAVirtualDirectory -Identity «nom_du_serveur\OWA» -InternalURL «URL_Interne_du_répertoire» -ExternalURL «URL_Externe_du_répertoire» -basicAuthentication $true -FormsAuthentication $True -WindowsAutentication $False</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partir MAPI</li>
 </ul>
 <pre><code class="language-plaintext">Set-MapiVirtualDirectory -Identity «nom_du_serveur\MAPI» -InternalURL «URL_Interne_du_répertoire» -ExternalURL «URL_Externe_du_répertoire» -IISAuthenticationMethods NTLM</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie Anywhere</li>
 </ul>
 <pre><code class="language-plaintext">Set-OutlookAnywhere -Identity «nom_du_serveur\rpc» -SSLOffloading $False -InternalClientsRequireSSL $True&nbsp;-ExternalClientsRequireSSL $True -IISAuthenticationMethods NTLM -InternalClientAuthenticationMethod NTLM -ExternalClientAuthenticationMethod NTLM</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie ActiveSync</li>
 </ul>
 <pre><code class="language-plaintext">Set-ActiveSyncVirtualDirectory -Identity «nom_du_serveur\Microsoft-Server-ActiveSync» -InternalURL «URL_Interne_du_répertoire_Microsoft-Server-ActiveSync» -ExternalURL «URL_Externe_du_répertoire_Microsoft-Server-ActiveSync» -basicAuthEnabled $True -WindowsAuthEnabled $True -CompressionEnabled $True -ClientCertAuth ignore</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie EWS ( Exchange Web Services)</li>
 </ul>
 <pre><code class="language-plaintext">Set-WebServicesVirtualDirectory -Identity «nom_du_serveur\EWS» -ExternalURL «URL_Externe_du_répertoire_EWS/exchange.asmx» -BasiAuthentication $True -InternalURL «URL_Interne_du_répertoire_EWS/exchange.asmx» -MRSProxyEnabled $True -WindowsAuthentication $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie OAB</li>
 </ul>
 <pre><code class="language-plaintext">Set-OABVirtualDirectory -Identity «nom_du_serveur\OAB» -InternalURL «URL_Interne_du_répertoire_OAB» -ExternalURL «URL_Externe_du_répertoire_OAB» -basicAuthentication $True -WindowsAuthentication $True -RequireSSL $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie ECP</li>
 </ul>
 <pre><code class="language-plaintext">Set-ECPVirtualDirectory -Identity «nom_du_serveur\ECP» -InternalURL «URL_Interne_du_répertoire_ECP» -basicAuthentication $True -FormsAuthentication $True -WindowsAuthentication $False -AdminEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie Autodiscover</li>
 </ul>
 <pre><code class="language-plaintext">Set-ClientAccessService -Identity «nom_FQDN_du_serveur» -AutoDiscoverServiceInternalUri «https://autodiscover.nomdudomaine/Autodiscover/Autodiscover.xml»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour configurer la partie PowerShell en cas d’utilisation de script</li>
 </ul>
