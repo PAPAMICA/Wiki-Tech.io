@@ -2,13 +2,15 @@
 title: La sécurité
 description: La sécurité dans Exchange 2016
 published: true
-date: 2021-05-24T10:35:54.312Z
+date: 2021-09-24T21:02:12.619Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:35:52.850Z
 -->
 
-<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png"></figure>
+<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
 <h1>La sécurité dans Exchange 2016</h1>
 <h2>Anti-spam et anti-malware</h2>
 <h3>Présentation</h3>
@@ -67,7 +69,7 @@ dateCreated: 2021-05-24T10:35:52.850Z
 </ul>
 <p>Il existe deux types de groupes RBAC pour Exchange</p>
 <ul>
-  <li>Les groupes de rôles intégrés&nbsp;</li>
+  <li>Les groupes de rôles intégrés</li>
 </ul>
 <p>Ce sont des groupes par défaut dans Exchange sui sont créés dans le domaine racine de l’organisation. Chacun de ces groupes est configuré avec certains rôles Exchange</p>
 <ul>
@@ -90,6 +92,7 @@ dateCreated: 2021-05-24T10:35:52.850Z
   <li>Création d’un rôle permettant d’avoir les droits sur un rôle déjà existant (permet de ne pas modifier les rôles par défaut)</li>
 </ul>
 <pre><code class="language-plaintext">New-ManagementRole «nom_du_rôle» -Parent «rôle_existant_par_défaut»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Création d’un groupe de rôle et attribution à un utilisateur</li>
 </ul>
@@ -169,6 +172,7 @@ dateCreated: 2021-05-24T10:35:52.850Z
   <li>Exécuter la commande de mise à jour</li>
 </ul>
 <pre><code class="language-plaintext">.\Setup.exe /mode:update /IAcceptExchangeServerLicenseTerms</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Reconfigurer les configurations personnalisées (URLs accès clients, etc.)</li>
 </ul>
