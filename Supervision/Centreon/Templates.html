@@ -2,126 +2,92 @@
 title: Les templates
 description: Fonctionnement des templates
 published: true
-date: 2021-09-24T21:06:16.961Z
+date: 2021-09-24T21:07:42.857Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:37:20.485Z
 -->
 
-<p><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></p><div>
-</div><h1 id="les-templates" class="toc-header"> Les Templates</h1><div>
-</div><h2 id="quest-ce-quun-template" class="toc-header"> Qu’est-ce qu’un Template</h2><div>
-</div><p>Un «&nbsp;Template&nbsp;» ou «&nbsp;modèle&nbsp;» est une pré-configuration de paramètres d’un objet (hôte, service, etc.) qui pourra être utilisé pour le configurer. Le principal avantage est de pouvoir définir des valeurs par défaut pour certains objets afin d’accélérer la création d’objets similaires. Lors de la création d’un Template, le nom est le seul paramètre obligatoire, tous les autres sont optionnels.</p><div>
-</div><p>Les avantages&nbsp;:</p><div>
-</div><ul>
-<li>Définition simplifiée des éléments</li>
-<li>Pas de redondance d’information</li>
-<li>Facilité d’ajout de nouvelles ressources</li>
-<li>Configurations prédéfinies assimilées à un « catalogue d’indicateurs »</li>
-<li>Les modèles peuvent hériter d’autres modèles</li>
-</ul><div>
-</div><p>Il existe trois types de modèles :</p><div>
-</div><ul>
-<li>Les modèles d’hôtes</li>
-<li>Les modèles de services</li>
-<li>Les modèles de contacts</li>
-</ul><div>
-</div><p>Un hôte ou un Template d’hôte peut hériter une configuration depuis un ou plusieurs Template modèles d’hôtes.</p><div>
-</div><h3 id="les-templates-de-services-pour-les-commandes" class="toc-header"> Les Templates de services (pour les commandes)</h3><div>
-</div><p>Un service ou un Template de service ne peut hériter que d’un seul Template de service.<br>
-L’héritage dans ce cas est dit de type «&nbsp;Père-Fils&nbsp;».<br>
-Il s’agit d’une prédéfinition de paramètres à “n” niveaux. L’objet hérite de son modèle qui peut lui-même hériter de son modèle.<br>
-Si le fils redéfini un paramètre déjà existant dans un modèle «&nbsp;père&nbsp;» alors la modification écrase le paramètre défini dans les modèles de niveaux supérieurs.<br>
-Dans le cas contraire, les paramètres de l’objet viennent compléter le paramétrage «&nbsp;père&nbsp;».<br>
-Les paramètres au plus proche de l’objet sont prioritaires.</p><div>
-</div><p>Schéma explicatif&nbsp;:</p><div>
-</div><p><img src="/images/schema_template.png" alt=""></p><div>
-</div><h3 id="les-templates-dhôtes" class="toc-header"> Les Templates d’hôtes</h3><div>
-</div><p>Un hôte ou un Template d’hôte peut hériter d’un ou plusieurs Template d’hôtes.&nbsp;<br>
-Cet héritage peut être :</p><div>
-</div><ul>
-<li>De type associatif (addition de plusieurs modèles d’hôte)</li>
-<li>De type père-fils</li>
-</ul><div>
-</div><p>Un héritage dit «&nbsp;associatif&nbsp;» consiste à additionner plusieurs modèles au sein d’un même objet afin d’additionner l’ensemble des paramètres disponibles.</p><div>
-</div><p><img src="/images/schema_template-2.png" alt=""></p><div>
-</div><p>Toutefois si un hôte hérite de plusieurs Template d’hôtes et qu’un même paramètre est défini sur plusieurs Template, alors le modèle d’hôte situé au-dessus des autres modèles est prioritaire par rapport à ses ascendants.</p><div>
-</div><p>Schéma explicatif&nbsp;:</p><div>
-</div><p><img src="/images/schema_template-3.png" alt=""></p><div>
-</div><h2 id="création-dun-template-de-service-pour-les-commandes" class="toc-header"> Création d’un Template de service (pour les commandes)</h2><div>
-</div><p>Pour créer un Template de service, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;Services&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p><div>
-</div><p><img src="/images/template_centreon-1.png" alt=""></p><div>
-</div><h3 id="onglet-informations-générales" class="toc-header"> Onglet «&nbsp;Informations générales&nbsp;»</h3><div>
-</div><p>Commencer par indiquer un Alias et un Nom pour ce nouveau Template.<br>
-Comme indiqué précédemment, la ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration.<br>
-La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir la commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon.</p><div>
-</div><p><img src="/images/template_centreon-2.png" alt=""></p><div>
-</div><p>Lors de la création de la commande, la valeur des arguments n’avait pas été indiqué.<br>
-Il est possible de l’indiquer soit dans la partie «&nbsp;arg&nbsp;» du Template soit directement lors de la création d’un hôte.<br>
-Pour la création de cette procédure, les arguments ont été définis dans le Template.&nbsp;<br>
-Il est intéressant de constater que l’on peut également retrouver la description des arguments qui ont été ajoutés à la création de la commande directement dans le Template.</p><div>
-</div><p><img src="/images/template_centreon-3.png" alt=""></p><div>
-</div><p>Indiquer la période de supervision appliqué à ce Template.<br>
-Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p><div>
-</div><p>Quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>
-Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>
-Si le statut de l’objet n’est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l’intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p><div>
-</div><p><img src="/images/template_centreon-4.png" alt=""></p><div>
-</div><h3 id="onglet-notifications" class="toc-header"> Onglet «&nbsp;Notifications&nbsp;»</h3><div>
-</div><p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>
-A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>
-Indiquer le compte du contact qui recevra les notifications par email<br>
-Cocher les cases correspondantes aux notifications que l’on souhaite recevoir.<br>
-Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p><div>
-</div><p><img src="/images/template_centreon-5.png" alt=""></p><div>
-</div><h3 id="onglet-relations" class="toc-header"> Onglet «&nbsp;Relations&nbsp;»</h3><div>
-</div><p>Cette étape peut se faire soit lors de la création d’un Template de service soit lors de la création d’un Template d’hôte.<br>
-Tout va dépendre de l’ordre de création des Templates. Les deux Templates seront liés l’un à l’autre dans les deux cas.<br>
-Cet onglet va permettre de lier ce Template directement avec un Template d’hôte.</p><div>
-</div><p><img src="/images/template_centreon-6.png" alt=""></p><div>
-</div><p>Il est également possible de configurer les «&nbsp;Traps SNMP&nbsp;» depuis cet onglet.<br>
-Ces «&nbsp;Traps&nbsp;» ne seront pas abordées actuellement dans cette documentation.</p><div>
-</div><p><img src="/images/template_centreon-7.png" alt=""></p><div>
-</div><h3 id="onglet-data-processing" class="toc-header"> Onglet «&nbsp;Data PROCESSING »</h3><div>
-</div><p>Cet onglet permet de configurer les informations nécessaires au traitement des données.<br>
-Il ne sera pas détaillé dans cette procédure.</p><div>
-</div><h3 id="onglet-extended-info" class="toc-header"> Onglet «&nbsp;Extended Info »</h3><div>
-</div><p>Cet onglet permet de configurer les informations nécessaires à la création de graphiques.<br>
-Il ne sera pas détaillé dans cette procédure.</p><div>
-</div><h2 id="création-dun-template-dhôte" class="toc-header"> Création d’un Template d’hôte</h2><div>
-</div><p>Pour créer un Template d’hôte, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;hôte&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p><div>
-</div><p><img src="/images/template_centreon-8.png" alt=""></p><div>
-</div><h3 id="onglet-host-configuration" class="toc-header"> Onglet «&nbsp;Host Configuration&nbsp;»</h3><div>
-</div><p>Pour commencer, indiquer un Nom et un Alias pour ce nouveau Template.<br>
-En cas de check à l’aide du protocole SNMP, indiquer le nom de la communauté utilisée et la version du protocole.<br>
-La ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration, ajoutant des options supplémentaires à chacun des hôtes qui sera affilié à ce Template.</p><div>
-</div><p><img src="/images/template_centreon-9.png" alt=""></p><div>
-</div><p>La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir une commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon. Dans le cas de cette procédure, nous n’allons pas utiliser cette option mais plutôt lier des Templates de service à ce Template d’hôte. Permettant à l’hôte d’hériter des commandes de chaque Template de service associé.</p><div>
-</div><p><img src="/images/template_centreon-10.png" alt=""></p><div>
-</div><p>Indiquer la période de supervision appliqué à ce Template.<br>
-Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p><div>
-</div><p>Pour rappel, quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>
-Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>
-Si le statut de l’objet n’est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l’intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p><div>
-</div><p>Ensuite mettre «&nbsp;Active check&nbsp;» sur oui et «&nbsp;Passive check&nbsp;» sur non.</p><div>
-</div><p><img src="/images/template_centreon-11.png" alt=""></p><div>
-</div><h3 id="onglet-notifications-1" class="toc-header"> Onglet «&nbsp;Notifications&nbsp;»</h3><div>
-</div><p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>
-A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>
-Indiquer le compte du contact qui recevra les notifications par email<br>
-Cocher les cases correspondantes aux notifications que l’on souhaite recevoir. Pour cette procédure, tout est coaché sur «&nbsp;aucune&nbsp;».<br>
-Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p><div>
-</div><p><img src="/images/template_centreon-12.png" alt=""></p><div>
-</div><h3 id="onglet-relations-1" class="toc-header"> Onglet «&nbsp;Relations&nbsp;»</h3><div>
-</div><p>Cet onglet va permettre de lier ce Template directement avec un ou plusieurs Templates de service.</p><div>
-</div><p><img src="/images/template_centreon-13.png" alt=""></p><div>
-</div><p><img src="/images/template_centreon-14.png" alt=""></p><div>
-</div><p>Il est également possible de configurer la hiérarchie «&nbsp;Parent&nbsp;» depuis cet onglet.<br>
-Une fois les informations configurées, cliquer sur sauvegarder</p><div>
-</div><h3 id="onglet-data-processing-1" class="toc-header"> Onglet «&nbsp;Data PROCESSING »</h3><div>
-</div><p>Cet onglet permet de configurer les informations nécessaires au traitement des données.<br>
-Il ne sera pas détaillé dans cette procédure.</p><div>
-</div><h3 id="onglet-extended-info-1" class="toc-header"> Onglet «&nbsp;Extended Info »</h3><div>
-</div><p>Cet onglet permet de configurer les informations nécessaires à la création de graphiques.<br>
-Il ne sera pas détaillé dans cette procédure.</p><div>
-</div>
+<figure class="image"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
+<h1>Les Templates</h1>
+<h2>Qu’est-ce qu’un Template</h2>
+<p>Un «&nbsp;Template&nbsp;» ou «&nbsp;modèle&nbsp;» est une pré-configuration de paramètres d’un objet (hôte, service, etc.) qui pourra être utilisé pour le configurer. Le principal avantage est de pouvoir définir des valeurs par défaut pour certains objets afin d’accélérer la création d’objets similaires. Lors de la création d’un Template, le nom est le seul paramètre obligatoire, tous les autres sont optionnels.</p>
+<p>Les avantages&nbsp;:</p>
+<ul>
+  <li>Définition simplifiée des éléments</li>
+  <li>Pas de redondance d’information</li>
+  <li>Facilité d’ajout de nouvelles ressources</li>
+  <li>Configurations prédéfinies assimilées à un « catalogue d’indicateurs »</li>
+  <li>Les modèles peuvent hériter d’autres modèles</li>
+</ul>
+<p>Il existe trois types de modèles :</p>
+<ul>
+  <li>Les modèles d’hôtes</li>
+  <li>Les modèles de services</li>
+  <li>Les modèles de contacts</li>
+</ul>
+<p>Un hôte ou un Template d’hôte peut hériter une configuration depuis un ou plusieurs Template modèles d’hôtes.</p>
+<h3>Les Templates de services (pour les commandes)</h3>
+<p>Un service ou un Template de service ne peut hériter que d’un seul Template de service.<br>L’héritage dans ce cas est dit de type «&nbsp;Père-Fils&nbsp;».<br>Il s’agit d’une prédéfinition de paramètres à “n” niveaux. L’objet hérite de son modèle qui peut lui-même hériter de son modèle.<br>Si le fils redéfini un paramètre déjà existant dans un modèle «&nbsp;père&nbsp;» alors la modification écrase le paramètre défini dans les modèles de niveaux supérieurs.<br>Dans le cas contraire, les paramètres de l’objet viennent compléter le paramétrage «&nbsp;père&nbsp;».<br>Les paramètres au plus proche de l’objet sont prioritaires.</p>
+<p>Schéma explicatif&nbsp;:</p>
+<figure class="image"><img src="/images/schema_template.png" alt=""></figure>
+<h3>Les Templates d’hôtes</h3>
+<p>Un hôte ou un Template d’hôte peut hériter d’un ou plusieurs Template d’hôtes.&nbsp;<br>Cet héritage peut être :</p>
+<ul>
+  <li>De type associatif (addition de plusieurs modèles d’hôte)</li>
+  <li>De type père-fils</li>
+</ul>
+<p>Un héritage dit «&nbsp;associatif&nbsp;» consiste à additionner plusieurs modèles au sein d’un même objet afin d’additionner l’ensemble des paramètres disponibles.</p>
+<figure class="image"><img src="/images/schema_template-2.png" alt=""></figure>
+<p>Toutefois si un hôte hérite de plusieurs Template d’hôtes et qu’un même paramètre est défini sur plusieurs Template, alors le modèle d’hôte situé au-dessus des autres modèles est prioritaire par rapport à ses ascendants.</p>
+<p>Schéma explicatif&nbsp;:</p>
+<figure class="image"><img src="/images/schema_template-3.png" alt=""></figure>
+<h2>Création d’un Template de service (pour les commandes)</h2>
+<p>Pour créer un Template de service, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;Services&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p>
+<figure class="image"><img src="/images/template_centreon-1.png" alt=""></figure>
+<h3>Onglet «&nbsp;Informations générales&nbsp;»</h3>
+<p>Commencer par indiquer un Alias et un Nom pour ce nouveau Template.<br>Comme indiqué précédemment, la ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration.<br>La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir la commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon.</p>
+<figure class="image"><img src="/images/template_centreon-2.png" alt=""></figure>
+<p>Lors de la création de la commande, la valeur des arguments n’avait pas été indiqué.<br>Il est possible de l’indiquer soit dans la partie «&nbsp;arg&nbsp;» du Template soit directement lors de la création d’un hôte.<br>Pour la création de cette procédure, les arguments ont été définis dans le Template.&nbsp;<br>Il est intéressant de constater que l’on peut également retrouver la description des arguments qui ont été ajoutés à la création de la commande directement dans le Template.</p>
+<figure class="image"><img src="/images/template_centreon-3.png" alt=""></figure>
+<p>Indiquer la période de supervision appliqué à ce Template.<br>Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p>
+<p>Quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>Si le statut de l’objet n’est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l’intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p>
+<figure class="image"><img src="/images/template_centreon-4.png" alt=""></figure>
+<h3>Onglet «&nbsp;Notifications&nbsp;»</h3>
+<p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>Indiquer le compte du contact qui recevra les notifications par email<br>Cocher les cases correspondantes aux notifications que l’on souhaite recevoir.<br>Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p>
+<figure class="image"><img src="/images/template_centreon-5.png" alt=""></figure>
+<h3>Onglet «&nbsp;Relations&nbsp;»</h3>
+<p>Cette étape peut se faire soit lors de la création d’un Template de service soit lors de la création d’un Template d’hôte.<br>Tout va dépendre de l’ordre de création des Templates. Les deux Templates seront liés l’un à l’autre dans les deux cas.<br>Cet onglet va permettre de lier ce Template directement avec un Template d’hôte.</p>
+<figure class="image"><img src="/images/template_centreon-6.png" alt=""></figure>
+<p>Il est également possible de configurer les «&nbsp;Traps SNMP&nbsp;» depuis cet onglet.<br>Ces «&nbsp;Traps&nbsp;» ne seront pas abordées actuellement dans cette documentation.</p>
+<figure class="image"><img src="/images/template_centreon-7.png" alt=""></figure>
+<h3>Onglet «&nbsp;Data PROCESSING »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires au traitement des données.<br>Il ne sera pas détaillé dans cette procédure.</p>
+<h3>Onglet «&nbsp;Extended Info »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires à la création de graphiques.<br>Il ne sera pas détaillé dans cette procédure.</p>
+<h2>Création d’un Template d’hôte</h2>
+<p>Pour créer un Template d’hôte, il faut cliquer sur «&nbsp;Configuration&nbsp;», sur «&nbsp;hôte&nbsp;» puis sur «&nbsp;Templates&nbsp;» et enfin sur «&nbsp;Add&nbsp;»</p>
+<figure class="image"><img src="/images/template_centreon-8.png" alt=""></figure>
+<h3>Onglet «&nbsp;Host Configuration&nbsp;»</h3>
+<p>Pour commencer, indiquer un Nom et un Alias pour ce nouveau Template.<br>En cas de check à l’aide du protocole SNMP, indiquer le nom de la communauté utilisée et la version du protocole.<br>La ligne «&nbsp;Template&nbsp;» permet de choisir un Template afin d’en hériter la configuration, ajoutant des options supplémentaires à chacun des hôtes qui sera affilié à ce Template.</p>
+<figure class="image"><img src="/images/template_centreon-9.png" alt=""></figure>
+<p>La ligne «&nbsp;Check Command&nbsp;» va permettre de choisir une commande de check (par exemple) qui sera utilisée par ce Template et dont les informations seront remontées au serveur Centreon. Dans le cas de cette procédure, nous n’allons pas utiliser cette option mais plutôt lier des Templates de service à ce Template d’hôte. Permettant à l’hôte d’hériter des commandes de chaque Template de service associé.</p>
+<figure class="image"><img src="/images/template_centreon-10.png" alt=""></figure>
+<p>Indiquer la période de supervision appliqué à ce Template.<br>Indiquer le «&nbsp;Max Check Attempts&nbsp;», «&nbsp;Normal Check Interval&nbsp;» et le «&nbsp;Retry Check Interval&nbsp;»</p>
+<p>Pour rappel, quand un objet est au statut OK, il est à nouveau vérifié toutes les «&nbsp;Normal Check Interval&nbsp;» minutes.<br>Si le statut passe en «&nbsp;WARNING&nbsp;», «&nbsp;CRITICAL&nbsp;» ou «&nbsp;UNKNOWN&nbsp;», il est alors vérifié «&nbsp;Max Check Attempts&nbsp;» fois à un intervalle régulier de «&nbsp;Retry Check Interval&nbsp;» minutes.<br>Si le statut de l’objet n’est pas revenu à OK au bout des «&nbsp;Max Check Attempts&nbsp;» essais alors l’intervalle de vérification redevient de «&nbsp;Normal Check Interval&nbsp;» minutes.</p>
+<p>Ensuite mettre «&nbsp;Active check&nbsp;» sur oui et «&nbsp;Passive check&nbsp;» sur non.</p>
+<figure class="image"><img src="/images/template_centreon-11.png" alt=""></figure>
+<h3>Onglet «&nbsp;Notifications&nbsp;»</h3>
+<p>Cet onglet va servir à configurer les informations de notification d’alertes.&nbsp;<br>A la ligne «&nbsp;notification enabled&nbsp;» cliquer sur YES<br>Indiquer le compte du contact qui recevra les notifications par email<br>Cocher les cases correspondantes aux notifications que l’on souhaite recevoir. Pour cette procédure, tout est coaché sur «&nbsp;aucune&nbsp;».<br>Dans la partie «&nbsp;Notification Period&nbsp;» indiquer 24x7 pour une supervision 24h/24 et 7j/7 puis laisser le reste par défaut.</p>
+<figure class="image"><img src="/images/template_centreon-12.png" alt=""></figure>
+<h3>Onglet «&nbsp;Relations&nbsp;»</h3>
+<p>Cet onglet va permettre de lier ce Template directement avec un ou plusieurs Templates de service.</p>
+<figure class="image"><img src="/images/template_centreon-13.png" alt=""></figure>
+<figure class="image"><img src="/images/template_centreon-14.png" alt=""></figure>
+<p>Il est également possible de configurer la hiérarchie «&nbsp;Parent&nbsp;» depuis cet onglet.<br>Une fois les informations configurées, cliquer sur sauvegarder</p>
+<h3>Onglet «&nbsp;Data PROCESSING »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires au traitement des données.<br>Il ne sera pas détaillé dans cette procédure.</p>
+<h3>Onglet «&nbsp;Extended Info »</h3>
+<p>Cet onglet permet de configurer les informations nécessaires à la création de graphiques.<br>Il ne sera pas détaillé dans cette procédure.</p>
