@@ -2,13 +2,15 @@
 title: Configuration de la gestion de la conformité
 description: Gestion de la conformité
 published: true
-date: 2021-05-24T10:35:43.218Z
+date: 2021-09-24T21:01:46.216Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:35:41.737Z
 -->
 
-<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png"></figure>
+<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
 <h1>Configuration de la gestion de la conformité</h1>
 <h2>Gestion de la rétention de la messagerie</h2>
 <h3>Présentation</h3>
@@ -59,9 +61,10 @@ dateCreated: 2021-05-24T10:35:41.737Z
 <figure class="image"><img src="/images/eac-47.png"></figure>
 <p><u>Mise en place depuis l’EMS&nbsp;:</u></p>
 <ul>
-  <li>Création d’une balise de rétention&nbsp;</li>
+  <li>Création d’une balise de rétention</li>
 </ul>
 <pre><code class="language-plaintext">New-RetentionPolicyTag «nom_de_la_balise» -Type «choix_du_type» -AgeLimitForRetention «nb_de_jours» -retentionAction «action_a_effectuer» -RetentionEnabled $True</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-8.png"></figure>
 <p>Pour cet exemple, la rétention des éléments supprimés est de 7 jours. Tout ce qui aura plus de 7 jours sera définitivement effacé.</p>
 <figure class="image"><img src="/images/ems-9.png"></figure>
@@ -70,12 +73,14 @@ dateCreated: 2021-05-24T10:35:41.737Z
   <li>Création d’une stratégie de rétention et association d’une ou plusieurs balises de rétention</li>
 </ul>
 <pre><code class="language-plaintext">New-RetentionPolicy «nom_de_la_stratégie» -RetentionPolicyTagLinks «nom_de_la_balise»</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-10.png"></figure>
 <p>Dans cet exemple, la stratégie «&nbsp;compta&nbsp;» est créée et on lui associé les deux balises précédemment créées.</p>
 <ul>
   <li>Application d’une stratégie de rétention sur une boite aux lettres</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox «adresse_email» -RetentionPolicy «nom_de_la_stratégie»</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/ems-11.png"></figure>
 <p>Dans cet exemple, la stratégie «&nbsp;compta&nbsp;» est appliquée sur une boite aux lettres.<br>Si l’on souhaite forcer l’application de la stratégie il suffit de faire la commande suivante&nbsp;:&nbsp;</p>
 <pre><code class="language-plaintext">Start-ManagedFolderAssistant -Identity «adresse_email»</code></pre>
@@ -85,7 +90,7 @@ dateCreated: 2021-05-24T10:35:41.737Z
 <p>Elles sont semblables aux règles du client Outlook mais&nbsp;:</p>
 <ul>
   <li>Elles s’appliquent à toute l’organisation Exchange</li>
-  <li>Elles sont consommatrices de ressources&nbsp;</li>
+  <li>Elles sont consommatrices de ressources</li>
   <li>Elles permettent d’enregistrer les échanges de messages et le contenu</li>
   <li>Elles permettent de rechercher des messages qui correspondent à certains critères et y effectuent une action voulue.(un très grand nombre de choses peut être effectué)</li>
   <li>Elles agissent pendant le transport du message et avant la remise aux boites aux lettres</li>
@@ -105,10 +110,12 @@ dateCreated: 2021-05-24T10:35:41.737Z
   <li>Pour afficher toutes les règles de transport&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Get-TransportRule</code></pre>
+<p>&nbsp;</p>
 <ul>
-  <li>Pour toutes les désactiver&nbsp;</li>
+  <li>Pour toutes les désactiver</li>
 </ul>
 <pre><code class="language-plaintext">Get-TransportRule | Disable-TransportRule</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Pour toutes les activer</li>
 </ul>
@@ -203,6 +210,7 @@ dateCreated: 2021-05-24T10:35:41.737Z
 <pre><code class="language-plaintext">Get-AdminAuditlogConfig | FL AdminAudotLogEnabled</code></pre>
 <p>Pour l’activation</p>
 <pre><code class="language-plaintext">Set-AdminAuditLogConfig -AdminAuditLogEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Consultation des journaux depuis l’EAC</li>
 </ul>
@@ -238,7 +246,7 @@ dateCreated: 2021-05-24T10:35:41.737Z
 <h3>Présentation</h3>
 <p>Ce sont des services Exchange qui apportent de l’aide aux administrateurs afin de maintenir la sécurité et afin de respecter la législation en cas de litige en prévenant par exemple la suppression définitive d’éléments de messagerie.</p>
 <ul>
-  <li>Qu’est-ce que le «&nbsp;blocage sur place&nbsp;» d’une boite aux lettres&nbsp;</li>
+  <li>Qu’est-ce que le «&nbsp;blocage sur place&nbsp;» d’une boite aux lettres</li>
 </ul>
 <p>Le nom anglais est «&nbsp;InPlace Hold eDiscovery&nbsp;»<br>Il s’agit d’une recherche qui s’applique au niveau d’une boite aux lettres.<br>Cela permet d’effectuer une recherche d’éléments dans une boite aux lettres (utilisateurs ou dossiers publics), que ce soit des éléments supprimés ou non.<br>Il est également possible de retrouver les versions originales d’éléments qui ont été modifiés.<br>Par défaut, il est nécessaire d’être membre du groupe de sécurité RBAC «&nbsp;Gestion de l’organisation&nbsp;» et «&nbsp;Gestion de la détection&nbsp;» pour pouvoir effectuer ces recherches.<br>Cela permet également de conserver l’état du contenu d’une boite aux lettres ou de dossiers publics et de son archive.<br>Les éléments suivants sont conservés&nbsp;</p>
 <ol>
@@ -272,10 +280,12 @@ dateCreated: 2021-05-24T10:35:41.737Z
   <li>Activation&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">New-MailboxSearch «mettre_un_nom_au_blocage» -SourceMailboxes «adresse_email_ciblée» -InplaceHoldEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
-  <li>Désactivation&nbsp;:&nbsp;</li>
+  <li>Désactivation&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-MailboxSearch «nom_du_blocage» -InplaceHoldEnabled $False</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Suppression&nbsp;:</li>
 </ul>
@@ -293,19 +303,21 @@ dateCreated: 2021-05-24T10:35:41.737Z
 <pre><code class="language-plaintext">Set-mailbox «adresse_email_dela_boite_ciblée» -LitigationHoldEnabled $True -LitigationHoldDuration 2555</code></pre>
 <p><i><mark class="pen-red"><strong>Attention</strong>&nbsp;: Le nombre après «&nbsp;LitigationHoldDuration&nbsp;» correspond à un nombre de jour.</mark></i></p>
 <ul>
-  <li>Désactivation&nbsp;:&nbsp;</li>
+  <li>Désactivation&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-mailbox «adresse_email_dela_boite_ciblée» -LitigationHoldEnabled $False</code></pre>
 <h4>Le blocage de rétention (Retention-Hold)</h4>
 <p>La configuration se fait UNIQUEMENT via l’EMS</p>
 <ul>
-  <li>Activation&nbsp;:&nbsp;</li>
+  <li>Activation&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox «adresse_email_ciblée» -RetentionHoldEnabled $True</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Désactivation&nbsp;:</li>
 </ul>
 <pre><code class="language-plaintext">Set-Mailbox «adresse_email_ciblée» -RetentionHoldEnabled $False</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Vérification&nbsp;:</li>
 </ul>
