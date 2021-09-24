@@ -2,86 +2,87 @@
 title: Comptes et Groupes
 description: 
 published: true
-date: 2021-09-24T21:06:05.824Z
+date: 2021-09-24T21:06:21.833Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:37:07.237Z
 -->
 
-<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps"></figure><div>
-</div><h1 id="comptes-et-groupes-dutilisateurs-dans-centreon" class="toc-header"> Comptes et Groupes d’Utilisateurs dans Centreon</h1><div>
-</div><h2 id="création-de-comptes-pour-les-utilisateurs" class="toc-header"> Création de comptes pour les utilisateurs</h2><div>
-</div><p>Afin d’ajouter des comptes utilisateurs il faut se rendre dans la section «&nbsp;configuration&nbsp;» puis «&nbsp;users&nbsp;»<br>Cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/users_centreon-1.png"></figure><div>
-</div><p>Remplir les différents champs nécessaires puis cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/users_centreon-2.png"></figure><div>
-</div><h2 id="création-de-groupes-dutilisateurs" class="toc-header"> Création de groupes d’utilisateurs</h2><div>
-</div><p>Afin d’ajouter des groupes de comptes utilisateurs il faut se rendre dans la section «&nbsp;configuration&nbsp;» puis «&nbsp;users&nbsp;» et pour finir «&nbsp;contact groups&nbsp;».<br>Cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/users_centreon-3.png"></figure><div>
-</div><p>Remplir les différents champs nécessaires puis cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/users_centreon-4.png"></figure><div>
-</div><h2 id="configuration-des-acl" class="toc-header"> Configuration des ACL</h2><div>
-</div><h3 id="création-de-groupes-daccès" class="toc-header"> Création de groupes d’accès</h3><div>
-</div><p>Avant de commencer à configurer les ACL il va falloir créer des groupes d’accès.<br>A titre d’exemple pour cette procédure les groupes suivants seront créés&nbsp;:&nbsp;</p><div>
-</div><ul>
+<figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
+<h1>Comptes et Groupes d’Utilisateurs dans Centreon</h1>
+<h2>Création de comptes pour les utilisateurs</h2>
+<p>Afin d’ajouter des comptes utilisateurs il faut se rendre dans la section «&nbsp;configuration&nbsp;» puis «&nbsp;users&nbsp;»<br>Cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/users_centreon-1.png"></figure>
+<p>Remplir les différents champs nécessaires puis cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/users_centreon-2.png"></figure>
+<h2>Création de groupes d’utilisateurs</h2>
+<p>Afin d’ajouter des groupes de comptes utilisateurs il faut se rendre dans la section «&nbsp;configuration&nbsp;» puis «&nbsp;users&nbsp;» et pour finir «&nbsp;contact groups&nbsp;».<br>Cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/users_centreon-3.png"></figure>
+<p>Remplir les différents champs nécessaires puis cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/users_centreon-4.png"></figure>
+<h2>Configuration des ACL</h2>
+<h3>Création de groupes d’accès</h3>
+<p>Avant de commencer à configurer les ACL il va falloir créer des groupes d’accès.<br>A titre d’exemple pour cette procédure les groupes suivants seront créés&nbsp;:&nbsp;</p>
+<ul>
   <li>Admin Réseau</li>
   <li>Webmaster</li>
   <li>DSI</li>
-</ul><div>
-</div><p>Pour créer les groupes, cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Access Groups&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-4.png"></figure><div>
-</div><p>Remplir les champs «&nbsp;Group Name&nbsp;» et «&nbsp;Alias&nbsp;» puis cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-2.png"></figure><div>
-</div><h3 id="gestion-des-droits-des-groupes-daccès" class="toc-header"> Gestion des droits des groupes d’accès</h3><div>
-</div><p>Maintenant que les groupes d’accès sont créés, il va falloir leur affecter des autorisations.</p><div>
-</div><h4 id="les-pages-accessibles" class="toc-header"> Les pages accessibles</h4><div>
-</div><p>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Menu Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-3.png"></figure><div>
-</div><p>Remplir les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;».<br>Mettre le statut sur «&nbsp;Enabled&nbsp;» puis dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe qui sera lié à ce «&nbsp;menu d’autorisations&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-5.png"></figure><div>
-</div><p>Dans la section «&nbsp;Accessibles pages&nbsp;» il est possible de choisir en détail ce qui pourra être consulté ou non.<br>Pour cet exemple, le groupe choisi étant «&nbsp;Admin Réseau&nbsp;» nous allons lui accorder un accès total.<br>Pour cela il suffit de cocher les cases de droite sans forcément dérouler les menus qui sont listés.<br>Penser également à mettre un commentaire afin de savoir à quoi correspond le menu</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-6.png"></figure><div>
-</div><p>Autre exemple avec le groupe «&nbsp;Webmaster&nbsp;» qui n’aura pas un full access.<br>Contrairement au menu admin réseau, dans la section «&nbsp;Accessible Pages&nbsp;» nous n’allons pas tout cocher pour tout autoriser.<br>Il est conseillé pour des raisons de facilité de gestions en cas de changement d’autorisations, de créer un menu par catégorie permettant un accès (home, monitoring, etc.)<br>Procéder à la création du menu de la même manière que précédemment.<br>Remplir à nouveau les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-7.png"></figure><div>
-</div><p>Dans la section «&nbsp;Accessible Pages&nbsp;», dérouler la catégorie concernée par le menu et cocher les cases correspondantes aux différentes autorisations. Cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-8.png"></figure><div>
-</div><p>Reproduire cette configuration pour chacune des catégories souhaitées.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-9.png"></figure><div>
-</div><h4 id="les-ressources-accessibles" class="toc-header"> Les ressources accessibles</h4><div>
-</div><p>La configuration des différentes pages accessibles étant faite, il reste maintenant la gestion des ressources accessibles.<br>Les groupes d'accès «&nbsp;DSI&nbsp;» et «&nbsp;admin réseau&nbsp;» ont accès à toutes les ressources.<br>Il est donc possible d'utiliser le groupe de ressource «&nbsp;All Resources&nbsp;» déjà existant pour y ajouter les deux groupes.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-10.png"></figure><div>
-</div><p>Toujours à titre d’exemple pour cette procédure, le groupe Webmaster n’aurai pas un accès à l’intégralité des ressources.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;hosts&nbsp;» puis «&nbsp;Categories&nbsp;» et enfin sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-11.png"></figure><div>
-</div><p>Remplir les différents champs et ajouter soit des groupes d’hôtes soit des hôtes à la liste.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-12.png"></figure><div>
-</div><p>Cliquer sur «&nbsp;save&nbsp;»<br>Effectuer la même opération pour les services.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;Services&nbsp;» puis «&nbsp;Categories&nbsp;» et enfin sur «&nbsp;add&nbsp;»<br>Remplir également les différents champs et sélectionner les services associés</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-13.png"></figure><div>
-</div><p>Cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><p>Les deux catégories étant créées, il faut maintenant cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Ressources Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;» afin de créer une nouvelle ressource pour le groupe Webmaster.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-14.png"></figure><div>
-</div><p>Remplir les champs «&nbsp;Access list name&nbsp;» et «&nbsp;Description&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-15.png"></figure><div>
-</div><ul>
+</ul>
+<p>Pour créer les groupes, cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Access Groups&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-4.png"></figure>
+<p>Remplir les champs «&nbsp;Group Name&nbsp;» et «&nbsp;Alias&nbsp;» puis cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-2.png"></figure>
+<h3>Gestion des droits des groupes d’accès</h3>
+<p>Maintenant que les groupes d’accès sont créés, il va falloir leur affecter des autorisations.</p>
+<h4>Les pages accessibles</h4>
+<p>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Menu Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-3.png"></figure>
+<p>Remplir les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;».<br>Mettre le statut sur «&nbsp;Enabled&nbsp;» puis dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe qui sera lié à ce «&nbsp;menu d’autorisations&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-5.png"></figure>
+<p>Dans la section «&nbsp;Accessibles pages&nbsp;» il est possible de choisir en détail ce qui pourra être consulté ou non.<br>Pour cet exemple, le groupe choisi étant «&nbsp;Admin Réseau&nbsp;» nous allons lui accorder un accès total.<br>Pour cela il suffit de cocher les cases de droite sans forcément dérouler les menus qui sont listés.<br>Penser également à mettre un commentaire afin de savoir à quoi correspond le menu</p>
+<figure class="image"><img src="/images/acl_centreon-6.png"></figure>
+<p>Autre exemple avec le groupe «&nbsp;Webmaster&nbsp;» qui n’aura pas un full access.<br>Contrairement au menu admin réseau, dans la section «&nbsp;Accessible Pages&nbsp;» nous n’allons pas tout cocher pour tout autoriser.<br>Il est conseillé pour des raisons de facilité de gestions en cas de changement d’autorisations, de créer un menu par catégorie permettant un accès (home, monitoring, etc.)<br>Procéder à la création du menu de la même manière que précédemment.<br>Remplir à nouveau les champs «&nbsp;ACL Definition&nbsp;» et «&nbsp;Alias&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p>
+<figure class="image"><img src="/images/acl_centreon-7.png"></figure>
+<p>Dans la section «&nbsp;Accessible Pages&nbsp;», dérouler la catégorie concernée par le menu et cocher les cases correspondantes aux différentes autorisations. Cliquer sur «&nbsp;save&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-8.png"></figure>
+<p>Reproduire cette configuration pour chacune des catégories souhaitées.</p>
+<figure class="image"><img src="/images/acl_centreon-9.png"></figure>
+<h4>Les ressources accessibles</h4>
+<p>La configuration des différentes pages accessibles étant faite, il reste maintenant la gestion des ressources accessibles.<br>Les groupes d'accès «&nbsp;DSI&nbsp;» et «&nbsp;admin réseau&nbsp;» ont accès à toutes les ressources.<br>Il est donc possible d'utiliser le groupe de ressource «&nbsp;All Resources&nbsp;» déjà existant pour y ajouter les deux groupes.</p>
+<figure class="image"><img src="/images/acl_centreon-10.png"></figure>
+<p>Toujours à titre d’exemple pour cette procédure, le groupe Webmaster n’aurai pas un accès à l’intégralité des ressources.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;hosts&nbsp;» puis «&nbsp;Categories&nbsp;» et enfin sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-11.png"></figure>
+<p>Remplir les différents champs et ajouter soit des groupes d’hôtes soit des hôtes à la liste.</p>
+<figure class="image"><img src="/images/acl_centreon-12.png"></figure>
+<p>Cliquer sur «&nbsp;save&nbsp;»<br>Effectuer la même opération pour les services.<br>Cliquer sur «&nbsp;Configuration&nbsp;» puis «&nbsp;Services&nbsp;» puis «&nbsp;Categories&nbsp;» et enfin sur «&nbsp;add&nbsp;»<br>Remplir également les différents champs et sélectionner les services associés</p>
+<figure class="image"><img src="/images/acl_centreon-13.png"></figure>
+<p>Cliquer sur «&nbsp;save&nbsp;»</p>
+<p>Les deux catégories étant créées, il faut maintenant cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Ressources Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;» afin de créer une nouvelle ressource pour le groupe Webmaster.</p>
+<figure class="image"><img src="/images/acl_centreon-14.png"></figure>
+<p>Remplir les champs «&nbsp;Access list name&nbsp;» et «&nbsp;Description&nbsp;» puis mettre le statut sur «&nbsp;Enabled&nbsp;».<br>Dans la partie «&nbsp;Linked Groups&nbsp;» choisir le groupe Webmaster et cliquer sur «&nbsp;add&nbsp;».</p>
+<figure class="image"><img src="/images/acl_centreon-15.png"></figure>
+<ul>
   <li>Cliquer en suite sur l’onglet «&nbsp;Hosts Resources&nbsp;»</li>
-</ul><div>
-</div><p>Cet onglet va permettre de définir les Hôtes et les groupes d’hôtes auxquels aura accès le groupe Webmaster mais également ceux qui seront exclus des ressources visibles et disponibles.<br>Sélectionner ceux disponibles et correspondant à la catégorie précédemment créée puis cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-16.png"></figure><div>
-</div><ul>
+</ul>
+<p>Cet onglet va permettre de définir les Hôtes et les groupes d’hôtes auxquels aura accès le groupe Webmaster mais également ceux qui seront exclus des ressources visibles et disponibles.<br>Sélectionner ceux disponibles et correspondant à la catégorie précédemment créée puis cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-16.png"></figure>
+<ul>
   <li>Cliquer en suite sur l’onglet «&nbsp;Services Resources&nbsp;»</li>
-</ul><div>
-</div><p>Effectuer la configuration de la même manière que pour l’onglet «&nbsp;Hosts Resources&nbsp;».</p><div>
-</div><ul>
+</ul>
+<p>Effectuer la configuration de la même manière que pour l’onglet «&nbsp;Hosts Resources&nbsp;».</p>
+<ul>
   <li>L’onglet «&nbsp;Filters&nbsp;» permet de choisir le ou les serveurs centreon depuis lesquels les ressources seront accessibles.</li>
-</ul><div>
-</div><h4 id="gestion-des-actions" class="toc-header"> &nbsp;Gestion des actions</h4><div>
-</div><p>En plus des pages affichées et des ressources disponibles, il est possible de configurer les actions réalisables pour les différents groupes créés.<br>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Action Access&nbsp;»&nbsp;<br>Pour le groupe DSI, aucune action n’est prévue mais il sera nécessaire d’activer la case «&nbsp;top counter&nbsp;»<br>Remplir les différents champs de description et cocher la case.</p><div>
-</div><figure class="image"><img src="/images/display.png"></figure><div>
-</div><p>Le groupe Webmaster pourra par exemple être associé au groupe d’action «&nbsp;Simple User&nbsp;», limitant ses actions sur les hôtes.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-17.png"></figure><div>
-</div><p>A titre d’exemple, le groupe «&nbsp;Admins Réseau&nbsp;» aura quant à lui plus de droits.<br>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Action Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-18.png"></figure><div>
-</div><p>Remplir les différents champs d’information (titre, alias etc.) et sélectionner les droits applicables au groupe.</p><div>
-</div><figure class="image"><img src="/images/acl_centreon-19.png"></figure><div>
-</div><p>Cliquer sur «&nbsp;save&nbsp;»</p><div>
-</div><p>Toutes ces opérations pourront être réaliser à nouveau chaque fois que nécessaire en fonction des besoins et des groupes sur lesquels appliquer des ACL.</p><div>
-</div>
+</ul>
+<h4>&nbsp;Gestion des actions</h4>
+<p>En plus des pages affichées et des ressources disponibles, il est possible de configurer les actions réalisables pour les différents groupes créés.<br>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Action Access&nbsp;»&nbsp;<br>Pour le groupe DSI, aucune action n’est prévue mais il sera nécessaire d’activer la case «&nbsp;top counter&nbsp;»<br>Remplir les différents champs de description et cocher la case.</p>
+<figure class="image"><img src="/images/display.png"></figure>
+<p>Le groupe Webmaster pourra par exemple être associé au groupe d’action «&nbsp;Simple User&nbsp;», limitant ses actions sur les hôtes.</p>
+<figure class="image"><img src="/images/acl_centreon-17.png"></figure>
+<p>A titre d’exemple, le groupe «&nbsp;Admins Réseau&nbsp;» aura quant à lui plus de droits.<br>Cliquer sur «&nbsp;administration&nbsp;» puis «&nbsp;ACL&nbsp;», choisir «&nbsp;Action Access&nbsp;» et cliquer sur «&nbsp;add&nbsp;»</p>
+<figure class="image"><img src="/images/acl_centreon-18.png"></figure>
+<p>Remplir les différents champs d’information (titre, alias etc.) et sélectionner les droits applicables au groupe.</p>
+<figure class="image"><img src="/images/acl_centreon-19.png"></figure>
+<p>Cliquer sur «&nbsp;save&nbsp;»</p>
+<p>Toutes ces opérations pourront être réaliser à nouveau chaque fois que nécessaire en fonction des besoins et des groupes sur lesquels appliquer des ACL.</p>
