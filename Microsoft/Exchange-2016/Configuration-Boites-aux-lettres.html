@@ -2,13 +2,15 @@
 title: Configuration de la partie Boite Aux Lettres (BAL)
 description: Configuration BAL
 published: true
-date: 2021-05-24T10:35:40.965Z
+date: 2021-09-24T21:00:46.105Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:35:39.397Z
 -->
 
-<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png"></figure>
+<figure class="image image_resized" style="width:22.66%;"><img src="/images/exchange2016_logo.png">
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+</figure>
 <h1>Configuration d’un domaine accepté</h1>
 <ul>
   <li>Qu’est-ce qu’un domaine accepté</li>
@@ -588,10 +590,12 @@ dateCreated: 2021-05-24T10:35:39.397Z
   <li>Commande pour créer un DAG</li>
 </ul>
 <pre><code class="language-plaintext">New-DatabaseAvailabilityGroup -Name «nom_du_DAG» -WitnessServer «nom_du_serveur_témoin» -WitnessDirecory «chemin_du_répertoire_partagé_depuis_le_serveur_témoin»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Ajout d’un serveur membre au DAG</li>
 </ul>
 <pre><code class="language-plaintext">Add- DatabaseAvailabilityGroupServer -Identity «nom_du_DAG» -MailboxServer «nom_du_server»</code></pre>
+<p>&nbsp;</p>
 <ul>
   <li>Ajout de copie de bases de données sur des serveurs membres du DAG</li>
 </ul>
