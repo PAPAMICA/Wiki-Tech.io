@@ -2,13 +2,16 @@
 title: Wiki.js
 description: Un jolie wiki autohébergé !
 published: true
-date: 2021-10-03T09:54:36.641Z
+date: 2021-10-03T10:14:07.756Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:15:33.855Z
 ---
 
+![](https://cdn-images.threadless.com/threadless-media/artist_shops/shops/wikijs/profile/logo-1531876777-e927870eea78296b4aa681910b70a189.png?v=3&d=eyJvbmx5X21ldGEiOiBmYWxzZSwgImZvcmNlIjogZmFsc2UsICJvcHMiOiBbWyJyZXNpemUiLCBbNjAwLCAyNTBdLCB7fV1dfQ==)
+
 # Présentation
+Wiki.js est un outils selfhosted développé en javascript qui permet 
 
 # Installation
 
