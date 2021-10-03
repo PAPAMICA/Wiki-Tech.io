@@ -2,7 +2,7 @@
 title: Wiki.js
 description: Un jolie wiki autohébergé !
 published: true
-date: 2021-10-03T15:52:18.845Z
+date: 2021-10-03T15:56:32.123Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:15:33.855Z
@@ -12,6 +12,7 @@ dateCreated: 2021-05-24T14:15:33.855Z
 
 # Présentation
 Wiki.js est un outils selfhosted développé en javascript qui permet de mettre en place simplement un système de wiki puissant, complet et jolie.
+L'un des gros avantages de ce dernier c'est la synchronisation avec git directement pour la sauvegarde et le versionning.
 Wiki-Tech.io fonctionne avec Wiki.js depuis ses débuts sous Docker !
 La version 3.0 devrais sortir d'ici la fin d'année avec beaucoup de nouveautés:
 
@@ -170,8 +171,10 @@ networks:
 
 
 # Configuration
+## Configurer Git
 
 ## Masquer la table des matières
+Pour masquer la table des matières dans certaines pages, vous pouvez utiliser ce petit bout de CSS pour la page en question :
 
 ```css
 .page-col-sd {
