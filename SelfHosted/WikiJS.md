@@ -2,7 +2,7 @@
 title: Wiki.js
 description: Un jolie wiki autohébergé !
 published: true
-date: 2021-10-03T15:56:32.123Z
+date: 2021-10-03T16:10:22.574Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:15:33.855Z
@@ -172,10 +172,13 @@ networks:
 
 # Configuration
 ## Configurer Git
+Pour l'activer il vous suffit de vous rendre dans la catégorie stockage pour activer Git.
+![image_2021-10-03_180716.png](/images/selfhosted/wikijs/image_2021-10-03_180716.png)
+Une fois activé, il ne vous reste plus qu'à rentrer vos informations de connexions à votre git !
 
 ## Masquer la table des matières
 Pour masquer la table des matières dans certaines pages, vous pouvez utiliser ce petit bout de CSS pour la page en question :
-
+![wiki_wikijs_matiere.png](/images/selfhosted/wikijs/wiki_wikijs_matiere.png)
 ```css
 .page-col-sd {
   margin-top: 0;
