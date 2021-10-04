@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-08-10T08:36:35.139Z
+date: 2021-10-04T17:05:05.583Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -243,12 +243,12 @@ scp -P <PORT> <USER>@<IP>:/chemin/du/fichier/sur/le/serveur /local/dossier
 **Permet de télécharger un fichier depuis sa machine vers un serveur distant**
 
 ```bash
-scp fichier.txt -P <PORT> <USER>@<IP>:/chemin/sur/le/serveur
+scp -P <PORT> fichier.txt <USER>@<IP>:/chemin/sur/le/serveur
 ```
 **Permet de télécharger un dossier depuis sa machine vers un serveur distant**
 
 ```bash
-scp -r /local/dossier/ -P <PORT> <USER>@<IP>:/chemin/sur/le/serveur
+scp -P <PORT> -r /local/dossier/ <USER>@<IP>:/chemin/sur/le/serveur
 ```
 **Permet de télécharger un fichier depuis un serveur distant vers un autre serveur distant**
 
