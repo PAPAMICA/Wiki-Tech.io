@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-10-05T19:25:29.997Z
+date: 2021-10-05T19:25:51.533Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
@@ -33,5 +33,5 @@ dateCreated: 2021-05-30T16:49:09.893Z
 - [📖 WikiJS 🚧 *Une documentation en ligne*](/SelfHosted/WikiJS)
 - [🌐 Wordpress *CMS pour la création de site*](/Web/WordPress/Installation)
 - [🔗 YourLS 🚧 *Raccourcisseur d'URL. Alternative à Bit.ly*](/SelfHosted/YourLS)
-- [📊 Zabbix *Serveur de supervision complet*](/Supervision/Zabbix/Installation)
+- [❤️ Zabbix *Serveur de supervision complet*](/Supervision/Zabbix/Installation)
 {.links-list}
