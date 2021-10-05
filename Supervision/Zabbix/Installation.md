@@ -2,7 +2,7 @@
 title: Zabbix - Installation
 description: Toute la procédure pour mettre en place un serveur Zabbix
 published: true
-date: 2021-10-05T18:46:35.372Z
+date: 2021-10-05T18:59:51.526Z
 tags: supervision, zabbix
 editor: markdown
 dateCreated: 2021-10-05T15:27:25.169Z
@@ -95,3 +95,115 @@ sudo systemctl enable zabbix-server zabbix-agent2 apache2
 
 
 # Docker
+Vous pouvez déployer rapidement et simplement un serveur Zabbix et sa base de données avec ce docker-compose :
+```yaml
+version: '2'
+services:
+  postgres-server:    # The Postgres Database Service
+    image: postgres:12.2
+    restart: always
+    container_name: zabbix-db
+    environment:   # Username, password and database name variables
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: zabbix
+      PG_DATA: /var/lib/postgresql/data/pgdata #data storage
+    volumes:
+      - /apps/zabbix/db:/var/lib/postgresql/data
+      
+    # Facultatif  
+    networks:
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+
+  zabbix-server:     # The main Zabbix Server Software Service
+    image: zabbix/zabbix-server-pgsql:ubuntu-5.4-latest
+    restart: always
+    container_name: zabbix
+    environment:   # The Postgres database value variable
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: zabbix
+      ZBX_HISTORYSTORAGETYPES: log,text #Zabbix configuration variables
+      ZBX_DEBUGLEVEL: 1
+      ZBX_HOUSEKEEPINGFREQUENCY: 1
+      ZBX_MAXHOUSEKEEPERDELETE: 5000
+      ZBX_STARTVMWARECOLLECTORS: 10
+      ZBX_VMWAREFREQUENCY: 30
+      ZBX_VMWAREPERFFREQUENCY: 30
+      ZBX_VMWARECACHESIZE: 16M
+      ZBX_VMWARETIMEOUT: 10
+    depends_on:
+      - postgres-server
+    ports:
+      - 10051:10051
+    volumes:  # Volumes for scripts and related files you can add
+      - /apps/zabbix/alertscripts:/usr/lib/zabbix/alertscripts
+    
+    # Facultatif
+    networks:
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKI"
+        loki-external-labels: service={{.Name}}
+      
+  zabbix-web:    # The main Zabbix web UI or interface
+    image: zabbix/zabbix-web-nginx-pgsql:ubuntu-5.2-latest
+    restart: always
+    container_name: zabbix-web
+    environment:  # Postgre database variables
+      POSTGRES_USER: zabbix
+      POSTGRES_PASSWORD: $DB_PASSWORD
+      POSTGRES_DB: zabbix
+      ZBX_SERVER_HOST: zabbix-server  # Zabbix related and Php variables
+      ZBX_POSTMAXSIZE: 64M
+      PHP_TZ: "Europe/Paris"
+      ZBX_MAXEXECUTIONTIME: 500
+    depends_on:
+      - postgres-server
+      - zabbix-server
+#    ports:    # Port where Zabbix UI is available
+#      - 8090:8080
+
+		# Facultatif
+    networks:
+      - proxy
+    logging:
+      driver: loki
+      options:
+        loki-url: "$URL_LOKIh"
+        loki-external-labels: service={{.Name}}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.zabbix.entrypoints=http"
+      - "traefik.http.routers.zabbix.rule=Host(`$URL`)"
+      - "traefik.http.middlewares.zabbix-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.zabbix.middlewares=zabbix-https-redirect"
+      - "traefik.http.routers.zabbix-secure.entrypoints=https"
+      - "traefik.http.routers.zabbix-secure.rule=Host(`$URL`)"
+      - "traefik.http.routers.zabbix-secure.tls=true"
+      - "traefik.http.routers.zabbix-secure.tls.certresolver=http"
+      - "traefik.http.services.zabbix-secure.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy"
+      
+
+networks:
+  proxy:
+    external:
+      name: proxy
+```
+> Pensez à changer dans le docker-compose ou à définir les variables suivantes : **DB_PASSWORD**, **URL_LOKI** et **URL** en fonction de votre installation.
+{.is-warning}
+
+> Votre serveur Zabbix est accessible via l'URL que vous avez configuré dans le docker-compose !
+{.is-success}
+
+> L'identifiant par défaut est `Admin` et le mot de passe est `zabbix`.
+{.is-info}
+
