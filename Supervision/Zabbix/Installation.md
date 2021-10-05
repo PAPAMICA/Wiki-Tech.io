@@ -2,7 +2,7 @@
 title: Zabbix - Installation
 description: Toute la procédure pour mettre en place un serveur Zabbix
 published: true
-date: 2021-10-05T15:27:25.169Z
+date: 2021-10-05T18:28:38.815Z
 tags: supervision, zabbix
 editor: markdown
 dateCreated: 2021-10-05T15:27:25.169Z
@@ -67,7 +67,7 @@ sudo systemctl enable zabbix-server zabbix-agent2 apache2
 
 
 ## Configuration
-
+![image_2021-10-05_194738.png](/images/zabbix/installation/image_2021-10-05_194738.png)![image_2021-10-05_194837.png](/images/zabbix/installation/image_2021-10-05_194837.png)![image_2021-10-05_194950.png](/images/zabbix/installation/image_2021-10-05_194950.png)![image_2021-10-05_195624.png](/images/zabbix/installation/image_2021-10-05_195624.png)![image_2021-10-05_195744.png](/images/zabbix/installation/image_2021-10-05_195744.png)![image_2021-10-05_195836.png](/images/zabbix/installation/image_2021-10-05_195836.png)![image_2021-10-05_195924.png](/images/zabbix/installation/image_2021-10-05_195924.png)![image_2021-10-05_200200.png](/images/zabbix/installation/image_2021-10-05_200200.png =500x)
 
 
 # Docker
