@@ -2,7 +2,7 @@
 title: Zabbix - Installation
 description: Toute la procédure pour mettre en place un serveur Zabbix
 published: true
-date: 2021-10-05T18:28:38.815Z
+date: 2021-10-05T18:46:35.372Z
 tags: supervision, zabbix
 editor: markdown
 dateCreated: 2021-10-05T15:27:25.169Z
@@ -10,6 +10,8 @@ dateCreated: 2021-10-05T15:27:25.169Z
 
 ![image_2021-10-05_122334.png](/images/zabbix/installation/image_2021-10-05_122334.png)
 
+# Introduction
+Nous allons voir deux méthodes pour l'installation de Zabbix : la première, plus classique, directement sur Debian 11 et la seconde aue je vous conseil avec Docker. La suite des outils lié avec Zabbix se reposera sur l'installation avec la seconde option.
 # Debian
 ## Installation 
 L'installation se fera sur une machine Debian 11 avec une base de données **MySQL** et **Apache**.
@@ -67,7 +69,29 @@ sudo systemctl enable zabbix-server zabbix-agent2 apache2
 
 
 ## Configuration
-![image_2021-10-05_194738.png](/images/zabbix/installation/image_2021-10-05_194738.png)![image_2021-10-05_194837.png](/images/zabbix/installation/image_2021-10-05_194837.png)![image_2021-10-05_194950.png](/images/zabbix/installation/image_2021-10-05_194950.png)![image_2021-10-05_195624.png](/images/zabbix/installation/image_2021-10-05_195624.png)![image_2021-10-05_195744.png](/images/zabbix/installation/image_2021-10-05_195744.png)![image_2021-10-05_195836.png](/images/zabbix/installation/image_2021-10-05_195836.png)![image_2021-10-05_195924.png](/images/zabbix/installation/image_2021-10-05_195924.png)![image_2021-10-05_200200.png](/images/zabbix/installation/image_2021-10-05_200200.png =500x)
+### Connectez vous sur l'interface web de votre serveur Zabbix
+![image_2021-10-05_194738.png](/images/zabbix/installation/image_2021-10-05_194738.png)
+### Vérifiez que tous les pré-requis sont bien "OK"
+![image_2021-10-05_194837.png](/images/zabbix/installation/image_2021-10-05_194837.png)
+### Configurez la connexion à la base de données
+![image_2021-10-05_194950.png](/images/zabbix/installation/image_2021-10-05_194950.png)
+### Nommez votre serveur Zabbix
+![image_2021-10-05_195624.png](/images/zabbix/installation/image_2021-10-05_195624.png)
+### Selectionnez le bon fuseau horaire
+![image_2021-10-05_195744.png](/images/zabbix/installation/image_2021-10-05_195744.png)
+### Vérifier que les informations sont correctes
+![image_2021-10-05_195836.png](/images/zabbix/installation/image_2021-10-05_195836.png)
+### Terminez l'installation en cliquant sur "Finish"
+![image_2021-10-05_195924.png](/images/zabbix/installation/image_2021-10-05_195924.png)
+### Connectez vous avec l'identifiant `Admin` et le mot de passe `zabbix`
+![image_2021-10-05_200200.png](/images/zabbix/installation/image_2021-10-05_200200.png =500x)
+> Pensez à changer le mot de passe du compte Admin !
+{.is-warning}
+
+> Toutes mes félicitations, vous pouvez maintenant superviser votre premier serveur !
+{.is-success}
+
+
 
 
 # Docker
