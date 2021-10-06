@@ -2,7 +2,7 @@
 title: SelfHosted - Grafana
 description: Affichez proprement et facilement vos datas !
 published: true
-date: 2021-10-06T09:13:59.476Z
+date: 2021-10-06T09:20:04.363Z
 tags: supervision, grafana, monitoring, selfhosted
 editor: markdown
 dateCreated: 2021-10-06T09:12:40.045Z
@@ -124,6 +124,7 @@ Pour connecter votre Grafana à votre serveur Zabbix, vous devez installer le pl
 Connectez vous sur le serveur et utilisez `grafana-cli` pour installer le plugin :
 ```bash
 sudo grafana-cli plugins install alexanderzobnin-zabbix-app
+sudo systemctl restart grafana-server
 ```
 
 ### Docker
