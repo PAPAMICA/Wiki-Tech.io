@@ -2,7 +2,7 @@
 title: Supervision
 description: Quelques solutions de supervisions avec leurs tutoriels !
 published: true
-date: 2021-10-05T19:03:18.142Z
+date: 2021-10-06T09:49:01.021Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:42:55.255Z
@@ -10,6 +10,7 @@ dateCreated: 2021-05-24T14:42:55.255Z
 
 # Zabbix
 - [🌀 Installation *Mise en place du serveur sous Debian ou Docker*](/Supervision/Zabbix/Installation)
+- [📈 Grafana *Installer et connecter Grafana à Zabbix pour un bel affichage*](/SelfHosted/Grafana)
 - [🟢 Superviser un serveur *Configuration de Zabbix et du serveur avec l'agent Zabbix*](/Supervision/Zabbix/Agent-Zabbix)
 - [🔵 Superviser NAS Synology *Configuration de Zabbix et du NAS en SNMP*](/Supervision/Zabbix/SNMP)
 - [🌐 Superviser un site internet 🚧*Ajouter la supervision d'un site*](/Supervision/Zabbix/Website)
