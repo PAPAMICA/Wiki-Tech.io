@@ -2,7 +2,7 @@
 title: SelfHosted - Grafana
 description: Affichez proprement et facilement vos datas !
 published: true
-date: 2021-10-06T09:12:40.045Z
+date: 2021-10-06T09:13:59.476Z
 tags: supervision, grafana, monitoring, selfhosted
 editor: markdown
 dateCreated: 2021-10-06T09:12:40.045Z
@@ -17,7 +17,7 @@ Portée par l'américain Grafana Labs, Grafana est une plateforme open source ta
 ### Installez les sources Grafana
 ```bash
 sudo apt-get install -y apt-transport-https
-sudo apt-get install -y software-properties-common wget
+sudo apt-get install -y software-properties-common wget gnupg
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 ```
 Ajoutez ce dépôt pour les versions stables :
