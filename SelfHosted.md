@@ -2,7 +2,7 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-10-05T19:25:51.533Z
+date: 2021-10-06T07:53:34.730Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
@@ -13,6 +13,7 @@ dateCreated: 2021-05-30T16:49:09.893Z
 - [📤 Filebrowser *Partager des fichiers en lecture seule*](/SelfHosted/Filebrowser)
 - [📰 FreshRSS 🚧 *Aggrégateur RSS d'articles, de Podcasts et de Vidéos*](/SelfHosted/FreshRSS)
 - [📜 GitLab 🚧 *Hébergez, travaillez et partagez vos projets. Alternative à Github*](/SelfHosted/GitLab)
+- [📈 Grafana *Afficher proprement et simplement vos datas !*](/SelfHosted/Grafana)
 - [🥗 Guacamole *Interface d'accès SSH et RDP*](/SelfHosted/Guacamole)
 - [📋 Hastebin *Partage de texte. Alternative à Pastebin*](/SelfHosted/Hastebin)
 - [🦕 Jeedom 🚧 *Mon serveur de domotique préféré*](/Domotique/Jeedom)
