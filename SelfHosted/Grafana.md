@@ -2,7 +2,7 @@
 title: SelfHosted - Grafana
 description: Affichez proprement et facilement vos datas !
 published: true
-date: 2021-10-06T09:20:04.363Z
+date: 2021-10-06T09:45:13.704Z
 tags: supervision, grafana, monitoring, selfhosted
 editor: markdown
 dateCreated: 2021-10-06T09:12:40.045Z
@@ -117,21 +117,36 @@ networks:
 {.is-info}
 
 
-# Configuration
-## Connexion à Zabbix
+# Connexion à Zabbix
 Pour connecter votre Grafana à votre serveur Zabbix, vous devez installer le plugin Zabbix d'Alexandre Zobnin.
-### Debian
+## Debian
 Connectez vous sur le serveur et utilisez `grafana-cli` pour installer le plugin :
 ```bash
 sudo grafana-cli plugins install alexanderzobnin-zabbix-app
 sudo systemctl restart grafana-server
 ```
 
-### Docker
+## Docker
 Pour Docker, ajoutez simplement le plugin à la liste des plugins à installer dans les variables d'environnement :
 ```yaml
 			- GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
 			- GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=alexanderzobnin-zabbix-datasource
 ```
-### Configuration
+## Configuration
+### Activez le plugin
+![image_2021-10-06_112350.png](/images/selfhosted/grafana/image_2021-10-06_112350.png)
+### Ajoutez la connexion à la base de données
+![image_2021-10-06_112528.png](/images/selfhosted/grafana/image_2021-10-06_112528.png)
+![image_2021-10-06_112731.png](/images/selfhosted/grafana/image_2021-10-06_112731.png)
+### Remplissez les informations de votre serveur Zabbix
+![image_2021-10-06_113410.png](/images/selfhosted/grafana/image_2021-10-06_113410.png)
+> **Debian** : l'URL sera `http://<ip>/zabbix/api_jsonrpc.php`
+{.is-info}
+
+> **Docker** : l'URL sera `http://<container_zabbix-web_name>/zabbix/api_jsonrpc.php`
+{.is-info}
+
+>  🎉 Vous pouvez dès à présent créer votre premier dashboard avec les données remontées par Zabbix !
+{.is-success}
+
 
