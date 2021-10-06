@@ -2,7 +2,7 @@
 title: Apple
 description: Toutes les astuces de l'environnement Apple !
 published: true
-date: 2021-10-05T19:16:36.677Z
+date: 2021-10-06T07:15:46.335Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:36:34.299Z
@@ -11,7 +11,7 @@ dateCreated: 2021-05-30T17:36:34.299Z
 # iOS / iPadOS
 
 # MacOS
-- [✨ Les logiciels utiles *Une belle liste de logiciels utiles voir indispensables sous MacOS*](/Apple/Macos-VM-Debian)
+- [✨ Les logiciels utiles *Une belle liste de logiciels utiles voir indispensables sous MacOS*](/Apple/Macos-logiciels)
 - [✨ Utiliser une VM Debian *Installer et simplifier l'utilisation d'une VM Debian*](/Apple/Macos-VM-Debian)
 {.links-list}
 
