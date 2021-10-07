@@ -2,14 +2,15 @@
 title: SelfHosted
 description: 
 published: true
-date: 2021-10-06T09:49:41.527Z
+date: 2021-10-07T07:42:24.574Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T16:49:09.893Z
 ---
 
 # SelfHosted
-- [💠 Bitwarden (Vaultwarden) *Gestionnaire de mots de passe. Alternative à Dashlane, LastPass, 1Password, etc...*](/SelfHosted/Bitwarden)
+- [💠 Bitwarden (Vaultwarden) *Gestionnaire de mots de passe. Alternative à Dashlane, 1Password, etc...*](/SelfHosted/Bitwarden)
+- [✅ CachetHQ *Une page status dynamique !*](/SelfHosted/CachetHQ)
 - [📤 Filebrowser *Partager des fichiers en lecture seule*](/SelfHosted/Filebrowser)
 - [📰 FreshRSS 🚧 *Aggrégateur RSS d'articles, de Podcasts et de Vidéos*](/SelfHosted/FreshRSS)
 - [📜 GitLab 🚧 *Hébergez, travaillez et partagez vos projets. Alternative à Github*](/SelfHosted/GitLab)
