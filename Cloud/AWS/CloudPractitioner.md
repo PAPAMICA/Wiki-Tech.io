@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-09-15T14:36:39.510Z
+date: 2021-10-13T08:07:48.053Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z
@@ -36,6 +36,12 @@ Le modèle du Cloud Computing se différencie par les cinq caractéristiques sui
 **- Service mesuré (Measured service)**
 *Sécuriser le service par une détection immédiate d'une surcharge ou inversement, si l'une de ces conditions est vérifié, c'est à l'elasticité de prendre en charge cela.*
 
-A SUIVRE...
+---
+
+### **Avantage de la consommation du cloud**
+
+Nous allons tout d'abord définir qu'en informatique nous exploitons des ressources, des capacités qu'elles soient physique ou virtuel.
+
+Si nous devions parler de bonnes pratiques, il faudrait que la consommation des ressources machines oscille autour des 80% d'utilisation.
 
 {.grid-list}
