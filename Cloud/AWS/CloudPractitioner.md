@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-10-13T08:14:10.895Z
+date: 2021-10-13T08:17:51.204Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z
@@ -43,6 +43,7 @@ Le modèle du Cloud Computing se différencie par les cinq caractéristiques sui
 Nous allons tout d'abord définir qu'en informatique nous exploitons des ressources, des capacités qu'elles soient physiques ou virtuelles.
 
 Si nous devions parler de bonnes pratiques, il faudrait que la consommation des ressources machines oscille autour des 80% d'utilisation, ce qui n'arrive en soit jamais ou très rarement. Vous remarquerez en effet que cela va dépendre des heures auxquels vos collaborateurs utiliserons plus ou moins des ressources, de vos backup en cours, etc.
+
 
 
 
