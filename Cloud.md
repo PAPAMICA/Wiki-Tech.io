@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-03T09:26:30.810Z
+date: 2021-11-03T09:28:40.342Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -35,7 +35,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
 - [📃 Logs 🚧 *Localiser et lire les logs*](/Cloud/OpenStack/Logs)
 {.links-list}
 ---
-![jelastic-logo.png](/images/cloud/jelastic/jelastic-logo.png =x200)
+![jelastic-logo.png](/images/cloud/jelastic/jelastic-logo.png =x180)
 # Jelastic
 
 ---
@@ -49,5 +49,5 @@ dateCreated: 2021-05-30T17:41:57.218Z
 # Azure
 
 ---
-![gcp-logo.png](/images/cloud/gcp/gcp-logo.png)
+![gcp-logo2.png](/images/cloud/gcp/gcp-logo2.png =x200)
 # Google Cloud
