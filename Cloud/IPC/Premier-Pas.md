@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Création d'un projet
 description: Comment créer un projet et s'y connecter !
 published: true
-date: 2021-11-03T13:33:04.038Z
+date: 2021-11-03T13:34:04.035Z
 tags: openstack, infomaniak, public-cloud, cloud
 editor: markdown
 dateCreated: 2021-11-03T08:25:32.856Z
@@ -14,36 +14,36 @@ Un fois que vous avez commander votre Public Cloud, vous allez accéder au dashb
 ### Cliquez sur `Créer un projet`
 ![infomaniak-publiccloud_01.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_01.png =1300x)
 ### Nommez votre projet
-![infomaniak-publiccloud_02.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_02.png =1000x)
+![infomaniak-publiccloud_02.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_02.png =1300x)
 ### Créez un utilisateur pour ce projet
 Vous pourrez créer d'autres utilisateurs par la suite ainsi que changer les mots de passe.
-![infomaniak-publiccloud_03.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_03.png =1000x)
+![infomaniak-publiccloud_03.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_03.png =1300x)
 
 > Votre projet est en cours de création !
 {.is-success}
 
-![infomaniak-publiccloud_04.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_04.png =1000x)
+![infomaniak-publiccloud_04.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_04.png =1300x)
 ### Après quelques minutes, vous receverez un mail vous annoncant la disponibilité de votre projet.
 ![infomaniak-publiccloud_05.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_05.png =1000x)
 
 # Gestion des utilisateurs
 Vous pouvez modifier ou ajouter d'autres utilisateurs directement depuis le panel Infomaniak.
 ### Cliquez sur `Gérer` dans votre projet 
-![infomaniak-publiccloud_06.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_06.png =1000x)
+![infomaniak-publiccloud_06.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_06.png =1300x)
 ### Sur cette page vous pourrez apporter les modifications que vous souhaitez
-![infomaniak-publiccloud_07.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_07.png =1000x)
+![infomaniak-publiccloud_07.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_07.png =1300x)
 
 # Connexion au projet avec Horizon
 Horizon est une interface web vous permettant de créer et gérer vos instances, vos containers etc...
 ### Cliquez sur le nom de votre projet ou sur `Ouvrir le dashboard OpenStack`
-![infomaniak-publiccloud_08.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_08.png =1000x)
+![infomaniak-publiccloud_08.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_08.png =1300x)
 ### Connectez vous avec les identifiants précédemment créés
-![infomaniak-publiccloud_09.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_09.png =1000x)
+![infomaniak-publiccloud_09.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_09.png =1300x)
 
 > Bienvenue sur le dashboard Openstack de votre projet !
 {.is-success}
 
-![infomaniak-publiccloud_10.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_10.png =1000x)
+![infomaniak-publiccloud_10.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_10.png =1300x)
 
 # Connexion au projet en CLI
 Vous pouvez utiliser l'API d'OpenStack ainsi que son client pour gérer votre projet directement depuis votre terminal.
@@ -53,7 +53,7 @@ Vous pouvez suivre le tutoriel suivant :
 {.links-list}
 ## Récupérer les identifiants
 ### Dans la liste des utilisateurs, vous pouvez télécharger le `fichier OpenStack`
-![infomaniak-publiccloud_11.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_11.png =1000x)
+![infomaniak-publiccloud_11.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_11.png =1300x)
 
 Votre fichier ressemblera à ca :
 ```bash
