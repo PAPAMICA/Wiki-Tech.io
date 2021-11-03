@@ -2,12 +2,13 @@
 title: Infomaniak Public Cloud - Création d'un projet
 description: Comment créer un projet et s'y connecter !
 published: true
-date: 2021-11-03T08:47:35.814Z
+date: 2021-11-03T09:29:50.617Z
 tags: openstack, infomaniak, public-cloud, cloud
 editor: markdown
 dateCreated: 2021-11-03T08:25:32.856Z
 ---
 
+![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =x200)
 # Création d'un projet
 Un fois que vous avez commander votre Public Cloud, vous allez accéder au dashboard suivant sur lequel vous pourrez créer votre premier projet :
 ### Cliquez sur `Créer un projet`
