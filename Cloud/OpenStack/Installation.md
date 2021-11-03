@@ -2,45 +2,45 @@
 title: Installation du client
 description: 
 published: true
-date: 2021-11-03T09:38:06.784Z
+date: 2021-11-03T09:40:09.638Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:58.495Z
 ---
 
-# Installer le client OpenStack
+![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png)
+# Présentation
 
 Pour une utilisation occasionnelle, le dashboard (Horizon) à l'aide d'un navigateur Web est plus simple, comme [documenté ici](https://docs.openstack.org/horizon/latest/user/index.html). 
 
 Le client OpenStack unifié (openstack) est l'interface de ligne de commande recommandée. La plupart des exemples donnés dans ce livre sont basés sur cette commande. Nous vous recommandons d'utiliser les clients OpenStack les plus récents. Il existe également des versions disponibles pour les machines autonomes Mac, Windows et Linux. Pour installer les outils OpenStack sur votre propre ordinateur client, vous pouvez suivre l'une de ces méthodes :
 
-## Linux
+# Linux
 
-**Red Hat / Cent OS**
+## Red Hat / Cent OS
 
 ```bash
 sudo yum install python3-openstackclient
 ```
 
-**Debian / Ubuntu**
+## Debian / Ubuntu
 
 ```bash
 sudo apt install python3-openstackclient
 ```
 
-**Using pip**
+## Using pip
 
 ```bash
 pip3 install python3-openstackclient
 ```
-
-or for older OS
+Or for older OS :
 
 ```bash
 pip install python-openstackclient
 ```
 
-## Mac OS
+# Mac OS
 
 **Python 3.X Installation Guide**
 
@@ -62,10 +62,10 @@ Maintenant que Python 3 est installé, nous pouvons enfin installer les outils d
 sudo pip3 install python-openstackclient
 ```
 
-## Windows
+# Windows
 
 
-## Vérifier l'installation
+# Vérifier l'installation
 
 ```bash
 openstack --version
