@@ -2,13 +2,13 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-03T08:17:03.414Z
+date: 2021-11-03T08:17:24.367Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
 ---
 
-# Public Cloud Infomaniak
+# Infomaniak Public Cloud
  - [📑 Présentation du Public Cloud Infomaniak *Quel type de cloud et ses prix*](/Cloud/IPC/Présentation)
  - [🏁 Créer son premier projet et utilisateur *Prendre en main le panel Infomaniak du Cloud Public*](/Cloud/IPC/Premier-Pas)
  - [📦 Créer un container Swift *Stocker des fichiers en ligne*](/Cloud/IPC/Container)
