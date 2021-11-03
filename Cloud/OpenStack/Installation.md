@@ -2,13 +2,13 @@
 title: Installation du client
 description: 
 published: true
-date: 2021-11-03T09:40:09.638Z
+date: 2021-11-03T09:40:32.839Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:58.495Z
 ---
 
-![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png)
+![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png =1000x)
 # Présentation
 
 Pour une utilisation occasionnelle, le dashboard (Horizon) à l'aide d'un navigateur Web est plus simple, comme [documenté ici](https://docs.openstack.org/horizon/latest/user/index.html). 
