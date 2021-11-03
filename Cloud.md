@@ -2,18 +2,20 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-03T08:50:14.528Z
+date: 2021-11-03T08:55:15.787Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
 ---
 
+![public-cloud.jpg](/images/cloud/infomaniak-public-cloud/public-cloud.jpg)
 # Infomaniak Public Cloud
  - [📑 Présentation du Public Cloud Infomaniak *Quel type de cloud et ses prix*](https://www.infomaniak.com/fr/hebergement/public-cloud)
  - [🏁 Créer son premier projet et utilisateur *Prendre en main le panel Infomaniak du Cloud Public*](/Cloud/IPC/Premier-Pas)
  - [📦 Créer un container Swift *Stocker des fichiers en ligne*](/Cloud/IPC/Container)
 {.links-list}
 
+![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png)
 # OpenStack
 - [✨ Ocicli *Installer un cluster Openstack avec ocicli sous Debian*](/Cloud/OpenStack/Ocicli)
 - [🌀 Installer le client *Debian, Manjaro, CentOS, etc...*](/Cloud/OpenStack/Installation)
