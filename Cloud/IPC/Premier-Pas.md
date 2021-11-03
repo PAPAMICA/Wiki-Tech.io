@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Création d'un projet
 description: Comment créer un projet et s'y connecter !
 published: true
-date: 2021-11-03T08:45:26.349Z
+date: 2021-11-03T08:47:35.814Z
 tags: openstack, infomaniak, public-cloud, cloud
 editor: markdown
 dateCreated: 2021-11-03T08:25:32.856Z
@@ -43,4 +43,8 @@ Horizon est une interface web vous permettant de créer et gérer vos instances,
 {.is-success}
 
 ![infomaniak-publiccloud_10.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_10.png)
+
+# Connexion au projet en CLI
+Vous pouvez utiliser l'API d'Openstack ainsi que son client pour gérer votre projet directement depuis votre terminal.
+## Récupérer les identifiants
 ![infomaniak-publiccloud_11.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_11.png)
