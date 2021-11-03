@@ -2,7 +2,7 @@
 title: Installation du client
 description: 
 published: true
-date: 2021-06-14T07:02:41.168Z
+date: 2021-11-03T09:38:06.784Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:58.495Z
@@ -61,6 +61,9 @@ Maintenant que Python 3 est installé, nous pouvons enfin installer les outils d
 ```bash
 sudo pip3 install python-openstackclient
 ```
+
+## Windows
+
 
 ## Vérifier l'installation
 
