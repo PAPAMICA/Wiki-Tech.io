@@ -2,7 +2,7 @@
 title: Installation du client
 description: 
 published: true
-date: 2021-11-03T09:40:32.839Z
+date: 2021-11-03T09:44:28.706Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:58.495Z
@@ -34,7 +34,7 @@ sudo apt install python3-openstackclient
 ```bash
 pip3 install python3-openstackclient
 ```
-Or for older OS :
+Ou pour les anciens systèmes :
 
 ```bash
 pip install python-openstackclient
@@ -63,7 +63,11 @@ sudo pip3 install python-openstackclient
 ```
 
 # Windows
-
+Pour Windows vous devez aussi utilisez `pip` directement depuis Powershell :
+```powershell
+pip install -U buildtools
+pip install python-openstackclient
+```
 
 # Vérifier l'installation
 
