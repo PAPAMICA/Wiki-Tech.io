@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Création d'un projet
 description: Comment créer un projet et s'y connecter !
 published: true
-date: 2021-11-03T13:34:04.035Z
+date: 2021-11-03T13:34:33.933Z
 tags: openstack, infomaniak, public-cloud, cloud
 editor: markdown
 dateCreated: 2021-11-03T08:25:32.856Z
@@ -135,7 +135,7 @@ Si tout se passe bien, vous devriez voir la liste des flavors :
 Afin d'utiliser le Public Cloud d'Infomaniak avec des applications externes (Terraform par exemple) vous aurez besoin d'un **identifiant d'application**
 
 ### Rendez vous dans la section `Identifiants d'application` dans le dashboard Horizon et cliquez sur `Créer un identifiant d'application` :
-![infomaniak-publiccloud_12.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_12.png =1000x)
+![infomaniak-publiccloud_12.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_12.png =1300x)
 ### Rentrez les informations et selectionnez les droits que vous souhaitez :
 ![infomaniak-publiccloud_13.png](/images/cloud/infomaniak-public-cloud/1/infomaniak-publiccloud_13.png =1000x)
 ### Enregistrez les identifiants ou téléchargez les :
