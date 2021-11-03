@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-03T09:13:01.911Z
+date: 2021-11-03T09:17:06.278Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -34,7 +34,8 @@ dateCreated: 2021-05-30T17:41:57.218Z
 - [🖥️ Gestion des machines virtuelles 🚧 *Créer, modifier et supprimer les machines virtuelles*](/Cloud/OpenStack/Machine-virtuelle)
 - [📃 Logs 🚧 *Localiser et lire les logs*](/Cloud/OpenStack/Logs)
 {.links-list}
-
+---
+![jelastic-logo.png](/images/cloud/jelastic/jelastic-logo.png =1000x)
 # Jelastic
 
 # AWS
