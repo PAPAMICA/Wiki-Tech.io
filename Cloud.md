@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-03T09:21:56.208Z
+date: 2021-11-03T09:26:30.810Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -43,6 +43,11 @@ dateCreated: 2021-05-30T17:41:57.218Z
 # AWS
  - [📑 Certification *Comprendre et utiliser le Cloud D'Amazon*](/Cloud/AWS)
 {.links-list}
+
+---
+![azure-logo.png](/images/cloud/azure/azure-logo.png =x200)
 # Azure
 
+---
+![gcp-logo.png](/images/cloud/gcp/gcp-logo.png)
 # Google Cloud
