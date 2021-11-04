@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Swift : Le stockage object
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T10:29:00.689Z
+date: 2021-11-04T10:33:23.640Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -10,10 +10,10 @@ dateCreated: 2021-11-03T12:34:36.327Z
 
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Introduction
-## Stockage object
+## Stockage objet
 Appelé également stockage basé sur les objets, le stockage d’objets est un terme général faisant référence à la façon dont nous organisons et travaillons avec les unités de stockage, appelées objets.
 
-## Object
+## Objet
 Dans un système de stockage de type objet, un objet est tout simplement un fichier stocké dans le dit système. En revanche il se caractérise par trois éléments qui sont propre à ce type de stockage
 - Les données elles-mêmes 
 - Les métadonnées qui contiennent des informations contextuelles sur ce que sont les données, leurs finalités, leur confidentialité ou toute autre information pertinente pour le traitement des informations
@@ -48,7 +48,7 @@ Un conteneur Swift est un espace de stockage sur lequel on peu appliquer une pol
 openstack container create [--storage-policy <POLICY_NAME>] [--public] <CONTAINER>
 ```
 > **--storage-policy** : Nom de la storage policy à appliquer au conteneur
-> **--public** : Activer les liens publiques du conteneur
+> **--public** : Activer les liens publics du conteneur
 > **CONTAINER** : Conteneur à créer
 {.is-info}
 
@@ -64,7 +64,7 @@ openstack container delete [--recursive] <CONTAINER>
 > **CONTAINER** : Conteneur à supprimer
 {.is-info}
 
-# Télécharger un object
+# Télécharger un objet
 ## Horizon
 ### Cliquez sur le bouton `Upload`, selectionnez votre fichier et renommer le si besoin
 ![infomaniak-publiccloud_2_4.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_4.png =1300x)
@@ -107,17 +107,17 @@ Pour envoyer un dossier et ses sous dossiers :
 > **FOLDER** : Chemin du dossier local à télécharger
 {.is-info}
   
-### Lister les objects
+### Lister les objets
 ```bash
 openstack object list <CONTAINER>
 ```
-> **CONTAINER** : Lister les objects de ce conteneur
+> **CONTAINER** : Lister les objets de ce conteneur
 {.is-info}
 ### Supprimer un fichier
 ```bash
 openstack object delete <CONTAINER> <OBJECT>
 ```
-> **CONTAINER** : Nom du container contenant l'object
-> **OBJECT** : Nom de l'object à supprimer 
+> **CONTAINER** : Nom du container contenant l'objet
+> **OBJECT** : Nom de l'objet à supprimer 
 {.is-info}
   
