@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Glance : La gestion des images
 description: Créer et gérer ses images systèmes.
 published: true
-date: 2021-11-04T11:02:33.612Z
+date: 2021-11-04T12:31:17.402Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T09:15:22.077Z
@@ -54,7 +54,7 @@ openstack image create
     <IMAGE_NAME>
 ```
 > **--disk-format *DISK_FORMAT*** 
->- Format de l'images (ami, ari, aki, vhd, vmdk, raw, qcow2, vhdx, vdi, iso, ploop). Par défaut : raw
+>- Format de l'image (ami, ari, aki, vhd, vmdk, raw, qcow2, vhdx, vdi, iso, ploop). Par défaut : raw
 >
 > **--file *FILE***
 > - Télécharger une image à partir d'un fichier local
