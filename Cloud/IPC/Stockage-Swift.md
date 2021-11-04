@@ -2,13 +2,13 @@
 title: Infomaniak Public Cloud - Le stockage Swift
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T09:02:04.942Z
+date: 2021-11-04T09:13:39.908Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
 ---
 
-![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =1000x)
+![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Introduction
 ## Stockage object
 Appelé également stockage basé sur les objets, le stockage d’objets est un terme général faisant référence à la façon dont nous organisons et travaillons avec les unités de stockage, appelées objets.
