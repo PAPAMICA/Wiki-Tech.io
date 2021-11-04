@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Glance : La gestion des images
 description: Créer et gérer ses images systèmes.
 published: true
-date: 2021-11-04T10:00:59.891Z
+date: 2021-11-04T11:02:33.612Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T09:15:22.077Z
@@ -44,5 +44,77 @@ Plusieurs formats sont supportés : **ISO**, **PLOOP**, **QCOW2**, **RAW**, **VD
 
 # CLI
 ## Télécharger une image
+```bash
+openstack image create
+    [--disk-format <DISK_FORMAT>]
+    [--file <FILE> | --volume <VOLUME>]
+    [--force]
+    [--protected | --unprotected]
+    [--public | --private | --community | --shared]
+    <IMAGE_NAME>
+```
+> **--disk-format *DISK_FORMAT*** 
+>- Format de l'images (ami, ari, aki, vhd, vmdk, raw, qcow2, vhdx, vdi, iso, ploop). Par défaut : raw
+>
+> **--file *FILE***
+> - Télécharger une image à partir d'un fichier local
+>
+> **--volume *VOLUME***
+> - Créer une image à partir d'un volume
+>
+> **--force**
+> - Forcer la création d'image si le volume est en cours d'utilisation (uniquement avec --volume)
+>
+> **--protected | --unprotected**
+> - Empêcher la suppression de l'image
+>
+> **--public | --private | --community | --shared**
+> - Régler l'accessibilité de l'image
+>
+> ***IMAGE_NAME***
+> - Nom de l'image à créer
+>
+> 	.
+{.is-info}
+
+## Lister les images
+```bash
+openstack image list
+    [--public | --private | --shared]
+    [--name <NAME>]
+    [--status <STATUS>]
+```
+
+> **--public | --private | --community | --shared**
+> - Filtrer par accessibilité 
+>
+> **--name *NAME***
+> - Filtrer par nom d'image
+>
+> **--status *STATUS***
+> - Filtrer par status
+>
+> 	.
+{.is-info}
+
+## Afficher les informations de l'image
+```bash
+openstack image show <IMAGE>
+```
+
+> ***IMAGE***
+> - Nom de l'image à afficher
+>
+> 	.
+{.is-info}
 
 ## Supprimer une image
+```bash
+openstack image delete <IMAGE>
+```
+
+> ***IMAGE***
+> - Nom de l'image à supprimer
+>
+> 	.
+{.is-info}
