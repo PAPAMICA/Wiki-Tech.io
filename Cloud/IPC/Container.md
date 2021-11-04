@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Le stockage Swift
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T07:48:06.060Z
+date: 2021-11-04T07:53:12.895Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -17,10 +17,10 @@ dateCreated: 2021-11-03T12:34:36.327Z
 # Créer un conteneur
 ## Horizon
 ### Rendez vous dans la catégorie `Conteneurs` sous `Stockage d'objet` dans votre dashboard Horizon et cliquez sur `+ Conteneur`
-![infomaniak-publiccloud_2_1.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_1.png)
+![infomaniak-publiccloud_2_1.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_1.png =1300x)
 
 ### Nommez votre container, choisissez sa Storage Policy et s'il est publique ou non
-![infomaniak-publiccloud_2_2.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_2.png)
+![infomaniak-publiccloud_2_2.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_2.png =1300x)
 
 > Votre conteneur est créé !
 {.is-success}
@@ -32,7 +32,7 @@ dateCreated: 2021-11-03T12:34:36.327Z
 4. Créer un "Dossier"
 5. Supprimer un object
 
-![infomaniak-publiccloud_2_3.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_3.png)
+![infomaniak-publiccloud_2_3.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_3.png =1300x)
 
 ## CLI
 ### La création d'un conteneur se fait avec la commande suivante :
@@ -59,7 +59,7 @@ openstack container delete [--recursive] <CONTAINER>
 # Télécharger un object
 ## Horizon
 ### Cliquez sur le bouton `Upload`, selectionnez votre fichier et renommer le si besoin
-![infomaniak-publiccloud_2_4.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_4.png)
+![infomaniak-publiccloud_2_4.png](/images/cloud/infomaniak-public-cloud/2/infomaniak-publiccloud_2_4.png =1300x)
 
 ## CLI
 ### Envoyer un fichier
