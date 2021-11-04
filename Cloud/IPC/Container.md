@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Le stockage Swift
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T07:53:47.129Z
+date: 2021-11-04T08:20:50.110Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -73,6 +73,32 @@ openstack object create [--name <NAME>] <CONTAINER> <FILENAME>
 
 
 ### Envoyer un dossier
+Pour envoyer plusieurs fichiers ou dossiers, vous pouvez utiliser un petit script comme celui ci :
+```bash
+#!/bin/bash
+
+CONTAINER="$1"
+FOLDER="$2"
+
+FILESLIST=$(find $FOLDER -type f )
+for FILE in $FILESLIST 
+    do
+    openstack object create $CONTAINER $FILE
+        if test $? -eq 0; then
+            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   SendFile   ✅   $FILE has been successfully sent to $CONTAINER."
+        else
+            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   BackupScript   ❌   ERROR : A problem was encountered during the upload of $FILE"
+        fi
+done
+```
+Pour envoyer un dossier et ses sous dossiers :
+```bash
+./sendfolder.sh <CONTAINER> <FOLDER>
+```
+> **CONTAINER** : Conteneur pour les nouveaux objects
+> **FOLDER** : Chemin du dossier local à télécharger
+{.is-info}
+  
 ### Lister les objects
 ```bash
 openstack object list <CONTAINER>
