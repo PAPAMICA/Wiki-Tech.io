@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-04T09:19:58.595Z
+date: 2021-11-04T12:35:49.055Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -12,8 +12,9 @@ dateCreated: 2021-05-30T17:41:57.218Z
 # Infomaniak Public Cloud
  - [📑 Présentation du Public Cloud Infomaniak *Quel type de cloud et ses prix*](https://www.infomaniak.com/fr/hebergement/public-cloud)
  - [🏁 Premiers pas*Créer et gérer son premier projet et utilisateur*](/Cloud/IPC/Premier-Pas)
- - [📦 Swift : Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Swift-Stockage) 
- - [💿 Glance : La gestion des images *Créer et gérer ses images systèmes*](/Cloud/IPC/Glance-Images)
+ - [📦 Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Swift-Stockage) 
+ - [💿 La gestion des images *Créer et gérer ses images systèmes*](/Cloud/IPC/Glance-Images)
+ - [⚡ La gestion des instances *Créer et gérer une instance*](/Cloud/IPC/Keypair)
 {.links-list}
 
 
