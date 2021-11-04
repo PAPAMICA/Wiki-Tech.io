@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-04T12:35:49.055Z
+date: 2021-11-04T12:46:25.403Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -14,7 +14,10 @@ dateCreated: 2021-05-30T17:41:57.218Z
  - [🏁 Premiers pas*Créer et gérer son premier projet et utilisateur*](/Cloud/IPC/Premier-Pas)
  - [📦 Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Swift-Stockage) 
  - [💿 La gestion des images *Créer et gérer ses images systèmes*](/Cloud/IPC/Glance-Images)
- - [⚡ La gestion des instances *Créer et gérer une instance*](/Cloud/IPC/Keypair)
+ - [🔑 Gestion des paires de clés *Créer et gérer les paires de clés pour préparer l'accès en SSH*](/Cloud/IPC/Keypair)
+ - [⚡ La gestion des instances *Créer et gérer une instance*](/Cloud/IPC/Instances)
+ - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/Cloud/IPC/Security-Groups)
+ - [📌Créer une image privée *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/Cloud/IPC/Images-Privées)
 {.links-list}
 
 
