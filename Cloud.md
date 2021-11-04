@@ -2,13 +2,13 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-04T09:03:00.960Z
+date: 2021-11-04T09:05:40.436Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
 ---
 
-![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =1000x)
+![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Infomaniak Public Cloud
  - [📑 Présentation du Public Cloud Infomaniak *Quel type de cloud et ses prix*](https://www.infomaniak.com/fr/hebergement/public-cloud)
  - [🏁 Premiers pas*Créer et gérer son premier projet et utilisateur*](/Cloud/IPC/Premier-Pas)
@@ -18,7 +18,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
 
 ---
 
-![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png =x200)
+![openstack-logo-horizontal.png](/images/cloud/openstack/openstack-logo-horizontal.png =600x)
 # OpenStack
 - [✨ Ocicli *Installer un cluster Openstack avec ocicli sous Debian*](/Cloud/OpenStack/Ocicli)
 - [🌀 Installer le client *Debian, Manjaro, CentOS, etc...*](/Cloud/OpenStack/Installation)
@@ -35,19 +35,19 @@ dateCreated: 2021-05-30T17:41:57.218Z
 - [📃 Logs 🚧 *Localiser et lire les logs*](/Cloud/OpenStack/Logs)
 {.links-list}
 ---
-![jelastic-logo.png](/images/cloud/jelastic/jelastic-logo.png =x180)
+![jelastic-logo.png](/images/cloud/jelastic/jelastic-logo.png =600x)
 # Jelastic
 
 ---
-![aws-logo.png](/images/cloud/aws/aws-logo.png =x200)
+![aws-logo.png](/images/cloud/aws/aws-logo.png =400x)
 # AWS
  - [📑 Certification *Comprendre et utiliser le Cloud D'Amazon*](/Cloud/AWS)
 {.links-list}
 
 ---
-![azure-logo.png](/images/cloud/azure/azure-logo.png =x200)
+![azure-logo.png](/images/cloud/azure/azure-logo.png =600x)
 # Azure
 
 ---
-![gcp-logo2.png](/images/cloud/gcp/gcp-logo2.png =x200)
+![gcp-logo2.png](/images/cloud/gcp/gcp-logo2.png =500x)
 # Google Cloud
