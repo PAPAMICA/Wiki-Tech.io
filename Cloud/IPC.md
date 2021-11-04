@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-04T09:15:45.203Z
+date: 2021-11-04T09:16:47.982Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
@@ -12,6 +12,6 @@ dateCreated: 2021-11-03T10:35:24.419Z
 # Infomaniak Public Cloud
  - [📑 Présentation du Public Cloud Infomaniak *Quel type de cloud et ses prix*](https://www.infomaniak.com/fr/hebergement/public-cloud)
  - [🏁 Premiers pas*Créer et gérer son premier projet et utilisateur*](/Cloud/IPC/Premier-Pas)
- - [📦 Swift : Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Stockage-Swift) 
+ - [📦 Swift : Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Swift-Stockage) 
  - [💿 Glance : La gestion des images *Créer et gérer ses images systèmes*](/Cloud/IPC/Glance-Images)
 {.links-list}
