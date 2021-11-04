@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Swift : Le stockage object
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T10:38:43.153Z
+date: 2021-11-04T11:08:07.829Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -47,9 +47,16 @@ Un conteneur Swift est un espace de stockage sur lequel on peut appliquer une po
 ```bash
 openstack container create [--storage-policy <POLICY_NAME>] [--public] <CONTAINER>
 ```
-> **--storage-policy** : Nom de la storage policy à appliquer au conteneur
-> **--public** : Activer les liens publics du conteneur
-> **CONTAINER** : Conteneur à créer
+> **--storage-policy**
+> - Nom de la storage policy à appliquer au conteneur
+>
+> **--public**
+> - Activer les liens publics du conteneur
+>
+> **CONTAINER**
+> - Conteneur à créer
+>
+> 	.
 {.is-info}
 
 ### Lister les conteneurs existants :
@@ -60,8 +67,13 @@ openstack container list
 ```bash
 openstack container delete [--recursive] <CONTAINER>
 ```
-> **--recursive** : Supprimer récursivement les objets dans le conteneur avant la suppression du conteneur
-> **CONTAINER** : Conteneur à supprimer
+> **--recursive**
+> - Supprimer récursivement les objets dans le conteneur avant la suppression du conteneur
+>
+> **CONTAINER**
+> - Conteneur à supprimer
+>
+> 	.
 {.is-info}
 
 # Télécharger un objet
@@ -74,9 +86,16 @@ openstack container delete [--recursive] <CONTAINER>
 ```bash
 openstack object create [--name <NAME>] <CONTAINER> <FILENAME>
 ```
-> **--name <name>** : Téléchargez un fichier et renommez-le. Ne peut être utilisé que lors du téléchargement d'un seul objet
-> **CONTAINER** : Conteneur pour le nouvel objet
-> **FILENAME** : Nom du fichier local à télécharger
+> **--name <name>**
+> - Téléchargez un fichier et renommez-le. Ne peut être utilisé que lors du téléchargement d'un seul objet
+>
+> **CONTAINER**
+> - Conteneur pour le nouvel objet
+>
+> **FILENAME**
+> - Nom du fichier local à télécharger
+>
+> 	.
 {.is-info}
 
 
@@ -103,21 +122,34 @@ Pour envoyer un dossier et ses sous dossiers :
 ```bash
 ./sendfolder.sh <CONTAINER> <FOLDER>
 ```
-> **CONTAINER** : Conteneur pour les nouveaux objects
-> **FOLDER** : Chemin du dossier local à télécharger
+> **CONTAINER**
+> - Conteneur pour les nouveaux objects
+>
+> **FOLDER**
+> - Chemin du dossier local à télécharger
+>
+> 	.
 {.is-info}
   
 ### Lister les objets
 ```bash
 openstack object list <CONTAINER>
 ```
-> **CONTAINER** : Lister les objets de ce conteneur
+> **CONTAINER**
+> - Lister les objets de ce conteneur
+>
+> 	.
 {.is-info}
 ### Supprimer un fichier
 ```bash
 openstack object delete <CONTAINER> <OBJECT>
 ```
-> **CONTAINER** : Nom du container contenant l'objet
-> **OBJECT** : Nom de l'objet à supprimer 
+> **CONTAINER**
+> - Nom du container contenant l'objet
+>
+> **OBJECT**
+> - Nom de l'objet à supprimer 
+>
+> 	.
 {.is-info}
   
