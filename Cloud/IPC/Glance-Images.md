@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Glance : La gestion des images
 description: Créer et gérer ses images systèmes.
 published: true
-date: 2021-11-04T09:59:39.659Z
+date: 2021-11-04T10:00:59.891Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T09:15:22.077Z
@@ -39,7 +39,8 @@ Plusieurs formats sont supportés : **ISO**, **PLOOP**, **QCOW2**, **RAW**, **VD
 {.is-success}
 
 ## Supprimer une image
-
+### Une fois votre image selectionnée, cliquez sur `Supprimer l'image`
+![infomaniak-publiccloud_3_4.png](/images/cloud/infomaniak-public-cloud/3/infomaniak-publiccloud_3_4.png =1300x)
 
 # CLI
 ## Télécharger une image
