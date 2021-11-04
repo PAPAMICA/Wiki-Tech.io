@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Swift : Le stockage object
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T09:16:24.058Z
+date: 2021-11-04T10:29:00.689Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -20,7 +20,7 @@ Dans un système de stockage de type objet, un objet est tout simplement un fich
 - Un identificateur unique à l’échelle mondiale. Il s’agit d’une adresse donnée à l’objet afin qu’il puisse être retrouvé sur un système réparti
 
 ## Conteneur
-Un conteneur Swift est un espace de stockage sur lequel on peu appliquer une politique de stockage (uniquement à la création) et un accès publique ou privé. C'est lui qui va contenir les objects envoyés sur Swift.
+Un conteneur Swift est un espace de stockage sur lequel on peu appliquer une politique de stockage (uniquement à la création) et un accès public ou privé. C'est lui qui va contenir les objects envoyés sur Swift.
 
 # Créer un conteneur
 ## Horizon
