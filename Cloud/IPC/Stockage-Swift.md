@@ -1,8 +1,8 @@
 ---
-title: Infomaniak Public Cloud - Le stockage Swift
+title: Infomaniak Public Cloud - Swift : Le stockage object
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T09:13:39.908Z
+date: 2021-11-04T09:16:24.058Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
