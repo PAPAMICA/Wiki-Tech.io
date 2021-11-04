@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Le stockage Swift
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T08:20:50.110Z
+date: 2021-11-04T08:24:04.761Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -83,11 +83,11 @@ FOLDER="$2"
 FILESLIST=$(find $FOLDER -type f )
 for FILE in $FILESLIST 
     do
-    openstack object create $CONTAINER $FILE
+    openstack object create $CONTAINER $FILE > /dev/null
         if test $? -eq 0; then
-            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   SendFile   ✅   $FILE has been successfully sent to $CONTAINER."
+            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   SendFolder   ✅   $FILE has been successfully sent to $CONTAINER."
         else
-            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   BackupScript   ❌   ERROR : A problem was encountered during the upload of $FILE"
+            echo "[$(date +%Y-%m-%d_%H:%M:%S)]   SendFolder   ❌   ERROR : A problem was encountered during the upload of $FILE"
         fi
 done
 ```
