@@ -2,13 +2,14 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-04T15:20:46.428Z
+date: 2021-11-04T15:27:04.489Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
 ---
 
 # Horizon
+# Créer une instance
 ## Rendez vous dans la section 'Instance' et cliquez sur `Lancer une instance`
 ![infomaniak-publiccloud_5_1.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_1.png =1300x)
 
@@ -40,6 +41,22 @@ dateCreated: 2021-11-04T12:38:36.261Z
 {.links-list}
 
 # CLI
+## Lister les flavors
 
+## Créer une instance
+```bash
+openstack server create
+    (--image <IMAGE> | --volume <VOLUME>)
+    --flavor <FLAVOR>
+    [--security-group <SECURITY_GROUP>]
+    [--key-name <KEY_NAME>]
+    [--network <NETWORK>]
+    <SERVER_NAME>
+
+```
+
+## Lister les instances
+
+## Supprimer une instance
 
 
