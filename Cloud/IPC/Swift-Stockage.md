@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Swift : Le stockage object
 description: Créer et gérer ses container Swift et ses objects
 published: true
-date: 2021-11-04T10:36:44.798Z
+date: 2021-11-04T10:38:43.153Z
 tags: infomaniak, public-cloud, cloud, ipc, swift
 editor: markdown
 dateCreated: 2021-11-03T12:34:36.327Z
@@ -14,7 +14,7 @@ dateCreated: 2021-11-03T12:34:36.327Z
 Appelé également stockage basé sur les objets, le stockage d’objets est un terme général faisant référence à la façon dont nous organisons et travaillons avec les unités de stockage, appelées objets.
 
 ## Objet
-Dans un système de stockage de type objet, un objet est tout simplement un fichier stocké dans le dit système. En revanche il se caractérise par trois éléments qui sont propre à ce type de stockage
+Dans un système de stockage de type objet, un objet est tout simplement un fichier stocké dans le dit système. En revanche il se caractérise par trois éléments qui sont propres à ce type de stockage
 - Les données elles-mêmes 
 - Les métadonnées qui contiennent des informations contextuelles sur ce que sont les données, leurs finalités, leur confidentialité ou toute autre information pertinente pour le traitement des informations
 - Un identificateur unique à l’échelle mondiale. Il s’agit d’une adresse donnée à l’objet afin qu’il puisse être retrouvé sur un système réparti
