@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Gestion des paires de clés
 description: Créer et gérer les paires de clés pour préparer la connexion SSH
 published: true
-date: 2021-11-04T13:40:43.159Z
+date: 2021-11-04T13:53:49.684Z
 tags: ssh, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T12:51:34.885Z
@@ -34,3 +34,48 @@ dateCreated: 2021-11-04T12:51:34.885Z
 {.is-success}
 
 # CLI
+## Créer une paire de clé
+```bash
+openstack keypair create
+    [ --private-key <FILE>]
+    <NAME>
+```
+
+> **--private-key *FILE***
+> - Nom du fichier de la clé privée à enregistrer. Si elle n'est pas utilisée, affiche la clé privée dans la console.
+>
+> **NAME**
+> - Nom de la clé
+>
+> 	.
+{.is-info}
+
+## Importer une clé publique
+```bash
+openstack keypair create
+    [--public-key <FILE>]
+    <NAME>
+```
+> **--public-key *FILE***
+> - Nom du fichier de la clé publique à ajouter. S'il n'est pas utilisé, crée une clé privée.
+>
+>
+> **NAME**
+> - Nom de la clé
+>
+> 	.
+{.is-info}
+
+## Lister les clés
+```bash
+openstack keypair list
+```
+## Supprimer une clé
+```bash
+openstack keypair delete <KEY>
+```
+> **KEY**
+> - Nom de la clé à supprimer
+>
+> 	.
+{.is-info}
