@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Glance : La gestion des images
 description: Créer et gérer ses images systèmes.
 published: true
-date: 2021-11-04T09:51:45.526Z
+date: 2021-11-04T09:59:39.659Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T09:15:22.077Z
@@ -11,7 +11,7 @@ dateCreated: 2021-11-04T09:15:22.077Z
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 
 # Introduction
-Sur le Cloud Public d'Infomaniak, vous pouvez utiliser les images mises à disposition par Infomaniak directement parmis une liste non exaustive :
+Sur le Cloud Public d'Infomaniak, vous pouvez utiliser les **images mises à disposition par Infomaniak** directement parmis une liste non exaustive :
 - Debian
 - Ubuntu
 - RancherOS
