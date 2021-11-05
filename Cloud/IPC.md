@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-05T13:32:29.818Z
+date: 2021-11-05T13:33:00.715Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
