@@ -2,13 +2,25 @@
 title: Infomaniak Public Cloud - Gestion des paires de clés
 description: Créer et gérer les paires de clés pour préparer la connexion SSH
 published: true
-date: 2021-11-04T13:53:49.684Z
+date: 2021-11-05T14:42:43.787Z
 tags: ssh, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T12:51:34.885Z
 ---
 
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
+# Introduction
+Les paires de clés (Keypair en anglais) sont une méthode d'authentification SSH.
+Face à la faiblesse de l'authentification par mot de passe, l'**authentification par clé se révèle être très efficace**.
+
+La clé permet de garantir à un système qu'un utilisateur est bien celui qu'il prétend être... en deux mots : « Je jure et je prouve que c'est bien moi ».
+
+L'authentification par clé fonctionne grâce à **3 composants** :
+ - Une **clé publique** : elle sera exportée sur chaque hôte sur lequel on souhaite pouvoir se connecter
+ - Une **clé privée** : elle permet de prouver son identité aux serveurs
+ - Une **passphrase** : Permet de sécuriser la clé privée (notons la subtilité, passphrase et pas password... donc « phrase de passe » et non pas « mot de passe »).
+
+La sécurité est vraiment accrue car la passphrase seule ne sert à rien sans la clé privée, et vice-versa. 
 # Horizon
 ## Créer une paire de clé
 ### Rendez vous dans la catégorie `Paires de clés` et cliquez sur `+ Créer une paire de clés`
