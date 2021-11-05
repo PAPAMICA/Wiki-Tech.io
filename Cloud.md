@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-05T13:23:31.013Z
+date: 2021-11-05T13:31:25.246Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -17,7 +17,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
  - [🔑 Les paires de clés *Créer et gérer les paires de clés pour préparer l'accès en SSH*](/Cloud/IPC/Keypair) 
  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
  - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](/Cloud/IPC/Instances)
- - [📌Les snapshots et volumes *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/IPC/Images-Personnalisée)
+ - [📌 Les images personnalisées *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/IPC/Images-Personnalisées)
 {.links-list}
 
 
