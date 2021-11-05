@@ -2,14 +2,14 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-04T15:50:38.458Z
+date: 2021-11-05T08:00:08.077Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
 ---
 
 # Horizon
-# Créer une instance
+## Créer une instance
 ## Rendez vous dans la section 'Instance' et cliquez sur `Lancer une instance`
 ![infomaniak-publiccloud_5_1.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_1.png =1300x)
 
@@ -41,10 +41,17 @@ dateCreated: 2021-11-04T12:38:36.261Z
 {.links-list}
 
 # CLI
+## Documentation OpenStack
+ - [🔗 OpenStack Docs : server *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/server.html)
+{.links-list}
 ## Lister les configurations disponibles
-
+```bash
+openstack flavor list
+```
 ## Lister les réseaux disponibles
-
+```bash
+openstack network list
+```
 ## Créer une instance
 ```bash
 openstack server create
@@ -80,7 +87,39 @@ openstack server create
 {.is-info}
 
 ## Lister les instances
+```bash
+openstack server list
+    [--name <NAME_REGEX>]
+    [--instance-name <SERVER_NAME>]
+    [--status <STATUS>]
+    [--flavor <FLAVOR>]
+    [--image <IMAGE>]
+```
+> **--name *NAME_REGEX***
+> - Filtrer par nom (avec une regex)
+>
+> **--instance-name *SERVER_NAME***
+> - Filtrer par nom d'instance
+>
+> **--status *STATUS***
+> - Filtrer par status
+>
+> **--flavor *FLAVOR***
+> - Filtrer par configuration
+>
+> **--image *IMAGE***
+> - Filtrer par image
+>
+> 	.
+{.is-info}
 
 ## Supprimer une instance
-
+```bash
+openstack server delete <INSTANCE>
+```
+> ***INSTANCE***
+> - Nom ou ID de l'instance à supprimer
+>
+> 	.
+{.is-info}
 
