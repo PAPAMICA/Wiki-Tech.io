@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-05T14:37:30.918Z
+date: 2021-11-05T14:37:44.645Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
@@ -11,7 +11,7 @@ dateCreated: 2021-11-04T12:38:36.261Z
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 
 # Introduction
-Une instance est une machine virtuelle tournant sur le Public Cloud d'Infomaniak.
+Une instance est une machine virtuelle fonctionnant sur le Public Cloud d'Infomaniak.
 # Horizon
 ## Créer une instance
 ### Rendez vous dans la section 'Instance' et cliquez sur `Lancer une instance`
