@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Créer une image personnalisée
 description: Créer une image à partir d'une instance et démarrer depuis cette image
 published: true
-date: 2021-11-05T13:02:37.358Z
+date: 2021-11-05T13:22:39.619Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T11:04:22.782Z
@@ -64,12 +64,85 @@ Utilisez le nom de l'image ou son ID avec ce tutoriel :
 {.links-list}
 
 # Utiliser un volume
+Les volumes sont créés à partir d'un snapshot, il faut donc faire un snapshot de votre instance avant de le transformer en volume.
 ## Horizon
 ### Créer un volume d'une instance
+#### Selectionnez votre snapshot et cliquez sur `Créer un volume`
+![infomaniak-publiccloud_7_6.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_6.png =1300x)
+
+#### Nommez le et choisissez la taille puis cliquez sur `Créer un volume`
+![infomaniak-publiccloud_7_7.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_7.png =600x)
+
+> Après quelques minutes, votre volume est disponible !
+> ![infomaniak-publiccloud_7_8.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_8.png =1300x)
+{.is-success}
+
 ### Démarrer une instance sur ce volume
+#### Durant la création de l'instance, selectionnez la source `Volume` et choisissez votre volume
+![infomaniak-publiccloud_7_9.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_9.png =600x)
+
 ## CLI
+### Documentation OpenStack
+  - [🔗 OpenStack Docs : volume *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/volume.html)
+{.links-list}
 ### Créer un volume d'une instance
+```bash
+openstack volume create
+    [--size <SIZE>]
+    [--type <VOLUME_TYPE>]
+    [--image <IMAGE> | --snapshot <SNAPSHOT> | --source <VOLUME> ]
+    [--description <DESCRIPTION>]
+    [--bootable | --non-bootable]
+    [--read-only | --read-write]
+    <NAME>
+```
+> **--size *SIZE***
+> - Taille du volume en Go (obligatoire sauf si –snapshot ou –source est spécifié)
+>
+> **--type *VOLUME_TYPE***
+> - Définir le type de volume parmis les types disponibles (`openstack volume type list`)
+>
+> **--image *IMAGE* | --snapshot *SNAPSHOT* | --source *VOLUME***
+> - Utiliser une des sources avec son nom ou ID
+>
+> **--description *DESCRIPTION***
+> - Modifier la description du volume
+>
+> **--bootable | --non-bootable**
+> - Rendre le volume bootable ou non (par défaut : `non-bootable`)
+>
+> **---read-only | --read-write**
+> - Régler les autorisation en lecture/écriture (par défaut : `read-write`)
+>
+> ***NAME***
+> - Nom du volume à créer
+>
+> 	.
+{.is-info}
+
 ### Démarrer une instance sur ce volume
+Utilisez l'option `--volume`et le nom du volume ou son ID avec ce tutoriel :
+- [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](https://wiki-tech.io/Cloud/IPC/Instances#cr%C3%A9er-une-instance-1)
+{.links-list}
 ### Lister les volumes
+```bash
+openstack volume list
+```
 ### Afficher un volume
+```bash
+openstack volume show <VOLUME>
+```
+> ***VOLUME***
+> - Nom ou ID du volume à afficher
+>
+> 	.
+{.is-info}
 ### Supprimer un volume
+```bash
+openstack volume delete <VOLUME>
+```
+> ***VOLUME***
+> - Nom ou ID du volume à supprimer
+>
+> 	.
+{.is-info}
