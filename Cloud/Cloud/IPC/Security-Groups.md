@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Groupes de sécurité
 description: Gérer le firewall des ressources (ouverture de ports etc...)
 published: true
-date: 2021-11-05T09:09:29.188Z
+date: 2021-11-05T09:11:08.506Z
 tags: openstack, public-cloud, cloud, ipc, firewall
 editor: markdown
 dateCreated: 2021-11-05T08:42:27.428Z
