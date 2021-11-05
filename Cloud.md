@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-05T13:34:16.093Z
+date: 2021-11-05T13:44:05.347Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -18,6 +18,10 @@ dateCreated: 2021-05-30T17:41:57.218Z
  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
  - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](/Cloud/IPC/Instances)
  - [📌 Les images personnalisées *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/IPC/Images-Personnalisées)
+  - [🛢️ Les volumes *Créer et gérer les volumes (stockage bloc)*](/Cloud/IPC/Volumes)
+  - [🕸️ Le réseau *Créer et gérer les réseaux*](/Cloud/IPC/Réseaux)
+  - [🖇️ Le loadbalancing *Créer et gérer les loadbalancers Octavia*](/Cloud/IPC/Loadbalancing)
+  - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
 {.links-list}
 
 
