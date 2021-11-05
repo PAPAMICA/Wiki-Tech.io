@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-05T09:59:52.648Z
+date: 2021-11-05T13:36:30.920Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
@@ -14,13 +14,13 @@ dateCreated: 2021-11-04T12:38:36.261Z
 ### Rendez vous dans la section 'Instance' et cliquez sur `Lancer une instance`
 ![infomaniak-publiccloud_5_1.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_1.png =1300x)
 
-### Nommez votre instance, choississez le nombre et cliquez sur `suivant`
+### Nommez votre instance, choisissez le nombre et cliquez sur `suivant`
 ![infomaniak-publiccloud_5_2.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_2.png =600x)
 
 ### Selectionnez l'image et cliquez sur `Suivant`
 ![infomaniak-publiccloud_5_3.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_3.png =600x)
 
-### Choissisez la configuration souhaitée et cliquez sur `Suivant`
+### Choisisez la configuration souhaitée et cliquez sur `Suivant`
 ![infomaniak-publiccloud_5_4.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_4.png =600x)
 
 
@@ -28,7 +28,7 @@ dateCreated: 2021-11-04T12:38:36.261Z
 ![infomaniak-publiccloud_5_5.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_5.png =600x)
 
 
-### Ajouter votre groupe de sécurité et cliquez sur `Lancer l'instance`
+### Ajoutez votre groupe de sécurité et cliquez sur `Lancer l'instance`
 ![infomaniak-publiccloud_5_6v2.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_6v2.png =600x)
 > Vous ne pourrez pas vous y connecter en SSH si vous ne configurez pas un groupe de sécurité ! Voir ce tutoriel : 
 {.is-warning}
@@ -135,7 +135,7 @@ openstack server delete <INSTANCE>
 {.is-info}
 
 # Connexion en SSH à l'instance
-Si votre groupe de sécurité autorise le port SSH, vous pouvez vous connectez comme ceci :
+Si votre groupe de sécurité autorise le port SSH, vous pouvez vous connecter comme ceci :
 ```bash
 ssh <USER>@<IP>
 ```
