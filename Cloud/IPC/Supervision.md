@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Superviser sa consommation de ressources
 description: Mettre en place un dashboard Grafana pour visualiser sa consommation de ressources !
 published: true
-date: 2021-11-05T15:16:44.692Z
+date: 2021-11-05T15:21:12.581Z
 tags: openstack, grafana, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T15:09:16.610Z
@@ -30,7 +30,7 @@ Vous pouvez exécuter la commande ci-dessous ou [télécharger le modèle Heat i
 openstack stack create --template https://docs.infomaniak.cloud/user-guide/monitoring/monitoring.yml monitoring \
 --parameter OS_PROJECT_NAME=PCP-XXXXXX \
 --parameter OS_USERNAME=PCU-XXXXXX \
---parameter OS_PASSWORD=your_openstack_project_password \
+--parameter OS_PASSWORD=your_openstack_project_password
 ```
 
 Après quelques minutes, vous pouvez accéder à votre tableau de bord Grafana en utilisant les informations taguées `output_value` à l'aide de la commande suivante :
