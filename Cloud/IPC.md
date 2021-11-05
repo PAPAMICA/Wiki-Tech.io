@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-05T13:52:49.785Z
+date: 2021-11-05T15:18:13.899Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
@@ -24,5 +24,6 @@ dateCreated: 2021-11-03T10:35:24.419Z
   - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
   - [💖 Mise en situation : Wordpress *Mettre en place un simple site Wordpress*](/Cloud/IPC/Wordpress)
   - [💞 Mise en situation : Wordpress hautement disponible *Mettre en place un site Wordpress hautement disponible*](/Cloud/IPC/Wordpress-HA)
+  - [🧡 VDI Ubuntu *Mettre en place un bureau virtuel avec Ubuntu*](/Cloud/IPC/Wordpress-HA)
   - [💙 Bonus : Superviser ses ressources *Garder un oeil sur la consommation de son projet*](/Cloud/IPC/Supervision)
 {.links-list}
