@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Groupes de sécurité
 description: Gérer le firewall des ressources (ouverture de ports etc...)
 published: true
-date: 2021-11-05T08:42:27.428Z
+date: 2021-11-05T08:54:36.922Z
 tags: openstack, public-cloud, cloud, ipc, firewall
 editor: markdown
 dateCreated: 2021-11-05T08:42:27.428Z
@@ -40,12 +40,79 @@ Les groupes de sécurité sont des « firewall » pour vos ressources. Ils pos
 # CLI
 ## Documentation OpenStack
  - [🔗 OpenStack Docs : security group *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/security-group.html)
+  - [🔗 OpenStack Docs : security group rule *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/security-group-rule.html)
 {.links-list}
 ## Créer un groupe de sécurité
 ```bash 
 openstack security group create [--description <DESCRIPTION>] <NAME>
 ```
-## Créer une règle pour SSH (22)
+> **--description *DESCRIPTION***
+> - Description pour le groupe de sécurité à créer
+>
+> ***NAME***
+> - Nom du groupe de sécurité à créer
+>
+> 	.
+{.is-info}
+## Créer une règle
+```bash
+openstack security group rule create
+    [--remote-ip <IP_ADDRESS> | --remote-group <GROUP>]
+    [--dst-port <PORT_RANGE>]
+    [--protocol <PROTOCOL>]
+    [--description <description>]
+    [--icmp-type <icmp-type>]
+    [--icmp-code <icmp-code>]
+    [--ingress | --egress]
+    [--ethertype <ethertype>]
+    [--project <project>]
+    [--project-domain <project-domain>]
+    <group>
+```
+> **--remote-ip *IP_ADDRESS***
+> - Bloc d'adresse IP distante (Utilisez la notation CIDR : valeur par défaut pour la règle IPv4 : `0.0.0.0/0`, valeur par défaut pour la règle IPv6 : `::/0`)
+>
+> **--remote-group *GROUP***
+> - Nom ou ID du groupe de sécurité distant
+>
+> **--dst-port *PORT_RANGE***
+> - Le port de destination peut être un port unique ou une plage de ports : `137:139`. Requis pour les protocoles IP TCP et UDP.
+>
+> **--protocol *PROTOCOL***
+> - Protocole à utiliser (ICMP / TCP / UPD)
+>
+> ***NAME***
+> - Nom du groupe de sécurité à créer
+>
+> 	.
+{.is-info}
+## Exemple 1 : SSH (22)
+## Exemple 2 : PING (ICMP)
 ## Créer une règle pour PING (ICMP)
+## Supprimer une règle
 ## Lister les groupes de sécurités
+```bash
+openstack security group list
+```
+## Afficher un groupe de sécurité
+```bash
+openstack security group show <GROUP>
+```
+> ***GROUP***
+> - Nom ou ID du groupe de sécurité à afficher
+>
+> 	.
+{.is-info}
 ## Supprimer un groupe de sécurité
+```bash
+openstack security group list
+```
+## Afficher un groupe de sécurité
+```bash
+openstack security group delete <GROUP>
+```
+> ***GROUP***
+> - Nom ou ID du groupe de sécurité à supprimer
+>
+> 	.
+{.is-info}
