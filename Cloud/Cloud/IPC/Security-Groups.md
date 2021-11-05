@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Groupes de sécurité
 description: Gérer le firewall des ressources (ouverture de ports etc...)
 published: true
-date: 2021-11-05T09:04:43.112Z
+date: 2021-11-05T09:09:29.188Z
 tags: openstack, public-cloud, cloud, ipc, firewall
 editor: markdown
 dateCreated: 2021-11-05T08:42:27.428Z
@@ -99,15 +99,50 @@ openstack security group rule create
 >
 > 	.
 {.is-info}
-## Exemple 1 : SSH (22)
+### Exemple 1 : SSH (22)
 ```bash
 openstack security group rule create --remote-ip 0.0.0.0/0 --dst-port 22 --protocol TCP --description SSH --ingress <GROUP>
 ```
-## Exemple 2 : PING (ICMP)
+### Exemple 2 : PING (ICMP)
 ```bash
 openstack security group rule create --remote-ip 0.0.0.0/0 --protocol ICMP --description PING --ingress <GROUP>
 ```
+## Lister les rèles
+```bash
+openstack security group rule list
+    [--protocol <PROTOCOL>]
+    [--ingress | --egress]
+    [<GROUP>]
+```
+> **--protocol *PROTOCOL***
+> - Filtrer par protocole (ICMP / TCP / UDP)
+>
+> **--ingress | --egress**
+> - Filtrer par trafic entrant ou sortant
+>
+> ***GROUP***
+> - Filtrer par groupe de sécurité
+>
+> 	.
+{.is-info}
+## Afficher une règles
+```bash
+openstack security group rule show <RULE>
+```
+> ***RULE***
+> - Nom ou ID de la règle à afficher
+>
+> 	.
+{.is-info}
 ## Supprimer une règle
+```bash
+openstack security group rule delete <RULE>
+```
+> ***RULE***
+> - Nom ou ID de la règle à supprimer
+>
+> 	.
+{.is-info}
 ## Lister les groupes de sécurités
 ```bash
 openstack security group list
@@ -121,11 +156,11 @@ openstack security group show <GROUP>
 >
 > 	.
 {.is-info}
-## Supprimer un groupe de sécurité
+## Lister un groupe de sécurité
 ```bash
 openstack security group list
 ```
-## Afficher un groupe de sécurité
+## Supprimer un groupe de sécurité
 ```bash
 openstack security group delete <GROUP>
 ```
