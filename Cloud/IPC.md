@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-04T12:46:44.402Z
+date: 2021-11-05T09:12:16.593Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
@@ -14,8 +14,8 @@ dateCreated: 2021-11-03T10:35:24.419Z
  - [🏁 Premiers pas*Créer et gérer son premier projet et utilisateur*](/Cloud/IPC/Premier-Pas)
  - [📦 Le stockage object *Créer et gérer ses container Swift et ses objects*](/Cloud/IPC/Swift-Stockage) 
  - [💿 La gestion des images *Créer et gérer ses images systèmes*](/Cloud/IPC/Glance-Images)
- - [🔑 Gestion des paires de clés *Créer et gérer les paires de clés pour préparer l'accès en SSH*](/Cloud/IPC/Keypair)
+ - [🔑 Gestion des paires de clés *Créer et gérer les paires de clés pour préparer l'accès en SSH*](/Cloud/IPC/Keypair) 
+ - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
  - [⚡ La gestion des instances *Créer et gérer une instance*](/Cloud/IPC/Instances)
- - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/Cloud/IPC/Security-Groups)
  - [📌Créer une image privée *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/Cloud/IPC/Images-Privées)
 {.links-list}
