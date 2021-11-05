@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-05T08:00:08.077Z
+date: 2021-11-05T09:27:01.026Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
@@ -27,18 +27,18 @@ dateCreated: 2021-11-04T12:38:36.261Z
 ![infomaniak-publiccloud_5_5.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_5.png =600x)
 
 
-### Vous pouvez modifier les autres options ou directement cliquer sur `Lancer l'instance`
-![infomaniak-publiccloud_5_6.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_6.png =600x)
-
+### Ajouter votre groupe de sécurité et cliquez sur `Lancer l'instance`
+![infomaniak-publiccloud_5_6v2.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_6v2.png =600x)
+> Vous ne pourrez pas vous y connecter en SSH si vous ne configurez pas un groupe de sécurité ! Voir ce tutoriel : 
+{.is-warning}
+ - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
+{.links-list}
 
 > Votre instance est démarrée !
 > ![infomaniak-publiccloud_5_7.png](/images/cloud/infomaniak-public-cloud/5/infomaniak-publiccloud_5_7.png =1300x)
 {.is-success}
 
-> Vous ne pouvez pas encore vous y connecter en SSH, il vous manque la configuration d'un groupe de sécurité ! Voir ce tutoriel : 
-{.is-warning}
- - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/Cloud/IPC/Security-Groups)
-{.links-list}
+
 
 # CLI
 ## Documentation OpenStack
