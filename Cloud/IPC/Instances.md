@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-05T09:27:01.026Z
+date: 2021-11-05T09:54:01.392Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
@@ -113,6 +113,16 @@ openstack server list
 > 	.
 {.is-info}
 
+## Afficher une instance
+```bash
+openstack server show <INSTANCE>
+```
+> ***INSTANCE***
+> - Nom ou ID de l'instance à afficher
+>
+> 	.
+{.is-info}
+
 ## Supprimer une instance
 ```bash
 openstack server delete <INSTANCE>
@@ -123,3 +133,66 @@ openstack server delete <INSTANCE>
 > 	.
 {.is-info}
 
+# Connexion en SSH à l'instance
+Si votre groupe de sécurité autorise le port SSH, vous pouvez vous connectez comme ceci :
+```bash
+ssh <USER>@<IP>
+```
+## Connaitre l'identifiant de votre instance
+L'identifiant par défaut est propre à chaque image, voici une petite liste non exaustive :
+| Distribution | Utilisateur par défaut |
+| --- | --- |
+| Debian | `debian` |
+| Ubuntu | `ubuntu` |
+| Gento | `cloud` |
+> Si vous ne connaissez pas l'identifiant, essayez de vous connecter en `root`
+{.is-info}
+
+## Connaitre l'adresse IP de votre instance
+### Horizon
+![infomaniak-publiccloud_6_6.png](/images/cloud/infomaniak-public-cloud/6/infomaniak-publiccloud_6_6.png =1300x)
+
+### CLI
+```bash
+openstack server show <INSTANCE>
+```
+> ***INSTANCE***
+> - Nom ou ID de l'instance à afficher
+>
+> 	.
+{.is-info}
+#### Résultat
+L'adresse IP se trouve sur la ligne `adresses` :
+```bash
++-----------------------------+-------------------------------------------------------------+
+| Field                       | Value                                                       |
++-----------------------------+-------------------------------------------------------------+
+| OS-DCF:diskConfig           | AUTO                                                        |
+| OS-EXT-AZ:availability_zone | dc3-a-04                                                    |
+| OS-EXT-STS:power_state      | Running                                                     |
+| OS-EXT-STS:task_state       | None                                                        |
+| OS-EXT-STS:vm_state         | active                                                      |
+| OS-SRV-USG:launched_at      | 2021-11-05T09:21:53.000000                                  |
+| OS-SRV-USG:terminated_at    | None                                                        |
+| accessIPv4                  |                                                             |
+| accessIPv6                  |                                                             |
+| addresses                   | ext-net1=195.15.240.XX, 2001:1600:10:100::xxx               |
+| config_drive                |                                                             |
+| created                     | 2021-11-05T09:21:38Z                                        |
+| flavor                      | a2-ram4-disk20-perf1 (b6b7baeb-2328-48c9-8543-88cccec8ec4b) |
+| hostId                      | aa89adc55bcd3e134e2286f254c31e38a34a9219191293ba4xxxxxxx    |
+| id                          | 5dfd8567-2d92-4db9-8896-ca4a8xxxxxxx                        |
+| image                       | Debian 11.1 bullseye (3fd029f9-144f-4206-a845-b71166a4d6ad) |
+| key_name                    | PAPAMICA-INFOKEY                                            |
+| name                        | Wiki-Tech-Lab1                                              |
+| progress                    | 0                                                           |
+| project_id                  | 7368f02b559648d0a9ff15bfxxxxxxxx                            |
+| properties                  |                                                             |
+| security_groups             | name='default'                                              |
+|                             | name='PING - SSH'                                           |
+| status                      | ACTIVE                                                      |
+| updated                     | 2021-11-05T09:21:53Z                                        |
+| user_id                     | 0d2d91edd8bf4b7297ef3b6a6xxxxxxx                            |
+| volumes_attached            |                                                             |
++-----------------------------+-------------------------------------------------------------+
+```
