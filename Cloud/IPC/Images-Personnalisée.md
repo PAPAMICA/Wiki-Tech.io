@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Créer une image personnalisée
 description: Créer une image à partir d'une instance et démarrer depuis cette image
 published: true
-date: 2021-11-05T11:05:05.360Z
+date: 2021-11-05T11:08:54.970Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T11:04:22.782Z
@@ -25,6 +25,7 @@ Le volume sert principalement à la **migration d'instance**.
 # Utiliser un snapshot
 ## Horizon
 ### Créer un snapshot d'une instance
+
 ### Démarrer une instance sur ce snapshot
 
 ## CLI
