@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-11-05T14:11:07.169Z
+date: 2021-11-05T14:29:44.269Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -207,11 +207,7 @@ ligne 3</code></pre>
     print(file.readlines())
 
 ['banane\n', 'fraise\n', 'chocolat'] #Les \n indiquent des retours à la ligne</code></pre>
-<p>Sinon, pour l'avoir sous forme de liste sans les \n, on peut utiliser read().split() :</p>
-<pre><code class="language-python">with open('test.txt','r') as file:
-    print(file.read().split())
-
-['banane', 'fraise', 'chocolat'] #Les \n indiquent des retours à la ligne</code></pre>
+<p>&nbsp;</p>
 <p>Enfin, pour écrire dans un fichier texte, on utilise <i>write().</i></p>
 <pre><code class="language-python">with open('test.txt','a') as file:
     file.write("\nligne 4")</code></pre>
