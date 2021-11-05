@@ -2,12 +2,13 @@
 title: Infomaniak Public Cloud - Gestion des instances
 description: Créer et gérer les instances
 published: true
-date: 2021-11-05T09:54:01.392Z
+date: 2021-11-05T09:54:25.374Z
 tags: infomaniak, public-cloud, cloud, ipc, vm, instance
 editor: markdown
 dateCreated: 2021-11-04T12:38:36.261Z
 ---
 
+![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Horizon
 ## Créer une instance
 ## Rendez vous dans la section 'Instance' et cliquez sur `Lancer une instance`
