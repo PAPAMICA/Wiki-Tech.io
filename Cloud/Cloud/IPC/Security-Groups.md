@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Groupes de sécurité
 description: Gérer le firewall des ressources (ouverture de ports etc...)
 published: true
-date: 2021-11-05T08:54:36.922Z
+date: 2021-11-05T09:04:43.112Z
 tags: openstack, public-cloud, cloud, ipc, firewall
 editor: markdown
 dateCreated: 2021-11-05T08:42:27.428Z
@@ -60,14 +60,12 @@ openstack security group rule create
     [--remote-ip <IP_ADDRESS> | --remote-group <GROUP>]
     [--dst-port <PORT_RANGE>]
     [--protocol <PROTOCOL>]
-    [--description <description>]
-    [--icmp-type <icmp-type>]
-    [--icmp-code <icmp-code>]
+    [--description <DESCRIPTION>]
+    [--icmp-type <ICMP_TYPE>]
+    [--icmp-code <ICMP_CODE>]
     [--ingress | --egress]
-    [--ethertype <ethertype>]
-    [--project <project>]
-    [--project-domain <project-domain>]
-    <group>
+    [--ethertype <ETHERTYPE>]
+    <GROUP>
 ```
 > **--remote-ip *IP_ADDRESS***
 > - Bloc d'adresse IP distante (Utilisez la notation CIDR : valeur par défaut pour la règle IPv4 : `0.0.0.0/0`, valeur par défaut pour la règle IPv6 : `::/0`)
@@ -81,14 +79,34 @@ openstack security group rule create
 > **--protocol *PROTOCOL***
 > - Protocole à utiliser (ICMP / TCP / UPD)
 >
-> ***NAME***
-> - Nom du groupe de sécurité à créer
+> **--description *DESCRIPTION***
+> - Définir la description de la règle du groupe de sécurité
+>
+> **--icmp-type *ICMP_TYPE***
+> - Type ICMP pour les protocoles IP ICMP
+>
+> **--icmp-code *ICMP_CODE***
+> - Code ICMP pour les protocoles IP ICMP
+>
+> **--ingress | --egress**
+> - Appliquer la règle au trafic entrant ou sortant
+>
+> **--ethertype *ETHERTYPE***
+> - Ethertype de trafic réseau (IPv4, IPv6 ; par défaut : basé sur le protocole IP)
+>
+> ***GROUP***
+> - Créer une règle dans ce groupe de sécurité (nom ou ID)
 >
 > 	.
 {.is-info}
 ## Exemple 1 : SSH (22)
+```bash
+openstack security group rule create --remote-ip 0.0.0.0/0 --dst-port 22 --protocol TCP --description SSH --ingress <GROUP>
+```
 ## Exemple 2 : PING (ICMP)
-## Créer une règle pour PING (ICMP)
+```bash
+openstack security group rule create --remote-ip 0.0.0.0/0 --protocol ICMP --description PING --ingress <GROUP>
+```
 ## Supprimer une règle
 ## Lister les groupes de sécurités
 ```bash
