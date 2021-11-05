@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Créer une image personnalisée
 description: Créer une image à partir d'une instance et démarrer depuis cette image
 published: true
-date: 2021-11-05T11:08:54.970Z
+date: 2021-11-05T13:02:37.358Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T11:04:22.782Z
@@ -25,15 +25,43 @@ Le volume sert principalement à la **migration d'instance**.
 # Utiliser un snapshot
 ## Horizon
 ### Créer un snapshot d'une instance
+#### Rendez vous dans la section `Instances`, selectionnez l'instance que vous souhaitez et cliquer sur `Créer un Snapshot`
+![infomaniak-publiccloud_7_1.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_1.png =1300x)
+#### Nommez le et cliquez sur `Créer le Snapshot`
+![infomaniak-publiccloud_7_2.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_2.png =600x)
+
+> Au bout de quelques minutes, votre snapshot est disponible !
+> ![infomaniak-publiccloud_7_3.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_3.png =1300x)
+{.is-success}
+
 
 ### Démarrer une instance sur ce snapshot
+#### Durant la création de l'instance, selectionnez la source `Instance Snapshot` et choisissez votre snapshot
+![infomaniak-publiccloud_7_4.png](/images/cloud/infomaniak-public-cloud/7/infomaniak-publiccloud_7_4.png =1300x)
 
 ## CLI
+### Documentation OpenStack
+  - [🔗 OpenStack Docs : server image *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/server-image.html)
+{.links-list}
 ### Créer un snapshot d'une instance
+```bash
+openstack server image create
+    [--name <IMAGE_NAME>]
+    <SERVER>
+```
+> **--name *IMAGE_NAME***
+> - Nom de la nouvelle image disque (par défaut : nom du serveur)
+>
+> ***SERVER***
+> - Nom ou ID du serveur pour créer l'image
+>
+> 	.
+{.is-info}
+
 ### Démarrer une instance sur ce snapshot
-### Lister les snapshots
-### Afficher un snapshot
-### Supprimer un snapshot
+Utilisez le nom de l'image ou son ID avec ce tutoriel :
+- [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](https://wiki-tech.io/Cloud/IPC/Instances#cr%C3%A9er-une-instance-1)
+{.links-list}
 
 # Utiliser un volume
 ## Horizon
