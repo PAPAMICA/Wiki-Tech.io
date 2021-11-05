@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Groupes de sécurité
 description: Gérer le firewall des ressources (ouverture de ports etc...)
 published: true
-date: 2021-11-05T09:11:08.506Z
+date: 2021-11-05T09:16:04.003Z
 tags: openstack, public-cloud, cloud, ipc, firewall
 editor: markdown
 dateCreated: 2021-11-05T08:42:27.428Z
@@ -10,7 +10,7 @@ dateCreated: 2021-11-05T08:42:27.428Z
 
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Introduction
-Les groupes de sécurité sont des « firewall » pour vos ressources. Ils possèdent plusieurs caractéristiques :
+Les groupes de sécurité sont des « firewalls » pour vos ressources. Ils possèdent plusieurs caractéristiques :
 - Les groupes de sécurité sont **STATEFUL** par défaut
 - **Il n’est pas possible** d’utiliser les groupes de sécurité pour **bloquer une adresse IP** ou **un port spécifique**
 - Il n’est pas possible de créer des règles de blocage seulement des règles d’autorisation
@@ -24,7 +24,7 @@ Les groupes de sécurité sont des « firewall » pour vos ressources. Ils pos
 ## Créer une règle pour SSH (22)
 ### Cliquez sur `Ajouter une règle`
 ![infomaniak-publiccloud_6_3.png](/images/cloud/infomaniak-public-cloud/6/infomaniak-publiccloud_6_3.png =1300x)
-### Selectionnez le protocol, le(s) port(s) et son scope d'action puis cliquez sur `Ajouter`
+### Selectionnez le protocole, le(s) port(s) et son scope d'action puis cliquez sur `Ajouter`
 ![infomaniak-publiccloud_6_4.png](/images/cloud/infomaniak-public-cloud/6/infomaniak-publiccloud_6_4.png =600x)
 
 > Cette procédure est valable pour tous les ports TCP et UDP
