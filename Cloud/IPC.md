@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-05T13:33:00.715Z
+date: 2021-11-05T13:43:49.942Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
@@ -18,4 +18,8 @@ dateCreated: 2021-11-03T10:35:24.419Z
  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
  - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](/Cloud/IPC/Instances)
  - [📌 Les images personnalisées *Créer une image à partir d'une instance et démarrer depuis cette image*](/Cloud/IPC/Images-Personnalisées)
+  - [🛢️ Les volumes *Créer et gérer les volumes (stockage bloc)*](/Cloud/IPC/Volumes)
+  - [🕸️ Le réseau *Créer et gérer les réseaux*](/Cloud/IPC/Réseaux)
+  - [🖇️ Le loadbalancing *Créer et gérer les loadbalancers Octavia*](/Cloud/IPC/Loadbalancing)
+  - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
 {.links-list}
