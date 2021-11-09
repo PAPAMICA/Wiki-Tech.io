@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-09T09:15:25.459Z
+date: 2021-11-09T09:23:50.059Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -24,7 +24,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
   - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
   - [💖 Mise en situation : Wordpress *Mettre en place un simple site Wordpress*](/Cloud/IPC/Wordpress)
   - [💞 Mise en situation : Wordpress hautement disponible *Mettre en place un site Wordpress hautement disponible*](/Cloud/IPC/Wordpress-HA)
-  - [🧡 Mise en situation : Bureau virtuel *Mettre en place un bureau virtuel avec Ubuntu*](/Cloud/IPC/Wordpress-HA)
+  - [🧡 Mise en situation : Bureau virtuel *Mettre en place un bureau virtuel avec Ubuntu*](/Cloud/IPC/Bureau-Virtuel)
   - [💙 Bonus : Superviser ses ressources *Garder un oeil sur la consommation de son projet*](/Cloud/IPC/Supervision)
 {.links-list}
 
