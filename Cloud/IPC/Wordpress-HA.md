@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : VDI Ubuntu
 description: Mettre en place un bureau virtuel avec Ubuntu*
 published: true
-date: 2021-11-09T08:17:28.239Z
+date: 2021-11-09T09:17:48.747Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -11,7 +11,8 @@ dateCreated: 2021-11-08T16:33:28.599Z
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 
 # Introduction
-
+Vous pouvez très bien utiliser un "ordinateur dans le cloud" avec une interface graphique pour certaines tâches basiques ou avancées. Nous verrons ici l'installation d'un serveur Ubuntu averc une interface graphique (Gnome) et la connexion à ce dernier en RDP directement.
+Vous pouvez utilisez le **template Heat** directement ou faire son installation à la main.
 
 # Template Heat
 ### Créez le fichier `desktop.yml`:
@@ -223,28 +224,106 @@ Pour la gestion de la stack, voir ce tutoriel :
 ### Création du groupe de sécurité pour le port RDP
 Pour nous connecter à la machine virtuelle une fois installée, nous allons avoir besoin d'ouvrir le port RDP (`3389`). Si vous avez bien suivis les autres tutoriel, cela devrais etre simple. Créez donc un nouveau groupe de sécurité `RDP`en suivant ce tutoriel :
 
-  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
+  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles avec Horizon*](/Cloud/IPC/Security-Groups#horizon)
 {.links-list}
 
-Et ajoutez la règle suivante : ![infomaniak-publiccloud_8_1.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_1.png =600x)
+Et ajoutez la règle suivante : 
+![infomaniak-publiccloud_8_1.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_1.png =600x)
 
 ### Création de l'instance
 Comme pour la création du groupe de sécurité, utilisez le tutoriel suivant pour la création de l'instance : 
- - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](/Cloud/IPC/Instances)
+ - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance avec Horizon*](/Cloud/IPC/Instances#horizon)
 {.links-list}
+
+Sélectionnez l'image `Ubuntu 20,04 LTS Focal Fossa`:
+![infomaniak-publiccloud_8_2.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_2.png =600x)
+
+Bien choisir la configuration adaptée à votre besoin : 
+![infomaniak-publiccloud_8_3.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_3.png =600x)
+
+Et pensez à bien ajouter vos groupes de sécurités en conséquence : (ici pour le port RDP (3389), SSH (22) et Ping (ICMP))
+![infomaniak-publiccloud_8_4.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_4.png =600x)
+
 
 
 ## CLI
 ### Création du groupe de sécurité pour le port RDP
+Voir ce tutoriel pour l'explication des commandes :
+  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles en CLI*](/Cloud/IPC/Security-Groups#cli)
+{.links-list}
+
+```bash
+openstack security group create --description "RDP (3389)" RDP
+openstack security group rule create --dst-port 3389 --protocol TCP RDP    
+```
 ### Création de l'instance
+Voir ce tutoriel pour l'explication des commandes :
+ - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance avec Horizon*](/Cloud/IPC/Instances#cli)
+{.links-list}
+
+```bash
+openstack server create --image "Ubuntu 20.04 LTS Focal Fossa" --flavor a2-ram4-disk50-perf1 --security-group "PING - SSH" --security-group "RDP" --key-name <KEYPAIR> --network ext-net1 Ubuntu-Desktop
+openstack server show Ubuntu-Desktop
+```
 
 # Installation
 ## Connexion à l'instance
+Dans un terminal, connectez vous avec :
+```bash
+ssh ubuntu@<IP_INSTANCE>
+```
+> ***IP_INSTANCE***
+> - Adresse IP de votre instance `Ubuntu-Desktop`
+>
+> 	.
+{.is-info}
+
 ## Création de l'utilisateur
+### Commençons par créer l'utilisateur avec lequel vous allez vous connecter en RDP :
+```bash
+PASS=$(perl -e 'print crypt("<USER_PASSWORD>", "salt"),"\n"')
+sudo useradd -m -p $PASS <USER>
+```
+> ***USER_PASSWORD***
+> - Mot de passe de votre utilisateur
+>
+> ***USER***
+> - Nom de votre utilisateur **en miniscule**
+>
+> 	.
+{.is-info}
+
+### Et ajoutez cet utilisateur au groupe `sudo`:
+```bash
+sudo usermod -aG sudo <USER>
+```
+> ***USER***
+> - Nom de votre utilisateur **en miniscule**
+>
+> 	.
+{.is-info}
+
 ## Installation de l'interface graphique
+### Mettez à jour le serveur :
+```bash
+sudo apt update && sudo apt upgrade
+```
+### Installez `tasksel`et lancez l'installation de gnome :
+```bash
+sudo apt install -y tasksel
+sudo tasksel install ubuntu-desktop
+```
 ## Installation de `xrdp`
+### Il ne vous reste plus qu'à installer `xrdp` et redémarrer le server :
+```bash
+sudo apt install xrdp
+sudo reboot
+```
 
 # Connexion en RDP
 ## Linux
+Connectez vous avec le l'application [**Remmina**](https://remmina.org/)
 ## MacOS
+Connectez vous avec l'application [**Microsoft Remote Desktop**](https://apps.apple.com/us/app/microsoft-remote-desktop/id1295203466?mt=12)
 ## Windows
+Connectez vous avec l'outils de connexion RDP [**MSTSC**](/Microsoft/Windows-7-10/RDP)
