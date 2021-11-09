@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-08-15T06:36:10.650Z
+date: 2021-11-09T11:44:07.022Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -36,6 +36,7 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 
  
  # Cloud
+- [☁️ Infomaniak Public Cloud *Un cloud reposant sur OpenStack performant et pas cher*](/Cloud/IPC)
 - [☁️ OpenStack *Un cloud opensource pouvant être autohébergé*](/Cloud#openstack)
 - [☁️ Jelastic 🚧 *Une technologie de cloud simple et efficace !*](/Cloud#jelastic)
 - [☁️ AWS 🚧 *Comprendre et utiliser le cloud d'Amazon*](/Cloud#aws)
