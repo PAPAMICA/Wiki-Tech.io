@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Les volumes
 description: Créer et gérer les volumes (stockage bloc)
 published: true
-date: 2021-11-09T10:43:25.142Z
+date: 2021-11-09T11:45:42.643Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, volume, ceph
 editor: markdown
 dateCreated: 2021-11-09T09:28:55.603Z
@@ -123,3 +123,8 @@ openstack volume delete <VOLUME>
 {.is-info}
 
 # Utiliser le volume
+Avant de pouvoir utiliser ce volume attaché à l'instant, il faut d'abord le formater puis le monter. Ici nous utiliserons un exemple avec Debian.
+
+Vous pouvez suivre ce tutoriel suivant :
+  - [💾 Ajouter un disque ou un volume *Formater et monter un disque ou un volume*](/Linux/Débutant/Ajout-Disque-Volume)
+{.links-list}
