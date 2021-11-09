@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : VDI Ubuntu
 description: Mettre en place un bureau virtuel avec Ubuntu*
 published: true
-date: 2021-11-09T09:17:48.747Z
+date: 2021-11-09T09:21:48.229Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -13,6 +13,7 @@ dateCreated: 2021-11-08T16:33:28.599Z
 # Introduction
 Vous pouvez très bien utiliser un "ordinateur dans le cloud" avec une interface graphique pour certaines tâches basiques ou avancées. Nous verrons ici l'installation d'un serveur Ubuntu averc une interface graphique (Gnome) et la connexion à ce dernier en RDP directement.
 Vous pouvez utilisez le **template Heat** directement ou faire son installation à la main.
+![infomaniak-publiccloud_8_5.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_5.png =1300x)
 
 # Template Heat
 ### Créez le fichier `desktop.yml`:
