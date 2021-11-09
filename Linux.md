@@ -2,12 +2,13 @@
 title: Linux
 description: Les bases et bien plus encore sur Linux !
 published: true
-date: 2021-11-09T10:58:53.061Z
+date: 2021-11-09T11:42:42.694Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:14:24.685Z
 ---
 
+![linux.png](/images/linux/linux.png =600x)
 # Débutant
 - [🔥 Commandes utiles *Les principales commandes utilisées chaque jour*](/Linux/Débutant/Commandes)
 - [📦 Paquets utiles 🚧 *La liste de mes paquets indispensables*](/Linux/Débutant/Paquets)
