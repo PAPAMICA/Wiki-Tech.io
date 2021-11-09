@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Les volumes
 description: Créer et gérer les volumes (stockage bloc)
 published: true
-date: 2021-11-09T10:11:38.120Z
+date: 2021-11-09T10:43:25.142Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, volume, ceph
 editor: markdown
 dateCreated: 2021-11-09T09:28:55.603Z
@@ -34,9 +34,92 @@ Pour être exploité, il dois être **formaté et monté** dans le système d'ex
 
 
 # CLI
+## Documentation OpenStack
+  - [🔗 OpenStack Docs : volume *Documentation officielle*](https://docs.openstack.org/python-openstackclient/xena/cli/command-objects/volume.html)
+{.links-list}
 ## Créer un volume
-## Connecter un volume à une instance
+```bash
+openstack volume create
+    [--size <SIZE>]
+    [--type <volume-type>]
+    [--image <IMAGE> | --snapshot <SNAPSHOT> | --source <VOLUME> ]
+    [--description <DESCRIPTION>]
+    [--bootable | --non-bootable]
+    [--read-only | --read-write]
+    <NAME>
+```
+> **--size *SIZE***
+> - Taille du volume en Go (obligatoire sauf si –snapshot ou –source est spécifié)
+>
+> **--type *VOLUME_TYPE***
+> - Définir le type de volume parmis les types disponibles (`openstack volume type list`)
+>
+> **--image *IMAGE* | --snapshot *SNAPSHOT* | --source *VOLUME***
+> - Utiliser une des sources avec son nom ou ID
+>
+> **--description *DESCRIPTION***
+> - Modifier la description du volume
+>
+> **--bootable | --non-bootable**
+> - Rendre le volume bootable ou non (par défaut : `non-bootable`)
+>
+> **---read-only | --read-write**
+> - Régler les autorisation en lecture/écriture (par défaut : `read-write`)
+>
+> ***NAME***
+> - Nom du volume à créer
+>
+> 	.
+{.is-info}
 
-## Lister les volumes
-## Afficher un volume
-## Supprimer un volume
+## Attacher un volume à une instance
+```bash
+openstack server add volume <INSTANCE> <VOLUME> --device <CHEMIN>
+```
+> ***INSTANCE***
+> - Nom ou ID de l'instance
+>
+> ***VOLUME***
+> - Nom ou ID du volume
+>
+> **--device *CHEMIN***
+> - Chemin du périphérique (exemple : `/dev/vdb`)
+>
+> 	.
+{.is-info}
+## Détacher un volume à une instance
+```bash
+openstack server remove volume <INSTANCE> <VOLUME>
+```
+> ***INSTANCE***
+> - Nom ou ID de l'instance
+>
+> ***VOLUME***
+> - Nom ou ID du volume
+>
+> 	.
+{.is-info}
+### Lister les volumes
+```bash
+openstack volume list
+```
+### Afficher un volume
+```bash
+openstack volume show <VOLUME>
+```
+> ***VOLUME***
+> - Nom ou ID du volume à afficher
+>
+> 	.
+{.is-info}
+### Supprimer un volume
+```bash
+openstack volume delete <VOLUME>
+```
+> ***VOLUME***
+> - Nom ou ID du volume à supprimer
+>
+> 	.
+{.is-info}
+
+# Utiliser le volume
