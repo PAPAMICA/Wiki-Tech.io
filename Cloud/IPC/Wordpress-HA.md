@@ -1,8 +1,8 @@
 ---
-title: Infomaniak Public Cloud - Mise en situation : VDI Ubuntu
-description: Mettre en place un bureau virtuel avec Ubuntu*
+title: Infomaniak Public Cloud - Mise en situation : Bureau virtuel
+description: Mettre en place un bureau virtuel avec Ubuntu
 published: true
-date: 2021-11-09T09:21:48.229Z
+date: 2021-11-09T09:22:50.215Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
