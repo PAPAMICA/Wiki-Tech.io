@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : VDI Ubuntu
 description: Mettre en place un bureau virtuel avec Ubuntu*
 published: true
-date: 2021-11-09T07:49:29.570Z
+date: 2021-11-09T08:17:28.239Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -12,31 +12,32 @@ dateCreated: 2021-11-08T16:33:28.599Z
 
 # Introduction
 
+
 # Template Heat
-### Créez le fichier `vdi.yml`:
+### Créez le fichier `desktop.yml`:
 ```yaml
 heat_template_version: rocky
-description:  VDI Ubuntu
+description:  Desktop Ubuntu
 parameters:
   image:
     type: string
-    description: image use for vdi
+    description: image use for desktop
     default: Ubuntu 20.04 LTS Focal Fossa
   key:
     type: string
     description: SSH key to connect to the servers
   flavor:
     type: string
-    description: flavor used by vdi
+    description: flavor used by desktop
     default: a4-ram8-disk50-perf1
   network:
     type: string
-    description: network used by vdi
-    default: vdi-network
+    description: network used by desktop
+    default: desktop-network
   subnet_id:
     type: string
-    description: dedicated subnet for vdi
-    default: vdi-subnet
+    description: dedicated subnet for desktop
+    default: desktop-subnet
   floating_network_id:
     type: string
     description: UUID of a Neutron external network
@@ -66,10 +67,10 @@ resources:
 
 
   # security group
-  vdi_security_group:
+  desktop_security_group:
     type: OS::Neutron::SecurityGroup
     properties:
-      name: "vdi_security_group"
+      name: "desktop_security_group"
       description: >
         Allows ICMP, SSH & RDP default port
       rules:
@@ -78,60 +79,60 @@ resources:
          - { direction: ingress, protocol: tcp, port_range_min: 3389, port_range_max: 3389 }
 
   # network resources
-  vdi_network:
+  desktop_network:
     type: OS::Neutron::Net
     properties:
       name: { get_param: network }
       value_specs:
         mtu: 1500
 
-  vdi_subnet:
+  desktop_subnet:
     type: OS::Neutron::Subnet
     properties:
-      name: 'vdi-subnet'
-      network_id: { get_resource: vdi_network }
+      name: 'desktop-subnet'
+      network_id: { get_resource: desktop_network }
       cidr: "10.11.3.0/24"
       dns_nameservers:
         - "84.16.67.69"
         - "84.16.67.70"
       ip_version: 4
 
-  vdi_router:
+  desktop_router:
     type: OS::Neutron::Router
     properties:
-      name:  'vdi-router'
+      name:  'desktop-router'
       external_gateway_info: { network: ext-floating1 }
 
-  vdi_router_subnet_interface:
+  desktop_router_subnet_interface:
     type: OS::Neutron::RouterInterface
     properties:
-      router_id: { get_resource: vdi_router }
-      subnet: { get_resource: vdi_subnet }
+      router_id: { get_resource: desktop_router }
+      subnet: { get_resource: desktop_subnet }
 
-  vdi_port:
+  desktop_port:
     type: OS::Neutron::Port
     properties:
-      network: { get_resource: vdi_network }
-      security_groups: [ { get_resource: vdi_security_group } ]
+      network: { get_resource: desktop_network }
+      security_groups: [ { get_resource: desktop_security_group } ]
       fixed_ips:
-        - subnet_id: { get_resource: vdi_subnet }
+        - subnet_id: { get_resource: desktop_subnet }
 
-  vdi_floating:
+  desktop_floating:
     type: OS::Neutron::FloatingIP
     properties:
       floating_network_id: { get_param: floating_network_id }
-      port_id: { get_resource: vdi_port }
+      port_id: { get_resource: desktop_port }
 
   # instance
   server:
     type: OS::Nova::Server
-    depends_on: [ vdi_router]
+    depends_on: [ desktop_router]
     properties:
       flavor: { get_param: flavor }
       image: { get_param: image }
       key_name: {get_param: key}
       networks:
-        - port: { get_resource: vdi_port }
+        - port: { get_resource: desktop_port }
       user_data:
         str_replace:
           template: |
@@ -175,19 +176,19 @@ resources:
 
 
 outputs:
-  vdi_url:
+  desktop_url:
     value:
       str_replace:
         template: host:3389
         params:
-          host: { get_attr: [vdi_floating, floating_ip_address] }
+          host: { get_attr: [desktop_floating, floating_ip_address] }
     description: "RDP IP"
 
-  vdi_password:
+  desktop_password:
     value: { get_param: USER_PASSWORD }
     description: "User password"
 
-  vdi_login:
+  desktop_login:
     value: { get_param: USER_NAME }
     description: "User"
 ```
@@ -220,7 +221,18 @@ Pour la gestion de la stack, voir ce tutoriel :
 # Création de la VM
 ## Horizon
 ### Création du groupe de sécurité pour le port RDP
+Pour nous connecter à la machine virtuelle une fois installée, nous allons avoir besoin d'ouvrir le port RDP (`3389`). Si vous avez bien suivis les autres tutoriel, cela devrais etre simple. Créez donc un nouveau groupe de sécurité `RDP`en suivant ce tutoriel :
+
+  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles*](/Cloud/IPC/Security-Groups)
+{.links-list}
+
+Et ajoutez la règle suivante : ![infomaniak-publiccloud_8_1.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_1.png =600x)
+
 ### Création de l'instance
+Comme pour la création du groupe de sécurité, utilisez le tutoriel suivant pour la création de l'instance : 
+ - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance*](/Cloud/IPC/Instances)
+{.links-list}
+
 
 ## CLI
 ### Création du groupe de sécurité pour le port RDP
