@@ -2,7 +2,7 @@
 title: Linux
 description: Les bases et bien plus encore sur Linux !
 published: true
-date: 2021-07-16T07:58:27.319Z
+date: 2021-11-09T10:58:53.061Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:14:24.685Z
@@ -17,6 +17,7 @@ dateCreated: 2021-05-30T18:14:24.685Z
 - [📆 MOTD *Comprendre et changer le message de bienvenue*](/Linux/Débutant/MOTD)
 - [📈 Check débit *Mesurer sa connexion et le débit entre deux serveurs*](/Linux/Débutant/Check-debit)
 - [🍇 Installer un Raspberry Pi *Installation sans clavier ni écran*](/Linux/Débutant/Installation-RaspberryPi)
+- [💾 Ajouter un disque ou un volume *Formater et monter un disoue ou un volume*](/Linux/Débutant/Ajout-Disque-Volume)
 {.links-list}
 
 # Avancé
