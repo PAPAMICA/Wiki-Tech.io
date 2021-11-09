@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : VDI Ubuntu
 description: Mettre en place un bureau virtuel avec Ubuntu*
 published: true
-date: 2021-11-08T16:33:28.599Z
+date: 2021-11-09T07:49:29.570Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -25,7 +25,6 @@ parameters:
   key:
     type: string
     description: SSH key to connect to the servers
-    default: PAPAMICA-INFOKEY
   flavor:
     type: string
     description: flavor used by vdi
@@ -193,12 +192,47 @@ outputs:
     description: "User"
 ```
 
-Lancez la création de la stack avec la commande suivante
+Lancez la création de la stack avec la commande suivante :
+```bash
+openstack stack create --template vdi.yml vdi --parameter KEY=<KEY> --parameter KEYBOARD=<KEYBOARD> --parameter USER_NAME=<USER> --parameter USER_PASSWORD='<PASSWORD>' 
+```
+
+
+> ***KEY***
+> - Nom ou ID de votre clé SSH
+>
+> ***KEYBOARD***
+> - Configuration de votre clavier (`fr` / `en` / `es`) (Défaut : `fr`)
+>
+> ***USER***
+> - Nom en miniscule de votre utilisateur final pour se connecter (Défaut : `infomaniak`)
+>
+> ***PASSWORD***
+> - Mot de passe de votre utilisateur final (Défaut : `PublicCloud`)
+>
+> 	.
+{.is-info}
+
+Pour la gestion de la stack, voir ce tutoriel :
+  - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
+{.links-list}
 
 # Création de la VM
 ## Horizon
+### Création du groupe de sécurité pour le port RDP
+### Création de l'instance
+
 ## CLI
+### Création du groupe de sécurité pour le port RDP
+### Création de l'instance
 
 # Installation
+## Connexion à l'instance
+## Création de l'utilisateur
+## Installation de l'interface graphique
+## Installation de `xrdp`
 
 # Connexion en RDP
+## Linux
+## MacOS
+## Windows
