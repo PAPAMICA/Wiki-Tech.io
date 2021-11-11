@@ -2,7 +2,7 @@
 title: Cloud Practitioner
 description: 
 published: true
-date: 2021-10-13T08:17:51.204Z
+date: 2021-10-13T08:17:52.884Z
 tags: aws
 editor: markdown
 dateCreated: 2021-09-07T14:17:09.475Z

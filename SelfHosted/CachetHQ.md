@@ -2,7 +2,7 @@
 title: SelfHosted - CachetHQ
 description: Une belle page status pour vos services !
 published: true
-date: 2021-10-07T07:49:40.141Z
+date: 2021-10-07T07:49:41.760Z
 tags: supervision, zabbix, selfhosted, status
 editor: markdown
 dateCreated: 2021-10-07T07:49:20.091Z

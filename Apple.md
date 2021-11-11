@@ -2,7 +2,7 @@
 title: Apple
 description: Toutes les astuces de l'environnement Apple !
 published: true
-date: 2021-10-06T07:15:46.335Z
+date: 2021-10-06T07:30:18.048Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:36:34.299Z

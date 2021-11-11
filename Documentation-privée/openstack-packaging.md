@@ -2,7 +2,7 @@
 title: Openstack - Packaging
 description: Mettre à jour et uploader les paquets OpenStack dans Debian.
 published: true
-date: 2021-08-24T12:24:24.140Z
+date: 2021-08-24T12:24:26.099Z
 tags: 
 editor: markdown
 dateCreated: 2021-08-24T07:45:17.852Z

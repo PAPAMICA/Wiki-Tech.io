@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Glance : La gestion des images
 description: Créer et gérer ses images systèmes.
 published: true
-date: 2021-11-04T12:31:17.402Z
+date: 2021-11-04T12:31:19.327Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-04T09:15:22.077Z

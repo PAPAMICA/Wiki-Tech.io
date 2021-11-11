@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Les réseaux
 description: Créer et gérer les réseaux
 published: true
-date: 2021-11-09T14:54:51.765Z
+date: 2021-11-09T14:54:53.627Z
 tags: openstack, réseau, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-09T13:48:54.561Z

@@ -2,7 +2,7 @@
 title: Linux Débutant - Ajouter un disque ou un volume
 description: Formater et monter un disoue ou un volume
 published: true
-date: 2021-11-09T11:41:05.887Z
+date: 2021-11-09T11:41:07.773Z
 tags: linux, disque, volume, formater, monter
 editor: markdown
 dateCreated: 2021-11-09T11:41:05.887Z

@@ -2,7 +2,7 @@
 title: SelfHosted - Grafana
 description: Affichez proprement et facilement vos datas !
 published: true
-date: 2021-10-06T09:45:13.704Z
+date: 2021-10-06T09:45:15.559Z
 tags: supervision, grafana, monitoring, selfhosted
 editor: markdown
 dateCreated: 2021-10-06T09:12:40.045Z

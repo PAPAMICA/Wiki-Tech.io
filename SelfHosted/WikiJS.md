@@ -2,7 +2,7 @@
 title: Wiki.js
 description: Un jolie wiki autohébergé !
 published: true
-date: 2021-10-03T16:10:22.574Z
+date: 2021-10-03T16:10:24.432Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:15:33.855Z

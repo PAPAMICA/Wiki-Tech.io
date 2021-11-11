@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-09T13:35:21.683Z
+date: 2021-11-09T13:48:57.563Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z

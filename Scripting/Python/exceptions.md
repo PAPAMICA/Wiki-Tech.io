@@ -2,7 +2,7 @@
 title: Python - Gérer les erreurs
 description: 
 published: true
-date: 2021-09-02T14:26:08.731Z
+date: 2021-09-02T14:26:10.594Z
 tags: 
 editor: markdown
 dateCreated: 2021-09-02T13:38:45.304Z

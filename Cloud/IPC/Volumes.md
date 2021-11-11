@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Les volumes
 description: Créer et gérer les volumes (stockage bloc)
 published: true
-date: 2021-11-09T11:45:42.643Z
+date: 2021-11-09T11:45:44.537Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, volume, ceph
 editor: markdown
 dateCreated: 2021-11-09T09:28:55.603Z

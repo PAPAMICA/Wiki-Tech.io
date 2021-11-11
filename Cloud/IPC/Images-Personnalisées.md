@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Créer une image personnalisée
 description: Créer une image à partir d'une instance et démarrer depuis cette image
 published: true
-date: 2021-11-05T13:32:47.279Z
+date: 2021-11-05T13:32:49.208Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T11:04:22.782Z

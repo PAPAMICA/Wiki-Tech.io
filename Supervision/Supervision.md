@@ -2,7 +2,7 @@
 title: Supervision
 description: 
 published: true
-date: 2021-05-24T10:37:31.242Z
+date: 2021-10-05T15:27:29.302Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:41.378Z

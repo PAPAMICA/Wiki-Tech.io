@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Superviser sa consommation de ressources
 description: Mettre en place un dashboard Grafana pour visualiser sa consommation de ressources !
 published: true
-date: 2021-11-05T15:21:12.581Z
+date: 2021-11-05T15:21:14.335Z
 tags: openstack, grafana, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-05T15:09:16.610Z

@@ -2,7 +2,7 @@
 title: Linux - Terminal
 description: Toutes les astuces pour votre terminal !
 published: true
-date: 2021-09-10T09:31:06.766Z
+date: 2021-09-10T09:31:08.716Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:34.861Z
