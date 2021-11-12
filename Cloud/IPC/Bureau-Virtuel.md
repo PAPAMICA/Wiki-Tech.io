@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Bureau virtuel
 description: Mettre en place un bureau virtuel avec Ubuntu
 published: true
-date: 2021-11-12T08:07:13.984Z
+date: 2021-11-12T09:16:16.952Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -16,7 +16,7 @@ Vous pouvez utilisez le **template Heat** directement ou faire son installation 
 ![infomaniak-publiccloud_8_5.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_5.png =1300x)
 
 # Template Heat
-### Créez le fichier `desktop.yml`:
+## Créez le fichier `desktop.yml`:
 ```yaml
 heat_template_version: rocky
 description:  Desktop Ubuntu
@@ -194,7 +194,7 @@ outputs:
     value: { get_param: USER_NAME }
     description: "User"
 ```
-
+## Déployer la stack
 Lancez la création de la stack avec la commande suivante :
 ```bash
 openstack stack create --template desktop.yml desktop --parameter key=<KEY> --parameter KEYBOARD=<KEYBOARD> --parameter USER_NAME=<USER> --parameter USER_PASSWORD='<PASSWORD>' 
