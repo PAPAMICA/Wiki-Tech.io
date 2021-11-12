@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-09T13:48:57.563Z
+date: 2021-11-12T07:57:34.265Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -22,6 +22,8 @@ dateCreated: 2021-05-30T17:41:57.218Z
   - [🕸️ Le réseau *Créer et gérer les réseaux*](/Cloud/IPC/Réseaux)
   - [🖇️ Le loadbalancing *Créer et gérer les loadbalancers Octavia*](/Cloud/IPC/Loadbalancing)
   - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
+  - [💾 Sauvegarde *Sauvegarder ses instances directement dans le Public Cloud*](/Cloud/IPC/Sauvegarde)
+  - [💝 Mise en situation : Docker *Mettre en place un environnement Docker avec Traefik et Portainer*](/Cloud/IPC/Docker)
   - [💖 Mise en situation : Wordpress *Mettre en place un simple site Wordpress*](/Cloud/IPC/Wordpress)
   - [💞 Mise en situation : Wordpress hautement disponible *Mettre en place un site Wordpress hautement disponible*](/Cloud/IPC/Wordpress-HA)
   - [🧡 Mise en situation : Bureau virtuel *Mettre en place un bureau virtuel avec Ubuntu*](/Cloud/IPC/Bureau-Virtuel)
