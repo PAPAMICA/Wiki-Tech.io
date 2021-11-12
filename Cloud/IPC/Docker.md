@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Environnement Docker
 description: Mettre en place un environnement Docker avec Traefik et Portainer
 published: true
-date: 2021-11-12T09:15:25.044Z
+date: 2021-11-12T09:44:32.666Z
 tags: openstack, docker, infomaniak, public-cloud, cloud, ipc, heat
 editor: markdown
 dateCreated: 2021-11-12T08:15:12.116Z
@@ -351,14 +351,15 @@ Pour la gestion de la stack, voir ce tutoriel :
 
 # Création de la VM
 ## Horizon
-### Création du groupe de sécurité pour le port RDP
-Pour nous connecter à la machine virtuelle une fois installée, nous allons avoir besoin d'ouvrir le port RDP (`3389`). Si vous avez bien suivis les autres tutoriel, cela devrais etre simple. Créez donc un nouveau groupe de sécurité `HTTP-HTTPS`en suivant ce tutoriel :
+### Création du groupe de sécurité pour la connexion HTTP et HTTPS
+Pour le fonctionnement de Traefik et pouvoir acceder à vos services, vous devez ouvrir le port HTTP (`80`) et HTTPS (`443`). Si vous avez bien suivis les autres tutoriel, cela devrais etre simple. Créez donc un nouveau groupe de sécurité `HTTP-HTTPS`en suivant ce tutoriel :
 
   - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles avec Horizon*](/Cloud/IPC/Security-Groups#horizon)
 {.links-list}
 
-Et ajoutez la règle suivante : 
-![infomaniak-publiccloud_8_1.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_1.png =600x)
+Et ajoutez les règles suivantes : 
+![infomaniak-publiccloud_10_1.png](/images/cloud/infomaniak-public-cloud/10/infomaniak-publiccloud_10_1.png =600x)
+![infomaniak-publiccloud_10_2.png](/images/cloud/infomaniak-public-cloud/10/infomaniak-publiccloud_10_2.png =600x)
 
 ### Création de l'instance
 Comme pour la création du groupe de sécurité, utilisez le tutoriel suivant pour la création de l'instance : 
@@ -366,13 +367,13 @@ Comme pour la création du groupe de sécurité, utilisez le tutoriel suivant po
 {.links-list}
 
 Sélectionnez l'image `Debian 11.1 bullseye`:
-![infomaniak-publiccloud_8_2.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_2.png =600x)
+![infomaniak-publiccloud_10_3.png](/images/cloud/infomaniak-public-cloud/10/infomaniak-publiccloud_10_3.png =600x)
 
 Bien choisir la configuration adaptée à votre besoin : 
 ![infomaniak-publiccloud_8_3.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_3.png =600x)
 
 Et pensez à bien ajouter vos groupes de sécurités en conséquence : (ici pour le port HTTP (80), HTTPS (443), SSH (22) et Ping (ICMP))
-![infomaniak-publiccloud_8_4.png](/images/cloud/infomaniak-public-cloud/8/infomaniak-publiccloud_8_4.png =600x)
+![infomaniak-publiccloud_10_4.png](/images/cloud/infomaniak-public-cloud/10/infomaniak-publiccloud_10_4.png =600x)
 
 
 
