@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Environnement Docker
 description: Mettre en place un environnement Docker avec Traefik et Portainer
 published: true
-date: 2021-11-12T09:52:04.594Z
+date: 2021-11-12T09:52:54.145Z
 tags: openstack, docker, infomaniak, public-cloud, cloud, ipc, heat
 editor: markdown
 dateCreated: 2021-11-12T08:15:12.116Z
@@ -12,7 +12,7 @@ dateCreated: 2021-11-12T08:15:12.116Z
 
 # Introduction
 J'ai pour habitude de déployer l'ensemble de mes services dans des containers Dockers. C'est donc tout naturellement que je vous propose de créer un environnement Docker comme je les aimes directement dans le Public Cloud !
-Nous procéderons à l'installation de Traefik et de Portainer afin de gérer nos containers avec une interface web et d'utiliser du SSL pour l'ensemble des futurs services.
+Nous procéderons à l'installation de **Traefik** et de **Portainer** afin de gérer nos containers avec une **interface web** et d'**utiliser du SSL** pour l'ensemble des futurs services.
  Vous pouvez utilisez le **template Heat** directement ou faire son installation à la main.
 
 ## Quelques liens utiles :
