@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Bureau virtuel
 description: Mettre en place un bureau virtuel avec Ubuntu
 published: true
-date: 2021-11-09T09:22:52.439Z
+date: 2021-11-12T08:06:55.202Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc, vdi, ubuntu
 editor: markdown
 dateCreated: 2021-11-08T16:33:28.599Z
@@ -197,7 +197,7 @@ outputs:
 
 Lancez la création de la stack avec la commande suivante :
 ```bash
-openstack stack create --template vdi.yml vdi --parameter KEY=<KEY> --parameter KEYBOARD=<KEYBOARD> --parameter USER_NAME=<USER> --parameter USER_PASSWORD='<PASSWORD>' 
+openstack stack create --template desktop.yml desktop --parameter KEY=<KEY> --parameter KEYBOARD=<KEYBOARD> --parameter USER_NAME=<USER> --parameter USER_PASSWORD='<PASSWORD>' 
 ```
 
 
