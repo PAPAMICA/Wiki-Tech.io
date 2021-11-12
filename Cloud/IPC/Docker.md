@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Environnement Docker
 description: Mettre en place un environnement Docker avec Traefik et Portainer
 published: true
-date: 2021-11-12T09:46:21.569Z
+date: 2021-11-12T09:52:04.594Z
 tags: openstack, docker, infomaniak, public-cloud, cloud, ipc, heat
 editor: markdown
 dateCreated: 2021-11-12T08:15:12.116Z
