@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-11-17T11:02:59.005Z
+date: 2021-11-17T11:05:08.587Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -170,5 +170,6 @@ La boucle for peut aussi être utilisée pour exécuter une action un nombre dé
 
 Fonctionnement de la fonction "range" :
 ```python
-range(debut,fin,step)
+range(début,fin,step)
 ```
+
