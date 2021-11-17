@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-11-17T12:34:29.674Z
+date: 2021-11-17T12:40:09.751Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -191,6 +191,7 @@ Résultat :
 ## Les instructions Break et Continue
 ### Break
 L'instruction "break" permet de stopper une boucle en cours d'exécution. Par exemple, si vous souhaitez parcourir une liste jusqu'à tomber sur une valeur précise, vous pouvez interrompre la boucle.
+
 Exemple :
 ```python
 liste = [1,9,0,3,6]
@@ -204,5 +205,25 @@ for i in liste:
 Résultat :
 >>> 1
 >>> 9
+>>> 0
 >>> "j'aime pas les 0, j'arrête"
+```
+
+### Continue
+L'instruction "continue" permet de relancer la boucle sans exécuter les instructions suivantes. Cela peut être utilse pour ignorer un élément. Dans notre exemple précédent, nous aurions bien voulu aficher les chiffres après 0.
+
+Exemple:
+```python
+liste = [1,9,0,3,6]
+
+for i in liste:
+    if i == 0:
+        continue
+    print(i)
+        
+Résultat :
+>>> 1
+>>> 9
+>>> 3
+>>> 6
 ```
