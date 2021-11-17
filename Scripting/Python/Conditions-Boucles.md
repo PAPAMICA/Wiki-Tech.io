@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-11-17T11:18:45.132Z
+date: 2021-11-17T11:21:49.623Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -159,7 +159,7 @@ for car in cars:
     qui prend la valeur de l'item actuel de la liste 'cars'
     """
 
-Resultat :
+Résultat :
 >>> "Tesla"
 >>> "Mercedes"
 >>> "BMW"
@@ -174,5 +174,16 @@ range(début,fin,step)
 ```
 |-
 | Début | (optionnel) valeur de début de la plage de valeurs. Par défaut défini à 0 si non précisé
-| Fin |  (requis) valeur de début de la plage de valeurs.
+| Fin |  (requis) valeur de fin de la plage de valeurs. Attention : cette valeur est exclue
 | Step |(optionnel) Pas d'incrément. Par défaut défini à 1 si non précisé
+
+### Utilisation dans la boucle FOR
+```python
+for i in range(2,8,2):
+    print(i)
+    
+Résultat :
+>>> 2
+>>> 4 
+>>> 6
+```
