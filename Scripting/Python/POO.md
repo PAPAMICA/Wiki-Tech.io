@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2021-11-17T09:53:20.074Z
+date: 2021-11-17T09:55:16.357Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -34,4 +34,4 @@ Par exemple, si nous construisons une voiture nous pouvons la définir comme sui
 - Servir le café
 - Aller dans l'espace
 
-De la même façon, si nous avons construit un objet "maison" avec un garage, nous pourrons les faire interagir entre eux en définissant, par exemple, que le garage reçoit l'information "bip ouverture" et ouvre la porte. L'objet voiture pourra alors avancer (seule puisque c'est une Tesla) à la réception de l'information "pas d'obstacle" (ex : if front_captor == 0). Enfin, le garage pourra se fermer après réception du signal "voiture rentrée".
+De la même façon, si nous avons construit un objet "maison" avec un garage, nous pourrons les faire interagir entre eux en définissant, par exemple, que le garage reçoit l'information "bip ouverture" et ouvre la porte. L'objet voiture pourra alors avancer (seule puisque c'est une Tesla) à la réception de l'information "pas d'obstacle" (ex : `if front_captor == 0: move(forward)`). Enfin, le garage pourra se fermer après réception du signal "voiture rentrée".
