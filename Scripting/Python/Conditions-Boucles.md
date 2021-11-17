@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-11-17T11:08:21.120Z
+date: 2021-11-17T11:18:45.132Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -172,6 +172,7 @@ Fonctionnement de la fonction "range" :
 ```python
 range(début,fin,step)
 ```
-Début : (optionnel) valeur de début de la plage de valeurs. Par défaut défini à 0 si non précisé
-Fin   : (requis) valeur de début de la plage de valeurs.
-Step : (optionnel) Pas d'incrément. Par défaut défini à 1 si non précisé
+|-
+| Début | (optionnel) valeur de début de la plage de valeurs. Par défaut défini à 0 si non précisé
+| Fin |  (requis) valeur de début de la plage de valeurs.
+| Step |(optionnel) Pas d'incrément. Par défaut défini à 1 si non précisé
