@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-06-14T08:21:03.960Z
+date: 2021-11-17T11:02:59.005Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -136,3 +136,39 @@ while 1 != 10:
 ```
 
 > Il ne faut pas oublier d'incrémenter le compteur, sinon la boucle sera infinie !{.is-warning}
+
+## La boucle **FOR**
+
+La boucle for permet de parcourir un élément. En python, la boucle for est plutôt bien faite et assez simple à utiliser. On attribue à une variable la valeur de l'item courant de l'élément, qui changera donc à chaque tour de boucle. 
+Syntaxe :
+```python
+for variable in element:
+  instruction1
+  instruction2
+  ...
+```
+
+Par exemple, si on veut parcourir une liste :
+```python
+cars = ["Tesla","Mercedes","BMW"]
+for car in cars: 
+    print(car)
+    
+    """
+    Attention : 'car' est la variable que l'on vient de déclarer
+    qui prend la valeur de l'item actuel de la liste 'cars'
+    """
+
+Resultat :
+>>> "Tesla"
+>>> "Mercedes"
+>>> "BMW"
+```
+
+### La syntaxe "in range"
+La boucle for peut aussi être utilisée pour exécuter une action un nombre défini de fois. Au lieu d'utiliser une boucle while en définissant une variable (telle que i=0) et de devoir l'incrémenter en fin de boucle, on peut utiliser la fonction "range".
+
+Fonctionnement de la fonction "range" :
+```python
+range(debut,fin,step)
+```
