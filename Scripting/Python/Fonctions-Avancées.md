@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2021-06-14T08:21:39.720Z
+date: 2021-11-17T10:25:06.980Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -10,6 +10,7 @@ dateCreated: 2021-05-24T16:13:51.003Z
 
 ![Fichier:Python logo and wordmark.svg — Wikipédia](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png)
 
+# Fonctionnement d'un méthode
 # Le constructeur
 
 Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
