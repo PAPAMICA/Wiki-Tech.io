@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2021-11-17T09:52:21.046Z
+date: 2021-11-17T09:53:20.074Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -24,7 +24,7 @@ Par exemple, si nous construisons une voiture nous pouvons la définir comme sui
 - Type de véhicule : voiture
 - Nombre de roues : 4
 - Marque : Tesla
-- Model : Roadster
+- Modèle : Roadster
 - Energie : Electrique
 
 **Méthodes :**
