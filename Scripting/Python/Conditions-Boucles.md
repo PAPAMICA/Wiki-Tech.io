@@ -2,7 +2,7 @@
 title: Python -  Conditions et boucles 
 description: IF, ELSE, ELIF, WHILE, Comparaisons, etc…
 published: true
-date: 2021-11-17T12:40:09.751Z
+date: 2021-11-17T12:58:56.851Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:12:00.664Z
@@ -114,7 +114,7 @@ if (vote_gagne or dictature) == True:
 
 # Les boucles
 
-## La boucle **WHILE**
+## WHILE
 
 La boucle **while** (ou tant que) répète une série d'instructions tant qu'une condition n'est pas vraie.  
 Syntaxe :
@@ -137,7 +137,7 @@ while 1 != 10:
 
 > Il ne faut pas oublier d'incrémenter le compteur, sinon la boucle sera infinie !{.is-warning}
 
-## La boucle **FOR**
+## FOR
 
 La boucle for permet de parcourir un élément. En python, la boucle for est plutôt bien faite et assez simple à utiliser. On attribue à une variable la valeur de l'item courant de l'élément, qui changera donc à chaque tour de boucle. 
 Syntaxe :
