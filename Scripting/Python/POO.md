@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2021-11-17T09:51:52.158Z
+date: 2021-11-17T09:52:21.046Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -12,7 +12,7 @@ dateCreated: 2021-11-17T09:11:34.380Z
 
 # Concept de programmation orientée objet (POO)
 
-Dans la programmation procédurale, comme le C, une suite de fonctions (appelées aussi procédures ou routines) est définie, fonctions qui peuvent être appelées dans l'ordre que l'on souhaite pour traiter des données en local.
+Dans la programmation procédurale, comme le C, une suite de fonctions (appelées aussi procédures ou routines) est définie, fonctions pouvant être appelées dans l'ordre que l'on souhaite pour traiter des données en local.
 
 Contrairement à la programmation procédurale, la POO (OOP en anglais) ne définit pas de procédures. Elle construit des objets pour les faire interagir entre eux. Un objet est défini par une classe (une catégorie), des variables d'instance (attributs), et des méthodes (fonctions).
 
