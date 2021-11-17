@@ -2,7 +2,7 @@
 title: Scripting
 description: Les différents langage de scripts avec leurs tutoriels !
 published: true
-date: 2021-09-02T13:38:49.996Z
+date: 2021-11-17T09:13:08.692Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:30:53.085Z
@@ -20,6 +20,7 @@ dateCreated: 2021-05-24T14:30:53.085Z
  - [💎 Les bases *Les bases pour bien débuter avec Python*](/Scripting/Python/Bases)
  - [💎 Conditions et boucles *IF, ELSE, ELIF, WHILE, Comparaisons, etc...*](/Scripting/Python/Conditions-Boucles)
  - [💎 Manipulation de données *Listes, dictionnaires, parcourir des fichiers,...*](/Scripting/Python/Manip-donnees)
+  - [💎 Programmation Orientée Objet (POO)*Comprendre la notion d'objet*](/Scripting/Python/POO)
  - [💎 Fonctions avancées *Construire et manipuler un objet, décorateurs,...*](/Scripting/Python/Fonctions-Avancées)
   - [💎 Gestion des erreurs/exceptions *Anticiper les erreurs*](/Scripting/Python/exceptions)
 {.links-list}
