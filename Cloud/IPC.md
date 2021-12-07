@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud
 description: Toutes les procédures pour utiliser le Cloud Public d'Infomaniak !
 published: true
-date: 2021-11-12T07:58:00.906Z
+date: 2021-12-07T17:03:57.061Z
 tags: infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-11-03T10:35:24.419Z
@@ -23,6 +23,7 @@ dateCreated: 2021-11-03T10:35:24.419Z
   - [🖇️ Le loadbalancing *Créer et gérer les loadbalancers Octavia*](/Cloud/IPC/Loadbalancing)
   - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
   - [💾 Sauvegarde *Sauvegarder ses instances directement dans le Public Cloud*](/Cloud/IPC/Sauvegarde)
+  - [💚 Mise en situation : Uptime Kuma *Mettre en place une première application*](/Cloud/IPC/UptimeKuma)
   - [💝 Mise en situation : Docker *Mettre en place un environnement Docker avec Traefik et Portainer*](/Cloud/IPC/Docker)
   - [💖 Mise en situation : Wordpress *Mettre en place un simple site Wordpress*](/Cloud/IPC/Wordpress)
   - [💞 Mise en situation : Wordpress hautement disponible *Mettre en place un site Wordpress hautement disponible*](/Cloud/IPC/Wordpress-HA)
