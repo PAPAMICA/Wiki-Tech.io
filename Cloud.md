@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2021-11-12T07:57:34.265Z
+date: 2021-12-07T17:03:35.284Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -23,6 +23,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
   - [🖇️ Le loadbalancing *Créer et gérer les loadbalancers Octavia*](/Cloud/IPC/Loadbalancing)
   - [🔥 L'orchestration *Créer et gérer les stacks Heat*](/Cloud/IPC/Orchestration)
   - [💾 Sauvegarde *Sauvegarder ses instances directement dans le Public Cloud*](/Cloud/IPC/Sauvegarde)
+  - [💚 Mise en situation : Uptime Kuma *Mettre en place une première application*](/Cloud/IPC/UptimeKuma)
   - [💝 Mise en situation : Docker *Mettre en place un environnement Docker avec Traefik et Portainer*](/Cloud/IPC/Docker)
   - [💖 Mise en situation : Wordpress *Mettre en place un simple site Wordpress*](/Cloud/IPC/Wordpress)
   - [💞 Mise en situation : Wordpress hautement disponible *Mettre en place un site Wordpress hautement disponible*](/Cloud/IPC/Wordpress-HA)
