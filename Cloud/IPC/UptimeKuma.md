@@ -2,7 +2,7 @@
 title: Infomaniak Public Cloud - Mise en situation : Uptime Kuma
 description: Mettre en place sa premiere application
 published: true
-date: 2021-12-07T17:14:32.304Z
+date: 2021-12-07T17:23:32.095Z
 tags: openstack, infomaniak, public-cloud, cloud, ipc
 editor: markdown
 dateCreated: 2021-12-07T17:10:21.300Z
@@ -201,3 +201,74 @@ openstack stack show uptime-kuma
 ```
 
 Dans notre exemple, Uptime Kuma est accessible depuis : `http://195.15.246.154:3001`
+
+# Création de la VM
+## CLI
+### Création du groupe de sécurité pour les ports SSH et 3001
+Voir ce tutoriel pour l'explication des commandes :
+  - [🛡️ Les groupes de sécurité *Comprendre et utiliser le firewall et ses règles en CLI*](/Cloud/IPC/Security-Groups#cli)
+{.links-list}
+
+```bash
+openstack security group create --description "Uptime Kuma (3001) + SSH (22)" Uptime-Kuma
+openstack security group rule create --dst-port 3001 --protocol TCP Uptime-Kuma    
+openstack security group rule create --dst-port 22 --protocol TCP Uptime-Kuma
+```
+### Création de l'instance
+Voir ce tutoriel pour l'explication des commandes :
+ - [⚡ Les instances (machines virtuelles) *Créer et gérer une instance avec Horizon*](/Cloud/IPC/Instances#cli)
+{.links-list}
+
+```bash
+openstack server create --image "Debian 11.1 bullseye" --flavor a1-ram2-disk20-perf1 --security-group "Uptime-Kuma" --key-name <KEYPAIR> --network ext-net1 Uptime-Kuma-CLI
+openstack server show Uptime-Kuma-CLI
+```
+
+# Installation
+## Connexion à l'instance
+Dans un terminal, connectez vous avec :
+```bash
+ssh [-i <URL/KEY>] debian@<IP_INSTANCE>
+```
+
+> **[-i *URL/KEY*]**
+> - Chemin de votre clé SSH (optionnel)
+>
+> ***IP_INSTANCE***
+> - Adresse IP de votre instance `Docker`
+>
+> 	.
+{.is-info}
+
+## Installation de Uptime Kuma
+### Mettez à jour le serveur :
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+### Installez les dépendances :
+```bash
+sudo apt install -y git curl
+curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
+sudo apt update
+sudo apt install -y nodejs
+sudo npm install pm2 -g
+```
+
+### Récupérez le projet Uptime Kuma :
+```bash
+git clone https://github.com/louislam/uptime-kuma.git
+```
+
+### Lancez l'installation :
+```bash
+cd uptime-kuma
+npm run setup
+sudo pm2 start server/server.js --name uptime-kuma
+sudo pm2 startup
+```
+
+## Connexion
+Il ne vous reste plus qu'à vous connecter à cette adresse : `http://<IP_ADDRESS>:3001`
+
+
