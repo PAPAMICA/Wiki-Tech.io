@@ -2,7 +2,7 @@
 title: Git cheatsheet
 description: 
 published: true
-date: 2022-01-03T10:09:31.286Z
+date: 2022-01-03T10:10:24.959Z
 tags: cheatsheet, git
 editor: ckeditor
 dateCreated: 2022-01-03T09:39:50.529Z
@@ -16,8 +16,7 @@ git config --global user.name "Kevin Allioli"</code></pre>
 <pre><code class="language-plaintext">git config --list</code></pre>
 <h1>Création et ajout de contenu</h1>
 <p>Initialiser un nouveau dépot:</p>
-<pre><code class="language-plaintext">git init
-</code></pre>
+<pre><code class="language-plaintext">git init</code></pre>
 <p>Cloner un dépot existant :</p>
 <pre><code class="language-plaintext">git clone ssh://user@domain.tld/repository.git</code></pre>
 <p>Ou</p>
@@ -25,53 +24,41 @@ git config --global user.name "Kevin Allioli"</code></pre>
 <p>Créer un fichier « .gitignore » :</p>
 <pre><code class="language-plaintext">touch .gitignore
 git add .gitignore
-git commit -m "Add gitignore"
-</code></pre>
+git commit -m "Add gitignore"</code></pre>
 <p>Créer un fichier « .gitignore » en utilisant un template « Windows »:</p>
 <pre><code class="language-plaintext">curl -s https://www.gitignore.io/api/windows &gt; .gitignore
 git add .gitignore
-git commit -m "Add Windows gitignore template"
-</code></pre>
+git commit -m "Add Windows gitignore template"</code></pre>
 <p>Créer un fichier « .gitignore » en utilisant un template « MacOS »:</p>
 <pre><code class="language-plaintext">curl -s https://www.gitignore.io/api/osx &gt; .gitignore
 git add .gitignore
 git commit -m "Add macOS gitignore template"</code></pre>
 <h1>Gérer les modifications</h1>
 <p>Afficher le statut de votre répertoire de travail :</p>
-<pre><code class="language-plaintext">git status
-</code></pre>
+<pre><code class="language-plaintext">git status</code></pre>
 <p>Afficher les modifications sur les fichiers suivis :</p>
-<pre><code class="language-plaintext">git diff
-</code></pre>
+<pre><code class="language-plaintext">git diff</code></pre>
 <p>Ajouter tous les changements au prochain commit :</p>
-<pre><code class="language-plaintext">git add
-</code></pre>
+<pre><code class="language-plaintext">git add</code></pre>
 <p>Ajouter tous les changements de toute l’arborescence :</p>
-<pre><code class="language-plaintext">git add --all
-</code></pre>
+<pre><code class="language-plaintext">git add --all</code></pre>
 <p>Commiter tous les changements locaux des fichiers suivis :</p>
-<pre><code class="language-plaintext">git commit -a
-</code></pre>
+<pre><code class="language-plaintext">git commit -a</code></pre>
 <p>Commiter les modifications en attente :</p>
-<pre><code class="language-plaintext">git commit -m 'Your message'
-</code></pre>
+<pre><code class="language-plaintext">git commit -m 'Your message'</code></pre>
 <p>Modifier le commit précédent :</p>
 <pre><code class="language-plaintext">git commit --amend</code></pre>
 <p>Ou&nbsp;</p>
 <pre><code class="language-plaintext">git commit --am</code></pre>
 <h1>Gérer l'historique</h1>
 <p>Afficher tous les commits :</p>
-<pre><code class="language-plaintext">git log
-</code></pre>
+<pre><code class="language-plaintext">git log</code></pre>
 <p>Afficher tous les commits (uniquement l’id et le message de commit) :</p>
-<pre><code class="language-plaintext">git log --oneline
-</code></pre>
+<pre><code class="language-plaintext">git log --oneline</code></pre>
 <p>Afficher l’historique d’un utilisateur uniquement :</p>
-<pre><code class="language-plaintext">git log --author="username"
-</code></pre>
+<pre><code class="language-plaintext">git log --author="username"</code></pre>
 <p>Afficher l’historique des modifications pour un fichier uniquement :</p>
-<pre><code class="language-plaintext">git log -p &lt;file&gt;
-</code></pre>
+<pre><code class="language-plaintext">git log -p &lt;file&gt;</code></pre>
 <p>Affiche les changements (en détails) dans le fichier :</p>
 <pre><code class="language-plaintext">git blame &lt;file&gt;</code></pre>
 <h1>Gérer les branches et les tags</h1>
@@ -84,8 +71,7 @@ git commit -m "Add macOS gitignore template"</code></pre>
 <p>Créer une nouvelle branche de suivi, basée sur une branche distante :</p>
 <pre><code class="language-plaintext">git branch --track &lt;new-branch&gt; &lt;remote-branch&gt;</code></pre>
 <p>Supprimer une branche :</p>
-<pre><code class="language-plaintext">git branch -d &lt;branch-name&gt;
-</code></pre>
+<pre><code class="language-plaintext">git branch -d &lt;branch-name&gt;</code></pre>
 <p>Marquer le commit courant avec un tag :</p>
 <pre><code class="language-plaintext">git tag &lt;tag&gt;</code></pre>
 <h1>Merge request &amp; rebase</h1>
