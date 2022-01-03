@@ -2,7 +2,7 @@
 title: Git cheatsheet
 description: 
 published: true
-date: 2022-01-03T09:52:00.464Z
+date: 2022-01-03T10:05:57.260Z
 tags: cheatsheet, git
 editor: ckeditor
 dateCreated: 2022-01-03T09:39:50.529Z
@@ -73,5 +73,67 @@ git commit -m "Add macOS gitignore template"</code></pre>
 <pre><code class="language-plaintext">git log -p &lt;file&gt;
 </code></pre>
 <p>Affiche les changements (en détails) dans le fichier :</p>
-<pre><code class="language-plaintext">git blame &lt;file&gt;
+<pre><code class="language-plaintext">git blame &lt;file&gt;</code></pre>
+<h1>Gérer les branches et les tags</h1>
+<p>Lister toutes les branches du dépôt :</p>
+<pre><code class="language-plaintext">git branch</code></pre>
+<p>Changer de branche :</p>
+<pre><code class="language-plaintext">git checkout &lt;branch-name&gt;</code></pre>
+<p>Créer une nouvelle branche en se basant sur le HEAD :</p>
+<pre><code class="language-plaintext">git branch &lt;branch-name&gt;</code></pre>
+<p>Créer une nouvelle branche de suivi, basée sur une branche distante :</p>
+<pre><code class="language-plaintext">git branch --track &lt;new-branch&gt; &lt;remote-branch&gt;</code></pre>
+<p>Supprimer une branche :</p>
+<pre><code class="language-plaintext">git branch -d &lt;branch-name&gt;
 </code></pre>
+<p>Marquer le commit courant avec un tag :</p>
+<pre><code class="language-plaintext">git tag &lt;tag&gt;</code></pre>
+<h1>Merge request &amp; rebase</h1>
+<p>Fusionner la branche courante avec la master ou main :</p>
+<pre><code class="language-plaintext">git checkout master/main
+git merge &lt;your-banch&gt;</code></pre>
+<p>Mettre à jour votre branche avec le code de la master :</p>
+<pre><code class="language-plaintext">git checkout &lt;your-branch&gt;
+git rebase master</code></pre>
+<p>Annuler un rebase en cours :</p>
+<pre><code class="language-plaintext">git rebase --abort</code></pre>
+<p>Continuer un rebase après avoir résolu des conflits :</p>
+<pre><code class="language-plaintext">git rebase --continue</code></pre>
+<h1>Gérer et travailler avec un repository distant</h1>
+<p>Lister tous les dépôts distants configurés :</p>
+<pre><code class="language-plaintext">git remote -v</code></pre>
+<p>Montrer les informations d'un dépôt distant :</p>
+<pre><code class="language-plaintext">git remote show origin</code></pre>
+<p>Ajouter un nouveau dépôt distant :</p>
+<pre><code class="language-plaintext">git remote add &lt;your-remote-repository&gt; &lt;url&gt;</code></pre>
+<p>Synchroniser la branche « courante » avec la master/main. Et indiquer que le dépôt distant est par défaut l'origine.</p>
+<pre><code class="language-plaintext">git push -u origin master/main</code></pre>
+<p>Télécharger toutes les modifications d'un dépôt distant, sans les fusionner :</p>
+<pre><code class="language-plaintext">git fetch &lt;remote&gt;</code></pre>
+<p>Télécharger les modifications et les fusionner directement dans le HEAD :</p>
+<pre><code class="language-plaintext">git remote pull &lt;remote&gt; &lt;url&gt;</code></pre>
+<p>Fusionner les modifications de la branche master/main distante sur la branche courante :</p>
+<pre><code class="language-plaintext">git pull origin master/main</code></pre>
+<p>Récupérer toutes les modifications du HEAD dans le dépôt local :</p>
+<pre><code class="language-plaintext">git pull</code></pre>
+<p>Ou</p>
+<pre><code class="language-plaintext">git pull origin</code></pre>
+<p>Publier les modifications locales sur un dépôt distant :</p>
+<pre><code class="language-plaintext">git push</code></pre>
+<p>Ou</p>
+<pre><code class="language-plaintext">git push remote &lt;remote-repository&gt; &lt;branch&gt;</code></pre>
+<p>Publier les tags :</p>
+<pre><code class="language-plaintext">git push --tags</code></pre>
+<h1>Retour arrière et annulation d'actions</h1>
+<p>Annuler le dernier git add :</p>
+<pre><code class="language-plaintext">git reset HEAD</code></pre>
+<p>Annuler les modifications locales d'un fichier spécifique :</p>
+<pre><code class="language-plaintext">git checkout HEAD &lt;file&gt;</code></pre>
+<p>Annuler un commit (création d’un commit avec les modifications inverses) :</p>
+<pre><code class="language-plaintext">git revert &lt;commit&gt;</code></pre>
+<p>Placer le pointeur du HEAD sur un commit précédent. Conserve toutes les modifications effectuées depuis :</p>
+<pre><code class="language-plaintext">git reset &lt;commit&gt;</code></pre>
+<p>&nbsp;Annuler toutes les modifications dans le répertoire de travail :</p>
+<pre><code class="language-plaintext">git reset --hard HEAD</code></pre>
+<p>Placer le pointeur du HEAD sur un commit précédent. Annule toutes les modifications effectuées depuis :</p>
+<pre><code class="language-plaintext">git reset --hard &lt;commit&gt;</code></pre>
