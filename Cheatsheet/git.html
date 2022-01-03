@@ -2,7 +2,7 @@
 title: Git cheatsheet
 description: 
 published: true
-date: 2022-01-03T10:05:57.260Z
+date: 2022-01-03T10:09:31.286Z
 tags: cheatsheet, git
 editor: ckeditor
 dateCreated: 2022-01-03T09:39:50.529Z
@@ -99,6 +99,19 @@ git rebase master</code></pre>
 <pre><code class="language-plaintext">git rebase --abort</code></pre>
 <p>Continuer un rebase après avoir résolu des conflits :</p>
 <pre><code class="language-plaintext">git rebase --continue</code></pre>
+<h1>Retour arrière et annulation d'actions</h1>
+<p>Annuler le dernier git add :</p>
+<pre><code class="language-plaintext">git reset HEAD</code></pre>
+<p>Annuler les modifications locales d'un fichier spécifique :</p>
+<pre><code class="language-plaintext">git checkout HEAD &lt;file&gt;</code></pre>
+<p>Annuler un commit (création d’un commit avec les modifications inverses) :</p>
+<pre><code class="language-plaintext">git revert &lt;commit&gt;</code></pre>
+<p>Placer le pointeur du HEAD sur un commit précédent. Conserve toutes les modifications effectuées depuis :</p>
+<pre><code class="language-plaintext">git reset &lt;commit&gt;</code></pre>
+<p>&nbsp;Annuler toutes les modifications dans le répertoire de travail :</p>
+<pre><code class="language-plaintext">git reset --hard HEAD</code></pre>
+<p>Placer le pointeur du HEAD sur un commit précédent. Annule toutes les modifications effectuées depuis :</p>
+<pre><code class="language-plaintext">git reset --hard &lt;commit&gt;</code></pre>
 <h1>Gérer et travailler avec un repository distant</h1>
 <p>Lister tous les dépôts distants configurés :</p>
 <pre><code class="language-plaintext">git remote -v</code></pre>
@@ -124,16 +137,3 @@ git rebase master</code></pre>
 <pre><code class="language-plaintext">git push remote &lt;remote-repository&gt; &lt;branch&gt;</code></pre>
 <p>Publier les tags :</p>
 <pre><code class="language-plaintext">git push --tags</code></pre>
-<h1>Retour arrière et annulation d'actions</h1>
-<p>Annuler le dernier git add :</p>
-<pre><code class="language-plaintext">git reset HEAD</code></pre>
-<p>Annuler les modifications locales d'un fichier spécifique :</p>
-<pre><code class="language-plaintext">git checkout HEAD &lt;file&gt;</code></pre>
-<p>Annuler un commit (création d’un commit avec les modifications inverses) :</p>
-<pre><code class="language-plaintext">git revert &lt;commit&gt;</code></pre>
-<p>Placer le pointeur du HEAD sur un commit précédent. Conserve toutes les modifications effectuées depuis :</p>
-<pre><code class="language-plaintext">git reset &lt;commit&gt;</code></pre>
-<p>&nbsp;Annuler toutes les modifications dans le répertoire de travail :</p>
-<pre><code class="language-plaintext">git reset --hard HEAD</code></pre>
-<p>Placer le pointeur du HEAD sur un commit précédent. Annule toutes les modifications effectuées depuis :</p>
-<pre><code class="language-plaintext">git reset --hard &lt;commit&gt;</code></pre>
