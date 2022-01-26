@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2021-11-17T10:25:06.980Z
+date: 2022-01-26T15:36:40.146Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -10,7 +10,73 @@ dateCreated: 2021-05-24T16:13:51.003Z
 
 ![Fichier:Python logo and wordmark.svg — Wikipédia](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png)
 
-# Fonctionnement d'un méthode
+# Fonction basique
+Une fonction (ou méthode), est un bloc d'instructions réutilisable. Si vous venez à réécrire plusieurs fois les mêmes lignes dans votre code, cela signifie que vous pouvez les mettre sous forme de fonction. Votre code sera alors beaucoup plus lisible.
+
+## Déclarer une fonction 
+Une fonction se déclare avec le mot-clé "def" et nécessite une identation.
+Il suffira ensuite d'appeler la fonction par son nom.
+```python
+#Déclaration de la fonction
+def print_something_useless():
+    print("Il fait beau aujourd'hui")
+    
+#Appel de la fonction
+print_something_useless()
+
+>>> Il fait beau aujourd'hui
+```
+
+## Les arguments
+Une fonction peut demander des arguments. Ce sont des variables à renseigner lors de l'appel de la fonction permettant son execution.
+```python
+def divide_numbers(dividende,diviseur):
+    quotient = dividende/diviseur
+    print(quotient)
+    
+divide_numbers(4,2)
+
+>>> 2
+```
+
+Il est possible d'attribuer une valeur par défaut à un argument. Celle-ci sera remplacée si on précise une valeur.
+
+```python
+def divide_numbers(dividende,diviseur=3):
+    quotient = dividende/diviseur
+    print(quotient)
+    
+divide_numbers(9) #cas 1 : valeur par défaut
+divide_numbers(9,9) #cas 2 : nouvelle valeur
+
+>>> 3 #cas 1
+>>> 1 #cas 2
+```
+
+### Récupérer le résultat d'une fonction
+Il est important de noter que toutes les variables d'une focntion sont locales. Une fois l'éxecution de la fonction terminée, toutes ses variables sont effacées. Dans l'exemple précédent il aurait pu être intéressant de récupérer le résultat de la division pour la suite de notre script.
+Pour ce faire on utilise le mot-clé ***return***.
+Ensuite, on attribue l'appel de la fonction à une ou plusieurs variables.
+> Il est possible de retourner plusieurs valeurs
+{.is-info}
+
+```python
+def operations(nb1,nb2):
+    quotient = nb1/nb2
+    produit  = nb1*nb2
+    somme    = nb1 + nb2
+    
+    return quotient,produit,somme
+    
+div, mult, add = operations(4,2)
+print("division : " + div)
+print("multiplication : " + mult)
+print("addition : " + add)
+
+>>> division : 2
+>>> multiplication : 8
+>>> addition : 6
+```
 # Le constructeur
 
 Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
