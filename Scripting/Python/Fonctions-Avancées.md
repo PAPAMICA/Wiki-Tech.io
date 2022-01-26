@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-01-26T15:36:40.146Z
+date: 2022-01-26T15:50:19.196Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -77,6 +77,45 @@ print("addition : " + add)
 >>> multiplication : 8
 >>> addition : 6
 ```
+
+## Fonction "main"
+La fonction ***main*** est la fonction principale du script. Elle définit le point d'entrée du script et appelle les autres fonctions. C'est la fonction ***main*** qui va définir le déroulement du script.
+Cette fonction spéciale est appelée grâce à un ***if***, qui sera le seul bloc d'instruction hors fonction.
+> La fonction *main* ne demande pas d'arguments.
+{.is-info}
+
+
+```python
+def print_something_useless():
+    print("Il fait beau aujourd'hui")
+    
+def operations(nb1,nb2):
+    quotient = nb1/nb2
+    produit  = nb1*nb2
+    somme    = nb1 + nb2
+    
+    return quotient,produit,somme
+
+def main():
+    print("Je suis le main")
+    print_something_useless()
+    div, mult, add = operations(4,2)
+    print("division : " + div)
+    print("multiplication : " + mult)
+    print("addition : " + add)
+    print_something_useless()
+    
+if __name__ == '__main__':
+    main()
+
+>>> Je suis le main
+>>> Il fait beau aujourd'hui
+>>> division : 2
+>>> multiplication : 8
+>>> addition : 6
+>>> Il fait beau aujourd'hui
+```
+
 # Le constructeur
 
 Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
