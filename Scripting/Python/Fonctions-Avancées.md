@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-01-26T15:50:19.196Z
+date: 2022-01-26T15:50:50.684Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -115,6 +115,8 @@ if __name__ == '__main__':
 >>> addition : 6
 >>> Il fait beau aujourd'hui
 ```
+
+# Fonction de classe
 
 # Le constructeur
 
