@@ -2,13 +2,16 @@
 title: Centreon - Présentation
 description: Qu’est ce qu’est Centreon ?
 published: true
-date: 2021-06-14T08:12:20.940Z
+date: 2022-04-01T21:25:39.393Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:37:18.321Z
 ---
 
 ![Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps](https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598)
+
+**Auteur : Antoine JOVELIN**  
+**Admin Système Réseau - 49100 Angers**
 
 # Présentation
 
