@@ -2,7 +2,7 @@
 title: Jirafeau
 description: Alternative opensource et self hosted de Wetransfert.
 published: true
-date: 2021-06-14T06:39:22.176Z
+date: 2022-04-06T22:33:17.357Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:49.087Z
@@ -22,13 +22,13 @@ Jirafeau vous permet de partager en 2 clics des fichiers avec d'autres utilisate
 -   Le chiffrement des données stockées
 -   Et plein de petites configurations utiles !
 
-Vous pouvez retrouver le Gitlab du projet [ici](https://gitlab.com/mojo42/Jirafeau) ainsi que le démo officielle [ici](https://jirafeau.net).
+Vous pouvez retrouver le Gitlab du projet [ici](https://gitlab.com/mojo42/Jirafeau) ainsi que la démo officielle [ici](https://jirafeau.net).
 
-Je me à disposition ce service aussi de mon coté, accessible à cette adresse : [send.papamica.fr](https://send.papamica.fr)
+Je met à disposition ce service aussi de mon coté, accessible à cette adresse : [send.papamica.fr](https://send.papamica.fr)
 
 # Installation
 
-Vous pouvez passer par une installation standard via la documentation disponible sur [Gitlab](https://gitlab.com/mojo42/Jirafeau), le déployer directement depuis mon template d'application dans Portainer (turoriel dispo ici) ou utiliser le docker-compose suivant :
+Vous pouvez passer par une installation standard via la documentation disponible sur [Gitlab](https://gitlab.com/mojo42/Jirafeau), le déployer directement depuis mon template d'application dans Portainer (tutoriel dispo ici) ou utiliser le docker-compose suivant :
 
 ```yaml
 version: '2'
@@ -76,7 +76,7 @@ networks:
       name: proxy
 ```
 
-Votre Jirafeau sera accessible directement depuis l'URL que vous lui aurais attribué avec Traefik ou depuis `http://<server>:<port>`.
+Votre Jirafeau sera accessible directement depuis l'URL que vous lui avez attribué avec Traefik ou depuis `http://<server>:<port>`.
 
 L'interface administrateur est disponible ici : `<URL>/admin.php`
 
