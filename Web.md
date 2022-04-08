@@ -2,7 +2,7 @@
 title: Web
 description: Différentes astuces autours du développement web !
 published: true
-date: 2022-04-08T12:20:50.279Z
+date: 2022-04-08T12:39:16.952Z
 tags: wordpress, html, css, js, web
 editor: markdown
 dateCreated: 2021-06-15T07:12:56.280Z
@@ -13,7 +13,6 @@ dateCreated: 2021-06-15T07:12:56.280Z
 - [💠 Les bases HTML 🚧 *Découvrir le langague HTML*](/Web/HTML/Base-HTML)
 - [💠 Les bases CSS 🚧 *Découvrir le langague CSS*](/Web/HTML/Base-CSS)
 - [💠 Les bases JS 🚧 *Découvrir le langague JS*](/Web/HTML/Base-JS)
-{.links-list}
 - [💠 Webhook JS *Envoyer un webhook quand une page est rafraichie*](/Web/HTML/webhook-js)
 {.links-list}
 
