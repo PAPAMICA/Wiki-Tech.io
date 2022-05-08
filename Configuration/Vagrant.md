@@ -2,7 +2,7 @@
 title: Vagrant : Comment automatiser le déploiement de son infrastructure virtuelles en local
 description: Vagrant est un outil en ligne de commandes permettant de déployer, à l'aide de plugins, des machines virtuelles en local, sur son poste, via des fichiers de configuration. Il s'appuie pour cela sur VirtualBox, VMWare Workstation etc
 published: false
-date: 2022-05-08T16:50:46.310Z
+date: 2022-05-08T21:20:19.488Z
 tags: linux, windows, macos, automatisation, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-08T16:50:46.310Z
@@ -72,6 +72,12 @@ Ici, nous allons déployer une machine virtuelle baser sur l'image ubuntu/trusty
 2. Créer un répertoire de travail
 3. Initialiser ce répertoire auprès de Vagrant avec la commande "vagrant init". En l'état, Vagrant vous créera un Vagrant-File rempli de commentaire afin de vous guider dans la rédaction de celui-ci. L'argument "-m" permet d'avoir un Vagrant-File minimal.
 4. Rédiger votre Vagrant-File comme ceci
+
+
+```ruby
+
+TON CODE ICI
+```
 
 ![vagrant-file-ubuntu.png](/vagrant-file-ubuntu.png)
 
