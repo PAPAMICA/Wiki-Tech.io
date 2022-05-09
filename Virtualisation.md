@@ -2,12 +2,13 @@
 title: Virtualisation
 description: Les différents hyperviseurs accompagnés de leurs tutoriels !
 published: true
-date: 2022-05-09T13:04:34.214Z
+date: 2022-05-09T13:06:56.869Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T15:05:35.418Z
 ---
 
+![external-content.duckduckgo.com.png](/external-content.duckduckgo.com.png)
 # Vagrant
 - [💠 Présentation *Petite présentation de l'outils Vagrant*](/Virtualisation/Vagrant/Présentation)
 - [💠 Déploiement d'une machine virtuelle *Découverte d'un vagrant file*](/Virtualisation/Vagrant/déploiement-machine-virtuelle)
