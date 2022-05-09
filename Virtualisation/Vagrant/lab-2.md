@@ -2,7 +2,7 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T13:03:12.380Z
+date: 2022-05-09T13:04:13.528Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
