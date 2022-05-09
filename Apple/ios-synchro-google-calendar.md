@@ -2,7 +2,7 @@
 title: Synchroniser tous les calendriers Google sur iPhone
 description: Dans cette documentation je vais vous montrer comment synchroniser tous les calendriers Google sur iPhone 
 published: true
-date: 2022-05-09T13:35:51.103Z
+date: 2022-05-09T13:36:45.624Z
 tags: calendrier, calendar, google, agenda
 editor: markdown
 dateCreated: 2022-05-09T13:15:52.962Z
@@ -25,7 +25,9 @@ Ce problème m'a frustré pendant longtemps avant que je sois capable de le comp
 C'est très simple et facile à faire. Tout d'abord, allez dans **Paramètres** et appuyez sur **Mail**. Ensuite allez dans **Comptes** et choisissez votre **calendrier**.
 Si vous n'avez pas encore ajouté votre compte, appuyez sur **Ajouter un compte**.
 
-> Attention ! <br>le compte iCloud correspond à l'adresse mail avec la qu'elle vous avez configuré l'iPhone. Si c'est cette adresse qui vous intéresse cliquez sur Gmail.
+> Le compte iCloud correspond à l'adresse mail avec la qu'elle vous avez configuré l'iPhone. Si c'est cette adresse qui vous intéresse cliquez sur Gmail.
+{.is-warning}
+
 
 <br>
 <p align="center">
