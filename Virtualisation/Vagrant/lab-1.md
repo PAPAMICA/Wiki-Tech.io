@@ -2,7 +2,7 @@
 title: Déploiement d'une machine virtuelle et explication du Vagrantfile
 description: Ici, nous réaliserons le déploiement d'une machine virtuelle décrite dans un Vagrantfile avec quelques explications sur le contenu du fichier et les options ajoutés.
 published: true
-date: 2022-05-09T11:52:28.573Z
+date: 2022-05-09T11:54:08.314Z
 tags: linux, windows, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:25:53.947Z
