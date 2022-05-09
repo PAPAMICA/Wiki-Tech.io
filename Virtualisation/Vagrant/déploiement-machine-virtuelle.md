@@ -2,7 +2,7 @@
 title: Déploiement d'une machine virtuelle et explication du Vagrantfile
 description: Ici, nous réaliserons le déploiement d'une machine virtuelle décrite dans un Vagrantfile avec quelques explications sur le contenu du fichier et les options ajoutés.
 published: true
-date: 2022-05-09T12:39:18.451Z
+date: 2022-05-09T12:56:24.183Z
 tags: linux, windows, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:25:53.947Z
@@ -63,7 +63,7 @@ Vagrant.configure("2") do |config|
     end
   end
  ```
-> Attention ! L'indentation est extrêmement importante
+> Attention ! L'indentation est extrêmement importante !
 {.is-warning}
 ### Valider la configuration
 Une fois le fichier enregistré, toujours dans le répertoire de travail, utiliser la commande suivante afin de vérifier la syntaxe du fichier : 
