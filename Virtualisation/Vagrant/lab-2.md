@@ -2,13 +2,15 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T12:56:30.472Z
+date: 2022-05-09T13:03:12.380Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
 ---
 
-# Déploiement d'un cluster web avec un Vagrant-File ainsi qu'un script bash post-installation
+![external-content.duckduckgo.com.png](/external-content.duckduckgo.com.png)
+
+# Introduction
 
 Maintenant que vous savez déployer une machine, vous avez envie d'en faire plusieurs !
 
@@ -24,6 +26,7 @@ Retrouvez le fichier utilisé directement sur mon Github :
 - [📂 Vagrantfile (github.com/Lucroz94)](https://github.com/Lucroz94/formations-eazytraining-cursus-devops/blob/main/Vagrant/lab-8/Vagrantfile)
 {.links-list}
 
+# Déploiement d’un cluster web
 ## Rédaction du Vagrantfile
 
 ```ruby
@@ -82,11 +85,11 @@ end
 > N'oubliez pas que l'indentation est très importante !
 {.is-warning}
 
-### Description du Vagrant-File
+## Description du Vagrant-File
 
 Alors, nous avons ici rajouté pas mal d'éléments.
 
-Tout d'abord, nous avons rajouté la mention `vm.network` ainsi que l'IP fixe de la machine, variabilisé. Avec l'option `"private_network` nous déployons cette machine dans la plage IP prévue par le provider (ici VirtualBox). Avec un argument différent, nous pourrions rendre accessible depuis le réseau LAN de la machine hôte cette VM.
+Tout d'abord, nous avons rajouté la mention `vm.network` ainsi que l'IP fixe de la machine, variabilisé. Avec l'option `private_network`, nous déployons cette machine dans la plage IP prévue par le provider (ici VirtualBox). Avec un argument différent, nous pourrions rendre accessible depuis le réseau LAN de la machine hôte cette VM.
 
 Vous pouvez aussi très bien laisser le type en DHCP, je vous laisse consulter la documentation pour cela.
 
@@ -110,7 +113,7 @@ Nous avons aussi l'utilisation d'un plugin, nommé [Hostsupdater](https://github
 
 Ce plugin, permet, parmi pleins d'autres options, de lire et d'écrire dans le fichier host de la machine hôte et invité afin, une fois sa création réalisée, d'appliquer un hostname précis dans la machine invité afin de faciliter les translations DNS.
 
-L'argument est
+L'argument est :
 ```shell
 v.name = "WEB2" 
 ```
@@ -118,7 +121,7 @@ v.name = "WEB2"
 Et comme vous pouvez le constater, il n'y a pas de tâches d'installation d'un serveur Web, car ceci nécessite de fouiner dans la documentation afin d'ajouter les arguments supplémentaires, et je vous laisse ce petit plaisir !
 
 
-## En conclusion
+# En conclusion
 
 Avec ces quelques éléments d'applications concrets, vous pouvez vous donner une première idée de ce qu'est Vagrant, son intérêt et ses possibilités.
 
