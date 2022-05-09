@@ -2,7 +2,7 @@
 title: Déploiement d'une machine virtuelle et explication du Vagrantfile
 description: Ici, nous réaliserons le déploiement d'une machine virtuelle décrite dans un Vagrantfile avec quelques explications sur le contenu du fichier et les options ajoutés.
 published: true
-date: 2022-05-09T11:54:08.314Z
+date: 2022-05-09T12:39:18.451Z
 tags: linux, windows, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:25:53.947Z
@@ -20,7 +20,7 @@ C'est très rébarbatif et absolument pas gratifiant techniquement parlant lorsq
 Tandis qu'avec Vagrant, voici les étapes à réaliser afin de déployer une machine virtuelle sur mon poste de travail.
 Tout passe par la rédaction d'un Vagrant-File qui va permettre de déclarer l'infrastructure que vous souhaitez déployer.
 
-Retrouvez le fichier utilisé directement du mon Github:
+Retrouvez le fichier utilisé directement sur mon Github:
 - [📂 Vagrantfile (github.com/Lucroz94)](https://github.com/Lucroz94/formations-eazytraining-cursus-devops/blob/main/Vagrant/lab-3/Vagrantfile)
 {.links-list}
 
@@ -28,7 +28,7 @@ Retrouvez le fichier utilisé directement du mon Github:
 Ici, nous allons déployer une machine virtuelle basée sur l'image ubuntu/trusty64 tout en variabilisant le nombre de coeur vCPUs ainsi que la mémoire RAM de la machine et son hostname dans VirtualBox.
 
 ## Installation de Vagrant 
-Je vous invite à lire la documentation officielle pour installer la dernière version sur votre machine (lire la documentation)
+Je vous invite à lire la [documentation officielle](https://www.vagrantup.com/docs/installation) pour installer la dernière version sur votre machine
 
 ## Création du fichier Vagrant
 ### Créer un répertoire de travail.
@@ -38,13 +38,13 @@ mkdir /chemin/dossier
 
 ### Initialiser ce répertoire auprès de Vagrant 
 ```bash
-vagrant init
+vagrant init ubuntu/trusty64
 ```
-Cette commande permet à Vagrant vous créera un Vagrant-File rempli de commentaire afin de vous guider dans la rédaction de celui-ci. 
-> L'argument `-m` permet d'avoir un Vagrant-File minimal.
+Cette commande permet à Vagrant de vous créer un Vagrantfile rempli de commentaire afin de vous guider dans la rédaction de celui-ci.
+> L'argument `-m` permet d'avoir un Vagrantfile minimal.
 {.is-info}
 
-### Modifier le Vagrant-File 
+### Modifier le Vagrantfile 
 Voici un exemple de fichier pour une machine virtuelle avec 2go de RAM et 2 vCPU :
 ```ruby
 # -*- mode: ruby -*-
@@ -87,7 +87,7 @@ vagrant ssh
 {.is-info}
 
 ## Destruction de la machine virtuelle
-Une fois le test de connexion fait et la validation du fonctionnement, vous pouvez forcer une destruction de votre environnement :
+Une fois le test de connexion fait et la validation du fonctionnement, vous pouvez forcer la destruction de votre environnement :
 ```bash
 vagrant destroy -f
 ```
@@ -97,13 +97,13 @@ vagrant destroy -f
 
 En début de fichier, nous avons l'équivalent du shebang en bash, c'est en Ruby et cela permet de déclarer la suite. C'est obligatoire.
 
-Ensuite, nous annonçons nos variables. Elles peuvent être mises au début comme à la fin, ça n'est pas important, car le Vagrant-File peut récupérer l'information de la variable n'importe où. Je préfère pour un souci pédagogique et de clarté, ainsi que de rapidité si je dois les modifier au besoin, les déclarer au tout début du fichier.
+Ensuite, nous annonçons nos variables. Elles peuvent être mises au début comme à la fin, ça n'est pas important, car le Vagrantfile peut récupérer l'information de la variable n'importe où. Je préfère pour un souci pédagogique et de clarté, ainsi que de rapidité si je dois les modifier au besoin, les déclarer au tout début du fichier.
 
 Puis nous avons la partie configuration de l'objet `config`.
 
 Cet objet `config` contient l'argument `vm.box` afin de déclarer [l'image à utiliser](https://app.vagrantup.com/ubuntu/boxes/trusty64).
 
-De déclarer le provider de déploiement (ici VirtualBox) avec pour objet `v` (les prochains arguments pour la configuration dans VirtualBox sont raccourcis en `v` mais cela pourrait être n'importe quoi).
+L'argument `vm.provider` permet de déclarer le provider de déploiement (ici VirtualBox) avec pour objet `v` (les prochains arguments pour la configuration dans VirtualBox sont raccourcis en `v` mais cela pourrait être n'importe quoi).
 
 `v.name` = Hostname dans VirtualBox (mais pas celui de la machine à l'intérieur ! Pour cela, un plugin est nécessaire).
 `v.cpus` = La variable de CPU déclarée plus haut, ici, 2 vCPUs.
