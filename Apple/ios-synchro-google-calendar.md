@@ -2,12 +2,13 @@
 title: Synchroniser tous les calendriers Google sur iPhone
 description: Dans cette documentation je vais vous montrer comment synchroniser tous les calendriers Google sur iPhone 
 published: true
-date: 2022-05-09T13:28:16.639Z
+date: 2022-05-09T13:35:09.903Z
 tags: calendrier, calendar, google, agenda
 editor: markdown
 dateCreated: 2022-05-09T13:15:52.962Z
 ---
 
+![logo](https://forum.homeassistantbrasil.com.br/uploads/default/original/2X/2/26a7f7d19fe2de6edfba3fbd421beafe356a8be6.png)
 # Synchroniser tous les calendriers Google sur iPhone
 
 La synchronisation de votre calendrier Google par défaut ou de vos calendriers personnalisés sur votre iPhone est assez simple ces derniers jours sur iOS. Une fois que vous avez ajouté votre compte Gmail sous Mail, vous avez la possibilité de synchroniser votre calendrier, vos contacts et vos notes.
