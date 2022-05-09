@@ -2,7 +2,7 @@
 title: Accueil
 description: Une documentation pour différents projets !
 published: true
-date: 2021-11-09T11:44:31.648Z
+date: 2022-05-09T13:13:44.256Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:11.318Z
@@ -115,13 +115,14 @@ Ce projet repose sur [Wiki.js](https://js.wiki) et est entièrement disponible s
 - [©️ Centreon *Un sytème Opensource clé en main*](/Supervision#centreon)
 {.links-list}
 
-# Traitement de données
+# Traitement de donnéesVMware-ESXi
 - [📊 Grafana *De l"affiche de données simple et efficace*](/Données#grafana)
 - [📊 Elastic *Une solution très complète pour la gestion de données*](/Données#elastic)
 {.links-list}
 
 # Virtualisation
-- [➰ ESXi *Comprendre et utiliser l'hyperviseur de VMware*](/Virtualisation#vmware-esxi)
+- [➰ Vagrant *Déployer des machines virtuelles depuis un fichier*](/Virtualisation/Vagrant)
+- [➰ ESXi *Comprendre et utiliser l'hyperviseur de VMware*](/Virtualisation/VMware-ESXi)
 - [➰ Hyper-V *Comprendre et utiliser l'hyperviseur de Microsoft*](/Virtualisation#hyper-v)
 - [➰ Proxmox *Un hyperviseur OpenSource*](/Virtualisation#proxmox)
 - [➰ VirtualBox *Trucs et astuces pour de la virtualisation locale*](/Virtualisation#virtualbox)
