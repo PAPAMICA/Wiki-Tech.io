@@ -2,13 +2,15 @@
 title: Apple
 description: Toutes les astuces de l'environnement Apple !
 published: true
-date: 2021-10-06T07:30:18.048Z
+date: 2022-05-09T12:58:11.197Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:36:34.299Z
 ---
 
 # iOS / iPadOS
+- [✨ Calendier Google *Synchroniser tous les calendriers Google sur iPhone*](/Apple/ios-Vsynchro-google-calendar)
+{.links-list}
 
 # MacOS
 - [✨ Les logiciels utiles *Une belle liste de logiciels utiles voir indispensables sous MacOS*](/Apple/Macos-logiciels)
