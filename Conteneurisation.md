@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2021-05-30T17:44:29.584Z
+date: 2022-05-09T07:31:14.614Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -21,6 +21,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 ## Quelques outils utiles
 - [💙 Traefik 🚧 *Un reverse-proxy pour tous les services*](/Conteneurisation/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Conteneurisation/Docker/Portainer)
+- [❤️ container-updater *Superviser et mettre à jour automatiquement ses containers*](/Conteneurisation/Docker/container-updater)
 {.links-list}
 
 # Kubernetes
