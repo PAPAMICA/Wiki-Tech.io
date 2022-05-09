@@ -2,7 +2,7 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T12:41:59.191Z
+date: 2022-05-09T12:56:30.472Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
@@ -18,6 +18,13 @@ De plus, vous avez un joli script Bash que vous souhaitez exécuter à la créat
 Ici, nous allons nous attarder sur un Vagrantfile que j'ai rédigé qui permet de le faire, et je vais, petit à petit, vous expliquer la manière dont certains éléments ont été rajoutés (et d'autres omis, afin que vous puissiez chercher dans la documentation).
 
 La procédure pré-rédaction du Vagrantfile est la même, il faut cependant changer de répertoire de travail.
+
+Retrouvez le fichier utilisé directement sur mon Github :
+
+- [📂 Vagrantfile (github.com/Lucroz94)](https://github.com/Lucroz94/formations-eazytraining-cursus-devops/blob/main/Vagrant/lab-8/Vagrantfile)
+{.links-list}
+
+## Rédaction du Vagrantfile
 
 ```ruby
 # -*- mode: ruby -*-
@@ -71,12 +78,17 @@ Vagrant.configure("2") do |config|
   end
 end
 ```
+
+> N'oubliez pas que l'indentation est très importante !
+{.is-warning}
+
 ### Description du Vagrant-File
 
 Alors, nous avons ici rajouté pas mal d'éléments.
 
-Tout d'abord, nous avons rajouté la mention `vm.network` ainsi que l'IP fixe de la machine, variabilisé.
-Vous pouvez très bien laisser le type en DHCP, je vous laisse consulter la documentation pour cela.
+Tout d'abord, nous avons rajouté la mention `vm.network` ainsi que l'IP fixe de la machine, variabilisé. Avec l'option `"private_network` nous déployons cette machine dans la plage IP prévue par le provider (ici VirtualBox). Avec un argument différent, nous pourrions rendre accessible depuis le réseau LAN de la machine hôte cette VM.
+
+Vous pouvez aussi très bien laisser le type en DHCP, je vous laisse consulter la documentation pour cela.
 
 ```shell
 Private_IP_WEB2 = "192.168.56.142"
