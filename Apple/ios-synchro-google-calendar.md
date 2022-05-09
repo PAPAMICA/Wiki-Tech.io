@@ -2,7 +2,7 @@
 title: Synchroniser tous les calendriers Google sur iPhone
 description: Dans cette documentation je vais vous montrer comment synchroniser tous les calendriers Google sur iPhone 
 published: true
-date: 2022-05-09T13:19:40.825Z
+date: 2022-05-09T13:23:09.442Z
 tags: calendrier, calendar, google, agenda
 editor: markdown
 dateCreated: 2022-05-09T13:15:52.962Z
@@ -50,7 +50,7 @@ Si vous avez seulement besoin de synchroniser les calendriers, désactivez tout 
 
 <p align="center">
     <br>
-    <img src="img/Calendar.jpg" alt="Capture d'écrans des calendriers" width="300"/>
+    <img src="/images/calendar/calendar.jpg" alt="Capture d'écrans des calendriers" width="300"/>
 </p>
 
 Maintenant, ouvrez l'application de calendrier sur votre téléphone et vous devriez voir tous les rendez-vous de ces calendriers répertoriés sous **Calendriers** . Avant de commencer à synchroniser les autres calendriers, permettez-moi de vous donner un dernier conseil.
@@ -59,7 +59,7 @@ Allez dans **Paramètres**, appuyez sur **Mail** puis faites défiler jusqu'à *
 
 <p align="center">
     <br>
-    <img src="img/CompteDefault.jpg" alt="Capture d'écrans des calendriers" width="300"/>
+    <img src="/images/calendar/comptedefault.jpg" alt="Capture d'écrans des calendriers" width="300"/>
 </p>
 
 ## 2. Synchronisation d'autres calendriers sur l'iPhone
@@ -73,7 +73,7 @@ Pour une raison ridicule, un lien vers cette page n'apparaît nulle part sur auc
 
 <p align="center">
     <br>
-    <img src="img/Google_Calendar_Sync.png" alt="Capture d'écrans des calendriers Google" width="600"/>
+    <img src="/images/calendar/google_calendar_sync.png" alt="Capture d'écrans des calendriers Google" width="600"/>
 </p>
 
 Cependant, cette page est essentielle pour afficher ces autres agendas dans l'application de calendrier Apple. Allez-y et cochez tous les autres calendriers que vous voulez sous **Mes agendas** et **Calendriers partagés** et une fois votre téléphone synchronisé, tous les éléments de ces calendriers supplémentaires apparaîtront!
