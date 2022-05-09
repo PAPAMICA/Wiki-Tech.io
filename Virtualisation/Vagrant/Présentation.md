@@ -2,16 +2,15 @@
 title: Présentation de Vagrant by HashiCorp
 description: Vagrant est un outil multi-OS en ligne de commande vous permettant de déployer très rapidement, à l'aide d'un fichier de configuration (le Vagrantfile) toute votre infrastructure virtuelle en local. Il est écrit en Ruby et s'appuie sur de nombreux plugins
 published: true
-date: 2022-05-09T10:15:14.190Z
+date: 2022-05-09T10:34:47.600Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:15:14.190Z
 ---
 
-# Présentation de cas d'utilisations de Vagrant par HashiCorp
 ![external-content.duckduckgo.com.png](/external-content.duckduckgo.com.png)
 
-## Liens pour Vagrant
+# Liens pour Vagrant
 1. [Page Web](https://www.vagrantup.com/)
 2. [Documentation du projet](https://www.vagrantup.com/docs) 
 3. [Vagrant Cloud](https://app.vagrantup.com/boxes/search) (équivalent Docker-Hub)
@@ -21,7 +20,7 @@ dateCreated: 2022-05-09T10:15:14.190Z
 La rédaction est inspirée de la formation suivie sur la plateforme [Eazy-Training](https://eazytraining.fr/cours/vagrant-pour-devops-creez-rapidement-et-facilement-vos-environnements-de-travail/) réalisée par [Dirane Tafen](https://www.linkedin.com/in/dirane-willy-tafen-254913b5/)
 {.is-info}
 
-## Présentation de la page
+# Présentation de la page
 
 Suite à mon suivi de la formation Vagrant, j'ai compris le potentiel de cet outil et cela a changé ma vision de mes déploiements de VM.
 Jusqu'ici, je perdais toujours un temps fou à installer des machines virtuelles en local sur ma machine de travail, faire de la configuration post-installation puis les transformer en enveloppe afin de pouvoir les redéployer plus tard.
@@ -36,7 +35,7 @@ Si le sujet vous intéresse, vous pourrez toujours fouiller la documentation qui
 
 Mais tout d'abord, présentons l'outil du jour, Vagrant !
 
-## Qu'est-ce que Vagrant ?
+# Qu'est-ce que Vagrant ?
 
 Tout d'abord, qu'est-ce que nous dit Internet ?
 
@@ -53,6 +52,7 @@ Tout d'abord, qu'est-ce que nous dit Internet ?
 >L'outil est disponible sur Linux/MacOS/Windows.
 > Vagrant est développé en Ruby, mais ne nécessite pas de connaissance préalable du langage pour être utilisé et compris.
 
-Conclusion : Pour ceux connaissant Docker et les DockerFile, Vagrant est exactement la même chose, mais pour vos machines virtuelles ! Vous pouvez ainsi, via la création d'un Vagrant File, déclarer tout votre environnement virtuelles des couches les plus basses (combien de CPU/RAM, network, disques à partager...) jusqu'aux couches plus hautes. (installation d'environnement docker, utilisation de playbooks Ansible, création de Vagrant Box permettant de partager sur le Vagrant Cloud ses images...)
+## Conclusion : 
+Pour ceux connaissant Docker et les DockerFile, Vagrant est exactement la même chose, mais pour vos machines virtuelles ! Vous pouvez ainsi, via la création d'un Vagrant File, déclarer tout votre environnement virtuelles des couches les plus basses (combien de CPU/RAM, network, disques à partager...) jusqu'aux couches plus hautes. (installation d'environnement docker, utilisation de playbooks Ansible, création de Vagrant Box permettant de partager sur le Vagrant Cloud ses images...)
 
 Maintenant, passons à la pratique avec deux cas concrets d'utilisation plus ou moins complexe !
