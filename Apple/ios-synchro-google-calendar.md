@@ -2,14 +2,14 @@
 title: Synchroniser tous les calendriers Google sur iPhone
 description: Dans cette documentation je vais vous montrer comment synchroniser tous les calendriers Google sur iPhone 
 published: true
-date: 2022-05-09T13:35:09.903Z
+date: 2022-05-09T13:35:51.103Z
 tags: calendrier, calendar, google, agenda
 editor: markdown
 dateCreated: 2022-05-09T13:15:52.962Z
 ---
 
 ![logo](https://forum.homeassistantbrasil.com.br/uploads/default/original/2X/2/26a7f7d19fe2de6edfba3fbd421beafe356a8be6.png)
-# Synchroniser tous les calendriers Google sur iPhone
+# Introduction
 
 La synchronisation de votre calendrier Google par défaut ou de vos calendriers personnalisés sur votre iPhone est assez simple ces derniers jours sur iOS. Une fois que vous avez ajouté votre compte Gmail sous Mail, vous avez la possibilité de synchroniser votre calendrier, vos contacts et vos notes.
 
@@ -19,7 +19,7 @@ Ce problème m'a frustré pendant longtemps avant que je sois capable de le comp
 
 
 ---
-## 1. Synchroniser Google Agenda avec l'iPhone
+# Synchroniser Google Agenda avec l'iPhone
 
 
 C'est très simple et facile à faire. Tout d'abord, allez dans **Paramètres** et appuyez sur **Mail**. Ensuite allez dans **Comptes** et choisissez votre **calendrier**.
@@ -58,7 +58,7 @@ Allez dans **Paramètres**, appuyez sur **Mail** puis faites défiler jusqu'à *
     <img src="/images/calendar/comptedefault.jpg" alt="Capture d'écrans des calendriers" width="300"/>
 </p>
 
-## 2. Synchronisation d'autres calendriers sur l'iPhone
+# Synchronisation d'autres calendriers sur l'iPhone
 
 Maintenant pour la partie intéressante. Vous penseriez qu'il y aurait un lien évident disponible pour synchroniser le reste de ces calendriers sur votre iPhone, mais il n'y en a pas. J'ai cherché dans tous les paramètres du calendrier et je n'ai pas trouvé ce dont j'avais besoin.
 
@@ -76,7 +76,7 @@ Cependant, cette page est essentielle pour afficher ces autres agendas dans l'ap
 
 <br>
 
-## 3. Activer le calendrier dans l'application
+# Activer le calendrier dans l'application
 
 Enfin, vous devez vous assurer que les calendriers que vous synchronisez sont réellement activés dans l'application de calendrier iOS. Ils devraient être par défaut, mais s'ils ne sont pas cochés, vous ne verrez pas ces événements. Ouvrez l'application de calendrier et appuyez sur **Calendriers** tout en bas.
 
