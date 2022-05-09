@@ -2,7 +2,7 @@
 title: Déploiement d'une machine virtuelle et explication du Vagrantfile
 description: Ici, nous réaliserons le déploiement d'une machine virtuelle décrite dans un Vagrantfile avec quelques explications sur le contenu du fichier et les options ajoutés.
 published: true
-date: 2022-05-09T12:56:24.183Z
+date: 2022-05-09T14:05:14.251Z
 tags: linux, windows, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:25:53.947Z
@@ -40,7 +40,7 @@ mkdir /chemin/dossier
 ```bash
 vagrant init ubuntu/trusty64
 ```
-Cette commande permet à Vagrant de vous créer un Vagrantfile rempli de commentaire afin de vous guider dans la rédaction de celui-ci.
+Cette commande permet à Vagrant de vous créer un Vagrantfile rempli de commentaires afin de vous guider dans la rédaction de celui-ci.
 > L'argument `-m` permet d'avoir un Vagrantfile minimal.
 {.is-info}
 
@@ -87,7 +87,7 @@ vagrant ssh
 {.is-info}
 
 ## Destruction de la machine virtuelle
-Une fois le test de connexion fait et la validation du fonctionnement, vous pouvez forcer la destruction de votre environnement :
+Une fois le test de connexion fait et le fonctionnement validé, vous pouvez forcer la destruction de votre environnement :
 ```bash
 vagrant destroy -f
 ```
@@ -109,4 +109,4 @@ L'argument `vm.provider` permet de déclarer le provider de déploiement (ici Vi
 `v.cpus` = La variable de CPU déclarée plus haut, ici, 2 vCPUs.
 `v.memory` = la variable de mémoire RAM déclarée plus haut, ici 2GB de RAM.
 
-Encore une fois, vérifié bien l'indentation afin de correctement clôturer chaque bloc de configuration par un `end` sinon vous aurez une erreur de syntaxe remontée par la commande `vagrant validate`.
+Encore une fois, vérifiez bien l'indentation afin de correctement clôturer chaque bloc de configuration par un `end` sinon vous aurez une erreur de syntaxe remontée par la commande `vagrant validate`.
