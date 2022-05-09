@@ -2,7 +2,7 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T13:04:13.528Z
+date: 2022-05-09T14:03:52.725Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
@@ -111,7 +111,7 @@ Ici, il est question d'un script Bash que j'ai modifié pour mes besoins afin d'
 
 Nous avons aussi l'utilisation d'un plugin, nommé [Hostsupdater](https://github.com/agiledivider/vagrant-hostsupdater) à installer au préalable (pour celui-ci, cadeau, car il n'est plus maintenu et un bug empêche l'installation depuis Vagrant sans un petit workaround : [lien](https://github.com/hashicorp/vagrant/issues/8785))
 
-Ce plugin, permet, parmi pleins d'autres options, de lire et d'écrire dans le fichier host de la machine hôte et invité afin, une fois sa création réalisée, d'appliquer un hostname précis dans la machine invité afin de faciliter les translations DNS.
+Ce plugin, permet, parmi pleins d'autres options, de lire et d'écrire dans le fichier host de la machine hôte et invitée afin, une fois sa création réalisée, d'appliquer un hostname précis dans la machine invitée afin de faciliter les translations DNS.
 
 L'argument est :
 ```shell
@@ -129,6 +129,6 @@ Cette rédaction a été volontairement réduite afin d'éveiller votre curiosit
 
 Je remercie encore [Dirane Tafen](https://www.linkedin.com/in/dirane-willy-tafen-254913b5/) ainsi que l'équipe de [Eazy-Training](https://eazytraining.fr/cours/vagrant-pour-devops-creez-rapidement-et-facilement-vos-environnements-de-travail/) pour cette formation très complète sur Vagrant.
 
-Si vous souhaitez voir des cas d'utilisations progressifs de Vagrant, je mets à disposition mon [GitHub](https://github.com/Lucroz94/formations-eazytraining-cursus-devops) où je compte publier au fur et à mesure de mon apprentissage de l'outil de nouveau Vagrantfile et VagrantBox afin de déployer des architectures de plus en plus complexe.
+Si vous souhaitez voir des cas d'utilisations progressives de Vagrant, je mets à disposition mon [GitHub](https://github.com/Lucroz94/formations-eazytraining-cursus-devops) où je compte publier au fur et à mesure de mon apprentissage de l'outil de nouveau Vagrantfile et VagrantBox afin de déployer des architectures de plus en plus complexe.
 
 Merci d'avoir lu jusqu'au bout et n'hésitez pas à me contacter par mail : lucroz@lucroz.fr ou par Discord: Lucroz94#1579 si vous souhaitez échanger sur le sujet ! A bientôt pour de prochains articles !
