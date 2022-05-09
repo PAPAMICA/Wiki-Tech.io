@@ -1,8 +1,8 @@
 ---
 title: Vagrant : Comment automatiser rapidement le déploiement de son infrastructure virtuelles en local
 description: Vagrant est un outil en ligne de commandes permettant de déployer, à l'aide de plugins, des machines virtuelles en local, sur son poste, via des fichiers de configuration. Il s'appuie pour cela sur VirtualBox, VMWare Workstation etc
-published: false
-date: 2022-05-09T10:11:58.434Z
+published: true
+date: 2022-05-09T10:12:36.350Z
 tags: linux, windows, macos, automatisation, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-08T16:50:46.310Z
