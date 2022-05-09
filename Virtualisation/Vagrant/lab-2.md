@@ -2,7 +2,7 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T10:29:52.525Z
+date: 2022-05-09T12:41:59.191Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
@@ -15,7 +15,7 @@ Maintenant que vous savez déployer une machine, vous avez envie d'en faire plus
 Imaginons que vous souhaitez déployer plusieurs machines virtuelles afin de tester la fonctionnalité Load-Balancer d'un serveur Web.
 De plus, vous avez un joli script Bash que vous souhaitez exécuter à la création de la machine afin d'avoir un environnement ISO-Prod.
 
-Ici, nous allons nous attarder sur un Vagrant-File que j'ai rédigé qui permet de le faire, et je vais, petit à petit, vous expliquer la manière dont certains éléments ont été rajoutés (et d'autres omis, afin que vous puissiez chercher dans la documentation).
+Ici, nous allons nous attarder sur un Vagrantfile que j'ai rédigé qui permet de le faire, et je vais, petit à petit, vous expliquer la manière dont certains éléments ont été rajoutés (et d'autres omis, afin que vous puissiez chercher dans la documentation).
 
 La procédure pré-rédaction du Vagrantfile est la même, il faut cependant changer de répertoire de travail.
 
@@ -75,7 +75,7 @@ end
 
 Alors, nous avons ici rajouté pas mal d'éléments.
 
-Tout d'abord, nous avons rajouté la mention "vm.network" ainsi que l'IP fixe de la machine, variabilisé.
+Tout d'abord, nous avons rajouté la mention `vm.network` ainsi que l'IP fixe de la machine, variabilisé.
 Vous pouvez très bien laisser le type en DHCP, je vous laisse consulter la documentation pour cela.
 
 ```shell
