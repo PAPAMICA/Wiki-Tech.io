@@ -2,7 +2,7 @@
 title: Microsoft
 description: Plein de tutoriel sur les produits de Microsoft !
 published: true
-date: 2022-05-10T21:53:15.054Z
+date: 2022-05-10T21:54:02.203Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:27:48.269Z
@@ -10,9 +10,9 @@ dateCreated: 2021-05-30T18:27:48.269Z
 
 # Windows 7/10
 
-- [🔥 Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Microsoft/Windows/Commandes)
-- [💽 Partition Windows *Créer et gérer les partitions sous Windows*](/Microsoft/Windows/Partitions)
-- [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Microsoft/Windows7-10/Robocopy)
+- [🔥 Trucs & Astuces *Quelques astuces utiles de temps en temps !*](/Microsoft/Windows-7-10/Commandes)
+- [💽 Partition Windows *Créer et gérer les partitions sous Windows*](/Microsoft/Windows-7-10/Partitions)
+- [🤖 Robocopy *Copier et déplacer vos données en gardant les droits*](/Microsoft/Windows-7-10/Robocopy)
 {.links-list}
 - [👨‍💻 RDP *Activer et se connecter en bureau à distance*](/Microsoft/Windows/RDP)
 {.links-list}
