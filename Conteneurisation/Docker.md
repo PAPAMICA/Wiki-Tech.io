@@ -2,7 +2,7 @@
 title: Docker
 description: Toutes les procédures sur Docker
 published: true
-date: 2022-05-10T08:20:36.269Z
+date: 2022-05-10T08:20:55.526Z
 tags: docker, container, conteneur, dcoker-compose
 editor: markdown
 dateCreated: 2022-05-10T08:20:36.269Z
@@ -24,6 +24,6 @@ dateCreated: 2022-05-10T08:20:36.269Z
 - [❤️ container-updater *Superviser et mettre à jour automatiquement ses containers*](/Conteneurisation/Docker/container-updater)
 {.links-list}
 ## Quelques astuces
-- [💾 Sauvegarde base de données 🚧 *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
+- [💾 Sauvegarde base de données *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
 - [🔑 Changer le mot de passe d'une base de données 🚧 *Posgres ou MariaDB conteneurisées*](/Conteneurisation/Docker/Portainer)
 {.links-list}
