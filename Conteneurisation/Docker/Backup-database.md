@@ -1,8 +1,8 @@
 ---
-title: Sauvegarde de base de données conteuneurisée
-description: Faire un dump d'un base de données fonctionnant dans un conteuneur Docker
+title: Sauvegarde de base de données conteneurisée
+description: Faire un dump d'un base de données fonctionnant dans un conteneur Docker
 published: true
-date: 2022-05-10T08:09:51.206Z
+date: 2022-05-10T08:12:26.137Z
 tags: docker, backup, sauvegarde, postgres, mysql, mariadb
 editor: markdown
 dateCreated: 2022-05-10T08:07:32.137Z
