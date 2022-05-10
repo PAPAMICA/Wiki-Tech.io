@@ -2,14 +2,14 @@
 title: Sauvegarde de base de données conteneurisée
 description: Faire un dump d'un base de données fonctionnant dans un conteneur Docker
 published: true
-date: 2022-05-10T08:12:26.137Z
+date: 2022-05-10T08:13:26.087Z
 tags: docker, backup, sauvegarde, postgres, mysql, mariadb
 editor: markdown
 dateCreated: 2022-05-10T08:07:32.137Z
 ---
 
 ![logo](https://www.benlcollins.com/wp-content/uploads/2018/11/postgresql-logo.png =400x)
-# Postgres
+# PostgreSQL
 ## Récupération des informations
 Afin de pouvoir sauvegarder proprement votre base de données (avec un dump), il vous faut les informations suivante que vous pouvez récupérer directement depuis les variables d'envirionnement du conteneur :
 
