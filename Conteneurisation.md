@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2022-05-10T08:23:50.505Z
+date: 2022-05-10T08:26:12.455Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -29,5 +29,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 - [🔑 Changer le mot de passe d'une base de données 🚧 *Posgres ou MariaDB conteneurisées*](/Conteneurisation/Docker/Portainer)
 {.links-list}
 
+
+![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/2560px-Kubernetes_logo.svg.png =400x)
 # Kubernetes
 
