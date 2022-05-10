@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2022-05-10T08:26:12.455Z
+date: 2022-05-10T08:28:41.341Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -25,7 +25,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 - [❤️ container-updater *Superviser et mettre à jour automatiquement ses containers*](/Conteneurisation/Docker/container-updater)
 {.links-list}
 ## Quelques astuces
-- [💾 Sauvegarde base de données 🚧 *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
+- [💾 Sauvegarde base de données *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
 - [🔑 Changer le mot de passe d'une base de données 🚧 *Posgres ou MariaDB conteneurisées*](/Conteneurisation/Docker/Portainer)
 {.links-list}
 
