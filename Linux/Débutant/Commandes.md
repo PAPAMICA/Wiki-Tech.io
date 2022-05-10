@@ -2,7 +2,7 @@
 title: Commandes utiles
 description: Les principales commandes Linux avec descriptions et exemples !
 published: true
-date: 2021-10-04T17:05:07.760Z
+date: 2022-05-10T09:11:35.661Z
 tags: linux, ssh, commandes, commande
 editor: markdown
 dateCreated: 2021-05-24T10:35:22.227Z
@@ -16,6 +16,7 @@ dateCreated: 2021-05-24T10:35:22.227Z
 | `shutdown -now` | Éteint sans délais |
 | `systemctl (start/stop/restart/status) <service>` | Démarre/Arrête/Redémarre/Affiche le statut d'un service |
 | `uname -a` | Afficher les informations systèmes de linux |
+| `cat /etc/*el*` | Afficher le contenu du fichier système détaillant la release (sur RHEL situé dans /etc/redhat-release, Debian /etc/os-release |
 | `uname -r` | Afficher la version du noyau |
 | `uptime` | Afficher le temps d'activité du système et affiche la charge |
 | `hostname` | Affiche le nom d'hôte de la machine |
