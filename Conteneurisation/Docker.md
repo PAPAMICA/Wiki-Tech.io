@@ -2,7 +2,7 @@
 title: Docker
 description: Toutes les procédures sur Docker
 published: true
-date: 2022-05-10T08:20:55.526Z
+date: 2022-05-10T08:21:57.378Z
 tags: docker, container, conteneur, dcoker-compose
 editor: markdown
 dateCreated: 2022-05-10T08:20:36.269Z
@@ -21,7 +21,7 @@ dateCreated: 2022-05-10T08:20:36.269Z
 ## Quelques outils utiles
 - [💙 Traefik 🚧 *Un reverse-proxy pour tous les services*](/Conteneurisation/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Conteneurisation/Docker/Portainer)
-- [❤️ container-updater *Superviser et mettre à jour automatiquement ses containers*](/Conteneurisation/Docker/container-updater)
+- [❤️ container-updater *Superviser et mettre à jour automatiquement ses containers*](https://github.com/PAPAMICA/container-updater)
 {.links-list}
 ## Quelques astuces
 - [💾 Sauvegarde base de données *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
