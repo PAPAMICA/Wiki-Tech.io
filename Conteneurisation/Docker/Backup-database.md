@@ -2,7 +2,7 @@
 title: Sauvegarde de base de données conteuneurisée
 description: Faire un dump d'un base de données fonctionnant dans un conteuneur Docker
 published: true
-date: 2022-05-10T08:09:15.296Z
+date: 2022-05-10T08:09:51.206Z
 tags: docker, backup, sauvegarde, postgres, mysql, mariadb
 editor: markdown
 dateCreated: 2022-05-10T08:07:32.137Z
@@ -53,7 +53,7 @@ docker exec <CONTAINER_NAME> bash -c 'echo "$MYSQL_PASSWORD"'
 ```bash
 docker exec <CONTAINER_NAME> bash -c 'echo "$MYSQL_DATABASE"'
 ```
-## Sauvegarder
+## Sauvegarde
 ### Une seule table
 ```bash
 docker exec -e MYSQL_PWD=<DB_PASSWORD> <CONTAINER_NAME> /usr/bin/mysqldump -u <DB_USER> --no-tablespaces <DATABASE_NAME> > dump.sql
