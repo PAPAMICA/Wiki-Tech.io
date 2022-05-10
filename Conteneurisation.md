@@ -2,12 +2,13 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2022-05-10T08:15:22.921Z
+date: 2022-05-10T08:23:50.505Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
 ---
 
+![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2560px-Docker_%28container_engine%29_logo.svg.png =400x) 
 # Docker
  ## Les outils de bases
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Conteneurisation/Docker/Présentation)
