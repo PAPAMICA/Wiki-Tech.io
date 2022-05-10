@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2022-05-10T08:30:37.769Z
+date: 2022-05-10T08:31:03.028Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -22,7 +22,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 ## Quelques outils utiles
 - [💙 Traefik 🚧 *Un reverse-proxy pour tous les services*](/Conteneurisation/Docker/Traefik)
 - [❤️ Portainer *Une interface web pour gérer Docker*](/Conteneurisation/Docker/Portainer)
-- [🔄 container-updater *Superviser et mettre à jour automatiquement ses containers*](/Conteneurisation/Docker/container-updater)
+- [🔄 container-updater *Superviser et mettre à jour automatiquement ses containers*](https://github.com/PAPAMICA/container-updater)
 {.links-list}
 ## Quelques astuces
 - [💾 Sauvegarde base de données *Faire un dump d'une base de données conteneurisée*](/Conteneurisation/Docker/Backup-database)
