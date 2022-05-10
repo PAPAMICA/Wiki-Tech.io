@@ -2,7 +2,7 @@
 title: Linux - Paquets utiles
 description: 
 published: true
-date: 2021-06-14T07:38:51.098Z
+date: 2022-05-10T09:26:59.290Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:35:30.288Z
@@ -71,6 +71,10 @@ Site officiel : [github.com/flameshot-org/flameshot](https://github.com/flamesho
 ## Gimp
 
 ## Git
+
+Logiciel de versionning de code extrêmement populaire. Permet de gérer son code et de suivre ses fichiers très simplement que ce soit pour des projets personnels ou dans un environnement pro. Code pushable sur GitHub, Gitlab et autres alternatives
+
+Site officiel : [https://git-scm.com/](https://git-scm.com/)
 
 ## Howdy
 
