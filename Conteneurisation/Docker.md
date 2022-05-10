@@ -2,12 +2,13 @@
 title: Docker
 description: Toutes les procédures sur Docker
 published: true
-date: 2022-05-10T08:21:57.378Z
+date: 2022-05-10T08:23:28.377Z
 tags: docker, container, conteneur, dcoker-compose
 editor: markdown
 dateCreated: 2022-05-10T08:20:36.269Z
 ---
 
+![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/2560px-Docker_%28container_engine%29_logo.svg.png =400x) 
 # Docker
  ## Les outils de bases
 - [🐳 Présentation *Qu'est-ce que c'est et pourquoi l'utiliser ?*](/Conteneurisation/Docker/Présentation)
