@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2022-05-13T13:27:40.280Z
+date: 2022-05-13T13:28:47.509Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -162,15 +162,16 @@ Enfin sachez qu'il est tout simplement possible de désactiver dans votre `docke
 healthcheck:
   disable: true
 ```
+Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
 
 # Listes de Heathchecks
 
 ## MariaDB / MySQL
 ```yaml
     healthcheck:
-        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-        timeout: 20s
-        retries: 10
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
 ```
 
 ## PostgreSQL
@@ -193,4 +194,11 @@ healthcheck:
   timeout: 5s
   retries: 3
 ```
-Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
+
+```yaml
+healthcheck:
+  test: ["CMD-SHELL", "apt-get update -y && apt-get install -y curl && curl --fail http://localhost:8080/healthz || exit 1"]
+  interval: 5s
+  timeout: 3s
+  retries: 5
+  ```
