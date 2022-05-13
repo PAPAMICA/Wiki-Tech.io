@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2021-06-14T07:30:20.026Z
+date: 2022-05-13T13:25:04.776Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -32,7 +32,7 @@ Dans ce moment là, plusieurs solutions :
 -   La supervision finit par vous remonter l'information et vous intervenez ( de façon automatique ou non ),
 -   On intègre un healthcheck à notre service pour vérifier sa bonne santé et ainsi avoir l'information en temps réel.
 
-# Healthcheck
+# Créer un healthcheck
 
 Il est possible de déclarer un `HEALTHCHECK` de deux façons :
 
