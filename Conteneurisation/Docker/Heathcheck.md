@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2022-05-13T13:25:04.776Z
+date: 2022-05-13T13:27:40.280Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -163,4 +163,34 @@ healthcheck:
   disable: true
 ```
 
+# Listes de Heathchecks
+
+## MariaDB / MySQL
+```yaml
+    healthcheck:
+        test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+        timeout: 20s
+        retries: 10
+```
+
+## PostgreSQL
+
+## Curl
+```yaml
+    healthcheck:
+      test: curl --fail http://localhost:80 || exit 1
+      interval: 1m
+      timeout: 30s
+      retries: 3
+```
+## Wget
+
+## Sans curl ou wget
+```yaml
+healthcheck:
+  test: ["CMD", "bash", "-c", "exec 5<>/dev/tcp/127.0.0.1/8080 && echo -e 'GET /healthz HTTP/1.1\n\n' >&5 && cat <&5 | head -n 1 | grep 200"]
+  interval: 5s
+  timeout: 5s
+  retries: 3
+```
 Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
