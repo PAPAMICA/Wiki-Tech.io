@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2022-05-13T13:28:47.509Z
+date: 2022-05-13T13:30:01.326Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -175,7 +175,13 @@ Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
 ```
 
 ## PostgreSQL
-
+```yaml
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $DB_USER"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+```
 ## Curl
 ```yaml
     healthcheck:
@@ -185,7 +191,13 @@ Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
       retries: 3
 ```
 ## Wget
-
+```yaml
+    healthcheck:
+      test: wget -nv -t1 --spider 'http://localhost:80'
+      interval: 1m
+      timeout: 30s
+      retries: 3
+ ```
 ## Sans curl ou wget
 ```yaml
 healthcheck:
