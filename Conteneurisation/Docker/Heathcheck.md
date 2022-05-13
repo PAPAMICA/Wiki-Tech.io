@@ -2,7 +2,7 @@
 title: Healthcheck
 description: S’assurer du bon fonctionnement de ses containers !
 published: true
-date: 2022-05-13T13:30:01.326Z
+date: 2022-05-13T13:33:50.088Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:34:19.750Z
@@ -201,7 +201,7 @@ Source : [grottedubarbu.fr](https://www.grottedubarbu.fr/docker-healthcheck/)
 ## Sans curl ou wget
 ```yaml
 healthcheck:
-  test: ["CMD", "bash", "-c", "exec 5<>/dev/tcp/127.0.0.1/8080 && echo -e 'GET /healthz HTTP/1.1\n\n' >&5 && cat <&5 | head -n 1 | grep 200"]
+  test: ["CMD", "bash", "-c", "exec 5<>/dev/tcp/127.0.0.1/8000"]
   interval: 5s
   timeout: 5s
   retries: 3
@@ -209,7 +209,7 @@ healthcheck:
 
 ```yaml
 healthcheck:
-  test: ["CMD-SHELL", "apt-get update -y && apt-get install -y curl && curl --fail http://localhost:8080/healthz || exit 1"]
+  test: ["CMD-SHELL", "apt-get update -y && apt-get install -y curl && curl --fail http://localhost:8000 || exit 1"]
   interval: 5s
   timeout: 3s
   retries: 5
