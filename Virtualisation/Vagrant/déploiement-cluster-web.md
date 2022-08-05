@@ -2,7 +2,7 @@
 title: Déploiement d'un cluster applicatif
 description: Ici, nous allons déployer un cluster de 3 machines en rajoutant de la complexité avec la gestion du network, l'intégration de plugins et l'ajout de commande Bash post-installation
 published: true
-date: 2022-05-09T14:03:52.725Z
+date: 2022-08-05T10:49:16.046Z
 tags: linux, windows, virtualisation, macos, vagrant, scripting
 editor: markdown
 dateCreated: 2022-05-09T10:29:52.525Z
@@ -23,7 +23,7 @@ La procédure pré-rédaction du Vagrantfile est la même, il faut cependant cha
 
 Retrouvez le fichier utilisé directement sur mon Github :
 
-- [📂 Vagrantfile (github.com/Lucroz94)](https://github.com/Lucroz94/formations-eazytraining-cursus-devops/blob/main/Vagrant/lab-8/Vagrantfile)
+- [📂 Vagrantfile (github.com/Lucroz94)](https://raw.githubusercontent.com/Lucroz94/formations-eazytraining-cursus-devops/main/Vagrant/lab-8-debian11_3vms_cluster_custominstall_bashscript/Vagrantfile)
 {.links-list}
 
 # Déploiement d’un cluster web
