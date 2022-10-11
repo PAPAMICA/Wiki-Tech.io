@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-10-11T14:07:48.462Z
+date: 2022-10-11T14:13:14.207Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-24T16:13:51.003Z
 
 ![Fichier:Python logo and wordmark.svg — Wikipédia](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Python_logo_and_wordmark.svg/1200px-Python_logo_and_wordmark.svg.png)
 
-# Fonction basique
+# Fonctions
 Une fonction (ou méthode), est un bloc d'instructions réutilisable. Si vous venez à réécrire plusieurs fois les mêmes lignes dans votre code, cela signifie que vous pouvez les mettre sous forme de fonction. Votre code sera alors beaucoup plus lisible.
 
 ## Déclarer une fonction 
@@ -135,74 +135,7 @@ import script1
 Suite à l'import dans *script2*, le print de *script1* s'éxecute puisqu'il est à la racine (tout comme le *if \_\_name\_\_ == '\_\_main\_\_'*). On remarque que cette fois, \_\_name\_\_ est égal à *script1*.
 En vérifiant que \_\_name\_\_ est égal à \_\_main\_\_, on s'assure alors que le script est exécuté directement, et non en tant que module, nous permettant de réutiliser nos méthodes dans d'autres scripts.
 
-
-
-# Méthodes de classe
-
-# Le constructeur
-
-Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
-
-Le nom de cette méthode est “ \_\_init\_\_ ” et prend en premier argument “ self ”, qui représente l'objet courant, qui est cours de création.
-
-*Exemple : je crée un constructeur permettant de définir une personne* 
-
-```python
-class People:
-    def __init__(self,firstname,lastname,age):
-        self.firstname = firstname
-        self.lastname  = lastname
-        self.age       = age
-```
-
-Notre fonction init demande 3 paramètres, “ self ” étant un paramètre spécial. 
-
-Grâce à ce constructeur il ne reste qu'à créer des objets : 
-
-```python
->>> chuck = People("Chuck","Norris",81)
-```
-
-L'objet “chuck” a été créé, on peut désormais accéder à ses différents attributs, les lire et les modifier.
-
-```python
->>> chuck.firstname
-'Chuck'
->>> chuck.firstname = "Chucky"
->>> chuck.firstname
-'Chucky'
-```
-
-# Le représentateur
-
-Reprenons l'exemple précédent. Lorsque l'on souhaite afficher notre objet, la valeur retournée n'est pas tout à fait celle attendue.
-
-```python
->>> chuck
-<__main__.People object at 0x03C12820>
-```
-
-Nous allons donc utiliser un représentateur pour mettre en forme l'objet.
-
-Cette méthode se définit “ \_\_repr\_\_ ”.
-
-```python
-class People:
-    def __init__(self,firstname,lastname,age):
-        self.firstname = firstname
-        self.lastname  = lastname
-        self.age       = age
-
-    def __repr__(self):
-        return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)
-```
-
-```python
->>> repr(chuck)
-'Nom : Norris , Prenom : Chuck , Age : 81'
-```
-
-# Le décorateur
+## Le décorateur
 
 Le décorateur est une fonction permettant de modifier le comportement d'autres fonctions, évitant la répétition de code. Il est appelé par “ @nom\_décoraeur ”.
 
