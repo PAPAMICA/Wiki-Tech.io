@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2022-10-11T14:24:11.202Z
+date: 2022-10-11T14:41:40.154Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -39,6 +39,18 @@ De la même façon, si nous avons construit un objet "maison" avec un garage, no
 # Utilisation des objets
 ## Déclarer une classe
 Une classe est tout simplement déclarée par *"class ClassName:"*, puis les méthodes et attributs associés (indentés). Selon les bonnes pratiques, le nom de la classe doit être attaché, sans tiret, avec une majuscule à chaque mot.
+Il est possible de délcarer des attributs de classe :
+```python
+class Demo:
+    var = 1
+
+print(Demo.var)
+
+>>> 1
+```
+> **Attention** : ici nous parlons bien d'un attribut de **classe** et non d'objet. Pour les attributs d'objet, rendez-vous au chapitre suivant sur le constructeur.
+{.is-warning}
+
 ## Le constructeur
 
 Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
