@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2021-11-17T10:23:19.431Z
+date: 2022-10-11T14:13:05.600Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -38,3 +38,69 @@ De la même façon, si nous avons construit un objet "maison" avec un garage, no
 
 > Cette section présente uniquement le concept de POO. Pour apprendre à créer des objets, voir la rubrique "Méthodes"
 {.is-info}
+
+# Utilisation des objets
+## Déclarer une classe
+## Le constructeur
+
+Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
+
+Le nom de cette méthode est “ \_\_init\_\_ ” et prend en premier argument “ self ”, qui représente l'objet courant, qui est cours de création.
+
+*Exemple : je crée un constructeur permettant de définir une personne* 
+
+```python
+class People:
+    def __init__(self,firstname,lastname,age):
+        self.firstname = firstname
+        self.lastname  = lastname
+        self.age       = age
+```
+
+Notre fonction init demande 3 paramètres, “ self ” étant un paramètre spécial. 
+
+Grâce à ce constructeur il ne reste qu'à créer des objets : 
+
+```python
+>>> chuck = People("Chuck","Norris",81)
+```
+
+L'objet “chuck” a été créé, on peut désormais accéder à ses différents attributs, les lire et les modifier.
+
+```python
+>>> chuck.firstname
+'Chuck'
+>>> chuck.firstname = "Chucky"
+>>> chuck.firstname
+'Chucky'
+```
+
+# Le représentateur
+
+Reprenons l'exemple précédent. Lorsque l'on souhaite afficher notre objet, la valeur retournée n'est pas tout à fait celle attendue.
+
+```python
+>>> chuck
+<__main__.People object at 0x03C12820>
+```
+
+Nous allons donc utiliser un représentateur pour mettre en forme l'objet.
+
+Cette méthode se définit “ \_\_repr\_\_ ”.
+
+```python
+class People:
+    def __init__(self,firstname,lastname,age):
+        self.firstname = firstname
+        self.lastname  = lastname
+        self.age       = age
+
+    def __repr__(self):
+        return "Nom : %s , Prenom : %s , Age : %s" % (self.lastname, self.firstname, self.age)
+```
+
+```python
+>>> repr(chuck)
+'Nom : Norris , Prenom : Chuck , Age : 81'
+```
+
