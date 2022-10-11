@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-10-11T14:07:21.543Z
+date: 2022-10-11T14:07:48.462Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -137,7 +137,7 @@ En vérifiant que \_\_name\_\_ est égal à \_\_main\_\_, on s'assure alors que 
 
 
 
-# Fonction de classe
+# Méthodes de classe
 
 # Le constructeur
 
