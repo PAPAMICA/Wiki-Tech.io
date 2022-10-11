@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-10-11T14:04:55.654Z
+date: 2022-10-11T14:07:21.543Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -133,7 +133,9 @@ import script1
 >>> script1
 ```
 Suite à l'import dans *script2*, le print de *script1* s'éxecute puisqu'il est à la racine (tout comme le *if \_\_name\_\_ == '\_\_main\_\_'*). On remarque que cette fois, \_\_name\_\_ est égal à *script1*.
-En vérifiant que \_\_name\_\_ est égal à \_\_main\_\_, on s'assure alors que le script est exécuté directement, et non par un import, nous permettant de réutiliser nos méthodes dans d'autres scripts.
+En vérifiant que \_\_name\_\_ est égal à \_\_main\_\_, on s'assure alors que le script est exécuté directement, et non en tant que module, nous permettant de réutiliser nos méthodes dans d'autres scripts.
+
+
 
 # Fonction de classe
 
