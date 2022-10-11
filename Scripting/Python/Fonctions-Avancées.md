@@ -2,7 +2,7 @@
 title: Python - Fonctions avancées
 description: 
 published: true
-date: 2022-01-26T15:50:50.684Z
+date: 2022-10-11T14:04:55.654Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T16:13:51.003Z
@@ -115,6 +115,25 @@ if __name__ == '__main__':
 >>> addition : 6
 >>> Il fait beau aujourd'hui
 ```
+Mais à quoi sert cette fonction ? Tout simplement à pouvoir utiliser les fonctions du script dans un autre script, à l'aide d'un *import*. Si les instructions sont décrites directement à la racine du code, elles seront exécutées dès l'import.
+Observons la valeur de \_\_name\_\_ lorsque l'on exécute le script directement :
+```python
+#./script1.py
+
+print(__name__)
+
+>>> __main__
+```
+Ici, \_\_name\_\_ est égal à \_\_main\_\_. Maintenant, observons sa valeur lorsque le script est appelé depuis un import :
+```python
+#./script2.py
+
+import script1
+
+>>> script1
+```
+Suite à l'import dans *script2*, le print de *script1* s'éxecute puisqu'il est à la racine (tout comme le *if \_\_name\_\_ == '\_\_main\_\_'*). On remarque que cette fois, \_\_name\_\_ est égal à *script1*.
+En vérifiant que \_\_name\_\_ est égal à \_\_main\_\_, on s'assure alors que le script est exécuté directement, et non par un import, nous permettant de réutiliser nos méthodes dans d'autres scripts.
 
 # Fonction de classe
 
