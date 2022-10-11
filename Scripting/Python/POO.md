@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2022-10-11T14:23:50.163Z
+date: 2022-10-11T14:24:11.202Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -73,7 +73,7 @@ L'objet “chuck” a été créé, on peut désormais accéder à ses différen
 'Chucky'
 ```
 
-# Le représentateur
+## Le représentateur
 
 Reprenons l'exemple précédent. Lorsque l'on souhaite afficher notre objet, la valeur retournée n'est pas tout à fait celle attendue.
 
