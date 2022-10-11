@@ -2,7 +2,7 @@
 title: Python - Manipulation des données
 description: 
 published: true
-date: 2021-11-17T10:37:48.278Z
+date: 2022-10-11T10:00:05.828Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-06-07T08:01:47.026Z
@@ -37,6 +37,26 @@ python est cool
 C# est cool
 java est cool
 C++ est cool</code></pre>
+<h2>Shallow copy vs Deep copy</h2>
+<p>Lorsqu'on copie une liste, il faut bien faire attention à la méthode employée.</p>
+<p>La première méthode est de simplement affecter à une variable la liste précédente. C'est le shallow copy. Cette méthode ne crée pas une seconde liste, mais renvoie au même index dans la pile. Si on modifie la première liste, ça modifie donc la deuxième aussi !</p>
+<pre><code class="language-python">&gt;&gt;&gt; l1 = [1,2,3]
+&gt;&gt;&gt; l2 = l1
+
+&gt;&gt;&gt; l1[1] = 64
+&gt;&gt;&gt; print(l2)
+
+[1,64,3]</code></pre>
+<p>Si on veut créer une seconde liste indépendante, on réalisera donc une deep copy grâce à la fonction <i>deepcopy</i>.</p>
+<pre><code class="language-python">import copy
+
+l1 = [1,2,3]
+l2 = copy.deepcopy(l1)
+
+l1[1] = 64
+print(l2)
+
+&gt;&gt;&gt; [1,2,3]</code></pre>
 <h1>Les tuples</h1>
 <p>Les tuples ressemblent à des listes mais ne sont pas modifiables après leur création. Ils sont définis avec des parenthèses :</p>
 <pre><code class="language-python">&gt;&gt;&gt; tup = (1,2,3)
