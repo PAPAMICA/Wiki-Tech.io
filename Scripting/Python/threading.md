@@ -2,7 +2,7 @@
 title: Threading
 description: Paralléliser les opérations
 published: true
-date: 2022-10-11T09:31:23.402Z
+date: 2022-10-11T09:33:35.085Z
 tags: 
 editor: markdown
 dateCreated: 2022-10-11T09:10:42.435Z
@@ -55,3 +55,5 @@ Pour créer le thread, on appelle la fonction *Thread* de la library *threading*
 - target : le nom de la fonction à exécuter
 - args (optionnel) : si la fonction a besoin d'arguments, on les donne ici
 Ensuite, on lance le thread avec la fonciton *start*
+> **Attention :** J'attire votre attention sur la virgule après le *2* dans les args. En effet, un tuple est attendu. Si vous n'avez qu'un seul argument à donner, il faut donc mettre une virgule pour indiquer qu'il s'agit d'un tuple.
+{.is-warning}
