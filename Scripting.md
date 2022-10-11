@@ -2,7 +2,7 @@
 title: Scripting
 description: Les différents langage de scripts avec leurs tutoriels !
 published: true
-date: 2021-11-17T10:08:17.543Z
+date: 2022-10-11T09:09:12.496Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:30:53.085Z
@@ -23,6 +23,7 @@ dateCreated: 2021-05-24T14:30:53.085Z
   - [💎 Programmation Orientée Objet (POO)*Comprendre la notion d'objet*](/Scripting/Python/POO)
  - [💎 Méthodes (Fonctions)*Fonctions de base, actions sur objet, décorateurs*](/Scripting/Python/Fonctions-Avancées)
   - [💎 Gestion des erreurs/exceptions *Anticiper les erreurs*](/Scripting/Python/exceptions)
+  - [💎 Threading *Paralléliser les opérations*](/Scripting/Python/threadinig)
 {.links-list}
 
 # Powershell
