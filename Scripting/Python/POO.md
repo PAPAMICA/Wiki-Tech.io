@@ -2,7 +2,7 @@
 title: Python - Programmation Orientée Objet (POO) 
 description: Comprendre la notion de programmation orientée objet
 published: true
-date: 2022-10-11T14:13:05.600Z
+date: 2022-10-11T14:23:50.163Z
 tags: 
 editor: markdown
 dateCreated: 2021-11-17T09:11:34.380Z
@@ -36,11 +36,9 @@ Par exemple, si nous construisons une voiture nous pouvons la définir comme sui
 
 De la même façon, si nous avons construit un objet "maison" avec un garage, nous pourrons les faire interagir entre eux en définissant, par exemple, que le garage reçoit l'information "bip ouverture" et ouvre la porte. L'objet voiture pourra alors avancer (seule puisque c'est une Tesla) à la réception de l'information "pas d'obstacle" (ex : `if front_captor == 0: move(forward)`). Enfin, le garage pourra se fermer après réception du signal "voiture rentrée".
 
-> Cette section présente uniquement le concept de POO. Pour apprendre à créer des objets, voir la rubrique "Méthodes"
-{.is-info}
-
 # Utilisation des objets
 ## Déclarer une classe
+Une classe est tout simplement déclarée par *"class ClassName:"*, puis les méthodes et attributs associés (indentés). Selon les bonnes pratiques, le nom de la classe doit être attaché, sans tiret, avec une majuscule à chaque mot.
 ## Le constructeur
 
 Un constructeur est une méthode spéciale d'une classe qui permet de construire un objet, de lui donner des attributs.
