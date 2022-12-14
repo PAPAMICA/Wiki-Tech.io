@@ -2,7 +2,7 @@
 title: Réseau
 description: Ce qu'il faut savoir sur le réseau !
 published: true
-date: 2022-12-14T08:53:17.859Z
+date: 2022-12-14T09:03:07.941Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:39:12.033Z
@@ -21,11 +21,6 @@ dateCreated: 2021-05-30T18:39:12.033Z
 - [📨 Les protocoles de routage LAN *Tout comprendre sur le routage LAN.*](/Réseau/Protocoles/Protocoles_de_routage_LAN)
 {.links-list}
 
-# Packet Tracer
-
-
-
-{.links-list}
 
 # Equipements
 - [📫 Routeur *Qu’est-ce que c’est et comment cela fonctionne ?*](/Réseau/Equipements/Routeur)
