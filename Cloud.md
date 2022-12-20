@@ -2,11 +2,15 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2022-12-06T12:39:19.778Z
+date: 2022-12-20T10:09:06.818Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
 ---
+
+![117-1174725_cloud-computing-cloud-computing-icon-transparent.jpeg](/117-1174725_cloud-computing-cloud-computing-icon-transparent.jpeg)
+# Cloud Computing
+
 
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Infomaniak Public Cloud
