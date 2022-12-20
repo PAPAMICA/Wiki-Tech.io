@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T12:21:28.697Z
+date: 2022-12-20T12:25:19.837Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -106,16 +106,5 @@ En PaaS, le provider vous mettra à disposition tout sauf la partie application 
 - Niveau élevé d’automatisation
 - Facturation basée sur la consommation
 
-
-**La Virtualisation:**
-
-***Définition :***
-- Ensemble de techniques et d’outils permettant de faire tourner plusieurs systèmes d’exploitation sur un serveur, en exploitant la même machine physique. 
-- Partage de ressources avec deux principes fondamentaux:
-	a. le cloisonnement: chaque système d’exploitation à un fonctionnement indépendant sans aucune interférence mutuelle
-	b. la transparence: le fonctionnement en mode virtualisé ne modifie pas le fonctionnement du système ni des applications
-
-**Paravirtualisation**
-![paravirtualisation.png](/paravirtualisation.png)
 
 
