@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:32:54.003Z
+date: 2022-12-20T10:42:30.946Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -60,7 +60,26 @@ Sécurité des données : le choix de l’emplacement physique des données est
 
 ---
 
+## Modèles de services
 
+**Software as a Service (saas)** → ce modèle offre la possibilité d'accéder à l’application ou consommation de l’application, tout est maintenu par le fournisseur. Comme par exemple gmail, on la développe pas, on la déploie pas, on ne la met pas à jour, mais on utilise l’application. On exploite et on consomme l’application.
+
+→ permet à une entreprise de ne plus installer d’applications sur ses propres serveurs mais de s’abonner à des logiciels en ligne et de payer un prix qui variera en fonction de leurs utilisations effectives. Toute la maintenance est gérée par le fournisseur du service. Exemple: google, facebook, oracle
+
+---
+**Platform as a Service (paas)** → ce modèle offre les environnements de développement (sous IDE) et de test de votre code, et de déploiement final. Sans avoir besoin d’installer un équipement sur notre machine locale. On peut approvisionner tout l’environnement nécessaire pour pouvoir coder en java web par exemple sans avoir à installer aucun équipement sur notre machine. Tout depuis le navigateur web. 
+
+→ Le fournisseur offre une plateforme cloud déjà configurée. Les entreprises peuvent donc se concentrer sur le développement et la production d'applications. On peut ignorer les détails de l’infrastructure, tels que la création d’une machine virtuelle, l’installation d’un serveur web et l’installation d’un intergiciel (middleware) Exemple: Appian, Windows Azure, Google, Caspio
+
+---
+
+**Infrastructure as a Service (iaas)** → cet environnement cloud permet la fourniture et l'approvisionnement de tous les environnements nécessaires pour la mise en place de l’infrastructure, les éléments de calculs, éléments de stockage, bande passante réseaux et quantité de ram, même les composants réseaux pour configurer des segments (couche réseaux modèle OSI).  
+
+→ Le fournisseur fournit des instances de serveur virtuel, du stockage et des mécanismes pour vous permettre de gérer les serveurs. Il offre également des ressources de calcul, de stockage, et de mise en réseau essentielles à la demande, et sur une base de paiement à l'utilisation.  Exemple: Eucalyptus Systems, GoGrid, Windows Azure, Amazon Web Service
+
+Essentiellement, on trouve ces trois modèles. Mais il existe des sous-couches de ces trois modèles, par exemple DAAS (database as a service) qui est une sous-couche de IAAS. 
+
+Pour bien choisir, il faut bien connaître les différents modèles: 
 
 
 
