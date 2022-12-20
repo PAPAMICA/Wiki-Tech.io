@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:51:38.759Z
+date: 2022-12-20T10:55:55.411Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -95,7 +95,7 @@ Ici on peut voir qu'en SaaS le provider prend la responsabilité de chaque bloc.
 En PaaS, le provider vous mettra à disposition tout sauf la partie application et données qui seront sous votre responsabilité.
 
 
-## Caractéristiques du cloud computing
+## Caractéristiques du Cloud Computing
 
 **Les Cinq Caractéristiques de cloud computing :**
 - Capacités de stockage et de calcul quasiment illimitées
@@ -103,4 +103,13 @@ En PaaS, le provider vous mettra à disposition tout sauf la partie application 
 - Elasticité / Scalabilité
 - Niveau élevé d’automatisation
 - Facturation basée sur la consommation
+
+
+**La Virtualisation:**
+
+*Définition :*
+- Ensemble de techniques et d’outils permettant de faire tourner plusieurs systèmes d’exploitation sur un serveur, en exploitant la même machine physique. 
+- Partage de ressources avec deux principes fondamentaux:
+	a. le cloisonnement: chaque système d’exploitation à un fonctionnement indépendant sans aucune interférence mutuelle
+	b. la transparence: le fonctionnement en mode virtualisé ne modifie pas le fonctionnement du système ni des applications
 
