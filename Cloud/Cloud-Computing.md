@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:49:26.943Z
+date: 2022-12-20T10:51:38.759Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -95,4 +95,12 @@ Ici on peut voir qu'en SaaS le provider prend la responsabilité de chaque bloc.
 En PaaS, le provider vous mettra à disposition tout sauf la partie application et données qui seront sous votre responsabilité.
 
 
+## Caractéristiques du cloud computing
+
+**Les Cinq Caractéristiques de cloud computing :**
+- Capacités de stockage et de calcul quasiment illimitées
+- Ressources extraites en pools
+- Elasticité / Scalabilité
+- Niveau élevé d’automatisation
+- Facturation basée sur la consommation
 
