@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:42:30.946Z
+date: 2022-12-20T10:49:26.943Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -77,13 +77,22 @@ Sécurité des données : le choix de l’emplacement physique des données est
 
 → Le fournisseur fournit des instances de serveur virtuel, du stockage et des mécanismes pour vous permettre de gérer les serveurs. Il offre également des ressources de calcul, de stockage, et de mise en réseau essentielles à la demande, et sur une base de paiement à l'utilisation.  Exemple: Eucalyptus Systems, GoGrid, Windows Azure, Amazon Web Service
 
-Essentiellement, on trouve ces trois modèles. Mais il existe des sous-couches de ces trois modèles, par exemple DAAS (database as a service) qui est une sous-couche de IAAS. 
+---
+
+***Essentiellement, on trouve ces trois modèles. Mais il existe des sous-couches de ces trois modèles, par exemple DAAS (database as a service) qui est une sous-couche de IAAS.***
+
+
+## Modèle de responsabilité
+
+De part le choix de votre modèle de service, le provider prend la responsabilitée ou non de différentes composantes de votre infrastructure.
 
 Pour bien choisir, il faut bien connaître les différents modèles: 
 
+![responsabilite-partage.png](/responsabilite-partage.png)
 
+Ici on peut voir qu'en SaaS le provider prend la responsabilité de chaque bloc.
 
-
+En PaaS, le provider vous mettra à disposition tout sauf la partie application et données qui seront sous votre responsabilité.
 
 
 
