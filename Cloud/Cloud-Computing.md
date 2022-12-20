@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:23:32.296Z
+date: 2022-12-20T10:24:00.865Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -30,7 +30,7 @@ Le principe d’élasticité : on a la possibilité d’augmenter ou de réduire
 Soit à la main, soit avec le principe de load balancing : le load balancing reste à l'écoute du taux de consommation de vos ressources et s'ajuste en fonction du besoin.
 
 
-## Modèle de déploiement
+## Modèle de déploiement / type de cloud computing
 
 **Cloud Public :** Un cloud public est une infrastructure informatique dans laquelle un fournisseur de services met des ressources à la disposition du public via internet.
 
