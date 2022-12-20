@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2022-12-20T12:28:47.239Z
+date: 2022-12-20T12:29:33.982Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -10,7 +10,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
 
 ![117-1174725_cloud-computing-cloud-computing-icon-transparent.jpeg](/117-1174725_cloud-computing-cloud-computing-icon-transparent.jpeg)
 # Cloud Computing
- - [📦 Le Cloud computing c'est quoi ?](/Cloud/Cloud-Computing) 
+ - [📦 **Le Cloud computing c'est quoi ?**](/Cloud/Cloud-Computing) 
 
 ![plan_de_travail_1@4x.png](/images/cloud/infomaniak-public-cloud/plan_de_travail_1@4x.png =600x)
 # Infomaniak Public Cloud
