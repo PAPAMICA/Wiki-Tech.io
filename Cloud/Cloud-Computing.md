@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T12:38:20.814Z
+date: 2022-12-20T12:59:27.587Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -47,15 +47,15 @@ Soit à la main, soit avec le principe de load balancing : le load balancing res
 > - **Aucun investissement initial en matériel :** aucune obligation d’acheter, de gérer et de tenir à jour une infrastructure locale de matériel et d’applications.
 > Le fournisseur de services cloud est responsable de la gestion et de la maintenance du système.
 > 
-> - Automatisation : provisionnez rapidement des ressources d’infrastructure à l’aide d’un portail web ou via une automatisation.
+> - **Automatisation :** provisionnez rapidement des ressources d’infrastructure à l’aide d’un portail web ou via une automatisation.
 > 
-> - Répartition géographique : stockez les données près de vos utilisateurs, ou aux emplacements de votre choix sans avoir à gérer vos propres centres de données.
+> - **Répartition géographique :** stockez les données près de vos utilisateurs, ou aux emplacements de votre choix sans avoir à gérer vos propres centres de données.
 
 > **Exemple de situation – Cloud privé**
 > 
-> Environnement préexistant : environnement d’exploitation existant qui ne peut pas être répliqué dans le cloud public. Il peut s’agir d’un investissement important en matériel et en personnel disposant d’une expertise ad hoc.
+> **Environnement préexistant :** environnement d’exploitation existant qui ne peut pas être répliqué dans le cloud public. Il peut s’agir d’un investissement important en matériel et en personnel disposant d’une expertise ad hoc.
 > 
-> Sécurité des données : le choix de l’emplacement physique des données est parfois dicté par des frontières géographiques et des exigences légales.
+> **Sécurité des données :** le choix de l’emplacement physique des données est parfois dicté par des frontières géographiques et des exigences légales.
 > 
 
 ---
