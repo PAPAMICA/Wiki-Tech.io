@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T12:25:19.837Z
+date: 2022-12-20T12:34:54.271Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -32,13 +32,13 @@ Soit à la main, soit avec le principe de load balancing : le load balancing res
 
 ## Modèle de déploiement / type de cloud computing
 
-- Cloud public → environnement cloud accessible via un portail web sur internet, il suffit d’avoir un compte valide au niveau du fournisseur de service cloud et on a la possibilité de consommer des ressources cloud avec un paiement à l'utilisation. (AWS, Azur, Google Cloud)
+- **Cloud public**→ environnement cloud accessible via un portail web sur internet, il suffit d’avoir un compte valide au niveau du fournisseur de service cloud et on a la possibilité de consommer des ressources cloud avec un paiement à l'utilisation. (AWS, Azur, Google Cloud)
 
-- Cloud privé → environnement cloud privé est dédié à une organisation ou entreprise bien déterminé. Seuls les membres, ou employés, ont le droit d'utiliser les ressources de ce cloud privé. Pas ouvert au public, donc restreint. (microsoft system center, OpenStack par exemple)
+- **Cloud privé** → environnement cloud privé est dédié à une organisation ou entreprise bien déterminé. Seuls les membres, ou employés, ont le droit d'utiliser les ressources de ce cloud privé. Pas ouvert au public, donc restreint. (microsoft system center, OpenStack par exemple)
 
-- Cloud hybride → environnement cloud est divisé sous la forme privé et public. Par exemple une entreprise "x" : la partie privée est contrôlée par OpenStack et publique par le cloud Microsoft Azure. 
+- **Cloud hybride** → environnement cloud est divisé sous la forme privé et public. Par exemple une entreprise "x" : la partie privée est contrôlée par OpenStack et publique par le cloud Microsoft Azure. 
 
-- Cloud communautaire → Cloud dédié à un groupe d’utilisateur bien déterminé au sein d’un autre cloud. Cloud privé déployé au sein d’un autre cloud privé. cad qu’on va réservé un cloud privé dans le cloud privé réservé à par exemple notre classe dans le cadre de orsys. Un élève d’une autre classe n’y aura pas accès. 
+- **Cloud communautaire** → Cloud dédié à un groupe d’utilisateur bien déterminé au sein d’un autre cloud. Cloud privé déployé au sein d’un autre cloud privé. cad qu’on va réservé un cloud privé dans le cloud privé réservé à par exemple notre classe dans le cadre de orsys. Un élève d’une autre classe n’y aura pas accès. 
 
 ---
 
