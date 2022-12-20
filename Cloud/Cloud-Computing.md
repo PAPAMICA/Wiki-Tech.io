@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:23:22.678Z
+date: 2022-12-20T10:23:32.296Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -26,7 +26,7 @@ Le cloud computing est un modèle qui permet l’accès à une ressource à la d
 - Scalabilité des ressources à mesure que vos besoins métier évoluent
 - Exécuter votre infrastructure plus efficacement
 
-Le principe d’élasticité, on a la possibilité d’augmenter ou de réduire le nombre de ressources alloués à nos machines. 
+Le principe d’élasticité : on a la possibilité d’augmenter ou de réduire le nombre de ressources alloués à nos machines. 
 Soit à la main, soit avec le principe de load balancing : le load balancing reste à l'écoute du taux de consommation de vos ressources et s'ajuste en fonction du besoin.
 
 
