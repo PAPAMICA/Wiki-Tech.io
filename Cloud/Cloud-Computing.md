@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:24:00.865Z
+date: 2022-12-20T10:32:39.309Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -32,14 +32,13 @@ Soit à la main, soit avec le principe de load balancing : le load balancing res
 
 ## Modèle de déploiement / type de cloud computing
 
-**Cloud Public :** Un cloud public est une infrastructure informatique dans laquelle un fournisseur de services met des ressources à la disposition du public via internet.
+- Cloud public → environnement cloud accessible via un portail web sur internet, il suffit d’avoir un compte valide au niveau du fournisseur de service cloud et on a la possibilité de consommer des ressources cloud avec un paiement à l'utilisation. (AWS, Azur, Google Cloud)
 
-**Cloud Privé :** Un Cloud privé est un modèle de Cloud Computing dans lequel l’infrastructure est dédiée à une seule organisation
+- Cloud privé → environnement cloud privé est dédié à une organisation ou entreprise bien déterminé. Seuls les membres, ou employés, ont le droit d'utiliser les ressources de ce cloud privé. Pas ouvert au public, donc restreint. (microsoft system center, OpenStack par exemple)
 
-**Cloud Hybride :** Les déploiements de cloud hybride combinent les cloud publics et privés.
+- Cloud hybride → environnement cloud est divisé sous la forme privé et public. Par exemple une entreprise "x" : la partie privée est contrôlée par OpenStack et publique par le cloud Microsoft Azure. 
 
-**Cloud Communautaire :** Il s’agit d’un cloud privé, déployer au sein d’un autre cloud privé, il s’agit souvent d’un déploiement de ressources à plusieurs clients travaillant sur un projet commun.
-
+- Cloud communautaire → Cloud dédié à un groupe d’utilisateur bien déterminé au sein d’un autre cloud. Cloud privé déployé au sein d’un autre cloud privé. cad qu’on va réservé un cloud privé dans le cloud privé réservé à par exemple notre classe dans le cadre de orsys. Un élève d’une autre classe n’y aura pas accès. 
 
 ---
 
