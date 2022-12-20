@@ -2,7 +2,7 @@
 title: Cloud Computing
 description: 
 published: true
-date: 2022-12-20T10:17:52.186Z
+date: 2022-12-20T10:20:09.693Z
 tags: cloud, compute
 editor: markdown
 dateCreated: 2022-12-20T10:14:06.132Z
@@ -16,11 +16,15 @@ Le cloud computing est un modèle qui permet l’accès à une ressource à la d
 - elle peut être rapidement approvisionnées et publiées.
 - effort minimal d’interaction avec le service fournisseur.
 
+**Deux acteurs:**
+- le fournisseur (exemple: AWS, GCP, Azure)
+- le consommateur
+
 **Avantages :**
 
-Réduction du coût d’achat d’infrastructure.
-Scalabilité des ressources à mesure que vos besoins métier évoluent
-Exécuter votre infrastructure plus efficacement
+- Réduction du coût d’achat d’infrastructure.
+- Scalabilité des ressources à mesure que vos besoins métier évoluent
+- Exécuter votre infrastructure plus efficacement
 
 ## Modèle de déploiement
 
