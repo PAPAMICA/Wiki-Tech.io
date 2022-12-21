@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2022-12-20T12:32:40.989Z
+date: 2022-12-21T08:13:52.994Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -66,6 +66,8 @@ dateCreated: 2021-05-30T17:41:57.218Z
 ---
 ![aws-logo.png](/images/cloud/aws/aws-logo.png =400x)
 # AWS
+- [📃 Rôle IAM 🚧 *Les sécurités d'identités AWS*](/Cloud/OpenStack/Logs)
+{.links-list}
 
 ---
 ![azure-logo.png](/images/cloud/azure/azure-logo.png =600x)
