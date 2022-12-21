@@ -2,7 +2,7 @@
 title: Identity and Access Management (IAM)
 description: 
 published: true
-date: 2022-12-21T08:20:08.177Z
+date: 2022-12-21T08:21:50.368Z
 tags: aws, iam, identity
 editor: markdown
 dateCreated: 2022-12-20T13:55:59.092Z
@@ -38,4 +38,25 @@ Vous permet de contrôler l'accès aux services et aux ressources dans AWS, de g
 
 > voir les différents services AWS qui fonctionnent avec IAM : https://docs.aws.amazon.com/fr_fr/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html 
 {.is-info}
+
+## Les Outils :
+
+IAM Credentials Report (account-level): génère un rapport répertoriant tous les utilisateurs de votre compte et l’état de leurs divers identifiants. 
+→ Il s'applique sur le compte principal, compte Root. Si on clique sur le nom de l'utilisateur on a plusieurs options qu’on peut effectuer sur cet utilisateur. Tous les services consommés par cet utilisateur seront facturés sur mon compte Root. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
