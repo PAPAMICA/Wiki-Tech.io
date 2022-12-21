@@ -2,7 +2,7 @@
 title: Identity and Access Management (IAM)
 description: 
 published: true
-date: 2022-12-21T08:36:23.055Z
+date: 2022-12-21T08:43:14.074Z
 tags: aws, iam, identity
 editor: markdown
 dateCreated: 2022-12-20T13:55:59.092Z
@@ -54,7 +54,9 @@ Ce rapport peut être généré via la console de management de AWS, des kits SD
 
 > Nous pouvons attribuer un rôle à un utilisateur externe à des fins d'audit par exemple, avec une génération à intervalle régulier d'un rapport.
 
+### IAM Access Advisor (user-level):
 
+Affiche les autorisations de services accordées à un utilisateur et la date du dernier accès à ces services. Pour chaque utilisateur quels sont les privilèges attribués à tel et tel utilisateurs.
 
 
 
