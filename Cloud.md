@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2022-12-21T08:49:48.774Z
+date: 2023-01-02T08:19:52.333Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -67,6 +67,7 @@ dateCreated: 2021-05-30T17:41:57.218Z
 ![aws-logo.png](/images/cloud/aws/aws-logo.png =400x)
 # AWS
 - [📃 Rôle IAM 🚧 *sécurités d'identités AWS*](/Cloud/AWS/IAM)
+- [⚡ EC2 | Elastic Compute Cloud](/Cloud/AWS/EC2)
 {.links-list}
 
 ---
