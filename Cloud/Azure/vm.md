@@ -2,7 +2,7 @@
 title: Les machines virtuelles
 description: 
 published: true
-date: 2023-01-02T08:56:17.084Z
+date: 2023-01-02T08:58:24.201Z
 tags: vm
 editor: markdown
 dateCreated: 2023-01-02T08:56:17.084Z
@@ -11,11 +11,10 @@ dateCreated: 2023-01-02T08:56:17.084Z
 # Les machines virtuelles
 
 
-> Les Machines virtuelles étendent l’offre IaaS de Microsoft - cloud public
-{.is-info}
+**Les Machines virtuelles étendent l’offre IaaS de Microsoft - cloud public**
 
-On exploite le modèle IaaS. 
 Les machines virtuelles sous microsoft azure représente: 
+
 → Support principal pour l'exécution de l’application. 
 → Simplicité de gestion de stockage. 
 → Fonctionnalités de haute disponibilité (SLA)
