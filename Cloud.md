@@ -2,7 +2,7 @@
 title: Cloud
 description: Différents tutoriels sur les principaux cloud !
 published: true
-date: 2023-01-02T08:19:52.333Z
+date: 2023-01-02T08:52:25.542Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:41:57.218Z
@@ -73,7 +73,8 @@ dateCreated: 2021-05-30T17:41:57.218Z
 ---
 ![azure-logo.png](/images/cloud/azure/azure-logo.png =600x)
 # Azure
-
+   - [🖥️ **Les machines virtuelles**](/Cloud/Azure) 
+{.links-list}
 ---
 ![gcp-logo2.png](/images/cloud/gcp/gcp-logo2.png =500x)
 # Google Cloud
