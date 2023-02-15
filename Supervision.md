@@ -2,7 +2,7 @@
 title: Supervision
 description: Quelques solutions de supervisions avec leurs tutoriels !
 published: true
-date: 2021-10-06T10:01:57.365Z
+date: 2023-02-15T17:45:11.241Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T14:42:55.255Z
@@ -19,6 +19,7 @@ dateCreated: 2021-05-24T14:42:55.255Z
 {.links-list}
 
 # Centreon
+Source : wiki.jovelinantoine.fr
 - [👁️‍🗨️ Présentation *Qu'est ce qu'est Centreon ?*](/Supervision/Centreon/Présentation)
 - [🌀 Installation *Mise en place d'un serveur Centreon*](/Supervision/Centreon/Installation)
 - [👥 Comptes et Groupes *Gestion des comptes et des groupes dans Centreon*](/Supervision/Centreon/Gestion-Comptes-Groupes)
