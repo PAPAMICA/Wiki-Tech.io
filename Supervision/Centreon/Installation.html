@@ -2,14 +2,14 @@
 title: Installation
 description: 
 published: true
-date: 2021-09-24T21:05:54.960Z
+date: 2023-02-15T17:42:20.369Z
 tags: 
 editor: ckeditor
 dateCreated: 2021-05-24T10:37:11.632Z
 -->
 
 <figure class="image image_resized" style="width:44.15%;"><img src="https://static.centreon.com/wp-content/uploads/2019/10/Centreon_Logo_RVB_HD_Cut.png?x55598" alt="Centreon | Supervision Informatique : Infrastuctures Hybrides, Cloud, AIOps">
-  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong></figcaption>
+  <figcaption><strong>Auteur : Antoine JOVELIN</strong><br><strong>Admin Système Réseau - 49100 Angers</strong><br><strong>Source :</strong> <a href="https://wiki.jovelinantoine.fr/">wiki.jovelinantoine.fr</a></figcaption>
 </figure>
 <h1>Téléchargement de l’ISO</h1>
 <p>Il faut d’abord commencer par télécharger l’ISO de Centreon.<br>Les différentes versions sont disponibles à l’adresse suivante&nbsp;:</p>
@@ -74,6 +74,7 @@ dateCreated: 2021-05-24T10:37:11.632Z
 <p><a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html</a></p>
 <p>Une fois connecté taper la commande suivante&nbsp;:</p>
 <pre><code class="language-plaintext">yum update</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/update_centreon-1.png"></figure>
 <p>Valider en tapant «&nbsp;y&nbsp;» (yes) à chaque fois que nécessaire</p>
 <figure class="image"><img src="/images/update_centreon-2.png"></figure>
@@ -113,6 +114,7 @@ innodb_file_per_table=1</code></pre>
 <h2>Configurations de base</h2>
 <p>Pour passer l’interface graphique en français il faut se connecter avec l’utilisateur root au serveur par SSH.<br>Dans un premier temps, installer le paquet de traduction en français à l’aide de la commande suivante&nbsp;:</p>
 <pre><code class="language-plaintext">yum -y install centreon-lang-fr_FR</code></pre>
+<p>&nbsp;</p>
 <figure class="image"><img src="/images/config_centreon-9.png"></figure>
 <p>Dans un deuxième temps, se connecter à l’interface graphique et cliquer sur Administration.<br>Dans la partie de gauche cliquer sur «&nbsp;Parameters&nbsp;» puis sur «&nbsp;My Account&nbsp;</p>
 <figure class="image"><img src="/images/config_centreon-10.png"></figure>
