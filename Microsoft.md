@@ -2,7 +2,7 @@
 title: Microsoft
 description: Plein de tutoriel sur les produits de Microsoft !
 published: true
-date: 2022-05-10T21:54:29.687Z
+date: 2023-02-15T17:46:01.280Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:27:48.269Z
@@ -29,6 +29,7 @@ dateCreated: 2021-05-30T18:27:48.269Z
 # Azure
 
 # Exchange 2016
+Source : wiki.jovelinantoine.fr
 - [🌀 Présentation et Prérequis *Présentation de Exchange 2016*](/Microsoft/Exchange-2016/Présentation)
 - [🌀 Installation *Comment installer Exchange 2016*](/Microsoft/Exchange-2016/Installation)
 - [🌀 Présentation de l'administration *Administration via EAC et EMS*](/Microsoft/Exchange-2016/Présentation-administration)
