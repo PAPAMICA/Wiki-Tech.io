@@ -2,7 +2,7 @@
 title: Gestionnaire de configuration
 description: Comprendre et utiliser un gestionnaire de configuration !
 published: true
-date: 2023-05-17T13:27:10.042Z
+date: 2023-05-17T13:30:39.012Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T18:04:01.740Z
@@ -35,4 +35,12 @@ dateCreated: 2021-05-30T18:04:01.740Z
 - [💎 CLI *Comprendre et utiliser les commandes Terraform*](/Configuration/Terraform/CLI)
 - [🕹️ Les providers *La force de Terraform*](/Configuration/Terraform/Providers)
 - [📜 Déployer ses premières machines avec le provider Proxmox *Provisionner sont infrastructure*](/Configuration/Terraform/Provisioning)
+{.links-list}
+
+# Kubespray
+
+- [ℹ️ Introduction *Présentation et définitions de cette solution*](/Configuration/Kubespray/Introduction)
+- [🌀 Installation et configuration *Mettre en place Kubespray dans son environnement*](/Configuration/Kubespray/Installation)
+- [💎 Playbook *Comprendre et modifier les playbook*](/Configuration/Kubespray/Playbook)
+- [📜 Installer un cluster Kubernetes personnalisé *Provisionner sont infrastructure*](/Configuration/Kubespray/Provisioning)
 {.links-list}
