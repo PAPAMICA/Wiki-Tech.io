@@ -1,8 +1,8 @@
 ---
-title: Installation d'un POC K8S sous Proxmox
+title: Installation d'un POC K3S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T20:26:53.354Z
+date: 2023-06-14T20:28:11.240Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
