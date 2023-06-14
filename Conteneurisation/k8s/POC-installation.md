@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:59:02.832Z
+date: 2023-06-14T19:10:52.534Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -65,3 +65,50 @@ Là aussi vous êtes libre de créer ce template par les moyens que vous souhait
 Dans ce POC je vais avoir besoin de 3 VM.
 Pour leur création, je vais utiliser Terraform.
 
+## Préparer Terraform
+Il faut installer le client Terraform sur sa machine, dans mon cas j'utilise MacOS donc je l'installe avec : 
+
+```bash
+brew install terraform
+```
+Ensuite nous avons besoin d'un fichier pour permettre à Terraform de se connecter à notre cluster Proxmox : `provider.tf`
+```json
+terraform {
+  required_providers {
+    proxmox = {
+      source = "Telmate/proxmox"
+      version = "2.9.14"
+    }
+  }
+}
+
+provider "proxmox" {
+  pm_api_url = "https://<IP_DU_PROXMOX>:8006/api2/json"
+  pm_user    = "terraform@pve"
+  pm_password = "<MOT_DE_PASSE>"
+  pm_tls_insecure = "true"
+  pm_parallel     = 3
+}
+```
+Et d'un autre fichier pour décrire l'infrastructure que nous voulons : `main.tf`
+```json 
+module "machinetest" {
+  count             = 3
+  source            = "QJoly/proxmox/module"
+  version           = "0.0.1"
+  node_name         = "master-${count.index}-tf"
+  node_target       = "<NOM_DU_SERVER_PROXMOX>"
+  node_qemuga       = 1
+  node_pool         = ""
+  node_size_disk    = "32G"
+  node_bootauto     = true
+  node_template     = "<NOM_DU_TEMPLATE>"
+  node_storage_disk = "<NOM_DE_VOTRE_STORAGE>"
+  node_network_host = "vmbr0"
+  node_notes        = "Super-VM for the customer No 01"
+  node_cpu          = 4
+  node_memory       = 4092
+}
+```
+
+}
