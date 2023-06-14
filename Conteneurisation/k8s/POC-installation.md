@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:03:41.360Z
+date: 2023-06-14T18:15:32.402Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -38,5 +38,17 @@ Pour cela, rendez vous dans la catégorie `Disk` de votre hyperviseur, et clique
 > Votre disque est prêt à être utilisé ! 
 {.is-success}
 
-## Création d'un template Debian 12
-Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer.
+## Créer un utilisateur
+Par la suite je vais utiliser Packer et Terraform pour déployer l'infra rapidement, pour cela, je vais créer un utilisateur dédié :
+![pve2_-_proxmox_virtual_environment_2023-06-14_20.09.41@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.09.41@2x.png)
+![pve2_-_proxmox_virtual_environment_2023-06-14_20.11.16@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.11.16@2x.png)
+
+Et on lui ajoute les bonnes permissions :
+![pve2_-_proxmox_virtual_environment_2023-06-14_20.12.57@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.12.57@2x.png)
+![pve2_-_proxmox_virtual_environment_2023-06-14_20.14.46@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.14.46@2x.png)
+
+## Créer d'un template Debian 12
+Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer avec l'aide de l'excellent projet de QJoly :
+https://github.com/QJoly/Debian-Template-Proxmox
+
+
