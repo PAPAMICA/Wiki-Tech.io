@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T19:40:51.471Z
+date: 2023-06-14T19:43:29.643Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -167,3 +167,7 @@ Et on applique toutes nos modifications avec un petit reboot :
 ```
 reboot
 ```
+
+> Il faut bien évidemment faire pareil sur les 3 serveurs en changeant les hostnames et les IP
+{.is-info}
+
