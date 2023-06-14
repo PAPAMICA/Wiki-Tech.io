@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:15:32.402Z
+date: 2023-06-14T18:20:02.397Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -49,6 +49,8 @@ Et on lui ajoute les bonnes permissions :
 
 ## Créer d'un template Debian 12
 Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer avec l'aide de l'excellent projet de QJoly :
+
 https://github.com/QJoly/Debian-Template-Proxmox
+{.github}
 
 
