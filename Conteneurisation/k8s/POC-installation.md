@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T19:43:29.643Z
+date: 2023-06-14T20:26:53.354Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -171,3 +171,50 @@ reboot
 > Il faut bien évidemment faire pareil sur les 3 serveurs en changeant les hostnames et les IP
 {.is-info}
 
+# Installer de K3S
+## Installation du Master
+J'installe K3S sur le master avec commande :
+```bash
+curl -sfL https://get.k3s.io | sh -
+```
+
+## Récupération du Token
+On peux récupérer le token de connexion au cluster sur le master :
+```bash
+cat /var/lib/rancher/k3s/server/node-token
+```
+
+## Installation des Nodes
+On installe K3S et on rejoins le cluster avec cette commande sur les nodes : 
+```bash
+curl -sfL https://get.k3s.io | K3S_URL=https://<IP_DU_MASTER>:6443 K3S_TOKEN=<TOKEN_DE_CONNEXION> sh -
+```
+## Vérification
+Deux petites commandes pour vérifier l'état du cluster à faire sur le master :
+```bash
+# Vérification des services essentiels :
+kubectl get pods -A
+
+# Résultat attendu :
+NAMESPACE     NAME                                      READY   STATUS      RESTARTS   AGE
+kube-system   local-path-provisioner-76d776f6f9-zfvl2   1/1     Running     0          16m
+kube-system   coredns-59b4f5bbd5-pq9tc                  1/1     Running     0          16m
+kube-system   helm-install-traefik-crd-2zcts            0/1     Completed   0          16m
+kube-system   helm-install-traefik-fp9r2                0/1     Completed   1          16m
+kube-system   svclb-traefik-9b862d50-55xl9              2/2     Running     0          6m15s
+kube-system   traefik-57c84cf78d-xz84t                  1/1     Running     0          6m15s
+kube-system   metrics-server-7b67f64457-7tvs2           1/1     Running     0          16m
+kube-system   svclb-traefik-9b862d50-hmmgj              2/2     Running     0          63s
+kube-system   svclb-traefik-9b862d50-w92rm              0/2     Pending     0          13s
+
+
+# Vérification des noeuds :
+kubectl get nodes
+
+# Résultat attendu : 
+NAME       STATUS     ROLES                  AGE     VERSION
+node01     Ready      <none>                 3m23s   v1.26.5+k3s1
+master01   Ready      control-plane,master   18m     v1.26.5+k3s1
+node02     NotReady   <none>                 2m34s   v1.26.5+k3s1
+
+```
