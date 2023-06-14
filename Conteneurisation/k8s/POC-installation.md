@@ -2,7 +2,7 @@
 title: Installation d'un POC K3S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T20:28:11.240Z
+date: 2023-06-14T20:30:25.606Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -218,3 +218,7 @@ master01   Ready      control-plane,master   18m     v1.26.5+k3s1
 node02     NotReady   <none>                 2m34s   v1.26.5+k3s1
 
 ```
+
+> Le cluster K3S est prêt pour nos premiers tests !
+{.is-success}
+
