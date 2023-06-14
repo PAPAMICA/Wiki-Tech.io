@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:20:02.397Z
+date: 2023-06-14T18:32:00.031Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -16,8 +16,8 @@ Voici donc la bête que j'ai acheté spécialement pour ce POC :
 
 ![poc_server.jpg](/Conteneurisation/poc_server.jpg)
 
-> Disponible sur Amazon : https://amzn.to/3P9ySPp
-{.is-info}
+[Disponible sur Amazon](https://amzn.to/3P9ySPp)
+{.amazon}
 
 16 Threads et 32Go de RAM seront parfait pour faire un POC K8S, voir même de la prod dans un futur proche.
 J'ai cependant profité du port SATA pour ajouter un SSD de 1To au NVME de 500Go déjà disponible.
@@ -50,7 +50,7 @@ Et on lui ajoute les bonnes permissions :
 ## Créer d'un template Debian 12
 Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer avec l'aide de l'excellent projet de QJoly :
 
-https://github.com/QJoly/Debian-Template-Proxmox
+[QJoly/Debian-Template-Proxmox](https://github.com/QJoly/Debian-Template-Proxmox)
 {.github}
 
 
