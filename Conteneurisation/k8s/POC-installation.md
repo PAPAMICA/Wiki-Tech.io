@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:32:00.031Z
+date: 2023-06-14T18:47:55.118Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -24,6 +24,14 @@ J'ai cependant profité du port SATA pour ajouter un SSD de 1To au NVME de 500Go
 
 ## Installer Proxmox
 Je ne vous guiderai pas dans ce tutoriel dans l'installation de Proxmox, mais vous pouvez retrouver toutes la documentation necessaire directement sur internet ou peut être dans un avenir proche dans cette catégorie Wiki-Tech : https://wiki-tech.io/Virtualisation#proxmox
+
+A la fin de l'installation de Proxmox, j'ai pour habitude d'utiliser un petit script post installation pour changer quelques configuration : 
+
+```bash
+bash -c "$(wget -qLO - https://github.com/tteck/Proxmox/raw/main/misc/post-pve-install.sh)"
+```
+
+![pve2_-_proxmox_console_2023-06-14_20.45.08@2x.png](/Conteneurisation/pve2_-_proxmox_console_2023-06-14_20.45.08@2x.png)
 
 ## Configurer le SSD de 1To
 Afin de bénéficier de la place disponible dans ce SSD SATA nouvellement ajouté à la machine, il fait le configurer dans Proxmox pour permettre son utilisation.
