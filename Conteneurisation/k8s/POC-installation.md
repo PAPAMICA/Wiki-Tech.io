@@ -2,13 +2,13 @@
 title: Installation d'un POC K3S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T20:33:21.832Z
+date: 2023-06-14T20:34:22.291Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
 ---
 
-![proxmox](https://gplexpert.com/wp-content/uploads/2019/07/PROXMOX-768x269.png)
+![proxmox](https://gplexpert.com/wp-content/uploads/2019/07/PROXMOX-768x269.png =400x)
 
 # Prérequis
 ## Un serveur hyperviseur
@@ -174,7 +174,7 @@ reboot
 {.is-info}
 
 
-![k3s](https://cncf-branding.netlify.app/img/projects/k3s/horizontal/color/k3s-horizontal-color.png)
+![k3s](https://cncf-branding.netlify.app/img/projects/k3s/horizontal/color/k3s-horizontal-color.png =400x)
 # Installer de K3S
 ## Installation du Master
 J'installe K3S sur le master avec commande :
