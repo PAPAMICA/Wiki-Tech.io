@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T19:10:52.534Z
+date: 2023-06-14T19:40:51.471Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -111,4 +111,59 @@ module "machinetest" {
 }
 ```
 
-}
+Ce qui nous donnes ces deux fichiers : 
+```
+.
+├── main.tf
+└── provider.tf
+```
+
+## Déployer les serveurs
+Rien de plus simple :
+```bash
+# On initialise Terraform
+terraform init
+
+# On vérifie ce que va faire Terraform
+terraform plan
+
+# Et on lance les joyeusetés !
+terraform apply
+```
+Et 4 min 20 après, voici les 3 machines virtuelles qui ont bien été créées : 
+![pve2_-_proxmox_virtual_environment_2023-06-14_21.28.55@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_21.28.55@2x.png)
+
+## Préparer les serveurs
+### Changer le hostname
+```bash
+hostnamectl set-hostname <NOM_DU_SERVER>
+```
+
+### Configurer le terminal
+Pour ça, j'utilise directement un petit script qui m'automatise toute la configuration :
+
+https://github.com/PAPAMICA/terminal
+{.github}
+
+```bash
+apt update && apt install -y curl && curl -Ls https://raw.githubusercontent.com/PAPAMICA/terminal/main/server_utils.sh | bash -s -- --motd --all-users
+```
+
+## Changer l'adresse IP
+J'édite le fichier `/etc/network/interfaces` avec ces lignes :
+```bash
+# The primary network interface
+allow-hotplug ens18
+iface ens18 inet static
+	address 10.10.0.250
+	netmask 255.255.255.0
+	gateway 10.10.0.1
+	dns-nameservers 10.10.0.1 1.1.1.1
+```
+
+## Redémarrer le serveur
+Et on applique toutes nos modifications avec un petit reboot :
+
+```
+reboot
+```
