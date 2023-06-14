@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T18:49:18.289Z
+date: 2023-06-14T18:59:02.832Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -55,10 +55,13 @@ Et on lui ajoute les bonnes permissions :
 ![pve2_-_proxmox_virtual_environment_2023-06-14_20.12.57@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.12.57@2x.png)
 ![pve2_-_proxmox_virtual_environment_2023-06-14_20.14.46@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_20.14.46@2x.png)
 
-## Créer d'un template Debian 12
+## Créer un template Debian 12
 Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer avec l'aide de l'excellent projet de QJoly :
 
 [QJoly/Debian-Template-Proxmox](https://github.com/QJoly/Debian-Template-Proxmox)
 {.github}
 
+# Déployer l'infra du POC
+Dans ce POC je vais avoir besoin de 3 VM.
+Pour leur création, je vais utiliser Terraform.
 
