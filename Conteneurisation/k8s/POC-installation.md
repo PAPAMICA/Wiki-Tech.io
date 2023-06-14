@@ -2,7 +2,7 @@
 title: Installation d'un POC K8S sous Proxmox
 description: 
 published: true
-date: 2023-06-14T17:52:35.877Z
+date: 2023-06-14T18:03:41.360Z
 tags: k8s, proxmox
 editor: markdown
 dateCreated: 2023-06-14T17:52:35.877Z
@@ -27,3 +27,16 @@ Je ne vous guiderai pas dans ce tutoriel dans l'installation de Proxmox, mais vo
 
 ## Configurer le SSD de 1To
 Afin de bénéficier de la place disponible dans ce SSD SATA nouvellement ajouté à la machine, il fait le configurer dans Proxmox pour permettre son utilisation.
+
+Pour cela, rendez vous dans la catégorie `Disk` de votre hyperviseur, et cliquer sur `Create Volume Group` :
+![pve2_-_proxmox_virtual_environment_2023-06-14_19.56.48@2x.png](/Conteneurisation/pve2_-_proxmox_virtual_environment_2023-06-14_19.56.48@2x.png)
+
+> Pensez à retenir le nom de votre volume, on va en avoir besoin par la suite.
+{.is-warning}
+
+
+> Votre disque est prêt à être utilisé ! 
+{.is-success}
+
+## Création d'un template Debian 12
+Là aussi vous êtes libre de créer ce template par les moyens que vous souhaitez, dans mon cas je vais en profiter pour utiliser Packer.
