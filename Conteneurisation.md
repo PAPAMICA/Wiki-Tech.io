@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2023-06-16T07:20:54.836Z
+date: 2023-06-16T08:11:01.713Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -38,6 +38,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 - [📌 Gestion des pods *Comprendre la gestion des pods de Kubernetes*](/Conteneurisation/k8s/Pods)
 - [🌐 Gestion du réseau *Comprendre la gestion du réseau de Kubernetes*](/Conteneurisation/k8s/Réseau)
 - [📦 Gestion du stockage *Comprendre la gestion du stockage de Kubernetes*](/Conteneurisation/k8s/Stockage)
+- [💾 Sauvegarde et restauration *Assurer les sauvegardes de son cluster K8S*](/Conteneurisation/k8s/Sauvegarde)
 - [🛠️ Outils tiers utiles *Découverte et configuration d'outils externe pour administrer un cluster K8S*](/Conteneurisation/k8s/outils-utiles)
 - [🐳 POC - Déployer un site WordPress *Déployer son premier conteneur*](/Conteneurisation/k8s/POC-WordPress)
 - [💎 POC - Gestion de la haute disponibilité *Mettre en place de la haute disponibilité*](/Conteneurisation/k8s/POC-HA)
