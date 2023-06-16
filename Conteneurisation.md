@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2023-06-14T20:28:54.563Z
+date: 2023-06-16T06:31:54.920Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -34,7 +34,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 # Kubernetes
 - [👨🏻‍💻 Présentation du projet *Mettre en place un cluster hybride hautement disponible*](/Conteneurisation/k8s/Projet)
 - [🧰 Installation POC K3S sous Proxmox *Découverte de K8S à travers un POC K3S selfhosted*](/Conteneurisation/k8s/POC-installation)
-- [🛠️ Outils tiers utiles *Découverte et configuration d'outils externe pour administer un cluster K8S*](/Conteneurisation/k8s/POC)
+- [🛠️ Outils tiers utiles *Découverte et configuration d'outils externe pour administer un cluster K8S*](/Conteneurisation/k8s/outils-utiles)
 - [🐳 POC - Déployer un site WordPress *Déployer son premier conteneur*](/Conteneurisation/k8s/POC-WordPress)
 - [💎 POC - Gestion de la haute disponibilité *Mettre en place de la haute disponibilité*](/Conteneurisation/k8s/POC-HA)
 - [✨ Cluster K8S sur le Public Cloud Infomaniak *Déployer un cluster dans les règles de l'art sur IPC*](/Conteneurisation/k8s/IPC-installation)
