@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:41:02.109Z
+date: 2023-06-16T07:44:09.114Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -257,7 +257,7 @@ Afficher les journaux pour un pod précédemment en panne
 kubectl logs --previous <pod_name>
 ```
 
-> Pour les journaux, nous recommandons également l'utilisation d'un outil développé par Johan Haleby appelé Kubetail. Il s'agit d'un script bash qui vous permettra d'obtenir des journaux à partir de plusieurs pods simultanément. Vous pouvez en savoir plus à son dépôt Github. Voici quelques commandes d'exemple utilisant Kubetail.
+> Pour les journaux, nous recommandons également l'utilisation d'un outil développé par Johan Haleby appelé Kubetail. Il s'agit d'un script bash qui vous permettra d'obtenir des journaux à partir de plusieurs pods simultanément. Vous pouvez en savoir plus sur son dépôt Github. Voir 
 {.is-info}
 
 
@@ -650,5 +650,8 @@ kubectl create -f ./newpod.json
 -h
 ```
 
+# kubetail
+
+  
 # k9s
 A venir 😜
