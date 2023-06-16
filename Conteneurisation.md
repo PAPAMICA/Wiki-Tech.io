@@ -2,7 +2,7 @@
 title: Conteneurisation
 description: Utiliser correctement, Docker, Kubernetes, etc..
 published: true
-date: 2023-06-16T06:41:01.296Z
+date: 2023-06-16T06:43:17.320Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-30T17:44:27.966Z
@@ -32,6 +32,7 @@ dateCreated: 2021-05-30T17:44:27.966Z
 
 ![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Kubernetes_logo.svg/2560px-Kubernetes_logo.svg.png =400x)
 # Kubernetes
+- [⭐️ Cheat Sheet *Petit pense bête pour les commandes principales*](/Conteneurisation/k8s/Cheat-sheet)
 - [👨🏻‍💻 Présentation du projet *Mettre en place un cluster hybride hautement disponible*](/Conteneurisation/k8s/Projet)
 - [🧰 Installation POC K3S sous Proxmox *Découverte de K8S à travers un POC K3S selfhosted*](/Conteneurisation/k8s/POC-installation)
 - [📌 Gestion des pods *Comprendre la gestion des pods de Kubernetes*](/Conteneurisation/k8s/Pods)
