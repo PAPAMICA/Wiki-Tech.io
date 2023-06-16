@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T08:11:33.685Z
+date: 2023-06-16T11:26:39.666Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -50,6 +50,22 @@ Ajouter la completion pour kubectl
 ```bash
 echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc
 ```
+
+## FISH
+Ajouter la completion pour kubectl 
+```bash
+kubectl completion fish > ~/.config/fish/completions/kubectl.fish
+```
+
+## Powershell
+Ajouter la completion pour kubectl 
+
+```powershell
+kubectl completion powershell > $HOME\.kube\completion.ps1
+Add-Content $PROFILE "$HOME\.kube\completion.ps1"
+```
+
+
 # kubectl
 ## Gestion de cluster
 
@@ -652,6 +668,45 @@ Inclure les 5 dernières minutes de journaux
 kubetail <pod_prefix> -s 5m
 ```
 
+# kubens et kubectx
   
+Pour simplifier le changement de context/namespace par défault *(pouvant se faire nativement par la commande `kubectl config set-context –current –namespace=toto`)*, il est possible d'utiliser les utilitaires **kubens** et **kubectx** qui permettre de rapidement modifier la configuration de votre *KUBECONFIG*.
+  
+## Installation 
+
+### MacOS
+  
+```bash
+brew install kubectx
+```
+### Linux (manuel)
+  
+```bash
+sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
+sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
+sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+```
+  
+## Usage
+
+### Changer de contexte (kubectx)
+
+```bash
+kubectx prod # Utiliser le contexte prod
+kubectx - # Revenir sur le précédent contexte
+```
+  
+### Changer de namespace par défaut
+
+```bash
+kubens kube-system # basculer sur le namespace kube-system
+kubens - # Revenir au précédent namespace
+```
+## Autre
+Il est possible d'utiliser kubens et kubectx en interactif avec **fzf** disponible sur votre path.
+   - Exemple:
+![Kubectx en interactif avec fzf](https://github.com/ahmetb/kubectx/raw/master/img/kubectx-interactive.gif)
+
+### 
 # k9s
 A venir 😜
