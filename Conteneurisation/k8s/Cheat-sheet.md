@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:40:23.188Z
+date: 2023-06-16T07:41:02.109Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -649,3 +649,6 @@ kubectl create -f ./newpod.json
 ```
 -h
 ```
+
+# k9s
+A venir 😜
