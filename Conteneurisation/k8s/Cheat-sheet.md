@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:37:25.939Z
+date: 2023-06-16T07:40:23.188Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -48,8 +48,8 @@ Ajouter la completion pour kubectl
 ```bash
 echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc
 ```
-
-# Gestion de cluster
+# kubectl
+## Gestion de cluster
 
 Afficher les informations d'endpoint sur le maître et les services dans le cluster
 
@@ -87,7 +87,7 @@ Lister tout
 kubectl get all --all-namespaces
 ```
 
-# Daemonsets
+## Daemonsets
 
 > Shortcode = ds
 {.is-info}
@@ -129,7 +129,7 @@ Afficher l'état détaillé des daemonsets dans un espace de noms
 kubectl describe ds <daemonset_name> -n <namespace_name>
 ```
 
-# Déploiements
+## Déploiements
 
 > Shortcode = deploy
 {.is-info}
@@ -171,7 +171,7 @@ Voir l'état de déploiement d'un déploiement
 kubectl rollout status deployment <deployment_name>
 ```
 
-# Événements
+## Événements
 
 > Shortcode = ev
 {.is-info}
@@ -207,7 +207,7 @@ Filtrer les événements normaux d'une liste d'événements
 kubectl get events --field-selector type!=Normal
 ```
 
-# Journaux
+## Journaux
 
 Afficher les journaux pour un pod
 
@@ -273,7 +273,7 @@ Inclure les 5 dernières minutes de journaux
 kubetail <pod_prefix> -s 5m
 ```
 
-# Fichiers de manifeste
+## Fichiers de manifeste
 
 > Une autre option pour modifier les objets est d'utiliser des fichiers de manifeste. Nous recommandons vivement d'utiliser cette méthode. Elle consiste à utiliser des fichiers YAML avec toutes les options nécessaires pour configurer les objets. Nous avons nos fichiers YAML stockés dans un référentiel Git, afin de pouvoir suivre les modifications et rationaliser les modifications.
 {.is-info}
@@ -309,7 +309,7 @@ Supprimer un objet
 kubectl delete -f manifest_file.yaml
 ```
 
-# Namespace
+## Namespace
 
 > Shortcode = ns
 {.is-info}
@@ -351,7 +351,7 @@ Afficher l'utilisation des ressources (CPU/mémoire/stockage) pour un espace de 
 kubectl top namespace <namespace_name>
 ```
 
-# Noeuds
+## Noeuds
 
 > Shortcode = no
 {.is-info}
@@ -423,7 +423,7 @@ Ajouter ou mettre à jour les étiquettes d'un ou plusieurs nœuds
 kubectl label node
 ```
 
-# Pods
+## Pods
 
 > Shortcode = po
 {.is-info}
@@ -483,7 +483,7 @@ Ajouter ou mettre à jour l'étiquette d'un pod
 kubectl label pod <pod_name>
 ```
 
-# Contrôleurs de réplication
+## Contrôleurs de réplication
 
 > Shortcode = rc
 {.is-info}
@@ -501,7 +501,7 @@ Lister les contrôleurs de réplication par espace de noms
 kubectl get rc --namespace="<namespace_name>"
 ```
 
-# ReplicaSets
+## ReplicaSets
 
 > Shortcode = rs
 {.is-info}
@@ -525,7 +525,7 @@ Mettre à l'échelle un ReplicaSet
 kubectl scale --replicas=[x]
 ```
 
-# Secrets
+## Secrets
 
 Créer un secret
 
@@ -551,7 +551,7 @@ Supprimer un secret
 kubectl delete secret <secret_name>
 ```
 
-# Services
+## Services
 
 > Shortcode = svc
 {.is-info}
@@ -581,7 +581,7 @@ Modifier et mettre à jour la définition d'un ou plusieurs services
 kubectl edit services
 ```
 
-# Service Accounts
+## Service Accounts
 > Shortcode = sa
 {.is-info}
 
@@ -606,7 +606,7 @@ Supprimer un compte de service
 kubectl delete serviceaccount <service_account_name>
 ```
 
-# StatefulSet
+## StatefulSet
 > Shortcode = sts
 {.is-info}
 
@@ -621,7 +621,7 @@ Supprimer uniquement le StatefulSet (pas les pods)
 kubectl delete statefulset/[stateful_set_name] --cascade=false
 ```
 
-# Options courantes
+## Options courantes
 Dans Kubectl, vous pouvez spécifier des indicateurs facultatifs avec les commandes. Voici quelques-uns des plus courants et utiles.
 
 - **-o Format de sortie.** Par exemple, si vous souhaitez répertorier tous les pods dans le format de sortie ps avec plus d'informations.
@@ -645,7 +645,7 @@ kubectl create -f ./newpod.json
 
 - **-l Sélecteur de filtre, prend en charge '=', '==' et '!='.**
 
-# Aide pour kubectl
+## Aide pour kubectl
 ```
 -h
 ```
