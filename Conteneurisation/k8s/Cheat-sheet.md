@@ -2,11 +2,32 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:00:45.096Z
+date: 2023-06-16T07:19:47.687Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
 ---
+
+# Autocompletion
+## Bash
+Installer `bash-completion`
+```bash
+sudo apt-get install -y bash-completion
+```
+Ajouter la completion pour kubectl
+```bash
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+Sourcer le fichier
+```bash
+source ~/.bashrc
+```
+
+## Zsh
+Ajouter la completion pour kubectl 
+```bash
+echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc
+```
 
 # Gestion de cluster
 
@@ -48,7 +69,9 @@ kubectl get all --all-namespaces
 
 # Daemonsets
 
-Shortcode = ds
+> Shortcode = ds
+{.is-info}
+
 
 Lister un ou plusieurs daemonsets
 
@@ -88,7 +111,9 @@ kubectl describe ds <daemonset_name> -n <namespace_name>
 
 # Déploiements
 
-Shortcode = deploy
+> Shortcode = deploy
+{.is-info}
+
 
 Lister un ou plusieurs déploiements
 
@@ -128,7 +153,9 @@ kubectl rollout status deployment <deployment_name>
 
 # Événements
 
-Shortcode = ev
+> Shortcode = ev
+{.is-info}
+
 
 Lister les événements récents pour toutes les ressources du système
 
@@ -534,4 +561,71 @@ Modifier et mettre à jour la définition d'un ou plusieurs services
 kubectl edit services
 ```
 
+# Service Accounts
+> Shortcode = sa
+{.is-info}
 
+
+Liste des comptes de service
+```
+kubectl get serviceaccounts
+```
+
+Afficher l'état détaillé d'un ou plusieurs comptes de service
+```
+kubectl describe serviceaccounts
+```
+
+Remplacer un compte de service
+```
+kubectl replace serviceaccount
+```
+
+Supprimer un compte de service
+```
+kubectl delete serviceaccount <service_account_name>
+```
+
+# StatefulSet
+> Shortcode = sts
+{.is-info}
+
+
+Liste des StatefulSet
+```
+kubectl get statefulset
+```
+
+Supprimer uniquement le StatefulSet (pas les pods)
+```
+kubectl delete statefulset/[stateful_set_name] --cascade=false
+```
+
+# Options courantes
+Dans Kubectl, vous pouvez spécifier des indicateurs facultatifs avec les commandes. Voici quelques-uns des plus courants et utiles.
+
+- **-o Format de sortie.** Par exemple, si vous souhaitez répertorier tous les pods dans le format de sortie ps avec plus d'informations.
+```
+kubectl get pods -o wide
+```
+
+- **-n Raccourci pour --namespace.** Par exemple, si vous souhaitez répertorier tous les pods dans un Namespace spécifique, vous exécuteriez cette commande :
+```
+kubectl get pods --namespace=[namespace_name]
+```
+ou
+```
+kubectl get pods -n=[namespace_name]
+```
+
+- **-f Nom de fichier, répertoire ou URL vers les fichiers à utiliser pour créer une ressource.** Par exemple, lors de la création d'un pod en utilisant des données dans un fichier nommé newpod.json.
+```
+kubectl create -f ./newpod.json
+```
+
+- **-l Sélecteur de filtre, prend en charge '=', '==' et '!='.**
+
+# Aide pour kubectl
+```
+-h
+```
