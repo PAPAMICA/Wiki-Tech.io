@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:24:33.204Z
+date: 2023-06-16T07:25:44.104Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -11,21 +11,24 @@ dateCreated: 2023-06-16T07:00:45.096Z
 # Autocompletion
 ## Bash
 
-Installer `bash-completion`
 ### tables {.tabset}
 #### MacOS
+Installer `bash-completion`
 ```bash
 brew install bash-completion
 
 echo "[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion" >> ~/.bash_profile
-
+```
+Ajouter la completion pour kubectl
+```bash
+echo "source <(kubectl completion bash)" >> ~/.bashrc
+```
+Sourcer le fichier
+```bash
+source ~/.bashrc
 ```
 
 #### Linux
-```bash
-sudo apt-get install -y bash-completion
-```
-
 Installer `bash-completion`
 ```bash
 sudo apt-get install -y bash-completion
