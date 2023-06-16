@@ -2,7 +2,7 @@
 title: README
 description: 
 published: true
-date: 2021-08-27T08:26:09.933Z
+date: 2023-06-16T07:58:39.306Z
 tags: 
 editor: markdown
 dateCreated: 2021-05-24T10:33:08.929Z
@@ -45,7 +45,7 @@ Partagez vos connaissances ! (sans oublier de respecter les règles 😉)
 -   Ne supprimer pas du contenu, modifier le uniquement si cela vous semble essentiel.
 -   Respectez le travail des autres contributeurs.
 -   Respecter la mise en page du site en général.
--   Support du Markdown et du HTML. (préférez le Markdown si possible)
+-   Ecrivez en Markdown uniquement.
 -   Si vous souhaitez créer une page ou aborder un sujet qui ne rentre pas dans une catégories existantes, n’hésitez pas à m'en parler (Discord : PAPAMICA #0001)
 
 # Mode d'emploi du site
@@ -62,11 +62,40 @@ Ecrivez en bon français, on est pas à l'abris de quelques fautes, mais ne parl
 
 Pour simplifier la gestion du repo github, **il est important de télécharger les images dans le dossier “Images”**.
 
-Par défaut l'image est centrée mais vous pouvez changer cela directement dans l'éditeur visuel.
+Par défaut l'image est centrée mais vous pouvez changer cela directement dans le markdown.
 
 ## Mise en page
 
-Je vous invite à lire la documentation Wikijs pour la gestion du  [Markdown](https://docs.requarks.io/editors/markdown)  et de l'[éditeur visuel](https://docs.requarks.io/editors/visualeditor) .
+Je vous invite à lire la documentation Wikijs pour la gestion du  [Markdown](https://docs.requarks.io/editors/markdown).
+
+Vous pouvez utiliser des balises spéciales pour les liens, voici celle disponible actuellement :
+
+### tables {.tabset}
+#### Github
+https://github.com/PAPAMICA
+{.github}
+```bash
+https://github.com/PAPAMICA
+{.github}
+```
+
+#### Amazon
+[Serveur conseillé](https://amzn.to/3p1JHZg)
+{.amazon}
+```bash
+[Serveur conseillé](https://amzn.to/3p1JHZg)
+{.amazon}
+```
+
+#### Autre
+[infomaniak.com](https://infomaniak.com)
+{.lien}
+```bash
+[infomaniak.com](https://infomaniak.com)
+{.lien}
+```
+###
+Si vous souhaitez que j'en ajoute d'autres, n'hésitez pas à m'en faire la demande.
 
 ![kaamelott GIF](https://media0.giphy.com/media/rhQENGnznnBT2/giphy.gif?cid=ecf05e47gtkr3znsehjzw6rme97npbr6c3ew83v9gtc32r1u&rid=giphy.gif&ct=g)
 
