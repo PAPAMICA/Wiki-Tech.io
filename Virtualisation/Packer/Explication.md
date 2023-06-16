@@ -2,7 +2,7 @@
 title: Philosophie derrière Packer
 description: 
 published: true
-date: 2023-06-16T12:01:04.079Z
+date: 2023-06-16T12:05:41.765Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-16T12:01:04.079Z
@@ -24,4 +24,8 @@ Dans la pratique, Packer va se charger de piloter un hyperviseur *(ou cloud)* af
 
 Il est normal de se demander si notre usage de la virtualisation est bien complémentaire avec Packer. 
 
-À cette question, imaginez le cadre d'un **P**lan de **R**eprise d'**A**ctivité après un incident : Allez-vous installer manuellement chaque machine virtuelle ? Bien sûr que non ! Allez-vous déployer  
+À cette question, imaginez le cadre d'un **P**lan de **R**eprise d'**A**ctivité après un incident : Allez-vous installer manuellement chaque machine virtuelle ? Bien sûr que non ! Allez-vous prendre le risque de créer une template à la main et oublier une dépendance cruciale ? Allez-vous réimporter un fichier *qcow2* très ancien car complexe à maintenir ? 
+
+Si vous vous êtes senti visé par l'une de ces questions: Packer est effectivement un outil qui peut vous simplifier la vie.
+
+Celui-ci est facile à maintenir (*code*), automatise la création d'une VM à partir d'une ISO récente qu'il peut lui-même télécharger *(ou non si vous le désirez)* et celui-ci ne possède presque aucun pré-requis technique.
