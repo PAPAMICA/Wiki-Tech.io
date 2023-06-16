@@ -2,7 +2,7 @@
 title: Kubernetes - Cheat Sheet
 description: Un petit pense bête pour les principales commandes de K8S
 published: true
-date: 2023-06-16T07:25:44.104Z
+date: 2023-06-16T07:28:26.935Z
 tags: cheatsheet, k8s
 editor: markdown
 dateCreated: 2023-06-16T07:00:45.096Z
@@ -12,7 +12,7 @@ dateCreated: 2023-06-16T07:00:45.096Z
 ## Bash
 
 ### tables {.tabset}
-#### MacOS
+#### <i class="fa-brands fa-apple"></i>MacOS
 Installer `bash-completion`
 ```bash
 brew install bash-completion
