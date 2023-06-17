@@ -2,7 +2,7 @@
 title: Les outils utiles pour K8S
 description: 
 published: true
-date: 2023-06-17T11:17:24.446Z
+date: 2023-06-17T11:41:29.020Z
 tags: k8s
 editor: markdown
 dateCreated: 2023-06-16T06:33:19.574Z
@@ -13,16 +13,12 @@ Your content here
 
 # Portainer
 
-> **ATTENTION :** Cette procédure a été écrite par ChatGPT, je test ca dans les prochains jours et j'adapterai la documentation.
-{.is-warning}
-
-
 ## Prérequis
 
 - Un cluster K3S fonctionnel
 - Accès en tant qu'utilisateur avec des privilèges suffisants pour créer des objets Kubernetes dans l'espace de noms `portainer`
 
-## Étape 1 : Créer un espace de noms pour Portainer
+## Créer un espace de noms pour Portainer
 
 1. Connectez-vous à votre cluster K3S en utilisant `kubectl`.
 2. Créez un espace de noms pour Portainer en utilisant la commande suivante :
@@ -31,7 +27,7 @@ Your content here
 kubectl create namespace portainer
 ```
 
-## Étape 2 : Créer un secret pour la base de données
+## Créer un secret pour la base de données
 
 1. Créez un secret pour la base de données MySQL en utilisant la commande suivante :
 
@@ -45,7 +41,7 @@ kubectl create secret generic portainer-db --namespace portainer \
 
 Remplacez `<password>` par un mot de passe sécurisé de votre choix.
 
-## Étape 3 : Déployer Portainer
+## Déployer Portainer
 
 1. Créez un fichier `portainer.yaml` avec le contenu suivant :
 
@@ -87,7 +83,7 @@ Remplacez `<password>` par un mot de passe sécurisé de votre choix.
 kubectl apply -f portainer.yaml
 ```
 
-## Étape 4 : Exposer Portainer en tant que service
+## Exposer Portainer en tant que service
 
 1. Créez un fichier `portainer-service.yaml` avec le contenu suivant :
 
@@ -113,7 +109,7 @@ spec:
 kubectl apply -f portainer-service.yaml
 ```
 
-## Étape 5 : Accéder à Portainer
+## Accéder à Portainer
 
 1. Obtenez l'adresse IP externe du service en utilisant la commande suivante :
 
@@ -123,6 +119,29 @@ kubectl get services -n portainer
 
 2. Ouvrez un navigateur Web et accédez à l'adresse IP externe du service sur le port 9000 (par exemple, `http://<adresse_ip>:9000`).
 3. Connectez-vous à Portainer en utilisant le mot de passe administrateur que vous avez défini dans le fichier `portainer.yaml`.
+
+## Donner les droits sur le cluster
+Créez un fichier `portainer-rbac.yaml` avec le contenu suivant :
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: portainer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: portainer
+
+```
+Appliquez la configuration en utilisant la commande suivante :
+```bash
+kubectl apply -f portainer-rbac.yaml
+```
 
 > Et voilà, vous avez maintenant installé et configuré Portainer sur votre cluster K3S !
 {.is-success}
