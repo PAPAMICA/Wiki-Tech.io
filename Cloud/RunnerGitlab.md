@@ -1,0 +1,68 @@
+---
+title: Utilisation des Runners de Gitlab
+description: Sur cette section, nous allons aborder une approche devops. On va voir l'intégration continue et la distribution continue d'une appli web.
+published: false
+date: 2023-06-18T10:09:56.754Z
+tags: gitlab runner, devops, ci, cd
+editor: markdown
+dateCreated: 2023-06-18T10:09:56.754Z
+---
+
+![gitlab](https://about.gitlab.com/images/opengraph/gitlab-blog-cover.png)
+
+# Introduction
+
+Avant d'aborder le projet que nous allons réaliser dans cette section, intéressons-nous à GitLab, un concurrent direct de GitHub. Ce qui le distingue de son concurrent, c'est la présence d'outils pour faciliter les déploiements, les tests unitaires, etc. Chaque projet GitLab dispose d'un onglet appelé *CI/CD*.
+
+![onglet-cicd.png](/images/onglet-cicd.png)
+
+
+1. GitLab intègre un processus de *pipelines* qui nous permet de suivre les étapes de notre fichier `.gitlab-ci.yml`, où nous pouvons spécifier les tests à effectuer avant les déploiements en production.
+
+2. L'éditeur permet de modifier le fichier `.gitlab-ci.yml` en temps réel et de vérifier la syntaxe pour détecter d'éventuelles erreurs.
+
+3. Un historique des pipelines est disponible pour visualiser les résultats des exécutions précédentes.
+
+4. GitLab conserve une archive des dossiers et fichiers sauvegardés, même s'ils sont supprimés.
+
+5. Enfin, un autre point fort est la présence de la planification des workflows, qui peut être très utile pour des tâches telles que les tests unitaires, la gestion des journaux (logs) ou les sauvegardes.
+
+
+
+> Le fichier `.gitlab-ci.yml` est obligatoire pour établir la connexion avec les outils de GitLab. À l'intérieur de ce fichier, nous spécifions les étapes du workflow.. 
+{.is-info}
+
+
+
+>L'équivalent sur GitHub serait les actions (si vous souhaitez plus d'informations, je vous recommande de consulter la documentation pour vous donner un aperçu : [GitHub Actions](https://docs.github.com/en/actions)).
+
+> Prochainement, un article sur Github 
+{.is-info}
+
+
+# Le mini projet
+
+Parfait ! Maintenant que nous avons terminé avec l'introduction, nous pouvons passer à la partie intéressante : le mini-projet.
+
+Avant de commencer l'explication des étapes, permettez-moi de vous donner un aperçu de l'infrastructure que nous allons utiliser pour l'intégration continue et le déploiement.
+
+Sur le projet, on va utiliser les runners, petite des explications des runners :
+
+Les runners de GitLab sont des agents d'exécution qui permettent de traiter les jobs des pipelines d'intégration continue et de déploiement. Ils sont responsables de l'exécution des différentes étapes définies dans le fichier .gitlab-ci.yml de notre projet.
+
+Les runners peuvent être configurés pour s'exécuter sur différents environnements, tels que des machines virtuelles, des machines physiques ou même des conteneurs Docker. Ils peuvent être hébergés sur site ou dans le cloud, en fonction des besoins et des contraintes de notre infrastructure.
+
+
+On peut utiliser des runners herbégé par Gitlab, ou créer un nous meme (ce qui plus intéressant).Il existe plusieurs de type de runner :
+
+
+
+
+
+
+
+
+
+
+
+
