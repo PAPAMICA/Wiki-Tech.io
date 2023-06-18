@@ -2,7 +2,7 @@
 title: Utilisation des Runners de Gitlab
 description: Sur cette section, nous allons aborder une approche devops. On va voir l'intégration continue et la distribution continue d'une appli web.
 published: false
-date: 2023-06-18T10:09:56.754Z
+date: 2023-06-18T14:58:55.414Z
 tags: gitlab runner, devops, ci, cd
 editor: markdown
 dateCreated: 2023-06-18T10:09:56.754Z
@@ -46,14 +46,65 @@ Parfait ! Maintenant que nous avons terminé avec l'introduction, nous pouvons p
 
 Avant de commencer l'explication des étapes, permettez-moi de vous donner un aperçu de l'infrastructure que nous allons utiliser pour l'intégration continue et le déploiement.
 
-Sur le projet, on va utiliser les runners, petite des explications des runners :
+Sur le projet, on va utiliser les runners, petite des explications des **runners** :
 
 Les runners de GitLab sont des agents d'exécution qui permettent de traiter les jobs des pipelines d'intégration continue et de déploiement. Ils sont responsables de l'exécution des différentes étapes définies dans le fichier .gitlab-ci.yml de notre projet.
 
-Les runners peuvent être configurés pour s'exécuter sur différents environnements, tels que des machines virtuelles, des machines physiques ou même des conteneurs Docker. Ils peuvent être hébergés sur site ou dans le cloud, en fonction des besoins et des contraintes de notre infrastructure.
+Les runners peuvent être configurés pour s'exécuter sur différents environnements, tels que des machines virtuelles, des machines physiques ou même des conteneurs Docker. Ils peuvent être hébergés sur site ou dans le cloud, en fonction des besoins et des contraintes de notre infrastructure.Ils vont utilisés des **exécuteurs** qui sont charger de traiter la demande.
 
 
-On peut utiliser des runners herbégé par Gitlab, ou créer un nous meme (ce qui plus intéressant).Il existe plusieurs de type de runner :
+On peut utiliser des runners herbégé par Gitlab, ou créer un nous meme (ce qui plus intéressant).Il existe plusieurs de type d'**exécuteurs** :
+
+  - SSH = executer des commandes à travers le SSH
+  - Shell = nos scripts seront lancés dans la machine ou on retrouve le runner 
+  - VirtualBox = le runner va créer une machine virtuelle à travers virtualBox
+  - Docker= création de container & image docker
+  - Kubernetes = création de cluster kubernetes
+
+Pour ce mini-projet, on va utiliser la version *shell*.
+
+
+---
+
+Voici un résumé du déroulement en schèma :
+
+> Pour se réperer, je vais nommer le runner BOB (le bricoleur)
+{.is-info}
+
+![schèma_runner.png](/images/schèma_runner.png)
+
+
+Le fichier qui va permettre des connaitres les étapes à suivre pour le runner est le *gitlab-ci.yaml*
+
+
+## Installation de BOB sur notre serveur
+
+
+Avant de créer le runner depuis l'interface WEB. On va d'abord préparer le terrain.
+
+On se rend sur notre terminal préferé :
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+sudo chmod +x /usr/local/bin/gitlab-runner
+sudo useradd --comment 'GitLab Runner' --create-home gitlab-runner --shell /bin/bash
+sudo gitlab-runner install --user=gitlab-runner --working-directory=/home/gitlab-runner
+sudo gitlab-runner start
+```
+
+Apres ca, nous avons le runner de gitlab qui est présent sur notre machine linux. 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
