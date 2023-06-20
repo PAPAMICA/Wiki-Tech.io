@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T19:21:21.801Z
+date: 2023-06-20T19:21:37.430Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -150,7 +150,7 @@ resource "openstack_compute_instance_v2" "controller" {
   security_groups = ["ALL-LOCAL", "SSH-EXTERNE", "HTTP-HTTPS", "ICMP"]
 
   metadata = {
-    application = "controller"
+    type = "controller"
   }
   network {
     name = "ext-net1"
