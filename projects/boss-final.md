@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T19:21:37.430Z
+date: 2023-06-20T19:23:01.846Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -158,6 +158,48 @@ resource "openstack_compute_instance_v2" "controller" {
   network {
     name = openstack_networking_network_v2.private_network.name
     fixed_ip_v4 = "10.99.0.10"
+  }
+}
+```
+8. Création des masters
+```json
+resource "openstack_compute_instance_v2" "master" {
+  count           = 3
+  name            = "master-0${count.index + 1}"
+  flavor_name     = "a1-ram2-disk80-perf1"
+  image_id        = "a220f306-1488-4788-9dcc-b94ed1338662"
+  key_pair        = "yubikey"
+  security_groups = ["ALL-LOCAL", "HTTP-HTTPS"]
+  availability_zone = element(["dc3-a-04", "dc3-a-09", "dc3-a-10"], count.index)
+
+  metadata = {
+    type = "master"
+  }
+
+  network {
+    name = openstack_networking_network_v2.private_network.name
+    fixed_ip_v4 = "10.99.0.1${count.index + 1}"
+  }
+}
+```
+9. Création des workers
+```json
+resource "openstack_compute_instance_v2" "worker" {
+  count           = 3
+  name            = "worker-0${count.index + 1}"
+  flavor_name     = "a1-ram2-disk80-perf1"
+  image_id        = "a220f306-1488-4788-9dcc-b94ed1338662"
+  key_pair        = "yubikey"
+  security_groups = ["ALL-LOCAL", "HTTP-HTTPS"]
+  availability_zone = element(["dc3-a-04", "dc3-a-09", "dc3-a-10"], count.index)
+
+  metadata = {
+    type = "worker"
+  }
+
+  network {
+    name = openstack_networking_network_v2.private_network.name
+    fixed_ip_v4 = "10.99.0.10${count.index + 1}"
   }
 }
 ```
