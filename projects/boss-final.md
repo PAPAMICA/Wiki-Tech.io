@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T19:26:58.757Z
+date: 2023-06-20T19:27:42.231Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -206,6 +206,7 @@ resource "openstack_compute_instance_v2" "worker" {
 
 <details>
 <summary>Voir le fichier complet</summary>
+  
 ```json
 # Define required providers
 terraform {
