@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T16:05:23.769Z
+date: 2023-06-20T16:11:39.976Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -29,3 +29,4 @@ dateCreated: 2023-06-20T16:05:23.769Z
 1. Schématiser l'infrastructure : 3h
 
 # Déploiement des serveurs avec Terraform
+1. Création d'un projet OpenStack sur le Public Cloud d'infomaniak
