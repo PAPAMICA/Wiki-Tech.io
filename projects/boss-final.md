@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T16:11:39.976Z
+date: 2023-06-20T16:11:59.272Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -30,3 +30,4 @@ dateCreated: 2023-06-20T16:05:23.769Z
 
 # Déploiement des serveurs avec Terraform
 1. Création d'un projet OpenStack sur le Public Cloud d'infomaniak
+2. Récupération des identifiants
