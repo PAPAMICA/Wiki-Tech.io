@@ -2,7 +2,7 @@
 title: Boss final
 description: 
 published: true
-date: 2023-06-20T19:23:01.846Z
+date: 2023-06-20T19:26:58.757Z
 tags: 
 editor: markdown
 dateCreated: 2023-06-20T16:05:23.769Z
@@ -203,3 +203,162 @@ resource "openstack_compute_instance_v2" "worker" {
   }
 }
 ```
+
+<details>
+<summary>Voir le fichier complet</summary>
+```json
+# Define required providers
+terraform {
+  required_providers {
+    openstack = {
+      source  = "terraform-provider-openstack/openstack"
+      version = "1.44.0"
+    }
+  }
+}
+
+# Configure the OpenStack Provider
+provider "openstack" {
+  auth_url = "https://api.pub1.infomaniak.cloud/identity"
+  region = "dc3-a"
+  user_name = "<USERNAME>"
+  password = "<PASSWORD>"
+  user_domain_name = "Default"
+  project_domain_id = "default"
+  tenant_id = "<PROJECT_ID>"
+  tenant_name = "<PROJECT_NAME>"
+}
+
+# Upload public key
+resource "openstack_compute_keypair_v2" "yubikey" {
+  name = "yubikey"
+  public_key = "<PUBLIC_KEY>"
+}
+
+# Define the security group
+resource "openstack_compute_secgroup_v2" "ICMP" {
+  name        = "ICMP"
+  description = "Allow Ping"
+
+  rule {
+    from_port   = -1
+    to_port     = -1
+    ip_protocol = "icmp"
+    cidr        = "0.0.0.0/0"
+  }
+}
+
+# Create security group
+resource "openstack_compute_secgroup_v2" "ALL-LOCAL" {
+  name        = "ALL-LOCAL"
+  description = "All access on 10.99.0.0/24"
+
+  # Rule for all traffic
+  rule {
+    from_port   = 1
+    to_port     = 65535
+    ip_protocol = "tcp"
+    cidr        = "10.99.0.0/24"
+  }
+
+}
+
+
+resource "openstack_compute_secgroup_v2" "SSH-EXTERNE" {
+  name        = "SSH-EXTERNE"
+  description = "SSH from anywhere"
+
+  rule {
+    from_port   = 22
+    to_port     = 22
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+}
+
+resource "openstack_compute_secgroup_v2" "HTTP-HTTPS" {
+  name        = "HTTP-HTTPS"
+  description = "Web"
+
+  rule {
+    from_port   = 80
+    to_port     = 80
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+
+  rule {
+    from_port   = 443
+    to_port     = 443
+    ip_protocol = "tcp"
+    cidr        = "0.0.0.0/0"
+  }
+}  
+
+resource "openstack_networking_network_v2" "private_network" {
+  name = "private_network"
+  admin_state_up = true
+}
+
+resource "openstack_networking_subnet_v2" "private_subnet" {
+  name = "private_subnet"
+  network_id = openstack_networking_network_v2.private_network.id
+  cidr = "10.99.0.0/24"
+  ip_version = 4
+  dns_nameservers = ["1.1.1.1"]
+}
+
+# Create a controller
+resource "openstack_compute_instance_v2" "controller" {
+  name            = "controller"
+  image_id        = "a220f306-1488-4788-9dcc-b94ed1338662"
+  flavor_name     = "a1-ram2-disk80-perf1"
+  key_pair        = "yubikey"
+  security_groups = ["ALL-LOCAL", "SSH-EXTERNE", "HTTP-HTTPS", "ICMP"]
+
+  metadata = {
+    application = "web-app"
+  }
+  network {
+    name = "ext-net1"
+  }
+  network {
+    name = openstack_networking_network_v2.private_network.name
+    fixed_ip_v4 = "10.99.0.10"
+  }
+}
+
+# Define the instance
+resource "openstack_compute_instance_v2" "master" {
+  count           = 3
+  name            = "master-0${count.index + 1}"
+  flavor_name     = "a1-ram2-disk80-perf1"
+  image_id        = "a220f306-1488-4788-9dcc-b94ed1338662"
+  key_pair        = "yubikey"
+  security_groups = ["ALL-LOCAL", "HTTP-HTTPS"]
+  availability_zone = element(["dc3-a-04", "dc3-a-09", "dc3-a-10"], count.index)
+
+  network {
+    name = openstack_networking_network_v2.private_network.name
+    fixed_ip_v4 = "10.99.0.1${count.index + 1}"
+  }
+}
+
+# Define the instance
+resource "openstack_compute_instance_v2" "worker" {
+  count           = 3
+  name            = "worker-0${count.index + 1}"
+  flavor_name     = "a1-ram2-disk80-perf1"
+  image_id        = "a220f306-1488-4788-9dcc-b94ed1338662"
+  key_pair        = "yubikey"
+  security_groups = ["ALL-LOCAL", "HTTP-HTTPS"]
+  availability_zone = element(["dc3-a-04", "dc3-a-09", "dc3-a-10"], count.index)
+
+  network {
+    name = openstack_networking_network_v2.private_network.name
+    fixed_ip_v4 = "10.99.0.10${count.index + 1}"
+  }
+}
+```
+</details>
+
