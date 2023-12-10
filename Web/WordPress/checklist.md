@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T12:58:28.449Z
+date: 2023-12-10T14:37:27.279Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -123,51 +123,42 @@ Quelques liens utiles :
 - https://entreprendre.service-public.fr/vosdroits/F31228
 - https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-web/quelles-sont-les-mentions-legales-pour-un-site
 
+## Politique de Confidentialité
+Générateur en ligne : https://la-webeuse.com/generateur-politique-de-confidentialite-wordpress/
+
+Exemple de page Politique de Confidentialité : https://genevois-informatique.com/politique-de-confidentialite-2/
+
+
 ## Page Mentions légales
-Exemple de page mentions légales :
-```markdown
-# Édition Du Site
-<URL_du_site> est un site édité par la société Genevois Informatique (Mickael Asseline EI) pour la cliente <Nom_client>
+Générateur de mentions légales pour WordPress : https://la-webeuse.com/generateur-mentions-legales#lwptoc15
 
-Siège : 11 Chemin du Crêt Millet, 74160 Saint Julien en Genevois
-Mail : contact@genevois-informatique.com
+Exemple de page mentions légales : https://genevois-informatique.com/mentions-legales/
 
-# Propriété Intellectuelle
-L’ensemble de ce site relève de la législation française et internationale sur le droit d’auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques. La reproduction, adaptation et/ou traduction de tout ou partie de ce site sur un support quel qu’il soit, est formellement interdite sauf autorisation expresse du Directeur de la publication.
-
-# Modification Du Site
-L’équipe éditoriale se réserve le droit de modifier ou de corriger le contenu de ce site et de ces mentions légales à tout moment et ceci sans préavis.
-
-# Hébergeur
-Le site <URL_du_site> est hébergé par la société Genevois Informatique (Mickael Asseline EI) sur l’infrastructure Public Cloud d’Infomaniak.
-
-**Infomaniak Network SA**
-Siège : Rue Eugène Marziano 25, 1227 Les Acacias (GE) (Suisse)
-Registre du commerce du canton de Genève : CH-660.0.059.996-1
-Numéro IDE : CHE-103.167.648
-Numéro TVA : CHE-103.167.648
-```
 
 ## Page CGV
 Exemple de CGV : https://creation-site-internet.pagesjaunes.fr/ebibliotheque/voir/254091/cgv-d-un-site-internet
 
 # Contact
-## Elementor
+## Elementor Pro
+Le plugin Elementor permet la création de formulaire et tout sa gestion.
 ## Contact Form 7
+Autre solution, le plugin Contact Form 7
 ## Contact Form CFDB7
+Ce plugin permet de garder un historique de tous les formulaires remplis directement sur le site.
 ## Captcha
+Il est indispensable de configurer le Captcha v3 sur tous les formulaires.
+Sa configuration peux se faire directement dans 
 
 # Analytiques
-## Cookies GPRD
-## Google Analytics
-## JetPack
-## Matomo
-## Umami
-## Autre code JS
+## Complianz RGPD
+## Burst Statistics
 
 
 # Optimisation
 ## Pagespeed
+wp-optimize : https://pagespeed.web.dev/analysis/https-genevois-informatique-com/ap2yqujfn2?form_factor=mobile
+sans rien : https://pagespeed.web.dev/analysis/https-genevois-informatique-com/zqgiyn25wa?form_factor=desktop
+Light speed cache : 
 ## WP-Optimize
 ## Smush
 
