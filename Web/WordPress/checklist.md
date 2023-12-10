@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T12:45:53.050Z
+date: 2023-12-10T12:58:28.449Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -110,15 +110,46 @@ Tous les paramètres se trouvent dans ce menu :
 - Contact / Newsletter
 - Copyright
 
-# Création des pages
+# Création des pages templates
 ## Page de blog
 Permet de faire des articles ou un portfolio.
 - Faire la page principale d'affichage
 - Faire le template des articles
+## Page Erreur 404
+
+# Pages obligatoires légalement
+Quelques liens utiles :
+- https://www.economie.gouv.fr/entreprises/site-internet-mentions-obligatoires
+- https://entreprendre.service-public.fr/vosdroits/F31228
+- https://www.francenum.gouv.fr/guides-et-conseils/developpement-commercial/site-web/quelles-sont-les-mentions-legales-pour-un-site
+
 ## Page Mentions légales
+Exemple de page mentions légales :
+```markdown
+# Édition Du Site
+<URL_du_site> est un site édité par la société Genevois Informatique (Mickael Asseline EI) pour la cliente <Nom_client>
+
+Siège : 11 Chemin du Crêt Millet, 74160 Saint Julien en Genevois
+Mail : contact@genevois-informatique.com
+
+# Propriété Intellectuelle
+L’ensemble de ce site relève de la législation française et internationale sur le droit d’auteur et la propriété intellectuelle. Tous les droits de reproduction sont réservés, y compris les représentations iconographiques et photographiques. La reproduction, adaptation et/ou traduction de tout ou partie de ce site sur un support quel qu’il soit, est formellement interdite sauf autorisation expresse du Directeur de la publication.
+
+# Modification Du Site
+L’équipe éditoriale se réserve le droit de modifier ou de corriger le contenu de ce site et de ces mentions légales à tout moment et ceci sans préavis.
+
+# Hébergeur
+Le site <URL_du_site> est hébergé par la société Genevois Informatique (Mickael Asseline EI) sur l’infrastructure Public Cloud d’Infomaniak.
+
+**Infomaniak Network SA**
+Siège : Rue Eugène Marziano 25, 1227 Les Acacias (GE) (Suisse)
+Registre du commerce du canton de Genève : CH-660.0.059.996-1
+Numéro IDE : CHE-103.167.648
+Numéro TVA : CHE-103.167.648
+```
 
 ## Page CGV
-## Page Erreur 404
+Exemple de CGV : https://creation-site-internet.pagesjaunes.fr/ebibliotheque/voir/254091/cgv-d-un-site-internet
 
 # Contact
 ## Elementor
@@ -132,6 +163,7 @@ Permet de faire des articles ou un portfolio.
 ## JetPack
 ## Matomo
 ## Umami
+## Autre code JS
 
 
 # Optimisation
