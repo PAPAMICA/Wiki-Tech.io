@@ -2,14 +2,30 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T12:00:24.287Z
+date: 2023-12-10T12:21:35.121Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
 ---
 
-# Déploiement de WordPress
+# Automatisation
+### Installer tous les plugins recommandés
 
+# Déploiement de WordPress
+## Portainer
+## Uploads.ini
+Ce fichier permet d'augmenter les limites pour l'envoie de fichier à WordPress :
+```ini
+file_uploads = On
+
+memory_limit = 500M
+
+upload_max_filesize = 500M
+
+post_max_size = 500M
+
+max_execution_time = 600
+```
 # Sauvegarde
 ## UpdraftPlus
 - Installer et activer l'extension **UpdraftPlus**
@@ -49,8 +65,20 @@ dateCreated: 2023-12-10T11:30:59.206Z
 
 # Supervision
 ## UptimeKuma
+### Monitor HTTPS - Keyword
+Je conseil fortement l'utilisation d'une sonde de type **HTTPS - Keyword** pour être alerté si le site répond, mais répond une page blanche par exemple.
+- Créer la sonde sur un mot qui apparait sur la page d'accueil
+- L'opération peut être répétée pour l'ensemble des pages
+- Penser à activer le vérification du certificat
+- Penser à configurer les alertes
 ## Zabbix
+Deux projets existent pour ajouter de la supervision WordPress via Zabbix :
+- https://github.com/WapplerSystems/wp-zabbix
+- https://github.com/milzulempis/Zabbix-Wordpress-Template
 ## JetPack
+- Installer et activer l'exension **Jetpack**
+- Activer la **Surveillance des temps d’arrêt** dans l'onglet **JetPack → Réglages**
+- Lier Jetpack avec compte WordPress.com
 
 # Création du site
 ## Elementor
@@ -67,6 +95,12 @@ dateCreated: 2023-12-10T11:30:59.206Z
 ## Contact Form CFDB7
 ## Captcha
 
+# Analytiques
+## Google Analytics
+## JetPack
+## Matomo
+## Umami
+
 
 # Optimisation
 ## Pagespeed
@@ -75,3 +109,7 @@ dateCreated: 2023-12-10T11:30:59.206Z
 
 # SEO
 ## Yoast SEO
+
+# Maintenance
+## Mettre des rappels
+## Ce qui est à vérifier
