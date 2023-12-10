@@ -2,7 +2,7 @@
 title: Web
 description: Différentes astuces autours du développement web !
 published: true
-date: 2022-04-08T12:39:16.952Z
+date: 2023-12-10T11:22:11.735Z
 tags: wordpress, html, css, js, web
 editor: markdown
 dateCreated: 2021-06-15T07:12:56.280Z
@@ -17,6 +17,7 @@ dateCreated: 2021-06-15T07:12:56.280Z
 {.links-list}
 
 # WordPress
+- [💯 Feuille de route *Checklist des choses à faire*](/Web/WordPress/checklist)
 - [🌀 Installation *Installer le CMS WordPress avec Docker*](/Web/WordPress/Installation)
 - [🔒 Activer le SSL *Configurer le SSL pour avoir le site en HTTPS*](/Web/WordPress/SSL)
 - [🗃️ Sauvegarde *Configurer les sauvegardes d'un site WordPress*](/Web/WordPress/Sauvegarde)
