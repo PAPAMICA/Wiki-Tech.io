@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T14:50:00.015Z
+date: 2023-12-10T15:17:37.038Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -10,6 +10,10 @@ dateCreated: 2023-12-10T11:30:59.206Z
 
 # Automatisation
 ### Installer tous les plugins recommandés
+Se connecter au container WordPress et lancer cette commande :
+```bash
+bash -c "$(curl -s https://raw.githubusercontent.com/PAPAMICA/SuperWordPress/main/manual_install.sh)"
+```
 
 # Déploiement de WordPress
 ## Portainer
