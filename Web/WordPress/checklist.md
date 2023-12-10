@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T12:42:26.830Z
+date: 2023-12-10T12:45:53.050Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -98,12 +98,25 @@ Tous les paramètres se trouvent dans ce menu :
 - Police d'écriture
 - Favicon
 ## Elements de navigation
-- Entête et menu
-- Pied de page
+## Entête et menu
+- Logo
+- Menu ordinateur
+- Menu téléphone
+- Call to Action
+## Pied de page
+- Logo
+- Réseaux sociaux
+- Liens utiles
+- Contact / Newsletter
+- Copyright
 
 # Création des pages
 ## Page de blog
+Permet de faire des articles ou un portfolio.
+- Faire la page principale d'affichage
+- Faire le template des articles
 ## Page Mentions légales
+
 ## Page CGV
 ## Page Erreur 404
 
