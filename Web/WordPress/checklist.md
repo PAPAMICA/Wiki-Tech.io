@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T12:21:35.121Z
+date: 2023-12-10T12:42:26.830Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -80,14 +80,32 @@ Deux projets existent pour ajouter de la supervision WordPress via Zabbix :
 - Activer la **Surveillance des temps d’arrêt** dans l'onglet **JetPack → Réglages**
 - Lier Jetpack avec compte WordPress.com
 
-# Création du site
+# Mise en page du site
 ## Elementor
+- Installer et activer l'extension **Elementor**
 ## Elementor Pro
-## Faire le thème général du site
-### Couleurs
-### Police d'écriture
-## Duplicate Page
+- Télécharger le packet **Elementor Pro** sur le site my.elementor.com
+- Installer et activer l'extention **Elementor Pro**
 ## Envato Elements
+## Duplicate Page
+
+
+# Direction artistique
+## Thème général du site
+Tous les paramètres se trouvent dans ce menu :
+**Modification avec Elementor → Menu 3 traits en haut à gauche → Réglages du site**
+- Couleurs
+- Police d'écriture
+- Favicon
+## Elements de navigation
+- Entête et menu
+- Pied de page
+
+# Création des pages
+## Page de blog
+## Page Mentions légales
+## Page CGV
+## Page Erreur 404
 
 # Contact
 ## Elementor
@@ -96,6 +114,7 @@ Deux projets existent pour ajouter de la supervision WordPress via Zabbix :
 ## Captcha
 
 # Analytiques
+## Cookies GPRD
 ## Google Analytics
 ## JetPack
 ## Matomo
@@ -111,5 +130,6 @@ Deux projets existent pour ajouter de la supervision WordPress via Zabbix :
 ## Yoast SEO
 
 # Maintenance
+## Contrat de maintenance
 ## Mettre des rappels
 ## Ce qui est à vérifier
