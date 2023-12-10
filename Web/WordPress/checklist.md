@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T14:37:27.279Z
+date: 2023-12-10T14:50:00.015Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -156,11 +156,11 @@ Sa configuration peux se faire directement dans
 
 # Optimisation
 ## Pagespeed
-wp-optimize : https://pagespeed.web.dev/analysis/https-genevois-informatique-com/ap2yqujfn2?form_factor=mobile
-sans rien : https://pagespeed.web.dev/analysis/https-genevois-informatique-com/zqgiyn25wa?form_factor=desktop
-Light speed cache : 
-## WP-Optimize
-## Smush
+- Tester votre site avec https://pagespeed.web.dev/
+## Light speed cache
+- Installer et activer l'extension **Light speed cache**
+- Appliquer les préréglages avancés
+- Configuré la clé d'API QUIC
 
 # SEO
 ## Yoast SEO
@@ -168,4 +168,10 @@ Light speed cache :
 # Maintenance
 ## Contrat de maintenance
 ## Mettre des rappels
+- Prévoir 30 min chaque mois par site.
 ## Ce qui est à vérifier
+- Mise à jour
+- Affichage du site
+- Score PageSpeed
+- Supervision
+- SEO
