@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-10T15:17:37.038Z
+date: 2023-12-12T13:40:19.601Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -165,6 +165,24 @@ Sa configuration peux se faire directement dans
 - Installer et activer l'extension **Light speed cache**
 - Appliquer les préréglages avancés
 - Configuré la clé d'API QUIC
+## Redis
+- Pour cela il faut ajouter Redis dans la stack de déploiement WordPress :
+```yaml
+  wordpress-redis:
+    image: 'redis:alpine'
+    restart: always
+    expose:
+      - '6379'
+    networks:
+      - default
+```
+- Ajouter les variables suivantes dans 'wp-config.php' :
+```php
+define('WP_REDIS_HOST', 'skiclub74-org-wordpress-redis-1');
+define('WP_REDIS_PORT', '6379');
+```
+- Installer et activer l'extension **Redis Object Cache**
+- Vérifier la configuration
 
 # SEO
 ## Yoast SEO
