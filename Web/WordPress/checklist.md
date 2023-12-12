@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-12T13:41:54.086Z
+date: 2023-12-12T13:51:22.888Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -166,19 +166,26 @@ Sa configuration peux se faire directement dans
 - Appliquer les préréglages avancés
 - Configuré la clé d'API QUIC
 ## Redis
-- Pour cela il faut ajouter Redis dans la stack de déploiement WordPress :
+- Pour cela il faut un serveur Redis 
 ```yaml
-  wordpress-redis:
+version: "2"
+services:
+  redis:
     image: 'redis:alpine'
     restart: always
+    container_name: redis
     expose:
       - '6379'
     networks:
       - default
+networks:
+  default:
+    external:
+      name: proxy
 ```
 - Ajouter les variables suivantes dans 'wp-config.php' :
 ```php
-define('WP_REDIS_HOST', '<Nom_Du_Container_Redis>');
+define('WP_REDIS_HOST', 'redis');
 define('WP_REDIS_PORT', '6379');
 ```
 - Installer et activer l'extension **Redis Object Cache**
