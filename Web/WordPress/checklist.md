@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-12T13:40:34.418Z
+date: 2023-12-12T13:41:02.958Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -161,7 +161,7 @@ Sa configuration peux se faire directement dans
 # Optimisation
 ## Pagespeed
 - Tester votre site avec https://pagespeed.web.dev/
-## Ligh speed cache
+## Lite speed cache
 - Installer et activer l'extension **Light speed cache**
 - Appliquer les préréglages avancés
 - Configuré la clé d'API QUIC
