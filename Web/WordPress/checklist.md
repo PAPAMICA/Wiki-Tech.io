@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-12T13:51:22.888Z
+date: 2023-12-12T14:08:13.623Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -185,8 +185,10 @@ networks:
 ```
 - Ajouter les variables suivantes dans 'wp-config.php' :
 ```php
-define('WP_REDIS_HOST', 'redis');
-define('WP_REDIS_PORT', '6379');
+define('WP_REDIS_HOST', 'redis'); # Utiliser le nom du container
+define('WP_REDIS_PORT', '6379'); # Utiliser le port du container
+define('WP_REDIS_DATABASE', '0'); # Utiliser un Id de base de données par site (0-16)
+
 ```
 - Installer et activer l'extension **Redis Object Cache**
 - Vérifier la configuration
