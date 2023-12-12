@@ -2,7 +2,7 @@
 title: Feuille de route pour site WordPress
 description: 
 published: true
-date: 2023-12-12T13:41:02.958Z
+date: 2023-12-12T13:41:54.086Z
 tags: wordpress
 editor: markdown
 dateCreated: 2023-12-10T11:30:59.206Z
@@ -178,7 +178,7 @@ Sa configuration peux se faire directement dans
 ```
 - Ajouter les variables suivantes dans 'wp-config.php' :
 ```php
-define('WP_REDIS_HOST', 'skiclub74-org-wordpress-redis-1');
+define('WP_REDIS_HOST', '<Nom_Du_Container_Redis>');
 define('WP_REDIS_PORT', '6379');
 ```
 - Installer et activer l'extension **Redis Object Cache**
