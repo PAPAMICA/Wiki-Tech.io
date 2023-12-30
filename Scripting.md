@@ -12,7 +12,7 @@ dateCreated: 2021-05-24T14:30:53.085Z
 
 # Bash
 - [🌀 Présentation *Découvrir Bash*](/Scripting/Bash/Présentation)
- - [💎 Les bases *Les bases pour bien débuter avec Bash*](/Scripting/Bash/Bases)
+ - [💎 Les bases *Les bases pour bien débuter avec Bash*](/Scripting/Bash/Bash)
 {.links-list}
 
 # Python 
