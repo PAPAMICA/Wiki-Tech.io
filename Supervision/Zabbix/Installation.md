@@ -2,7 +2,7 @@
 title: Zabbix - Installation
 description: Toute la procédure pour mettre en place un serveur Zabbix
 published: true
-date: 2021-10-05T18:59:53.327Z
+date: 2024-10-25T14:45:18.004Z
 tags: supervision, zabbix
 editor: markdown
 dateCreated: 2021-10-05T15:27:25.169Z
@@ -11,7 +11,7 @@ dateCreated: 2021-10-05T15:27:25.169Z
 ![image_2021-10-05_122334.png](/images/zabbix/installation/image_2021-10-05_122334.png)
 
 # Introduction
-Nous allons voir deux méthodes pour l'installation de Zabbix : la première, plus classique, directement sur Debian 11 et la seconde aue je vous conseil avec Docker. La suite des outils lié avec Zabbix se reposera sur l'installation avec la seconde option.
+Nous allons voir deux méthodes pour l'installation de Zabbix : la première, plus classique, directement sur Debian 11 et la seconde que je vous conseil avec Docker. La suite des outils lié avec Zabbix se reposera sur l'installation avec la seconde option.
 # Debian
 ## Installation 
 L'installation se fera sur une machine Debian 11 avec une base de données **MySQL** et **Apache**.
